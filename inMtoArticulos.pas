@@ -439,8 +439,6 @@ begin
   pcPantalla.Properties.ActivePage := tsFicha;
   tsFicha.SetFocus;
   ResetForm;
-  //pcPestana.Properties.ActivePage := tsVariaciones;
-  //tsDomicilioFiscal.SetFocus;
   txtDESCRIPCION_ARTICULO.SetFocus;
 end;
 
