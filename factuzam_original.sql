@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : localhost_mariadb
- Source Server Type    : MariaDB
- Source Server Version : 101002
+ Source Server         : local
+ Source Server Type    : MySQL
+ Source Server Version : 110102
  Source Host           : localhost:3306
  Source Schema         : factuzam
 
- Target Server Type    : MariaDB
- Target Server Version : 101002
+ Target Server Type    : MySQL
+ Target Server Version : 110102
  File Encoding         : 65001
 
- Date: 04/11/2023 12:42:27
+ Date: 04/11/2023 17:31:27
 */
 
 SET NAMES utf8mb4;
@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `fza_articulos`;
 CREATE TABLE `fza_articulos`  (
   `CODIGO_ARTICULO` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `ACTIVO_ARTICULO` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT 'S',
-  `ORDEN_ARTICULO` int(11) NULL DEFAULT NULL,
+  `ORDEN_ARTICULO` int NULL DEFAULT NULL,
   `DESCRIPCION_ARTICULO` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `CODIGO_FAMILIA_ARTICULO` varchar(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `TIPOIVA_ARTICULO` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE `fza_articulos`  (
   `USUARIOMODIF` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   PRIMARY KEY (`CODIGO_ARTICULO`) USING BTREE,
   INDEX `CODIGO`(`CODIGO_ARTICULO`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of fza_articulos
@@ -47,7 +47,7 @@ INSERT INTO `fza_articulos` VALUES ('004', 'S', 3, 'PELEAS DE ARRIBA', 'OTR', 'N
 INSERT INTO `fza_articulos` VALUES ('008', 'S', 7, 'JUNIPEROS DE LA SIERRA', 'OTR', 'N', 'N', 'Uds.', '000', '2023-11-04 11:49:02', '2023-11-04 11:49:02', 'Administrador', 'Administrador');
 INSERT INTO `fza_articulos` VALUES ('009', 'S', 8, 'FRESAS DE TEMPORADA', 'OTR', 'N', 'N', 'Uds.', '000', '2023-11-04 11:52:19', '2023-11-04 11:52:19', 'Administrador', 'Administrador');
 INSERT INTO `fza_articulos` VALUES ('012', 'S', 11, 'REMOLACHA', 'OTR', 'N', 'N', 'Uds.', '000', '2023-11-04 12:23:13', '2023-11-04 12:23:13', 'Administrador', 'Administrador');
-INSERT INTO `fza_articulos` VALUES ('013', 'S', 12, 'GALLINAS', 'OTR', 'N', 'N', 'Uds.', '000', '2023-11-04 12:29:22', '2023-11-04 12:29:22', 'Administrador', 'Administrador');
+INSERT INTO `fza_articulos` VALUES ('013', 'S', 12, 'GALLINAS', 'ANI', 'N', 'N', 'Uds.', '000', '2023-11-04 12:29:22', '2023-11-04 12:29:22', 'Administrador', 'Administrador');
 INSERT INTO `fza_articulos` VALUES ('014', 'S', 13, 'PETUNIAS COLORADAS', 'OTR', 'N', 'N', 'Uds.', '000', '2023-11-04 12:34:08', '2023-11-04 12:34:08', 'Administrador', 'Administrador');
 INSERT INTO `fza_articulos` VALUES ('ALFALFA', 'S', 1, 'Alfalfa de la finca', 'CER', 'N', 'N', 'Kgs', NULL, '2023-04-18 12:31:52', '2022-11-02 16:09:51', 'Administrador', 'Administrador');
 INSERT INTO `fza_articulos` VALUES ('CALABAZAS', 'S', 4, 'Calabazas', 'HUE', 'N', 'N', 'Kgs', NULL, '2023-04-18 12:31:55', '2022-11-02 16:10:47', 'Administrador', 'Administrador');
@@ -63,7 +63,7 @@ DROP TABLE IF EXISTS `fza_articulos_familias`;
 CREATE TABLE `fza_articulos_familias`  (
   `CODIGO_FAMILIA` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `ACTIVO_FAMILIA` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT 'S',
-  `ORDEN_FAMILIA` int(11) NULL DEFAULT NULL,
+  `ORDEN_FAMILIA` int NULL DEFAULT NULL,
   `ESDEFAULT_FAMILIA` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `CODIGO_SUBFAMILIA` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `NOMBRE_FAMILIA` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
@@ -73,7 +73,7 @@ CREATE TABLE `fza_articulos_familias`  (
   `USUARIOALTA` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `USUARIOMODIF` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   PRIMARY KEY (`CODIGO_FAMILIA`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of fza_articulos_familias
@@ -100,7 +100,7 @@ CREATE TABLE `fza_articulos_movimientos`  (
   `INSTANTEALTA` timestamp NOT NULL,
   `USUARIOALTA` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `USUARIOMODIF` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of fza_articulos_movimientos
@@ -121,17 +121,18 @@ CREATE TABLE `fza_articulos_proveedores`  (
   `USUARIOALTA` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `USUARIOMODIF` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   PRIMARY KEY (`CODIGO_PROVEEDOR_ARTICULO_PROVEEDOR`, `CODIGO_ARTICULO_ARTICULO_PROVEEDOR`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of fza_articulos_proveedores
 -- ----------------------------
-INSERT INTO `fza_articulos_proveedores` VALUES ('10', 'CEBADA', 0.080000, '2023-03-16 00:00:00', NULL, '2023-03-16 15:34:56', '2023-03-16 15:34:56', 'Administrador', 'Administrador');
+INSERT INTO `fza_articulos_proveedores` VALUES ('10', 'CEBADA', 0.080000, '2023-03-16 00:00:00', 'S', '2023-11-04 17:27:48', '2023-03-16 15:34:56', 'Administrador', 'Administrador');
 INSERT INTO `fza_articulos_proveedores` VALUES ('11', 'ALFALFA', 0.250000, '2023-05-03 00:00:00', 'S', '2023-05-24 12:53:58', '2023-03-04 13:40:00', 'Administrador', 'Administrador');
 INSERT INTO `fza_articulos_proveedores` VALUES ('13', '003', 320.000000, '2023-05-03 00:00:00', 'S', '2023-05-25 13:07:43', '2023-05-25 13:07:43', 'Administrador', 'Administrador');
 INSERT INTO `fza_articulos_proveedores` VALUES ('17', 'ALFALFA', 0.170000, '2023-05-25 00:00:00', 'N', '2023-03-03 14:30:45', '2023-03-03 14:30:45', 'Administrador', 'Administrador');
 INSERT INTO `fza_articulos_proveedores` VALUES ('20', 'ALFALFA', 0.100000, '2023-03-02 00:00:00', 'N', '2023-03-04 18:14:28', '2023-03-03 14:02:47', 'Administrador', 'Administrador');
 INSERT INTO `fza_articulos_proveedores` VALUES ('3', '003', 20.000000, '2023-05-31 00:00:00', 'N', '2023-05-31 13:34:53', '2023-05-31 13:34:53', 'Administrador', 'Administrador');
+INSERT INTO `fza_articulos_proveedores` VALUES ('7', '013', 5.000000, '2023-10-20 00:00:00', 'S', '2023-11-04 14:56:50', '2023-11-04 14:56:50', 'Administrador', 'Administrador');
 
 -- ----------------------------
 -- Table structure for fza_articulos_tarifas
@@ -139,7 +140,7 @@ INSERT INTO `fza_articulos_proveedores` VALUES ('3', '003', 20.000000, '2023-05-
 DROP TABLE IF EXISTS `fza_articulos_tarifas`;
 CREATE TABLE `fza_articulos_tarifas`  (
   `CODIGO_ARTICULO_TARIFA` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
-  `CODIGO_UNICO_TARIFA` int(11) NOT NULL AUTO_INCREMENT,
+  `CODIGO_UNICO_TARIFA` int NOT NULL AUTO_INCREMENT,
   `CODIGO_TARIFA` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `ACTIVO_TARIFA` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT 'S',
   `PRECIOSALIDA_TARIFA` decimal(18, 6) NULL DEFAULT NULL,
@@ -153,7 +154,7 @@ CREATE TABLE `fza_articulos_tarifas`  (
   `USUARIOALTA` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `USUARIOMODIF` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   PRIMARY KEY (`CODIGO_UNICO_TARIFA`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of fza_articulos_tarifas
@@ -186,7 +187,7 @@ CREATE TABLE `fza_articulos_variaciones_def`  (
   `USUARIOALTA` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `USUARIOMODIF` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   PRIMARY KEY (`CODIGO_VAR_DEF`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of fza_articulos_variaciones_def
@@ -202,7 +203,7 @@ DROP TABLE IF EXISTS `fza_clientes`;
 CREATE TABLE `fza_clientes`  (
   `CODIGO_CLIENTE` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `ACTIVO_CLIENTE` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT 'S',
-  `ORDEN_CLIENTE` int(11) NULL DEFAULT NULL,
+  `ORDEN_CLIENTE` int NULL DEFAULT NULL,
   `RAZONSOCIAL_CLIENTE` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `NIF_CLIENTE` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `MOVIL_CLIENTE` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
@@ -213,7 +214,7 @@ CREATE TABLE `fza_clientes`  (
   `PROVINCIA_CLIENTE` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `CPOSTAL_CLIENTE` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `PAIS_CLIENTE` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
-  `OBSERVACIONES_CLIENTE` text CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `OBSERVACIONES_CLIENTE` text CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL,
   `REFERENCIA_CLIENTE` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `CONTACTO_CLIENTE` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `TELEFONO_CONTACTO_CLIENTE` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
@@ -238,7 +239,7 @@ CREATE TABLE `fza_clientes`  (
   INDEX `IDX_NIF_CLIENTE`(`EMAIL_CLIENTE`) USING BTREE,
   INDEX `IDX_POBLACION_CLIENTE`(`NIF_CLIENTE`) USING BTREE,
   INDEX `IDX_REFERENCIA_CLIENTE`(`REFERENCIA_CLIENTE`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of fza_clientes
@@ -256,16 +257,16 @@ CREATE TABLE `fza_contadores`  (
   `TIPODOC_CONTADOR` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `SERIE_CONTADOR` varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `EMPRESA_CONTADOR` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
-  `CONTADOR_CONTADOR` bigint(20) NOT NULL,
+  `CONTADOR_CONTADOR` bigint NOT NULL,
   `DEFAULT_CONTADOR` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT 'N',
-  `NUMDIGIT_CONTADOR` int(11) NOT NULL DEFAULT 0,
+  `NUMDIGIT_CONTADOR` int NOT NULL DEFAULT 0,
   `ACTIVO_CONTADOR` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL DEFAULT 'S',
   `INSTANTEMODIF` timestamp NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   `INSTANTEALTA` timestamp NOT NULL,
   `USUARIOALTA` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `USUARIOMODIF` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   PRIMARY KEY (`TIPODOC_CONTADOR`, `SERIE_CONTADOR`, `EMPRESA_CONTADOR`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of fza_contadores
@@ -300,7 +301,7 @@ INSERT INTO `fza_contadores` VALUES ('ZZ', '-', '-', 2, 'S', 3, 'S', '2023-06-30
 DROP TABLE IF EXISTS `fza_empresas`;
 CREATE TABLE `fza_empresas`  (
   `CODIGO_EMPRESA` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
-  `ORDEN_EMPRESA` int(11) NULL DEFAULT NULL,
+  `ORDEN_EMPRESA` int NULL DEFAULT NULL,
   `ACTIVO_EMPRESA` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT 'S',
   `RAZONSOCIAL_EMPRESA` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `NIF_EMPRESA` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
@@ -322,7 +323,7 @@ CREATE TABLE `fza_empresas`  (
   `USUARIOALTA` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `USUARIOMODIF` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   PRIMARY KEY (`CODIGO_EMPRESA`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of fza_empresas
@@ -348,7 +349,7 @@ CREATE TABLE `fza_empresas_retenciones`  (
   `USUARIOALTA` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `USUARIOMODIF` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   PRIMARY KEY (`CODIGO_RETENCION`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of fza_empresas_retenciones
@@ -373,7 +374,7 @@ CREATE TABLE `fza_empresas_series`  (
   `USUARIOALTA` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `USUARIOMODIF` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   PRIMARY KEY (`CODIGO_SERIE`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of fza_empresas_series
@@ -457,7 +458,7 @@ CREATE TABLE `fza_facturas`  (
   `SERIE_FACTURA_ABONO_FACTURA` varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL COMMENT 'Serie Factura Abono',
   `TEXTO_LEGAL_FACTURA_CLIENTE_FACTURA` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT '',
   `TEXTO_LEGAL_FACTURA_EMPRESA_FACTURA` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT '',
-  `DOCUMENTO_FACTURA` blob NULL DEFAULT NULL COMMENT 'Copia en PDF del documento final',
+  `DOCUMENTO_FACTURA` blob NULL COMMENT 'Copia en PDF del documento final',
   `COMENTARIOS_FACTURA` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT '',
   `CONTADOR_LINEAS_FACTURA` varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL COMMENT 'Contador de lineas para lineas de factura',
   `ESCREARARTICULOS_FACTURA` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL COMMENT 'S o N si se crean articulos desde el detalle',
@@ -468,7 +469,7 @@ CREATE TABLE `fza_facturas`  (
   `USUARIOALTA` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `USUARIOMODIF` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   PRIMARY KEY (`SERIE_FACTURA`, `NRO_FACTURA`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of fza_facturas
@@ -506,7 +507,7 @@ CREATE TABLE `fza_facturas_lineas`  (
   `USUARIOALTA` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `USUARIOMODIF` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   PRIMARY KEY (`SERIE_FACTURA_LINEA`, `NRO_FACTURA_LINEA`, `LINEA_FACTURA_LINEA`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of fza_facturas_lineas
@@ -528,18 +529,18 @@ DROP TABLE IF EXISTS `fza_formapago`;
 CREATE TABLE `fza_formapago`  (
   `CODIGO_FORMAPAGO` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `ACTIVO_FORMAPAGO` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
-  `ORDEN_FORMAPAGO` int(11) NULL DEFAULT NULL,
+  `ORDEN_FORMAPAGO` int NULL DEFAULT NULL,
   `DESCRIPCION_FORMAPAGO` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
-  `N_PLAZOS_FORMAPAGO` int(11) NULL DEFAULT 1,
-  `N_DIAS_ENTRE_PLAZOS_FORMAPAGO` int(11) NULL DEFAULT 0,
-  `PORCEN_ANTICIPO_FORMAPAGO` int(11) NULL DEFAULT NULL,
+  `N_PLAZOS_FORMAPAGO` int NULL DEFAULT 1,
+  `N_DIAS_ENTRE_PLAZOS_FORMAPAGO` int NULL DEFAULT 0,
+  `PORCEN_ANTICIPO_FORMAPAGO` int NULL DEFAULT NULL,
   `ESDEFAULT_FORMAPAGO` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT 'N',
   `INSTANTEMODIF` timestamp NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   `INSTANTEALTA` timestamp NOT NULL,
   `USUARIOALTA` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `USUARIOMODIF` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   PRIMARY KEY (`CODIGO_FORMAPAGO`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of fza_formapago
@@ -555,13 +556,13 @@ DROP TABLE IF EXISTS `fza_generadorprocesos`;
 CREATE TABLE `fza_generadorprocesos`  (
   `CODIGO_GENERADORPROCESO` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `NOMBRE_GENERADORPROCESO` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
-  `PROCESO_GENERADORPROCESO` text CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `PROCESO_GENERADORPROCESO` text CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL,
   `INSTANTEMODIF` timestamp NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   `INSTANTEALTA` timestamp NOT NULL,
   `USUARIOALTA` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `USUARIOMODIF` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   PRIMARY KEY (`CODIGO_GENERADORPROCESO`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of fza_generadorprocesos
@@ -601,7 +602,7 @@ CREATE TABLE `fza_ivas`  (
   `USUARIOALTA` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `USUARIOMODIF` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   PRIMARY KEY (`CODIGO_IVA`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of fza_ivas
@@ -628,7 +629,7 @@ CREATE TABLE `fza_ivas_grupos`  (
   `USUARIOALTA` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `USUARIOMODIF` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   PRIMARY KEY (`GRUPO_ZONA_IVA`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of fza_ivas_grupos
@@ -649,7 +650,7 @@ CREATE TABLE `fza_ivas_tipos`  (
   `INSTANTEALTA` timestamp NOT NULL,
   `USUARIOALTA` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `USUARIOMODIF` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of fza_ivas_tipos
@@ -664,11 +665,11 @@ INSERT INTO `fza_ivas_tipos` VALUES ('E', 'Exento', '2023-03-09 18:13:48', '2023
 -- ----------------------------
 DROP TABLE IF EXISTS `fza_ivas_zonas`;
 CREATE TABLE `fza_ivas_zonas`  (
-  `CODIGO_ZONA_IVA` int(11) NOT NULL,
+  `CODIGO_ZONA_IVA` int NOT NULL,
   `DESCRIPCION_ZONA_IVA` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `ESDEFAULT_ZONA_IVA` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`CODIGO_ZONA_IVA`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of fza_ivas_zonas
@@ -681,7 +682,7 @@ INSERT INTO `fza_ivas_zonas` VALUES (1, 'INTRACOMUNITARIA', 'N');
 -- ----------------------------
 DROP TABLE IF EXISTS `fza_log`;
 CREATE TABLE `fza_log`  (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `ID` int NOT NULL AUTO_INCREMENT,
   `FECHAHORA_LOG` timestamp NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   `FECHAHORA_MACHINE_LOG` datetime NULL DEFAULT NULL,
   `USUARIO_LOG` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
@@ -690,7 +691,7 @@ CREATE TABLE `fza_log`  (
   `MENSAJE_LOG` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `FORM_LOG` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 432 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 439 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of fza_log
@@ -1110,17 +1111,24 @@ INSERT INTO `fza_log` VALUES (428, '2023-11-04 12:21:17', '2023-11-04 12:21:17',
 INSERT INTO `fza_log` VALUES (429, '2023-11-04 12:26:29', '2023-11-04 12:26:29', 'Administrador/Administradores/S', NULL, '0', 'Entrando en el software', 'frmOpenApp2');
 INSERT INTO `fza_log` VALUES (430, '2023-11-04 12:28:49', '2023-11-04 12:28:49', 'Administrador/Administradores/S', NULL, '0', 'Entrando en el software', 'frmOpenApp2');
 INSERT INTO `fza_log` VALUES (431, '2023-11-04 12:33:37', '2023-11-04 12:33:37', 'Administrador/Administradores/S', NULL, '0', 'Entrando en el software', 'frmOpenApp2');
+INSERT INTO `fza_log` VALUES (432, '2023-11-04 14:56:06', '2023-11-04 14:56:06', 'Administrador/Administradores/S', NULL, '0', 'Entrando en el software', 'frmOpenApp2');
+INSERT INTO `fza_log` VALUES (433, '2023-11-04 16:42:32', '2023-11-04 16:42:32', 'Administrador/Administradores/S', NULL, '0', 'Entrando en el software', 'frmOpenApp2');
+INSERT INTO `fza_log` VALUES (434, '2023-11-04 16:45:47', '2023-11-04 16:45:47', 'Administrador/Administradores/S', NULL, '0', 'Entrando en el software', 'frmOpenApp2');
+INSERT INTO `fza_log` VALUES (435, '2023-11-04 16:53:01', '2023-11-04 16:53:00', 'Administrador/Administradores/S', NULL, '0', 'Entrando en el software', 'frmOpenApp2');
+INSERT INTO `fza_log` VALUES (436, '2023-11-04 17:12:02', '2023-11-04 17:12:02', 'Administrador/Administradores/S', NULL, '0', 'Entrando en el software', 'frmOpenApp2');
+INSERT INTO `fza_log` VALUES (437, '2023-11-04 17:13:07', '2023-11-04 17:13:07', 'Administrador/Administradores/S', NULL, '0', 'Entrando en el software', 'frmOpenApp2');
+INSERT INTO `fza_log` VALUES (438, '2023-11-04 17:20:09', '2023-11-04 17:20:09', 'Administrador/Administradores/S', NULL, '0', 'Entrando en el software', 'frmOpenApp2');
 
 -- ----------------------------
 -- Table structure for fza_metadatos
 -- ----------------------------
 DROP TABLE IF EXISTS `fza_metadatos`;
 CREATE TABLE `fza_metadatos`  (
-  `CODIGO_METADATO` int(20) NOT NULL AUTO_INCREMENT,
+  `CODIGO_METADATO` int NOT NULL AUTO_INCREMENT,
   `NOMBRE_METADATO` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `PARENT_METADATO` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   PRIMARY KEY (`CODIGO_METADATO`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 129 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 97 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of fza_metadatos
@@ -1190,33 +1198,32 @@ INSERT INTO `fza_metadatos` VALUES (62, 'vi_usuarios', '2');
 INSERT INTO `fza_metadatos` VALUES (63, 'vi_usuarios_grupos', '2');
 INSERT INTO `fza_metadatos` VALUES (64, 'vi_usuarios_perfiles', '2');
 INSERT INTO `fza_metadatos` VALUES (65, 'vi_variaciones', '2');
-INSERT INTO `fza_metadatos` VALUES (66, 'vi_variaciones_articulos', '2');
-INSERT INTO `fza_metadatos` VALUES (98, 'PRC_CALCULAR_FACTURA_NETOS', '3');
-INSERT INTO `fza_metadatos` VALUES (99, 'PRC_CREAR_ACTUALIZAR_CLIENTE', '3');
-INSERT INTO `fza_metadatos` VALUES (100, 'PRC_CREAR_ACTUALIZAR_EMPRESA', '3');
-INSERT INTO `fza_metadatos` VALUES (101, 'PRC_CREAR_ACTUALIZAR_KEY', '3');
-INSERT INTO `fza_metadatos` VALUES (102, 'PRC_CREAR_FACTURA_ABONO', '3');
-INSERT INTO `fza_metadatos` VALUES (103, 'PRC_CREAR_FACTURA_DUPLICADA', '3');
-INSERT INTO `fza_metadatos` VALUES (104, 'PRC_CREAR_METADATOS', '3');
-INSERT INTO `fza_metadatos` VALUES (105, 'PRC_CREAR_RECIBOS_FACTURA', '3');
-INSERT INTO `fza_metadatos` VALUES (106, 'PRC_FNC_GET_NEXT_LINEA_FACTURA', '3');
-INSERT INTO `fza_metadatos` VALUES (107, 'PRC_FNC_GET_NEXT_LINEA_PRESUPUESTO', '3');
-INSERT INTO `fza_metadatos` VALUES (108, 'PRC_FNC_GET_NEXT_NRO_DOC', '3');
-INSERT INTO `fza_metadatos` VALUES (109, 'PRC_FNC_GET_SERIE_TIPODOC', '3');
-INSERT INTO `fza_metadatos` VALUES (110, 'PRC_GET_DATA_ARTICULO', '3');
-INSERT INTO `fza_metadatos` VALUES (111, 'PRC_GET_DATA_CLIENTE', '3');
-INSERT INTO `fza_metadatos` VALUES (112, 'PRC_GET_IVA_ZONA_FECHA', '3');
-INSERT INTO `fza_metadatos` VALUES (113, 'PRC_GET_NEXT_CONT', '3');
-INSERT INTO `fza_metadatos` VALUES (114, 'PRC_GET_NEXT_CONT_FACT_SERIE', '3');
-INSERT INTO `fza_metadatos` VALUES (115, 'PRC_GET_NUMEROS_A_LETRAS', '3');
-INSERT INTO `fza_metadatos` VALUES (116, 'PRC_GET_NUMERO_MENOR_MIL', '3');
+INSERT INTO `fza_metadatos` VALUES (66, 'PRC_CALCULAR_FACTURA_NETOS', '3');
+INSERT INTO `fza_metadatos` VALUES (67, 'PRC_CREAR_ACTUALIZAR_CLIENTE', '3');
+INSERT INTO `fza_metadatos` VALUES (68, 'PRC_CREAR_ACTUALIZAR_EMPRESA', '3');
+INSERT INTO `fza_metadatos` VALUES (69, 'PRC_CREAR_ACTUALIZAR_KEY', '3');
+INSERT INTO `fza_metadatos` VALUES (70, 'PRC_CREAR_FACTURA_ABONO', '3');
+INSERT INTO `fza_metadatos` VALUES (71, 'PRC_CREAR_FACTURA_DUPLICADA', '3');
+INSERT INTO `fza_metadatos` VALUES (72, 'PRC_CREAR_METADATOS', '3');
+INSERT INTO `fza_metadatos` VALUES (73, 'PRC_CREAR_RECIBOS_FACTURA', '3');
+INSERT INTO `fza_metadatos` VALUES (74, 'PRC_FNC_GET_NEXT_LINEA_FACTURA', '3');
+INSERT INTO `fza_metadatos` VALUES (75, 'PRC_FNC_GET_NEXT_LINEA_PRESUPUESTO', '3');
+INSERT INTO `fza_metadatos` VALUES (76, 'PRC_FNC_GET_NEXT_NRO_DOC', '3');
+INSERT INTO `fza_metadatos` VALUES (77, 'PRC_FNC_GET_SERIE_TIPODOC', '3');
+INSERT INTO `fza_metadatos` VALUES (78, 'PRC_GET_DATA_ARTICULO', '3');
+INSERT INTO `fza_metadatos` VALUES (79, 'PRC_GET_DATA_CLIENTE', '3');
+INSERT INTO `fza_metadatos` VALUES (80, 'PRC_GET_IVA_ZONA_FECHA', '3');
+INSERT INTO `fza_metadatos` VALUES (81, 'PRC_GET_NEXT_CONT', '3');
+INSERT INTO `fza_metadatos` VALUES (82, 'PRC_GET_NEXT_CONT_FACT_SERIE', '3');
+INSERT INTO `fza_metadatos` VALUES (83, 'PRC_GET_NUMEROS_A_LETRAS', '3');
+INSERT INTO `fza_metadatos` VALUES (84, 'PRC_GET_NUMERO_MENOR_MIL', '3');
 
 -- ----------------------------
 -- Table structure for fza_proveedores
 -- ----------------------------
 DROP TABLE IF EXISTS `fza_proveedores`;
 CREATE TABLE `fza_proveedores`  (
-  `CODIGO_PROVEEDOR` int(11) NOT NULL,
+  `CODIGO_PROVEEDOR` int NOT NULL,
   `ACTIVO_PROVEEDOR` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT 'S',
   `RAZONSOCIAL_PROVEEDOR` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `NIF_PROVEEDOR` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
@@ -1228,7 +1235,7 @@ CREATE TABLE `fza_proveedores`  (
   `PROVINCIA_PROVEEDOR` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `CPOSTAL_PROVEEDOR` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `PAIS_PROVEEDOR` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
-  `OBSERVACIONES_PROVEEDOR` text CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `OBSERVACIONES_PROVEEDOR` text CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL,
   `REFERENCIA_PROVEEDOR` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `CONTACTO_PROVEEDOR` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `TELEFONO_CONTACTO_PROVEEDOR` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
@@ -1239,7 +1246,7 @@ CREATE TABLE `fza_proveedores`  (
   `USUARIOALTA` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `USUARIOMODIF` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   PRIMARY KEY (`CODIGO_PROVEEDOR`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of fza_proveedores
@@ -1273,7 +1280,7 @@ DROP TABLE IF EXISTS `fza_recibos`;
 CREATE TABLE `fza_recibos`  (
   `NRO_FACTURA_RECIBO` varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `SERIE_FACTURA_RECIBO` varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
-  `NRO_PLAZO_RECIBO` int(11) NOT NULL,
+  `NRO_PLAZO_RECIBO` int NOT NULL,
   `FORMA_PAGO_ORIGEN_RECIBO` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `FORMA_PAGO_DESCRIPCION_ORIGEN_RECIBO` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `EUROS_RECIBO` decimal(18, 6) NULL DEFAULT NULL,
@@ -1295,7 +1302,7 @@ CREATE TABLE `fza_recibos`  (
   `USUARIOALTA` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `USUARIOMODIF` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   PRIMARY KEY (`NRO_FACTURA_RECIBO`, `SERIE_FACTURA_RECIBO`, `NRO_PLAZO_RECIBO`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of fza_recibos
@@ -1313,7 +1320,7 @@ DROP TABLE IF EXISTS `fza_tarifas`;
 CREATE TABLE `fza_tarifas`  (
   `CODIGO_TARIFA` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `ACTIVO_TARIFA` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT 'S',
-  `ORDEN_TARIFA` int(10) NULL DEFAULT NULL,
+  `ORDEN_TARIFA` int NULL DEFAULT NULL,
   `NOMBRE_TARIFA` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `FECHA_DESDE_TARIFA` date NULL DEFAULT NULL,
   `FECHA_HASTA_TARIFA` date NULL DEFAULT NULL,
@@ -1324,7 +1331,7 @@ CREATE TABLE `fza_tarifas`  (
   `USUARIOALTA` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `USUARIOMODIF` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   PRIMARY KEY (`CODIGO_TARIFA`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of fza_tarifas
@@ -1340,7 +1347,7 @@ CREATE TABLE `fza_tipos_documentos`  (
   `CODIGO_TIPODOCUMENTO` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `DESCRIPCION_TIPODOCUMENTO` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`CODIGO_TIPODOCUMENTO`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of fza_tipos_documentos
@@ -1372,12 +1379,12 @@ CREATE TABLE `fza_usuarios`  (
   `USUARIOALTA` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `USUARIOMODIF` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   PRIMARY KEY (`USUARIO_USUARIO`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of fza_usuarios
 -- ----------------------------
-INSERT INTO `fza_usuarios` VALUES ('Administrador', '4F8239A5B05A0E22D3DD4D7853808AF3', 'Administradores', '1', '2023-11-04 12:33:33', '2023-11-04 12:33:33', '2021-05-14 19:54:29', 'Administrador', 'Administrador');
+INSERT INTO `fza_usuarios` VALUES ('Administrador', '4F8239A5B05A0E22D3DD4D7853808AF3', 'Administradores', '1', '2023-11-04 17:20:08', '2023-11-04 17:20:08', '2021-05-14 19:54:29', 'Administrador', 'Administrador');
 
 -- ----------------------------
 -- Table structure for fza_usuarios_grupos
@@ -1391,7 +1398,7 @@ CREATE TABLE `fza_usuarios_grupos`  (
   `USUARIOALTA` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `USUARIOMODIF` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   PRIMARY KEY (`GRUPO_GRUPO`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of fza_usuarios_grupos
@@ -1408,16 +1415,16 @@ CREATE TABLE `fza_usuarios_perfiles`  (
   `KEY_PERFILES` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `SUBKEY_PERFILES` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `VALUE_PERFILES` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
-  `VALUE_TEXT_PERFILES` text CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `VALUE_TEXT_PERFILES` text CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL,
   `TYPE_BLOB_PERFILES` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
-  `VALUE_BLOB_PERFILES` blob NULL DEFAULT NULL,
+  `VALUE_BLOB_PERFILES` blob NULL,
   `INSTANTEMODIF` timestamp NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   `INSTANTEALTA` timestamp NOT NULL,
   `USUARIOALTA` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `USUARIOMODIF` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   PRIMARY KEY (`USUARIO_GRUPO_PERFILES`, `KEY_PERFILES`, `SUBKEY_PERFILES`) USING BTREE,
   INDEX `IDX_KEYPERFIL`(`KEY_PERFILES`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of fza_usuarios_perfiles
@@ -5602,13 +5609,13 @@ CREATE TABLE `fza_variaciones`  (
   `CODIGO_VARIACION` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `NOMBRE_VARIACION` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `ACTIVO_VARIACION` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT 'S',
-  `ORDEN_VARIACION` int(11) NULL DEFAULT NULL,
+  `ORDEN_VARIACION` int NULL DEFAULT NULL,
   `INSTANTEMODIF` timestamp NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   `INSTANTEALTA` timestamp NOT NULL,
   `USUARIOALTA` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `USUARIOMODIF` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   PRIMARY KEY (`CODIGO_VARIACION`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of fza_variaciones
@@ -5626,14 +5633,14 @@ CREATE TABLE `fza_variaciones_columnas`  (
   `CODIGO_COLUMNA_VAR_COL` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `NOMBRE_COLUMNA_VAR_COL` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `ACTIVO_COLUMNA_VAR_COL` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT 'S',
-  `ORDEN_COLUMNA_VAR_COL` int(11) NULL DEFAULT NULL,
+  `ORDEN_COLUMNA_VAR_COL` int NULL DEFAULT NULL,
   `ESDEFINITORIO_VAR_COL` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `INSTANTEMODIF` timestamp NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   `INSTANTEALTA` timestamp NOT NULL,
   `USUARIOALTA` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `USUARIOMODIF` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   PRIMARY KEY (`CODIGO_VAR_COL`, `CODIGO_COLUMNA_VAR_COL`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of fza_variaciones_columnas
@@ -5653,7 +5660,7 @@ CREATE TABLE `fza_winforms`  (
   `UNITF_WINF` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `SHORTCUT_WINF` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`CALL_WINF`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of fza_winforms
@@ -5711,25 +5718,99 @@ ORDER BY
 -- View structure for vi_articulos_familias
 -- ----------------------------
 DROP VIEW IF EXISTS `vi_articulos_familias`;
-CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `vi_articulos_familias` AS select `fza_articulos_familias`.`CODIGO_FAMILIA` AS `CODIGO_FAMILIA`,`fza_articulos_familias`.`ACTIVO_FAMILIA` AS `ACTIVO_FAMILIA`,`fza_articulos_familias`.`ORDEN_FAMILIA` AS `ORDEN_FAMILIA`,`fza_articulos_familias`.`ESDEFAULT_FAMILIA` AS `ESDEFAULT_FAMILIA`,`fza_articulos_familias`.`CODIGO_SUBFAMILIA` AS `CODIGO_SUBFAMILIA`,`fza_articulos_familias2`.`NOMBRE_FAMILIA` AS `NOMBRE_SUBFAMILIA`,`fza_articulos_familias`.`NOMBRE_FAMILIA` AS `NOMBRE_FAMILIA`,`fza_articulos_familias`.`DESCRIPCION_FAMILIA` AS `DESCRIPCION_FAMILIA`,`fza_articulos_familias`.`INSTANTEMODIF` AS `INSTANTEMODIF`,`fza_articulos_familias`.`INSTANTEALTA` AS `INSTANTEALTA`,`fza_articulos_familias`.`USUARIOALTA` AS `USUARIOALTA`,`fza_articulos_familias`.`USUARIOMODIF` AS `USUARIOMODIF` from (`fza_articulos_familias` left join `fza_articulos_familias` `fza_articulos_familias2` on(`fza_articulos_familias`.`CODIGO_SUBFAMILIA` = `fza_articulos_familias2`.`CODIGO_FAMILIA`)) ;
+CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `vi_articulos_familias` AS SELECT
+	`fza_articulos_familias`.`CODIGO_FAMILIA` AS `CODIGO_FAMILIA`,
+	`fza_articulos_familias`.`ACTIVO_FAMILIA` AS `ACTIVO_FAMILIA`,
+	`fza_articulos_familias`.`ORDEN_FAMILIA` AS `ORDEN_FAMILIA`,
+	`fza_articulos_familias`.`ESDEFAULT_FAMILIA` AS `ESDEFAULT_FAMILIA`,
+	`fza_articulos_familias`.`CODIGO_SUBFAMILIA` AS `CODIGO_SUBFAMILIA`,
+	`fza_articulos_familias2`.`NOMBRE_FAMILIA` AS `NOMBRE_SUBFAMILIA`,
+	`fza_articulos_familias`.`NOMBRE_FAMILIA` AS `NOMBRE_FAMILIA`,
+	`fza_articulos_familias`.`DESCRIPCION_FAMILIA` AS `DESCRIPCION_FAMILIA`,
+	`fza_articulos_familias`.`INSTANTEMODIF` AS `INSTANTEMODIF`,
+	`fza_articulos_familias`.`INSTANTEALTA` AS `INSTANTEALTA`,
+	`fza_articulos_familias`.`USUARIOALTA` AS `USUARIOALTA`,
+	`fza_articulos_familias`.`USUARIOMODIF` AS `USUARIOMODIF` 
+FROM
+	(
+	`fza_articulos_familias`
+	LEFT JOIN `fza_articulos_familias` `fza_articulos_familias2` ON ( `fza_articulos_familias`.`CODIGO_SUBFAMILIA` = `fza_articulos_familias2`.`CODIGO_FAMILIA` )) ;
 
 -- ----------------------------
 -- View structure for vi_articulos_familias_list
 -- ----------------------------
 DROP VIEW IF EXISTS `vi_articulos_familias_list`;
-CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `vi_articulos_familias_list` AS select `fza_articulos_familias`.`CODIGO_FAMILIA` AS `CODIGO_FAMILIA`,`fza_articulos_familias`.`ACTIVO_FAMILIA` AS `ACTIVO_FAMILIA`,`fza_articulos_familias`.`ORDEN_FAMILIA` AS `ORDEN_FAMILIA`,`fza_articulos_familias`.`ESDEFAULT_FAMILIA` AS `ESDEFAULT_FAMILIA`,`fza_articulos_familias`.`CODIGO_SUBFAMILIA` AS `CODIGO_SUBFAMILIA`,`fza_articulos_familias`.`NOMBRE_FAMILIA` AS `NOMBRE_FAMILIA`,`fza_articulos_familias`.`DESCRIPCION_FAMILIA` AS `DESCRIPCION_FAMILIA`,`fza_articulos_familias`.`INSTANTEMODIF` AS `INSTANTEMODIF`,`fza_articulos_familias`.`INSTANTEALTA` AS `INSTANTEALTA`,`fza_articulos_familias`.`USUARIOALTA` AS `USUARIOALTA`,`fza_articulos_familias`.`USUARIOMODIF` AS `USUARIOMODIF` from `fza_articulos_familias` where `fza_articulos_familias`.`ACTIVO_FAMILIA` = 'S' order by `fza_articulos_familias`.`ORDEN_FAMILIA`,`fza_articulos_familias`.`CODIGO_FAMILIA` ;
+CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `vi_articulos_familias_list` AS SELECT
+	`fza_articulos_familias`.`CODIGO_FAMILIA` AS `CODIGO_FAMILIA`,
+	`fza_articulos_familias`.`ACTIVO_FAMILIA` AS `ACTIVO_FAMILIA`,
+	`fza_articulos_familias`.`ORDEN_FAMILIA` AS `ORDEN_FAMILIA`,
+	`fza_articulos_familias`.`ESDEFAULT_FAMILIA` AS `ESDEFAULT_FAMILIA`,
+	`fza_articulos_familias`.`CODIGO_SUBFAMILIA` AS `CODIGO_SUBFAMILIA`,
+	`fza_articulos_familias`.`NOMBRE_FAMILIA` AS `NOMBRE_FAMILIA`,
+	`fza_articulos_familias`.`DESCRIPCION_FAMILIA` AS `DESCRIPCION_FAMILIA`,
+	`fza_articulos_familias`.`INSTANTEMODIF` AS `INSTANTEMODIF`,
+	`fza_articulos_familias`.`INSTANTEALTA` AS `INSTANTEALTA`,
+	`fza_articulos_familias`.`USUARIOALTA` AS `USUARIOALTA`,
+	`fza_articulos_familias`.`USUARIOMODIF` AS `USUARIOMODIF` 
+FROM
+	`fza_articulos_familias` 
+WHERE
+	`fza_articulos_familias`.`ACTIVO_FAMILIA` = 'S' 
+ORDER BY
+	`fza_articulos_familias`.`ORDEN_FAMILIA`,
+	`fza_articulos_familias`.`CODIGO_FAMILIA` ;
 
 -- ----------------------------
 -- View structure for vi_articulos_list
 -- ----------------------------
 DROP VIEW IF EXISTS `vi_articulos_list`;
-CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `vi_articulos_list` AS select `fza_articulos`.`CODIGO_ARTICULO` AS `CODIGO_ARTICULO`,`fza_articulos`.`ACTIVO_ARTICULO` AS `ACTIVO_ARTICULO`,`fza_articulos`.`ORDEN_ARTICULO` AS `ORDEN_ARTICULO`,`fza_articulos`.`DESCRIPCION_ARTICULO` AS `DESCRIPCION_ARTICULO`,`fza_articulos`.`CODIGO_FAMILIA_ARTICULO` AS `CODIGO_FAMILIA_ARTICULO`,`fza_articulos_familias`.`DESCRIPCION_FAMILIA` AS `DESCRIPCION_FAMILIA`,`fza_articulos`.`TIPOIVA_ARTICULO` AS `TIPOIVA_ARTICULO`,`fza_articulos`.`ESACTIVO_FIJO_ARTICULO` AS `ESACTIVO_FIJO_ARTICULO`,`fza_articulos`.`TIPO_CANTIDAD_ARTICULO` AS `TIPO_CANTIDAD_ARTICULO`,`vi_articulos_proveedores`.`RAZONSOCIAL_PROVEEDOR` AS `RAZONSOCIAL_PROVEEDOR`,`fza_articulos`.`INSTANTEMODIF` AS `INSTANTEMODIF`,`fza_articulos`.`INSTANTEALTA` AS `INSTANTEALTA`,`fza_articulos`.`USUARIOALTA` AS `USUARIOALTA`,`fza_articulos`.`USUARIOMODIF` AS `USUARIOMODIF` from ((`fza_articulos` left join `fza_articulos_familias` on(`fza_articulos`.`CODIGO_FAMILIA_ARTICULO` = `fza_articulos_familias`.`CODIGO_FAMILIA`)) left join `vi_articulos_proveedores` on(`fza_articulos`.`CODIGO_ARTICULO` = `vi_articulos_proveedores`.`CODIGO_ARTICULO` and `vi_articulos_proveedores`.`ESPROVEEDORPRINCIPAL` = 'S')) where `fza_articulos`.`ACTIVO_ARTICULO` = 'S' order by `fza_articulos`.`ORDEN_ARTICULO` ;
+CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `vi_articulos_list` AS SELECT
+	`fza_articulos`.`CODIGO_ARTICULO` AS `CODIGO_ARTICULO`,
+	`fza_articulos`.`ACTIVO_ARTICULO` AS `ACTIVO_ARTICULO`,
+	`fza_articulos`.`ORDEN_ARTICULO` AS `ORDEN_ARTICULO`,
+	`fza_articulos`.`DESCRIPCION_ARTICULO` AS `DESCRIPCION_ARTICULO`,
+	`fza_articulos`.`CODIGO_FAMILIA_ARTICULO` AS `CODIGO_FAMILIA_ARTICULO`,
+	`fza_articulos_familias`.`DESCRIPCION_FAMILIA` AS `DESCRIPCION_FAMILIA`,
+	`fza_articulos`.`TIPOIVA_ARTICULO` AS `TIPOIVA_ARTICULO`,
+	`fza_articulos`.`ESACTIVO_FIJO_ARTICULO` AS `ESACTIVO_FIJO_ARTICULO`,
+	`fza_articulos`.`TIPO_CANTIDAD_ARTICULO` AS `TIPO_CANTIDAD_ARTICULO`,
+  `fza_articulos_proveedores`.`CODIGO_PROVEEDOR_ARTICULO_PROVEEDOR` AS `CODIGO_PROVEEDOR`,
+	fza_proveedores.RAZONSOCIAL_PROVEEDOR AS RAZONSOCIAL_PROVEEDOR,
+	`fza_articulos`.`INSTANTEMODIF` AS `INSTANTEMODIF`,
+	`fza_articulos`.`INSTANTEALTA` AS `INSTANTEALTA`,
+	`fza_articulos`.`USUARIOALTA` AS `USUARIOALTA`,
+	`fza_articulos`.`USUARIOMODIF` AS `USUARIOMODIF` 
+FROM
+	((
+			`fza_articulos`
+			LEFT JOIN `fza_articulos_familias` ON ( `fza_articulos`.`CODIGO_FAMILIA_ARTICULO` = `fza_articulos_familias`.`CODIGO_FAMILIA` ))
+	LEFT JOIN `fza_articulos_proveedores` ON ( `fza_articulos_proveedores`.`CODIGO_ARTICULO_ARTICULO_PROVEEDOR` = `fza_articulos`.`CODIGO_ARTICULO`  AND `fza_articulos_proveedores`.`ESPROVEEDORPRINCIPAL_ARTICULO_PROVEEDOR` = 'S' )
+ LEFT JOIN fza_proveedores ON (fza_proveedores.CODIGO_PROVEEDOR = fza_articulos_proveedores.CODIGO_PROVEEDOR_ARTICULO_PROVEEDOR )
+	) 
+WHERE
+	`fza_articulos`.`ACTIVO_ARTICULO` = 'S' 
+ORDER BY
+	`fza_articulos`.`ORDEN_ARTICULO` ;
 
 -- ----------------------------
 -- View structure for vi_articulos_proveedores
 -- ----------------------------
 DROP VIEW IF EXISTS `vi_articulos_proveedores`;
-CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `vi_articulos_proveedores` AS select `fza_articulos_proveedores`.`CODIGO_PROVEEDOR_ARTICULO_PROVEEDOR` AS `CODIGO_PROVEEDOR`,`fza_proveedores`.`RAZONSOCIAL_PROVEEDOR` AS `RAZONSOCIAL_PROVEEDOR`,`fza_articulos_proveedores`.`CODIGO_ARTICULO_ARTICULO_PROVEEDOR` AS `CODIGO_ARTICULO`,`fza_articulos_proveedores`.`PRECIO_ULT_COMPRA_ARTICULO_PROVEEDOR` AS `PRECIO_ULT_COMPRA`,`fza_articulos_proveedores`.`FECHA_VALIDEZ_ARTICULO_PROVEEDOR` AS `FECHA_VALIDEZ`,`fza_articulos_proveedores`.`ESPROVEEDORPRINCIPAL_ARTICULO_PROVEEDOR` AS `ESPROVEEDORPRINCIPAL`,`fza_articulos_proveedores`.`INSTANTEMODIF` AS `INSTANTEMODIF`,`fza_articulos_proveedores`.`INSTANTEALTA` AS `INSTANTEALTA`,`fza_articulos_proveedores`.`USUARIOALTA` AS `USUARIOALTA`,`fza_articulos_proveedores`.`USUARIOMODIF` AS `USUARIOMODIF` from (`fza_articulos_proveedores` left join `fza_proveedores` on(`fza_articulos_proveedores`.`CODIGO_PROVEEDOR_ARTICULO_PROVEEDOR` = `fza_proveedores`.`CODIGO_PROVEEDOR`)) ;
+CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `vi_articulos_proveedores` AS SELECT
+	`fza_articulos_proveedores`.`CODIGO_PROVEEDOR_ARTICULO_PROVEEDOR` AS `CODIGO_PROVEEDOR`,
+	`fza_proveedores`.`RAZONSOCIAL_PROVEEDOR` AS `RAZONSOCIAL_PROVEEDOR`,
+	`fza_articulos_proveedores`.`CODIGO_ARTICULO_ARTICULO_PROVEEDOR` AS `CODIGO_ARTICULO`,
+	`fza_articulos_proveedores`.`PRECIO_ULT_COMPRA_ARTICULO_PROVEEDOR` AS `PRECIO_ULT_COMPRA`,
+	`fza_articulos_proveedores`.`FECHA_VALIDEZ_ARTICULO_PROVEEDOR` AS `FECHA_VALIDEZ`,
+	`fza_articulos_proveedores`.`ESPROVEEDORPRINCIPAL_ARTICULO_PROVEEDOR` AS `ESPROVEEDORPRINCIPAL`,
+	`fza_articulos_proveedores`.`INSTANTEMODIF` AS `INSTANTEMODIF`,
+	`fza_articulos_proveedores`.`INSTANTEALTA` AS `INSTANTEALTA`,
+	`fza_articulos_proveedores`.`USUARIOALTA` AS `USUARIOALTA`,
+	`fza_articulos_proveedores`.`USUARIOMODIF` AS `USUARIOMODIF` 
+FROM
+	(
+	`fza_articulos_proveedores`
+	LEFT JOIN `fza_proveedores` ON ( `fza_articulos_proveedores`.`CODIGO_PROVEEDOR_ARTICULO_PROVEEDOR` = `fza_proveedores`.`CODIGO_PROVEEDOR` )) ;
 
 -- ----------------------------
 -- View structure for vi_articulos_tarifas
@@ -5780,7 +5861,39 @@ ORDER BY
 -- View structure for vi_art_busquedas
 -- ----------------------------
 DROP VIEW IF EXISTS `vi_art_busquedas`;
-CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `vi_art_busquedas` AS select `fza_articulos`.`CODIGO_ARTICULO` AS `CODIGO_ARTICULO`,`fza_articulos`.`ACTIVO_ARTICULO` AS `ACTIVO_ARTICULO`,`fza_articulos`.`DESCRIPCION_ARTICULO` AS `DESCRIPCION_ARTICULO`,`fza_articulos`.`CODIGO_FAMILIA_ARTICULO` AS `CODIGO_FAMILIA_ARTICULO`,`fza_articulos_familias`.`DESCRIPCION_FAMILIA` AS `DESCRIPCION_FAMILIA`,`fza_articulos_proveedores`.`CODIGO_PROVEEDOR_ARTICULO_PROVEEDOR` AS `CODIGO_PROVEEDOR_PRINCIPAL`,`fza_proveedores`.`RAZONSOCIAL_PROVEEDOR` AS `RAZON_SOCIAL_PROVEEDOR_PRINCIPAL`,`fza_articulos_tarifas`.`CODIGO_TARIFA` AS `CODIGO_TARIFA`,`fza_tarifas`.`NOMBRE_TARIFA` AS `NOMBRE_TARIFA`,`fza_articulos_tarifas`.`PRECIOFINAL_TARIFA` AS `PRECIOFINAL_TARIFA`,`fza_tarifas`.`ESIMP_INCL_TARIFA` AS `ESIMP_INCL_TARIFA`,`fza_ivas_tipos`.`NOMBRE_TIPO_IVA` AS `NOMBRE_TIPO_IVA`,`fza_articulos`.`TIPOIVA_ARTICULO` AS `TIPOIVA_ARTICULO`,`fza_articulos`.`TIPO_CANTIDAD_ARTICULO` AS `TIPO_CANTIDAD_ARTICULO`,`fza_articulos`.`USUARIOMODIF` AS `USUARIOMODIF`,`fza_articulos`.`INSTANTEALTA` AS `INSTANTEALTA`,`fza_articulos`.`INSTANTEMODIF` AS `INSTANTEMODIF`,`fza_articulos`.`USUARIOALTA` AS `USUARIOALTA`,`fza_articulos`.`ESACTIVO_FIJO_ARTICULO` AS `ESACTIVO_FIJO_ARTICULO` from ((((((`fza_articulos` left join `fza_articulos_familias` on(`fza_articulos`.`CODIGO_FAMILIA_ARTICULO` = `fza_articulos_familias`.`CODIGO_FAMILIA`)) left join `fza_articulos_tarifas` on(`fza_articulos`.`CODIGO_ARTICULO` = `fza_articulos_tarifas`.`CODIGO_ARTICULO_TARIFA`)) left join `fza_tarifas` on(`fza_articulos_tarifas`.`CODIGO_TARIFA` = `fza_tarifas`.`CODIGO_TARIFA` and `fza_tarifas`.`ESDEFAULT_TARIFA` = 'S')) left join `fza_ivas_tipos` on(`fza_articulos`.`TIPOIVA_ARTICULO` = `fza_ivas_tipos`.`CODIGO_ABREVIATURA_TIPO_IVA`)) left join `fza_articulos_proveedores` on(`fza_articulos`.`CODIGO_ARTICULO` = `fza_articulos_proveedores`.`CODIGO_ARTICULO_ARTICULO_PROVEEDOR` and `fza_articulos_proveedores`.`ESPROVEEDORPRINCIPAL_ARTICULO_PROVEEDOR` = 'S')) left join `fza_proveedores` on(`fza_proveedores`.`CODIGO_PROVEEDOR` = `fza_articulos_proveedores`.`CODIGO_PROVEEDOR_ARTICULO_PROVEEDOR`)) where `fza_articulos`.`ACTIVO_ARTICULO` = 'S' order by `fza_articulos`.`ORDEN_ARTICULO` ;
+CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `vi_art_busquedas` AS SELECT
+	`fza_articulos`.`CODIGO_ARTICULO` AS `CODIGO_ARTICULO`,
+	`fza_articulos`.`ACTIVO_ARTICULO` AS `ACTIVO_ARTICULO`,
+	`fza_articulos`.`DESCRIPCION_ARTICULO` AS `DESCRIPCION_ARTICULO`,
+	`fza_articulos`.`CODIGO_FAMILIA_ARTICULO` AS `CODIGO_FAMILIA_ARTICULO`,
+	`fza_articulos_familias`.`DESCRIPCION_FAMILIA` AS `DESCRIPCION_FAMILIA`,
+	`fza_articulos_proveedores`.`CODIGO_PROVEEDOR_ARTICULO_PROVEEDOR` AS `CODIGO_PROVEEDOR_PRINCIPAL`,
+	`fza_proveedores`.`RAZONSOCIAL_PROVEEDOR` AS `RAZON_SOCIAL_PROVEEDOR_PRINCIPAL`,
+	`fza_articulos_tarifas`.`CODIGO_TARIFA` AS `CODIGO_TARIFA`,
+	`fza_tarifas`.`NOMBRE_TARIFA` AS `NOMBRE_TARIFA`,
+	`fza_articulos_tarifas`.`PRECIOFINAL_TARIFA` AS `PRECIOFINAL_TARIFA`,
+	`fza_tarifas`.`ESIMP_INCL_TARIFA` AS `ESIMP_INCL_TARIFA`,
+	`fza_ivas_tipos`.`NOMBRE_TIPO_IVA` AS `NOMBRE_TIPO_IVA`,
+	`fza_articulos`.`TIPOIVA_ARTICULO` AS `TIPOIVA_ARTICULO`,
+	`fza_articulos`.`TIPO_CANTIDAD_ARTICULO` AS `TIPO_CANTIDAD_ARTICULO`,
+	`fza_articulos`.`USUARIOMODIF` AS `USUARIOMODIF`,
+	`fza_articulos`.`INSTANTEALTA` AS `INSTANTEALTA`,
+	`fza_articulos`.`INSTANTEMODIF` AS `INSTANTEMODIF`,
+	`fza_articulos`.`USUARIOALTA` AS `USUARIOALTA`,
+	`fza_articulos`.`ESACTIVO_FIJO_ARTICULO` AS `ESACTIVO_FIJO_ARTICULO` 
+FROM
+	((((((
+							`fza_articulos`
+							LEFT JOIN `fza_articulos_familias` ON ( `fza_articulos`.`CODIGO_FAMILIA_ARTICULO` = `fza_articulos_familias`.`CODIGO_FAMILIA` ))
+						LEFT JOIN `fza_articulos_tarifas` ON ( `fza_articulos`.`CODIGO_ARTICULO` = `fza_articulos_tarifas`.`CODIGO_ARTICULO_TARIFA` ))
+					LEFT JOIN `fza_tarifas` ON ( `fza_articulos_tarifas`.`CODIGO_TARIFA` = `fza_tarifas`.`CODIGO_TARIFA` AND `fza_tarifas`.`ESDEFAULT_TARIFA` = 'S' ))
+				LEFT JOIN `fza_ivas_tipos` ON ( `fza_articulos`.`TIPOIVA_ARTICULO` = `fza_ivas_tipos`.`CODIGO_ABREVIATURA_TIPO_IVA` ))
+			LEFT JOIN `fza_articulos_proveedores` ON ( `fza_articulos`.`CODIGO_ARTICULO` = `fza_articulos_proveedores`.`CODIGO_ARTICULO_ARTICULO_PROVEEDOR` AND `fza_articulos_proveedores`.`ESPROVEEDORPRINCIPAL_ARTICULO_PROVEEDOR` = 'S' ))
+	LEFT JOIN `fza_proveedores` ON ( `fza_proveedores`.`CODIGO_PROVEEDOR` = `fza_articulos_proveedores`.`CODIGO_PROVEEDOR_ARTICULO_PROVEEDOR` )) 
+WHERE
+	`fza_articulos`.`ACTIVO_ARTICULO` = 'S' 
+ORDER BY
+	`fza_articulos`.`ORDEN_ARTICULO` ;
 
 -- ----------------------------
 -- View structure for vi_clientes
@@ -5982,19 +6095,53 @@ CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `vi_tarifas` AS select `f
 -- View structure for vi_usuarios
 -- ----------------------------
 DROP VIEW IF EXISTS `vi_usuarios`;
-CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `vi_usuarios` AS select `fza_usuarios`.`USUARIO_USUARIO` AS `USUARIO_USUARIO`,`fza_usuarios`.`PASSWORD_USUARIO` AS `PASSWORD_USUARIO`,`fza_usuarios`.`GRUPO_USUARIO` AS `GRUPO_USUARIO`,`fza_usuarios`.`EMPRESADEF_USUARIO` AS `EMPRESADEF_USUARIO`,`vi_empresas`.`RAZONSOCIAL_EMPRESA` AS `RAZONSOCIAL_EMPRESA`,`fza_usuarios`.`ULTIMOLOGIN_USUARIO` AS `ULTIMOLOGIN_USUARIO`,`fza_usuarios_grupos`.`GRUPO_GRUPO` AS `GRUPO_GRUPO`,`fza_usuarios_grupos`.`ESGRUPOADMINISTRADOR_GRUPO` AS `ESGRUPOADMINISTRADOR_GRUPO` from ((`fza_usuarios` join `fza_usuarios_grupos` on(`fza_usuarios`.`GRUPO_USUARIO` = `fza_usuarios_grupos`.`GRUPO_GRUPO`)) left join `vi_empresas` on(`fza_usuarios`.`EMPRESADEF_USUARIO` = `vi_empresas`.`CODIGO_EMPRESA`)) ;
+CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `vi_usuarios` AS SELECT
+	`fza_usuarios`.`USUARIO_USUARIO` AS `USUARIO_USUARIO`,
+	`fza_usuarios`.`PASSWORD_USUARIO` AS `PASSWORD_USUARIO`,
+	`fza_usuarios`.`GRUPO_USUARIO` AS `GRUPO_USUARIO`,
+	`fza_usuarios`.`EMPRESADEF_USUARIO` AS `EMPRESADEF_USUARIO`,
+	`vi_empresas`.`RAZONSOCIAL_EMPRESA` AS `RAZONSOCIAL_EMPRESA`,
+	`fza_usuarios`.`ULTIMOLOGIN_USUARIO` AS `ULTIMOLOGIN_USUARIO`,
+	`fza_usuarios_grupos`.`GRUPO_GRUPO` AS `GRUPO_GRUPO`,
+	`fza_usuarios_grupos`.`ESGRUPOADMINISTRADOR_GRUPO` AS `ESGRUPOADMINISTRADOR_GRUPO` 
+FROM
+	((
+			`fza_usuarios`
+		JOIN `fza_usuarios_grupos` ON ( `fza_usuarios`.`GRUPO_USUARIO` = `fza_usuarios_grupos`.`GRUPO_GRUPO` ))
+	LEFT JOIN `vi_empresas` ON ( `fza_usuarios`.`EMPRESADEF_USUARIO` = `vi_empresas`.`CODIGO_EMPRESA` )) ;
 
 -- ----------------------------
 -- View structure for vi_usuarios_grupos
 -- ----------------------------
 DROP VIEW IF EXISTS `vi_usuarios_grupos`;
-CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `vi_usuarios_grupos` AS select `fza_usuarios_grupos`.`GRUPO_GRUPO` AS `GRUPO_GRUPO`,`fza_usuarios_grupos`.`ESGRUPOADMINISTRADOR_GRUPO` AS `ESGRUPOADMINISTRADOR_GRUPO`,`fza_usuarios_grupos`.`INSTANTEMODIF` AS `INSTANTEMODIF`,`fza_usuarios_grupos`.`INSTANTEALTA` AS `INSTANTEALTA`,`fza_usuarios_grupos`.`USUARIOALTA` AS `USUARIOALTA`,`fza_usuarios_grupos`.`USUARIOMODIF` AS `USUARIOMODIF` from `fza_usuarios_grupos` ;
+CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `vi_usuarios_grupos` AS SELECT
+	`fza_usuarios_grupos`.`GRUPO_GRUPO` AS `GRUPO_GRUPO`,
+	`fza_usuarios_grupos`.`ESGRUPOADMINISTRADOR_GRUPO` AS `ESGRUPOADMINISTRADOR_GRUPO`,
+	`fza_usuarios_grupos`.`INSTANTEMODIF` AS `INSTANTEMODIF`,
+	`fza_usuarios_grupos`.`INSTANTEALTA` AS `INSTANTEALTA`,
+	`fza_usuarios_grupos`.`USUARIOALTA` AS `USUARIOALTA`,
+	`fza_usuarios_grupos`.`USUARIOMODIF` AS `USUARIOMODIF` 
+FROM
+	`fza_usuarios_grupos` ;
 
 -- ----------------------------
 -- View structure for vi_usuarios_perfiles
 -- ----------------------------
 DROP VIEW IF EXISTS `vi_usuarios_perfiles`;
-CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `vi_usuarios_perfiles` AS select `fza_usuarios_perfiles`.`USUARIO_GRUPO_PERFILES` AS `USUARIO_GRUPO_PERFILES`,`fza_usuarios_perfiles`.`KEY_PERFILES` AS `KEY_PERFILES`,`fza_usuarios_perfiles`.`SUBKEY_PERFILES` AS `SUBKEY_PERFILES`,`fza_usuarios_perfiles`.`VALUE_PERFILES` AS `VALUE_PERFILES`,`fza_usuarios_perfiles`.`VALUE_TEXT_PERFILES` AS `VALUE_TEXT_PERFILES`,`fza_usuarios_perfiles`.`TYPE_BLOB_PERFILES` AS `TYPE_BLOB_PERFILES`,`fza_usuarios_perfiles`.`VALUE_BLOB_PERFILES` AS `VALUE_BLOB_PERFILES`,`fza_usuarios_perfiles`.`INSTANTEMODIF` AS `INSTANTEMODIF`,`fza_usuarios_perfiles`.`INSTANTEALTA` AS `INSTANTEALTA`,`fza_usuarios_perfiles`.`USUARIOALTA` AS `USUARIOALTA`,`fza_usuarios_perfiles`.`USUARIOMODIF` AS `USUARIOMODIF` from `fza_usuarios_perfiles` ;
+CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `vi_usuarios_perfiles` AS SELECT
+	`fza_usuarios_perfiles`.`USUARIO_GRUPO_PERFILES` AS `USUARIO_GRUPO_PERFILES`,
+	`fza_usuarios_perfiles`.`KEY_PERFILES` AS `KEY_PERFILES`,
+	`fza_usuarios_perfiles`.`SUBKEY_PERFILES` AS `SUBKEY_PERFILES`,
+	`fza_usuarios_perfiles`.`VALUE_PERFILES` AS `VALUE_PERFILES`,
+	`fza_usuarios_perfiles`.`VALUE_TEXT_PERFILES` AS `VALUE_TEXT_PERFILES`,
+	`fza_usuarios_perfiles`.`TYPE_BLOB_PERFILES` AS `TYPE_BLOB_PERFILES`,
+	`fza_usuarios_perfiles`.`VALUE_BLOB_PERFILES` AS `VALUE_BLOB_PERFILES`,
+	`fza_usuarios_perfiles`.`INSTANTEMODIF` AS `INSTANTEMODIF`,
+	`fza_usuarios_perfiles`.`INSTANTEALTA` AS `INSTANTEALTA`,
+	`fza_usuarios_perfiles`.`USUARIOALTA` AS `USUARIOALTA`,
+	`fza_usuarios_perfiles`.`USUARIOMODIF` AS `USUARIOMODIF` 
+FROM
+	`fza_usuarios_perfiles` ;
 
 -- ----------------------------
 -- View structure for vi_variaciones
@@ -6008,29 +6155,6 @@ CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `vi_variaciones` AS SELEC
  FROM fza_variaciones
  WHERE ACTIVO_VARIACION = 'S'
  ORDER BY ORDEN_VARIACION ;
-
--- ----------------------------
--- View structure for vi_variaciones_articulos
--- ----------------------------
-DROP VIEW IF EXISTS `vi_variaciones_articulos`;
-CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `vi_variaciones_articulos` AS SELECT 
-  VA.CODIGO_ARTICULO_VAR_DEF AS CODIGO_ARTICULO,
-	VC.NOMBRE_COLUMNA_VAR_COL AS NOMBRE_COLUMNA,
-	VA.VALOR_VARIACION_VAR_DEF AS VALOR_VARIACION,
-  VA.CODIGO_UNIDAD_VAR_DEF AS CODIGO_UNICO,
-  V.`CODIGO_VARIACION` AS CODIGO_VARIACION,
-  V.`NOMBRE_VARIACION` AS NOMBRE_VARIACION,
-  V.`ACTIVO_VARIACION` AS ACTIVO_VARIACION,
-	VC.ORDEN_COLUMNA_VAR_COL AS ORDEN_COLUMNA,
-  V.`ORDEN_VARIACION`  AS ORDEN_VARIACION,
-	VC.ESDEFINITORIO_VAR_COL AS DEFINITORIO
- FROM fza_articulos_variaciones_def VA
- INNER JOIN vi_variaciones V
- ON V.CODIGO_VARIACION = VA.CODIGO_VARIACION_VAR_DEF
- INNER JOIN fza_variaciones_columnas VC
- ON VA.CODIGO_COLUMNA_VAR_DEF = VC.CODIGO_COLUMNA_VAR_COL
- WHERE ACTIVO_VARIACION = 'S' 
- ORDER BY ORDEN_VARIACION, VC.ORDEN_COLUMNA_VAR_COL ;
 
 -- ----------------------------
 -- Procedure structure for PRC_CALCULAR_FACTURA_NETOS
