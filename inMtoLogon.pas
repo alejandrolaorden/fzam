@@ -108,8 +108,6 @@ begin
 end;
 
 procedure TfrmLogon.FormCreate(Sender: TObject);
-var
-  sFolder, sUser    : string;
 begin
   Application.OnException := AppException;
   sUserPassOK := 'false';
@@ -433,9 +431,7 @@ end;
 procedure TfrmLogon.GetIniValues;
 var
   sRememberUser,
-    sRememberPassword,
-    sNomUser,
-    sPasswordEn     : string;
+  sRememberPassword     : string;
 begin
   sRememberUser := leCadINIDir('UserInfo',
     'RememberUser',

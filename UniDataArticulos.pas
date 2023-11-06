@@ -12,8 +12,8 @@ interface
 
 uses
   System.SysUtils, System.Classes, UniDataGen, Data.DB, MemDS, DBAccess,
-  Uni, inLibUser, UniDataConn,  cxListView, Vcl.Forms,
-  Vcl.ComCtrls, Winapi.Windows;
+  Uni, inLibUser, UniDataConn,  cxListView, Vcl.Forms, vcl.dialogs,
+  Vcl.ComCtrls, Winapi.Windows, system.strUtils;
 
 type
   TdmArticulos = class(TdmBase)
@@ -59,7 +59,9 @@ var
 implementation
 
 uses
-  inMtoArticulos, inLibGlobalVar;
+  inMtoArticulos,
+  inLibGlobalVar,
+  inLibtb;
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
@@ -160,12 +162,16 @@ begin
     if ( (State <> dsEdit) and
          (State <> dsInsert)
        ) then
-               Edit;
+    Edit;
     FindField('CODIGO_PROVEEDOR').AsString :=
                            dtProveedores.FindField('CODIGO_PROVEEDOR').AsString;
     FindField('RAZONSOCIAL_PROVEEDOR').AsString :=
                       dtProveedores.FindField('RAZONSOCIAL_PROVEEDOR').AsString;
-    FindField('ESPROVEEDORPRINCIPAL').AsString := 'N';
+    if RecordCount = 0 then
+      FindField('ESPROVEEDORPRINCIPAL').AsString := 'S'
+    else
+      FindField('ESPROVEEDORPRINCIPAL').AsString := 'N';
+    Post;
   end;
 end;
 
@@ -181,8 +187,6 @@ begin
   unqryProveedores.Connection := oConn;
   unqryTiposIVA.Connection := oConn;
   unqryTarifas.Connection := oConn;
-  //unqryVariacionesArticulos.Connection := oConn;
-  //unqryVariaciones.Connection := oConn;
   unqryLinFacturasArticulos.MasterSource :=
                                       (Self.Owner as TfrmMtoArticulos).dsTablaG;
   unqryTarifasArticulos.MasterSource :=
@@ -194,8 +198,6 @@ begin
   unqryTarifasArticulos.Open;
   unqryProveedoresArticulos.Open;
   unqryLinFacturasArticulos.Open;
-  //unqryVariacionesArticulos.Open;
-  //unqryVariaciones.Open;
 end;
 
 procedure TdmArticulos.FillTarifas(lst: TcxListView);
@@ -205,7 +207,8 @@ begin
   lst.Clear;
   with unqryTarifas do
   begin
-    ParamByName('CODIGO_ARTICULO').AsString :=
+    if ContainsText(SQL.Text, ':CODIGO_ARTICULO') then
+      ParamByName('CODIGO_ARTICULO').AsString :=
                             unqryTablaG.FieldByName('CODIGO_ARTICULO').AsString;
     Open;
     First;
@@ -277,12 +280,6 @@ end;
 procedure TdmArticulos.unqryTablaGBeforePost(DataSet: TDataSet);
 begin
   inherited;
-//  if ((unqryProveedoresArticulos.State = dsInsert) or
-//      (unqryProveedoresArticulos.State = dsEdit)) then
-//         unqryProveedoresArticulos.Post;
-//  if ((unqryTarifasArticulos.State = dsInsert) or
-//      (unqryTarifasArticulos.State = dsEdit)) then
-//         unqryTarifasArticulos.Post;
   with unqryTablaG do
   begin
     if Trim(FindField('DESCRIPCION_ARTICULO').AsString) = '' then
@@ -298,20 +295,46 @@ begin
 end;
 
 procedure TdmArticulos.unqryTarifasArticulosBeforePost(DataSet: TDataSet);
+var
+  unqrySol:TUniQuery;
+  sTarifa: String;
+  bEdit:boolean;
 begin
   inherited;
-  if ((unqryTablaG.State = dsInsert) or (unqryTablaG.State = dsEdit)) then
-    unqryTablaG.Post;
-  if unqryTarifasArticulos.State = dsInsert then
+  with unqryTarifasArticulos do
   begin
-    unqryTarifasArticulos.FieldByName(
-                                       'CODIGO_UNICO_TARIFA').Required := False;
-    unqryTarifasArticulos.FieldByName(
-                          'CODIGO_UNICO_TARIFA').AutoGenerateValue := arAutoInc;
+    if ((unqryTablaG.State = dsInsert) or (unqryTablaG.State = dsEdit)) then
+      unqryTablaG.Post;
+    if State = dsInsert then
+    begin
+      FieldByName('CODIGO_UNICO_TARIFA').Required := False;
+      FieldByName('CODIGO_UNICO_TARIFA').AutoGenerateValue := arAutoInc;
+    end;
+    unqrySol := TUniQuery.Create(nil);
+    unqrySol.Connection := oConn;
+    unqrySol.SQL.Text := 'SELECT * ' +
+                         '  FROM fza_articulos_tarifas ' +
+                         ' WHERE CODIGO_ARTICULO_TARIFA = :CODIGO_ARTICULO' +
+                         '   AND CODIGO_TARIFA = :CODIGO_TARIFA';
+    unqrySol.ParamByName('CODIGO_ARTICULO').AsString :=
+                            unqryTablaG.FindField('CODIGO_ARTICULO').AsString;
+    unqrySol.ParamByName('CODIGO_TARIFA').AsString :=
+                                          FindField('CODIGO_TARIFA').AsString;
+    unqrySol.Open;
+    if not(ExistePeriodoUnico(unqrySol,
+                              FindField('FECHA_DESDE_TARIFA'),
+                              FindField('FECHA_HASTA_TARIFA')))
+    then
+    begin
+      ShowMessageFmt('No se pueden grabar dos tarifas ' +
+                     'activas en la misma fecha para el articulo %s',
+                     [FindField('CODIGO_ARTICULO_TARIFA').AsString]);
+      Abort;
+    end;
+    if ((unqryTarifasArticulos.State = dsInsert) or
+        (unqryTarifasArticulos.State = dsEdit)) then
+      oDmConn.ActualizarUserTimeModif(DataSet);
   end;
-  if ((unqryTarifasArticulos.State = dsInsert) or
-      (unqryTarifasArticulos.State = dsEdit)) then
-    oDmConn.ActualizarUserTimeModif(DataSet);
 end;
 
 end.

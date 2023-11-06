@@ -9,6 +9,10 @@
 unit inLibMsg;
 
 interface
+  type
+    TMessage = class
+
+    end;
 
     var
 
@@ -23,5 +27,6 @@ interface
                          'empresas';
 
   implementation
+
 
 end.

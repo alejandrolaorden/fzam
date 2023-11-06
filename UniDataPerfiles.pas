@@ -48,7 +48,7 @@ var
 
 implementation
 
-uses inLibGlobalVar;
+uses inLibGlobalVar, System.SysConst;
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 

@@ -153,7 +153,12 @@ var
 implementation
 
 uses
-  inLibWin, inLibUser, inLibDevExp, inLibGlobalVar, inLibDir;
+  inLibWin,
+  inLibUser,
+  inLibNet,
+  inLibDevExp,
+  inLibGlobalVar,
+  inLibDir;
 
 {$R *.dfm}
 
@@ -175,7 +180,6 @@ begin
   tvMetadatostvVista.OptionsData.Inserting := True;
   tvMetadatostvVista.OptionsData.Deleting := True;
   tvMetadatostvVista.OptionsData.Appending := True;
-
 end;
 
 procedure TfrmMtoGeneradorProcesos.btnEjecutarClick(Sender: TObject);
@@ -331,7 +335,9 @@ begin
       mmo1.Lines.SaveToFile('code.txt');
       ExecuteAndWait('fsqlf.exe' + ' code.txt code_formatted.txt');
       syndtEstructura.Lines.LoadFromFile('code_formatted.txt');
-      syndtEstructura.Lines.Text := Trim(syndtEstructura.Lines.text);
+//      syndtEstructura.Lines.Text :=
+//                                   FormatSqlOnlineSqlformatOrg(mmo1.Lines.Text);
+      //syndtEstructura.Lines.Text := Trim(mmo1.Lines.text);
     end
       else
     if ((unqryMetadatos.FieldByName('PARENT_METADATO').AsString = '3')) then

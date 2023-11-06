@@ -81,7 +81,6 @@ var
   unqrySol: TUniQuery;
   bSinErrores, bFechaFinNul, bFechaIniNul:Boolean;
   dtFechaIni, dtFechaFin:TDateTime;
-  sRetenciones:String;
 begin
   inherited;
   if ( (unqryTablaG.State = dsInsert) and
@@ -99,10 +98,6 @@ begin
              [FindField('PORCENRETENCION_RETENCION').AsInteger]);
       bSinErrores := False;
     end;
-    if (State = dsEdit) then
-      sRetenciones := FindField('CODIGO_RETENCION').AsString
-    else
-      sRetenciones := '';
     if (bSinErrores) then
     begin
       unqrySol := TUniQuery.Create(nil);
@@ -110,9 +105,6 @@ begin
       unqrySol.SQL.Text := 'SELECT * ' +
                            '  FROM vi_empresas_retenciones ' +
                            ' WHERE CODIGO_EMPRESA_RETENCION = :CODIGO_EMPRESA';
-      if (sRetenciones <> '') then
-        unqrySol.SQL.Text := unqrySol.SQL.Text + ' AND CODIGO_RETENCION <> ' +
-                             sRetenciones;
       unqrySol.ParamByName('CODIGO_EMPRESA').AsString :=
                                  FindField('CODIGO_EMPRESA_RETENCION').AsString;
       unqrySol.Open;

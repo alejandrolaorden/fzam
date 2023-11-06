@@ -78,6 +78,8 @@ inherited frmMtoArticulos: TfrmMtoArticulos
         end
       end
       inherited tsFicha: TcxTabSheet
+        ExplicitLeft = 3
+        ExplicitTop = 32
         ExplicitWidth = 804
         ExplicitHeight = 533
         object pnlTopFicha: TPanel
@@ -96,10 +98,6 @@ inherited frmMtoArticulos: TfrmMtoArticulos
             Align = alClient
             BevelOuter = bvNone
             TabOrder = 0
-            ExplicitLeft = 1
-            ExplicitTop = 1
-            ExplicitWidth = 802
-            ExplicitHeight = 143
             object txtCODIGO_ARTICULO: TcxDBTextEdit
               Left = 100
               Top = 13
@@ -217,12 +215,8 @@ inherited frmMtoArticulos: TfrmMtoArticulos
             Height = 384
             Align = alClient
             TabOrder = 0
-            Properties.ActivePage = tsTarifas
+            Properties.ActivePage = tsProveedores
             Properties.CustomButtons.Buttons = <>
-            ExplicitLeft = 1
-            ExplicitTop = 1
-            ExplicitWidth = 802
-            ExplicitHeight = 382
             ClientRectBottom = 378
             ClientRectLeft = 3
             ClientRectRight = 798
@@ -231,8 +225,6 @@ inherited frmMtoArticulos: TfrmMtoArticulos
               Caption = '&0_Variaciones'
               ImageIndex = 4
               TabVisible = False
-              ExplicitWidth = 793
-              ExplicitHeight = 344
               object pnlUpVariaciones: TPanel
                 Left = 0
                 Top = 0
@@ -240,7 +232,6 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                 Height = 73
                 Align = alTop
                 TabOrder = 0
-                ExplicitWidth = 793
                 object lbl11: TcxLabel
                   Left = 5
                   Top = 26
@@ -278,8 +269,6 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                 Height = 273
                 Align = alClient
                 TabOrder = 1
-                ExplicitWidth = 793
-                ExplicitHeight = 271
                 object pnlRightVariacion: TPanel
                   Left = 586
                   Top = 1
@@ -287,8 +276,6 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                   Height = 271
                   Align = alRight
                   TabOrder = 0
-                  ExplicitLeft = 584
-                  ExplicitHeight = 269
                 end
                 object pnlBodyVariacion: TPanel
                   Left = 1
@@ -297,8 +284,6 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                   Height = 271
                   Align = alClient
                   TabOrder = 1
-                  ExplicitWidth = 583
-                  ExplicitHeight = 269
                   object cxGrid1: TcxGrid
                     Left = 1
                     Top = 1
@@ -310,8 +295,6 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                     Margins.Bottom = 4
                     Align = alClient
                     TabOrder = 0
-                    ExplicitWidth = 581
-                    ExplicitHeight = 267
                     object tvVariaciones: TcxGridDBTableView
                       OnDblClick = cxGrdDBTabPrinDblClick
                       Navigator.Buttons.ConfirmDelete = True
@@ -405,8 +388,6 @@ inherited frmMtoArticulos: TfrmMtoArticulos
             object tsTarifas: TcxTabSheet
               Caption = '&1_Tarifas'
               ImageIndex = 1
-              ExplicitWidth = 793
-              ExplicitHeight = 344
               object cxgrdTarifas: TcxGrid
                 Left = 0
                 Top = 0
@@ -418,8 +399,6 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                 Margins.Bottom = 4
                 Align = alClient
                 TabOrder = 0
-                ExplicitWidth = 677
-                ExplicitHeight = 344
                 object tvTarifas: TcxGridDBTableView
                   OnDblClick = cxGrdDBTabPrinDblClick
                   Navigator.Buttons.ConfirmDelete = True
@@ -640,8 +619,6 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                 Align = alRight
                 BevelOuter = bvNone
                 TabOrder = 1
-                ExplicitLeft = 677
-                ExplicitHeight = 344
                 object btnIraTarifa: TcxButton
                   Left = 6
                   Top = 16
@@ -674,8 +651,6 @@ inherited frmMtoArticulos: TfrmMtoArticulos
             object tsProveedores: TcxTabSheet
               Caption = '&2_Proveedores'
               ImageIndex = 2
-              ExplicitWidth = 793
-              ExplicitHeight = 344
               object cxgrdProveedores: TcxGrid
                 Left = 0
                 Top = 0
@@ -687,8 +662,6 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                 Margins.Bottom = 4
                 Align = alClient
                 TabOrder = 0
-                ExplicitWidth = 672
-                ExplicitHeight = 344
                 object tvProveedores: TcxGridDBTableView
                   OnDblClick = cxGrdDBTabPrinDblClick
                   Navigator.Buttons.ConfirmDelete = True
@@ -813,8 +786,6 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                 Height = 346
                 Align = alRight
                 TabOrder = 1
-                ExplicitLeft = 672
-                ExplicitHeight = 344
                 object btnIraProveedor: TcxButton
                   Left = 5
                   Top = 61
@@ -847,8 +818,6 @@ inherited frmMtoArticulos: TfrmMtoArticulos
             object tsLineasFactura: TcxTabSheet
               Caption = '&3_Lineas de Facturas - '
               ImageIndex = 3
-              ExplicitWidth = 793
-              ExplicitHeight = 344
               object cxgrdLinFac: TcxGrid
                 Left = 0
                 Top = 0
@@ -860,8 +829,6 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                 Margins.Bottom = 4
                 Align = alClient
                 TabOrder = 0
-                ExplicitWidth = 680
-                ExplicitHeight = 344
                 object tvLinFac: TcxGridDBTableView
                   OnDblClick = cxGrdDBTabPrinDblClick
                   Navigator.Buttons.ConfirmDelete = True
@@ -1026,8 +993,6 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                 Height = 346
                 Align = alRight
                 TabOrder = 1
-                ExplicitLeft = 680
-                ExplicitHeight = 344
                 object btnIraFactura: TcxButton
                   Left = 6
                   Top = 16
@@ -1068,8 +1033,6 @@ inherited frmMtoArticulos: TfrmMtoArticulos
             object tsOtros: TcxTabSheet
               Caption = '&4_Otros'
               ImageIndex = 3
-              ExplicitWidth = 793
-              ExplicitHeight = 344
               object pnl3: TPanel
                 Left = 0
                 Top = 267
@@ -1077,8 +1040,6 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                 Height = 79
                 Align = alBottom
                 TabOrder = 0
-                ExplicitTop = 265
-                ExplicitWidth = 793
                 object cxdbtxtdtDIRECCION1_CLIENTE: TcxDBTextEdit
                   Left = 17
                   Top = 37
@@ -1256,14 +1217,13 @@ inherited frmMtoArticulos: TfrmMtoArticulos
       inherited pnlTopGrid: TPanel
         Width = 813
         ExplicitWidth = 813
-        inherited nvNavegador: TcxDBNavigator
-          TabOrder = 3
+        inherited edtBusqGlobal: TcxTextEdit
+          ExplicitHeight = 27
         end
         inherited rbBBDD: TcxRadioButton
           Top = 3
           Font.Name = 'Calibri'
           Font.Quality = fqClearTypeNatural
-          TabOrder = 2
           ExplicitTop = 3
         end
         inherited rbGrid: TcxRadioButton

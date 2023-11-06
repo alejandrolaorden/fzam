@@ -94,7 +94,6 @@ inherited frmOpenApp2: TfrmOpenApp2
         Properties.ScrollBars = ssVertical
         TabOrder = 0
         Visible = False
-        ExplicitWidth = 1000
         Height = 69
         Width = 1138
       end

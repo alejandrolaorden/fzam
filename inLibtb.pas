@@ -149,7 +149,7 @@ begin
   bFechaIniNul := fFechaIni.Isnull;
   dtFechaIni := fFechaIni.AsDateTime;
   dtFechaFin := fFechaFin.AsDateTime;
-  if ((qryData.RecordCount) > 0) then
+  if ((qryData.RecordCount) > 1) then
   begin
     if ( (not(bFechaFinNul)) and
          (CompareDate(dtFechaIni, dtFechaFin) > 0)
