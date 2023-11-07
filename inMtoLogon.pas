@@ -172,14 +172,14 @@ begin
     s := udDump.SQL.Text;
     s := StringReplace(s, 'DEFINER=`root`@`localhost`', '',
       [rfReplaceAll, rfIgnoreCase]);
-    s := EncriptAESPass(udDump.SQL.Text, sPass);
+    s := 'DROP DATABASE IF EXISTS factuzam; ' + sLineBreak +
+         'CREATE DATABASE factuzam ' +
+         '  CHARACTER SET utf8mb4 ' +
+         '       COLLATE utf8mb4_spanish_ci; ' +  sLineBreak +
+         'USE factuzam;' + sLineBreak + sLineBreak + s;
+    s := EncriptAESPass(s, sPass);
     MyText := TStringlist.Create;
-
-        MyText.Text := 'DROP DATABASE IF EXISTS factuzam; ' + sLineBreak +
-                       'CREATE DATABASE factuzam ' +
-                       '  CHARACTER SET utf8mb4 ' +
-                       '       COLLATE utf8mb4_spanish_ci; ' +  sLineBreak +
-                       'USE factuzam;' + sLineBreak + sLineBreak + s;
+    MyText.Text := s;
     saveDialog.InitialDir := GetUserDeskFolder;
     MyText.SaveToFile(saveDialog.FileName);
     MyText.Free;

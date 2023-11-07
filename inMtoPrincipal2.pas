@@ -205,20 +205,21 @@ begin
     begin
       iButtonSel := MessageDlg('¿Desea reemplazar el fichero existente?',
         mtCustom, [mbYes, mbNo], 0);
-      if iButtonSel = mrYes then
-      begin
-        undmp1.Backup;
-        s := undmp1.SQL.Text;
-        s := StringReplace(s, 'DEFINER=`root`@`localhost`', '', [rfReplaceAll,
-            rfIgnoreCase]);
-        MyText := TStringlist.Create;
-        MyText.Text := 'DROP DATABASE IF EXISTS factuzam; ' + sLineBreak +
+      s:= 'DROP DATABASE IF EXISTS factuzam; ' + sLineBreak +
                        'CREATE DATABASE factuzam ' +
                        '  CHARACTER SET utf8mb4 ' +
                        '       COLLATE utf8mb4_spanish_ci; ' +  sLineBreak +
                        'USE factuzam;' + sLineBreak + sLineBreak + s;
+      if iButtonSel = mrYes then
+      begin
+        undmp1.Backup;
+        s := s + undmp1.SQL.Text;
+        s := StringReplace(s, 'DEFINER=`root`@`localhost`', '', [rfReplaceAll,
+            rfIgnoreCase]);
+        MyText := TStringlist.Create;
+        MyText.Text := s;
         saveDialog.InitialDir := GetUserDeskFolder;
-        MyText.SaveToFile(saveDialog.FileName);
+        MyText.SaveToFile(saveDialog.FileName, TEncoding.UTF8);
         MyText.Free;
         ShowMessage('La copia se guardó exitosamente');
       end;
@@ -226,13 +227,13 @@ begin
     else
     begin
       undmp1.Backup;
-      s := undmp1.SQL.Text;
+      s := s + undmp1.SQL.Text;
       s := StringReplace(s, 'DEFINER=`root`@`localhost`', '', [rfReplaceAll,
           rfIgnoreCase]);
       MyText := TStringlist.Create;
       MyText.Text := s;
       saveDialog.InitialDir := GetUserDeskFolder;
-      MyText.SaveToFile(saveDialog.FileName);
+      MyText.SaveToFile(saveDialog.FileName, TEncoding.UTF8);
       MyText.Free;
       ShowMessage('La copia se guardó exitosamente');
     end;
