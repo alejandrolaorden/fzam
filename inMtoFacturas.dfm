@@ -8,6 +8,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
   ClientHeight = 844
   ClientWidth = 1231
   Scaled = False
+  ExplicitTop = -177
   ExplicitWidth = 1231
   ExplicitHeight = 844
   PixelsPerInch = 96
@@ -2557,13 +2558,14 @@ inherited frmMtoFacturas: TfrmMtoFacturas
         end
       end
       inherited tsPerfil: TcxTabSheet
-        ExplicitLeft = 3
-        ExplicitTop = 32
         ExplicitWidth = 1078
         ExplicitHeight = 766
         inherited pnlPerfilTop: TPanel
           Width = 1078
           ExplicitWidth = 1078
+          inherited edtPerfilBusq: TcxTextEdit
+            ExplicitHeight = 27
+          end
         end
         inherited pnlPerfilDetail: TPanel
           Width = 1078
@@ -2588,6 +2590,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
         ExplicitWidth = 1087
         inherited edtBusqGlobal: TcxTextEdit
           TabOrder = 3
+          ExplicitHeight = 27
         end
         inherited lblTextoaBuscar: TcxLabel
           Top = 7

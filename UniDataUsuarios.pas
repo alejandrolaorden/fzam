@@ -12,7 +12,7 @@ interface
 
 uses
   System.SysUtils, System.Classes, UniDataGen, Data.DB, MemDS, DBAccess, Uni,
-  inLibUser, UniDataConn;
+  inLibUser, UniDataConn, Vcl.Dialogs;
 
 type
   TdmUsuarios = class(TdmBase)
@@ -51,8 +51,8 @@ begin
     sUsuario := Trim(FindField('USUARIO_USUARIO').AsString);
     if ((sUsuario = '') or not(SimbolosProhibidos(sUsuario))) then
     begin
-      raise ERangeError.CreateFmt('%s no es un valor de registro válido ' +
-                                            'para el campo Usuario',[sUsuario]);
+      ShowMessageFmt('%s no es un valor de registro válido ' +
+                     'para el campo Usuario',[sUsuario]);
       bError := True;
     end;
     if bError then

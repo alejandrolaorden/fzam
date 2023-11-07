@@ -185,6 +185,52 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
+        <DCCReference Include="UniDataArticulos.pas"/>
+        <DCCReference Include="UniDataClientes.pas"/>
+        <DCCReference Include="UniDataConn.pas">
+            <Form>dmConn</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="UniDataContadores.pas"/>
+        <DCCReference Include="UniDataEmpresas.pas"/>
+        <DCCReference Include="UniDataFamilias.pas"/>
+        <DCCReference Include="UniDataFormasdePago.pas"/>
+        <DCCReference Include="UniDataGeneradorProcesos.pas">
+            <Form>dmGeneradorProcesos</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="UniDataGrupos.pas">
+            <Form>dmGrupos</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="UniDataIvas.pas">
+            <Form>dmIvas</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="UniDataIvasGrupos.pas">
+            <Form>dmIvasGrupos</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="UniDataPerfiles.pas">
+            <Form>dmPerfiles</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="UniDataProveedores.pas">
+            <Form>dmProveedores</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="UniDataTarifas.pas">
+            <Form>dmTarifas</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="UniDataUsuarios.pas">
+            <Form>dmUsuarios</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="UniDataUsuariosPerfiles.pas">
+            <Form>dmUsuariosPerfiles</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
         <DCCReference Include="inLibDevExp.pas"/>
         <DCCReference Include="inLibDir.pas"/>
         <DCCReference Include="inLibGlobalVar.pas"/>
@@ -203,8 +249,8 @@
             <Form>dmBase</Form>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="UniDataFacturas.pas"/>
         <DCCReference Include="inMtoFacturas.pas"/>
+        <DCCReference Include="UniDataFacturas.pas"/>
         <DCCReference Include="inMtoArticulos.pas"/>
         <DCCReference Include="inMtoClientes.pas"/>
         <DCCReference Include="inMtoContadores.pas"/>
@@ -268,57 +314,14 @@
         <DCCReference Include="inMtoUsuariosPerfiles.pas">
             <Form>frmMtoUsuariosPerfiles</Form>
         </DCCReference>
-        <DCCReference Include="UniDataArticulos.pas"/>
-        <DCCReference Include="UniDataClientes.pas"/>
-        <DCCReference Include="UniDataConn.pas">
-            <Form>dmConn</Form>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="UniDataContadores.pas"/>
-        <DCCReference Include="UniDataEmpresas.pas"/>
-        <DCCReference Include="UniDataFamilias.pas"/>
-        <DCCReference Include="UniDataFormasdePago.pas"/>
-        <DCCReference Include="UniDataGeneradorProcesos.pas">
-            <Form>dmGeneradorProcesos</Form>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="UniDataGrupos.pas">
-            <Form>dmGrupos</Form>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="UniDataIvas.pas">
-            <Form>dmIvas</Form>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="UniDataIvasGrupos.pas">
-            <Form>dmIvasGrupos</Form>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="UniDataPerfiles.pas">
-            <Form>dmPerfiles</Form>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="UniDataProveedores.pas">
-            <Form>dmProveedores</Form>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="UniDataTarifas.pas">
-            <Form>dmTarifas</Form>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="UniDataUsuarios.pas">
-            <Form>dmUsuarios</Form>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="UniDataUsuariosPerfiles.pas">
-            <Form>dmUsuariosPerfiles</Form>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
         <DCCReference Include="inMtoPrincipal2.pas">
             <Form>frmOpenApp2</Form>
         </DCCReference>
         <DCCReference Include="inLibUnitForm.pas"/>
         <DCCReference Include="inLibMsg.pas"/>
+        <DCCReference Include="inLibNet.pas"/>
+        <DCCReference Include="vcl\vcl.consts.pas"/>
+        <DCCReference Include="vcl\system.sysconst.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

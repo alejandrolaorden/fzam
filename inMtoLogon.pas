@@ -165,7 +165,7 @@ begin
   saveDialog.Title := 'Guardar copia de seguridad';
   saveDialog.InitialDir := GetUserDeskFolder;
   savedialog.FileName := 'copia_seguridad_' + sPassEn + '_'
-    + FormatDateTime('_dd_mm_yy__hh_mm', Now) + '.sql';
+    + FormatDateTime('_dd_mm_yy__hh_mm', Now) + '.crypt';
   if (saveDialog.Execute = True) then
   begin
     udDump.Backup;
@@ -174,7 +174,12 @@ begin
       [rfReplaceAll, rfIgnoreCase]);
     s := EncriptAESPass(udDump.SQL.Text, sPass);
     MyText := TStringlist.Create;
-    MyText.Text := s;
+
+        MyText.Text := 'DROP DATABASE IF EXISTS factuzam; ' + sLineBreak +
+                       'CREATE DATABASE factuzam ' +
+                       '  CHARACTER SET utf8mb4 ' +
+                       '       COLLATE utf8mb4_spanish_ci; ' +  sLineBreak +
+                       'USE factuzam;' + sLineBreak + sLineBreak + s;
     saveDialog.InitialDir := GetUserDeskFolder;
     MyText.SaveToFile(saveDialog.FileName);
     MyText.Free;
@@ -190,15 +195,37 @@ end;
 procedure TfrmLogon.btnSubirScriptClick(Sender: TObject);
 var
   openDialog        : TOpenDialog;
+  unqryTestBD: TUniQuery;
 begin
   sPass := InputBox('Introduzca password de la BBDD', '','');
   ConstruirConexionConnect(ucConexion, edtUserBD.Text,
     sPass,
     edtHostName.Text,
     edtPortBD.Text,
-    edtNomBD.Text);
+    'information_schema');
+  unqryTestBD := TUniQuery.Create(nil);
+  unqryTestBD.Connection := ucConexion;
+  unqryTestBD.SQL.Text := 'SELECT SCHEMA_NAME ' +
+                          '  FROM INFORMATION_SCHEMA.SCHEMATA ' +
+                          ' WHERE SCHEMA_NAME = :BBDD ' ;
+  unqryTestBD.ParamByName('BBDD').AsString := edtNomBD.Text;
+  unqryTestBD.Open;
+  if (unqryTestBD.RecordCount > 0) then
+  begin
+     if ucConexion.Connected = true then
+     begin
+       ucConexion.Close;
+       ConstruirConexionConnect(ucConexion,
+                             edtUserBD.Text,
+                             sPass,
+                             edtHostName.Text,
+                             edtPortBD.Text,
+                             edtNomBD.Text);
+     end;
+  end;
   opendialog := TOpenDialog.Create(Self);
   opendialog.Title := 'Cargar script';
+  opendialog.Filter := 'Fichero SQL (*.sql)|*.sql';
   openDialog.InitialDir := GetUserDeskFolder;
   if openDialog.Execute then
   begin
@@ -208,6 +235,9 @@ begin
   else
     ShowMessage('El script no fue ejecutado');
   FreeAndNil(opendialog);
+  FreeAndNil(unqryTestBD);
+  if (ucConexion.Connected = true) then
+    ucConexion.Close;
 end;
 
 procedure TfrmLogon.btnTestClick(Sender: TObject);
@@ -227,15 +257,37 @@ var
   openDialog        : topendialog;
   MyText            : TSTringList;
   s                 : string;
+  unqryTestBD       : TUniQuery;
 begin
   sPass := InputBox('Escriba password de la BBDD', '', '');
   ConstruirConexionConnect(ucConexion, edtUserBD.Text,
     sPass,
     edtHostName.Text,
     edtPortBD.Text,
-    edtNomBD.Text);
+    'information_schema');
+  unqryTestBD := TUniQuery.Create(nil);
+  unqryTestBD.Connection := ucConexion;
+  unqryTestBD.SQL.Text := 'SELECT SCHEMA_NAME ' +
+                          '  FROM INFORMATION_SCHEMA.SCHEMATA ' +
+                          ' WHERE SCHEMA_NAME = :BBDD ' ;
+  unqryTestBD.ParamByName('BBDD').AsString := edtNomBD.Text;
+  unqryTestBD.Open;
+  if (unqryTestBD.RecordCount > 0) then
+  begin
+     if ucConexion.Connected = true then
+     begin
+       ucConexion.Close;
+       ConstruirConexionConnect(ucConexion,
+                             edtUserBD.Text,
+                             sPass,
+                             edtHostName.Text,
+                             edtPortBD.Text,
+                             edtNomBD.Text);
+     end;
+  end;
   opendialog := TOpenDialog.Create(Self);
   opendialog.Title := 'Cargar copia';
+  opendialog.Filter := 'Copia encriptada (*.crypt)|*.crypt';
   openDialog.InitialDir := GetUserDeskFolder;
   if openDialog.Execute then
   begin

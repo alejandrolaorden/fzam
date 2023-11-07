@@ -215,7 +215,7 @@ inherited frmMtoArticulos: TfrmMtoArticulos
             Height = 384
             Align = alClient
             TabOrder = 0
-            Properties.ActivePage = tsProveedores
+            Properties.ActivePage = tsTarifas
             Properties.CustomButtons.Buttons = <>
             ClientRectBottom = 378
             ClientRectLeft = 3
@@ -875,7 +875,7 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                       Column = cxgrdbclmnLinFacCANTIDAD_FACTURA_LINEA
                     end
                     item
-                      Format = '##,## '#8364
+                      Format = '0.00 '#8364';-0.00 '#8364
                       Kind = skSum
                       Column = cxgrdbclmnLinFacTOTAL_FACTURA_LINEA
                     end>

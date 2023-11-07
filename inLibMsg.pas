@@ -9,10 +9,13 @@
 unit inLibMsg;
 
 interface
-  type
-    TMessage = class
-
-    end;
+//  type
+//    TMessage = class
+//      SClassRttiNotFnd:string; = 'Clase %s no encontrada en rtti. ' +
+//                                'Hay un error al crear el formulario';
+//
+//
+//    end;
 
     var
 

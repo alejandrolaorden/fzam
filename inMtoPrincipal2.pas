@@ -212,7 +212,11 @@ begin
         s := StringReplace(s, 'DEFINER=`root`@`localhost`', '', [rfReplaceAll,
             rfIgnoreCase]);
         MyText := TStringlist.Create;
-        MyText.Text := s;
+        MyText.Text := 'DROP DATABASE IF EXISTS factuzam; ' + sLineBreak +
+                       'CREATE DATABASE factuzam ' +
+                       '  CHARACTER SET utf8mb4 ' +
+                       '       COLLATE utf8mb4_spanish_ci; ' +  sLineBreak +
+                       'USE factuzam;' + sLineBreak + sLineBreak + s;
         saveDialog.InitialDir := GetUserDeskFolder;
         MyText.SaveToFile(saveDialog.FileName);
         MyText.Free;

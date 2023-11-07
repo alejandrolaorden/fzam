@@ -157,7 +157,7 @@ inherited frmLogon: TfrmLogon
   object btnTest: TcxButton [19]
     Left = 349
     Top = 178
-    Width = 388
+    Width = 428
     Height = 30
     Caption = 'Grabar ini y Probar Conexi'#243'n'
     TabOrder = 11
@@ -184,9 +184,9 @@ inherited frmLogon: TfrmLogon
   object btnRecover: TcxButton [22]
     Left = 628
     Top = 216
-    Width = 109
+    Width = 149
     Height = 30
-    Caption = 'Recuperar'
+    Caption = 'Recuperar crypt'
     TabOrder = 14
     OnClick = btnRecoverClick
   end

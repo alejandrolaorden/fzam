@@ -15,18 +15,15 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
   inherited pButtonPage: TPanel
     Width = 774
     Height = 643
-    BevelOuter = bvNone
     TabOrder = 0
     ExplicitWidth = 774
     ExplicitHeight = 643
     inherited pcPantalla: TcxPageControl
-      Left = 0
-      Top = 40
       Width = 774
       Height = 603
       TabOrder = 1
-      ExplicitWidth = 772
-      ExplicitHeight = 601
+      ExplicitWidth = 774
+      ExplicitHeight = 603
       ClientRectBottom = 597
       ClientRectRight = 768
       inherited tsLista: TcxTabSheet
@@ -186,8 +183,10 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
       end
       inherited tsFicha: TcxTabSheet
         OnEnter = tsFichaEnter
-        ExplicitWidth = 763
-        ExplicitHeight = 563
+        ExplicitLeft = 3
+        ExplicitTop = 32
+        ExplicitWidth = 765
+        ExplicitHeight = 565
         object pnlFichaDetail: TPanel
           Left = 0
           Top = 182
@@ -196,8 +195,6 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 2
-          ExplicitWidth = 763
-          ExplicitHeight = 381
           object pcPestana: TcxPageControl
             Left = 0
             Top = 0
@@ -205,12 +202,8 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
             Height = 383
             Align = alClient
             TabOrder = 0
-            Properties.ActivePage = tsSeries
+            Properties.ActivePage = tsHistoriaFacturacion
             Properties.CustomButtons.Buttons = <>
-            ExplicitLeft = 1
-            ExplicitTop = 1
-            ExplicitWidth = 761
-            ExplicitHeight = 379
             ClientRectBottom = 377
             ClientRectLeft = 3
             ClientRectRight = 759
@@ -218,8 +211,6 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
             object tsMasDatos: TcxTabSheet
               Caption = '&1_M'#225's Datos'
               ImageIndex = 0
-              ExplicitWidth = 752
-              ExplicitHeight = 341
               DesignSize = (
                 756
                 345)
@@ -236,8 +227,6 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
                 PanelStyle.WordWrap = True
                 TabOrder = 0
                 Transparent = True
-                ExplicitWidth = 524
-                ExplicitHeight = 282
                 Height = 286
                 Width = 528
                 object lblMovil: TcxLabel
@@ -336,6 +325,8 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
             object tsRetenciones: TcxTabSheet
               Caption = '&2_Retenciones'
               ImageIndex = 2
+              ExplicitLeft = 0
+              ExplicitTop = 0
               ExplicitWidth = 752
               ExplicitHeight = 341
               object pnlRetenOpts: TPanel
@@ -483,8 +474,6 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
             object tsHistoriaFacturacion: TcxTabSheet
               Caption = '&3_Hist'#243'rico Facturas'
               ImageIndex = 3
-              ExplicitWidth = 752
-              ExplicitHeight = 341
               object pnlFactura: TPanel
                 Left = 0
                 Top = 0
@@ -492,8 +481,6 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
                 Height = 345
                 Align = alClient
                 TabOrder = 0
-                ExplicitWidth = 752
-                ExplicitHeight = 341
                 object cxgrdEmpresasFacturas: TcxGrid
                   Left = 1
                   Top = 1
@@ -505,8 +492,6 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
                   Margins.Bottom = 4
                   Align = alClient
                   TabOrder = 0
-                  ExplicitWidth = 633
-                  ExplicitHeight = 339
                   object tvFacturacion: TcxGridDBTableView
                     Navigator.Buttons.ConfirmDelete = True
                     Navigator.Buttons.CustomButtons = <>
@@ -849,8 +834,6 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
                   Height = 343
                   Align = alRight
                   TabOrder = 1
-                  ExplicitLeft = 634
-                  ExplicitHeight = 339
                   object btIraFactura: TcxButton
                     Left = 6
                     Top = 16
@@ -893,8 +876,6 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
             object tsSeries: TcxTabSheet
               Caption = '&4_Series'
               ImageIndex = 4
-              ExplicitWidth = 752
-              ExplicitHeight = 341
               object pnlSeriesOpts: TPanel
                 Left = 638
                 Top = 0
@@ -903,8 +884,6 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
                 Align = alRight
                 BevelOuter = bvNone
                 TabOrder = 1
-                ExplicitLeft = 634
-                ExplicitHeight = 341
                 object btnAddSerie: TcxButton
                   Left = 6
                   Top = 13
@@ -923,8 +902,6 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
                 Align = alClient
                 BevelOuter = bvNone
                 TabOrder = 0
-                ExplicitWidth = 634
-                ExplicitHeight = 341
                 object cxGrdSeries: TcxGrid
                   Left = 0
                   Top = 0
@@ -936,10 +913,6 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
                   Margins.Bottom = 4
                   Align = alClient
                   TabOrder = 0
-                  ExplicitLeft = 1
-                  ExplicitTop = 1
-                  ExplicitWidth = 632
-                  ExplicitHeight = 339
                   object tvSeries: TcxGridDBTableView
                     OnDblClick = cxGrdDBTabPrinDblClick
                     Navigator.Buttons.ConfirmDelete = True
@@ -1036,8 +1009,6 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
             object tsOtros: TcxTabSheet
               Caption = '&5_Otros'
               ImageIndex = 3
-              ExplicitWidth = 752
-              ExplicitHeight = 341
               object pnlUserInstantBottom: TPanel
                 Left = 0
                 Top = 266
@@ -1045,8 +1016,6 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
                 Height = 79
                 Align = alBottom
                 TabOrder = 6
-                ExplicitTop = 262
-                ExplicitWidth = 752
                 object cxdbtxtdtDIRECCION1_CLIENTE: TcxDBTextEdit
                   Left = 17
                   Top = 37
@@ -1201,7 +1170,6 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
           HotZoneClassName = 'TcxMediaPlayer9Style'
           AlignSplitter = salTop
           Control = pnlFichaDetail
-          ExplicitWidth = 763
         end
         object pnlFichaCab: TPanel
           Left = 0
@@ -1211,7 +1179,6 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
           Align = alTop
           BevelOuter = bvNone
           TabOrder = 0
-          ExplicitWidth = 763
           DesignSize = (
             765
             178)
@@ -1223,7 +1190,6 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
             Anchors = [akLeft, akTop, akRight, akBottom]
             TabOrder = 0
             Transparent = True
-            ExplicitWidth = 724
             Height = 166
             Width = 726
             object lblCodigo: TcxLabel
@@ -1325,22 +1291,18 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
         end
       end
       inherited tsPerfil: TcxTabSheet
-        ExplicitWidth = 763
-        ExplicitHeight = 563
+        ExplicitWidth = 765
+        ExplicitHeight = 565
         inherited pnlPerfilTop: TPanel
           Width = 765
-          BevelOuter = bvNone
-          ExplicitWidth = 763
+          ExplicitWidth = 765
         end
         inherited pnlPerfilDetail: TPanel
           Width = 765
           Height = 508
-          BevelOuter = bvNone
           ExplicitWidth = 763
           ExplicitHeight = 506
           inherited cxgrdPerfil: TcxGrid
-            Left = 0
-            Top = 0
             Width = 765
             Height = 508
             ExplicitWidth = 761
@@ -1350,22 +1312,15 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
       end
     end
     inherited pnlTopPage: TPanel
-      Left = 0
-      Top = 0
       Width = 774
-      BevelOuter = bvNone
       TabOrder = 0
-      ExplicitWidth = 772
+      ExplicitWidth = 774
       inherited pnlTopGrid: TPanel
-        Left = 0
-        Top = 0
         Width = 774
-        ExplicitWidth = 770
+        ExplicitWidth = 774
         inherited edtBusqGlobal: TcxTextEdit
-          TabOrder = 1
-        end
-        inherited nvNavegador: TcxDBNavigator
-          TabOrder = 2
+          TabOrder = 3
+          ExplicitHeight = 27
         end
         inherited rbBBDD: TcxRadioButton
           TabOrder = 0
@@ -1376,27 +1331,13 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
   inherited pButtonRightBar: TPanel
     Left = 774
     Height = 643
-    BevelOuter = bvNone
     TabOrder = 1
     ExplicitLeft = 774
     ExplicitHeight = 643
     inherited pButtonGen: TPanel
-      Left = 0
       Top = 445
-      Width = 140
       TabOrder = 2
-      ExplicitTop = 444
-    end
-    inherited pButtonBDStat: TPanel
-      Left = 0
-      Top = 0
-      Width = 140
-      inherited pnStateDataSet: TPanel
-        Width = 140
-      end
-      inherited pnlDataSetName: TPanel
-        Width = 140
-      end
+      ExplicitTop = 445
     end
     object btnNuevaEmpresa: TcxButton
       Left = 1

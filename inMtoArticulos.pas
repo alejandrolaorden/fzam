@@ -324,6 +324,9 @@ end;
 
 procedure TfrmMtoArticulos.btnAddProveedorClick(Sender: TObject);
 begin
+  with dmmArticulos do
+    if ((unqryTablaG.State = dsInsert) or (unqryTablaG.State = dsEdit)) then
+    unqryTablaG.Post;
   BuscarProveedores;
 end;
 

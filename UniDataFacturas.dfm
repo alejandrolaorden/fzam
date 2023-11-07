@@ -675,7 +675,7 @@ inherited dmFacturas: TdmFacturas
       
         'order by NRO_FACTURA_LINEA, SERIE_FACTURA_LINEA, LINEA_FACTURA_L' +
         'INEA ASC')
-    MasterSource = frmMtoFacturas.dsTablaG
+    MasterSource = dsFactura
     MasterFields = 'SERIE_FACTURA;NRO_FACTURA'
     DetailFields = 'SERIE_FACTURA_LINEA;NRO_FACTURA_LINEA'
     BeforeInsert = zqryLinFacBeforeInsert
@@ -1329,7 +1329,7 @@ inherited dmFacturas: TdmFacturas
     SQL.Strings = (
       'select * from vi_recibos'
       '')
-    MasterSource = frmMtoFacturas.dsTablaG
+    MasterSource = dsFactura
     MasterFields = 'NRO_FACTURA;SERIE_FACTURA'
     DetailFields = 'NRO_FACTURA_RECIBO;SERIE_FACTURA_RECIBO'
     Left = 736
@@ -1885,5 +1885,10 @@ inherited dmFacturas: TdmFacturas
     DataSet = unqryIvasTipos
     Left = 960
     Top = 80
+  end
+  object dsFactura: TDataSource
+    DataSet = unqryTablaG
+    Left = 368
+    Top = 440
   end
 end

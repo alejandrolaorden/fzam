@@ -16,7 +16,7 @@ uses  SysUtils, Variants, DB, ADODB, ExtCtrls, DBCtrls, Controls, Grids,
       System.StrUtils, DCPrijndael, dcpbase64,DCPcrypt2, System.NetEncoding,
       inLibUser, Datasnap.Provider, Datasnap.DBClient, System.DateUtils,
       //inMtoPrincipal,
-      inLibGlobalVar, Dialogs;
+      inLibGlobalVar, Dialogs, vcl.consts;
 
   type
   TStringArray = array of string;

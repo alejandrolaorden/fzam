@@ -21,11 +21,9 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
       TabOrder = 1
       ExplicitWidth = 859
       ExplicitHeight = 531
-      ClientRectBottom = 527
-      ClientRectRight = 855
+      ClientRectBottom = 525
+      ClientRectRight = 853
       inherited tsLista: TcxTabSheet
-        ExplicitLeft = 4
-        ExplicitTop = 30
         ExplicitWidth = 851
         ExplicitHeight = 497
         inherited cxGrdPrincipal: TcxGrid
@@ -67,14 +65,12 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
         end
       end
       inherited tsFicha: TcxTabSheet
-        ExplicitLeft = 4
-        ExplicitTop = 30
-        ExplicitWidth = 851
-        ExplicitHeight = 497
+        ExplicitWidth = 850
+        ExplicitHeight = 493
         object pnl1: TPanel
           Left = 0
           Top = 0
-          Width = 851
+          Width = 850
           Height = 113
           Align = alTop
           TabOrder = 0
@@ -106,7 +102,7 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
           object Panel1: TPanel
             Left = 1
             Top = 1
-            Width = 849
+            Width = 848
             Height = 111
             Align = alClient
             TabOrder = 0
@@ -143,56 +139,64 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
         end
         object pnl2: TPanel
           Left = 0
-          Top = 121
-          Width = 851
+          Top = 117
+          Width = 850
           Height = 376
           Align = alClient
           TabOrder = 1
           object pcPestana: TcxPageControl
             Left = 1
             Top = 1
-            Width = 849
+            Width = 848
             Height = 374
             Align = alClient
             TabOrder = 0
             Properties.ActivePage = tsMetadatos
             Properties.CustomButtons.Buttons = <>
-            ClientRectBottom = 370
-            ClientRectLeft = 4
-            ClientRectRight = 845
-            ClientRectTop = 30
+            ClientRectBottom = 368
+            ClientRectLeft = 3
+            ClientRectRight = 842
+            ClientRectTop = 32
             object tsSQL: TcxTabSheet
               Caption = '&1_C'#243'digo SQL'
               ImageIndex = 0
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object pnl6: TPanel
                 Left = 0
-                Top = 255
-                Width = 841
+                Top = 251
+                Width = 839
                 Height = 85
                 Align = alBottom
                 TabOrder = 0
+                ExplicitTop = 255
+                ExplicitWidth = 841
                 object cxmResul: TcxMemo
                   Left = 1
                   Top = 1
                   Align = alClient
                   TabOrder = 0
                   Height = 83
-                  Width = 839
+                  Width = 837
                 end
               end
               object pnl7: TPanel
                 Left = 0
                 Top = 0
-                Width = 841
-                Height = 255
+                Width = 839
+                Height = 251
                 Align = alClient
                 TabOrder = 1
+                ExplicitWidth = 841
+                ExplicitHeight = 255
                 object dbsyndtPROCESO_GENERADORPROCESO: TDBSynEdit
                   Left = 1
                   Top = 1
-                  Width = 839
-                  Height = 253
-                  SingleLineMode = False
+                  Width = 837
+                  Height = 249
+                  Cursor = crIBeam
                   DataField = 'PROCESO_GENERADORPROCESO'
                   DataSource = dsTablaG
                   Align = alClient
@@ -218,10 +222,31 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
                   Gutter.Font.Style = []
                   Gutter.Font.Quality = fqClearTypeNatural
                   Gutter.ShowLineNumbers = True
+                  Gutter.Bands = <
+                    item
+                      Kind = gbkMarks
+                      Width = 13
+                    end
+                    item
+                      Kind = gbkLineNumbers
+                    end
+                    item
+                      Kind = gbkFold
+                    end
+                    item
+                      Kind = gbkTrackChanges
+                    end
+                    item
+                      Kind = gbkMargin
+                      Width = 3
+                    end>
                   Highlighter = synsqlsyn2
                   Options = [eoAltSetsColumnMode, eoAutoIndent, eoDragDropEditing, eoEnhanceHomeKey, eoEnhanceEndKey, eoGroupUndo, eoScrollPastEol, eoShowScrollHint, eoSmartTabDelete, eoSmartTabs, eoTabIndent, eoTabsToSpaces]
+                  SelectedColor.Alpha = 0.400000005960464500
                   TabWidth = 2
                   WantTabs = True
+                  ExplicitWidth = 839
+                  ExplicitHeight = 253
                   RemovedKeystrokes = <
                     item
                       Command = ecTab
@@ -251,41 +276,44 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
               object cxspltr2: TcxSplitter
                 Left = 233
                 Top = 0
-                Width = 8
-                Height = 340
+                Width = 4
+                Height = 336
                 HotZoneClassName = 'TcxMediaPlayer9Style'
                 Control = pnlTree
               end
               object pnlTabs: TPanel
-                Left = 241
+                Left = 237
                 Top = 0
-                Width = 600
-                Height = 340
+                Width = 602
+                Height = 336
                 Align = alClient
                 Caption = 'pnlTabs'
                 TabOrder = 1
                 object pcMetadato: TcxPageControl
                   Left = 1
                   Top = 1
-                  Width = 598
-                  Height = 338
+                  Width = 600
+                  Height = 334
                   Align = alClient
                   TabOrder = 0
                   Properties.ActivePage = tsContenido
                   Properties.CustomButtons.Buttons = <>
-                  ClientRectBottom = 334
-                  ClientRectLeft = 4
+                  ClientRectBottom = 328
+                  ClientRectLeft = 3
                   ClientRectRight = 594
-                  ClientRectTop = 30
+                  ClientRectTop = 32
                   object tsEstructura: TcxTabSheet
                     Caption = '&Estructura Metadato'
                     ImageIndex = 0
+                    ExplicitLeft = 0
+                    ExplicitTop = 0
+                    ExplicitWidth = 0
+                    ExplicitHeight = 0
                     object syndtEstructura: TSynEdit
                       Left = 0
                       Top = 0
-                      Width = 590
-                      Height = 304
-                      SingleLineMode = False
+                      Width = 591
+                      Height = 296
                       Align = alClient
                       Font.Charset = DEFAULT_CHARSET
                       Font.Color = clWindowText
@@ -295,13 +323,6 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
                       Font.Quality = fqClearTypeNatural
                       TabOrder = 0
                       OnKeyDown = syndtEstructuraKeyDown
-                      CodeFolding.GutterShapeSize = 11
-                      CodeFolding.CollapsedLineColor = clGrayText
-                      CodeFolding.FolderBarLinesColor = clGrayText
-                      CodeFolding.IndentGuidesColor = clGray
-                      CodeFolding.IndentGuides = True
-                      CodeFolding.ShowCollapsedLine = False
-                      CodeFolding.ShowHintMark = True
                       UseCodeFolding = False
                       BorderStyle = bsNone
                       Gutter.Font.Charset = DEFAULT_CHARSET
@@ -311,9 +332,29 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
                       Gutter.Font.Style = []
                       Gutter.Font.Quality = fqClearTypeNatural
                       Gutter.ShowLineNumbers = True
+                      Gutter.Bands = <
+                        item
+                          Kind = gbkMarks
+                          Width = 13
+                        end
+                        item
+                          Kind = gbkLineNumbers
+                        end
+                        item
+                          Kind = gbkFold
+                        end
+                        item
+                          Kind = gbkTrackChanges
+                        end
+                        item
+                          Kind = gbkMargin
+                          Width = 3
+                        end>
                       Highlighter = synsqlsyn2
                       Options = [eoAutoIndent, eoDragDropEditing, eoEnhanceHomeKey, eoEnhanceEndKey, eoGroupUndo, eoScrollPastEol, eoShowScrollHint, eoSmartTabDelete, eoSmartTabs, eoTabIndent, eoTabsToSpaces]
-                      FontSmoothing = fsmNone
+                      SelectedColor.Alpha = 0.400000005960464500
+                      ExplicitWidth = 590
+                      ExplicitHeight = 304
                       RemovedKeystrokes = <
                         item
                           Command = ecTab
@@ -353,8 +394,8 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
                     object cxgrdMetadatos1: TcxGrid
                       Left = 0
                       Top = 0
-                      Width = 473
-                      Height = 304
+                      Width = 474
+                      Height = 296
                       Margins.Left = 4
                       Margins.Top = 4
                       Margins.Right = 4
@@ -487,10 +528,10 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
                       end
                     end
                     object pnlFacturaOpts1: TPanel
-                      Left = 473
+                      Left = 474
                       Top = 0
                       Width = 117
-                      Height = 304
+                      Height = 296
                       Align = alRight
                       TabOrder = 1
                       object btnExportarExcelMeta: TcxButton
@@ -519,7 +560,7 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
                 Left = 0
                 Top = 0
                 Width = 233
-                Height = 340
+                Height = 336
                 Align = alLeft
                 Caption = 'pnlTree'
                 TabOrder = 2
@@ -527,7 +568,7 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
                   Left = 1
                   Top = 1
                   Width = 231
-                  Height = 297
+                  Height = 293
                   ShowNodeHint = False
                   DataSource = dmGeneradorProcesos.dsMetadatos
                   KeyField = 'CODIGO_METADATO'
@@ -547,7 +588,7 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
                 end
                 object pnlTreeBotton: TPanel
                   Left = 1
-                  Top = 298
+                  Top = 294
                   Width = 231
                   Height = 41
                   Align = alBottom
@@ -748,13 +789,19 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
             object tsOtros: TcxTabSheet
               Caption = '&4_Otros'
               ImageIndex = 3
+              ExplicitLeft = 4
+              ExplicitTop = 30
+              ExplicitWidth = 841
+              ExplicitHeight = 340
               object pnl3: TPanel
                 Left = 0
-                Top = 261
-                Width = 841
+                Top = 257
+                Width = 839
                 Height = 79
                 Align = alBottom
                 TabOrder = 0
+                ExplicitTop = 261
+                ExplicitWidth = 841
                 object cxdbtxtdtDIRECCION1_CLIENTE: TcxDBTextEdit
                   Left = 17
                   Top = 37
@@ -854,26 +901,26 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
         object cxspltr1: TcxSplitter
           Left = 0
           Top = 113
-          Width = 851
-          Height = 8
+          Width = 850
+          Height = 4
           HotZoneClassName = 'TcxMediaPlayer9Style'
           AlignSplitter = salTop
           Control = pnl1
         end
       end
       inherited tsPerfil: TcxTabSheet
-        ExplicitWidth = 851
-        ExplicitHeight = 497
+        ExplicitWidth = 852
+        ExplicitHeight = 495
         inherited pnlPerfilTop: TPanel
-          Width = 851
-          ExplicitWidth = 851
+          Width = 850
+          ExplicitWidth = 852
           inherited edtPerfilBusq: TcxTextEdit
             ExplicitHeight = 27
           end
         end
         inherited pnlPerfilDetail: TPanel
-          Width = 851
-          Height = 440
+          Width = 850
+          Height = 436
           ExplicitWidth = 851
           ExplicitHeight = 440
           inherited cxgrdPerfil: TcxGrid
@@ -968,9 +1015,6 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
     Top = 287
   end
   object synsqlsyn2: TSynSQLSyn [4]
-    Options.AutoDetectEnabled = False
-    Options.AutoDetectLineLimit = 0
-    Options.Visible = False
     SQLDialect = sqlMySQL
     Left = 176
     Top = 432

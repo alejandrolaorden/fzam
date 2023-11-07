@@ -277,7 +277,6 @@ inherited dmArticulos: TdmArticulos
     MasterSource = frmMtoArticulos.dsTablaG
     MasterFields = 'CODIGO_ARTICULO'
     DetailFields = 'CODIGO_ARTICULO'
-    AfterInsert = unqryProveedoresArticulosAfterInsert
     BeforePost = unqryProveedoresArticulosBeforePost
     Left = 448
     Top = 16

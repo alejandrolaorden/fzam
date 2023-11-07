@@ -42,7 +42,6 @@ type
     procedure unqryTablaGAfterDelete(DataSet: TDataSet);
     procedure unqryProveedoresArticulosBeforePost(DataSet: TDataSet);
     procedure unqryTarifasArticulosBeforePost(DataSet: TDataSet);
-    procedure unqryProveedoresArticulosAfterInsert(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -87,13 +86,6 @@ begin
     Result := False;
   unqrySol.Close;
   FreeAndNil(unqrySol);
-end;
-
-procedure TdmArticulos.unqryProveedoresArticulosAfterInsert(DataSet: TDataSet);
-begin
-  inherited;
-  if ((unqryTablaG.State = dsInsert) or (unqryTablaG.State = dsEdit)) then
-    unqryTablaG.Post;
 end;
 
 procedure TdmArticulos.unqryProveedoresArticulosBeforePost(DataSet: TDataSet);
@@ -159,10 +151,8 @@ procedure TdmArticulos.CopiarProveedoraArticulo(dtProveedores: TDataset);
 begin
   with unqryProveedoresArticulos do
   begin
-    if ( (State <> dsEdit) and
-         (State <> dsInsert)
-       ) then
-    Edit;
+    if (State = dsBrowse) then
+      Edit;
     FindField('CODIGO_PROVEEDOR').AsString :=
                            dtProveedores.FindField('CODIGO_PROVEEDOR').AsString;
     FindField('RAZONSOCIAL_PROVEEDOR').AsString :=

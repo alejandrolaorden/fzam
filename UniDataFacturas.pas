@@ -57,6 +57,7 @@ type
     unstrdprcGetContadorFactura: TUniStoredProc;
     unqryIvasTipos: TUniQuery;
     dsIvasTipos: TDataSource;
+    dsFactura: TDataSource;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
     procedure zqryLinFacBeforeInsert(DataSet: TDataSet);
