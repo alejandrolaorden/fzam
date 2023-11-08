@@ -69,6 +69,7 @@ type
     procedure ucConexionError(Sender: TObject; E: EDAError; var Fail: Boolean);
     procedure edtPassBDExit(Sender: TObject);
   private
+    function CrearBD(sDatabaseN:string):string;
     procedure leerini;
     procedure escribirini;
     procedure SetIniValues;
@@ -125,7 +126,7 @@ begin
                                       ' de password de usuario.');
       end;
   end;
-  sPassEn := leCadINI('ConnData', 'PasswordEn', 'x');
+  sPassEn := leCadINIDir('ConnData', 'PasswordEn', 'x', GetUserFolder);
   if (sPassEn.Length > 2) then
   begin
     try
@@ -214,7 +215,7 @@ begin
   begin
      if ucConexion.Connected = true then
      begin
-       ucConexion.Close;
+       ucConexion.Disconnect;
        ConstruirConexionConnect(ucConexion,
                              edtUserBD.Text,
                              sPass,
@@ -237,7 +238,7 @@ begin
   FreeAndNil(opendialog);
   FreeAndNil(unqryTestBD);
   if (ucConexion.Connected = true) then
-    ucConexion.Close;
+    ucConexion.Disconnect;
 end;
 
 procedure TfrmLogon.btnTestClick(Sender: TObject);
@@ -250,6 +251,17 @@ begin
     edtNomBD.Text);
   ShowMessage('La conexión se estableció exitosamente.');
   Exit;
+end;
+
+function TfrmLogon.CrearBD(sDatabaseN: string):String;
+var
+  MyText            : TSTringList;
+begin
+  MyText := TStringList.Create;
+  MyText.LoadFromFile(DirApp + '\factuzam_original.sql');
+  Result := StringReplace(MyText.Text, 'factuzam', sDatabaseN, [rfReplaceAll,
+                                                                rfIgnoreCase]);
+  MyText.Free;
 end;
 
 procedure TfrmLogon.btnRecoverClick(Sender: TObject);
@@ -276,13 +288,13 @@ begin
   begin
      if ucConexion.Connected = true then
      begin
-       ucConexion.Close;
-       ConstruirConexionConnect(ucConexion,
-                             edtUserBD.Text,
-                             sPass,
-                             edtHostName.Text,
-                             edtPortBD.Text,
-                             edtNomBD.Text);
+       ucConexion.Disconnect;
+       ConstruirConexionConnect( ucConexion,
+                                 edtUserBD.Text,
+                                 sPass,
+                                 edtHostName.Text,
+                                 edtPortBD.Text,
+                                 edtNomBD.Text);
      end;
   end;
   opendialog := TOpenDialog.Create(Self);
@@ -307,8 +319,8 @@ begin
       end;
     end;
     udDump.Restore;
-    Log(ucConexion, edtUser.Text, 'Recuperada copia encriptada de ' +
-      openDialog.FileName);
+    //Log(ucConexion, edtUser.Text, 'Recuperada copia encriptada de ' +
+    //  openDialog.FileName);
     ShowMessage('El script se ejecutó exitosamente.');
   end
   else
@@ -349,13 +361,47 @@ end;
 procedure TfrmLogon.btnAceptarClick(Sender: TObject);
 var
   sGrupoAdmin       : string;
+  unqryTestBD       : TUniQuery;
 begin
+  if ucConexion.Connected then
+    ucConexion.Disconnect;
   ConstruirConexionConnect(ucConexion, edtUserBD.Text,
     sPass,
     edtHostName.Text,
     edtPortBD.Text,
-    edtNomBD.Text);
-  Log(ucConexion, edtUser.Text, 'Intento de conexión');
+    'information_schema');
+  unqryTestBD := TUniQuery.Create(nil);
+  unqryTestBD.Connection := ucConexion;
+  unqryTestBD.SQL.Text := 'SELECT SCHEMA_NAME ' +
+                          '  FROM INFORMATION_SCHEMA.SCHEMATA ' +
+                          ' WHERE SCHEMA_NAME = :BBDD ' ;
+  unqryTestBD.ParamByName('BBDD').AsString := edtNomBD.Text;
+  unqryTestBD.Open;
+  if (unqryTestBD.RecordCount = 0) then
+  begin
+     if Application.MessageBox(PWideChar(Format(
+       'No existe una base de datos llamada %s, '  +
+       '¿desea crearla? ', [edtNomBD.Text])),
+       'Error',  MB_YESNO) = ID_YES then
+     begin
+       UdDump.SQL.Text := CrearBD(edtNomBD.Text);
+       UdDump.Restore;
+       ShowMessage('La Base de Datos se creó exitosamente');
+     end
+     else
+     begin
+       Exit;
+     end;
+  end;
+  if ucConexion.Connected then
+    ucConexion.Disconnect;
+  ConstruirConexionConnect(ucConexion,
+                            edtUserBD.Text,
+                            sPass,
+                            edtHostName.Text,
+                            edtPortBD.Text,
+                            edtNomBD.Text);
+  //Log(ucConexion, edtUser.Text, 'Intento de conexión');
   if not ExisteUser(edtUser.Text, ucConexion) then
   begin
     raise EInvalidUser.Create('El nombre de usuario no existe');
@@ -374,8 +420,8 @@ begin
     oUser := edtUser.Text;
     oGroup := GetGrupo(edtUser.Text, ucConexion, sGrupoAdmin);
     orootGroup := sGrupoAdmin;
-    Log(ucConexion, oUser + '\' + oGroup + '\' + orootGroup,
-      'Conexión exitosa');
+    //Log(ucConexion, oUser + '\' + Group + '\' + orootGroup,
+    //  'Conexión exitosa');
     sUserPassOK := 'true';
     sSuccess := 'S';
     PostMessage(Handle, WM_CLOSE, 0, 0);
@@ -429,24 +475,26 @@ end;
 
 procedure TfrmLogon.escribirini;
 begin
-  esCadIni('ConnData', 'HostName', edtHostName.Text);
-  esCadIni('ConnData', 'Database', edtNomBD.Text);
-  esCadIni('ConnData', 'User', edtUserBD.Text);
-  esCadIni('ConnData', 'Puerto', edtPortBD.Text);
+  esCadIniDir('ConnData', 'HostName', edtHostName.Text, GetUserFolder);
+  esCadIniDir('ConnData', 'Database', edtNomBD.Text, GetUserFolder);
+  esCadIniDir('ConnData', 'User', edtUserBD.Text, GetUserFolder);
+  esCadIniDir('ConnData', 'Puerto', edtPortBD.Text, GetUserFolder);
   if (edtPassBD.Text <> '') then
   begin
     sPass := edtPassBD.Text;
     sPassEn := EncriptAES(sPass);
-    esCadIni('ConnData', 'PasswordEn', sPassEn);
+    esCadIniDir('ConnData', 'PasswordEn', sPassEn, GetUserFolder);
   end;
 end;
 
 procedure tfrmLogon.leerini;
 begin
-  edtHostName.Text := leCadIni('ConnData', 'HostName', '127.0.0.1');
-  edtNomBD.Text := leCadIni('ConnData', 'Database', 'factuzam');
-  edtUserBD.Text := leCadIni('ConnData', 'User', 'root');
-  edtPortBD.Text := leCadIni('ConnData', 'Puerto', '3306');
+  edtHostName.Text := leCadIniDir('ConnData', 'HostName', '127.0.0.1',
+                                                                 GetUserFolder);
+  edtNomBD.Text := leCadIniDir('ConnData', 'Database', 'factuzam',
+                                                                 GetUserFolder);
+  edtUserBD.Text := leCadIniDir('ConnData', 'User', 'root', GetUserFolder);
+  edtPortBD.Text := leCadIniDir('ConnData', 'Puerto', '3306', GetUserFolder);
 end;
 
 procedure TfrmLogon.FormKeyDown(Sender: TObject; var Key: Word;

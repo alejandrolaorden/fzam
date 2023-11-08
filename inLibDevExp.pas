@@ -31,9 +31,9 @@ interface
   procedure GrabarGrids(frmMto: TComponent);
   procedure CancelarGrids(oPrincipal:TComponent);
   procedure SetCaseTcxTextProperty(oControl: TComponent; sCase: TEditCharCase);
-  procedure SaveColumnsStateActiveWindow;
-  procedure RecoverColumnsStateActiveWindow;
-  procedure ResetColumnsStateActiveWindow;
+//  procedure SaveColumnsStateActiveWindow;
+//  procedure RecoverColumnsStateActiveWindow;
+//  procedure ResetColumnsStateActiveWindow;
   procedure GetSettingsColumn(cxgrdtvVista: TcxGridDBTableView;
     sName: String; Sender: TComponent);
   procedure GetSettingsColumnProfile(cxgrdtvVista: TcxGridDBTableView;
@@ -463,74 +463,74 @@ end;
       end;
     end;
 
-  procedure SaveColumnsStateActiveWindow;
-    var
-      X: Integer;
-      GridTV: TcxGridDBTableView;
-      Name: string;
-      Form: Tform;
-    begin
-      Form := screen.ActiveForm;
-      Name := screen.ActiveForm.Name;
-      for X := 0 to Form.Componentcount - 1 do
-      begin
-        if (Form.Components[X] is TcxGridDBTableView)
-        then
-        begin
-          GridTV := TcxGridDBTableView(Form.Components[X]);
-          GridTV.storetoIniFile(DirIni + inLibGlobalVar.oUser + '_' +
-              Form.Caption +
-              '_' + GridTV.Name + '.ini');
-        end;
-      end;
-    end;
+//  procedure SaveColumnsStateActiveWindow;
+//    var
+//      X: Integer;
+//      GridTV: TcxGridDBTableView;
+//      Name: string;
+//      Form: Tform;
+//    begin
+//      Form := screen.ActiveForm;
+//      Name := screen.ActiveForm.Name;
+//      for X := 0 to Form.Componentcount - 1 do
+//      begin
+//        if (Form.Components[X] is TcxGridDBTableView)
+//        then
+//        begin
+//          GridTV := TcxGridDBTableView(Form.Components[X]);
+//          GridTV.storetoIniFile(DirIni + inLibGlobalVar.oUser + '_' +
+//              Form.Caption +
+//              '_' + GridTV.Name + '.ini');
+//        end;
+//      end;
+//    end;
 
-  procedure RecoverColumnsStateActiveWindow;
-    var
-      X: Integer;
-      GridTV: TcxGridDBTableView;
-      Name: string;
-      Form: Tform;
-    begin
-      Form := screen.ActiveForm;
-      Name := screen.ActiveForm.Name;
-      for X := 0 to Form.Componentcount - 1 do
-      begin
-        if (Form.Components[X] is TcxGridDBTableView)
-        then
-        begin
-          GridTV := TcxGridDBTableView(Form.Components[X]);
-          If FileExists(DirIni + inLibGlobalVar.oUser + '_' +
-          Form.Caption + '_' + GridTV.Name + '.ini')
-          then
-            GridTV.RestoreFromIniFile(DirIni + inLibGlobalVar.oUser +
-                '_' + Form.Caption + '_' + GridTV.Name + '.ini');
-        end;
-      end;
-    end;
+//  procedure RecoverColumnsStateActiveWindow;
+//    var
+//      X: Integer;
+//      GridTV: TcxGridDBTableView;
+//      Name: string;
+//      Form: Tform;
+//    begin
+//      Form := screen.ActiveForm;
+//      Name := screen.ActiveForm.Name;
+//      for X := 0 to Form.Componentcount - 1 do
+//      begin
+//        if (Form.Components[X] is TcxGridDBTableView)
+//        then
+//        begin
+//          GridTV := TcxGridDBTableView(Form.Components[X]);
+//          If FileExists(DirIni + inLibGlobalVar.oUser + '_' +
+//          Form.Caption + '_' + GridTV.Name + '.ini')
+//          then
+//            GridTV.RestoreFromIniFile(DirIni + inLibGlobalVar.oUser +
+//                '_' + Form.Caption + '_' + GridTV.Name + '.ini');
+//        end;
+//      end;
+//    end;
 
-  procedure ResetColumnsStateActiveWindow;
-    var
-      X: Integer;
-      Grid: TcxGridDBTableView;
-      Name: string;
-      Form: Tform;
-    begin
-      Form := screen.ActiveForm;
-      Name := screen.ActiveForm.Name;
-      for X := 0 to Form.Componentcount - 1 do
-      begin
-        if (Form.Components[X] is TcxGridDBTableView)
-        then
-        begin
-          Grid := TcxGridDBTableView(Form.Components[X]);
-          If FileExists(DirIni + inLibGlobalVar.oUser +
-              '_' + Form.Caption + '_' + Grid.Name + '.ini')
-          then
-            DeleteFile(DirIni + inLibGlobalVar.oUser + '_' +
-                Form.Caption + '_' + Grid.Name + '.ini');
-        end;
-      end;
-    end;
+//  procedure ResetColumnsStateActiveWindow;
+//    var
+//      X: Integer;
+//      Grid: TcxGridDBTableView;
+//      Name: string;
+//      Form: Tform;
+//    begin
+//      Form := screen.ActiveForm;
+//      Name := screen.ActiveForm.Name;
+//      for X := 0 to Form.Componentcount - 1 do
+//      begin
+//        if (Form.Components[X] is TcxGridDBTableView)
+//        then
+//        begin
+//          Grid := TcxGridDBTableView(Form.Components[X]);
+//          If FileExists(DirIni + inLibGlobalVar.oUser +
+//              '_' + Form.Caption + '_' + Grid.Name + '.ini')
+//          then
+//            DeleteFile(DirIni + inLibGlobalVar.oUser + '_' +
+//                Form.Caption + '_' + Grid.Name + '.ini');
+//        end;
+//      end;
+//    end;
 
 end.

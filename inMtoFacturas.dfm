@@ -8,7 +8,6 @@ inherited frmMtoFacturas: TfrmMtoFacturas
   ClientHeight = 844
   ClientWidth = 1231
   Scaled = False
-  ExplicitTop = -177
   ExplicitWidth = 1231
   ExplicitHeight = 844
   PixelsPerInch = 96
@@ -733,7 +732,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
             Margins.Bottom = 4
             Align = alClient
             TabOrder = 0
-            Properties.ActivePage = tsLineasFactura
+            Properties.ActivePage = tsTotales
             Properties.CustomButtons.Buttons = <>
             ClientRectBottom = 439
             ClientRectLeft = 3

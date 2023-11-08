@@ -48,6 +48,7 @@ begin
   inherited;
   unqryTablaG.FindField('CODIGO_FORMAPAGO').AsString := '0';
   unqryTablaG.FindField('ORDEN_FORMAPAGO').AsString := '0';
+  unqryTablaG.FindField('PORCEN_ANTICIPO_FORMAPAGO').AsString := '0';
 end;
 
 procedure TdmFormasdePago.DataModuleCreate(Sender: TObject);

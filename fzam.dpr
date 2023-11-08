@@ -65,7 +65,8 @@ uses
   inLibMsg in 'inLibMsg.pas',
   inLibNet in 'inLibNet.pas',
   vcl.consts in 'vcl\vcl.consts.pas',
-  system.sysconst in 'vcl\system.sysconst.pas';
+  system.sysconst in 'vcl\system.sysconst.pas',
+  inLibScriptDB in 'inLibScriptDB.pas';
 
 begin
     {$IFDEF DEBUG}
