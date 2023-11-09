@@ -722,10 +722,11 @@ begin
         unstrdprcGetRecibos.ParamByName('pINSTANTEMODIF').AsDateTime := Now;
         unstrdprcGetRecibos.ParamByName('pUSUARIO').AsString := oUser;
         unstrdprcGetRecibos.ExecProc;
+        unqryRecibos.Close;
+        unqryRecibos.Open;
       end;
     end;
   end;
-  dmmFacturas.unqryRecibos.Refresh;
 end;
 
 procedure TfrmMtoFacturas.sbImprimirClick(Sender: TObject);

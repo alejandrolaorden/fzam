@@ -732,7 +732,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
             Margins.Bottom = 4
             Align = alClient
             TabOrder = 0
-            Properties.ActivePage = tsTotales
+            Properties.ActivePage = tsRecibos
             Properties.CustomButtons.Buttons = <>
             ClientRectBottom = 439
             ClientRectLeft = 3
@@ -745,6 +745,10 @@ inherited frmMtoFacturas: TfrmMtoFacturas
               Margins.Bottom = 4
               Caption = '&1_Lineas de Factura - '
               ImageIndex = 1
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object cxgrdLineasFactura: TcxGrid
                 Left = 0
                 Top = 0
@@ -1623,7 +1627,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                     DataController.Summary.DefaultGroupSummaryItems = <>
                     DataController.Summary.FooterSummaryItems = <
                       item
-                        Format = '#,## '#8364
+                        Format = '#,##.## '#8364
                         Kind = skSum
                         Column = cxgrdbclmnRecibosEUROS_RECIBO
                       end>
