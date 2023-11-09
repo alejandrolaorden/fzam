@@ -134,7 +134,7 @@ procedure TfrmOpenApp2.FormCreate(Sender: TObject);
 var
   sDis              : string;
 begin
-  Application.OnException := AppException;
+//  Application.OnException := AppException;
   sDis := '';
   oMemoSQL := cxMemo1;
   FdmConn := TdmConn.Create(Self);

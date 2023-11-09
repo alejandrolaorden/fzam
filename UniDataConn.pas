@@ -46,11 +46,12 @@ var
   sPort             ,
   sUser: string;
 begin
-  sDatabase := leCadINI('ConnData', 'Database','factuzam');
-  sHostName :=  leCadINI('ConnData', 'HostName','127.0.0.1');
-  sPasswordEn := DecriptAES(leCadINI('ConnData','PasswordEn', 'x'));
-  sPort :=  leCadINI('ConnData', 'Puerto','3307');
-  sUser :=  leCadINI('ConnData', 'User', 'root');
+  sDatabase := leCadINIDir('ConnData', 'Database','factuzam', GetUserFolder);
+  sHostName :=  leCadINIDir('ConnData', 'HostName','127.0.0.1', GetUserFolder);
+  sPasswordEn :=
+           DecriptAES(leCadINIDir('ConnData','PasswordEn', 'x', GetUserFolder));
+  sPort :=  leCadINIDir('ConnData', 'Puerto','3307', GetUserFolder);
+  sUser :=  leCadINIDir('ConnData', 'User', 'root', GetUserFolder);
   ConstruirConexion(conUni, sUser, sPasswordEn, sHostName, sPort, sDatabase);
 end;
 

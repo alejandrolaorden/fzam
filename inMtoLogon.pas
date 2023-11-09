@@ -110,7 +110,7 @@ end;
 
 procedure TfrmLogon.FormCreate(Sender: TObject);
 begin
-  Application.OnException := AppException;
+//  Application.OnException := AppException;
   sUserPassOK := 'false';
   Self.Position := poScreenCenter;
   Self.Width := 338;
