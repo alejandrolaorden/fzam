@@ -62,7 +62,7 @@ type
     dxstsbr1: TdxStatusBar;
     Panel1: TPanel;
     pcPrincipal: TcxPageControl;
-    Panel2: TPanel;
+    pnlPPBottom: TPanel;
     ApplicationEvents1: TApplicationEvents;
     cxMemo1: TcxMemo;
     procedure mnuEmpresasClick(Sender: TObject);
@@ -154,7 +154,14 @@ begin
     sDis := ' ✪';
   dxstsbr1.Panels[2].Text := oUser + '  (' + oGroup + ')' + sDis;
   Self.Caption := oAppName + ' ' + oVersion;
-  Log(FdmConn.ConUni, oUSer, 'Entrando en el software', Self);
+
+  pnlPPBottom.Visible := False;
+  cxMemo1.Visible := False;
+  {$IFDEF DEBUG}
+    pnlPPBottom.Visible := True;
+    cxMemo1.Visible := True;
+  {$ENDIF }
+  // Log(FdmConn.ConUni, oUSer, 'Entrando en el software', Self);
   //  zqryPermisoMenu.Connection := FdmConn.ZconnGlent;
   //  zqryPermisoMenu.SQL.Text := 'SELECT Entidad, Menu, PermisoAcceso, PermisoListado, PermisoEscritura ' +
   //                         '  FROM glt_user_permisos ' +

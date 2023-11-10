@@ -78,7 +78,7 @@ inherited frmOpenApp2: TfrmOpenApp2
       ClientRectRight = 1134
       ClientRectTop = 3
     end
-    object Panel2: TPanel
+    object pnlPPBottom: TPanel
       Left = 0
       Top = 452
       Width = 1140

@@ -126,7 +126,10 @@ begin
                                       ' de password de usuario.');
       end;
   end;
-  sPassEn := leCadINIDir('ConnData', 'PasswordEn', 'x', GetUserFolder);
+  sPassEn := leCadINIDir('ConnData',
+                         'PasswordEn',
+                         '2qJFaDfegP/9y6RDno1FRg==',
+                         GetUserFolder);
   if (sPassEn.Length > 2) then
   begin
     try
@@ -494,7 +497,7 @@ begin
   edtNomBD.Text := leCadIniDir('ConnData', 'Database', 'factuzam',
                                                                  GetUserFolder);
   edtUserBD.Text := leCadIniDir('ConnData', 'User', 'root', GetUserFolder);
-  edtPortBD.Text := leCadIniDir('ConnData', 'Puerto', '3306', GetUserFolder);
+  edtPortBD.Text := leCadIniDir('ConnData', 'Puerto', '3310', GetUserFolder);
 end;
 
 procedure TfrmLogon.FormKeyDown(Sender: TObject; var Key: Word;
@@ -546,7 +549,7 @@ begin
     chkRememberUser.Checked := True;
     edtUser.Text := leCadINIDir('UserInfo',
       'NomUser',
-      '',
+      'Administrador',
       GetUserFolder);
   end;
   if sRememberPassword <> 'No' then
@@ -554,7 +557,7 @@ begin
     chkRememberPassword.Checked := True;
     edtPass.Text := DecriptAES(leCadINIDir('UserInfo',
                                              'PasswordEn',
-                                             '',
+                                             'q7heHfD7ENowuvRQhW56Og==',
                                              GetUserFolder));
   end;
 end;

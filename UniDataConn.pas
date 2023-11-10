@@ -48,19 +48,22 @@ var
 begin
   sDatabase := leCadINIDir('ConnData', 'Database','factuzam', GetUserFolder);
   sHostName :=  leCadINIDir('ConnData', 'HostName','127.0.0.1', GetUserFolder);
-  sPasswordEn :=
-           DecriptAES(leCadINIDir('ConnData','PasswordEn', 'x', GetUserFolder));
-  sPort :=  leCadINIDir('ConnData', 'Puerto','3307', GetUserFolder);
+  sPasswordEn := DecriptAES(leCadINIDir('ConnData',
+                            'PasswordEn',
+                            '2qJFaDfegP/9y6RDno1FRg==',
+                            GetUserFolder));
+  sPort :=  leCadINIDir('ConnData', 'Puerto','3310', GetUserFolder);
   sUser :=  leCadINIDir('ConnData', 'User', 'root', GetUserFolder);
   ConstruirConexion(conUni, sUser, sPasswordEn, sHostName, sPort, sDatabase);
 end;
 
 procedure TdmConn.DataModuleCreate(Sender: TObject);
 begin
-  oMemoSQL.Visible := False;
+  UniSQLMonitor1.Active := False;
+  //oMemoSQL.Visible := False;
   {$IFDEF DEBUG}
     UniSQLMonitor1.Active := True;
-    oMemoSQL.Visible := True;
+   // oMemoSQL.Visible := True;
   {$ENDIF }
   //ofrmMto2.pcPrincipal.Align := alClient;
 end;
