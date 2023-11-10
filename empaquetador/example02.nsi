@@ -47,7 +47,7 @@ File "mariadb_installer.msi"
 File "factuzam_original.sql"
 #mariadb_installer.msi
 #SERVICENAME=MariaDB DATADIR="$APPDATA\Fzam\mariadb\data" PORT=3310 PASSWORD=default REMOVE=DEVEL REMOVE=HeidiSQL /qn
-ExecWait 'msiexec /i "$TEMP\mariadb_installer.msi" DATADIR="$INSTDIR\BaseDatos\mariadb\data" PORT=3306 PASSWORD=Zamora2023 SERVICENAME=MariaDB ADDLOCAL=ALL REMOVE=HeidiSQL  /qn  '
+ExecWait 'msiexec /i "$TEMP\mariadb_installer.msi" DATADIR="$INSTDIR\BaseDatos\mariadb\data" PORT=3310 PASSWORD=Zamora2023 SERVICENAME=MariaDBFzam ADDLOCAL=ALL REMOVE=HeidiSQL  /qn  '
  
 #-------
 # default section end
