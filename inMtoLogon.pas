@@ -54,6 +54,7 @@ type
     chkRememberPassword: TcxCheckBox;
     chkRememberUser: TcxCheckBox;
     tbUsers: TUniTable;
+    btChangePassRoot: TcxButton;
     procedure FormCreate(Sender: TObject);
     procedure btnSalirClick(Sender: TObject);
     procedure btnAceptarClick(Sender: TObject);
@@ -68,14 +69,16 @@ type
     procedure btnRecoverClick(Sender: TObject);
     procedure ucConexionError(Sender: TObject; E: EDAError; var Fail: Boolean);
     procedure edtPassBDExit(Sender: TObject);
+    procedure btChangePassRootClick(Sender: TObject);
   private
+    procedure CambiarPass(f:TUniConnection);
     function CrearBD(sDatabaseN:string):string;
     procedure leerini;
     procedure escribirini;
     procedure SetIniValues;
     procedure GetIniValues;
     function ExisteUser(sNom: string; f: TUniConnection): Boolean;
-    function LoginCorrecto(sNom, sPass: string; f: TUniConnection): Boolean;
+    function LoginCorrecto(sNom, sPassLogin: string; f: TUniConnection): Boolean;
     function GetGrupo(sUser: string; conn: TUniConnection;
       var EsGrupoAdmin: string): string;
     procedure AppException(Sender: TObject; E: Exception);
@@ -256,6 +259,32 @@ begin
   Exit;
 end;
 
+procedure TfrmLogon.CambiarPass(f: TUniConnection);
+var
+  qryCommand:TUniQuery;
+  sNewPass:String;
+  sPassEnBD:String;
+begin
+  if not f.Connected then
+    ShowMessage('No hay conexión con la bbdd')
+  else
+  begin
+    sNewPass := InputBox('Introduzca el nuevo password de la BBDD', '','');
+    qryCommand := TUniQuery.Create(nil);
+    qryCommand.Connection := f;
+    qryCommand.SQL.Text := 'FLUSH PRIVILEGES;';
+    qryCommand.ExecSQL;
+    qryCommand.SQL.Text := 'ALTER USER root@localhost IDENTIFIED BY :PASS;';
+    qryCommand.ParamByName('PASS').AsString := sNewPass;
+    qryCommand.ExecSQL;
+    ShowMessage('Password de la BBDD cambiado correctamente');
+    sPassEnBD := EncriptAES(sNewPass);
+    sPass := sNewPass;
+    esCadIniDir('ConnData', 'PasswordEn', sPassEnBD, GetUserFolder);
+    qryCommand.Free;
+  end;
+end;
+
 function TfrmLogon.CrearBD(sDatabaseN: string):String;
 var
   MyText            : TSTringList;
@@ -361,6 +390,43 @@ begin
   Log(oConn, edtUser.Text, E.Message, Sender, tlCritical, E.ClassName);
 end;
 
+procedure TfrmLogon.btChangePassRootClick(Sender: TObject);
+var
+  bAllowChange:Boolean;
+  sOldPass:String;
+  //sNewPass:String;
+begin
+  inherited;
+  bAllowChange := False;
+  if sPass = 'Zamora2023' then
+    bAllowChange := True
+  else
+  begin
+    sOldPass := InputBox('Introduzca el password actual de la BBDD', '','');
+  end;
+  if not bAllowChange then
+  begin
+    if ucConexion.Connected then
+      ucConexion.Disconnect;
+    ConstruirConexionConnect( ucConexion,
+                              edtUserBD.Text,
+                              sPass,
+                              edtHostName.Text,
+                              edtPortBD.Text,
+                              'information_schema');
+    if ucConexion.Connected = true then
+      bAllowChange := True;
+    if bAllowChange then
+    begin
+      CambiarPass(ucConexion);
+    end
+    else
+    begin
+      ShowMessage('El password que ha introducido no coincide.');
+    end;
+  end;
+end;
+
 procedure TfrmLogon.btnAceptarClick(Sender: TObject);
 var
   sGrupoAdmin       : string;
@@ -368,11 +434,12 @@ var
 begin
   if ucConexion.Connected then
     ucConexion.Disconnect;
-  ConstruirConexionConnect(ucConexion, edtUserBD.Text,
-    sPass,
-    edtHostName.Text,
-    edtPortBD.Text,
-    'information_schema');
+  ConstruirConexionConnect( ucConexion,
+                            edtUserBD.Text,
+                            sPass,
+                            edtHostName.Text,
+                            edtPortBD.Text,
+                            'information_schema');
   unqryTestBD := TUniQuery.Create(nil);
   unqryTestBD.Connection := ucConexion;
   unqryTestBD.SQL.Text := 'SELECT SCHEMA_NAME ' +
@@ -390,6 +457,7 @@ begin
        UdDump.SQL.Text := CrearBD(edtNomBD.Text);
        UdDump.Restore;
        ShowMessage('La Base de Datos se creó exitosamente');
+       btChangePassRootClick(Sender);
      end
      else
      begin
@@ -439,15 +507,15 @@ begin
   Result := tbUsers.Locate('USUARIO_USUARIO', sNom, []);
 end;
 
-function TfrmLogon.LoginCorrecto(sNom, sPass: string;
+function TfrmLogon.LoginCorrecto(sNom, sPassLogin: string;
   f: TUniConnection): Boolean;
 var
   sPassMd5          : string;
   sPassBD           : string;
 begin
-  if sPass <> '' then
+  if sPassLogin <> '' then
   begin
-    sPassMd5 := sMd5(sPass);
+    sPassMd5 := sMd5(sPassLogin);
   end;
   tbUsers.Locate('USUARIO_USUARIO', sNom, []);
   sPAssBD := tbUsers.FindField('PASSWORD_USUARIO').AsString;
