@@ -286,8 +286,8 @@ end;
 
 procedure TfrmMtoProveedores.btnGrabarClick(Sender: TObject);
 begin
-  if ((dmmProveedores.unqryTablaG.state = dsInsert) or  then
-     (dmmProveedores.unqryTablaG.state = dsEdit))
+  if ((dmmProveedores.unqryTablaG.state = dsInsert) or
+     (dmmProveedores.unqryTablaG.state = dsEdit)) then
   dmmProveedores.unqryTablaG.Post;
 end;
 
