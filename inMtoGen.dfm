@@ -42,10 +42,6 @@ inherited frmMtoGen: TfrmMtoGen
       object tsLista: TcxTabSheet
         Caption = '&Lista'
         ImageIndex = 0
-        ExplicitLeft = 4
-        ExplicitTop = 30
-        ExplicitWidth = 943
-        ExplicitHeight = 484
         object cxGrdPrincipal: TcxGrid
           Left = 0
           Top = 0
@@ -57,8 +53,6 @@ inherited frmMtoGen: TfrmMtoGen
           Margins.Bottom = 4
           Align = alClient
           TabOrder = 0
-          ExplicitWidth = 943
-          ExplicitHeight = 484
           object cxGrdDBTabPrin: TcxGridDBTableView
             OnDblClick = cxGrdDBTabPrinDblClick
             Navigator.Buttons.CustomButtons = <>
@@ -119,18 +113,10 @@ inherited frmMtoGen: TfrmMtoGen
       object tsFicha: TcxTabSheet
         Caption = '&Ficha'
         ImageIndex = 1
-        ExplicitLeft = 4
-        ExplicitTop = 30
-        ExplicitWidth = 943
-        ExplicitHeight = 484
       end
       object tsPerfil: TcxTabSheet
         Caption = 'Perfil'
         ImageIndex = 2
-        ExplicitLeft = 4
-        ExplicitTop = 30
-        ExplicitWidth = 943
-        ExplicitHeight = 484
         object pnlPerfilTop: TPanel
           Left = 0
           Top = 0
@@ -139,7 +125,6 @@ inherited frmMtoGen: TfrmMtoGen
           Align = alTop
           BevelOuter = bvNone
           TabOrder = 0
-          ExplicitWidth = 943
           object edtPerfilBusq: TcxTextEdit
             Left = 294
             Top = 14
@@ -189,8 +174,6 @@ inherited frmMtoGen: TfrmMtoGen
           BevelOuter = bvNone
           Caption = 'pnlPerfilDetail'
           TabOrder = 1
-          ExplicitWidth = 943
-          ExplicitHeight = 427
           object cxgrdPerfil: TcxGrid
             Left = 0
             Top = 0
@@ -202,8 +185,6 @@ inherited frmMtoGen: TfrmMtoGen
             Margins.Bottom = 4
             Align = alClient
             TabOrder = 0
-            ExplicitWidth = 943
-            ExplicitHeight = 427
             object tvPerfil: TcxGridDBTableView
               OnDblClick = cxGrdDBTabPrinDblClick
               Navigator.Buttons.ConfirmDelete = True
@@ -520,6 +501,7 @@ inherited frmMtoGen: TfrmMtoGen
           Font.Quality = fqClearType
           ParentFont = False
           TabOrder = 4
+          Visible = False
           OnClick = rbBBDDClick
           Transparent = True
         end
@@ -538,6 +520,7 @@ inherited frmMtoGen: TfrmMtoGen
           Font.Quality = fqClearType
           ParentFont = False
           TabOrder = 5
+          Visible = False
           OnClick = rbGridClick
           Transparent = True
         end

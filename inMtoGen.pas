@@ -591,23 +591,23 @@ var
   sBusq:string;
 begin
   inherited;
-  if (rbBBDD.Checked = true) then
-    sBusq := 'Database'
-  else
-    sBusq := 'Grid';
-  if ( sBusq = 'Grid') then
-  begin
+//  if (rbBBDD.Checked = true) then
+//    sBusq := 'Database'
+//  else
+//    sBusq := 'Grid';
+//  if ( sBusq = 'Grid') then
+//  begin
     //filtro del grid de Developer Express
     BusqAllGrid(cxGrdDBTabPrin,
                 edtBusqGlobal.Text);
-  end
-  else
-    begin
-      //filtro desde la consulta sql, añadiendo las opc de búsqueda al sql
-      BusqDataBase( (dsTablaG.DataSet  as TUniQuery),
-                     edtBusqGlobal.Text,
-                     sConsultaO);
-    end;
+//  end
+//  else
+//    begin
+//      //filtro desde la consulta sql, añadiendo las opc de búsqueda al sql
+//      BusqDataBase( (dsTablaG.DataSet  as TUniQuery),
+//                     edtBusqGlobal.Text,
+//                     sConsultaO);
+//    end;
   if ((pcPantalla.ActivePage <> tsLista) and (tsLista.TabVisible = true)) then
     pcPantalla.ActivePage := tsLista;
 end;

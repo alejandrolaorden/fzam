@@ -1,26 +1,38 @@
 ﻿[Closed Files]
-File_0=TSourceModule,'c:\program files (x86)\embarcadero\studio\20.0\SOURCE\RTL\SYS\System.SysUtils.pas',0,1,10699,1,10713,0,0,,
-File_1=TSourceModule,'C:\DISCO DURO\proyectos\fzam\inLibMsg.pas',0,1,1,1,1,0,0,,
-File_2=TSourceModule,'C:\DISCO DURO\proyectos\fzam\inLibtb.pas',0,1,494,3,508,0,0,,
-File_3=TSourceModule,'C:\DISCO DURO\proyectos\fzam\inLibScriptDB.pas',0,1,1,10,11,0,0,,
-File_4=TSourceModule,'C:\DISCO DURO\proyectos\fzam\UniDataFormasdePago.pas',0,1,39,51,51,0,0,,
-File_5=TSourceModule,'C:\DISCO DURO\proyectos\fzam\inMtoFrmBase.pas',0,1,1,1,1,0,0,,
-File_6=TSourceModule,'C:\DISCO DURO\proyectos\fzam\inMtoFormasdePago.pas',0,1,1,1,1,0,0,,
-File_7=TSourceModule,'C:\DISCO DURO\proyectos\fzam\inMtoFamilias.pas',0,1,1,1,1,0,0,,
-File_8=TSourceModule,'C:\DISCO DURO\proyectos\fzam\inMtoFacturas.pas',0,1,705,70,712,0,0,,
-File_9=TSourceModule,'C:\DISCO DURO\proyectos\fzam\UniDataFacturas.pas',0,1,1,1,1,0,0,,
+File_0=TSourceModule,'C:\DISCO DURO\proyectos\fzam\inMtoFacturas.dfm',0,1,1,1,1,0,0,,
+File_1=TSourceModule,'C:\DISCO DURO\proyectos\fzam\inMtoFacturas.pas',0,1,1,1,1,0,0,,
+File_2=TSourceModule,'C:\DISCO DURO\proyectos\fzam\inLibtb.pas',0,1,244,13,244,0,0,,
+File_3=TSourceModule,'c:\program files (x86)\embarcadero\studio\20.0\SOURCE\RTL\SYS\System.pas',0,1,18904,1,18925,0,0,,
+File_4=TSourceModule,'c:\program files (x86)\embarcadero\studio\20.0\SOURCE\VCL\Vcl.Forms.pas',0,1,3710,1,3728,0,0,{{1755,4}
+File_5=TSourceModule,'c:\program files (x86)\embarcadero\studio\20.0\SOURCE\VCL\Vcl.Controls.pas',0,1,6293,1,6306,0,0,,
+File_6=TSourceModule,'c:\program files (x86)\embarcadero\studio\20.0\source\rtl\common\System.Classes.pas',0,1,9220,1,9233,0,0,,
+File_7=TSourceModule,'c:\program files (x86)\embarcadero\studio\20.0\SOURCE\RTL\SYS\System.SysUtils.pas',0,1,10699,1,10713,0,0,,
+File_8=TSourceModule,'C:\DISCO DURO\proyectos\fzam\inLibMsg.pas',0,1,1,1,1,0,0,,
+File_9=TSourceModule,'C:\DISCO DURO\proyectos\fzam\inLibScriptDB.pas',0,1,1,10,11,0,0,,
 
 [Modules]
-Module0=C:\DISCO DURO\proyectos\fzam\inMtoLogon.pas
-Module1=C:\DISCO DURO\proyectos\fzam\inMtoPrincipal2.pas
-Module2=C:\DISCO DURO\proyectos\fzam\inLibDir.pas
-Module3=C:\DISCO DURO\proyectos\fzam\inLibDevExp.pas
-Module4=C:\DISCO DURO\proyectos\fzam\inMtoGeneradorProcesos.pas
-Module5=C:\DISCO DURO\proyectos\fzam\UniDataGeneradorProcesos.pas
-Count=6
+Module0=C:\DISCO DURO\proyectos\fzam\inMtoFacturas.pas
+Module1=C:\DISCO DURO\proyectos\fzam\inMtoGen.pas
+Module2=C:\DISCO DURO\proyectos\fzam\inMtoLogon.pas
+Module3=C:\DISCO DURO\proyectos\fzam\UniDataConn.pas
+Module4=C:\DISCO DURO\proyectos\fzam\inMtoPrincipal2.pas
+Module5=C:\DISCO DURO\proyectos\fzam\inLibDir.pas
+Module6=C:\DISCO DURO\proyectos\fzam\inLibDevExp.pas
+Module7=C:\DISCO DURO\proyectos\fzam\inMtoGeneradorProcesos.pas
+Module8=C:\DISCO DURO\proyectos\fzam\UniDataGeneradorProcesos.pas
+Count=9
 EditWindowCount=1
 
+[C:\DISCO DURO\proyectos\fzam\inMtoFacturas.pas]
+ModuleType=TSourceModule
+
+[C:\DISCO DURO\proyectos\fzam\inMtoGen.pas]
+ModuleType=TSourceModule
+
 [C:\DISCO DURO\proyectos\fzam\inMtoLogon.pas]
+ModuleType=TSourceModule
+
+[C:\DISCO DURO\proyectos\fzam\UniDataConn.pas]
 ModuleType=TSourceModule
 
 [C:\DISCO DURO\proyectos\fzam\inMtoPrincipal2.pas]
@@ -39,14 +51,17 @@ ModuleType=TSourceModule
 ModuleType=TSourceModule
 
 [EditWindow0]
-ViewCount=6
-CurrentEditView=C:\DISCO DURO\proyectos\fzam\inMtoLogon.pas
+ViewCount=9
+CurrentEditView=C:\DISCO DURO\proyectos\fzam\inMtoFacturas.pas
 View0=0
 View1=1
 View2=2
 View3=3
 View4=4
 View5=5
+View6=6
+View7=7
+View8=8
 PercentageSizes=1
 Create=1
 Visible=1
@@ -79,26 +94,59 @@ BottomMiddelPanelData=0000080001020200000009000000446F636B5369746530100000004772
 [View0]
 CustomEditViewType=TEditView
 Module=C:\DISCO DURO\proyectos\fzam\inMtoLogon.pas
-CursorX=61
-CursorY=430
-TopLine=410
+CursorX=28
+CursorY=287
+TopLine=265
 LeftCol=1
 Elisions=
-Bookmarks={8,132,1}
+Bookmarks={8,138,1}
 EditViewName=C:\DISCO DURO\proyectos\fzam\inMtoLogon.pas
 
 [View1]
 CustomEditViewType=TEditView
+Module=C:\DISCO DURO\proyectos\fzam\inMtoGen.pas
+CursorX=1
+CursorY=589
+TopLine=589
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=Borland.FormDesignerView
+
+[View2]
+CustomEditViewType=TEditView
+Module=C:\DISCO DURO\proyectos\fzam\inMtoFacturas.pas
+CursorX=1
+CursorY=1
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=Borland.FormDesignerView
+
+[View3]
+CustomEditViewType=TEditView
+Module=C:\DISCO DURO\proyectos\fzam\UniDataConn.pas
+CursorX=51
+CursorY=23
+TopLine=23
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\DISCO DURO\proyectos\fzam\UniDataConn.pas
+
+[View4]
+CustomEditViewType=TEditView
 Module=C:\DISCO DURO\proyectos\fzam\inMtoPrincipal2.pas
-CursorX=66
-CursorY=218
-TopLine=203
+CursorX=3
+CursorY=164
+TopLine=143
 LeftCol=1
 Elisions=
 Bookmarks=
 EditViewName=C:\DISCO DURO\proyectos\fzam\inMtoPrincipal2.pas
 
-[View2]
+[View5]
 CustomEditViewType=TEditView
 Module=C:\DISCO DURO\proyectos\fzam\inLibDir.pas
 CursorX=21
@@ -109,7 +157,7 @@ Elisions=
 Bookmarks=
 EditViewName=C:\DISCO DURO\proyectos\fzam\inLibDir.pas
 
-[View3]
+[View6]
 CustomEditViewType=TEditView
 Module=C:\DISCO DURO\proyectos\fzam\inLibDevExp.pas
 CursorX=3
@@ -120,7 +168,7 @@ Elisions=
 Bookmarks=
 EditViewName=C:\DISCO DURO\proyectos\fzam\inLibDevExp.pas
 
-[View4]
+[View7]
 CustomEditViewType=TEditView
 Module=C:\DISCO DURO\proyectos\fzam\inMtoGeneradorProcesos.pas
 CursorX=37
@@ -131,7 +179,7 @@ Elisions=
 Bookmarks=
 EditViewName=C:\DISCO DURO\proyectos\fzam\inMtoGeneradorProcesos.pas
 
-[View5]
+[View8]
 CustomEditViewType=TEditView
 Module=C:\DISCO DURO\proyectos\fzam\UniDataGeneradorProcesos.pas
 CursorX=17
@@ -170,11 +218,15 @@ Dockable=1
 StayOnTop=0
 
 [Breakpoints]
-Count=4
+Count=8
 Breakpoint0='C:\DISCO DURO\proyectos\fzam\inLibtb.pas',92,'',0,1,'',1,0,0,'',1,'','','',0,''
 Breakpoint1='C:\DISCO DURO\proyectos\fzam\inLibtb.pas',100,'',0,1,'',1,0,0,'',1,'','','',0,''
 Breakpoint2='C:\DISCO DURO\proyectos\fzam\inLibtb.pas',179,'',0,1,'',1,0,0,'',1,'','','',0,''
 Breakpoint3='C:\DISCO DURO\proyectos\fzam\inMtoArticulos.pas',330,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint4='C:\DISCO DURO\proyectos\fzam\inMtoPrincipal2.pas',465,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint5='C:\DISCO DURO\proyectos\fzam\inLibtb.pas',250,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint6='C:\DISCO DURO\proyectos\fzam\inMtoPrincipal2.pas',141,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint7='C:\DISCO DURO\proyectos\fzam\inMtoPrincipal2.pas',140,'',0,1,'',1,0,0,'',1,'','','',0,''
 
 [EmbarcaderoWin32Debugger_AddressBreakpoints]
 Count=0
@@ -305,8 +357,8 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=-1528
-Top=247
+Left=0
+Top=0
 Width=276
 Height=359
 MaxLeft=-1
@@ -430,11 +482,11 @@ State=0
 Left=0
 Top=0
 Width=2000
-Height=6405
+Height=6153
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=2000
-ClientHeight=6405
+ClientHeight=6153
 TBDockHeight=4884
 LRDockWidth=7151
 Dockable=1
@@ -449,11 +501,11 @@ State=0
 Left=0
 Top=0
 Width=2000
-Height=6405
+Height=6153
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=2000
-ClientHeight=6405
+ClientHeight=6153
 TBDockHeight=5959
 LRDockWidth=2510
 Dockable=1
@@ -487,11 +539,11 @@ State=0
 Left=0
 Top=0
 Width=2339
-Height=969
+Height=1211
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=2339
-ClientHeight=969
+ClientHeight=1211
 TBDockHeight=2316
 LRDockWidth=2823
 Dockable=1
@@ -522,8 +574,8 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=-8
-Top=-120
+Left=-37
+Top=-236
 Width=1849
 Height=3140
 MaxLeft=-1
@@ -606,8 +658,8 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=380
-Top=809
+Left=0
+Top=0
 Width=2854
 Height=3207
 MaxLeft=-1
@@ -673,11 +725,11 @@ State=0
 Left=0
 Top=0
 Width=2000
-Height=6405
+Height=6153
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=2000
-ClientHeight=6405
+ClientHeight=6153
 TBDockHeight=4884
 LRDockWidth=5307
 Dockable=1
@@ -692,11 +744,11 @@ State=0
 Left=0
 Top=0
 Width=1911
-Height=2849
+Height=2994
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1911
-ClientHeight=2849
+ClientHeight=2994
 TBDockHeight=3682
 LRDockWidth=1896
 Dockable=1
@@ -756,8 +808,8 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=952
-Top=28
+Left=8
+Top=8
 Width=3823
 Height=1376
 MaxLeft=-1

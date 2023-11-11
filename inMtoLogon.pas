@@ -142,7 +142,6 @@ begin
       begin
         raise EPassWordCorrupt.Create('Fallo en la lectura y desencriptación' +
                                       ' de password BBDD.');
-        edtPassBD.Text := '';
       end;
     end;
   end;
@@ -277,7 +276,8 @@ begin
     qryCommand.SQL.Text := 'ALTER USER root@localhost IDENTIFIED BY :PASS;';
     qryCommand.ParamByName('PASS').AsString := sNewPass;
     qryCommand.ExecSQL;
-    ShowMessage('Password de la BBDD cambiado correctamente');
+    ShowMessage('Password de la BBDD cambiado correctamente. ' +
+                ' Reinicie el sistema o el servicio para que tome efecto.');
     sPassEnBD := EncriptAES(sNewPass);
     sPass := sNewPass;
     esCadIniDir('ConnData', 'PasswordEn', sPassEnBD, GetUserFolder);
