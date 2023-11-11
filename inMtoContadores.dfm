@@ -1,11 +1,16 @@
 inherited frmMtoContadores: TfrmMtoContadores
   Caption = 'Contadores'
+  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 19
   inherited pButtonPage: TPanel
     inherited pcPantalla: TcxPageControl
       Properties.ActivePage = tsLista
       inherited tsLista: TcxTabSheet
+        ExplicitLeft = 3
+        ExplicitTop = 32
+        ExplicitWidth = 942
+        ExplicitHeight = 480
         inherited cxGrdPrincipal: TcxGrid
           inherited cxGrdDBTabPrin: TcxGridDBTableView
             OptionsData.Editing = True
@@ -13,6 +18,15 @@ inherited frmMtoContadores: TfrmMtoContadores
               Caption = 'Tipo de Documento'
               DataBinding.FieldName = 'TIPODOC_CONTADOR'
               Width = 149
+            end
+            object cxGrdDBTabPrinDESCRIPCION_TIPODOCUMENTO: TcxGridDBColumn
+              Caption = 'Documento'
+              DataBinding.FieldName = 'DESCRIPCION_TIPODOCUMENTO'
+              Width = 197
+            end
+            object cxGrdDBTabPrinEMPRESA_CONTADOR: TcxGridDBColumn
+              Caption = 'Empresa'
+              DataBinding.FieldName = 'EMPRESA_CONTADOR'
             end
             object cxgrdbclmnGrdDBTabPrinSERIE_CONTADOR: TcxGridDBColumn
               Caption = 'Serie'
@@ -68,7 +82,28 @@ inherited frmMtoContadores: TfrmMtoContadores
       end
       inherited tsFicha: TcxTabSheet
         TabVisible = False
+        ExplicitLeft = 3
+        ExplicitTop = 32
+        ExplicitWidth = 942
+        ExplicitHeight = 480
+      end
+      inherited tsPerfil: TcxTabSheet
+        inherited pnlPerfilTop: TPanel
+          inherited edtPerfilBusq: TcxTextEdit
+            ExplicitHeight = 27
+          end
+        end
       end
     end
+    inherited pnlTopPage: TPanel
+      inherited pnlTopGrid: TPanel
+        inherited edtBusqGlobal: TcxTextEdit
+          ExplicitHeight = 27
+        end
+      end
+    end
+  end
+  inherited dsTablaG: TDataSource
+    DataSet = dmContadores.unqryTablaG
   end
 end

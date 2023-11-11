@@ -40,6 +40,7 @@ type
     tvUsuariosGRUPO_USUARIO: TcxGridDBColumn;
     tvUsuariosEMPRESADEF_USUARIO: TcxGridDBColumn;
     tvUsuariosULTIMOLOGIN_USUARIO: TcxGridDBColumn;
+    procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }
   public
@@ -68,6 +69,12 @@ begin
   dsTablaG.DataSet := dmmGrupos.unqryTablaG;
   tvUsuarios.DataController.DataSource := dmmGrupos.dsUsuariosGrupo;
   pkFieldName := 'GRUPO_USUARIO';
+end;
+
+procedure TfrmMtoGrupos.FormDestroy(Sender: TObject);
+begin
+  inherited;
+  FreeAndNil(dmmGrupos);
 end;
 
 initialization

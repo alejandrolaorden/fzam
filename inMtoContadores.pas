@@ -36,6 +36,9 @@ type
     cxgrdbclmnGrdDBTabPrinUSUARIOMODIF: TcxGridDBColumn;
     cxGrdDBTabPrinNUMDIGIT_CONTADOR: TcxGridDBColumn;
     cxGrdDBTabPrinACTIVO_CONTADOR: TcxGridDBColumn;
+    cxGrdDBTabPrinEMPRESA_CONTADOR: TcxGridDBColumn;
+    cxGrdDBTabPrinDESCRIPCION_TIPODOCUMENTO: TcxGridDBColumn;
+    procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }
   public
@@ -62,6 +65,12 @@ begin
   inherited;
   dmmContadores := TdmContadores.Create(Self);
   pkFieldName := '`TIPODOC_CONTADOR;SERIE_CONTADOR;EMPRESA_CONTADOR';
+end;
+
+procedure TfrmMtoContadores.FormDestroy(Sender: TObject);
+begin
+  inherited;
+  FreeAndNil(dmmContadores);
 end;
 
 initialization

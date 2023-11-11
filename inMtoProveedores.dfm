@@ -185,7 +185,6 @@
           Align = alTop
           BevelOuter = bvNone
           TabOrder = 0
-          ExplicitWidth = 703
           object cxdbtxtdtCODIGO_CLIENTE: TcxDBTextEdit
             Left = 41
             Top = 31
@@ -362,8 +361,6 @@
               Margins.Bottom = 4
               Caption = '&1_Domicilio fiscal'
               ImageIndex = 0
-              ExplicitWidth = 692
-              ExplicitHeight = 264
               object cxdbtxtdt7: TcxDBTextEdit
                 Left = 147
                 Top = 21
@@ -512,6 +509,8 @@
             object tsArticulos: TcxTabSheet
               Caption = '&2_Articulos'
               ImageIndex = 3
+              ExplicitLeft = 0
+              ExplicitTop = 0
               ExplicitWidth = 692
               ExplicitHeight = 264
               object pnl6: TPanel
@@ -695,6 +694,8 @@
             object tsVentas: TcxTabSheet
               Caption = '&3_Ventas'
               ImageIndex = 4
+              ExplicitLeft = 0
+              ExplicitTop = 0
               ExplicitWidth = 692
               ExplicitHeight = 264
               object cxgrdLinFac: TcxGrid
@@ -920,6 +921,8 @@
             object tsMasDatos: TcxTabSheet
               Caption = '&4_M'#225's datos'
               ImageIndex = 1
+              ExplicitLeft = 0
+              ExplicitTop = 0
               ExplicitWidth = 692
               ExplicitHeight = 264
               object lblObservaciones: TcxLabel
@@ -1041,8 +1044,6 @@
             object tsOtros: TcxTabSheet
               Caption = '&5_Otros'
               ImageIndex = 4
-              ExplicitWidth = 692
-              ExplicitHeight = 264
               object pnl3: TPanel
                 Left = 0
                 Top = 189
@@ -1051,8 +1052,6 @@
                 Align = alBottom
                 BevelOuter = bvNone
                 TabOrder = 2
-                ExplicitTop = 185
-                ExplicitWidth = 692
                 object cxdbtxtdtDIRECCION1_CLIENTE: TcxDBTextEdit
                   Left = 17
                   Top = 37
@@ -1179,11 +1178,11 @@
         end
       end
       inherited tsPerfil: TcxTabSheet
-        ExplicitWidth = 703
-        ExplicitHeight = 445
+        ExplicitWidth = 705
+        ExplicitHeight = 447
         inherited pnlPerfilTop: TPanel
           Width = 705
-          ExplicitWidth = 703
+          ExplicitWidth = 705
         end
         inherited pnlPerfilDetail: TPanel
           Width = 705
@@ -1202,12 +1201,12 @@
     inherited pnlTopPage: TPanel
       Width = 714
       TabOrder = 0
-      ExplicitWidth = 712
+      ExplicitWidth = 714
       inherited pnlTopGrid: TPanel
         Width = 714
-        ExplicitWidth = 710
+        ExplicitWidth = 714
         inherited edtBusqGlobal: TcxTextEdit
-          TabOrder = 2
+          TabOrder = 3
         end
         inherited nvNavegador: TcxDBNavigator
           Top = 5
@@ -1237,14 +1236,14 @@
     end
     inherited pButtonBDStat: TPanel
       Width = 154
-      ExplicitWidth = 152
+      ExplicitWidth = 154
       inherited pnStateDataSet: TPanel
         Width = 154
-        ExplicitWidth = 152
+        ExplicitWidth = 154
       end
       inherited pnlDataSetName: TPanel
         Width = 154
-        ExplicitWidth = 152
+        ExplicitWidth = 154
       end
     end
     object btnNuevoProveedor: TcxButton

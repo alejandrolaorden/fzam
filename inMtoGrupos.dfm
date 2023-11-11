@@ -1,5 +1,6 @@
 inherited frmMtoGrupos: TfrmMtoGrupos
   Caption = 'Grupos'
+  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 19
   inherited pButtonPage: TPanel
@@ -78,8 +79,6 @@ inherited frmMtoGrupos: TfrmMtoGrupos
           Margins.Bottom = 4
           Align = alClient
           TabOrder = 1
-          ExplicitWidth = 933
-          ExplicitHeight = 318
           object tvUsuarios: TcxGridDBTableView
             OnDblClick = cxGrdDBTabPrinDblClick
             Navigator.Buttons.ConfirmDelete = True
@@ -153,6 +152,13 @@ inherited frmMtoGrupos: TfrmMtoGrupos
           object cxgrdlvlUsuarios: TcxGridLevel
             GridView = tvUsuarios
           end
+        end
+      end
+    end
+    inherited pnlTopPage: TPanel
+      inherited pnlTopGrid: TPanel
+        inherited edtBusqGlobal: TcxTextEdit
+          ExplicitHeight = 27
         end
       end
     end

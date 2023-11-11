@@ -4,8 +4,9 @@ inherited dmContadores: TdmContadores
     Connection = dmConn.conUni
     SQL.Strings = (
       'SELECT *  '
-      'FROM fza_contadores'
+      'FROM vi_contadores'
       '')
+    Active = True
     Left = 24
   end
 end

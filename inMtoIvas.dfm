@@ -11,8 +11,6 @@ inherited frmMtoIvas: TfrmMtoIvas
         ExplicitWidth = 942
         ExplicitHeight = 480
         inherited cxGrdPrincipal: TcxGrid
-          ExplicitWidth = 942
-          ExplicitHeight = 480
           inherited cxGrdDBTabPrin: TcxGridDBTableView
             OptionsCustomize.ColumnExpressionEditing = True
             OptionsData.Editing = True

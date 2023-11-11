@@ -1,5 +1,6 @@
 inherited frmMtoIvasGrupos: TfrmMtoIvasGrupos
   Caption = 'IVA'
+  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 19
   inherited pButtonPage: TPanel
@@ -61,9 +62,17 @@ inherited frmMtoIvasGrupos: TfrmMtoIvasGrupos
       inherited tsFicha: TcxTabSheet
         Enabled = False
         TabVisible = False
+        ExplicitLeft = 3
         ExplicitTop = 32
         ExplicitWidth = 942
         ExplicitHeight = 480
+      end
+    end
+    inherited pnlTopPage: TPanel
+      inherited pnlTopGrid: TPanel
+        inherited edtBusqGlobal: TcxTextEdit
+          ExplicitHeight = 27
+        end
       end
     end
   end

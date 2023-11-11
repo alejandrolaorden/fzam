@@ -33,6 +33,7 @@ type
     cxGrdDBTabPrinIRPF_IMP_INCL_ZONA_IVA: TcxGridDBColumn;
     cxGrdDBTabPrinESIVAAGRICOLA_ZONA_IVA: TcxGridDBColumn;
     cxGrdDBTabPrinPALABRA_REPORTS_ZONA_IVA: TcxGridDBColumn;
+    procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }
   public
@@ -59,6 +60,12 @@ begin
   inherited;
   dmmIvasGrupos := TdmIvasGrupos.Create(Self);
     pkFieldName := 'GRUPO_ZONA_IVA';
+end;
+
+procedure TfrmMtoIvasGrupos.FormDestroy(Sender: TObject);
+begin
+  inherited;
+  FreeAndNil(dmmIvasGrupos);
 end;
 
 initialization
