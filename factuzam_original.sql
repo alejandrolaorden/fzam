@@ -2709,7 +2709,7 @@ CREATE TABLE `fza_usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci ROW_FORMAT=DYNAMIC;
 
 INSERT INTO `fza_usuarios`(`USUARIO_USUARIO`, `PASSWORD_USUARIO`, `GRUPO_USUARIO`, `EMPRESADEF_USUARIO`, `ULTIMOLOGIN_USUARIO`, `INSTANTEMODIF`, `INSTANTEALTA`, `USUARIOALTA`, `USUARIOMODIF`) VALUES
- ('Administrador','4F8239A5B05A0E22D3DD4D7853808AF3','Administradores','1','2023-11-13 11:38:51','2023-11-13 11:38:51','2021-05-14 19:54:29','Administrador','Administrador');
+ ('Administrador','4F8239A5B05A0E22D3DD4D7853808AF3','Administradores','1','2023-11-13 13:58:20','2023-11-13 13:58:20','2021-05-14 19:54:29','Administrador','Administrador');
 
 DROP TABLE IF EXISTS `fza_usuarios_grupos`;
 CREATE TABLE `fza_usuarios_grupos` (
@@ -7011,6 +7011,7 @@ CREATE TABLE `fza_winforms` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci ROW_FORMAT=DYNAMIC;
 
 INSERT INTO `fza_winforms`(`CALL_WINF`, `CAPTION_WINF`, `MENUITEM_WINF`, `UNITF_WINF`, `SHORTCUT_WINF`) VALUES
+ ('AcercaDe','Acerca del autor','mnuAcercade','inMtoSplash.TfrmSplash',NULL),
  ('Articulos','Artículos','mnuArticulos','inMtoArticulos.TfrmMtoArticulos','A'),
  ('Clientes','Clientes','mnuClientes','inMtoClientes.TfrmMtoClientes','K'),
  ('Contadores','Contadores','mnuContadores','inMtoContadores.TfrmMtoContadores','R'),
