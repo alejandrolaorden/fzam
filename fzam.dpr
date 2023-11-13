@@ -66,7 +66,8 @@ uses
   inLibNet in 'inLibNet.pas',
   vcl.consts in 'vcl\vcl.consts.pas',
   system.sysconst in 'vcl\system.sysconst.pas',
-  inLibScriptDB in 'inLibScriptDB.pas';
+  inLibScriptDB in 'inLibScriptDB.pas',
+  inMtoSplash in 'inMtoSplash.pas' {frmSplash};
 
 begin
     {$IFDEF DEBUG}

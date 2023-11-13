@@ -65,6 +65,8 @@ type
     pnlPPBottom: TPanel;
     ApplicationEvents1: TApplicationEvents;
     cxMemo1: TcxMemo;
+    frmHelp: TMenuItem;
+    mnuAcercade: TMenuItem;
     procedure mnuEmpresasClick(Sender: TObject);
     procedure mnuClientesClick(Sender: TObject);
     procedure mnuProveedoresClick(Sender: TObject);
@@ -88,9 +90,10 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure sbCerrarClick(Sender: TObject);
+    procedure mnuAcercadeClick(Sender: TObject);
   private
     FException: boolean;
-    procedure AppException(Sender: TObject; E: Exception);
+//    procedure AppException(Sender: TObject; E: Exception);
     procedure CopiaSeguridad;
     function IsShortCut(var Message: TWMKey): Boolean; override;
   public
@@ -112,6 +115,7 @@ uses inLibUser,
   inLibGlobalVar,
   inLibLog,
   inLibDir,
+  inMtoSplash,
   inMtoClientes,
   inMtoEmpresas,
   inMtoIvas,
@@ -180,13 +184,13 @@ begin
             'Tarifas');
 end;
 
-procedure TfrmOpenApp2.AppException(Sender: TObject; E: Exception);
-begin
+//procedure TfrmOpenApp2.AppException(Sender: TObject; E: Exception);
+//begin
   //OJO!!! DA PROBLEMAS!!!!
   //Log(oConn, oUser, E.Message, Sender, tlCritical, E.ClassName);
   //('ERROR de clase:' + E.ClassName + ' with Message: ' + E.Message);
   //Exit;
-end;
+//end;
 
 procedure TfrmOpenApp2.CopiasdeSeguridad1Click(Sender: TObject);
 begin
@@ -394,6 +398,19 @@ begin
   begin
     dxstsbr1.Panels.Items[3].Text := '' + ADateStr + ' ' +
                                             ATimeStr + 'NO Conn';
+  end;
+end;
+
+procedure TfrmOpenApp2.mnuAcercadeClick(Sender: TObject);
+var
+  frmSplash: TfrmSplash;
+begin
+  inherited;
+  try
+    frmSplash := TfrmSplash.Create(Self);
+    frmSplash.ShowModal;
+  finally
+    FreeAndNil(frmSplash);
   end;
 end;
 

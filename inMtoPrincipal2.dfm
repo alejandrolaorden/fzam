@@ -1799,6 +1799,13 @@ inherited frmOpenApp2: TfrmOpenApp2
         Visible = False
       end
     end
+    object frmHelp: TMenuItem
+      Caption = 'A&yuda'
+      object mnuAcercade: TMenuItem
+        Caption = 'Acerca de'
+        OnClick = mnuAcercadeClick
+      end
+    end
   end
   object undmp1: TUniDump
     SpecificOptions.Strings = (

@@ -331,6 +331,10 @@
         <DCCReference Include="vcl\vcl.consts.pas"/>
         <DCCReference Include="vcl\system.sysconst.pas"/>
         <DCCReference Include="inLibScriptDB.pas"/>
+        <DCCReference Include="inMtoSplash.pas">
+            <Form>frmSplash</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -390,6 +394,12 @@
                     <Platform Name="OSX64">
                         <RemoteDir>Contents\Resources</RemoteDir>
                         <RemoteName>fzam.icns</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Win64\Release\fzam.exe" Configuration="Release" Class="ProjectOutput">
+                    <Platform Name="Win64">
+                        <RemoteName>fzam.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
