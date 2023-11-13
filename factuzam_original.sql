@@ -2709,7 +2709,7 @@ CREATE TABLE `fza_usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci ROW_FORMAT=DYNAMIC;
 
 INSERT INTO `fza_usuarios`(`USUARIO_USUARIO`, `PASSWORD_USUARIO`, `GRUPO_USUARIO`, `EMPRESADEF_USUARIO`, `ULTIMOLOGIN_USUARIO`, `INSTANTEMODIF`, `INSTANTEALTA`, `USUARIOALTA`, `USUARIOMODIF`) VALUES
- ('Administrador','4F8239A5B05A0E22D3DD4D7853808AF3','Administradores','1','2023-11-11 21:45:44','2023-11-11 21:45:44','2021-05-14 19:54:29','Administrador','Administrador');
+ ('Administrador','4F8239A5B05A0E22D3DD4D7853808AF3','Administradores','1','2023-11-13 11:38:51','2023-11-13 11:38:51','2021-05-14 19:54:29','Administrador','Administrador');
 
 DROP TABLE IF EXISTS `fza_usuarios_grupos`;
 CREATE TABLE `fza_usuarios_grupos` (
@@ -4315,7 +4315,7 @@ INSERT INTO `fza_usuarios_perfiles`(`USUARIO_GRUPO_PERFILES`, `KEY_PERFILES`, `S
  ('Todos','frmMtoContadores','btnCargarColumnas_Caption','&Cargar columnas','',NULL,NULL,'2023-01-22 10:13:32','2023-01-22 10:13:32','Administrador','Administrador'),
  ('Todos','frmMtoContadores','btnCargarVblesGlob_Caption','&Cargar Vbles Globales','',NULL,NULL,'2023-01-22 10:13:32','2023-01-22 10:13:32','Administrador','Administrador'),
  ('Todos','frmMtoContadores','btnGrabar_Caption','&Grabar','',NULL,NULL,'2023-01-22 10:13:32','2023-01-22 10:13:32','Administrador','Administrador'),
- ('Todos','frmMtoContadores','btnSalir_Caption','出来','',NULL,NULL,'2023-08-28 14:49:58','2023-01-22 10:13:32','Administrador','Administrador'),
+ ('Todos','frmMtoContadores','btnSalir_Caption','&Salir','',NULL,NULL,'2023-11-13 11:34:34','2023-01-22 10:13:32','Administrador','Administrador'),
  ('Todos','frmMtoContadores','cxGrdDBTabPrin_ACTIVO_CONTADOR_Caption','EsActivo','',NULL,NULL,'2023-01-22 09:51:18','2023-01-22 09:51:18','Administrador','Administrador'),
  ('Todos','frmMtoContadores','cxGrdDBTabPrin_ACTIVO_CONTADOR_Index','4','',NULL,NULL,'2023-01-22 09:51:18','2023-01-22 09:51:18','Administrador','Administrador'),
  ('Todos','frmMtoContadores','cxGrdDBTabPrin_ACTIVO_CONTADOR_Visible','True','',NULL,NULL,'2023-01-22 09:51:18','2023-01-22 09:51:18','Administrador','Administrador'),
@@ -4353,7 +4353,7 @@ INSERT INTO `fza_usuarios_perfiles`(`USUARIO_GRUPO_PERFILES`, `KEY_PERFILES`, `S
  ('Todos','frmMtoContadores','lblTablaOrigen_Caption','fza_contadores','',NULL,NULL,'2023-01-22 10:13:32','2023-01-22 10:13:32','Administrador','Administrador'),
  ('Todos','frmMtoContadores','lblTextoaBuscar_Caption','Texto a buscar','',NULL,NULL,'2023-01-22 10:13:32','2023-01-22 10:13:32','Administrador','Administrador'),
  ('Todos','frmMtoContadores','lblTextoaBuscarPerfil_Caption','Texto a buscar','',NULL,NULL,'2023-01-22 10:13:32','2023-01-22 10:13:32','Administrador','Administrador'),
- ('Todos','frmMtoContadores','oApplyWidth','True','',NULL,NULL,'2023-01-22 10:13:36','2023-01-22 10:13:36','Administrador','Administrador'),
+ ('Todos','frmMtoContadores','oApplyWidth','False','',NULL,NULL,'2023-11-13 11:35:02','2023-01-22 10:13:36','Administrador','Administrador'),
  ('Todos','frmMtoContadores','oBusqGlobal','Database','',NULL,NULL,'2023-01-22 10:13:36','2023-01-22 10:13:36','Administrador','Administrador'),
  ('Todos','frmMtoContadores','oCreateItems','False','',NULL,NULL,'2023-01-22 10:13:36','2023-01-22 10:13:36','Administrador','Administrador'),
  ('Todos','frmMtoContadores','tsFicha_Caption','&Ficha','',NULL,NULL,'2023-01-22 10:13:32','2023-01-22 10:13:32','Administrador','Administrador'),

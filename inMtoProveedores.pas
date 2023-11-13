@@ -44,7 +44,7 @@ type
     cxgrdbclmnGrdDBTabPrinREFERENCIA_CLIENTE: TcxGridDBColumn;
     cxgrdbclmnGrdDBTabPrinTELEFONO_CLIENTE: TcxGridDBColumn;
     pnlCabFicha: TPanel;
-    cxdbtxtdtCODIGO_CLIENTE: TcxDBTextEdit;
+    txtCODIGO_PROVEEDOR: TcxDBTextEdit;
     lblCodigo: TcxLabel;
     txtRAZONSOCIAL_PROVEEDOR: TcxDBTextEdit;
     lblRazonSocial: TcxLabel;
@@ -166,6 +166,7 @@ type
     procedure actClientesExecute(Sender: TObject);
     procedure btnExportarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure dsTablaGStateChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -299,6 +300,17 @@ begin
   tvLinFac.DataController.DataSource := dmmProveedores.dsLinFacturasArticulos;
   pcPestanas.ActivePage := tsDomicilioFiscal;
   pkFieldName := 'CODIGO_PROVEEDOR';
+end;
+
+procedure TfrmMtoProveedores.dsTablaGStateChange(Sender: TObject);
+begin
+  inherited;
+  if (dsTablaG.State = dsInsert) then
+    txtCODIGO_PROVEEDOR.Enabled := True
+  else
+  begin
+    txtCODIGO_PROVEEDOR.Enabled := False;
+  end;
 end;
 
 procedure TfrmMtoProveedores.FormClose(Sender: TObject;

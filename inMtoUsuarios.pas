@@ -36,6 +36,7 @@ type
     cxgrdbclmnGrdDBTabPrinRAZONSOCIAL_EMPRESA: TcxGridDBColumn;
     cxgrdbclmnGrdDBTabPrinESGRUPOADMINISTRADOR_GRUPO: TcxGridDBColumn;
     procedure btSetPassClick(Sender: TObject);
+    procedure dsTablaGStateChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -90,6 +91,17 @@ begin
                                                          dmmUsuarios.dsEmpresas;
   dmmUsuarios.unqryEmpresas.Open;
   pkFieldName := 'USUARIO_USUARIO';
+end;
+
+procedure TfrmMtoUsuarios.dsTablaGStateChange(Sender: TObject);
+begin
+  inherited;
+  if (dsTablaG.State = dsInsert) then
+    cxGrdDBTabPrinUSUARIO_USUARIO.Properties.ReadOnly := False
+  else
+  begin
+    cxGrdDBTabPrinUSUARIO_USUARIO.Properties.ReadOnly := True;
+  end;
 end;
 
 initialization

@@ -47,6 +47,7 @@ type
     procedure cxgrdbclmnGrdDBTabPrinGRUPO_ZONA_IVAPropertiesChange(
       Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure dsTablaGStateChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -87,18 +88,21 @@ begin
   //           dmmIVAS.unqryZonasIVA.FieldByName('DESCRIPCION_ZONA_IVA').AsString;
 end;
 
+procedure TfrmMtoIvas.dsTablaGStateChange(Sender: TObject);
+begin
+  inherited;
+  if (dsTAblaG.State = dsInsert) then
+    cxgrdbclmnGrdDBTabPrinCODIGO_IVA.Properties.ReadOnly := False
+  else
+    cxgrdbclmnGrdDBTabPrinCODIGO_IVA.Properties.ReadOnly := True;
+end;
+
 procedure TfrmMtoIvas.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   inherited;
   FreeAndNil(dmmIvas);
 end;
 
-//procedure TfrmMtoIvas.tsFichaEnter(Sender: TObject);
-//begin
-//  inherited;
-//  //cxdbtxtdtRAZON_SOCIAL.SetFocus;
-//  //pcPestanas.ActivePage := tsDomicilioFiscal;
-//end;
 initialization
   ForceReferenceToClass(TfrmMtoIvas);
 

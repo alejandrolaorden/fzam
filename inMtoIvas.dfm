@@ -190,11 +190,11 @@ inherited frmMtoIvas: TfrmMtoIvas
         ExplicitWidth = 942
         ExplicitHeight = 480
       end
-    end
-    inherited pnlTopPage: TPanel
-      inherited pnlTopGrid: TPanel
-        inherited edtBusqGlobal: TcxTextEdit
-          ExplicitHeight = 27
+      inherited tsPerfil: TcxTabSheet
+        inherited pnlPerfilTop: TPanel
+          inherited edtPerfilBusq: TcxTextEdit
+            ExplicitHeight = 27
+          end
         end
       end
     end

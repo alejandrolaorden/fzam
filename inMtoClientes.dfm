@@ -21,15 +21,17 @@ inherited frmMtoClientes: TfrmMtoClientes
       ClientRectBottom = 558
       ClientRectRight = 925
       inherited tsLista: TcxTabSheet
-        ExplicitWidth = 920
-        ExplicitHeight = 524
+        ExplicitLeft = 3
+        ExplicitTop = 32
+        ExplicitWidth = 922
+        ExplicitHeight = 526
         inherited cxGrdPrincipal: TcxGrid
           Width = 922
           Height = 526
           Font.Pitch = fpDefault
           ParentFont = False
-          ExplicitWidth = 920
-          ExplicitHeight = 524
+          ExplicitWidth = 922
+          ExplicitHeight = 526
           inherited cxGrdDBTabPrin: TcxGridDBTableView
             object cxgrdbclmnGrdDBTabPrinCODIGO_CLIENTE: TcxGridDBColumn
               Caption = 'C'#243'digo'
@@ -182,6 +184,8 @@ inherited frmMtoClientes: TfrmMtoClientes
         end
       end
       inherited tsFicha: TcxTabSheet
+        ExplicitLeft = 3
+        ExplicitTop = 32
         ExplicitWidth = 922
         ExplicitHeight = 526
         object pnl1: TPanel
@@ -821,10 +825,6 @@ inherited frmMtoClientes: TfrmMtoClientes
             object tsHistoriaFacturacion: TcxTabSheet
               Caption = '&3_Historia Facturaci'#243'n'
               ImageIndex = 3
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 909
-              ExplicitHeight = 301
               object pnlFacturaCli: TPanel
                 Left = 0
                 Top = 0
@@ -833,8 +833,6 @@ inherited frmMtoClientes: TfrmMtoClientes
                 Align = alClient
                 BevelOuter = bvNone
                 TabOrder = 0
-                ExplicitWidth = 909
-                ExplicitHeight = 301
                 object cxgrdClientesFacturas: TcxGrid
                   Left = 0
                   Top = 0
@@ -846,10 +844,6 @@ inherited frmMtoClientes: TfrmMtoClientes
                   Margins.Bottom = 4
                   Align = alClient
                   TabOrder = 0
-                  ExplicitLeft = 1
-                  ExplicitTop = 1
-                  ExplicitWidth = 790
-                  ExplicitHeight = 299
                   object tvFacturacion: TcxGridDBTableView
                     Navigator.Buttons.ConfirmDelete = True
                     Navigator.Buttons.CustomButtons = <>
@@ -1192,9 +1186,6 @@ inherited frmMtoClientes: TfrmMtoClientes
                   Align = alRight
                   BevelOuter = bvNone
                   TabOrder = 1
-                  ExplicitLeft = 791
-                  ExplicitTop = 1
-                  ExplicitHeight = 299
                   object btnIraFactura: TcxButton
                     Left = 6
                     Top = 16
@@ -1238,10 +1229,6 @@ inherited frmMtoClientes: TfrmMtoClientes
               Caption = 'Historia Presupuestos'
               ImageIndex = 4
               TabVisible = False
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 909
-              ExplicitHeight = 301
               object cxgrd3: TcxGrid
                 Left = 0
                 Top = 0
@@ -1253,8 +1240,6 @@ inherited frmMtoClientes: TfrmMtoClientes
                 Margins.Bottom = 4
                 Align = alClient
                 TabOrder = 0
-                ExplicitWidth = 909
-                ExplicitHeight = 301
                 object tv2: TcxGridDBTableView
                   Navigator.Buttons.ConfirmDelete = True
                   Navigator.Buttons.CustomButtons = <>
@@ -1597,7 +1582,6 @@ inherited frmMtoClientes: TfrmMtoClientes
           HotZoneClassName = 'TcxMediaPlayer9Style'
           AlignSplitter = salTop
           Control = pnl1
-          ExplicitWidth = 920
         end
       end
       inherited tsPerfil: TcxTabSheet
@@ -1606,17 +1590,20 @@ inherited frmMtoClientes: TfrmMtoClientes
         inherited pnlPerfilTop: TPanel
           Width = 922
           ExplicitWidth = 922
+          inherited edtPerfilBusq: TcxTextEdit
+            ExplicitHeight = 27
+          end
         end
         inherited pnlPerfilDetail: TPanel
           Width = 922
           Height = 469
-          ExplicitWidth = 920
-          ExplicitHeight = 467
+          ExplicitWidth = 922
+          ExplicitHeight = 469
           inherited cxgrdPerfil: TcxGrid
             Width = 922
             Height = 469
-            ExplicitWidth = 918
-            ExplicitHeight = 465
+            ExplicitWidth = 922
+            ExplicitHeight = 469
           end
         end
       end
@@ -1629,7 +1616,7 @@ inherited frmMtoClientes: TfrmMtoClientes
         Width = 931
         ExplicitWidth = 931
         inherited edtBusqGlobal: TcxTextEdit
-          TabOrder = 2
+          TabOrder = 3
         end
         inherited nvNavegador: TcxDBNavigator
           Top = 5
@@ -1652,7 +1639,7 @@ inherited frmMtoClientes: TfrmMtoClientes
     inherited pButtonGen: TPanel
       Top = 406
       TabOrder = 2
-      ExplicitTop = 405
+      ExplicitTop = 406
     end
     object btnNuevoCliente: TcxButton
       Left = 1

@@ -34,6 +34,7 @@ type
     cxGrdDBTabPrinESIVAAGRICOLA_ZONA_IVA: TcxGridDBColumn;
     cxGrdDBTabPrinPALABRA_REPORTS_ZONA_IVA: TcxGridDBColumn;
     procedure FormDestroy(Sender: TObject);
+    procedure dsTablaGStateChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -60,6 +61,17 @@ begin
   inherited;
   dmmIvasGrupos := TdmIvasGrupos.Create(Self);
     pkFieldName := 'GRUPO_ZONA_IVA';
+end;
+
+procedure TfrmMtoIvasGrupos.dsTablaGStateChange(Sender: TObject);
+begin
+  inherited;
+  if (dsTablaG.State = dsInsert) then
+    cxgrdbclmnGrdDBTabPrinGRUPO_ZONA_IVA.Properties.ReadOnly := False
+  else
+  begin
+    cxgrdbclmnGrdDBTabPrinGRUPO_ZONA_IVA.Properties.ReadOnly := True;
+  end;
 end;
 
 procedure TfrmMtoIvasGrupos.FormDestroy(Sender: TObject);

@@ -6,16 +6,17 @@ inherited frmMtoGrupos: TfrmMtoGrupos
   inherited pButtonPage: TPanel
     inherited pcPantalla: TcxPageControl
       inherited tsLista: TcxTabSheet
-        ExplicitTop = 27
-        ExplicitWidth = 880
-        ExplicitHeight = 450
+        ExplicitLeft = 3
+        ExplicitTop = 32
+        ExplicitWidth = 942
+        ExplicitHeight = 480
         inherited cxGrdPrincipal: TcxGrid
           inherited cxGrdDBTabPrin: TcxGridDBTableView
             OptionsData.Editing = True
             object cxGrdDBTabPrinGRUPO_USUARIO: TcxGridDBColumn
               Caption = 'Nombre Grupo'
               DataBinding.FieldName = 'GRUPO_GRUPO'
-              Width = 117
+              Width = 136
             end
             object cxGrdDBTabPrinESGRUPOADMINISTRADOR: TcxGridDBColumn
               Caption = 'Es Grupo Administrador'
@@ -47,11 +48,11 @@ inherited frmMtoGrupos: TfrmMtoGrupos
           end
           object cxLabel2: TcxLabel
             Left = 24
-            Top = 71
+            Top = 75
             Caption = 'Es grupo administradores'
           end
-          object cxDBTextEdit1: TcxDBTextEdit
-            Left = 180
+          object txtNOMBRE_GRUPO: TcxDBTextEdit
+            Left = 221
             Top = 38
             DataBinding.DataField = 'GRUPO_GRUPO'
             DataBinding.DataSource = dsTablaG
@@ -59,8 +60,8 @@ inherited frmMtoGrupos: TfrmMtoGrupos
             Width = 197
           end
           object cxDBCheckBox1: TcxDBCheckBox
-            Left = 180
-            Top = 70
+            Left = 254
+            Top = 77
             DataBinding.DataField = 'ESGRUPOADMINISTRADOR_GRUPO'
             DataBinding.DataSource = dsTablaG
             Properties.ValueChecked = 'S'
@@ -154,11 +155,11 @@ inherited frmMtoGrupos: TfrmMtoGrupos
           end
         end
       end
-    end
-    inherited pnlTopPage: TPanel
-      inherited pnlTopGrid: TPanel
-        inherited edtBusqGlobal: TcxTextEdit
-          ExplicitHeight = 27
+      inherited tsPerfil: TcxTabSheet
+        inherited pnlPerfilTop: TPanel
+          inherited edtPerfilBusq: TcxTextEdit
+            ExplicitHeight = 27
+          end
         end
       end
     end

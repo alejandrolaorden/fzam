@@ -2,36 +2,37 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
   Left = 5
   Top = 4
   Caption = 'Formas de pago'
-  ClientHeight = 571
-  ClientWidth = 849
+  ClientHeight = 674
+  ClientWidth = 894
   OnDestroy = FormDestroy
-  ExplicitWidth = 849
-  ExplicitHeight = 571
+  ExplicitWidth = 894
+  ExplicitHeight = 674
   PixelsPerInch = 96
   TextHeight = 19
   inherited pButtonPage: TPanel
-    Width = 709
-    Height = 571
+    Width = 754
+    Height = 674
     TabOrder = 0
     ExplicitWidth = 709
     ExplicitHeight = 571
     inherited pcPantalla: TcxPageControl
-      Width = 709
-      Height = 531
+      Width = 754
+      Height = 634
       TabOrder = 1
       ExplicitWidth = 709
       ExplicitHeight = 531
-      ClientRectBottom = 525
-      ClientRectRight = 703
+      ClientRectBottom = 628
+      ClientRectRight = 748
       inherited tsLista: TcxTabSheet
-        ExplicitTop = 30
-        ExplicitWidth = 723
-        ExplicitHeight = 538
+        ExplicitLeft = 3
+        ExplicitTop = 32
+        ExplicitWidth = 700
+        ExplicitHeight = 493
         inherited cxGrdPrincipal: TcxGrid
-          Width = 723
-          Height = 538
-          ExplicitWidth = 723
-          ExplicitHeight = 538
+          Width = 745
+          Height = 596
+          ExplicitWidth = 700
+          ExplicitHeight = 493
           inherited cxGrdDBTabPrin: TcxGridDBTableView
             object cxGrdDBTabPrinCODIGO_FORMAPAGO: TcxGridDBColumn
               DataBinding.FieldName = 'CODIGO_FORMAPAGO'
@@ -66,16 +67,18 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
         end
       end
       inherited tsFicha: TcxTabSheet
+        ExplicitLeft = 3
         ExplicitTop = 32
         ExplicitWidth = 700
         ExplicitHeight = 493
         object pnl1: TPanel
           Left = 0
           Top = 0
-          Width = 700
+          Width = 745
           Height = 113
           Align = alTop
           TabOrder = 0
+          ExplicitWidth = 700
           object cxdbtxtdt1: TcxDBTextEdit
             Left = 104
             Top = 33
@@ -104,11 +107,12 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
           object Panel1: TPanel
             Left = 1
             Top = 1
-            Width = 698
+            Width = 743
             Height = 111
             Align = alClient
             TabOrder = 0
-            object txtCODIGO_FAMILIA: TcxDBTextEdit
+            ExplicitWidth = 698
+            object txtCODIGO_FORMAPAGO: TcxDBTextEdit
               Left = 101
               Top = 13
               DataBinding.DataField = 'CODIGO_FORMAPAGO'
@@ -129,7 +133,7 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
               Caption = 'Nombre'
               Transparent = True
             end
-            object txtNOMBRE_FAMILIA: TcxDBTextEdit
+            object txtNOMBRE_FORMAPAGO: TcxDBTextEdit
               Left = 100
               Top = 48
               DataBinding.DataField = 'DESCRIPCION_FORMAPAGO'
@@ -153,28 +157,32 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
         object pnl2: TPanel
           Left = 0
           Top = 117
-          Width = 700
-          Height = 376
+          Width = 745
+          Height = 479
           Align = alClient
           TabOrder = 1
+          ExplicitWidth = 700
+          ExplicitHeight = 376
           object pcPestana: TcxPageControl
             Left = 1
             Top = 1
-            Width = 698
-            Height = 374
+            Width = 743
+            Height = 477
             Align = alClient
             TabOrder = 0
             Properties.ActivePage = tsArticulos
             Properties.CustomButtons.Buttons = <>
-            ClientRectBottom = 368
+            ExplicitWidth = 698
+            ExplicitHeight = 374
+            ClientRectBottom = 471
             ClientRectLeft = 3
-            ClientRectRight = 692
+            ClientRectRight = 737
             ClientRectTop = 32
             object tsMasDatos: TcxTabSheet
               Caption = '&1_M'#225's Datos'
               ImageIndex = 0
-              ExplicitWidth = 687
-              ExplicitHeight = 334
+              ExplicitWidth = 689
+              ExplicitHeight = 336
               object cxLabel1: TcxLabel
                 Left = 28
                 Top = 32
@@ -225,24 +233,30 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
             object tsArticulos: TcxTabSheet
               Caption = '&2_Ventas'
               ImageIndex = 2
+              ExplicitWidth = 689
+              ExplicitHeight = 336
               object pnlFactura: TPanel
                 Left = 0
                 Top = 0
-                Width = 689
-                Height = 336
+                Width = 734
+                Height = 439
                 Align = alClient
                 TabOrder = 0
+                ExplicitWidth = 689
+                ExplicitHeight = 336
                 object cxgrdFacturas: TcxGrid
                   Left = 1
                   Top = 1
-                  Width = 575
-                  Height = 334
+                  Width = 620
+                  Height = 437
                   Margins.Left = 4
                   Margins.Top = 4
                   Margins.Right = 4
                   Margins.Bottom = 4
                   Align = alClient
                   TabOrder = 0
+                  ExplicitWidth = 575
+                  ExplicitHeight = 334
                   object tvFacturacion: TcxGridDBTableView
                     Navigator.Buttons.ConfirmDelete = True
                     Navigator.Buttons.CustomButtons = <>
@@ -586,12 +600,14 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
                   end
                 end
                 object pnlFacturaOpts: TPanel
-                  Left = 576
+                  Left = 621
                   Top = 1
                   Width = 112
-                  Height = 334
+                  Height = 437
                   Align = alRight
                   TabOrder = 1
+                  ExplicitLeft = 576
+                  ExplicitHeight = 334
                   object btIraFactura: TcxButton
                     Left = 6
                     Top = 16
@@ -622,17 +638,17 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
             object tsOtros: TcxTabSheet
               Caption = '&3_Otros'
               ImageIndex = 3
-              ExplicitWidth = 687
-              ExplicitHeight = 334
+              ExplicitWidth = 689
+              ExplicitHeight = 336
               object pnl3: TPanel
                 Left = 0
-                Top = 257
-                Width = 689
+                Top = 360
+                Width = 734
                 Height = 79
                 Align = alBottom
                 TabOrder = 0
-                ExplicitTop = 255
-                ExplicitWidth = 687
+                ExplicitTop = 257
+                ExplicitWidth = 689
                 object cxdbtxtdtDIRECCION1_CLIENTE: TcxDBTextEdit
                   Left = 17
                   Top = 37
@@ -746,52 +762,56 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
         object cxspltr1: TcxSplitter
           Left = 0
           Top = 113
-          Width = 700
+          Width = 745
           Height = 4
           HotZoneClassName = 'TcxMediaPlayer9Style'
           AlignSplitter = salTop
           Control = pnl1
+          ExplicitWidth = 700
         end
       end
       inherited tsPerfil: TcxTabSheet
-        ExplicitWidth = 698
-        ExplicitHeight = 491
+        ExplicitWidth = 700
+        ExplicitHeight = 493
         inherited pnlPerfilTop: TPanel
-          Width = 700
-          ExplicitWidth = 698
+          Width = 745
+          ExplicitWidth = 700
+          inherited edtPerfilBusq: TcxTextEdit
+            ExplicitHeight = 27
+          end
         end
         inherited pnlPerfilDetail: TPanel
-          Width = 700
-          Height = 436
-          ExplicitWidth = 723
-          ExplicitHeight = 481
+          Width = 745
+          Height = 539
+          ExplicitWidth = 700
+          ExplicitHeight = 436
           inherited cxgrdPerfil: TcxGrid
-            Width = 721
-            Height = 479
-            ExplicitWidth = 721
-            ExplicitHeight = 479
+            Width = 745
+            Height = 539
+            ExplicitWidth = 700
+            ExplicitHeight = 436
           end
         end
       end
     end
     inherited pnlTopPage: TPanel
-      Width = 709
+      Width = 754
       TabOrder = 0
       ExplicitWidth = 709
       inherited pnlTopGrid: TPanel
-        Width = 709
+        Width = 754
         ExplicitWidth = 709
       end
     end
   end
   inherited pButtonRightBar: TPanel
-    Left = 709
-    Height = 571
+    Left = 754
+    Height = 674
     TabOrder = 1
     ExplicitLeft = 709
     ExplicitHeight = 571
     inherited pButtonGen: TPanel
-      Top = 373
+      Top = 476
       ExplicitTop = 373
     end
   end

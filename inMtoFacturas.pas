@@ -941,7 +941,15 @@ end;
 procedure TfrmMtoFacturas.dsTablaGStateChange(Sender: TObject);
 begin
   inherited;
+
   if (dmmFacturas <> nil) then
+  begin
+    if (dsTablaG.State = dsInsert) then
+      txtNRO_FACTURA.Enabled := True
+    else
+    begin
+      txtNRO_FACTURA.Enabled := False;
+    end;
     if (dsTablaG.DataSet.State <> dsInsert) then
     begin
       txtNRO_FACTURA.Properties.ReadOnly := True;
@@ -967,6 +975,7 @@ begin
       btnRectificar.Enabled := True;
       btnImprimir.Enabled := True;
     end;
+  end;
 end;
 
 procedure TfrmMtoFacturas.dteFECHA_FACTURAKeyUp(Sender: TObject;

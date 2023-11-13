@@ -16,24 +16,24 @@
       Width = 714
       Height = 485
       TabOrder = 1
-      Properties.ActivePage = tsLista
-      ExplicitWidth = 712
-      ExplicitHeight = 483
+      ExplicitWidth = 714
+      ExplicitHeight = 485
       ClientRectBottom = 479
       ClientRectRight = 708
       inherited tsLista: TcxTabSheet
-        ExplicitWidth = 703
-        ExplicitHeight = 445
+        ExplicitLeft = 3
+        ExplicitTop = 32
+        ExplicitWidth = 705
+        ExplicitHeight = 447
         inherited cxGrdPrincipal: TcxGrid
           Width = 705
           Height = 447
-          ExplicitWidth = 703
-          ExplicitHeight = 445
+          ExplicitWidth = 705
+          ExplicitHeight = 447
           inherited cxGrdDBTabPrin: TcxGridDBTableView
             object cxgrdbclmnGrdDBTabPrinCODIGO_CLIENTE: TcxGridDBColumn
               Caption = 'C'#243'digo'
               DataBinding.FieldName = 'CODIGO_PROVEEDOR'
-              Styles.Header = frmOpenApp2.StylCab
               Width = 81
             end
             object cxgrdbclmnGrdDBTabPrinACTIVO_CLIENTE: TcxGridDBColumn
@@ -42,137 +42,118 @@
               PropertiesClassName = 'TcxCheckBoxProperties'
               Properties.ValueChecked = 'S'
               Properties.ValueUnchecked = 'N'
-              Styles.Header = frmOpenApp2.StylCab
               Width = 67
             end
             object cxgrdbclmnGrdDBTabPrinRAZONSOCIAL_CLIENTE: TcxGridDBColumn
               Caption = 'Raz'#243'n Social'
               DataBinding.FieldName = 'RAZONSOCIAL_PROVEEDOR'
-              Styles.Header = frmOpenApp2.StylCab
               Width = 212
             end
             object cxgrdbclmnGrdDBTabPrinNIF_CLIENTE: TcxGridDBColumn
               Caption = 'Nif Cif'
               DataBinding.FieldName = 'NIF_PROVEEDOR'
               PropertiesClassName = 'TcxMaskEditProperties'
-              Styles.Header = frmOpenApp2.StylCab
               Width = 104
             end
             object cxgrdbclmnGrdDBTabPrinMOVIL_CLIENTE: TcxGridDBColumn
               Caption = 'Tel'#233'fono M'#243'vil'
               DataBinding.FieldName = 'MOVIL_PROVEEDOR'
-              Styles.Header = frmOpenApp2.StylCab
               Width = 113
             end
             object cxgrdbclmnGrdDBTabPrinTELEFONO_CLIENTE: TcxGridDBColumn
               Caption = 'Tel'#233'fono Fijo'
               DataBinding.FieldName = 'TELEFONO_PROVEEDOR'
-              Styles.Header = frmOpenApp2.StylCab
               Width = 121
             end
             object cxgrdbclmnGrdDBTabPrinEMAIL_CLIENTE: TcxGridDBColumn
               Caption = 'Email'
               DataBinding.FieldName = 'EMAIL_PROVEEDOR'
-              Styles.Header = frmOpenApp2.StylCab
               Width = 196
             end
             object cxgrdbclmnGrdDBTabPrinDIRECCION1_CLIENTE: TcxGridDBColumn
               Caption = 'Direcci'#243'n'
               DataBinding.FieldName = 'DIRECCION1_PROVEEDOR'
-              Styles.Header = frmOpenApp2.StylCab
               Width = 251
             end
             object cxgrdbclmnGrdDBTabPrinDIRECCION2_CLIENTE: TcxGridDBColumn
               Caption = 'M'#225's Direcci'#243'n'
               DataBinding.FieldName = 'DIRECCION2_PROVEEDOR'
-              Styles.Header = frmOpenApp2.StylCab
               Width = 77
             end
             object cxgrdbclmnGrdDBTabPrinPOBLACION_CLIENTE: TcxGridDBColumn
               Caption = 'Poblaci'#243'n'
               DataBinding.FieldName = 'POBLACION_PROVEEDOR'
-              Styles.Header = frmOpenApp2.StylCab
               Width = 146
             end
             object cxgrdbclmnGrdDBTabPrinPROVINCIA_CLIENTE: TcxGridDBColumn
               Caption = 'Provincia'
               DataBinding.FieldName = 'PROVINCIA_PROVEEDOR'
-              Styles.Header = frmOpenApp2.StylCab
               Width = 135
             end
             object cxgrdbclmnGrdDBTabPrinCPOSTAL_CLIENTE: TcxGridDBColumn
               Caption = 'C'#243'digo Postal'
               DataBinding.FieldName = 'CPOSTAL_PROVEEDOR'
-              Styles.Header = frmOpenApp2.StylCab
               Width = 95
             end
             object cxgrdbclmnGrdDBTabPrinPAIS_CLIENTE: TcxGridDBColumn
               Caption = 'Pa'#237's'
               DataBinding.FieldName = 'PAIS_PROVEEDOR'
-              Styles.Header = frmOpenApp2.StylCab
               Width = 118
             end
             object cxgrdbclmnGrdDBTabPrinOBSERVACIONES_CLIENTE: TcxGridDBColumn
               Caption = 'Observaciones'
               DataBinding.FieldName = 'OBSERVACIONES_PROVEEDOR'
-              Styles.Header = frmOpenApp2.StylCab
               Width = 192
             end
             object cxgrdbclmnGrdDBTabPrinREFERENCIA_CLIENTE: TcxGridDBColumn
               Caption = 'Referencia'
               DataBinding.FieldName = 'REFERENCIA_PROVEEDOR'
-              Styles.Header = frmOpenApp2.StylCab
               Width = 184
             end
             object cxgrdbclmnGrdDBTabPrinCONTACTO_CLIENTE: TcxGridDBColumn
               Caption = 'Contacto'
               DataBinding.FieldName = 'CONTACTO_PROVEEDOR'
-              Styles.Header = frmOpenApp2.StylCab
               Width = 151
             end
             object cxgrdbclmnGrdDBTabPrinTELEFONO_CONTACTO_CLIENTE: TcxGridDBColumn
               Caption = 'Tel'#233'fono de Contacto'
               DataBinding.FieldName = 'TELEFONO_CONTACTO_PROVEEDOR'
-              Styles.Header = frmOpenApp2.StylCab
               Width = 140
             end
             object cxgrdbclmnGrdDBTabPrinIBAN_CLIENTE: TcxGridDBColumn
               Caption = 'Nro Cuenta'
               DataBinding.FieldName = 'IBAN_PROVEEDOR'
               Visible = False
-              Styles.Header = frmOpenApp2.StylCab
               Width = 50
             end
             object cxgrdbclmnGrdDBTabPrinINSTANTEMODIF: TcxGridDBColumn
               DataBinding.FieldName = 'INSTANTEMODIF'
               PropertiesClassName = 'TcxDateEditProperties'
               Visible = False
-              Styles.Header = frmOpenApp2.StylCab
             end
             object cxgrdbclmnGrdDBTabPrinINSTANTEALTA: TcxGridDBColumn
               DataBinding.FieldName = 'INSTANTEALTA'
               PropertiesClassName = 'TcxDateEditProperties'
               Visible = False
-              Styles.Header = frmOpenApp2.StylCab
             end
             object cxgrdbclmnGrdDBTabPrinUSUARIOALTA: TcxGridDBColumn
               DataBinding.FieldName = 'USUARIOALTA'
               Visible = False
-              Styles.Header = frmOpenApp2.StylCab
               Width = 74
             end
             object cxgrdbclmnGrdDBTabPrinUSUARIOMODIF: TcxGridDBColumn
               DataBinding.FieldName = 'USUARIOMODIF'
               Visible = False
-              Styles.Header = frmOpenApp2.StylCab
               Width = 108
             end
           end
         end
       end
       inherited tsFicha: TcxTabSheet
-        ExplicitWidth = 703
-        ExplicitHeight = 445
+        ExplicitLeft = 3
+        ExplicitTop = 32
+        ExplicitWidth = 705
+        ExplicitHeight = 447
         object pnlCabFicha: TPanel
           Left = 0
           Top = 0
@@ -185,7 +166,7 @@
           Align = alTop
           BevelOuter = bvNone
           TabOrder = 0
-          object cxdbtxtdtCODIGO_CLIENTE: TcxDBTextEdit
+          object txtCODIGO_PROVEEDOR: TcxDBTextEdit
             Left = 41
             Top = 31
             Margins.Left = 4
@@ -331,8 +312,6 @@
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 2
-          ExplicitWidth = 703
-          ExplicitHeight = 304
           object pcPestanas: TcxPageControl
             Left = 0
             Top = 0
@@ -346,10 +325,6 @@
             TabOrder = 0
             Properties.ActivePage = tsVentas
             Properties.CustomButtons.Buttons = <>
-            ExplicitLeft = 1
-            ExplicitTop = 1
-            ExplicitWidth = 701
-            ExplicitHeight = 302
             ClientRectBottom = 300
             ClientRectLeft = 3
             ClientRectRight = 699
@@ -509,10 +484,6 @@
             object tsArticulos: TcxTabSheet
               Caption = '&2_Articulos'
               ImageIndex = 3
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 692
-              ExplicitHeight = 264
               object pnl6: TPanel
                 Left = 578
                 Top = 0
@@ -521,8 +492,6 @@
                 Align = alRight
                 BevelOuter = bvNone
                 TabOrder = 1
-                ExplicitLeft = 574
-                ExplicitHeight = 264
                 object btnIraArticulo: TcxButton
                   Left = 6
                   Top = 13
@@ -541,8 +510,6 @@
                 Align = alClient
                 BevelOuter = bvNone
                 TabOrder = 0
-                ExplicitWidth = 574
-                ExplicitHeight = 264
                 object cxgrdArticulos: TcxGrid
                   Left = 0
                   Top = 0
@@ -554,10 +521,6 @@
                   Margins.Bottom = 4
                   Align = alClient
                   TabOrder = 0
-                  ExplicitLeft = 1
-                  ExplicitTop = 1
-                  ExplicitWidth = 572
-                  ExplicitHeight = 262
                   object tvArticulos: TcxGridDBTableView
                     OnDblClick = cxGrdDBTabPrinDblClick
                     Navigator.Buttons.ConfirmDelete = True
@@ -694,10 +657,6 @@
             object tsVentas: TcxTabSheet
               Caption = '&3_Ventas'
               ImageIndex = 4
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 692
-              ExplicitHeight = 264
               object cxgrdLinFac: TcxGrid
                 Left = 0
                 Top = 0
@@ -709,8 +668,6 @@
                 Margins.Bottom = 4
                 Align = alClient
                 TabOrder = 0
-                ExplicitWidth = 574
-                ExplicitHeight = 264
                 object tvLinFac: TcxGridDBTableView
                   OnDblClick = cxGrdDBTabPrinDblClick
                   Navigator.Buttons.ConfirmDelete = True
@@ -878,8 +835,6 @@
                 Align = alRight
                 BevelOuter = bvNone
                 TabOrder = 1
-                ExplicitLeft = 574
-                ExplicitHeight = 264
                 object btnIraFactura: TcxButton
                   Left = 6
                   Top = 13
@@ -921,10 +876,6 @@
             object tsMasDatos: TcxTabSheet
               Caption = '&4_M'#225's datos'
               ImageIndex = 1
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 692
-              ExplicitHeight = 264
               object lblObservaciones: TcxLabel
                 Left = -10
                 Top = 105
@@ -1174,7 +1125,6 @@
           HotZoneClassName = 'TcxMediaPlayer9Style'
           AlignSplitter = salTop
           Control = pnlDetailFicha
-          ExplicitWidth = 703
         end
       end
       inherited tsPerfil: TcxTabSheet
@@ -1183,17 +1133,20 @@
         inherited pnlPerfilTop: TPanel
           Width = 705
           ExplicitWidth = 705
+          inherited edtPerfilBusq: TcxTextEdit
+            ExplicitHeight = 27
+          end
         end
         inherited pnlPerfilDetail: TPanel
           Width = 705
           Height = 390
-          ExplicitWidth = 703
-          ExplicitHeight = 388
+          ExplicitWidth = 705
+          ExplicitHeight = 390
           inherited cxgrdPerfil: TcxGrid
             Width = 705
             Height = 390
-            ExplicitWidth = 701
-            ExplicitHeight = 386
+            ExplicitWidth = 705
+            ExplicitHeight = 390
           end
         end
       end
@@ -1231,8 +1184,8 @@
     inherited pButtonGen: TPanel
       Top = 327
       Width = 154
-      ExplicitTop = 326
-      ExplicitWidth = 152
+      ExplicitTop = 327
+      ExplicitWidth = 154
     end
     inherited pButtonBDStat: TPanel
       Width = 154

@@ -283,6 +283,7 @@ type
     procedure btnIraArticuloClick(Sender: TObject);
     procedure actArticulosExecute(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure dsTablaGStateChange(Sender: TObject);
   public
     procedure CrearTablaPrincipal; override;
   end;
@@ -417,6 +418,15 @@ begin
   cbbTARIFA.Properties.ListSource := dmmClientes.dsTarifas;
   pcPestanas.ActivePage := tsDomicilioFiscal;
   Self.pkFieldName := 'CODIGO_CLIENTE';
+end;
+
+procedure TfrmMtoClientes.dsTablaGStateChange(Sender: TObject);
+begin
+  inherited;
+  if (dsTablaG.state = dsInsert) then
+    txtCODIGO_CLIENTE.Enabled := True
+  else
+    txtCODIGO_CLIENTE.Enabled := False;
 end;
 
 procedure TfrmMtoClientes.FormClose(Sender: TObject; var Action: TCloseAction);

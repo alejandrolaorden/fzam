@@ -258,6 +258,7 @@ type
     procedure btnIraArticuloClick(Sender: TObject);
     procedure btnAddSerieClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure dsTablaGStateChange(Sender: TObject);
   public
     procedure CrearTablaPrincipal; override;
   end;
@@ -437,6 +438,17 @@ begin
   tvLineasFacturacion.DataController.DataSource :=
                                            dmmEmpresas.dsFacturasLineasEmpresas;
   Self.pkFieldName := 'CODIGO_EMPRESA';
+end;
+
+procedure TfrmMtoEmpresas.dsTablaGStateChange(Sender: TObject);
+begin
+  inherited;
+  if (dsTablaG.State = dsInsert) then
+    txtCODIGO_EMPRESA.Enabled := True
+  else
+  begin
+    txtCODIGO_EMPRESA.Enabled := False;
+  end;
 end;
 
 procedure TfrmMtoEmpresas.btnIraArticuloClick(Sender: TObject);

@@ -19,12 +19,13 @@ inherited frmMtoTarifas: TfrmMtoTarifas
       Width = 715
       Height = 574
       TabOrder = 1
-      Properties.ActivePage = tsLista
       ExplicitWidth = 715
       ExplicitHeight = 574
       ClientRectBottom = 568
       ClientRectRight = 709
       inherited tsLista: TcxTabSheet
+        ExplicitLeft = 3
+        ExplicitTop = 32
         ExplicitWidth = 706
         ExplicitHeight = 536
         inherited cxGrdPrincipal: TcxGrid
@@ -105,6 +106,8 @@ inherited frmMtoTarifas: TfrmMtoTarifas
         end
       end
       inherited tsFicha: TcxTabSheet
+        ExplicitLeft = 3
+        ExplicitTop = 32
         ExplicitWidth = 706
         ExplicitHeight = 536
         object pnl1: TPanel
@@ -146,7 +149,7 @@ inherited frmMtoTarifas: TfrmMtoTarifas
             Height = 111
             Align = alClient
             TabOrder = 0
-            object txtCODIGO_FAMILIA: TcxDBTextEdit
+            object txtCODIGO_TARIFA: TcxDBTextEdit
               Left = 101
               Top = 9
               DataBinding.DataField = 'CODIGO_TARIFA'
@@ -167,7 +170,7 @@ inherited frmMtoTarifas: TfrmMtoTarifas
               Caption = 'Nombre'
               Transparent = True
             end
-            object txtNOMBRE_FAMILIA: TcxDBTextEdit
+            object txtNOMBRE_TARIFA: TcxDBTextEdit
               Left = 100
               Top = 46
               DataBinding.DataField = 'NOMBRE_TARIFA'
@@ -223,10 +226,6 @@ inherited frmMtoTarifas: TfrmMtoTarifas
             object tsArticulos: TcxTabSheet
               Caption = '&1_Art'#237'culos'
               ImageIndex = 0
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object pnl6: TPanel
                 Left = 568
                 Top = 0
@@ -250,6 +249,7 @@ inherited frmMtoTarifas: TfrmMtoTarifas
                   Height = 25
                   Caption = 'A'#241'adir Bloque'
                   TabOrder = 1
+                  Visible = False
                   OnClick = btAddBlockClick
                 end
               end
@@ -655,7 +655,6 @@ inherited frmMtoTarifas: TfrmMtoTarifas
           HotZoneClassName = 'TcxMediaPlayer9Style'
           AlignSplitter = salTop
           Control = pnl2
-          ExplicitWidth = 4
         end
       end
       inherited tsPerfil: TcxTabSheet
@@ -664,6 +663,9 @@ inherited frmMtoTarifas: TfrmMtoTarifas
         inherited pnlPerfilTop: TPanel
           Width = 706
           ExplicitWidth = 706
+          inherited edtPerfilBusq: TcxTextEdit
+            ExplicitHeight = 27
+          end
         end
         inherited pnlPerfilDetail: TPanel
           Width = 706
@@ -701,8 +703,8 @@ inherited frmMtoTarifas: TfrmMtoTarifas
     end
   end
   inherited dsTablaG: TDataSource
-    Left = 348
-    Top = 495
+    Left = 404
+    Top = 375
   end
   object ActionListTarifas: TActionList
     Left = 416

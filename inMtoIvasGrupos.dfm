@@ -5,7 +5,12 @@ inherited frmMtoIvasGrupos: TfrmMtoIvasGrupos
   TextHeight = 19
   inherited pButtonPage: TPanel
     inherited pcPantalla: TcxPageControl
+      Properties.ActivePage = tsLista
       inherited tsLista: TcxTabSheet
+        ExplicitLeft = 3
+        ExplicitTop = 32
+        ExplicitWidth = 942
+        ExplicitHeight = 480
         inherited cxGrdPrincipal: TcxGrid
           inherited cxGrdDBTabPrin: TcxGridDBTableView
             OptionsData.Editing = True
@@ -67,11 +72,11 @@ inherited frmMtoIvasGrupos: TfrmMtoIvasGrupos
         ExplicitWidth = 942
         ExplicitHeight = 480
       end
-    end
-    inherited pnlTopPage: TPanel
-      inherited pnlTopGrid: TPanel
-        inherited edtBusqGlobal: TcxTextEdit
-          ExplicitHeight = 27
+      inherited tsPerfil: TcxTabSheet
+        inherited pnlPerfilTop: TPanel
+          inherited edtPerfilBusq: TcxTextEdit
+            ExplicitHeight = 27
+          end
         end
       end
     end

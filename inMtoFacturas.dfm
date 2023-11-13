@@ -41,8 +41,8 @@ inherited frmMtoFacturas: TfrmMtoFacturas
         Margins.Top = 5
         Margins.Right = 5
         Margins.Bottom = 5
-        ExplicitLeft = 0
-        ExplicitTop = 0
+        ExplicitLeft = 3
+        ExplicitTop = 32
         ExplicitWidth = 1078
         ExplicitHeight = 766
         inherited cxGrdPrincipal: TcxGrid
@@ -703,6 +703,8 @@ inherited frmMtoFacturas: TfrmMtoFacturas
         Margins.Top = 5
         Margins.Right = 5
         Margins.Bottom = 5
+        ExplicitLeft = 3
+        ExplicitTop = 32
         ExplicitWidth = 1078
         ExplicitHeight = 766
         object pnl1: TPanel
@@ -1512,10 +1514,6 @@ inherited frmMtoFacturas: TfrmMtoFacturas
             object tsRecibos: TcxTabSheet
               Caption = '&3_Recibos'
               ImageIndex = 4
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object pnlRightRecibos: TPanel
                 Left = 916
                 Top = 0
@@ -1751,10 +1749,6 @@ inherited frmMtoFacturas: TfrmMtoFacturas
               Margins.Bottom = 4
               Caption = '&4_Otros'
               ImageIndex = 4
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object lblComentarios: TcxLabel
                 Left = 32
                 Top = 65
@@ -1945,7 +1939,6 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                   Top = 12
                   DataBinding.DataField = 'NRO_FACTURA'
                   DataBinding.DataSource = dsTablaG
-                  Properties.ReadOnly = True
                   TabOrder = 0
                   Width = 121
                 end
@@ -1974,9 +1967,6 @@ inherited frmMtoFacturas: TfrmMtoFacturas
               object tsEmpresa: TcxTabSheet
                 Caption = 'Datos E&mpresa Emisora -'
                 ImageIndex = 2
-                ExplicitTop = 0
-                ExplicitWidth = 0
-                ExplicitHeight = 0
                 object grpEmpresa: TcxGroupBox
                   Left = 22
                   Top = 8
@@ -2573,7 +2563,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
           Width = 1078
           ExplicitWidth = 1078
           inherited edtPerfilBusq: TcxTextEdit
-            ExplicitHeight = 21
+            ExplicitHeight = 27
           end
         end
         inherited pnlPerfilDetail: TPanel

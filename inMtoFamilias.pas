@@ -57,6 +57,7 @@ type
     cxgrdbclmnGrdDBTabPrinCODIGO_FAMILIA: TcxGridDBColumn;
     cxgrdbclmnGrdDBTabPrinNOMBRE_FAMILIA: TcxGridDBColumn;
     cxgrdbclmnGrdDBTabPrinDESCRIPCION_FAMILIA: TcxGridDBColumn;
+    txtCODIGO_FAMILIA: TcxDBTextEdit;
     txtNOMBRE_FAMILIA: TcxDBTextEdit;
     mDESCRIPCION_FAMILIA: TcxDBMemo;
     cxgrdbclmnGrdDBTabPrinACTIVO_FAMILIA: TcxGridDBColumn;
@@ -107,6 +108,7 @@ type
     procedure actTarifasExecute(Sender: TObject);
     procedure btnNuevaFamiliaClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure dsTablaGStateChange(Sender: TObject);
   public
     procedure CrearTablaPrincipal; override;
     procedure ResetForm; override;
@@ -213,6 +215,17 @@ begin
   cbbFamilia.Properties.ListSource := dmmFamilias.dsSubfamilias;
   ResetForm;
   pkFieldName := 'CODIGO_FAMILIA';
+end;
+
+procedure TfrmMtoFamilias.dsTablaGStateChange(Sender: TObject);
+begin
+  inherited;
+  if dsTablaG.State = dsInsert then
+    txtCODIGO_FAMILIA.Enabled := True
+  else
+  begin
+    txtCODIGO_FAMILIA.Enabled := False;
+  end;
 end;
 
 procedure TfrmMtoFamilias.FormClose(Sender: TObject; var Action: TCloseAction);

@@ -27,13 +27,15 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
       ClientRectBottom = 597
       ClientRectRight = 768
       inherited tsLista: TcxTabSheet
-        ExplicitWidth = 763
-        ExplicitHeight = 563
+        ExplicitLeft = 3
+        ExplicitTop = 32
+        ExplicitWidth = 765
+        ExplicitHeight = 565
         inherited cxGrdPrincipal: TcxGrid
           Width = 765
           Height = 565
-          ExplicitWidth = 763
-          ExplicitHeight = 563
+          ExplicitWidth = 765
+          ExplicitHeight = 565
           inherited cxGrdDBTabPrin: TcxGridDBTableView
             object cxgrdbclmnGrdDBTabPrinCODIGO_EMPRESA: TcxGridDBColumn
               Caption = 'C'#243'digo'
@@ -325,10 +327,6 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
             object tsRetenciones: TcxTabSheet
               Caption = '&2_Retenciones'
               ImageIndex = 2
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 752
-              ExplicitHeight = 341
               object pnlRetenOpts: TPanel
                 Left = 646
                 Top = 0
@@ -337,8 +335,6 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
                 Align = alRight
                 BevelOuter = bvNone
                 TabOrder = 1
-                ExplicitLeft = 642
-                ExplicitHeight = 341
                 object btnAddIRPF: TcxButton
                   Left = 0
                   Top = 13
@@ -357,8 +353,6 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
                 Align = alClient
                 BevelOuter = bvNone
                 TabOrder = 0
-                ExplicitWidth = 642
-                ExplicitHeight = 341
                 object cxgrdRetenciones: TcxGrid
                   Left = 0
                   Top = 0
@@ -370,10 +364,6 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
                   Margins.Bottom = 4
                   Align = alClient
                   TabOrder = 0
-                  ExplicitLeft = 1
-                  ExplicitTop = 1
-                  ExplicitWidth = 640
-                  ExplicitHeight = 339
                   object tvRetenciones: TcxGridDBTableView
                     OnDblClick = cxGrdDBTabPrinDblClick
                     Navigator.Buttons.ConfirmDelete = True
@@ -1296,17 +1286,20 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
         inherited pnlPerfilTop: TPanel
           Width = 765
           ExplicitWidth = 765
+          inherited edtPerfilBusq: TcxTextEdit
+            ExplicitHeight = 27
+          end
         end
         inherited pnlPerfilDetail: TPanel
           Width = 765
           Height = 508
-          ExplicitWidth = 763
-          ExplicitHeight = 506
+          ExplicitWidth = 765
+          ExplicitHeight = 508
           inherited cxgrdPerfil: TcxGrid
             Width = 765
             Height = 508
-            ExplicitWidth = 761
-            ExplicitHeight = 504
+            ExplicitWidth = 765
+            ExplicitHeight = 508
           end
         end
       end
@@ -1320,7 +1313,6 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
         ExplicitWidth = 774
         inherited edtBusqGlobal: TcxTextEdit
           TabOrder = 3
-          ExplicitHeight = 27
         end
         inherited rbBBDD: TcxRadioButton
           TabOrder = 0
@@ -1350,7 +1342,6 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
     end
   end
   inherited dsTablaG: TDataSource
-    DataSet = dmEmpresas.unqryTablaG
     Left = 628
     Top = 535
   end

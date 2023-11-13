@@ -31,7 +31,7 @@ type
     Panel1: TPanel;
     cxLabel1: TcxLabel;
     cxLabel2: TcxLabel;
-    cxDBTextEdit1: TcxDBTextEdit;
+    txtNOMBRE_GRUPO: TcxDBTextEdit;
     cxDBCheckBox1: TcxDBCheckBox;
     cxgrdUsuarios: TcxGrid;
     tvUsuarios: TcxGridDBTableView;
@@ -41,6 +41,7 @@ type
     tvUsuariosEMPRESADEF_USUARIO: TcxGridDBColumn;
     tvUsuariosULTIMOLOGIN_USUARIO: TcxGridDBColumn;
     procedure FormDestroy(Sender: TObject);
+    procedure dsTablaGStateChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -69,6 +70,15 @@ begin
   dsTablaG.DataSet := dmmGrupos.unqryTablaG;
   tvUsuarios.DataController.DataSource := dmmGrupos.dsUsuariosGrupo;
   pkFieldName := 'GRUPO_USUARIO';
+end;
+
+procedure TfrmMtoGrupos.dsTablaGStateChange(Sender: TObject);
+begin
+  inherited;
+  if (dsTablaG.State = dsInsert) then
+    txtNOMBRE_GRUPO.Enabled := True
+  else
+    txtNOMBRE_GRUPO.Enabled := False;
 end;
 
 procedure TfrmMtoGrupos.FormDestroy(Sender: TObject);

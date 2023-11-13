@@ -38,6 +38,7 @@ type
     pnlButtonFicha: TPanel;
     pcDetail: TcxPageControl;
     txtDESCRIPCION_ARTICULO: TcxDBTextEdit;
+    txtCODIGO_ARTICULO: TcxDBTextEdit;
     pnlBodyFicha: TPanel;
     lblCodigo: TcxLabel;
     lblNombre: TcxLabel;
@@ -199,6 +200,7 @@ type
     procedure actClientesExecute(Sender: TObject);
     procedure btnIraClienteClick(Sender: TObject);
     procedure btnBuscarClick(Sender: TObject);
+    procedure dsTablaGStateChange(Sender: TObject);
   private
      procedure BuscarProveedores;
      procedure IncorporarTarifas;
@@ -651,6 +653,17 @@ begin
         end;
       end;
     end;
+end;
+
+procedure TfrmMtoArticulos.dsTablaGStateChange(Sender: TObject);
+begin
+  inherited;
+  if (dsTablaG.state = dsInsert) then
+    txtCODIGO_ARTICULO.Enabled := True
+  else
+  begin
+    txtCODIGO_ARTICULO.Enabled := False;
+  end;
 end;
 
 procedure TfrmMtoArticulos.FormClose(Sender: TObject; var Action: TCloseAction);

@@ -513,7 +513,7 @@ begin
 //                                   MB_YESNO ) = ID_YES ) then
 //         Close;
   end;
-  if dsTablaG.state = dsBrowse then
+  if dsTablaG.State = dsBrowse then
   begin
     if Key = VK_PRIOR then
        nvNavegador.Buttons.Prior.Click;

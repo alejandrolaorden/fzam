@@ -53,7 +53,8 @@ type
     cxdbtxtdtUSUARIOALTA1: TcxDBTextEdit;
     lblUsuarioModif: TcxLabel;
     chkActivo: TcxDBCheckBox;
-    txtNOMBRE_FAMILIA: TcxDBTextEdit;
+    txtNOMBRE_TARIFA: TcxDBTextEdit;
+    txtCODIGO_TARIFA: TcxDBTextEdit;
     cxgrdbclmnGrdDBTabPrinCODIGO_TARIFA: TcxGridDBColumn;
     cxgrdbclmnGrdDBTabPrinNOMBRE_TARIFA: TcxGridDBColumn;
     cxgrdbclmnGrdDBTabPrinACTIVO_TARIFA: TcxGridDBColumn;
@@ -119,6 +120,7 @@ type
     procedure actProveedoresExecute(Sender: TObject);
     procedure btAddBlockClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure dsTablaGStateChange(Sender: TObject);
   public
     procedure CrearTablaPrincipal; override;
   end;
@@ -208,6 +210,17 @@ begin
   dmmTarifas := TdmTarifas.Create(Self);
   tvArticulos.DataController.DataSource := dmmTarifas.dsArticulosTarifas;
   pkFieldName := 'CODIGO_TARIFA';
+end;
+
+procedure TfrmMtoTarifas.dsTablaGStateChange(Sender: TObject);
+begin
+  inherited;
+  if (dsTablaG.State = dsInsert) then
+    txtCODIGO_TARIFA.Enabled := True
+  else
+  begin
+    txtCODIGO_TARIFA.Enabled := False;
+  end;
 end;
 
 procedure TfrmMtoTarifas.FormDestroy(Sender: TObject);

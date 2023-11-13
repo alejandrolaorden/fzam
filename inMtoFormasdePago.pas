@@ -52,7 +52,8 @@ type
     cxdbtxtdtUSUARIOALTA1: TcxDBTextEdit;
     lblUsuarioModif: TcxLabel;
     chkActivo: TcxDBCheckBox;
-    txtNOMBRE_FAMILIA: TcxDBTextEdit;
+    txtNOMBRE_FORMAPAGO: TcxDBTextEdit;
+    txtCODIGO_FORMAPAGO: TcxDBTextEdit;
     tsArticulos: TcxTabSheet;
     cxspltr1: TcxSplitter;
     lblOrden: TcxLabel;
@@ -161,6 +162,7 @@ type
     cxGrdDBTabPrinPORCEN_ANTICIPO_FORMAPAGO: TcxGridDBColumn;
     procedure btnGrabarClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure dsTablaGStateChange(Sender: TObject);
   public
     procedure CrearTablaPrincipal; override;
   end;
@@ -196,6 +198,17 @@ begin
                                                dmmFormasdePago.dsFacturasLineas;
   pcPestana.ActivePage := tsMasDatos;
   pkFieldName := 'CODIGO_FORMAPAGO';
+end;
+
+procedure TfrmMtoFormasdePago.dsTablaGStateChange(Sender: TObject);
+begin
+  inherited;
+  if (dsTablaG.State = dsInsert) then
+    txtCODIGO_FORMAPAGO.Enabled := True
+  else
+  begin
+    txtCODIGO_FORMAPAGO.Enabled := False;
+  end;
 end;
 
 procedure TfrmMtoFormasdePago.FormDestroy(Sender: TObject);
