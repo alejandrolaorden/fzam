@@ -55,6 +55,7 @@ type
     chkRememberUser: TcxCheckBox;
     tbUsers: TUniTable;
     btChangePassRoot: TcxButton;
+    chkAuto: TcxCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure btnSalirClick(Sender: TObject);
     procedure btnAceptarClick(Sender: TObject);
@@ -70,6 +71,7 @@ type
     procedure ucConexionError(Sender: TObject; E: EDAError; var Fail: Boolean);
     procedure edtPassBDExit(Sender: TObject);
     procedure btChangePassRootClick(Sender: TObject);
+    procedure edtPortBDPropertiesChange(Sender: TObject);
   private
     procedure CambiarPass(f:TUniConnection);
     function CrearBD(sDatabaseN:string):string;
@@ -81,8 +83,10 @@ type
     function LoginCorrecto(sNom, sPassLogin: string; f: TUniConnection): Boolean;
     function GetGrupo(sUser: string; conn: TUniConnection;
       var EsGrupoAdmin: string): string;
-    procedure AppException(Sender: TObject; E: Exception);
+//    procedure AppException(Sender: TObject; E: Exception);
   public
+    function IsInitializeAuto:Boolean;
+    function CheckIfExistsDataBase:Boolean;
     //    function getMd5(const vValue: string): string;
         { Public declarations }
   end;
@@ -117,6 +121,7 @@ begin
   sUserPassOK := 'false';
   Self.Position := poScreenCenter;
   Self.Width := 338;
+  Self.ClientHeight := 253;
   edtUser.Text := '';
   leerini;
   try
@@ -145,15 +150,14 @@ begin
       end;
     end;
   end;
-  if ((chkRememberUser.Checked = True) and
-    (chkRememberPassword.Checked = True)
-    ) then
+  if (IsInitializeAuto) then
     btnAceptarClick(Self);
 end;
 
 procedure TfrmLogon.btnConfClick(Sender: TObject);
 begin
-  Self.Width := 772;
+  Self.Width := 799;
+  Self.ClientHeight := 253;
 end;
 
 procedure TfrmLogon.btnCopiaSeguridadClick(Sender: TObject);
@@ -268,21 +272,70 @@ begin
     ShowMessage('No hay conexión con la bbdd')
   else
   begin
-    sNewPass := InputBox('Introduzca el nuevo password de la BBDD', '','');
-    qryCommand := TUniQuery.Create(nil);
-    qryCommand.Connection := f;
-    qryCommand.SQL.Text := 'FLUSH PRIVILEGES;';
-    qryCommand.ExecSQL;
-    qryCommand.SQL.Text := 'ALTER USER root@localhost IDENTIFIED BY :PASS;';
-    qryCommand.ParamByName('PASS').AsString := sNewPass;
-    qryCommand.ExecSQL;
-    ShowMessage('Password de la BBDD cambiado correctamente. ' +
-                ' Reinicie el sistema o el servicio para que tome efecto.');
-    sPassEnBD := EncriptAES(sNewPass);
-    sPass := sNewPass;
-    esCadIniDir('ConnData', 'PasswordEn', sPassEnBD, GetUserFolder);
-    qryCommand.Free;
+    if ( Application.MessageBox(' ¿Desea cambiar el password por defecto ' +
+                                'de la Base de Datos?',
+                                'Mensaje Advertencia',
+                                MB_YESNO ) = ID_YES ) then
+    begin
+      sNewPass := InputBox('Introduzca el nuevo password de la BBDD', '','');
+      qryCommand := TUniQuery.Create(nil);
+      qryCommand.Connection := f;
+      qryCommand.SQL.Text := 'FLUSH PRIVILEGES;';
+      qryCommand.ExecSQL;
+      qryCommand.SQL.Text := 'ALTER USER root@localhost IDENTIFIED BY :PASS;';
+      qryCommand.ParamByName('PASS').AsString := sNewPass;
+      qryCommand.ExecSQL;
+      sPassEnBD := EncriptAES(sNewPass);
+      sPass := sNewPass;
+      ShowMessage('Password de la BBDD cambiado correctamente.' + sLineBreak +
+                  'Reinicie el sistema o el servicio ' +
+                  'para que tome efecto.' + sLineBreak +
+                  'Anote el password en un lugar seguro para evitar problemas:'+
+                  sPass);
+      esCadIniDir('ConnData', 'PasswordEn', sPassEnBD, GetUserFolder);
+      qryCommand.Free;
+    end;
   end;
+end;
+
+function TfrmLogon.CheckIfExistsDataBase: Boolean;
+var
+  unqryTestBD       : TUniQuery;
+begin
+  ConstruirConexionConnect( ucConexion,
+                            edtUserBD.Text,
+                            sPass,
+                            edtHostName.Text,
+                            edtPortBD.Text,
+                            'information_schema');
+  unqryTestBD := TUniQuery.Create(nil);
+  unqryTestBD.Connection := ucConexion;
+  unqryTestBD.SQL.Text := 'SELECT SCHEMA_NAME ' +
+                          '  FROM INFORMATION_SCHEMA.SCHEMATA ' +
+                          ' WHERE SCHEMA_NAME = :BBDD ' ;
+  unqryTestBD.ParamByName('BBDD').AsString := edtNomBD.Text;
+  unqryTestBD.Open;
+  if (unqryTestBD.RecordCount > 0) then
+    Result := True
+  else
+    if (unqryTestBD.RecordCount = 0) then
+    begin
+       if Application.MessageBox(PWideChar(Format(
+         'No existe una base de datos llamada %s, '  +
+         '¿desea crearla? ', [edtNomBD.Text])),
+         'Error',  MB_YESNO) = ID_YES then
+       begin
+         UdDump.SQL.Text := CrearBD(edtNomBD.Text);
+         UdDump.Restore;
+         ShowMessage('La Base de Datos se creó exitosamente');
+         btChangePassRootClick(Self);
+         Result := True;
+       end
+       else
+       begin
+         Result := False;
+       end;
+    end;
 end;
 
 function TfrmLogon.CrearBD(sDatabaseN: string):String;
@@ -385,10 +438,10 @@ begin
   Result := sResult;
 end;
 
-procedure TfrmLogon.AppException(Sender: TObject; E: Exception);
-begin
-  Log(oConn, edtUser.Text, E.Message, Sender, tlCritical, E.ClassName);
-end;
+//procedure TfrmLogon.AppException(Sender: TObject; E: Exception);
+//begin
+//  Log(oConn, edtUser.Text, E.Message, Sender, tlCritical, E.ClassName);
+//end;
 
 procedure TfrmLogon.btChangePassRootClick(Sender: TObject);
 var
@@ -398,7 +451,7 @@ var
 begin
   inherited;
   bAllowChange := False;
-  if sPass = 'Zamora2023' then
+  if (sPass = 'Zamora2023') then
     bAllowChange := True
   else
   begin
@@ -416,87 +469,60 @@ begin
                               'information_schema');
     if ucConexion.Connected = true then
       bAllowChange := True;
-    if bAllowChange then
-    begin
-      CambiarPass(ucConexion);
-    end
-    else
-    begin
-      ShowMessage('El password que ha introducido no coincide.');
-    end;
+  end;
+  if bAllowChange then
+  begin
+    CambiarPass(ucConexion);
+  end
+  else
+  begin
+    ShowMessage('El password que ha introducido no coincide.');
   end;
 end;
 
 procedure TfrmLogon.btnAceptarClick(Sender: TObject);
 var
   sGrupoAdmin       : string;
-  unqryTestBD       : TUniQuery;
+
 begin
   if ucConexion.Connected then
     ucConexion.Disconnect;
-  ConstruirConexionConnect( ucConexion,
-                            edtUserBD.Text,
-                            sPass,
-                            edtHostName.Text,
-                            edtPortBD.Text,
-                            'information_schema');
-  unqryTestBD := TUniQuery.Create(nil);
-  unqryTestBD.Connection := ucConexion;
-  unqryTestBD.SQL.Text := 'SELECT SCHEMA_NAME ' +
-                          '  FROM INFORMATION_SCHEMA.SCHEMATA ' +
-                          ' WHERE SCHEMA_NAME = :BBDD ' ;
-  unqryTestBD.ParamByName('BBDD').AsString := edtNomBD.Text;
-  unqryTestBD.Open;
-  if (unqryTestBD.RecordCount = 0) then
+  if CheckIfExistsDataBase then
   begin
-     if Application.MessageBox(PWideChar(Format(
-       'No existe una base de datos llamada %s, '  +
-       '¿desea crearla? ', [edtNomBD.Text])),
-       'Error',  MB_YESNO) = ID_YES then
-     begin
-       UdDump.SQL.Text := CrearBD(edtNomBD.Text);
-       UdDump.Restore;
-       ShowMessage('La Base de Datos se creó exitosamente');
-       btChangePassRootClick(Sender);
-     end
-     else
-     begin
-       Exit;
-     end;
-  end;
-  if ucConexion.Connected then
-    ucConexion.Disconnect;
-  ConstruirConexionConnect(ucConexion,
-                            edtUserBD.Text,
-                            sPass,
-                            edtHostName.Text,
-                            edtPortBD.Text,
-                            edtNomBD.Text);
-  //Log(ucConexion, edtUser.Text, 'Intento de conexión');
-  if not ExisteUser(edtUser.Text, ucConexion) then
-  begin
-    raise EInvalidUser.Create('El nombre de usuario no existe');
-  end
-  else if not LoginCorrecto(edtUser.text, edtPass.Text, ucConexion) then
-  begin
-    Log(ucConexion, edtUser.Text, 'La contraseña de usuario no es correcta. ');
-    ShowMessage('La contraseña de usuario no es correcta. ');
-  end
-  else
-  begin
-    tbUsers.Edit;
-    tbUsers.FieldByName('ULTIMOLOGIN_USUARIO').AsDateTime := Now;
-    tbUsers.Post;
-    tbUsers.Close;
-    oUser := edtUser.Text;
-    oGroup := GetGrupo(edtUser.Text, ucConexion, sGrupoAdmin);
-    orootGroup := sGrupoAdmin;
-    //Log(ucConexion, oUser + '\' + Group + '\' + orootGroup,
-    //  'Conexión exitosa');
-    sUserPassOK := 'true';
-    sSuccess := 'S';
-    PostMessage(Handle, WM_CLOSE, 0, 0);
-    modalResult := mrOK;
+    if ucConexion.Connected then
+      ucConexion.Disconnect;
+    ConstruirConexionConnect(ucConexion,
+                              edtUserBD.Text,
+                              sPass,
+                              edtHostName.Text,
+                              edtPortBD.Text,
+                              edtNomBD.Text);
+    //Log(ucConexion, edtUser.Text, 'Intento de conexión');
+    if not ExisteUser(edtUser.Text, ucConexion) then
+    begin
+      raise EInvalidUser.Create('El nombre de usuario no existe');
+    end
+    else if not LoginCorrecto(edtUser.text, edtPass.Text, ucConexion) then
+    begin
+      Log(ucConexion, edtUser.Text, 'La contraseña de usuario no es correcta. ');
+      ShowMessage('La contraseña de usuario no es correcta. ');
+    end
+    else
+    begin
+      tbUsers.Edit;
+      tbUsers.FieldByName('ULTIMOLOGIN_USUARIO').AsDateTime := Now;
+      tbUsers.Post;
+      tbUsers.Close;
+      oUser := edtUser.Text;
+      oGroup := GetGrupo(edtUser.Text, ucConexion, sGrupoAdmin);
+      orootGroup := sGrupoAdmin;
+      //Log(ucConexion, oUser + '\' + Group + '\' + orootGroup,
+      //  'Conexión exitosa');
+      sUserPassOK := 'true';
+      sSuccess := 'S';
+      PostMessage(Handle, WM_CLOSE, 0, 0);
+      modalResult := mrOK;
+    end;
   end;
 end;
 
@@ -544,6 +570,11 @@ begin
 //  end;
 end;
 
+procedure TfrmLogon.edtPortBDPropertiesChange(Sender: TObject);
+begin
+//
+end;
+
 procedure TfrmLogon.escribirini;
 begin
   esCadIniDir('ConnData', 'HostName', edtHostName.Text, GetUserFolder);
@@ -580,17 +611,19 @@ end;
 
 procedure TfrmLogon.SetIniValues;
 begin
-  if chkRememberUser.Checked = True then
+  if (chkRememberUser.Checked = True) then
   begin
     esCadINIDir('UserInfo', 'RememberUser', 'Yes', GetUserFolder);
     esCadINIDir('UserInfo', 'NomUser', edtUser.Text, GetUserFolder);
   end;
-  if chkRememberPassword.Checked = True then
+  if (chkRememberPassword.Checked = True) then
   begin
     esCadINIDir('UserInfo', 'RememberPassword', 'Yes', GetUserFolder);
     esCadINIDir('UserInfo', 'PasswordEn',
       EncriptAES(edtPass.Text), GetUserFolder);
   end;
+  if (chkAuto.Checked = True) then
+      esCadINIDir('UserInfo', 'AutoLogin', 'Yes', GetUserFolder);
 end;
 
 procedure TfrmLogon.ucConexionError(Sender: TObject; E: EDAError;
@@ -602,17 +635,26 @@ end;
 procedure TfrmLogon.GetIniValues;
 var
   sRememberUser,
+  sAutoRun,
   sRememberPassword     : string;
 begin
   sRememberUser := leCadINIDir('UserInfo',
     'RememberUser',
     'No',
     GetUserFolder);
+  sAutoRun := leCadINIDir('UserInfo',
+                          'AutoLogin',
+                          'No',
+                          GetUserFolder);
   sRememberPassword := leCadINIDir('UserInfo',
     'RememberPassword',
     'No',
     GetUserFolder);
-  if sRememberUser <> 'No' then
+  if SameText(sAutoRun,'Yes') then
+  begin
+    chkAuto.Checked := True;
+  end;
+  if SameText(sRememberUser, 'Yes') then
   begin
     chkRememberUser.Checked := True;
     edtUser.Text := leCadINIDir('UserInfo',
@@ -620,7 +662,7 @@ begin
       'Administrador',
       GetUserFolder);
   end;
-  if sRememberPassword <> 'No' then
+  if SameText(sRememberPassword, 'Yes') then
   begin
     chkRememberPassword.Checked := True;
     edtPass.Text := DecriptAES(leCadINIDir('UserInfo',
@@ -628,6 +670,11 @@ begin
                                              'q7heHfD7ENowuvRQhW56Og==',
                                              GetUserFolder));
   end;
+end;
+
+function TfrmLogon.IsInitializeAuto: Boolean;
+begin
+  Result := chkAuto.Checked;
 end;
 
 procedure TfrmLogon.FormClose(Sender: TObject; var Action: TCloseAction);

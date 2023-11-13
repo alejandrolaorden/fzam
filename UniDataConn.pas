@@ -48,6 +48,7 @@ var
 begin
   sDatabase := leCadINIDir('ConnData', 'Database','factuzam', GetUserFolder);
   sHostName :=  leCadINIDir('ConnData', 'HostName','127.0.0.1', GetUserFolder);
+  //Password por defecto Zamora2023
   sPasswordEn := DecriptAES(leCadINIDir('ConnData',
                             'PasswordEn',
                             '2qJFaDfegP/9y6RDno1FRg==',

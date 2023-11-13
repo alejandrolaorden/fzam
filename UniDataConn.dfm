@@ -5,7 +5,7 @@ object dmConn: TdmConn
   Width = 405
   object conUni: TUniConnection
     ProviderName = 'MySQL'
-    Port = 3306
+    Port = 3310
     Database = 'factuzam'
     SpecificOptions.Strings = (
       'MySQL.UseUnicode=True')
@@ -19,7 +19,7 @@ object dmConn: TdmConn
     BeforeConnect = connBeforeConnect
     Left = 216
     Top = 120
-    EncryptedPassword = 'A5FF9EFF92FF90FF8DFF9EFFCDFFCFFFCDFFCCFF'
+    EncryptedPassword = 'AFFF9EFF8BFF96FF8BFF90FF8CFFCDFFCFFFCDFFCCFF'
   end
   object mysqlnprvdr1: TMySQLUniProvider
     Left = 152

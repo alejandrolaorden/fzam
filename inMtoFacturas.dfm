@@ -732,7 +732,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
             Margins.Bottom = 4
             Align = alClient
             TabOrder = 0
-            Properties.ActivePage = tsLineasFactura
+            Properties.ActivePage = tsTotales
             Properties.CustomButtons.Buttons = <>
             ClientRectBottom = 439
             ClientRectLeft = 3
@@ -1130,6 +1130,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                 Top = 181
                 DataBinding.DataField = 'PORCEN_RETENCION_FACTURA'
                 DataBinding.DataSource = dsTablaG
+                Enabled = False
                 ParentFont = False
                 Properties.AssignedValues.MinValue = True
                 Properties.DisplayFormat = '0.00 %'
@@ -1939,6 +1940,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                   Top = 12
                   DataBinding.DataField = 'NRO_FACTURA'
                   DataBinding.DataSource = dsTablaG
+                  Enabled = False
                   TabOrder = 0
                   Width = 121
                 end
@@ -2557,6 +2559,8 @@ inherited frmMtoFacturas: TfrmMtoFacturas
         end
       end
       inherited tsPerfil: TcxTabSheet
+        ExplicitLeft = 3
+        ExplicitTop = 32
         ExplicitWidth = 1078
         ExplicitHeight = 766
         inherited pnlPerfilTop: TPanel

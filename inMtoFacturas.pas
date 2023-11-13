@@ -945,10 +945,14 @@ begin
   if (dmmFacturas <> nil) then
   begin
     if (dsTablaG.State = dsInsert) then
-      txtNRO_FACTURA.Enabled := True
+    begin
+      txtNRO_FACTURA.Enabled := True;
+      spnRetencion.Enabled := True;
+    end
     else
     begin
       txtNRO_FACTURA.Enabled := False;
+      spnRetencion.Enabled := False;
     end;
     if (dsTablaG.DataSet.State <> dsInsert) then
     begin

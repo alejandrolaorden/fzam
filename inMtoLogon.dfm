@@ -4,15 +4,15 @@ inherited frmLogon: TfrmLogon
   BorderIcons = []
   BorderStyle = bsSingle
   Caption = 'Login FactuZam'
-  ClientHeight = 266
-  ClientWidth = 810
+  ClientHeight = 253
+  ClientWidth = 793
   Font.Charset = ANSI_CHARSET
   KeyPreview = True
   Position = poScreenCenter
   OnClose = FormClose
   OnKeyDown = FormKeyDown
-  ExplicitWidth = 816
-  ExplicitHeight = 295
+  ExplicitWidth = 799
+  ExplicitHeight = 282
   PixelsPerInch = 96
   TextHeight = 19
   object lblUsuario: TLabel [0]
@@ -23,9 +23,9 @@ inherited frmLogon: TfrmLogon
     Caption = 'Usuario'
   end
   object lblContrasena: TLabel [1]
-    Left = 19
+    Left = 15
     Top = 113
-    Width = 94
+    Width = 98
     Height = 19
     Caption = 'Contrase'#241'a'
   end
@@ -151,6 +151,7 @@ inherited frmLogon: TfrmLogon
   object edtPortBD: TcxTextEdit [18]
     Left = 494
     Top = 47
+    Properties.OnChange = edtPortBDPropertiesChange
     TabOrder = 10
     Width = 49
   end
@@ -192,7 +193,7 @@ inherited frmLogon: TfrmLogon
   end
   object chkRememberPassword: TcxCheckBox [23]
     Left = 119
-    Top = 139
+    Top = 141
     Caption = 'Recordar Password'
     TabOrder = 15
   end
@@ -221,6 +222,13 @@ inherited frmLogon: TfrmLogon
       0000000049454E44AE426082}
     TabOrder = 17
     OnClick = btChangePassRootClick
+  end
+  object chkAuto: TcxCheckBox [26]
+    Left = 8
+    Top = 283
+    Caption = 'Arranque sin login'
+    Style.TransparentBorder = False
+    TabOrder = 18
   end
   object MySQLUniProvider1: TMySQLUniProvider
     Left = 752
