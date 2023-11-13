@@ -19,7 +19,7 @@ object dmConn: TdmConn
     BeforeConnect = connBeforeConnect
     Left = 216
     Top = 120
-    EncryptedPassword = 'AFFF9EFF8BFF96FF8BFF90FF8CFFCDFFCFFFCDFFCCFF'
+    EncryptedPassword = 'A5FF9EFF92FF90FF8DFF9EFFCDFFCFFFCDFFCCFF'
   end
   object mysqlnprvdr1: TMySQLUniProvider
     Left = 152

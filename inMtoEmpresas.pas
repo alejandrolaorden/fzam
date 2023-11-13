@@ -312,7 +312,7 @@ end;
 procedure TfrmMtoEmpresas.actArticulosExecute(Sender: TObject);
 begin
   inherited;
-  //Control + R -> Articulos
+  //Control + A -> Articulos
    if (pcPestana.ActivePage = tsHistoriaFacturacion) then
      btnIraArticuloClick(Sender)
    else

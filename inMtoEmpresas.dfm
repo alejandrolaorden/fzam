@@ -1281,6 +1281,8 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
         end
       end
       inherited tsPerfil: TcxTabSheet
+        ExplicitLeft = 3
+        ExplicitTop = 32
         ExplicitWidth = 765
         ExplicitHeight = 565
         inherited pnlPerfilTop: TPanel

@@ -13,55 +13,74 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
     Width = 754
     Height = 674
     TabOrder = 0
-    ExplicitWidth = 709
-    ExplicitHeight = 571
+    ExplicitWidth = 754
+    ExplicitHeight = 674
     inherited pcPantalla: TcxPageControl
       Width = 754
       Height = 634
       TabOrder = 1
-      ExplicitWidth = 709
-      ExplicitHeight = 531
+      ExplicitWidth = 754
+      ExplicitHeight = 634
       ClientRectBottom = 628
       ClientRectRight = 748
       inherited tsLista: TcxTabSheet
         ExplicitLeft = 3
         ExplicitTop = 32
-        ExplicitWidth = 700
-        ExplicitHeight = 493
+        ExplicitWidth = 745
+        ExplicitHeight = 596
         inherited cxGrdPrincipal: TcxGrid
           Width = 745
           Height = 596
-          ExplicitWidth = 700
-          ExplicitHeight = 493
+          ExplicitWidth = 745
+          ExplicitHeight = 596
           inherited cxGrdDBTabPrin: TcxGridDBTableView
             object cxGrdDBTabPrinCODIGO_FORMAPAGO: TcxGridDBColumn
+              Caption = 'C'#243'digo'
               DataBinding.FieldName = 'CODIGO_FORMAPAGO'
               Width = 196
             end
             object cxGrdDBTabPrinACTIVO_FORMAPAGO: TcxGridDBColumn
+              Caption = 'Activo'
               DataBinding.FieldName = 'ACTIVO_FORMAPAGO'
+              PropertiesClassName = 'TcxCheckBoxProperties'
+              Properties.ValueChecked = 'S'
+              Properties.ValueUnchecked = 'N'
               Width = 91
             end
             object cxGrdDBTabPrinORDEN_FORMAPAGO: TcxGridDBColumn
+              Caption = 'Orden'
               DataBinding.FieldName = 'ORDEN_FORMAPAGO'
               Width = 120
             end
             object cxGrdDBTabPrinDESCRIPCION_FORMAPAGO: TcxGridDBColumn
+              Caption = 'Descripci'#243'n'
               DataBinding.FieldName = 'DESCRIPCION_FORMAPAGO'
               Width = 231
             end
             object cxGrdDBTabPrinN_PLAZOS_FORMAPAGO: TcxGridDBColumn
+              Caption = 'N'#250'mero de Plazos'
               DataBinding.FieldName = 'N_PLAZOS_FORMAPAGO'
+              Width = 169
             end
             object cxGrdDBTabPrinDIAS_ENTRE_PLAZOS_FORMAPAGO: TcxGridDBColumn
+              Caption = 'D'#237'as entre plazos'
               DataBinding.FieldName = 'N_DIAS_ENTRE_PLAZOS_FORMAPAGO'
+              Width = 165
             end
             object cxGrdDBTabPrinDEFAULT_FORMAPAGO: TcxGridDBColumn
+              Caption = 'Por defecto'
               DataBinding.FieldName = 'ESDEFAULT_FORMAPAGO'
               Width = 159
             end
             object cxGrdDBTabPrinPORCEN_ANTICIPO_FORMAPAGO: TcxGridDBColumn
+              Caption = '% Anticipo'
               DataBinding.FieldName = 'PORCEN_ANTICIPO_FORMAPAGO'
+              PropertiesClassName = 'TcxSpinEditProperties'
+              Properties.DisplayFormat = '0.00 %'
+              Properties.EditFormat = '0.00 %'
+              Properties.MaxValue = 100.000000000000000000
+              Properties.ValueType = vtFloat
+              Width = 92
             end
           end
         end
@@ -69,8 +88,8 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
       inherited tsFicha: TcxTabSheet
         ExplicitLeft = 3
         ExplicitTop = 32
-        ExplicitWidth = 700
-        ExplicitHeight = 493
+        ExplicitWidth = 745
+        ExplicitHeight = 596
         object pnl1: TPanel
           Left = 0
           Top = 0
@@ -78,7 +97,6 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
           Height = 113
           Align = alTop
           TabOrder = 0
-          ExplicitWidth = 700
           object cxdbtxtdt1: TcxDBTextEdit
             Left = 104
             Top = 33
@@ -111,7 +129,6 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
             Height = 111
             Align = alClient
             TabOrder = 0
-            ExplicitWidth = 698
             object txtCODIGO_FORMAPAGO: TcxDBTextEdit
               Left = 101
               Top = 13
@@ -161,8 +178,6 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
           Height = 479
           Align = alClient
           TabOrder = 1
-          ExplicitWidth = 700
-          ExplicitHeight = 376
           object pcPestana: TcxPageControl
             Left = 1
             Top = 1
@@ -170,19 +185,15 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
             Height = 477
             Align = alClient
             TabOrder = 0
-            Properties.ActivePage = tsArticulos
+            Properties.ActivePage = tsVentas
             Properties.CustomButtons.Buttons = <>
-            ExplicitWidth = 698
-            ExplicitHeight = 374
             ClientRectBottom = 471
             ClientRectLeft = 3
             ClientRectRight = 737
             ClientRectTop = 32
             object tsMasDatos: TcxTabSheet
-              Caption = '&1_M'#225's Datos'
+              Caption = '&1_M'#225's Datos-'
               ImageIndex = 0
-              ExplicitWidth = 689
-              ExplicitHeight = 336
               object cxLabel1: TcxLabel
                 Left = 28
                 Top = 32
@@ -230,11 +241,9 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
                 Width = 106
               end
             end
-            object tsArticulos: TcxTabSheet
-              Caption = '&2_Ventas'
+            object tsVentas: TcxTabSheet
+              Caption = '&2_Ventas-'
               ImageIndex = 2
-              ExplicitWidth = 689
-              ExplicitHeight = 336
               object pnlFactura: TPanel
                 Left = 0
                 Top = 0
@@ -242,12 +251,10 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
                 Height = 439
                 Align = alClient
                 TabOrder = 0
-                ExplicitWidth = 689
-                ExplicitHeight = 336
                 object cxgrdFacturas: TcxGrid
                   Left = 1
                   Top = 1
-                  Width = 620
+                  Width = 615
                   Height = 437
                   Margins.Left = 4
                   Margins.Top = 4
@@ -255,8 +262,7 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
                   Margins.Bottom = 4
                   Align = alClient
                   TabOrder = 0
-                  ExplicitWidth = 575
-                  ExplicitHeight = 334
+                  ExplicitWidth = 620
                   object tvFacturacion: TcxGridDBTableView
                     Navigator.Buttons.ConfirmDelete = True
                     Navigator.Buttons.CustomButtons = <>
@@ -600,46 +606,63 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
                   end
                 end
                 object pnlFacturaOpts: TPanel
-                  Left = 621
+                  Left = 616
                   Top = 1
-                  Width = 112
+                  Width = 117
                   Height = 437
                   Align = alRight
                   TabOrder = 1
-                  ExplicitLeft = 576
-                  ExplicitHeight = 334
-                  object btIraFactura: TcxButton
+                  object btnIraFactura: TcxButton
                     Left = 6
                     Top = 16
-                    Width = 99
+                    Width = 109
                     Height = 34
                     Caption = '&Ir a Factura'
                     TabOrder = 0
+                    OnClick = btnIraFacturaClick
                   end
                   object btnIraCliente: TcxButton
                     Left = 7
                     Top = 56
-                    Width = 98
+                    Width = 108
                     Height = 34
                     Caption = 'I&r a Cliente'
                     TabOrder = 1
+                    OnClick = btnIraClienteClick
                   end
                   object btExportarExcel: TcxButton
-                    Left = 6
-                    Top = 96
-                    Width = 99
+                    Left = 7
+                    Top = 176
+                    Width = 108
                     Height = 34
                     Caption = 'Exp. Excel'
                     TabOrder = 2
+                    OnClick = btExportarExcelClick
+                  end
+                  object btnIraEmpresa: TcxButton
+                    Left = 7
+                    Top = 96
+                    Width = 108
+                    Height = 34
+                    Caption = 'I&r a Empresa'
+                    TabOrder = 3
+                    OnClick = btnIraEmpresaClick
+                  end
+                  object btnIraArticulo: TcxButton
+                    Left = 7
+                    Top = 136
+                    Width = 108
+                    Height = 34
+                    Caption = 'I&r a Art'#237'culo'
+                    TabOrder = 4
+                    OnClick = btnIraArticuloClick
                   end
                 end
               end
             end
             object tsOtros: TcxTabSheet
-              Caption = '&3_Otros'
+              Caption = '&3_Otros-'
               ImageIndex = 3
-              ExplicitWidth = 689
-              ExplicitHeight = 336
               object pnl3: TPanel
                 Left = 0
                 Top = 360
@@ -647,8 +670,6 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
                 Height = 79
                 Align = alBottom
                 TabOrder = 0
-                ExplicitTop = 257
-                ExplicitWidth = 689
                 object cxdbtxtdtDIRECCION1_CLIENTE: TcxDBTextEdit
                   Left = 17
                   Top = 37
@@ -767,15 +788,16 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
           HotZoneClassName = 'TcxMediaPlayer9Style'
           AlignSplitter = salTop
           Control = pnl1
-          ExplicitWidth = 700
         end
       end
       inherited tsPerfil: TcxTabSheet
-        ExplicitWidth = 700
-        ExplicitHeight = 493
+        ExplicitLeft = 3
+        ExplicitTop = 32
+        ExplicitWidth = 745
+        ExplicitHeight = 596
         inherited pnlPerfilTop: TPanel
           Width = 745
-          ExplicitWidth = 700
+          ExplicitWidth = 745
           inherited edtPerfilBusq: TcxTextEdit
             ExplicitHeight = 27
           end
@@ -783,13 +805,13 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
         inherited pnlPerfilDetail: TPanel
           Width = 745
           Height = 539
-          ExplicitWidth = 700
-          ExplicitHeight = 436
+          ExplicitWidth = 745
+          ExplicitHeight = 539
           inherited cxgrdPerfil: TcxGrid
             Width = 745
             Height = 539
-            ExplicitWidth = 700
-            ExplicitHeight = 436
+            ExplicitWidth = 745
+            ExplicitHeight = 539
           end
         end
       end
@@ -797,10 +819,13 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
     inherited pnlTopPage: TPanel
       Width = 754
       TabOrder = 0
-      ExplicitWidth = 709
+      ExplicitWidth = 754
       inherited pnlTopGrid: TPanel
         Width = 754
-        ExplicitWidth = 709
+        ExplicitWidth = 754
+        inherited edtBusqGlobal: TcxTextEdit
+          ExplicitHeight = 27
+        end
       end
     end
   end
@@ -808,15 +833,39 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
     Left = 754
     Height = 674
     TabOrder = 1
-    ExplicitLeft = 709
-    ExplicitHeight = 571
+    ExplicitLeft = 754
+    ExplicitHeight = 674
     inherited pButtonGen: TPanel
       Top = 476
-      ExplicitTop = 373
+      ExplicitTop = 476
     end
   end
   inherited dsTablaG: TDataSource
     Left = 612
     Top = 559
+  end
+  object ActionListFormasdePAgo: TActionList
+    Left = 440
+    Top = 304
+    object actClientes: TAction
+      Caption = 'Clientes'
+      ShortCut = 16459
+      OnExecute = actClientesExecute
+    end
+    object actArticulos: TAction
+      Caption = 'actArticulos'
+      ShortCut = 16449
+      OnExecute = actArticulosExecute
+    end
+    object actFacturas: TAction
+      Caption = 'actFacturas'
+      ShortCut = 16454
+      OnExecute = actFacturasExecute
+    end
+    object actEmpresas: TAction
+      Caption = 'Empresas'
+      ShortCut = 16453
+      OnExecute = actEmpresasExecute
+    end
   end
 end

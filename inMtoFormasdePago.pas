@@ -27,7 +27,8 @@ uses
   dxDateRanges, MemDS, DBAccess, Uni, cxImage, dxGDIPlusClasses, inMtoGen,
   Vcl.Menus, dxSkinsForm, cxButtons, dxSkinsDefaultPainters, cxMemo, cxSpinEdit,
   cxCalendar, cxBlobEdit, dxScrollbarAnnotations, dxCore, cxRadioGroup,
-  cxSplitter, Vcl.AppEvnts, JvComponentBase, JvEnterTab;
+  cxSplitter, Vcl.AppEvnts, JvComponentBase, JvEnterTab, System.Actions,
+  Vcl.ActnList;
 
 type
   TfrmMtoFormasdePago = class(TfrmMtoGen)
@@ -54,7 +55,7 @@ type
     chkActivo: TcxDBCheckBox;
     txtNOMBRE_FORMAPAGO: TcxDBTextEdit;
     txtCODIGO_FORMAPAGO: TcxDBTextEdit;
-    tsArticulos: TcxTabSheet;
+    tsVentas: TcxTabSheet;
     cxspltr1: TcxSplitter;
     lblOrden: TcxLabel;
     cxdbspndtORDEN_CLIENTE: TcxDBSpinEdit;
@@ -156,13 +157,29 @@ type
     cxgrdlvlcxgrd1Level1: TcxGridLevel;
     cxgrdlvlcxgrd1Level2: TcxGridLevel;
     pnlFacturaOpts: TPanel;
-    btIraFactura: TcxButton;
+    btnIraFactura: TcxButton;
     btnIraCliente: TcxButton;
     btExportarExcel: TcxButton;
     cxGrdDBTabPrinPORCEN_ANTICIPO_FORMAPAGO: TcxGridDBColumn;
+    ActionListFormasdePAgo: TActionList;
+    actClientes: TAction;
+    actArticulos: TAction;
+    actFacturas: TAction;
+    actEmpresas: TAction;
+    btnIraEmpresa: TcxButton;
+    btnIraArticulo: TcxButton;
     procedure btnGrabarClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure dsTablaGStateChange(Sender: TObject);
+    procedure btnIraFacturaClick(Sender: TObject);
+    procedure actEmpresasExecute(Sender: TObject);
+    procedure btnIraEmpresaClick(Sender: TObject);
+    procedure actFacturasExecute(Sender: TObject);
+    procedure actArticulosExecute(Sender: TObject);
+    procedure btnIraArticuloClick(Sender: TObject);
+    procedure btnIraClienteClick(Sender: TObject);
+    procedure actClientesExecute(Sender: TObject);
+    procedure btExportarExcelClick(Sender: TObject);
   public
     procedure CrearTablaPrincipal; override;
   end;
@@ -174,11 +191,74 @@ var
 implementation
 
 uses
-  inLibWin, inLibUser, inLibDevExp;
+  inLibWin, inLibUser, inLibDevExp, inLibShowMto;
 
 {$R *.dfm}
 
 procedure ForceReferenceToClass(C: TClass); begin end;
+
+procedure TfrmMtoFormasdePago.actArticulosExecute(Sender: TObject);
+begin
+  inherited;
+  if (pcPestana.ActivePage = tsVentas) then
+     btnIraArticuloClick(Sender)
+   else
+     ShowMto(Self.Owner,
+             'Articulos');
+end;
+
+procedure TfrmMtoFormasdePago.actClientesExecute(Sender: TObject);
+begin
+  inherited;
+    if ((pcPestana.ActivePage = tsVentas)
+     ) then
+       btnIraClienteClick(Sender)
+  else
+    ShowMto(Self.Owner,
+            'Clientes');
+end;
+
+procedure TfrmMtoFormasdePago.actEmpresasExecute(Sender: TObject);
+begin
+  inherited;
+  if (pcPestana.ActivePage = tsVentas) then
+    btnIraEmpresaClick(Sender)
+  else
+    ShowMto(Self.Owner,
+            'Empresas');
+end;
+
+procedure TfrmMtoFormasdePago.btnIraFacturaClick(Sender: TObject);
+begin
+  inherited;
+  with tvFacturacion.DataController.DataSource.DataSet do
+  ShowMto(Self.Owner,
+          'Facturas',
+          FieldByName('NRO_FACTURA').AsString + ',' +
+          FieldByName('SERIE_FACTURA').AsString);
+end;
+
+procedure TfrmMtoFormasdePago.actFacturasExecute(Sender: TObject);
+begin
+  inherited;
+  with tvFacturacion.DataController.DataSet do
+    if (
+        (pcPestana.ActivePage = tsVentas)        and
+        (not(FieldByName('NRO_FACTURA').IsNull))  and
+        (not(FieldByName('SERIE_FACTURA').IsNull))
+       ) then
+      btnIraFacturaClick(Sender)
+    else
+      ShowMto(Self.Owner,
+              'Facturas');
+end;
+
+procedure TfrmMtoFormasdePago.btExportarExcelClick(Sender: TObject);
+begin
+  inherited;
+    ExportarExcel(cxgrdFacturas, 'Historico_Formas_de_pago' +
+                dsTablaG.Dataset.FieldByName('DESCRIPCION_FORMAPAGO').AsString);
+end;
 
 procedure TfrmMtoFormasdePago.btnGrabarClick(Sender: TObject);
 begin
@@ -187,6 +267,35 @@ begin
   begin
     dsTablaG.DataSet.Post;
   end;
+end;
+
+procedure TfrmMtoFormasdePago.btnIraArticuloClick(Sender: TObject);
+begin
+  inherited;
+  with tvLineasFacturacion.DataController.DataSet do
+    ShowMto(Self.Owner,
+            'Articulos',
+            FieldByName('CODIGO_ARTICULO_FACTURA_LINEA').AsString);
+
+end;
+
+procedure TfrmMtoFormasdePago.btnIraClienteClick(Sender: TObject);
+begin
+  inherited;
+  with tvFacturacion.DataController.DataSet do
+    ShowMto(Self.Owner,
+            'Clientes',
+            FieldByName('CODIGO_CLIENTE_FACTURA').AsString);
+end;
+
+procedure TfrmMtoFormasdePago.btnIraEmpresaClick(Sender: TObject);
+begin
+  inherited;
+  ShowMto(Self.Owner,
+          'Empresas',
+          tvFacturacion.DataController.DataSet.FieldByName(
+                                            'CODIGO_EMPRESA_FACTURA').AsString);
+
 end;
 
 procedure TfrmMtoFormasdePago.CrearTablaPrincipal;
