@@ -28,7 +28,7 @@ SetOutPath $INSTDIR
 File fzam.exe
 File fsqlf.exe
 File fzam.ico
-
+File "factuzam_original.sql"
 
 createShortCut "$DESKTOP\${APPNAME}.lnk" "$INSTDIR\fzam.exe" "" "$INSTDIR\fzam.ico"
 
@@ -44,7 +44,7 @@ WriteUninstaller $INSTDIR\uninstaller.exe
 DetailPrint "Instalando MariaDB silenciosamente..."
 SetOutPath $TEMP
 File "mariadb_installer.msi" 
-File "factuzam_original.sql"
+
 #mariadb_installer.msi
 #SERVICENAME=MariaDB DATADIR="$APPDATA\Fzam\mariadb\data" PORT=3310 PASSWORD=default REMOVE=DEVEL REMOVE=HeidiSQL /qn
 ExecWait 'msiexec /i "$TEMP\mariadb_installer.msi" DATADIR="$INSTDIR\BaseDatos\mariadb\data" PORT=3310 PASSWORD=Zamora2023 SERVICENAME=MariaDBFzam ADDLOCAL=ALL REMOVE=HeidiSQL  /qn  '
