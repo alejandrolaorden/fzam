@@ -15,7 +15,7 @@ uses  SysUtils, Variants, DB, ADODB, ExtCtrls, DBCtrls, Controls, Grids,
       SQLBuilder4D, SQLBuilder4D.Parser, SQLBuilder4D.Parser.GaSQLParser,
       System.StrUtils, DCPrijndael, dcpbase64,DCPcrypt2, System.NetEncoding,
       inLibUser, Datasnap.Provider, Datasnap.DBClient, System.DateUtils,
-      //inMtoPrincipal,
+      MidasLib,   Datasnap.Midas,   Soap.SOAPMidas, Datasnap.Win.MidasCon,
       inLibGlobalVar, Dialogs, vcl.consts;
 
   type
@@ -138,8 +138,7 @@ var
  cli: TClientDataset;
  bFechaOrd, bFechaFinNul, bFechaIniNul:Boolean;
  iCom,iCom2 : Integer;
- dtFechaIni,
- dtFechaFin:TDateTime;
+ dtFechaIni, dtFechaFin:TDateTime;
  sFechaIni, sFechaFin : String;
 begin
   sFechaIni := fFechaIni.FieldName;
@@ -216,6 +215,7 @@ begin
     begin
       cli.Close;
       FreeAndNil(cli);
+      FreeAndNil(Dsp);
     end;
     Result := bFechaOrd;
   end

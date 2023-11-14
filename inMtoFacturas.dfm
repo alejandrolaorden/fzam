@@ -732,7 +732,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
             Margins.Bottom = 4
             Align = alClient
             TabOrder = 0
-            Properties.ActivePage = tsTotales
+            Properties.ActivePage = tsLineasFactura
             Properties.CustomButtons.Buttons = <>
             ClientRectBottom = 439
             ClientRectLeft = 3
@@ -869,6 +869,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                         FieldName = 'NOMBRE_TIPO_IVA'
                       end>
                     Properties.ListOptions.ShowHeader = False
+                    Properties.ListSource = dmFacturas.dsIvasTipos
                     Properties.OnEditValueChanged = cxgrdbclmntv1TIPOIVA_ARTICULO_FACTURA_LINEAPropertiesEditValueChanged
                     Width = 109
                   end
@@ -1515,6 +1516,10 @@ inherited frmMtoFacturas: TfrmMtoFacturas
             object tsRecibos: TcxTabSheet
               Caption = '&3_Recibos'
               ImageIndex = 4
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object pnlRightRecibos: TPanel
                 Left = 916
                 Top = 0
@@ -2591,6 +2596,9 @@ inherited frmMtoFacturas: TfrmMtoFacturas
       inherited pnlTopGrid: TPanel
         Width = 1087
         ExplicitWidth = 1087
+        inherited edtBusqGlobal: TcxTextEdit
+          ExplicitHeight = 27
+        end
         inherited lblTextoaBuscar: TcxLabel
           Top = 7
           ExplicitTop = 7

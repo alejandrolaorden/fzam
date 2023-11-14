@@ -4,6 +4,7 @@ uses
   {$IFDEF DEBUG}
   FastMM4,
   {$ENDIF }
+  MidasLib,
   Vcl.Forms,
   Vcl.Controls,
   UniDataArticulos in 'UniDataArticulos.pas',

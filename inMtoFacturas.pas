@@ -833,6 +833,8 @@ begin
   tvLineasFactura.DataController.DataSource := dmmFacturas.dsLinFac;
   cbbTARIFA_ARTICULOS_CLIENTES.Properties.ListSource := dmmFacturas.dsTarifas;
   tvRecibos.DataController.DataSource := dmmFacturas.dsRecibos;
+  (cxgrdbclmntv1TIPOIVA_ARTICULO_FACTURA_LINEA.Properties as
+             TcxLookupComboBoxProperties).ListSource := dmmFacturas.dsIvasTipos;
   tsFichBut := tsLineasFactura;
   tsFichCab := tsCabecera;
   Self.pkFieldName := 'NRO_FACTURA; SERIE_FACTURA';
