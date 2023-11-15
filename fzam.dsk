@@ -1,25 +1,49 @@
 ﻿[Closed Files]
-File_0=TSourceModule,'c:\program files (x86)\embarcadero\studio\20.0\source\rtl\common\System.Classes.pas',0,1,9220,1,9233,0,0,,
-File_1=TSourceModule,'C:\DISCO DURO\proyectos\fzam\inLibDir.pas',0,1,120,21,136,0,0,,
-File_2=TSourceModule,'C:\DISCO DURO\proyectos\fzam\inMtoProveedores.pas',0,1,275,55,290,0,0,,
-File_3=TSourceModule,'C:\DISCO DURO\proyectos\fzam\inMtoGrupos.pas',0,1,74,23,77,0,0,,
+File_0=TSourceModule,'c:\program files (x86)\embarcadero\studio\20.0\source\soap\Soap.SOAPMidas.pas',0,1,50,1,1,0,0,,
+File_1=TSourceModule,'c:\program files (x86)\embarcadero\studio\20.0\source\data\dsnap\MidasLib.pas',0,1,1,1,1,0,0,,
+File_2=TSourceModule,'c:\program files (x86)\embarcadero\studio\20.0\source\data\dsnap\Datasnap.Midas.pas',0,1,1,1,1,0,0,,
+File_3=TSourceModule,'c:\program files (x86)\embarcadero\studio\20.0\source\data\dsnap\Datasnap.Win.MidasCon.pas',0,1,124,54,8,0,0,,
+File_4=TSourceModule,'c:\program files (x86)\embarcadero\studio\20.0\source\rtl\common\System.Classes.pas',0,1,9220,1,9233,0,0,,
+File_5=TSourceModule,'C:\DISCO DURO\proyectos\fzam\inLibDir.pas',0,1,120,21,136,0,0,,
+File_6=TSourceModule,'C:\DISCO DURO\proyectos\fzam\inMtoProveedores.pas',0,1,275,55,290,0,0,,
+File_7=TSourceModule,'C:\DISCO DURO\proyectos\fzam\inMtoGrupos.pas',0,1,74,23,77,0,0,,
 
 [Modules]
 Module0=C:\DISCO DURO\proyectos\fzam\inMtoFacturas.pas
-Module1=C:\DISCO DURO\proyectos\fzam\inLibDevExp.pas
-Module2=C:\DISCO DURO\proyectos\fzam\UniDataFacturas.pas
+Module1=C:\DISCO DURO\proyectos\fzam\inLibGlobalVar.pas
+Module2=C:\DISCO DURO\proyectos\fzam\fzam.dproj
 Module3=C:\DISCO DURO\proyectos\fzam\inMtoArticulos.pas
-Module4=C:\DISCO DURO\proyectos\fzam\inMtoFormasdePago.pas
-Module5=C:\DISCO DURO\proyectos\fzam\fzam.dproj
-Module6=C:\DISCO DURO\proyectos\fzam\UniDataConn.pas
-Module7=C:\DISCO DURO\proyectos\fzam\inMtoEmpresas.pas
-Module8=C:\DISCO DURO\proyectos\fzam\inMtoClientes.pas
-Module9=C:\DISCO DURO\proyectos\fzam\inMtoLogon.pas
-Module10=C:\DISCO DURO\proyectos\fzam\UniDataClientes.pas
-Count=11
+Module4=C:\DISCO DURO\proyectos\fzam\UniDataConn.pas
+Module5=C:\DISCO DURO\proyectos\fzam\inMtoLogon.pas
+Module6=C:\DISCO DURO\proyectos\fzam\inLibtb.pas
+Module7=C:\DISCO DURO\proyectos\fzam\inLibDevExp.pas
+Module8=C:\DISCO DURO\proyectos\fzam\UniDataFacturas.pas
+Module9=C:\DISCO DURO\proyectos\fzam\inMtoFormasdePago.pas
+Module10=C:\DISCO DURO\proyectos\fzam\inMtoEmpresas.pas
+Module11=C:\DISCO DURO\proyectos\fzam\inMtoClientes.pas
+Module12=C:\DISCO DURO\proyectos\fzam\UniDataClientes.pas
+Count=13
 EditWindowCount=1
 
 [C:\DISCO DURO\proyectos\fzam\inMtoFacturas.pas]
+ModuleType=TSourceModule
+
+[C:\DISCO DURO\proyectos\fzam\inLibGlobalVar.pas]
+ModuleType=TSourceModule
+
+[C:\DISCO DURO\proyectos\fzam\fzam.dproj]
+ModuleType=TBaseProject
+
+[C:\DISCO DURO\proyectos\fzam\inMtoArticulos.pas]
+ModuleType=TSourceModule
+
+[C:\DISCO DURO\proyectos\fzam\UniDataConn.pas]
+ModuleType=TSourceModule
+
+[C:\DISCO DURO\proyectos\fzam\inMtoLogon.pas]
+ModuleType=TSourceModule
+
+[C:\DISCO DURO\proyectos\fzam\inLibtb.pas]
 ModuleType=TSourceModule
 
 [C:\DISCO DURO\proyectos\fzam\inLibDevExp.pas]
@@ -28,16 +52,7 @@ ModuleType=TSourceModule
 [C:\DISCO DURO\proyectos\fzam\UniDataFacturas.pas]
 ModuleType=TSourceModule
 
-[C:\DISCO DURO\proyectos\fzam\inMtoArticulos.pas]
-ModuleType=TSourceModule
-
 [C:\DISCO DURO\proyectos\fzam\inMtoFormasdePago.pas]
-ModuleType=TSourceModule
-
-[C:\DISCO DURO\proyectos\fzam\fzam.dproj]
-ModuleType=TBaseProject
-
-[C:\DISCO DURO\proyectos\fzam\UniDataConn.pas]
 ModuleType=TSourceModule
 
 [C:\DISCO DURO\proyectos\fzam\inMtoEmpresas.pas]
@@ -46,14 +61,11 @@ ModuleType=TSourceModule
 [C:\DISCO DURO\proyectos\fzam\inMtoClientes.pas]
 ModuleType=TSourceModule
 
-[C:\DISCO DURO\proyectos\fzam\inMtoLogon.pas]
-ModuleType=TSourceModule
-
 [C:\DISCO DURO\proyectos\fzam\UniDataClientes.pas]
 ModuleType=TSourceModule
 
 [EditWindow0]
-ViewCount=11
+ViewCount=13
 CurrentEditView=C:\DISCO DURO\proyectos\fzam\inMtoFacturas.pas
 View0=0
 View1=1
@@ -66,6 +78,8 @@ View7=7
 View8=8
 View9=9
 View10=10
+View11=11
+View12=12
 PercentageSizes=1
 Create=1
 Visible=1
@@ -84,13 +98,13 @@ BorlandEditorCodeExplorer=BorlandEditorCodeExplorer@EditWindow0
 TopPanelSize=0
 LeftPanelSize=1911
 LeftPanelClients=PropertyInspector,DockSite3
-LeftPanelData=00000800010100000000F61200000000000001770700000000000001000000005C0E000009000000446F636B53697465330100000000B62100001100000050726F7065727479496E73706563746F72FFFFFFFF
+LeftPanelData=00000800010100000000570F00000000000001770700000000000001000000005C0E000009000000446F636B53697465330100000000451B00001100000050726F7065727479496E73706563746F72FFFFFFFF
 RightPanelSize=2000
 RightPanelClients=DockSite2,DockSite4
-RightPanelData=00000800010100000000F61200000000000001D00700000000000001000000004412000009000000446F636B53697465320100000000B621000009000000446F636B5369746534FFFFFFFF
-BottomPanelSize=0
+RightPanelData=00000800010100000000570F00000000000001D00700000000000001000000004412000009000000446F636B53697465320100000000451B000009000000446F636B5369746534FFFFFFFF
+BottomPanelSize=1574
 BottomPanelClients=MessageView,DockSite1
-BottomPanelData=000008000102020000000F0000004D65737361676556696577466F726D09000000446F636B5369746531DE440000000000000226060000000000000100000000DE4400000F0000004D65737361676556696577466F726DFFFFFFFF
+BottomPanelData=0000080001020100000009000000446F636B5369746531DE440000000000000226060000000000000100000000DE4400000F0000004D65737361676556696577466F726DFFFFFFFF
 BottomMiddlePanelSize=0
 BottomMiddlePanelClients=DockSite0,GraphDrawingModel
 BottomMiddelPanelData=0000080001020200000009000000446F636B536974653010000000477261706844726177696E67566965779F1D00000000000002F206000000000000FFFFFFFF
@@ -98,7 +112,7 @@ BottomMiddelPanelData=0000080001020200000009000000446F636B5369746530100000004772
 [View0]
 CustomEditViewType=TEditView
 Module=C:\DISCO DURO\proyectos\fzam\fzam.dpr
-CursorX=1
+CursorX=12
 CursorY=1
 TopLine=1
 LeftCol=1
@@ -141,6 +155,17 @@ EditViewName=Borland.FormDesignerView
 
 [View4]
 CustomEditViewType=TEditView
+Module=C:\DISCO DURO\proyectos\fzam\inLibGlobalVar.pas
+CursorX=42
+CursorY=35
+TopLine=20
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\DISCO DURO\proyectos\fzam\inLibGlobalVar.pas
+
+[View5]
+CustomEditViewType=TEditView
 Module=C:\DISCO DURO\proyectos\fzam\inMtoClientes.pas
 CursorX=1
 CursorY=327
@@ -150,7 +175,7 @@ Elisions=
 Bookmarks=
 EditViewName=C:\DISCO DURO\proyectos\fzam\inMtoClientes.pas
 
-[View5]
+[View6]
 CustomEditViewType=TEditView
 Module=C:\DISCO DURO\proyectos\fzam\inMtoLogon.pas
 CursorX=16
@@ -161,18 +186,29 @@ Elisions=
 Bookmarks=
 EditViewName=C:\DISCO DURO\proyectos\fzam\inMtoLogon.pas
 
-[View6]
+[View7]
 CustomEditViewType=TEditView
 Module=C:\DISCO DURO\proyectos\fzam\inMtoFacturas.pas
-CursorX=5
-CursorY=823
+CursorX=6
+CursorY=826
 TopLine=818
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=C:\DISCO DURO\proyectos\fzam\inMtoFacturas.pas
+EditViewName=Borland.FormDesignerView
 
-[View7]
+[View8]
+CustomEditViewType=TEditView
+Module=C:\DISCO DURO\proyectos\fzam\inLibtb.pas
+CursorX=7
+CursorY=18
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\DISCO DURO\proyectos\fzam\inLibtb.pas
+
+[View9]
 CustomEditViewType=TEditView
 Module=C:\DISCO DURO\proyectos\fzam\inLibDevExp.pas
 CursorX=43
@@ -183,7 +219,7 @@ Elisions=
 Bookmarks=
 EditViewName=C:\DISCO DURO\proyectos\fzam\inLibDevExp.pas
 
-[View8]
+[View10]
 CustomEditViewType=TEditView
 Module=C:\DISCO DURO\proyectos\fzam\inMtoEmpresas.pas
 CursorX=1
@@ -194,7 +230,7 @@ Elisions=
 Bookmarks=
 EditViewName=C:\DISCO DURO\proyectos\fzam\inMtoEmpresas.pas
 
-[View9]
+[View11]
 CustomEditViewType=TEditView
 Module=C:\DISCO DURO\proyectos\fzam\UniDataFacturas.pas
 CursorX=36
@@ -205,7 +241,7 @@ Elisions=
 Bookmarks=
 EditViewName=C:\DISCO DURO\proyectos\fzam\UniDataFacturas.pas
 
-[View10]
+[View12]
 CustomEditViewType=TEditView
 Module=C:\DISCO DURO\proyectos\fzam\UniDataClientes.pas
 CursorX=1
@@ -315,7 +351,7 @@ StayOnTop=0
 [MessageView]
 PercentageSizes=1
 Create=1
-Visible=0
+Visible=1
 Docked=1
 State=0
 Left=0
@@ -340,11 +376,11 @@ State=0
 Left=0
 Top=0
 Width=2000
-Height=3866
+Height=2141
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=2000
-ClientHeight=3866
+ClientHeight=2141
 TBDockHeight=7151
 LRDockWidth=2000
 Dockable=1
@@ -400,11 +436,11 @@ State=0
 Left=0
 Top=425
 Width=1911
-Height=4913
+Height=3227
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1911
-ClientHeight=4913
+ClientHeight=3227
 TBDockHeight=9012
 LRDockWidth=1911
 Dockable=1
@@ -414,7 +450,7 @@ SplitPos=212
 [PropInspDesignerSelection]
 ArrangeBy=Name
 SelectedItem=Name,
-ExpandedItems=DataBinding=0,HeaderGlyph=0,"LiveBindings Designer=0",Options=0,Styles=0,Summary=0,Properties=1,Properties.Alignment=0,Properties.AssignedValues=0,Properties.SpinButtons=0,Properties.ValidationOptions=0,Properties.ButtonGlyph=0,Properties.IncrementalFilteringOptions=0,Properties.ListOptions=0,Properties.ListSource=0
+ExpandedItems=LiveBindings=0,"LiveBindings Designer=0",LookAndFeel=0,Margins=0,Styles=0
 
 [DebugLogView]
 PercentageSizes=1
@@ -906,11 +942,11 @@ State=0
 Left=0
 Top=533
 Width=2000
-Height=3866
+Height=2141
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=2000
-ClientHeight=3866
+ClientHeight=2141
 TBDockHeight=9012
 LRDockWidth=2000
 Dockable=1
