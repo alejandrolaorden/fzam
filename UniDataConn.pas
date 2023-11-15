@@ -2,7 +2,7 @@
 {                                                       }
 {       FactuZam                                        }
 {                                                       }
-{       Copyright (C) 2023 Alejandro Laorden Hidalgo    }
+{       Copyright (C) 2023 fzam.6dvdy@slmail.me    }
 {                                                       }
 {*******************************************************}
 

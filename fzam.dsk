@@ -10,10 +10,10 @@ File_7=TSourceModule,'C:\DISCO DURO\proyectos\fzam\inMtoGrupos.pas',0,1,74,23,77
 
 [Modules]
 Module0=C:\DISCO DURO\proyectos\fzam\inMtoFacturas.pas
-Module1=C:\DISCO DURO\proyectos\fzam\inLibGlobalVar.pas
-Module2=C:\DISCO DURO\proyectos\fzam\fzam.dproj
-Module3=C:\DISCO DURO\proyectos\fzam\inMtoArticulos.pas
-Module4=C:\DISCO DURO\proyectos\fzam\UniDataConn.pas
+Module1=C:\DISCO DURO\proyectos\fzam\fzam.dproj
+Module2=C:\DISCO DURO\proyectos\fzam\UniDataConn.pas
+Module3=C:\DISCO DURO\proyectos\fzam\inLibGlobalVar.pas
+Module4=C:\DISCO DURO\proyectos\fzam\inMtoArticulos.pas
 Module5=C:\DISCO DURO\proyectos\fzam\inMtoLogon.pas
 Module6=C:\DISCO DURO\proyectos\fzam\inLibtb.pas
 Module7=C:\DISCO DURO\proyectos\fzam\inLibDevExp.pas
@@ -28,16 +28,16 @@ EditWindowCount=1
 [C:\DISCO DURO\proyectos\fzam\inMtoFacturas.pas]
 ModuleType=TSourceModule
 
-[C:\DISCO DURO\proyectos\fzam\inLibGlobalVar.pas]
-ModuleType=TSourceModule
-
 [C:\DISCO DURO\proyectos\fzam\fzam.dproj]
 ModuleType=TBaseProject
 
-[C:\DISCO DURO\proyectos\fzam\inMtoArticulos.pas]
+[C:\DISCO DURO\proyectos\fzam\UniDataConn.pas]
 ModuleType=TSourceModule
 
-[C:\DISCO DURO\proyectos\fzam\UniDataConn.pas]
+[C:\DISCO DURO\proyectos\fzam\inLibGlobalVar.pas]
+ModuleType=TSourceModule
+
+[C:\DISCO DURO\proyectos\fzam\inMtoArticulos.pas]
 ModuleType=TSourceModule
 
 [C:\DISCO DURO\proyectos\fzam\inMtoLogon.pas]
@@ -436,11 +436,11 @@ State=0
 Left=0
 Top=425
 Width=1911
-Height=3227
+Height=3188
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1911
-ClientHeight=3227
+ClientHeight=3188
 TBDockHeight=9012
 LRDockWidth=1911
 Dockable=1
@@ -449,8 +449,8 @@ SplitPos=212
 
 [PropInspDesignerSelection]
 ArrangeBy=Name
-SelectedItem=Name,
-ExpandedItems=LiveBindings=0,"LiveBindings Designer=0",LookAndFeel=0,Margins=0,Styles=0
+SelectedItem=Action,
+ExpandedItems=Anchors=0,BorderIcons=0
 
 [DebugLogView]
 PercentageSizes=1
