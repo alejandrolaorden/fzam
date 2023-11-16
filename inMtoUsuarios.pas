@@ -97,11 +97,9 @@ procedure TfrmMtoUsuarios.dsTablaGStateChange(Sender: TObject);
 begin
   inherited;
   if (dsTablaG.State = dsInsert) then
-    cxGrdDBTabPrinUSUARIO_USUARIO.Properties.ReadOnly := False
+    cxGrdDBTabPrinUSUARIO_USUARIO.Options.Editing := True
   else
-  begin
-    cxGrdDBTabPrinUSUARIO_USUARIO.Properties.ReadOnly := True;
-  end;
+    cxGrdDBTabPrinUSUARIO_USUARIO.Options.Editing := False;
 end;
 
 initialization

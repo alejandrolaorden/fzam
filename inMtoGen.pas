@@ -410,6 +410,7 @@ begin
     //GrabarPerfil('Todos', Self.Name, 'oApplySkin', 'False' );
     GrabarPerfil(sUser, Self.Name, 'oApplyWidth', 'False' );
     GrabarPerfil(sUser, Self.Name, 'oMostrarPerfil', 'False' );
+    GrabarPerfil(sUser, Self.Name, 'oGetSQLFromDB', 'False' );
   end;
 end;
 

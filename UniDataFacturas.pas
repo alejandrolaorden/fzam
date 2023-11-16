@@ -89,8 +89,8 @@ public
     function GetUserEmpresaDef:String;
     procedure CalcularFactura;
   end;
-var
-  dmFacturas: TdmFacturas;
+//var
+//  dmFacturas: TdmFacturas;
 
 implementation
 

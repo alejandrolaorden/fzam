@@ -26,8 +26,8 @@ type
     procedure GetCodigoAutoIvaGrupo;
   end;
 
-var
-  dmIvasGrupos: TdmIvasGrupos;
+//var
+//  dmIvasGrupos: TdmIvasGrupos;
 
 implementation
 

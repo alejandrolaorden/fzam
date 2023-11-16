@@ -39,6 +39,7 @@ type
     cxGrdDBTabPrinEMPRESA_CONTADOR: TcxGridDBColumn;
     cxGrdDBTabPrinDESCRIPCION_TIPODOCUMENTO: TcxGridDBColumn;
     procedure FormDestroy(Sender: TObject);
+    procedure dsTablaGStateChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -65,6 +66,15 @@ begin
   inherited;
   dmmContadores := TdmContadores.Create(Self);
   pkFieldName := '`TIPODOC_CONTADOR;SERIE_CONTADOR;EMPRESA_CONTADOR';
+end;
+
+procedure TfrmMtoContadores.dsTablaGStateChange(Sender: TObject);
+begin
+  inherited;
+  if dsTablaG.State = dsInsert then
+    cxgrdbclmnGrdDBTabPrinTIPODOC_CONTADOR.Options.Editing := True
+  else
+    cxgrdbclmnGrdDBTabPrinTIPODOC_CONTADOR.Options.Editing := False;
 end;
 
 procedure TfrmMtoContadores.FormDestroy(Sender: TObject);

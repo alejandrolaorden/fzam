@@ -7,59 +7,59 @@ inherited frmMtoIvasGrupos: TfrmMtoIvasGrupos
     inherited pcPantalla: TcxPageControl
       Properties.ActivePage = tsLista
       inherited tsLista: TcxTabSheet
-        ExplicitLeft = 3
-        ExplicitTop = 32
-        ExplicitWidth = 942
-        ExplicitHeight = 480
+        ExplicitLeft = 4
+        ExplicitTop = 30
+        ExplicitWidth = 943
+        ExplicitHeight = 484
         inherited cxGrdPrincipal: TcxGrid
+          ExplicitLeft = -4
+          ExplicitTop = 4
+          ExplicitWidth = 943
+          ExplicitHeight = 484
           inherited cxGrdDBTabPrin: TcxGridDBTableView
             OptionsData.Editing = True
-            object cxgrdbclmnGrdDBTabPrinGRUPO_ZONA_IVA: TcxGridDBColumn
-              Caption = 'C'#243'digo Zona IVA'
+            object cxGrdDBTabPrinGRUPO_ZONA_IVA: TcxGridDBColumn
+              Caption = 'C'#243'digo Zona'
               DataBinding.FieldName = 'GRUPO_ZONA_IVA'
-              Width = 152
+              Width = 143
             end
-            object cxgrdbclmnGrdDBTabPrinDEFAULT_ZONA_IVA: TcxGridDBColumn
-              Caption = 'Zona por defecto'
-              DataBinding.FieldName = 'ESDEFAULT_ZONA_IVA'
-              PropertiesClassName = 'TcxCheckBoxProperties'
-              Properties.ValueChecked = 'S'
-              Properties.ValueUnchecked = 'N'
-              Width = 150
-            end
-            object cxgrdbclmnGrdDBTabPrinDESCRIPCION_ZONA_IVA: TcxGridDBColumn
+            object cxGrdDBTabPrinDESCRIPCION_ZONA_IVA: TcxGridDBColumn
               Caption = 'Descripci'#243'n Zona'
               DataBinding.FieldName = 'DESCRIPCION_ZONA_IVA'
-              Width = 265
+              Width = 324
             end
-            object cxgrdbclmnGrdDBTabPrinAPLICA_RE_ZONA_IVA: TcxGridDBColumn
-              Caption = 'Grupo permite RE'
+            object cxGrdDBTabPrinESIVAAGRICOLA_ZONA_IVA: TcxGridDBColumn
+              Caption = 'REAGP'
+              DataBinding.FieldName = 'ESIVAAGRICOLA_ZONA_IVA'
+              Width = 85
+            end
+            object cxGrdDBTabPrinESAPLICA_RE_ZONA_IVA: TcxGridDBColumn
+              Caption = 'Aplica RE'
               DataBinding.FieldName = 'ESAPLICA_RE_ZONA_IVA'
               PropertiesClassName = 'TcxCheckBoxProperties'
               Properties.ValueChecked = 'S'
               Properties.ValueUnchecked = 'N'
-              Width = 157
+              Width = 106
             end
-            object cxGrdDBTabPrinIRPF_IMP_INCL_ZONA_IVA: TcxGridDBColumn
-              Caption = 'IRPF Calculado'
+            object cxGrdDBTabPrinESDEFAULT_ZONA_IVA: TcxGridDBColumn
+              Caption = 'Zona por Defecto'
+              DataBinding.FieldName = 'ESDEFAULT_ZONA_IVA'
+              PropertiesClassName = 'TcxCheckBoxProperties'
+              Properties.ValueChecked = 'S'
+              Properties.ValueUnchecked = 'N'
+              Width = 190
+            end
+            object cxGrdDBTabPrinPALABRA_REPORTS_ZONA_IVA: TcxGridDBColumn
+              Caption = 'Palabra IVA'
+              DataBinding.FieldName = 'PALABRA_REPORTS_ZONA_IVA'
+            end
+            object cxGrdDBTabPrinESIRPF_IMP_INCL_ZONA_IVA: TcxGridDBColumn
+              Caption = 'IRPF Imp Incl'
               DataBinding.FieldName = 'ESIRPF_IMP_INCL_ZONA_IVA'
               PropertiesClassName = 'TcxCheckBoxProperties'
               Properties.ValueChecked = 'S'
               Properties.ValueUnchecked = 'N'
-              Width = 137
-            end
-            object cxGrdDBTabPrinESIVAAGRICOLA_ZONA_IVA: TcxGridDBColumn
-              Caption = 'Es REAGP'
-              DataBinding.FieldName = 'ESIVAAGRICOLA_ZONA_IVA'
-              PropertiesClassName = 'TcxCheckBoxProperties'
-              Properties.ValueChecked = 'S'
-              Properties.ValueUnchecked = 'N'
-              Width = 131
-            end
-            object cxGrdDBTabPrinPALABRA_REPORTS_ZONA_IVA: TcxGridDBColumn
-              Caption = 'Palabra IVA en Documentos'
-              DataBinding.FieldName = 'PALABRA_REPORTS_ZONA_IVA'
-              Width = 252
+              Width = 115
             end
           end
         end
@@ -67,16 +67,28 @@ inherited frmMtoIvasGrupos: TfrmMtoIvasGrupos
       inherited tsFicha: TcxTabSheet
         Enabled = False
         TabVisible = False
-        ExplicitLeft = 3
-        ExplicitTop = 32
-        ExplicitWidth = 942
-        ExplicitHeight = 480
+        ExplicitLeft = 4
+        ExplicitTop = 30
+        ExplicitWidth = 943
+        ExplicitHeight = 484
       end
       inherited tsPerfil: TcxTabSheet
+        ExplicitLeft = 4
+        ExplicitTop = 30
+        ExplicitWidth = 943
+        ExplicitHeight = 484
         inherited pnlPerfilTop: TPanel
+          ExplicitWidth = 943
           inherited edtPerfilBusq: TcxTextEdit
             ExplicitHeight = 27
           end
+        end
+      end
+    end
+    inherited pnlTopPage: TPanel
+      inherited pnlTopGrid: TPanel
+        inherited edtBusqGlobal: TcxTextEdit
+          ExplicitHeight = 27
         end
       end
     end

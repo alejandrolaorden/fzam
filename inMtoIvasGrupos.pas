@@ -26,12 +26,12 @@ uses
 
 type
   TfrmMtoIvasGrupos = class(TfrmMtoGen)
-    cxgrdbclmnGrdDBTabPrinGRUPO_ZONA_IVA: TcxGridDBColumn;
-    cxgrdbclmnGrdDBTabPrinDESCRIPCION_ZONA_IVA: TcxGridDBColumn;
-    cxgrdbclmnGrdDBTabPrinAPLICA_RE_ZONA_IVA: TcxGridDBColumn;
-    cxgrdbclmnGrdDBTabPrinDEFAULT_ZONA_IVA: TcxGridDBColumn;
-    cxGrdDBTabPrinIRPF_IMP_INCL_ZONA_IVA: TcxGridDBColumn;
+    cxGrdDBTabPrinGRUPO_ZONA_IVA: TcxGridDBColumn;
+    cxGrdDBTabPrinDESCRIPCION_ZONA_IVA: TcxGridDBColumn;
+    cxGrdDBTabPrinESIRPF_IMP_INCL_ZONA_IVA: TcxGridDBColumn;
     cxGrdDBTabPrinESIVAAGRICOLA_ZONA_IVA: TcxGridDBColumn;
+    cxGrdDBTabPrinESAPLICA_RE_ZONA_IVA: TcxGridDBColumn;
+    cxGrdDBTabPrinESDEFAULT_ZONA_IVA: TcxGridDBColumn;
     cxGrdDBTabPrinPALABRA_REPORTS_ZONA_IVA: TcxGridDBColumn;
     procedure FormDestroy(Sender: TObject);
     procedure dsTablaGStateChange(Sender: TObject);
@@ -58,20 +58,17 @@ procedure ForceReferenceToClass(C: TClass); begin end;
 
 procedure TfrmMtoIvasGrupos.CrearTablaPrincipal;
 begin
-  inherited;
   dmmIvasGrupos := TdmIvasGrupos.Create(Self);
-    pkFieldName := 'GRUPO_ZONA_IVA';
+  pkFieldName := 'GRUPO_ZONA_IVA';
 end;
 
 procedure TfrmMtoIvasGrupos.dsTablaGStateChange(Sender: TObject);
 begin
   inherited;
-  if (dsTablaG.State = dsInsert) then
-    cxgrdbclmnGrdDBTabPrinGRUPO_ZONA_IVA.Properties.ReadOnly := False
+  if (dsTablaG.DataSet.State = dsInsert) then
+    cxGrdDBTabPrinGRUPO_ZONA_IVA.Options.Editing := True
   else
-  begin
-    cxgrdbclmnGrdDBTabPrinGRUPO_ZONA_IVA.Properties.ReadOnly := True;
-  end;
+    cxGrdDBTabPrinGRUPO_ZONA_IVA.Options.Editing := False;
 end;
 
 procedure TfrmMtoIvasGrupos.FormDestroy(Sender: TObject);

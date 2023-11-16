@@ -1,5 +1,4 @@
 inherited dmGeneradorProcesos: TdmGeneradorProcesos
-  OldCreateOrder = True
   Height = 169
   Width = 689
   inherited unqryTablaG: TUniQuery

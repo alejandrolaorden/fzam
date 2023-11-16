@@ -17,7 +17,8 @@ inherited frmMtoContadores: TfrmMtoContadores
             object cxgrdbclmnGrdDBTabPrinTIPODOC_CONTADOR: TcxGridDBColumn
               Caption = 'Tipo de Documento'
               DataBinding.FieldName = 'TIPODOC_CONTADOR'
-              Width = 149
+              Options.Editing = False
+              Width = 177
             end
             object cxGrdDBTabPrinDESCRIPCION_TIPODOCUMENTO: TcxGridDBColumn
               Caption = 'Documento'
@@ -27,6 +28,7 @@ inherited frmMtoContadores: TfrmMtoContadores
             object cxGrdDBTabPrinEMPRESA_CONTADOR: TcxGridDBColumn
               Caption = 'Empresa'
               DataBinding.FieldName = 'EMPRESA_CONTADOR'
+              Width = 88
             end
             object cxgrdbclmnGrdDBTabPrinSERIE_CONTADOR: TcxGridDBColumn
               Caption = 'Serie'

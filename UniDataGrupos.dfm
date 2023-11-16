@@ -1,5 +1,4 @@
 inherited dmGrupos: TdmGrupos
-  OldCreateOrder = True
   Width = 360
   inherited unqryTablaG: TUniQuery
     Connection = dmConn.conUni

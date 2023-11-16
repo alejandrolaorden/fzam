@@ -11,7 +11,8 @@ unit inMtoIvas;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, inMtoGen, dxSkinsCore,
   dxSkinsDefaultPainters, dxBarBuiltInMenu, cxGraphics, cxControls,
   cxLookAndFeels, cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter,
@@ -21,16 +22,14 @@ uses
   cxGridLevel, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, cxGrid, cxPC, Vcl.ExtCtrls, UniDataIvas, cxSpinEdit,
   cxCalendar, cxDBExtLookupComboBox, cxDBLookupComboBox, dxScrollbarAnnotations,
-  cxBlobEdit, dxCore, cxRadioGroup, cxCheckBox, inMtoPrincipal2,
+  cxBlobEdit, dxCore, cxRadioGroup, cxCheckBox,
   JvComponentBase, JvEnterTab;
 
 type
   TfrmMtoIvas = class(TfrmMtoGen)
-    cxgrdbclmnGrdDBTabPrinCODIGO_IVA: TcxGridDBColumn;
-    cxgrdbclmnGrdDBTabPrinFECHA_DESDE_IVA: TcxGridDBColumn;
-    cxgrdbclmnGrdDBTabPrinFECHA_HASTA_IVA: TcxGridDBColumn;
-    cxgrdbclmnGrdDBTabPrinDESCRIPCION_ZONA_IVA: TcxGridDBColumn;
-    cxgrdbclmnGrdDBTabPrinGRUPO_ZONA_IVA: TcxGridDBColumn;
+    cxGrdDBTabPrinCODIGO_IVA: TcxGridDBColumn;
+    cxGrdDBTabPrinGRUPO_ZONA_IVA: TcxGridDBColumn;
+    cxGrdDBTabPrinDESCRIPCION_ZONA_IVA: TcxGridDBColumn;
     cxGrdDBTabPrinPORCENEXENTO_IVA: TcxGridDBColumn;
     cxGrdDBTabPrinPORCENEXENTO_RE_IVA: TcxGridDBColumn;
     cxGrdDBTabPrinPORCENNORMAL_IVA: TcxGridDBColumn;
@@ -39,6 +38,12 @@ type
     cxGrdDBTabPrinPORCENREDUCIDO_RE_IVA: TcxGridDBColumn;
     cxGrdDBTabPrinPORCENSUPERREDUCIDO_IVA: TcxGridDBColumn;
     cxGrdDBTabPrinPORCENSUPERREDUCIDO_RE_IVA: TcxGridDBColumn;
+    cxGrdDBTabPrinFECHA_DESDE_IVA: TcxGridDBColumn;
+    cxGrdDBTabPrinFECHA_HASTA_IVA: TcxGridDBColumn;
+    cxGrdDBTabPrinINSTANTEMODIF: TcxGridDBColumn;
+    cxGrdDBTabPrinINSTANTEALTA: TcxGridDBColumn;
+    cxGrdDBTabPrinUSUARIOALTA: TcxGridDBColumn;
+    cxGrdDBTabPrinUSUARIOMODIF: TcxGridDBColumn;
     cxGrdDBTabPrinESAPLICA_RE_ZONA_IVA: TcxGridDBColumn;
     cxGrdDBTabPrinESIVAAGRICOLA_ZONA_IVA: TcxGridDBColumn;
     cxGrdDBTabPrinESDEFAULT_ZONA_IVA: TcxGridDBColumn;
@@ -73,8 +78,7 @@ procedure TfrmMtoIvas.CrearTablaPrincipal;
 begin
   inherited;
   dmmIvas := TdmIvas.Create(Self);
-  dsTablaG.DataSet := dmmIvas.unqryTablaG;
-  (cxgrdbclmnGrdDBTabPrinGRUPO_ZONA_IVA.Properties as
+  (cxGrdDBTabPrinGRUPO_ZONA_IVA.Properties as
                      TcxLookupComboBoxProperties).ListSource := dmmIvas.dsZonas;
   pkFieldName := 'CODIGO_IVA';
 end;
@@ -91,10 +95,10 @@ end;
 procedure TfrmMtoIvas.dsTablaGStateChange(Sender: TObject);
 begin
   inherited;
-  if (dsTAblaG.State = dsInsert) then
-    cxgrdbclmnGrdDBTabPrinCODIGO_IVA.Properties.ReadOnly := False
-  else
-    cxgrdbclmnGrdDBTabPrinCODIGO_IVA.Properties.ReadOnly := True;
+    if (dsTablaG.State = dsInsert) then
+      cxGrdDBTabPrinCODIGO_IVA.Options.Editing := True
+    else
+      cxGrdDBTabPrinCODIGO_IVA.Options.Editing := False;
 end;
 
 procedure TfrmMtoIvas.FormClose(Sender: TObject; var Action: TCloseAction);

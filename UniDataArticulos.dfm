@@ -1,5 +1,5 @@
 inherited dmArticulos: TdmArticulos
-  OldCreateOrder = True
+  OldCreateOrder = False
   Height = 256
   Width = 1012
   inherited unqryTablaG: TUniQuery
@@ -172,7 +172,6 @@ inherited dmArticulos: TdmArticulos
     SQL.Strings = (
       'select *'
       'from vi_articulos_tarifas')
-    MasterSource = frmMtoArticulos.dsTablaG
     MasterFields = 'CODIGO_ARTICULO'
     DetailFields = 'CODIGO_ARTICULO_TARIFA'
     BeforePost = unqryTarifasArticulosBeforePost
@@ -274,7 +273,6 @@ inherited dmArticulos: TdmArticulos
     SQL.Strings = (
       'select *'
       'from vi_articulos_proveedores')
-    MasterSource = frmMtoArticulos.dsTablaG
     MasterFields = 'CODIGO_ARTICULO'
     DetailFields = 'CODIGO_ARTICULO'
     BeforePost = unqryProveedoresArticulosBeforePost
@@ -343,8 +341,8 @@ inherited dmArticulos: TdmArticulos
       'select *'
       'from vi_fac_lin_busquedas l'
       'INNER JOIN vi_fac_busquedas f'
-      'ON l.NRO_FACTURA = f.NRO_FACTURA_LINEA'
-      'AND l.SERIE_FACTURA = f.SERIE_FACTURA_LINEA')
+      'ON l.NRO_FACTURA_LINEA = f.NRO_FACTURA'
+      'AND l.SERIE_FACTURA_LINEA = f.SERIE_FACTURA')
     MasterFields = 'CODIGO_ARTICULO'
     DetailFields = 'CODIGO_ARTICULO_FACTURA_LINEA'
     BeforePost = unqryPerfilesBeforePost

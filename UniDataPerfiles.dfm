@@ -1,5 +1,4 @@
 object dmPerfiles: TdmPerfiles
-  OldCreateOrder = False
   OnCreate = DataModuleCreate
   OnDestroy = DataModuleDestroy
   Height = 150

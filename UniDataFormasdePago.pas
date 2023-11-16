@@ -31,8 +31,8 @@ type
     //procedure GetCodigoAutoRetencion;
   end;
 
-var
-  dmFormasdePago: TdmFormasdePago;
+//var
+//  dmFormasdePago: TdmFormasdePago;
 
 implementation
 

@@ -31,8 +31,8 @@ type
     //procedure GetCodigoAutoRetencion;
   end;
 
-var
-  dmFamilias: TdmFamilias;
+//var
+//  dmFamilias: TdmFamilias;
 
 implementation
 

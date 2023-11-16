@@ -349,22 +349,14 @@ implementation
         then
         begin
           // ShowMessage((frmMto.Components[i] as TcxGridDBTableView).Name);
-          if ((frmMto.Components[i] as
-                TcxGridDBTableView).DataController.DataSource <> nil)
-          then
-            if (((frmMto.Components[i] as
-                    TcxGridDBTableView).DataController.DataSource.DataSet.
-                  State = dsInsert) or
-                ((frmMto.Components[i] as
-                    TcxGridDBTableView).DataController.DataSource.DataSet.
-                  State = dsEdit)
-              )
-            then
-            begin
+          with ((frmMto.Components[i] as TcxGridDBTableView).DataController) do
+          if ((DataSource <> nil) and
+               ((DataSet.State = dsInsert) or
+                (DataSet.State = dsEdit))) then
+          begin
               //poner aquí un mensaje para preguntar al usuario
-              (frmMto.Components[i] as
-                  TcxGridDBTableView).DataController.DataSource.DataSet.Cancel;
-            end;
+            DataSet.Cancel;
+          end;
         end;
       end;
     end;

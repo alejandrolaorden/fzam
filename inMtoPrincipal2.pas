@@ -294,6 +294,7 @@ var
   bFound:Boolean;
   aShortCut:TList<integer>;
 begin
+  I := 0;
   bFound := False;
   //Defino los posibles ShortCuts que envío desde TActionList
   //Mejor usar el respositorio de ventanas y añadir el shortcut en algún sitio

@@ -36,8 +36,8 @@ type
     procedure GetCodigoAutoCliente;
   end;
 
-var
-  dmClientes2: TdmClientes;
+//var
+//  dmClientes2: TdmClientes;
 
 implementation
 

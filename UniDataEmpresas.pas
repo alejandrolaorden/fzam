@@ -49,8 +49,8 @@ type
     function GetZonaDefault:String;
   end;
 
-var
-  dmEmpresas: TdmEmpresas;
+//var
+//  dmEmpresas: TdmEmpresas;
 
 implementation
 

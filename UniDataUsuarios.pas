@@ -27,8 +27,8 @@ type
     { Public declarations }
   end;
 
-var
-  dmUsuarios: TdmUsuarios;
+//var
+//  dmUsuarios: TdmUsuarios;
 
 implementation
 

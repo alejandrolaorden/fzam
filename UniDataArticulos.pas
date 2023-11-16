@@ -52,8 +52,8 @@ type
     procedure FillTarifas(lst:TcxListView);
   end;
 
-var
-  dmArticulos: TdmArticulos;
+//var
+//  dmArticulos: TdmArticulos;
 
 implementation
 

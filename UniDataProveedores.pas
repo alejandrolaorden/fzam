@@ -30,8 +30,8 @@ type
     procedure GetCodigoAutoProveedor;
   end;
 
-var
-  dmmProveedores: TdmProveedores;
+//var
+//  dmmProveedores: TdmProveedores;
 
 implementation
 

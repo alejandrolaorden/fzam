@@ -22,8 +22,8 @@ type
     { Public declarations }
   end;
 
-var
-  dmContadores: TdmContadores;
+//var
+//  dmContadores: TdmContadores;
 
 implementation
 

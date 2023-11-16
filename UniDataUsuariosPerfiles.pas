@@ -22,8 +22,8 @@ type
     { Public declarations }
   end;
 
-var
-  dmUsuariosPerfiles: TdmUsuariosPerfiles;
+//var
+//  dmUsuariosPerfiles: TdmUsuariosPerfiles;
 
 implementation
 

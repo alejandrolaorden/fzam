@@ -44,8 +44,13 @@ uses inMtoGen, inLibGlobalVar, inMtoPrincipal2;
 
 procedure TdmBase.DataModuleCreate(Sender: TObject);
 begin
-  GetFormUserProfile(oPerfilDic, Self.Name);
-  LoadSQLFromProfile(Self, oPerfilDic);
+  if (GetPerfilValueDef((Owner as TfrmMtoGen).oPerfilDic,
+                        'oGetSQLFromDB',
+                        'False') = 'True') then
+  begin
+    GetFormUserProfile(oPerfilDic, Self.Name);
+    LoadSQLFromProfile(Self, oPerfilDic);
+  end;
   unqryTablaG.Connection              := oConn;
   unqryPerfiles.Connection            := oConn;
   (Self.Owner as TfrmMtoGen).tdmDataModule := Self;
@@ -57,7 +62,8 @@ procedure TdmBase.DataModuleDestroy(Sender: TObject);
 begin
   unqryTablaG.Close;
   unqryPerfiles.Close;
-  FreeAndNil(oPerfilDic);
+  if oPerfilDic <> nil then
+    FreeAndNil(oPerfilDic);
 //  oPerfilDic.Free;
 end;
 
@@ -88,7 +94,7 @@ begin
   if (Self.Owner is TfrmMtoGen) then
     with (Self.Owner as TfrmMtoGen) do
     begin
-      if tsLista.TabVisible = true then
+      if tsFicha.TabVisible = true then
       begin
         pcPantalla.ActivePage := tsFicha;
       end;

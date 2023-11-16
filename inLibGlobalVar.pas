@@ -31,7 +31,7 @@ implementation
 
 initialization
   oAppName         := 'Fzam';
-  oVersion         := '1.0.0.14112023a';
+  oVersion         := '1.0.0.16112023a';
   oUser            := 'No definido';
   oGroup           := 'No definido';
   orootGroup       := 'N';

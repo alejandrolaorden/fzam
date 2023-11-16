@@ -12,7 +12,6 @@ object frmBase: TfrmBase
   Font.Pitch = fpFixed
   Font.Style = []
   Font.Quality = fqClearTypeNatural
-  OldCreateOrder = False
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 19

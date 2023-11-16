@@ -118,7 +118,6 @@ inherited dmFamilias: TdmFamilias
       'SELECT *  '
       '  FROM vi_art_busquedas'
       '')
-    MasterSource = frmMtoFamilias.dsTablaG
     MasterFields = 'CODIGO_FAMILIA'
     DetailFields = 'CODIGO_FAMILIA_ARTICULO'
     BeforeInsert = unqryTablaGBeforeInsert

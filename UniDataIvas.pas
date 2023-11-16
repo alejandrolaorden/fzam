@@ -28,8 +28,8 @@ type
     procedure GetCodigoAutoIva;
   end;
 
-var
-  dmIvas: TdmIvas;
+//var
+//  dmIvas: TdmIvas;
 
 implementation
 
