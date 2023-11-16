@@ -59,14 +59,14 @@ end;
 
 procedure TfrmMtoSearch.btnAceptarClick(Sender: TObject);
 begin
-  inherited;
+  //inherited;
   sFicha:= 'S';
   PostMessage(Handle, WM_CLOSE, 0, 0);
 end;
 
 procedure TfrmMtoSearch.btnCancelarClick(Sender: TObject);
 begin
-  inherited;
+  //inherited;
   PostMessage(Handle, WM_CLOSE, 0, 0);
 end;
 

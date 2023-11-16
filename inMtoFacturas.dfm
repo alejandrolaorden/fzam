@@ -8,6 +8,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
   ClientHeight = 844
   ClientWidth = 1231
   Scaled = False
+  ExplicitTop = -177
   ExplicitWidth = 1231
   ExplicitHeight = 844
   PixelsPerInch = 96
@@ -32,6 +33,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
       Margins.Right = 5
       Margins.Bottom = 5
       TabOrder = 1
+      Properties.ActivePage = tsLista
       ExplicitWidth = 1087
       ExplicitHeight = 804
       ClientRectBottom = 798
@@ -229,12 +231,18 @@ inherited frmMtoFacturas: TfrmMtoFacturas
             object cxgrdbclmnGrdDBTabPrinRETENCIONES_EMPRESA_FACTURA: TcxGridDBColumn
               Caption = 'Tiene Retenciones Empresa'
               DataBinding.FieldName = 'ESRETENCIONES_EMPRESA_FACTURA'
+              PropertiesClassName = 'TcxCheckBoxProperties'
+              Properties.ValueChecked = 'S'
+              Properties.ValueUnchecked = 'N'
               Styles.Header = frmOpenApp2.StylCab
               Width = 231
             end
             object cxgrdbclmnGrdDBTabPrinIVA_RECARGO_CLIENTE_FACTURA: TcxGridDBColumn
               Caption = 'Tiene RE cliente'
               DataBinding.FieldName = 'ESIVA_RECARGO_CLIENTE_FACTURA'
+              PropertiesClassName = 'TcxCheckBoxProperties'
+              Properties.ValueChecked = 'S'
+              Properties.ValueUnchecked = 'N'
               Styles.Header = frmOpenApp2.StylCab
               Width = 136
             end
@@ -255,6 +263,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
             object cxgrdbclmnGrdDBTabPrinTOTAL_IVAN_FACTURA: TcxGridDBColumn
               Caption = 'Total IVA Normal'
               DataBinding.FieldName = 'TOTAL_IVAN_FACTURA'
+              PropertiesClassName = 'TcxCurrencyEditProperties'
               Styles.Header = frmOpenApp2.StylCab
               Width = 159
             end
@@ -275,12 +284,14 @@ inherited frmMtoFacturas: TfrmMtoFacturas
             object cxgrdbclmnGrdDBTabPrinTOTAL_REN_FACTURA: TcxGridDBColumn
               Caption = 'Total RE Normal'
               DataBinding.FieldName = 'TOTAL_REN_FACTURA'
+              PropertiesClassName = 'TcxCurrencyEditProperties'
               Styles.Header = frmOpenApp2.StylCab
               Width = 139
             end
             object cxgrdbclmnGrdDBTabPrinTOTAL_BASEI_IVAN_FACTURA: TcxGridDBColumn
               Caption = 'Total Base Imponible Normal'
               DataBinding.FieldName = 'TOTAL_BASEI_IVAN_FACTURA'
+              PropertiesClassName = 'TcxCurrencyEditProperties'
               Styles.Header = frmOpenApp2.StylCab
               Width = 264
             end
@@ -301,6 +312,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
             object cxgrdbclmnGrdDBTabPrinTOTAL_IVAR_FACTURA: TcxGridDBColumn
               Caption = 'Total IVA Normal'
               DataBinding.FieldName = 'TOTAL_IVAR_FACTURA'
+              PropertiesClassName = 'TcxCurrencyEditProperties'
               Styles.Header = frmOpenApp2.StylCab
               Width = 164
             end
@@ -321,12 +333,14 @@ inherited frmMtoFacturas: TfrmMtoFacturas
             object cxgrdbclmnGrdDBTabPrinTOTAL_RER_FACTURA: TcxGridDBColumn
               Caption = 'Total RE Reducido'
               DataBinding.FieldName = 'TOTAL_RER_FACTURA'
+              PropertiesClassName = 'TcxCurrencyEditProperties'
               Styles.Header = frmOpenApp2.StylCab
               Width = 172
             end
             object cxgrdbclmnGrdDBTabPrinTOTAL_BASEI_IVAR_FACTURA: TcxGridDBColumn
               Caption = 'Total Base Imponible Reducido'
               DataBinding.FieldName = 'TOTAL_BASEI_IVAR_FACTURA'
+              PropertiesClassName = 'TcxCurrencyEditProperties'
               Styles.Header = frmOpenApp2.StylCab
               Width = 284
             end
@@ -347,6 +361,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
             object cxgrdbclmnGrdDBTabPrinTOTAL_IVAS_FACTURA: TcxGridDBColumn
               Caption = 'Total IVA SuperReducido'
               DataBinding.FieldName = 'TOTAL_IVAS_FACTURA'
+              PropertiesClassName = 'TcxCurrencyEditProperties'
               Styles.Header = frmOpenApp2.StylCab
               Width = 232
             end
@@ -367,12 +382,14 @@ inherited frmMtoFacturas: TfrmMtoFacturas
             object cxgrdbclmnGrdDBTabPrinTOTAL_RES_FACTURA: TcxGridDBColumn
               Caption = 'Total RE SuperReducido'
               DataBinding.FieldName = 'TOTAL_RES_FACTURA'
+              PropertiesClassName = 'TcxCurrencyEditProperties'
               Styles.Header = frmOpenApp2.StylCab
               Width = 212
             end
             object cxgrdbclmnGrdDBTabPrinTOTAL_BASEI_IVAS_FACTURA: TcxGridDBColumn
               Caption = 'Total BI SuperReducido'
               DataBinding.FieldName = 'TOTAL_BASEI_IVAS_FACTURA'
+              PropertiesClassName = 'TcxCurrencyEditProperties'
               Styles.Header = frmOpenApp2.StylCab
               Width = 242
             end
@@ -393,6 +410,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
             object cxgrdbclmnGrdDBTabPrinTOTAL_IVAE_FACTURA: TcxGridDBColumn
               Caption = 'Total Exento'
               DataBinding.FieldName = 'TOTAL_IVAE_FACTURA'
+              PropertiesClassName = 'TcxCurrencyEditProperties'
               Styles.Header = frmOpenApp2.StylCab
               Width = 116
             end
@@ -413,12 +431,14 @@ inherited frmMtoFacturas: TfrmMtoFacturas
             object cxgrdbclmnGrdDBTabPrinTOTAL_REE_FACTURA: TcxGridDBColumn
               Caption = 'Total RE Exento'
               DataBinding.FieldName = 'TOTAL_REE_FACTURA'
+              PropertiesClassName = 'TcxCurrencyEditProperties'
               Styles.Header = frmOpenApp2.StylCab
               Width = 143
             end
             object cxgrdbclmnGrdDBTabPrinTOTAL_BASEI_IVAE_FACTURA: TcxGridDBColumn
               Caption = 'Total BI Exento'
               DataBinding.FieldName = 'TOTAL_BASEI_IVAE_FACTURA'
+              PropertiesClassName = 'TcxCurrencyEditProperties'
               Styles.Header = frmOpenApp2.StylCab
               Width = 148
             end
@@ -439,6 +459,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
             object cxgrdbclmnGrdDBTabPrinTOTAL_RETENCION_FACTURA: TcxGridDBColumn
               Caption = 'Total Retenci'#243'n'
               DataBinding.FieldName = 'TOTAL_RETENCION_FACTURA'
+              PropertiesClassName = 'TcxCurrencyEditProperties'
               Styles.Header = frmOpenApp2.StylCab
               Width = 147
             end
@@ -869,7 +890,6 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                         FieldName = 'NOMBRE_TIPO_IVA'
                       end>
                     Properties.ListOptions.ShowHeader = False
-                    Properties.ListSource = dmFacturas.dsIvasTipos
                     Properties.OnEditValueChanged = cxgrdbclmntv1TIPOIVA_ARTICULO_FACTURA_LINEAPropertiesEditValueChanged
                     Width = 109
                   end
@@ -1972,7 +1992,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                 ImageIndex = 2
                 object grpEmpresa: TcxGroupBox
                   Left = 22
-                  Top = 8
+                  Top = 13
                   Margins.Left = 4
                   Margins.Top = 4
                   Margins.Right = 4
@@ -2193,6 +2213,24 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                     Margins.Bottom = 4
                     Caption = 'Canal IVA'
                   end
+                  object lbldbCODIGO_CLIENTE_FACTURA: TcxDBLabel
+                    Left = 92
+                    Top = -5
+                    DataBinding.DataField = 'CODIGO_EMPRESA_FACTURA'
+                    DataBinding.DataSource = dsTablaG
+                    ParentFont = False
+                    Style.Font.Charset = DEFAULT_CHARSET
+                    Style.Font.Color = clWindowText
+                    Style.Font.Height = -17
+                    Style.Font.Name = 'Lucida Sans'
+                    Style.Font.Pitch = fpFixed
+                    Style.Font.Style = [fsBold]
+                    Style.Font.Quality = fqClearTypeNatural
+                    Style.IsFontAssigned = True
+                    Transparent = True
+                    Height = 21
+                    Width = 94
+                  end
                 end
                 object btnUpdateEmpresa: TcxButton
                   Left = 799
@@ -2200,27 +2238,9 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                   Width = 142
                   Height = 122
                   Caption = 'Dar de Alta o &Actualizar Empresa'
-                  TabOrder = 2
+                  TabOrder = 1
                   WordWrap = True
                   OnClick = btnUpdateEmpresaClick
-                end
-                object lbldbCODIGO_CLIENTE_FACTURA: TcxDBLabel
-                  Left = 817
-                  Top = 15
-                  DataBinding.DataField = 'CODIGO_EMPRESA_FACTURA'
-                  DataBinding.DataSource = dsTablaG
-                  ParentFont = False
-                  Style.Font.Charset = ANSI_CHARSET
-                  Style.Font.Color = clBlack
-                  Style.Font.Height = -16
-                  Style.Font.Name = 'Lucida Sans'
-                  Style.Font.Pitch = fpFixed
-                  Style.Font.Style = []
-                  Style.Font.Quality = fqClearType
-                  Style.IsFontAssigned = True
-                  Transparent = True
-                  Height = 21
-                  Width = 94
                 end
                 object btnIrAEmpresa: TcxButton
                   Left = 799
@@ -2228,7 +2248,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                   Width = 142
                   Height = 34
                   Caption = 'I&r a Empresa'
-                  TabOrder = 3
+                  TabOrder = 2
                   OnClick = btnIrAEmpresaClick
                 end
               end
@@ -2247,8 +2267,8 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                   Margins.Right = 4
                   Margins.Bottom = 4
                   Caption = 'Cliente'
-                  TabOrder = 1
-                  Height = 248
+                  TabOrder = 0
+                  Height = 277
                   Width = 763
                   object txtDIRECCION1_CLIENTE_FACTURA1: TcxDBTextEdit
                     Left = 13
@@ -2448,7 +2468,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                   end
                   object chkEXTRANJERO: TcxDBCheckBox
                     Left = 13
-                    Top = 211
+                    Top = 217
                     Caption = 'IVA Exento'
                     DataBinding.DataField = 'ESIVA_EXENTO_CLIENTE_FACTURA'
                     DataBinding.DataSource = dsTablaG
@@ -2461,7 +2481,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                   end
                   object cbbTARIFA_ARTICULOS_CLIENTES: TcxDBLookupComboBox
                     Left = 548
-                    Top = 205
+                    Top = 211
                     Margins.Left = 4
                     Margins.Top = 4
                     Margins.Right = 4
@@ -2481,7 +2501,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                   end
                   object lblTarifaArticulosCliente: TcxLabel
                     Left = 407
-                    Top = 209
+                    Top = 215
                     Margins.Left = 4
                     Margins.Top = 4
                     Margins.Right = 4
@@ -2490,7 +2510,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                   end
                   object chkIVA_EXENTO_CLIENTE_FACTURA: TcxDBCheckBox
                     Left = 132
-                    Top = 211
+                    Top = 217
                     Caption = 'Cliente intracomunitario'
                     DataBinding.DataField = 'ESINTRACOMUNITARIO_CLIENTE_FACTURA'
                     DataBinding.DataSource = dsTablaG
@@ -2501,24 +2521,24 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                     TabOrder = 19
                     Transparent = True
                   end
-                end
-                object lbldbCODIGO_CLIENTE: TcxDBLabel
-                  Left = 817
-                  Top = 15
-                  DataBinding.DataField = 'CODIGO_CLIENTE_FACTURA'
-                  DataBinding.DataSource = dsTablaG
-                  ParentFont = False
-                  Style.Font.Charset = ANSI_CHARSET
-                  Style.Font.Color = clBlack
-                  Style.Font.Height = -16
-                  Style.Font.Name = 'Lucida Sans'
-                  Style.Font.Pitch = fpFixed
-                  Style.Font.Style = []
-                  Style.Font.Quality = fqClearType
-                  Style.IsFontAssigned = True
-                  Transparent = True
-                  Height = 21
-                  Width = 94
+                  object lbldbCODIGO_CLIENTE: TcxDBLabel
+                    Left = 81
+                    Top = -4
+                    DataBinding.DataField = 'CODIGO_CLIENTE_FACTURA'
+                    DataBinding.DataSource = dsTablaG
+                    ParentFont = False
+                    Style.Font.Charset = ANSI_CHARSET
+                    Style.Font.Color = clBlack
+                    Style.Font.Height = -16
+                    Style.Font.Name = 'Lucida Sans'
+                    Style.Font.Pitch = fpFixed
+                    Style.Font.Style = [fsBold]
+                    Style.Font.Quality = fqClearType
+                    Style.IsFontAssigned = True
+                    Transparent = True
+                    Height = 21
+                    Width = 94
+                  end
                 end
                 object btnUpdateCliente: TcxButton
                   Left = 799
@@ -2526,17 +2546,17 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                   Width = 142
                   Height = 122
                   Caption = 'Dar de Alta o &Actualizar Cliente'
-                  TabOrder = 2
+                  TabOrder = 1
                   WordWrap = True
                   OnClick = btnUpdateClienteClick
                 end
                 object btnIrACliente: TcxButton
                   Left = 799
-                  Top = 208
+                  Top = 200
                   Width = 142
                   Height = 34
                   Caption = 'I&r a Cliente'
-                  TabOrder = 3
+                  TabOrder = 2
                   OnClick = btnIrAClienteClick
                 end
               end
@@ -2560,8 +2580,6 @@ inherited frmMtoFacturas: TfrmMtoFacturas
         end
       end
       inherited tsPerfil: TcxTabSheet
-        ExplicitLeft = 3
-        ExplicitTop = 32
         ExplicitWidth = 1078
         ExplicitHeight = 766
         inherited pnlPerfilTop: TPanel
@@ -2611,7 +2629,8 @@ inherited frmMtoFacturas: TfrmMtoFacturas
     Margins.Right = 5
     Margins.Bottom = 5
     TabOrder = 1
-    ExplicitLeft = 1087
+    ExplicitLeft = 1077
+    ExplicitTop = 17
     ExplicitWidth = 144
     ExplicitHeight = 844
     inherited pButtonGen: TPanel
@@ -2696,6 +2715,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
     Top = 395
   end
   inherited dsTablaG: TDataSource
+    DataSet = dmFacturas.unqryTablaG
     Left = 1020
     Top = 471
   end

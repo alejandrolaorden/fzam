@@ -11,6 +11,7 @@ inherited frmMtoSearch: TfrmMtoSearch
     Width = 801
     Height = 519
     ExplicitWidth = 817
+    ExplicitHeight = 519
     inherited pcPantalla: TcxPageControl
       Width = 801
       Height = 409
@@ -68,10 +69,10 @@ inherited frmMtoSearch: TfrmMtoSearch
     end
     inherited pnlTopPage: TPanel
       Width = 801
-      ExplicitWidth = 817
+      ExplicitWidth = 801
       inherited pnlTopGrid: TPanel
         Width = 801
-        ExplicitWidth = 817
+        ExplicitWidth = 801
         inherited sbExportExcel: TSpeedButton
           Visible = False
         end
@@ -116,9 +117,11 @@ inherited frmMtoSearch: TfrmMtoSearch
     Left = 801
     Height = 519
     Visible = False
-    ExplicitLeft = 817
+    ExplicitLeft = 801
+    ExplicitHeight = 519
     inherited pButtonGen: TPanel
       Top = 321
+      ExplicitTop = 321
       inherited btnGrabar: TcxButton
         Visible = False
       end

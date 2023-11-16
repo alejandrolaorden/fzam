@@ -12,7 +12,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, inMtoGen, UniDataFacturas, cxGraphics, cxControls, cxLookAndFeels,
+  Dialogs, inMtoGen,  cxGraphics, cxControls, cxLookAndFeels,
   cxLookAndFeelPainters, cxStyles, dxSkinsCore, dxSkinBlue,  System.StrUtils,
   dxSkinscxPCPainter, cxCustomData, cxFilter, cxData, cxDataStorage,
   cxEdit, cxNavigator, DB, cxDBData, cxContainer, System.UITypes,
@@ -29,7 +29,7 @@ uses
   cxDBLabel, dxGDIPlusClasses, dxSkinsForm, cxBlobEdit,
   dxScrollbarAnnotations, dxCore, cxRadioGroup, System.Actions, Vcl.ActnList,
   IDETheme.ActnCtrls, Vcl.ActnMan, Vcl.StdStyleActnCtrls, Vcl.AppEvnts,
-  JvComponentBase, JvEnterTab;
+  JvComponentBase, JvEnterTab, UniDataFacturas;
 
 type
   TfrmMtoFacturas = class(TfrmMtoGen)
@@ -106,7 +106,6 @@ type
     txtMOVIL_CLIENTE_FACTURA: TcxDBTextEdit;
     txtEMAIL_CLIENTE_FACTURA: TcxDBTextEdit;
     lblEmail: TcxLabel;
-    lbldbCODIGO_CLIENTE: TcxDBLabel;
     btnUpdateCliente: TcxButton;
     curTOTAL_LIQUIDO_FACTURA: TcxDBCurrencyEdit;
     lblTotalRetencionFactura: TcxLabel;
@@ -116,7 +115,6 @@ type
     btnCODIGO_EMPRESA_FACTURA: TcxDBButtonEdit;
     lblCodigoEmpresa: TcxLabel;
     btnUpdateEmpresa: TcxButton;
-    lbldbCODIGO_CLIENTE_FACTURA: TcxDBLabel;
     cxgrdbclmnGrdDBTabPrinCODIGO_EMPRESA_FACTURA: TcxGridDBColumn;
     cxgrdbclmnGrdDBTabPrinRAZONSOCIAL_EMPRESA_FACTURA: TcxGridDBColumn;
     cxgrdbclmnGrdDBTabPrinNIF_EMPRESA_FACTURA: TcxGridDBColumn;
@@ -296,6 +294,8 @@ type
     actArticulo: TAction;
     actEmpresa: TAction;
     actCliente: TAction;
+    lbldbCODIGO_CLIENTE_FACTURA: TcxDBLabel;
+    lbldbCODIGO_CLIENTE: TcxDBLabel;
     procedure sbGrabarClick(Sender: TObject);
     procedure btnUpdateClienteClick(Sender: TObject);
     procedure sbNuevaFacturaClick(Sender: TObject);

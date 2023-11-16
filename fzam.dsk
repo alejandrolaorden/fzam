@@ -1,22 +1,66 @@
 ﻿[Closed Files]
-File_0=TSourceModule,'C:\DISCO DURO\proyectos\fzam\inMtoIvas.pas',0,1,86,1,104,0,0,,
-File_1=TSourceModule,'C:\DISCO DURO\proyectos\fzam\UniDataIvas.dfm',0,1,1,1,1,0,0,,
-File_2=TSourceModule,'C:\DISCO DURO\proyectos\fzam\UniDataArticulos.pas',0,1,1,1,1,0,0,,
-File_3=TSourceModule,'C:\DISCO DURO\proyectos\fzam\inMtoContadores.pas',0,1,1,1,1,0,0,,
-File_4=TSourceModule,'C:\DISCO DURO\proyectos\fzam\UniDataIvasGrupos.pas',0,1,28,11,35,0,0,,
-File_5=TSourceModule,'C:\DISCO DURO\proyectos\fzam\inMtoIvasGrupos.pas',0,1,48,1,61,0,0,,
+File_0=TSourceModule,'C:\DISCO DURO\proyectos\fzam\UniDataConn.pas',0,1,1,1,1,0,0,,
+File_1=TSourceModule,'c:\program files (x86)\embarcadero\studio\20.0\SOURCE\VCL\Vcl.Controls.pas',0,1,7652,1,7665,0,0,,
+File_2=TSourceModule,'c:\program files (x86)\embarcadero\studio\20.0\SOURCE\VCL\Vcl.StdCtrls.pas',0,1,5295,1,5308,0,0,{{1657,4},{1675,15},{'TScrollWindow'}},
+File_3=TSourceModule,'c:\program files (x86)\embarcadero\studio\20.0\source\data\Data.DB.pas',0,1,15147,1,15160,0,0,,
+File_4=TSourceModule,'C:\DISCO DURO\proyectos\fzam\UniDataIvas.dfm',0,1,1,1,1,0,0,,
+File_5=TSourceModule,'C:\DISCO DURO\proyectos\fzam\UniDataArticulos.pas',0,1,1,1,1,0,0,,
 File_6=TSourceModule,'C:\DISCO DURO\proyectos\fzam\inMtoLogon.pas',0,1,305,11,305,0,0,,
 File_7=TSourceModule,'C:\DISCO DURO\proyectos\fzam\inLibDevExp.pas',0,1,342,11,358,0,0,,
 File_8=TSourceModule,'c:\program files (x86)\embarcadero\studio\20.0\SOURCE\RTL\SYS\System.pas',0,1,5749,1,5762,0,0,,
 
 [Modules]
-Module0=C:\DISCO DURO\proyectos\fzam\UniDataGen.pas
-Module1=C:\DISCO DURO\proyectos\fzam\UniDataIvas.pas
-Module2=C:\DISCO DURO\proyectos\fzam\UniDataContadores.pas
-Count=3
+Module0=C:\DISCO DURO\proyectos\fzam\inMtoFacturas.pas
+Module1=C:\DISCO DURO\proyectos\fzam\UniDataFacturas.pas
+Module2=C:\DISCO DURO\proyectos\fzam\inMtoGen.pas
+Module3=C:\DISCO DURO\proyectos\fzam\inMtoGenSearch.pas
+Module4=C:\DISCO DURO\proyectos\fzam\inMtoArticulos.pas
+Module5=C:\DISCO DURO\proyectos\fzam\UniDataGen.pas
+Module6=C:\DISCO DURO\proyectos\fzam\inLibGlobalVar.pas
+Module7=C:\DISCO DURO\proyectos\fzam\inMtoUsuarios.pas
+Module8=C:\DISCO DURO\proyectos\fzam\inMtoContadores.pas
+Module9=C:\DISCO DURO\proyectos\fzam\inMtoIvasGrupos.pas
+Module10=C:\DISCO DURO\proyectos\fzam\inMtoIvas.pas
+Module11=C:\DISCO DURO\proyectos\fzam\UniDataIvasGrupos.pas
+Module12=C:\DISCO DURO\proyectos\fzam\UniDataIvas.pas
+Module13=C:\DISCO DURO\proyectos\fzam\UniDataContadores.pas
+Count=14
 EditWindowCount=1
 
+[C:\DISCO DURO\proyectos\fzam\inMtoFacturas.pas]
+ModuleType=TSourceModule
+
+[C:\DISCO DURO\proyectos\fzam\UniDataFacturas.pas]
+ModuleType=TSourceModule
+
+[C:\DISCO DURO\proyectos\fzam\inMtoGen.pas]
+ModuleType=TSourceModule
+
+[C:\DISCO DURO\proyectos\fzam\inMtoGenSearch.pas]
+ModuleType=TSourceModule
+
+[C:\DISCO DURO\proyectos\fzam\inMtoArticulos.pas]
+ModuleType=TSourceModule
+
 [C:\DISCO DURO\proyectos\fzam\UniDataGen.pas]
+ModuleType=TSourceModule
+
+[C:\DISCO DURO\proyectos\fzam\inLibGlobalVar.pas]
+ModuleType=TSourceModule
+
+[C:\DISCO DURO\proyectos\fzam\inMtoUsuarios.pas]
+ModuleType=TSourceModule
+
+[C:\DISCO DURO\proyectos\fzam\inMtoContadores.pas]
+ModuleType=TSourceModule
+
+[C:\DISCO DURO\proyectos\fzam\inMtoIvasGrupos.pas]
+ModuleType=TSourceModule
+
+[C:\DISCO DURO\proyectos\fzam\inMtoIvas.pas]
+ModuleType=TSourceModule
+
+[C:\DISCO DURO\proyectos\fzam\UniDataIvasGrupos.pas]
 ModuleType=TSourceModule
 
 [C:\DISCO DURO\proyectos\fzam\UniDataIvas.pas]
@@ -26,11 +70,22 @@ ModuleType=TSourceModule
 ModuleType=TSourceModule
 
 [EditWindow0]
-ViewCount=3
-CurrentEditView=C:\DISCO DURO\proyectos\fzam\UniDataGen.pas
+ViewCount=14
+CurrentEditView=C:\DISCO DURO\proyectos\fzam\inMtoFacturas.pas
 View0=0
 View1=1
 View2=2
+View3=3
+View4=4
+View5=5
+View6=6
+View7=7
+View8=8
+View9=9
+View10=10
+View11=11
+View12=12
+View13=13
 PercentageSizes=1
 Create=1
 Visible=1
@@ -63,9 +118,9 @@ BottomMiddelPanelData=0000080001020200000009000000446F636B5369746530100000004772
 [View0]
 CustomEditViewType=TEditView
 Module=C:\DISCO DURO\proyectos\fzam\UniDataGen.pas
-CursorX=35
-CursorY=85
-TopLine=75
+CursorX=1
+CursorY=29
+TopLine=16
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -73,16 +128,137 @@ EditViewName=C:\DISCO DURO\proyectos\fzam\UniDataGen.pas
 
 [View1]
 CustomEditViewType=TEditView
-Module=C:\DISCO DURO\proyectos\fzam\UniDataIvas.pas
-CursorX=3
-CursorY=18
+Module=C:\DISCO DURO\proyectos\fzam\inMtoIvas.pas
+CursorX=4
+CursorY=92
+TopLine=81
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=Borland.FormDesignerView
+
+[View2]
+CustomEditViewType=TEditView
+Module=C:\DISCO DURO\proyectos\fzam\inMtoArticulos.pas
+CursorX=40
+CursorY=645
+TopLine=644
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\DISCO DURO\proyectos\fzam\inMtoArticulos.pas
+
+[View3]
+CustomEditViewType=TEditView
+Module=C:\DISCO DURO\proyectos\fzam\inMtoFacturas.pas
+CursorX=46
+CursorY=43
 TopLine=18
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=C:\DISCO DURO\proyectos\fzam\UniDataIvas.pas
+EditViewName=Borland.FormDesignerView
 
-[View2]
+[View4]
+CustomEditViewType=TEditView
+Module=C:\DISCO DURO\proyectos\fzam\UniDataFacturas.pas
+CursorX=1
+CursorY=105
+TopLine=79
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=Borland.FormDesignerView
+
+[View5]
+CustomEditViewType=TEditView
+Module=C:\DISCO DURO\proyectos\fzam\inMtoGenSearch.pas
+CursorX=5
+CursorY=63
+TopLine=55
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\DISCO DURO\proyectos\fzam\inMtoGenSearch.pas
+
+[View6]
+CustomEditViewType=TEditView
+Module=C:\DISCO DURO\proyectos\fzam\inMtoGen.pas
+CursorX=1
+CursorY=617
+TopLine=604
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\DISCO DURO\proyectos\fzam\inMtoGen.pas
+
+[View7]
+CustomEditViewType=TEditView
+Module=C:\DISCO DURO\proyectos\fzam\inMtoIvasGrupos.pas
+CursorX=13
+CursorY=66
+TopLine=58
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\DISCO DURO\proyectos\fzam\inMtoIvasGrupos.pas
+
+[View8]
+CustomEditViewType=TEditView
+Module=C:\DISCO DURO\proyectos\fzam\inMtoContadores.pas
+CursorX=69
+CursorY=77
+TopLine=71
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=Borland.FormDesignerView
+
+[View9]
+CustomEditViewType=TEditView
+Module=C:\DISCO DURO\proyectos\fzam\inMtoUsuarios.pas
+CursorX=60
+CursorY=102
+TopLine=82
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\DISCO DURO\proyectos\fzam\inMtoUsuarios.pas
+
+[View10]
+CustomEditViewType=TEditView
+Module=C:\DISCO DURO\proyectos\fzam\inLibGlobalVar.pas
+CursorX=32
+CursorY=35
+TopLine=20
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\DISCO DURO\proyectos\fzam\inLibGlobalVar.pas
+
+[View11]
+CustomEditViewType=TEditView
+Module=C:\DISCO DURO\proyectos\fzam\UniDataIvasGrupos.pas
+CursorX=1
+CursorY=29
+TopLine=28
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=Borland.FormDesignerView
+
+[View12]
+CustomEditViewType=TEditView
+Module=C:\DISCO DURO\proyectos\fzam\UniDataIvas.pas
+CursorX=16
+CursorY=134
+TopLine=126
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=Borland.FormDesignerView
+
+[View13]
 CustomEditViewType=TEditView
 Module=C:\DISCO DURO\proyectos\fzam\UniDataContadores.pas
 CursorX=1
@@ -121,10 +297,9 @@ Dockable=1
 StayOnTop=0
 
 [Breakpoints]
-Count=3
-Breakpoint0='C:\DISCO DURO\proyectos\fzam\UniDataIvasGrupos.pas',54,'',0,1,'',1,0,0,'',1,'','','',0,''
-Breakpoint1='C:\DISCO DURO\proyectos\fzam\UniDataGen.pas',93,'',0,1,'',1,0,0,'',1,'','','',0,''
-Breakpoint2='C:\DISCO DURO\proyectos\fzam\UniDataGen.pas',88,'',0,1,'',1,0,0,'',1,'','','',0,''
+Count=2
+Breakpoint0='C:\DISCO DURO\proyectos\fzam\UniDataGen.pas',30,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint1='C:\DISCO DURO\proyectos\fzam\UniDataGen.pas',23,'',0,1,'',1,0,0,'',1,'','','',0,''
 
 [EmbarcaderoWin32Debugger_AddressBreakpoints]
 Count=0
@@ -290,6 +465,11 @@ LRDockWidth=1911
 Dockable=1
 StayOnTop=0
 SplitPos=212
+
+[PropInspDesignerSelection]
+ArrangeBy=Name
+SelectedItem=Caption,CustomHint
+ExpandedItems=DataSet=1,"LiveBindings Designer=0",DataSet.Connection=0,DataBinding=0,HeaderGlyph=0,Options=1,Styles=0,Properties=1,Properties.AssignedValues=0,Properties.Glyph=0,Properties.ValidationOptions=0,Properties.ValueChecked=0,Properties.ValueGrayed=0,Properties.ValueUnchecked=0,Summary=0,Properties.Alignment=0,Properties.SpinButtons=1,Properties.ButtonGlyph=0,Properties.IncrementalFilteringOptions=0,Properties.ListOptions=0,Properties.ListSource=1,Properties.ListSource.DataSet=1,"Properties.ListSource.LiveBindings Designer=0",Properties.ListSource.DataSet.Connection=0,Properties.ListSource.DataSet.Encryption=0,Properties.ListSource.DataSet.FieldOptions=0,Properties.ListSource.DataSet.FilterOptions=0,"Properties.ListSource.DataSet.LiveBindings Designer=0",Properties.ListSource.DataSet.Options=0,Anchors=0,BevelEdges=0,DefaultTransaction=0,Connection=0,Encryption=0,FieldOptions=0,FilterOptions=0,RefreshOptions=0,SmartFetch=0,Transaction=0,BorderIcons=0,Constraints=0,LiveBindings=0,Margins=0,Properties.LineOptions=0,Style=1,StyleDisabled=0,StyleFocused=0,StyleHot=0,Style.AssignedValues=0,Style.Edges=0,Style.Font=1,Style.LookAndFeel=0,Style.Font.Style=1,PanelStyle=0,Style.TextStyle=0,Touch=0,Colors=0,Font=0,LookAndFeel=0,OptionsImage=0,SpeedButtonOptions=0,Options.FilteringPopupIncrementalFilteringOptions=0
 
 [DebugLogView]
 PercentageSizes=1
