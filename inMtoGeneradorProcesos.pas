@@ -334,10 +334,11 @@ begin
                          unqryMetadatos.FieldByName('NOMBRE_METADATO').AsString;
       unqryEstructura.Open;
       mmo1.Lines.Text := unqryEstructura.FieldByName('Create View').AsString;
-      mmo1.Lines.Text := StringReplace(mmo1.lines.text,
-                           'ALGORITHM = UNDEFINED DEFINER = `root`@`localhost`'+
-                           'SQL SECURITY DEFINER', '',
-                           [rfReplaceAll, rfIgnoreCase]);
+      mmo1.Lines.Text := StringReplace(mmo1.Lines.Text,
+                           'ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` '+
+                           'SQL SECURITY DEFINER',
+                           '',
+                           [rfReplaceAll]);
       if FileExists(GetTempPath + 'code.txt') then
         DeleteFile(GetTempPath + 'code.txt');
       if FileExists(GetTempPath + 'code_formatted.txt') then
@@ -358,8 +359,11 @@ begin
       unqryEstructura.SQL.Text := 'SHOW CREATE PROCEDURE ' +
                          unqryMetadatos.FieldByName('NOMBRE_METADATO').AsString;
       unqryEstructura.Open;
-      syndtEstructura.Lines.Text :=
-                       unqryEstructura.FieldByName('Create Procedure').AsString;
+      syndtEstructura.Lines.Text := StringReplace(unqryEstructura.FieldByName(
+                                                 'Create Procedure').AsString,
+                                                 ' DEFINER=`root`@`localhost`',
+                                                 '',
+                                                 [rfReplaceAll]);
     end
       else
         syndtEstructura.Lines.Clear;
