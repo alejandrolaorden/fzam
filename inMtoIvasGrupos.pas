@@ -65,7 +65,7 @@ end;
 procedure TfrmMtoIvasGrupos.dsTablaGStateChange(Sender: TObject);
 begin
   inherited;
-  if (dsTablaG.DataSet.State = dsInsert) then
+  if (dsTablaG.State = dsInsert) then
     cxGrdDBTabPrinGRUPO_ZONA_IVA.Options.Editing := True
   else
     cxGrdDBTabPrinGRUPO_ZONA_IVA.Options.Editing := False;

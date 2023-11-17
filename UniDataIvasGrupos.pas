@@ -58,7 +58,7 @@ begin
   begin
     sCodigo := Trim(FindField('GRUPO_ZONA_IVA').AsString);
     sDescripcion := Trim(FindField('DESCRIPCION_ZONA_IVA').AsString);
-    if ((sDescripcion = '') or not(SimbolosProhibidos(sDescripcion))) then
+    if ((sDescripcion = '') or (SimbolosProhibidos(sDescripcion))) then
     begin
       raise ERangeError.CreateFmt('%s no es un valor de registro válido ' +
                                    'para el campo Descripción de Grupos de IVA',
@@ -66,7 +66,7 @@ begin
       bError := True;
     end;
     if ((sCodigo = '') or
-        not(SimbolosProhibidos(sCodigo))
+        (SimbolosProhibidos(sCodigo))
        ) then
     begin
       raise ERangeError.CreateFmt('%s no es un valor de registro válido ' +

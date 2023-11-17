@@ -230,7 +230,7 @@ var
 begin
   sSimbolos := odmPerfiles.GetKeySubKeyValueDefNoDic('inLibtb',
                                                    'oSimbolosProhibidos',
-                                                   ',"'':+€%*');
+                                                   ',"'':/-+€%*');
   sError := HayCoincidencia(s, sSimbolos);
   if sError <> '' then
     Result := True

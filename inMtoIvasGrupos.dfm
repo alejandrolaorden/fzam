@@ -73,12 +73,7 @@ inherited frmMtoIvasGrupos: TfrmMtoIvasGrupos
         ExplicitHeight = 484
       end
       inherited tsPerfil: TcxTabSheet
-        ExplicitLeft = 4
-        ExplicitTop = 30
-        ExplicitWidth = 943
-        ExplicitHeight = 484
         inherited pnlPerfilTop: TPanel
-          ExplicitWidth = 943
           inherited edtPerfilBusq: TcxTextEdit
             ExplicitHeight = 27
           end
