@@ -7,6 +7,7 @@ inherited dmUsuarios: TdmUsuarios
       'SELECT *  '
       'FROM vi_usuarios'
       '')
+    AfterInsert = unqryTablaGAfterInsert
     Left = 24
   end
   object unqryGrupos: TUniQuery

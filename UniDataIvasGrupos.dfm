@@ -56,23 +56,31 @@ inherited dmIvasGrupos: TdmIvasGrupos
     StoredProcName = 'PRC_GET_NEXT_CONT'
     SQL.Strings = (
       
-        'CALL PRC_GET_NEXT_CONT(:pTipoDoc, @pcont); SELECT CAST(@pcont AS' +
-        ' SIGNED) AS '#39'@pcont'#39)
+        'CALL PRC_GET_NEXT_CONT(:pTipoDoc, :pUSUARIO_MODIF, @pcont); SELE' +
+        'CT @pcont AS '#39'@pcont'#39)
     Connection = dmConn.conUni
     Left = 8
     Top = 84
     ParamData = <
       item
-        DataType = ftString
+        DataType = ftWideString
         Name = 'pTipoDoc'
         ParamType = ptInput
         Size = 2
         Value = nil
       end
       item
-        DataType = ftInteger
+        DataType = ftWideString
+        Name = 'pUSUARIO_MODIF'
+        ParamType = ptInput
+        Size = 100
+        Value = nil
+      end
+      item
+        DataType = ftWideString
         Name = 'pcont'
         ParamType = ptOutput
+        Size = 20
         Value = nil
       end>
     CommandStoredProcName = 'PRC_GET_NEXT_CONT'

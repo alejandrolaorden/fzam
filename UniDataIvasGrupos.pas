@@ -42,7 +42,15 @@ uses
 procedure TdmIvasGrupos.unqryTablaGAfterInsert(DataSet: TDataSet);
 begin
   inherited;
-  unqryTablaG.FindField('GRUPO_ZONA_IVA').AsString := '0';
+  with unqryTablaG do
+  begin
+    FindField('GRUPO_ZONA_IVA').AsString := '0';
+    FindField('ESIRPF_IMP_INCL_ZONA_IVA').AsString := 'N';
+    FindField('ESIVAAGRICOLA_ZONA_IVA').AsString := 'N';
+    FindField('ESAPLICA_RE_ZONA_IVA').AsString := 'S';
+    FindField('ESDEFAULT_ZONA_IVA').AsString := 'N';
+    FindField('PALABRA_REPORTS_ZONA_IVA').AsString := 'IVA';
+  end;
 end;
 
 procedure TdmIvasGrupos.unqryTablaGBeforePost(DataSet: TDataSet);

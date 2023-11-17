@@ -6,13 +6,11 @@ inherited frmMtoIvas: TfrmMtoIvas
     inherited pcPantalla: TcxPageControl
       Properties.ActivePage = tsLista
       inherited tsLista: TcxTabSheet
-        ExplicitLeft = 4
-        ExplicitTop = 30
-        ExplicitWidth = 943
-        ExplicitHeight = 484
+        ExplicitLeft = 3
+        ExplicitTop = 32
+        ExplicitWidth = 942
+        ExplicitHeight = 480
         inherited cxGrdPrincipal: TcxGrid
-          ExplicitWidth = 943
-          ExplicitHeight = 484
           inherited cxGrdDBTabPrin: TcxGridDBTableView
             OptionsCustomize.ColumnExpressionEditing = True
             OptionsData.Editing = True
@@ -25,30 +23,24 @@ inherited frmMtoIvas: TfrmMtoIvas
               Caption = 'Zona IVA'
               DataBinding.FieldName = 'GRUPO_ZONA_IVA'
               PropertiesClassName = 'TcxLookupComboBoxProperties'
+              Properties.DropDownListStyle = lsFixedList
               Properties.KeyFieldNames = 'GRUPO_ZONA_IVA'
               Properties.ListColumns = <
                 item
+                  MinWidth = 50
                   FieldName = 'GRUPO_ZONA_IVA'
                 end
                 item
                   FieldName = 'DESCRIPCION_ZONA_IVA'
                 end>
+              Properties.ListOptions.ShowHeader = False
               Properties.ListSource = dmIvas.dsZonas
-              Width = 174
+              Width = 217
             end
             object cxGrdDBTabPrinDESCRIPCION_ZONA_IVA: TcxGridDBColumn
               Caption = 'Descripci'#243'n'
               DataBinding.FieldName = 'DESCRIPCION_ZONA_IVA'
-              Width = 221
-            end
-            object cxGrdDBTabPrinPORCENEXENTO_IVA: TcxGridDBColumn
-              Caption = '%Exento'
-              DataBinding.FieldName = 'PORCENEXENTO_IVA'
-              PropertiesClassName = 'TcxSpinEditProperties'
-              Properties.DisplayFormat = '0.00 %'
-              Properties.EditFormat = '0.00 %'
-              Properties.MaxValue = 100.000000000000000000
-              Width = 88
+              Width = 277
             end
             object cxGrdDBTabPrinPORCENNORMAL_IVA: TcxGridDBColumn
               Caption = '%Normal'
@@ -103,6 +95,15 @@ inherited frmMtoIvas: TfrmMtoIvas
               Properties.EditFormat = '0.00 %'
               Properties.MaxValue = 100.000000000000000000
               Width = 213
+            end
+            object cxGrdDBTabPrinPORCENEXENTO_IVA: TcxGridDBColumn
+              Caption = '%Exento'
+              DataBinding.FieldName = 'PORCENEXENTO_IVA'
+              PropertiesClassName = 'TcxSpinEditProperties'
+              Properties.DisplayFormat = '0.00 %'
+              Properties.EditFormat = '0.00 %'
+              Properties.MaxValue = 100.000000000000000000
+              Width = 88
             end
             object cxGrdDBTabPrinPORCENEXENTO_RE_IVA: TcxGridDBColumn
               Caption = '%RE Exento'
@@ -165,28 +166,15 @@ inherited frmMtoIvas: TfrmMtoIvas
       inherited tsFicha: TcxTabSheet
         Enabled = False
         TabVisible = False
-        ExplicitLeft = 4
-        ExplicitTop = 30
-        ExplicitWidth = 943
-        ExplicitHeight = 484
+        ExplicitLeft = 3
+        ExplicitTop = 32
+        ExplicitWidth = 942
+        ExplicitHeight = 480
       end
       inherited tsPerfil: TcxTabSheet
-        ExplicitLeft = 4
-        ExplicitTop = 30
-        ExplicitWidth = 943
-        ExplicitHeight = 484
         inherited pnlPerfilTop: TPanel
-          ExplicitWidth = 943
           inherited edtPerfilBusq: TcxTextEdit
             ExplicitHeight = 27
-          end
-        end
-        inherited pnlPerfilDetail: TPanel
-          ExplicitWidth = 943
-          ExplicitHeight = 427
-          inherited cxgrdPerfil: TcxGrid
-            ExplicitWidth = 943
-            ExplicitHeight = 427
           end
         end
       end

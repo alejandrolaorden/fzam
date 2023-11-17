@@ -60,19 +60,47 @@ inherited dmIvas: TdmIvas
     Connection = dmConn.conUni
     SQL.Strings = (
       'select * from vi_ivas')
+    Active = True
     AfterInsert = unqryTablaGAfterInsert
   end
   object unstrdprcContador: TUniStoredProc
     StoredProcName = 'PRC_GET_NEXT_CONT'
+    SQL.Strings = (
+      
+        'CALL PRC_GET_NEXT_CONT(:pTipoDoc, :pUSUARIO_MODIF, @pcont); SELE' +
+        'CT @pcont AS '#39'@pcont'#39)
     Connection = dmConn.conUni
     Left = 8
     Top = 84
-    StoredProcIsQuery = True
+    ParamData = <
+      item
+        DataType = ftWideString
+        Name = 'pTipoDoc'
+        ParamType = ptInput
+        Size = 2
+        Value = nil
+      end
+      item
+        DataType = ftWideString
+        Name = 'pUSUARIO_MODIF'
+        ParamType = ptInput
+        Size = 100
+        Value = nil
+      end
+      item
+        DataType = ftWideString
+        Name = 'pcont'
+        ParamType = ptOutput
+        Size = 20
+        Value = nil
+      end>
+    CommandStoredProcName = 'PRC_GET_NEXT_CONT'
   end
   object unqryZonasIVA: TUniQuery
     Connection = dmConn.conUni
     SQL.Strings = (
       'select GRUPO_ZONA_IVA, DESCRIPCION_ZONA_IVA from fza_ivas_grupos')
+    Active = True
     AfterInsert = unqryTablaGAfterInsert
     BeforePost = unqryTablaGBeforePost
     Left = 192

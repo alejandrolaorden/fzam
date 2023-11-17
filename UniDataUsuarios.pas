@@ -21,6 +21,7 @@ type
     unqryEmpresas: TUniQuery;
     dsEmpresas: TDataSource;
     procedure unqryTablaGBeforePost(DataSet: TDataSet);
+    procedure unqryTablaGAfterInsert(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -39,6 +40,15 @@ uses
 
 {$R *.dfm}
 
+procedure TdmUsuarios.unqryTablaGAfterInsert(DataSet: TDataSet);
+begin
+  inherited;
+//  with unqryTablaG do
+//  begin
+//    FieldByName()
+//  end;
+end;
+
 procedure TdmUsuarios.unqryTablaGBeforePost(DataSet: TDataSet);
 var
   sUsuario:string;
@@ -49,7 +59,7 @@ begin
   with unqryTablaG do
   begin
     sUsuario := Trim(FindField('USUARIO_USUARIO').AsString);
-    if ((sUsuario = '') or not(SimbolosProhibidos(sUsuario))) then
+    if ((sUsuario = '') or (SimbolosProhibidos(sUsuario))) then
     begin
       ShowMessageFmt('%s no es un valor de registro válido ' +
                      'para el campo Usuario',[sUsuario]);

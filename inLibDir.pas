@@ -10,7 +10,7 @@ unit inLibDir;
 
 interface
 
-uses  Forms, SysUtils, Variants, ShlObj, Windows ;
+uses  Forms, SysUtils, Variants, ShlObj, Windows, System.IOUtils ;
 
 
 const
@@ -86,11 +86,17 @@ function DirApp:String;
 function GetSpecialFolderPath(CSIDLFolder: Integer): string;
 function GetUserFolder:String;
 function GetUserDeskFolder:String;
+function GetTempPath:String;
 function GetLogFolder:String;
 
 implementation
 
 uses inLibtb;
+
+function GetTempPath:String;
+begin
+  Result := TPath.GetTempPath;
+end;
 
 {http://delphiprogrammingdiary.blogspot.com/2017/08/
                                     how-to-get-windows-special-directories.html}

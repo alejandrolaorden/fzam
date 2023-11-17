@@ -27,6 +27,7 @@ inherited frmMtoUsuarios: TfrmMtoUsuarios
                 item
                   FieldName = 'GRUPO_GRUPO'
                 end>
+              Properties.ListOptions.ShowHeader = False
               Properties.ListSource = dmUsuarios.dsGrupos
               Width = 197
             end
@@ -46,6 +47,7 @@ inherited frmMtoUsuarios: TfrmMtoUsuarios
               Properties.KeyFieldNames = 'CODIGO_EMPRESA'
               Properties.ListColumns = <
                 item
+                  MinWidth = 60
                   FieldName = 'CODIGO_EMPRESA'
                 end
                 item
@@ -91,6 +93,13 @@ inherited frmMtoUsuarios: TfrmMtoUsuarios
           inherited edtPerfilBusq: TcxTextEdit
             ExplicitHeight = 27
           end
+        end
+      end
+    end
+    inherited pnlTopPage: TPanel
+      inherited pnlTopGrid: TPanel
+        inherited edtBusqGlobal: TcxTextEdit
+          ExplicitHeight = 27
         end
       end
     end

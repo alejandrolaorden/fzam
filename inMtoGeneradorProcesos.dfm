@@ -789,10 +789,6 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
             object tsOtros: TcxTabSheet
               Caption = '&4_Otros'
               ImageIndex = 3
-              ExplicitLeft = 4
-              ExplicitTop = 30
-              ExplicitWidth = 841
-              ExplicitHeight = 340
               object pnl3: TPanel
                 Left = 0
                 Top = 257
@@ -800,8 +796,6 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
                 Height = 79
                 Align = alBottom
                 TabOrder = 0
-                ExplicitTop = 261
-                ExplicitWidth = 841
                 object cxdbtxtdtDIRECCION1_CLIENTE: TcxDBTextEdit
                   Left = 17
                   Top = 37
@@ -909,11 +903,11 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
         end
       end
       inherited tsPerfil: TcxTabSheet
-        ExplicitWidth = 852
-        ExplicitHeight = 495
+        ExplicitWidth = 850
+        ExplicitHeight = 493
         inherited pnlPerfilTop: TPanel
           Width = 850
-          ExplicitWidth = 852
+          ExplicitWidth = 850
           inherited edtPerfilBusq: TcxTextEdit
             ExplicitHeight = 27
           end

@@ -311,6 +311,8 @@ end;
 
 procedure TfrmMtoGeneradorProcesos.cxdbtxtdtNOMBRE_METADATOPropertiesChange(
   Sender: TObject);
+var
+  sExec:string;
 begin
   inherited;
   with dmmGeneradorProcesos do
@@ -332,11 +334,22 @@ begin
                          unqryMetadatos.FieldByName('NOMBRE_METADATO').AsString;
       unqryEstructura.Open;
       mmo1.Lines.Text := unqryEstructura.FieldByName('Create View').AsString;
-      mmo1.Lines.SaveToFile('code.txt');
-      ExecuteAndWait('fsqlf.exe' + ' code.txt code_formatted.txt');
-      syndtEstructura.Lines.LoadFromFile('code_formatted.txt');
+      mmo1.Lines.Text := StringReplace(mmo1.lines.text,
+                           'ALGORITHM = UNDEFINED DEFINER = `root`@`localhost`'+
+                           'SQL SECURITY DEFINER', '',
+                           [rfReplaceAll, rfIgnoreCase]);
+      if FileExists(GetTempPath + 'code.txt') then
+        DeleteFile(GetTempPath + 'code.txt');
+      if FileExists(GetTempPath + 'code_formatted.txt') then
+        DeleteFile(GetTempPath + 'code_formatted.txt');
+      mmo1.Lines.SaveToFile(GetTempPath + 'code.txt');
+      sExec := DirApp + 'fsqlf.exe ' + GetTempPath + 'code.txt ' +
+                              GetTempPath + 'code_formatted.txt';
+      //ShowMessage(sExec);
+      ExecuteAndWait(sExec);
+      syndtEstructura.Lines.LoadFromFile(GetTempPath + '\code_formatted.txt');
 //      syndtEstructura.Lines.Text :=
-//                                   FormatSqlOnlineSqlformatOrg(mmo1.Lines.Text);
+//                                 FormatSqlOnlineSqlformatOrg(mmo1.Lines.Text);
       //syndtEstructura.Lines.Text := Trim(mmo1.Lines.text);
     end
       else
