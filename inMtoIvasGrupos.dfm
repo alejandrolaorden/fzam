@@ -1,21 +1,16 @@
 inherited frmMtoIvasGrupos: TfrmMtoIvasGrupos
   Caption = 'IVA'
-  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 19
   inherited pButtonPage: TPanel
     inherited pcPantalla: TcxPageControl
       Properties.ActivePage = tsLista
       inherited tsLista: TcxTabSheet
-        ExplicitLeft = 4
-        ExplicitTop = 30
-        ExplicitWidth = 943
-        ExplicitHeight = 484
+        ExplicitLeft = 3
+        ExplicitTop = 32
+        ExplicitWidth = 942
+        ExplicitHeight = 480
         inherited cxGrdPrincipal: TcxGrid
-          ExplicitLeft = -4
-          ExplicitTop = 4
-          ExplicitWidth = 943
-          ExplicitHeight = 484
           inherited cxGrdDBTabPrin: TcxGridDBTableView
             OptionsData.Editing = True
             object cxGrdDBTabPrinGRUPO_ZONA_IVA: TcxGridDBColumn
@@ -83,7 +78,7 @@ inherited frmMtoIvasGrupos: TfrmMtoIvasGrupos
     inherited pnlTopPage: TPanel
       inherited pnlTopGrid: TPanel
         inherited edtBusqGlobal: TcxTextEdit
-          ExplicitHeight = 27
+          ExplicitHeight = 21
         end
       end
     end

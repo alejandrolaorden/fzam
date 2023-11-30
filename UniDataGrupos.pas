@@ -36,6 +36,8 @@ uses inMtoGrupos, inLibGlobalVar;
 
 {$R *.dfm}
 
+procedure ForceReferenceToClass(C: TClass); begin end;
+
 procedure TdmGrupos.DataModuleCreate(Sender: TObject);
 begin
   inherited;
@@ -44,4 +46,6 @@ begin
   unqryUsuariosGrupo.Open;
 end;
 
+initialization
+  ForceReferenceToClass(TdmGrupos);
 end.

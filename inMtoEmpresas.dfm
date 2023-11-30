@@ -185,8 +185,6 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
       end
       inherited tsFicha: TcxTabSheet
         OnEnter = tsFichaEnter
-        ExplicitLeft = 3
-        ExplicitTop = 32
         ExplicitWidth = 765
         ExplicitHeight = 565
         object pnlFichaDetail: TPanel
@@ -327,6 +325,10 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
             object tsRetenciones: TcxTabSheet
               Caption = '&2_Retenciones'
               ImageIndex = 2
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object pnlRetenOpts: TPanel
                 Left = 646
                 Top = 0
@@ -866,6 +868,10 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
             object tsSeries: TcxTabSheet
               Caption = '&4_Series'
               ImageIndex = 4
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object pnlSeriesOpts: TPanel
                 Left = 638
                 Top = 0
@@ -999,6 +1005,10 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
             object tsOtros: TcxTabSheet
               Caption = '&5_Otros'
               ImageIndex = 3
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object pnlUserInstantBottom: TPanel
                 Left = 0
                 Top = 266
@@ -1281,8 +1291,6 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
         end
       end
       inherited tsPerfil: TcxTabSheet
-        ExplicitLeft = 3
-        ExplicitTop = 32
         ExplicitWidth = 765
         ExplicitHeight = 565
         inherited pnlPerfilTop: TPanel

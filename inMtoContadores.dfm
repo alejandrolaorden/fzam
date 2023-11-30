@@ -1,6 +1,5 @@
 inherited frmMtoContadores: TfrmMtoContadores
   Caption = 'Contadores'
-  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 19
   inherited pButtonPage: TPanel
@@ -84,23 +83,17 @@ inherited frmMtoContadores: TfrmMtoContadores
       end
       inherited tsFicha: TcxTabSheet
         TabVisible = False
-        ExplicitLeft = 3
-        ExplicitTop = 32
-        ExplicitWidth = 942
-        ExplicitHeight = 480
       end
       inherited tsPerfil: TcxTabSheet
+        ExplicitLeft = 4
+        ExplicitTop = 30
+        ExplicitWidth = 943
+        ExplicitHeight = 484
         inherited pnlPerfilTop: TPanel
+          ExplicitWidth = 943
           inherited edtPerfilBusq: TcxTextEdit
             ExplicitHeight = 27
           end
-        end
-      end
-    end
-    inherited pnlTopPage: TPanel
-      inherited pnlTopGrid: TPanel
-        inherited edtBusqGlobal: TcxTextEdit
-          ExplicitHeight = 27
         end
       end
     end

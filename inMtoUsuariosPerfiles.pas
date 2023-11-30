@@ -57,7 +57,7 @@ procedure ForceReferenceToClass(C: TClass); begin end;
 procedure TfrmMtoUsuariosPerfiles.CrearTablaPrincipal;
 begin
   inherited;
-  dmmUsuariosPerfiles := TdmUsuariosPerfiles.Create(Self);
+  dmmUsuariosPerfiles := tdmDataModule as TdmUsuariosPerfiles;
   dsTablaG.DataSet := dmmUsuariosPerfiles.unqryTablaG;
   pkFieldName := 'USUARIO_GRUPO_PERFILES;KEY_PERFILES;SUBKEY_PERFILES';
 end;

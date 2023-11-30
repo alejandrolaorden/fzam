@@ -4,7 +4,6 @@ inherited frmMtoTarifas: TfrmMtoTarifas
   Caption = 'Tarifas'
   ClientHeight = 614
   ClientWidth = 855
-  OnDestroy = FormDestroy
   ExplicitWidth = 855
   ExplicitHeight = 614
   PixelsPerInch = 96
@@ -106,8 +105,6 @@ inherited frmMtoTarifas: TfrmMtoTarifas
         end
       end
       inherited tsFicha: TcxTabSheet
-        ExplicitLeft = 3
-        ExplicitTop = 32
         ExplicitWidth = 706
         ExplicitHeight = 536
         object pnl1: TPanel

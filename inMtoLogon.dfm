@@ -25,7 +25,7 @@ inherited frmLogon: TfrmLogon
   object lblContrasena: TLabel [1]
     Left = 15
     Top = 113
-    Width = 98
+    Width = 94
     Height = 19
     Caption = 'Contrase'#241'a'
   end

@@ -976,9 +976,6 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
       inherited pnlTopGrid: TPanel
         Width = 859
         ExplicitWidth = 859
-        inherited edtBusqGlobal: TcxTextEdit
-          ExplicitHeight = 27
-        end
       end
     end
   end

@@ -257,7 +257,6 @@ type
     procedure actArticulosExecute(Sender: TObject);
     procedure btnIraArticuloClick(Sender: TObject);
     procedure btnAddSerieClick(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure dsTablaGStateChange(Sender: TObject);
   public
     procedure CrearTablaPrincipal; override;
@@ -429,7 +428,7 @@ end;
 procedure TfrmMtoEmpresas.CrearTablaPrincipal;
 begin
   inherited;
-  dmmEmpresas := TdmEmpresas.Create(Self);
+  dmmEmpresas := tdmDataModule as TdmEmpresas;
   tvRetenciones.DataController.DataSource := dmmEmpresas.dsRetenciones;
   pcPestana.ActivePage := tsMasDatos;
   tvSeries.DataController.DataSource := dmmEmpresas.dsSeries;
@@ -467,12 +466,6 @@ begin
   ShowMto(Self.Owner,
           'Clientes',
           FieldByName('CODIGO_CLIENTE_FACTURA').AsString);
-end;
-
-procedure TfrmMtoEmpresas.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-  inherited;
-  FreeAndNil(dmmEmpresas);
 end;
 
 procedure TfrmMtoEmpresas.FormCreate(Sender: TObject);

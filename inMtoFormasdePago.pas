@@ -169,7 +169,6 @@ type
     btnIraEmpresa: TcxButton;
     btnIraArticulo: TcxButton;
     procedure btnGrabarClick(Sender: TObject);
-    procedure FormDestroy(Sender: TObject);
     procedure dsTablaGStateChange(Sender: TObject);
     procedure btnIraFacturaClick(Sender: TObject);
     procedure actEmpresasExecute(Sender: TObject);
@@ -301,8 +300,8 @@ end;
 procedure TfrmMtoFormasdePago.CrearTablaPrincipal;
 begin
   inherited;
-  dmmFormasdePago := TdmFormasdePago.Create(Self);
-   tvFacturacion.DataController.DataSource := dmmFormasdePago.dsFacturas;
+  dmmFormasdePago := tdmDataModule as TdmFormasdePago;
+  tvFacturacion.DataController.DataSource := dmmFormasdePago.dsFacturas;
   tvLineasFacturacion.DataController.DataSource :=
                                                dmmFormasdePago.dsFacturasLineas;
   pcPestana.ActivePage := tsMasDatos;
@@ -318,12 +317,6 @@ begin
   begin
     txtCODIGO_FORMAPAGO.Enabled := False;
   end;
-end;
-
-procedure TfrmMtoFormasdePago.FormDestroy(Sender: TObject);
-begin
-  inherited;
-  FreeAndNil(dmmFormasdePago);
 end;
 
 initialization

@@ -82,7 +82,7 @@ end;
 procedure TfrmMtoUsuarios.CrearTablaPrincipal;
 begin
   inherited;
-  dmmUsuarios := TdmUsuarios.Create(Self);
+  dmmUsuarios := tdmDataModule as TdmUsuarios;
   TcxLookupComboBoxProperties(
     cxGrdDBTabPrinGRUPO_USUARIO.Properties).ListSource := dmmUsuarios.dsGrupos;
   dmmUsuarios.unqryGrupos.Open;
@@ -104,6 +104,4 @@ end;
 
 initialization
   ForceReferenceToClass(TfrmMtoUsuarios);
-
-
 end.

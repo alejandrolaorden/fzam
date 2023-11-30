@@ -150,8 +150,6 @@
         end
       end
       inherited tsFicha: TcxTabSheet
-        ExplicitLeft = 3
-        ExplicitTop = 32
         ExplicitWidth = 705
         ExplicitHeight = 447
         object pnlCabFicha: TPanel
@@ -484,6 +482,10 @@
             object tsArticulos: TcxTabSheet
               Caption = '&2_Articulos'
               ImageIndex = 3
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object pnl6: TPanel
                 Left = 578
                 Top = 0
@@ -876,6 +878,10 @@
             object tsMasDatos: TcxTabSheet
               Caption = '&4_M'#225's datos'
               ImageIndex = 1
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object lblObservaciones: TcxLabel
                 Left = -10
                 Top = 105

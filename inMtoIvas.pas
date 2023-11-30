@@ -51,7 +51,6 @@ type
     cxGrdDBTabPrinPALABRA_REPORTS_ZONA_IVA: TcxGridDBColumn;
     procedure cxgrdbclmnGrdDBTabPrinGRUPO_ZONA_IVAPropertiesChange(
       Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure dsTablaGStateChange(Sender: TObject);
   private
     { Private declarations }
@@ -77,7 +76,7 @@ procedure ForceReferenceToClass(C: TClass); begin end;
 procedure TfrmMtoIvas.CrearTablaPrincipal;
 begin
   inherited;
-  dmmIvas := TdmIvas.Create(Self);
+  dmmIvas := tdmDataModule as TdmIvas;
   (cxGrdDBTabPrinGRUPO_ZONA_IVA.Properties as
                      TcxLookupComboBoxProperties).ListSource := dmmIvas.dsZonas;
   pkFieldName := 'CODIGO_IVA';
@@ -99,12 +98,6 @@ begin
       cxGrdDBTabPrinCODIGO_IVA.Options.Editing := True
     else
       cxGrdDBTabPrinCODIGO_IVA.Options.Editing := False;
-end;
-
-procedure TfrmMtoIvas.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-  inherited;
-  FreeAndNil(dmmIvas);
 end;
 
 initialization

@@ -40,7 +40,6 @@ type
     tvUsuariosGRUPO_USUARIO: TcxGridDBColumn;
     tvUsuariosEMPRESADEF_USUARIO: TcxGridDBColumn;
     tvUsuariosULTIMOLOGIN_USUARIO: TcxGridDBColumn;
-    procedure FormDestroy(Sender: TObject);
     procedure dsTablaGStateChange(Sender: TObject);
   private
     { Private declarations }
@@ -66,7 +65,7 @@ procedure ForceReferenceToClass(C: TClass); begin end;
 procedure TfrmMtoGrupos.CrearTablaPrincipal;
 begin
   inherited;
-  dmmGrupos := TdmGrupos.Create(Self);
+  dmmGrupos :=  tdmDataModule as TdmGrupos;
   dsTablaG.DataSet := dmmGrupos.unqryTablaG;
   tvUsuarios.DataController.DataSource := dmmGrupos.dsUsuariosGrupo;
   pkFieldName := 'GRUPO_USUARIO';
@@ -79,12 +78,6 @@ begin
     txtNOMBRE_GRUPO.Enabled := True
   else
     txtNOMBRE_GRUPO.Enabled := False;
-end;
-
-procedure TfrmMtoGrupos.FormDestroy(Sender: TObject);
-begin
-  inherited;
-  FreeAndNil(dmmGrupos);
 end;
 
 initialization

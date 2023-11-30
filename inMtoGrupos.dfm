@@ -1,6 +1,5 @@
 inherited frmMtoGrupos: TfrmMtoGrupos
   Caption = 'Grupos'
-  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 19
   inherited pButtonPage: TPanel
@@ -30,10 +29,6 @@ inherited frmMtoGrupos: TfrmMtoGrupos
         end
       end
       inherited tsFicha: TcxTabSheet
-        ExplicitLeft = 3
-        ExplicitTop = 32
-        ExplicitWidth = 942
-        ExplicitHeight = 480
         object Panel1: TPanel
           Left = 0
           Top = 0
@@ -160,6 +155,13 @@ inherited frmMtoGrupos: TfrmMtoGrupos
           inherited edtPerfilBusq: TcxTextEdit
             ExplicitHeight = 27
           end
+        end
+      end
+    end
+    inherited pnlTopPage: TPanel
+      inherited pnlTopGrid: TPanel
+        inherited edtBusqGlobal: TcxTextEdit
+          ExplicitHeight = 21
         end
       end
     end

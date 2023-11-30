@@ -41,6 +41,8 @@ uses
 
 {$R *.dfm}
 
+procedure ForceReferenceToClass(C: TClass); begin end;
+
 procedure TdmTarifas.unqryTablaGAfterInsert(DataSet: TDataSet);
 begin
   inherited;
@@ -79,4 +81,6 @@ begin
   GetCodigoAutoFamilia;
 end;
 
+initialization
+  ForceReferenceToClass(TdmTarifas);
 end.

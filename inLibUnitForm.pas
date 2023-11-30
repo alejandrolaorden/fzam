@@ -24,6 +24,7 @@ type
      FUnitForm:string;
      FMenuItem:string;
      FShortCut:string;
+     FDataUnit:string;
      FmnMenuItem:TMenuItem;
      function GetCall:string;
      procedure SetCall(Value:string);
@@ -37,12 +38,15 @@ type
      procedure SetShortCut(Value:string);
      function GetmnMenuItem:TMenuItem;
      procedure SetmnMenuItem(Value:TMenuItem);
+     function GetDataUnit: string;
+     procedure SetDataUnit(const Value: string);
    public
      constructor Create(pCall,
                         pCaption,
                         pMenuItem,
                         pUnitForm,
-                        pShortCut:string;
+                        pShortCut,
+                        pDataUnit:string;
                         pOwn:TComponent);
      Property Call   : string read GetCall write SetCall;
      Property Caption   : string read GetCaption write SetCaption;
@@ -50,6 +54,7 @@ type
      Property MenuItem   : string read GetMenuItem write SetMenuItem;
      Property mnMenuItem   : TMenuItem read GetmnMenuItem write SetmnMenuItem;
      Property ShortCut     : string read GetShortCut write SetShortCut;
+     Property DataUnit     : string read GetDataUnit write SetDataUnit;
    private
  end;
 
@@ -60,6 +65,7 @@ type
  public
    constructor Create(Owner:TComponent);
    procedure Charge(nConn:TUniConnection);
+   function GetDataModuleName(sUnitName:string):String;
    function GetElement(sCall:string):TfzaForm;
    function GetShortCutListOrd:TList<integer>;
    function GetShortCutListString:string;
@@ -76,7 +82,8 @@ constructor TfzaForm.Create(pCall,
                             pCaption,
                             pMenuItem,
                             pUnitForm,
-                            pShortCut: string;
+                            pShortCut,
+                            pDataUnit: string;
                             pOwn:TComponent  );
 var
   frmOpen2:TfrmOpenApp2;
@@ -86,6 +93,7 @@ begin
   FUnitForm := pUnitForm;
   FMenuItem := pMenuITem;
   FShortCut := pShortCut;
+  FDataUnit := pDataUnit;
   frmOpen2 := (pOwn as TfrmOpenApp2);
   FmnMenuItem := (frmOpen2.FindComponent(FMenuITem) as TMenuItem);
 end;
@@ -98,6 +106,11 @@ end;
 function TfzaForm.GetCaption: string;
 begin
   Result := FCaption;
+end;
+
+function TfzaForm.GetDataUnit: string;
+begin
+  Result := FDataUnit;
 end;
 
 function TfzaForm.GetMenuItem: string;
@@ -130,6 +143,11 @@ begin
   Fcaption := Value;
 end;
 
+procedure TfzaForm.SetDataUnit(const Value: string);
+begin
+  FDataUnit := Value;
+end;
+
 procedure TfzaForm.SetMenuItem(Value: string);
 begin
   FMenuItem := Value;
@@ -157,26 +175,30 @@ var
   qrySol: TUniQuery;
   ozaForm:TfzaForm;
 begin
-  qrySol := TUniQuery.Create(nil);
-  qrySol.Connection := nConn;
-  qrySol.SQL.Text := 'SELECT * FROM fza_winforms';
-  qrySol.Open;
-  while not qrySol.Eof  do
-  begin
-    With qrySol do
+  try
+    qrySol := TUniQuery.Create(nil);
+    qrySol.Connection := nConn;
+    qrySol.SQL.Text := 'SELECT * FROM fza_winforms';
+    qrySol.Open;
+    while not qrySol.Eof  do
     begin
-      ozaForm := TfzaForm.Create(FieldByName('CALL_WINF').AsString,
-                                 FieldByName('CAPTION_WINF').AsString,
-                                 FieldByName('MENUITEM_WINF').AsString,
-                                 FieldByName('UNITF_WINF').AsString,
-                                 FieldByName('SHORTCUT_WINF').AsString,
-                                 Self.FOwner);
+      With qrySol do
+      begin
+        ozaForm := TfzaForm.Create(FieldByName('CALL_WINF').AsString,
+                                   FieldByName('CAPTION_WINF').AsString,
+                                   FieldByName('MENUITEM_WINF').AsString,
+                                   FieldByName('UNITF_WINF').AsString,
+                                   FieldByName('SHORTCUT_WINF').AsString,
+                                   FieldByName('DATAMODULE_WINF').AsString,
+                                   Self.FOwner);
+      end;
+      FList.Add(ozaForm);
+      qrySol.Next;
     end;
-    FList.Add(ozaForm);
-    qrySol.Next;
+    qrySol.Close;
+  finally
+    qrySol.Free;
   end;
-  qrySol.Close;
-  qrySol.Free;
 end;
 
 constructor TfzaWinF.Create(Owner:TComponent);
@@ -185,19 +207,33 @@ begin
   FOwner := Owner;
 end;
 
+function TfzaWinF.GetDataModuleName(sUnitName: string): String;
+var
+  ofzaForm:TfzaForm;
+begin
+  Result := '';
+  for ofzaForm in FList do
+  begin
+    if ofzaForm.UnitForm.Contains(sUnitName) then
+    begin
+      Result := ofzaForm.DataUnit;
+      Exit;
+    end;
+  end;
+end;
+
 function TfzaWinF.GetElement(sCall: string): TfzaForm;
 var
   ofzaForm:TfzaForm;
 begin
+  Result := nil;
   for ofzaForm in FList do
   begin
     if ofzaForm.Call = sCall then
     begin
       Result := ofzaForm;
       Exit;
-    end
-    else
-      Result := nil;
+    end;
   end;
 end;
 

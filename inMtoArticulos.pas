@@ -195,7 +195,6 @@ type
       Sender: TObject);
     procedure dbcTarifasPRECIOFINALPropertiesEditValueChanged(
       Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure actEmpresasExecute(Sender: TObject);
     procedure actClientesExecute(Sender: TObject);
     procedure btnIraClienteClick(Sender: TObject);
@@ -531,7 +530,7 @@ end;
 procedure TfrmMtoArticulos.CrearTablaPrincipal;
 begin
   inherited;
-  dmmArticulos := TdmArticulos.Create(Self);
+  dmmArticulos := tdmDataModule as TdmArticulos;
   cbbFamilia.Properties.ListSource := dmmArticulos.dsFamiliaArticulos;
   tvTarifas.DataController.DataSource := dmmArticulos.dsTarifasArticulos;
   tvProveedores.DataController.DataSource :=
@@ -664,12 +663,6 @@ begin
   begin
     txtCODIGO_ARTICULO.Enabled := False;
   end;
-end;
-
-procedure TfrmMtoArticulos.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-  inherited;
-  Freeandnil(dmmArticulos);
 end;
 
 initialization

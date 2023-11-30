@@ -40,6 +40,8 @@ uses
 
 {$R *.dfm}
 
+procedure ForceReferenceToClass(C: TClass); begin end;
+
 procedure TdmUsuarios.unqryTablaGAfterInsert(DataSet: TDataSet);
 begin
   inherited;
@@ -70,4 +72,6 @@ begin
   end;
 end;
 
+initialization
+  ForceReferenceToClass(TdmUsuarios);
 end.

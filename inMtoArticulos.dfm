@@ -78,8 +78,6 @@ inherited frmMtoArticulos: TfrmMtoArticulos
         end
       end
       inherited tsFicha: TcxTabSheet
-        ExplicitLeft = 3
-        ExplicitTop = 32
         ExplicitWidth = 847
         ExplicitHeight = 635
         object pnlTopFicha: TPanel
@@ -650,6 +648,10 @@ inherited frmMtoArticulos: TfrmMtoArticulos
             object tsProveedores: TcxTabSheet
               Caption = '&2_Proveedores'
               ImageIndex = 2
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object cxgrdProveedores: TcxGrid
                 Left = 0
                 Top = 0
@@ -817,6 +819,10 @@ inherited frmMtoArticulos: TfrmMtoArticulos
             object tsLineasFactura: TcxTabSheet
               Caption = '&3_Lineas de Facturas - '
               ImageIndex = 3
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object cxgrdLinFac: TcxGrid
                 Left = 0
                 Top = 0
@@ -1197,8 +1203,6 @@ inherited frmMtoArticulos: TfrmMtoArticulos
         end
       end
       inherited tsPerfil: TcxTabSheet
-        ExplicitLeft = 3
-        ExplicitTop = 32
         ExplicitWidth = 847
         ExplicitHeight = 635
         inherited pnlPerfilTop: TPanel
@@ -1229,9 +1233,6 @@ inherited frmMtoArticulos: TfrmMtoArticulos
       inherited pnlTopGrid: TPanel
         Width = 856
         ExplicitWidth = 856
-        inherited edtBusqGlobal: TcxTextEdit
-          ExplicitHeight = 27
-        end
         inherited rbBBDD: TcxRadioButton
           Top = 3
           Font.Name = 'Calibri'

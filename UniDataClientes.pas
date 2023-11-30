@@ -48,6 +48,8 @@ uses
 
 {$R *.dfm}
 
+procedure ForceReferenceToClass(C: TClass); begin end;
+
 procedure TdmClientes.DataModuleCreate(Sender: TObject);
 begin
   inherited;
@@ -183,5 +185,6 @@ begin
       GetCodigoAutoCliente;
   end;
 end;
-
+initialization
+  ForceReferenceToClass(TdmClientes);
 end.

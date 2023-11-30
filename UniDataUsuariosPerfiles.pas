@@ -33,6 +33,8 @@ uses inMtoUsuariosPerfiles;
 
 {$R *.dfm}
 
+procedure ForceReferenceToClass(C: TClass); begin end;
 
-
+initialization
+  ForceReferenceToClass(TdmUsuariosPerfiles);
 end.

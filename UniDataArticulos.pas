@@ -66,6 +66,8 @@ uses
 
 {$R *.dfm}
 
+procedure ForceReferenceToClass(C: TClass); begin end;
+
 function TdmArticulos.ArticuloTieneProvPrin(sArt:String):Boolean;
 var
   unqrySol: TUniQuery;
@@ -316,8 +318,8 @@ begin
                               FindField('FECHA_HASTA_TARIFA')))
     then
     begin
-      ShowMessageFmt('No se pueden grabar dos tarifas ' +
-                     'activas en la misma fecha para el articulo %s',
+      ShowMessageFmt('No se pueden grabar dos precios para una tarifa ' +
+                     'activa en fechas concurrentes para el artículo %s',
                      [FindField('CODIGO_ARTICULO_TARIFA').AsString]);
       Abort;
     end;
@@ -327,4 +329,6 @@ begin
   end;
 end;
 
+initialization
+  ForceReferenceToClass(TdmArticulos);
 end.

@@ -184,8 +184,6 @@ inherited frmMtoClientes: TfrmMtoClientes
         end
       end
       inherited tsFicha: TcxTabSheet
-        ExplicitLeft = 3
-        ExplicitTop = 32
         ExplicitWidth = 922
         ExplicitHeight = 526
         object pnl1: TPanel
@@ -629,6 +627,10 @@ inherited frmMtoClientes: TfrmMtoClientes
             object tsMasDatos: TcxTabSheet
               Caption = '&2_M'#225's datos'
               ImageIndex = 1
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               DesignSize = (
                 913
                 305)
@@ -825,6 +827,10 @@ inherited frmMtoClientes: TfrmMtoClientes
             object tsHistoriaFacturacion: TcxTabSheet
               Caption = '&3_Historia Facturaci'#243'n'
               ImageIndex = 3
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object pnlFacturaCli: TPanel
                 Left = 0
                 Top = 0
@@ -1229,6 +1235,10 @@ inherited frmMtoClientes: TfrmMtoClientes
               Caption = 'Historia Presupuestos'
               ImageIndex = 4
               TabVisible = False
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object cxgrd3: TcxGrid
                 Left = 0
                 Top = 0

@@ -10,13 +10,13 @@ inherited frmMtoSearch: TfrmMtoSearch
   inherited pButtonPage: TPanel
     Width = 801
     Height = 519
-    ExplicitWidth = 817
+    ExplicitWidth = 801
     ExplicitHeight = 519
     inherited pcPantalla: TcxPageControl
       Width = 801
       Height = 409
-      ExplicitWidth = 817
-      ExplicitHeight = 448
+      ExplicitWidth = 801
+      ExplicitHeight = 409
       ClientRectBottom = 403
       ClientRectRight = 795
       inherited tsLista: TcxTabSheet
@@ -40,10 +40,8 @@ inherited frmMtoSearch: TfrmMtoSearch
       end
       inherited tsFicha: TcxTabSheet
         TabVisible = False
-        ExplicitLeft = 3
-        ExplicitTop = 32
-        ExplicitWidth = 808
-        ExplicitHeight = 410
+        ExplicitWidth = 792
+        ExplicitHeight = 371
       end
       inherited tsPerfil: TcxTabSheet
         TabVisible = False
@@ -76,9 +74,6 @@ inherited frmMtoSearch: TfrmMtoSearch
         inherited sbExportExcel: TSpeedButton
           Visible = False
         end
-        inherited edtBusqGlobal: TcxTextEdit
-          ExplicitHeight = 27
-        end
         inherited nvNavegador: TcxDBNavigator
           Visible = False
         end
@@ -91,8 +86,6 @@ inherited frmMtoSearch: TfrmMtoSearch
       Height = 70
       Align = alBottom
       TabOrder = 2
-      ExplicitTop = 488
-      ExplicitWidth = 817
       object btnAceptar: TcxButton
         Left = 320
         Top = 24

@@ -165,7 +165,6 @@ type
     procedure btnIraClienteClick(Sender: TObject);
     procedure actClientesExecute(Sender: TObject);
     procedure btnExportarClick(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure dsTablaGStateChange(Sender: TObject);
   private
     { Private declarations }
@@ -295,7 +294,7 @@ end;
 procedure TfrmMtoProveedores.CrearTablaPrincipal;
 begin
   inherited;
-  dmmProveedores := TDMProveedores.Create(Self);
+  dmmProveedores := tdmDataModule as TdmProveedores;
   tvArticulos.DataController.DataSource := dmmProveedores.dsArticulos;
   tvLinFac.DataController.DataSource := dmmProveedores.dsLinFacturasArticulos;
   pcPestanas.ActivePage := tsDomicilioFiscal;
@@ -311,13 +310,6 @@ begin
   begin
     txtCODIGO_PROVEEDOR.Enabled := False;
   end;
-end;
-
-procedure TfrmMtoProveedores.FormClose(Sender: TObject;
-  var Action: TCloseAction);
-begin
-  inherited;
-  Freeandnil(dmmProveedores);
 end;
 
 initialization

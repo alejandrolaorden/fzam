@@ -160,7 +160,6 @@ inherited dmEmpresas: TdmEmpresas
       'SELECT * '
       'FROM vi_empresas_retenciones'
       'WHERE CODIGO_EMPRESA_RETENCION = :CODIGO_EMPRESA')
-    MasterSource = frmMtoEmpresas.dsTablaG
     MasterFields = 'CODIGO_EMPRESA'
     DetailFields = 'CODIGO_EMPRESA_RETENCION'
     RefreshOptions = [roAfterUpdate]
@@ -249,7 +248,6 @@ inherited dmEmpresas: TdmEmpresas
     Connection = dmConn.conUni
     SQL.Strings = (
       'select * from vi_fac_busquedas')
-    MasterSource = frmMtoEmpresas.dsTablaG
     MasterFields = 'CODIGO_EMPRESA'
     DetailFields = 'CODIGO_EMPRESA_FACTURA'
     ReadOnly = True
@@ -318,7 +316,6 @@ inherited dmEmpresas: TdmEmpresas
       'on l.NRO_FACTURA_LINEA = F.NRO_FACTURA'
       'AND l.SERIE_FACTURA_LINEA = F.SERIE_FACTURA'
       '')
-    MasterSource = frmMtoEmpresas.dsTablaG
     MasterFields = 'CODIGO_EMPRESA'
     DetailFields = 'CODIGO_EMPRESA_FACTURA'
     ReadOnly = True
@@ -378,7 +375,6 @@ inherited dmEmpresas: TdmEmpresas
       'SELECT * '
       'FROM vi_empresas_series'
       'WHERE CODIGO_EMPRESA_SERIE = :CODIGO_EMPRESA')
-    MasterSource = frmMtoEmpresas.dsTablaG
     MasterFields = 'CODIGO_EMPRESA'
     DetailFields = 'CODIGO_EMPRESA_SERIE'
     RefreshOptions = [roAfterUpdate]

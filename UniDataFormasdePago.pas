@@ -43,6 +43,8 @@ uses
 
 {$R *.dfm}
 
+procedure ForceReferenceToClass(C: TClass); begin end;
+
 procedure TdmFormasdePago.unqryTablaGAfterInsert(DataSet: TDataSet);
 begin
   inherited;
@@ -114,4 +116,7 @@ begin
       GetCodigoAutoFormasdePago;
   end;
 end;
+
+initialization
+  ForceReferenceToClass(TdmFormasdePago);
 end.

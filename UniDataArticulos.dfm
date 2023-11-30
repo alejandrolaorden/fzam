@@ -1,5 +1,4 @@
 inherited dmArticulos: TdmArticulos
-  OldCreateOrder = False
   Height = 256
   Width = 1012
   inherited unqryTablaG: TUniQuery

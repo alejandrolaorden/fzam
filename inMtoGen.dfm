@@ -121,10 +121,6 @@ inherited frmMtoGen: TfrmMtoGen
       object tsPerfil: TcxTabSheet
         Caption = 'Perfil'
         ImageIndex = 2
-        ExplicitLeft = 4
-        ExplicitTop = 30
-        ExplicitWidth = 943
-        ExplicitHeight = 484
         object pnlPerfilTop: TPanel
           Left = 0
           Top = 0
@@ -133,7 +129,6 @@ inherited frmMtoGen: TfrmMtoGen
           Align = alTop
           BevelOuter = bvNone
           TabOrder = 0
-          ExplicitWidth = 943
           object edtPerfilBusq: TcxTextEdit
             Left = 294
             Top = 14

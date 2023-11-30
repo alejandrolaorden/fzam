@@ -91,5 +91,6 @@ begin
   inherited;
   GetCodigoAutoGeneradorProcesos;
 end;
-
+initialization
+  ForceReferenceToClass(TdmGeneradorProcesos);
 end.

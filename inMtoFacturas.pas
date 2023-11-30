@@ -350,7 +350,6 @@ type
     procedure chkFechaEntregaPropertiesChange(Sender: TObject);
     procedure chkDescripcion_ampliadaPropertiesChange(Sender: TObject);
     procedure chkCrearArticulosPropertiesChange(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btNExportarLineasClick(Sender: TObject);
     procedure btnExportarRecibosClick(Sender: TObject);
     procedure actArticuloExecute(Sender: TObject);
@@ -432,21 +431,6 @@ begin
     end;
 end;
 
-procedure TfrmMtoFacturas.FormClose(Sender: TObject; var Action: TCloseAction);
-//var
-//  i:Integer;
-//  ts : TcxTabSheet;
-//  pc:TcxPageControl;
-begin
-  inherited;
-  FreeAndNil(dmmFacturas);
-//  ts := parent as TcxTabSheet;
-//  pc := ts.PageControl;
-//  i := EncuentraPagina(pc, 'Facturas');
-//  if i<>-1 then
-//    TcxPageControlPropertiesAccess((pc).Properties).DoCloseTab(i);
-end;
-
 procedure TfrmMtoFacturas.ResetForm;
 begin
   inherited;
@@ -454,14 +438,6 @@ begin
   pcCab.ActivePage := tsFichCab;
   pcDetail.ActivePage := tsFichBut;
 end;
-
-//procedure TfrmMtoFacturas.FormKeyUp(Sender: TObject; var Key: Word;
-//  Shift: TShiftState);
-//begin
-//  inherited;
-//   if (Key = VKE ) and (Shift = [ssCtrl]) then
-//      btnIrAEmpresaClick(Sender);
-//end;
 
 procedure TfrmMtoFacturas.btnUpdateClienteClick(Sender: TObject);
 begin
@@ -824,9 +800,10 @@ end;
 
 procedure TfrmMtoFacturas.CrearTablaPrincipal;
 begin
+  inherited;
   if dmmFacturas <> nil then
     dmmFacturas := nil;
-  dmmFacturas := TdmFacturas.Create(Self);
+  dmmFacturas := tdmDataModule as TdmFacturas;
   cbbSerieFactura.Properties.ListSource := dmmFacturas.dsSeries;
   cbbCanalIVA.Properties.ListSource := dmmFacturas.dsIvas;
   cbbFORMAPAGO.Properties.ListSource := dmmFacturas.dsFormasPago;

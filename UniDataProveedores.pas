@@ -42,6 +42,7 @@ uses
 
 {$R *.dfm}
 
+procedure ForceReferenceToClass(C: TClass); begin end;
 
 procedure TdmProveedores.DataModuleCreate(Sender: TObject);
 begin
@@ -98,4 +99,6 @@ begin
   GetCodigoAutoProveedor;
 end;
 
+initialization
+  ForceReferenceToClass(TdmProveedores);
 end.

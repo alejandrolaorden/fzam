@@ -78,9 +78,11 @@ begin
   cxGrdDBTabPrin.ApplyBestFit();
 end;
 
-procedure TfrmMtoSearch.cxGrdDBTabPrinCellDblClick(Sender: TcxCustomGridTableView;
-  ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
-  AShift: TShiftState; var AHandled: Boolean);
+procedure TfrmMtoSearch.cxGrdDBTabPrinCellDblClick(
+                                    Sender: TcxCustomGridTableView;
+                                    ACellViewInfo: TcxGridTableDataCellViewInfo;
+                                    AButton: TMouseButton;
+                                    AShift: TShiftState; var AHandled: Boolean);
 begin
   inherited;
   btnAceptarClick(Self);

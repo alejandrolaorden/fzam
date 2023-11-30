@@ -45,10 +45,6 @@ inherited frmMtoUsuariosPerfiles: TfrmMtoUsuariosPerfiles
       end
       inherited tsFicha: TcxTabSheet
         TabVisible = False
-        ExplicitLeft = 3
-        ExplicitTop = 32
-        ExplicitWidth = 942
-        ExplicitHeight = 480
       end
       inherited tsPerfil: TcxTabSheet
         inherited pnlPerfilTop: TPanel

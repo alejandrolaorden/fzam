@@ -61,6 +61,8 @@ uses
 
 {$R *.dfm}
 
+procedure ForceReferenceToClass(C: TClass); begin end;
+
 procedure TdmEmpresas.unqryRetencionesAfterInsert(DataSet: TDataSet);
 begin
   inherited;
@@ -408,4 +410,6 @@ begin
   FreeAndNil(unqrySol);
 end;
 
+initialization
+  ForceReferenceToClass(TdmEmpresas);
 end.

@@ -38,6 +38,7 @@ resourcestring
    SOutOfResources = 'Fuera de recursos del sistema';
    SNoCanvasHandle = 'El lienzo no permite dibujar';
    SInvalidTextFormatFlag = 'El indicador de formato de texto ''%s'' no es compatible';
+   SInvalidFrameIndex = 'Índice de marco de imagen no válido %d: Hay %d marcos (0-%d)';
    SInvalidImageSize = 'Tamaño de imagen no válido';
    STooManyImages = 'Demasiadas imágenes';
    SDimsDoNotMatch = 'Las dimensiones de la imagen no coinciden con las dimensiones de la lista de imágenes';
@@ -61,7 +62,10 @@ resourcestring
    SScrollBarRange = 'Propiedad de la barra de desplazamiento fuera de rango';
    SPropertyOutOfRange = '%s propiedad fuera de rango';
    SMenuIndexError = 'Índice de menú fuera de rango';
+   SCannotSetCheckState = 'Check state can only be set when CheckBoxes is True';
+   SInvalidCheckState = 'Check state incompatible with treeview''s CheckStyles';
    SMenuReinserted = 'Menú insertado dos veces';
+
    SMenuNotFound = 'El submenú no está en el menú';
    SNoTimers = 'No hay suficientes temporizadores disponibles';
    SNotPrinting = 'La impresora no está imprimiendo actualmente';
@@ -74,6 +78,7 @@ resourcestring
    SNoMDIForm = 'No se puede crear el formulario. Actualmente no hay formularios MDI activos';
    SImageCanvasNeedsBitmap = 'Sólo se puede modificar una imagen si contiene un mapa de bits';
    SControlParentSetToSelf = 'Un control no puede tenerse a sí mismo como padre';
+   SControlNonMainThreadUsage = 'Control ''%s'' is used on a not main thread';
    SOKButton = 'Aceptar';
    SCancelButton = 'Cancelar';
    SYesButton = '&Sí';
@@ -327,6 +332,7 @@ SFixedColTooBig = 'El número de columnas fijas debe ser menor que el número de c
    sParameterCannotBeNil = 'El parámetro %s en la llamada a %s no puede ser nulo';
    SInvalidColorString = 'Cadena de color no válida';
    SActionManagerNotAssigned = 'La propiedad %s ActionManager no ha sido asignada';
+   SInvalidScaleImagePixelFormat = 'Bitmap PixelFormat ha de ser pf24bit ó p32bit';
 
    SInvalidPath = '"%s" es una ruta no válida';
    SInvalidPathCaption = 'Ruta no válida';
@@ -338,7 +344,7 @@ SFixedColTooBig = 'El número de columnas fijas debe ser menor que el número de c
    SUTF8Encoding  = 'UTF-8';
    SUTF7Encoding  = 'UTF-7';
    SEncodingLabel = 'Codificación:';
-
+   sCannotAddToEmpty = 'Cannot add a control to GridPanel with empty rows and columns';
    sCannotAddFixedSize = 'No se pueden agregar columnas o filas mientras el estilo de expansión sea de tamaño fijo';
    sInvalidSpan = '''%d'' no es un intervalo válido';
    sInvalidRowIndex = 'Índice de fila, %d, fuera de límites';
@@ -493,3 +499,5 @@ SFixedColTooBig = 'El número de columnas fijas debe ser menor que el número de c
   implementation
 
   end.
+
+

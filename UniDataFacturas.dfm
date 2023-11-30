@@ -201,7 +201,6 @@ inherited dmFacturas: TdmFacturas
     Connection = dmConn.conUni
     SQL.Strings = (
       'select * from vi_facturas')
-    Active = True
     BeforeInsert = nil
     AfterInsert = unqryTablaGAfterInsert
     BeforePost = zqryFacBeforePost

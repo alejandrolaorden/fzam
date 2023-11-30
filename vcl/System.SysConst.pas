@@ -138,6 +138,7 @@ resourcestring
   SSafecallException = 'Excepción en método de safecall';
   SMonitorLockException = 'Bloqueo de objeto no poseído';
   SNoMonitorSupportException = 'Función de soporte de monitoreo no inicializada';
+  SAggregateException = '%d excepción (s):';
   SNotImplemented = 'Característica no implementada';
   SObjectDisposed = 'Método llamado en objeto descartado';
   SAssertError = '%s (%s, línea %d)';

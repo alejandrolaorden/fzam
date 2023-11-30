@@ -119,7 +119,6 @@ type
     procedure actFamiliasExecute(Sender: TObject);
     procedure actProveedoresExecute(Sender: TObject);
     procedure btAddBlockClick(Sender: TObject);
-    procedure FormDestroy(Sender: TObject);
     procedure dsTablaGStateChange(Sender: TObject);
   public
     procedure CrearTablaPrincipal; override;
@@ -207,7 +206,7 @@ end;
 procedure TfrmMtoTarifas.CrearTablaPrincipal;
 begin
   inherited;
-  dmmTarifas := TdmTarifas.Create(Self);
+  dmmTarifas := tdmDataModule as TdmTarifas;
   tvArticulos.DataController.DataSource := dmmTarifas.dsArticulosTarifas;
   pkFieldName := 'CODIGO_TARIFA';
 end;
@@ -221,12 +220,6 @@ begin
   begin
     txtCODIGO_TARIFA.Enabled := False;
   end;
-end;
-
-procedure TfrmMtoTarifas.FormDestroy(Sender: TObject);
-begin
-  inherited;
-  FreeAndNil(dmmTarifas);
 end;
 
 initialization

@@ -20,8 +20,8 @@ inherited frmMtoFamilias: TfrmMtoFamilias
       TabOrder = 1
       ExplicitWidth = 740
       ExplicitHeight = 552
-      ClientRectBottom = 548
-      ClientRectRight = 736
+      ClientRectBottom = 546
+      ClientRectRight = 734
       inherited tsLista: TcxTabSheet
         ExplicitLeft = 4
         ExplicitTop = 30
@@ -80,14 +80,12 @@ inherited frmMtoFamilias: TfrmMtoFamilias
         end
       end
       inherited tsFicha: TcxTabSheet
-        ExplicitLeft = 4
-        ExplicitTop = 30
-        ExplicitWidth = 732
-        ExplicitHeight = 518
+        ExplicitWidth = 731
+        ExplicitHeight = 514
         object pnl1: TPanel
           Left = 0
           Top = 0
-          Width = 732
+          Width = 731
           Height = 165
           Align = alTop
           BevelOuter = bvNone
@@ -120,7 +118,7 @@ inherited frmMtoFamilias: TfrmMtoFamilias
           object pnlCabFich: TPanel
             Left = 0
             Top = 0
-            Width = 732
+            Width = 731
             Height = 165
             Align = alClient
             BevelOuter = bvNone
@@ -213,8 +211,8 @@ inherited frmMtoFamilias: TfrmMtoFamilias
         end
         object pnlDetailFich: TPanel
           Left = 0
-          Top = 173
-          Width = 732
+          Top = 169
+          Width = 731
           Height = 345
           Align = alClient
           BevelOuter = bvNone
@@ -222,19 +220,23 @@ inherited frmMtoFamilias: TfrmMtoFamilias
           object pcDetail: TcxPageControl
             Left = 0
             Top = 0
-            Width = 732
+            Width = 731
             Height = 345
             Align = alClient
             TabOrder = 0
             Properties.ActivePage = tsArticulos
             Properties.CustomButtons.Buttons = <>
-            ClientRectBottom = 341
-            ClientRectLeft = 4
-            ClientRectRight = 728
-            ClientRectTop = 30
+            ClientRectBottom = 339
+            ClientRectLeft = 3
+            ClientRectRight = 725
+            ClientRectTop = 32
             object tsMasDatos: TcxTabSheet
               Caption = '&1_M'#225's Datos'
               ImageIndex = 0
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object lblDescripcion: TcxLabel
                 Left = 33
                 Top = 19
@@ -257,8 +259,8 @@ inherited frmMtoFamilias: TfrmMtoFamilias
               object cxgrdArticulosFamilias: TcxGrid
                 Left = 0
                 Top = 0
-                Width = 724
-                Height = 311
+                Width = 722
+                Height = 307
                 Margins.Left = 4
                 Margins.Top = 4
                 Margins.Right = 4
@@ -443,8 +445,8 @@ inherited frmMtoFamilias: TfrmMtoFamilias
               ImageIndex = 3
               object pnl3: TPanel
                 Left = 0
-                Top = 232
-                Width = 724
+                Top = 228
+                Width = 722
                 Height = 79
                 Align = alBottom
                 BevelOuter = bvNone
@@ -562,28 +564,26 @@ inherited frmMtoFamilias: TfrmMtoFamilias
         object cxspltr1: TcxSplitter
           Left = 0
           Top = 165
-          Width = 732
-          Height = 8
+          Width = 731
+          Height = 4
           HotZoneClassName = 'TcxMediaPlayer9Style'
           AlignSplitter = salTop
           Control = pnl1
         end
       end
       inherited tsPerfil: TcxTabSheet
-        ExplicitLeft = 4
-        ExplicitTop = 30
-        ExplicitWidth = 732
-        ExplicitHeight = 518
+        ExplicitWidth = 731
+        ExplicitHeight = 514
         inherited pnlPerfilTop: TPanel
-          Width = 732
-          ExplicitWidth = 732
+          Width = 731
+          ExplicitWidth = 731
           inherited edtPerfilBusq: TcxTextEdit
             ExplicitHeight = 27
           end
         end
         inherited pnlPerfilDetail: TPanel
-          Width = 732
-          Height = 461
+          Width = 731
+          Height = 457
           ExplicitWidth = 732
           ExplicitHeight = 461
           inherited cxgrdPerfil: TcxGrid
@@ -602,9 +602,6 @@ inherited frmMtoFamilias: TfrmMtoFamilias
       inherited pnlTopGrid: TPanel
         Width = 740
         ExplicitWidth = 740
-        inherited edtBusqGlobal: TcxTextEdit
-          ExplicitHeight = 27
-        end
       end
     end
   end

@@ -107,7 +107,6 @@ type
     procedure actProveedoresExecute(Sender: TObject);
     procedure actTarifasExecute(Sender: TObject);
     procedure btnNuevaFamiliaClick(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure dsTablaGStateChange(Sender: TObject);
   public
     procedure CrearTablaPrincipal; override;
@@ -210,7 +209,7 @@ end;
 procedure TfrmMtoFamilias.CrearTablaPrincipal;
 begin
   inherited;
-  dmmFamilias := TdmFamilias.Create(Self);
+  dmmFamilias := tdmDataModule as tdmFamilias;
   tvArticulos.DataController.DataSource := dmmFamilias.dsArticulosFamilias;
   cbbFamilia.Properties.ListSource := dmmFamilias.dsSubfamilias;
   ResetForm;
@@ -226,12 +225,6 @@ begin
   begin
     txtCODIGO_FAMILIA.Enabled := False;
   end;
-end;
-
-procedure TfrmMtoFamilias.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-  inherited;
-  FreeAndNil(dmmFamilias);
 end;
 
 procedure TfrmMtoFamilias.ResetForm;

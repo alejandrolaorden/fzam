@@ -38,6 +38,7 @@ uses
 
 {$R *.dfm}
 
+procedure ForceReferenceToClass(C: TClass); begin end;
 
 procedure TdmIvasGrupos.unqryTablaGAfterInsert(DataSet: TDataSet);
 begin
@@ -139,4 +140,6 @@ begin
   end;
 end;
 
+initialization
+  ForceReferenceToClass(TdmIvasGrupos);
 end.

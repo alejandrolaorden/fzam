@@ -282,7 +282,7 @@ type
     procedure actFacturasExecute(Sender: TObject);
     procedure btnIraArticuloClick(Sender: TObject);
     procedure actArticulosExecute(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+//    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure dsTablaGStateChange(Sender: TObject);
   public
     procedure CrearTablaPrincipal; override;
@@ -410,7 +410,7 @@ end;
 procedure TfrmMtoClientes.CrearTablaPrincipal;
 begin
   inherited;
-  dmmClientes := TDMClientes.Create(Self);
+  dmmClientes := tdmDataModule as TdmClientes;
   tvFacturacion.DataController.DataSource := dmmClientes.dsFacturasClientes;
   tvLineasFacturacion.DataController.DataSource :=
                                            dmmClientes.dsFacturasLineasClientes;
@@ -427,12 +427,6 @@ begin
     txtCODIGO_CLIENTE.Enabled := True
   else
     txtCODIGO_CLIENTE.Enabled := False;
-end;
-
-procedure TfrmMtoClientes.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-  inherited;
-  Freeandnil(dmmClientes);
 end;
 
 initialization

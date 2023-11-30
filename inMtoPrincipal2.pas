@@ -17,7 +17,7 @@ uses
   cxControls, cxLookAndFeels, cxLookAndFeelPainters, dxCore, cxContainer,
   cxEdit, dxSkinsForm, cxStyles, cxClasses, Vcl.ExtCtrls, DADump, UniDump,
   Vcl.Menus, cxPC, cxTextEdit, cxMemo, dxStatusBar, inMtoFrmBase, UniDataConn,
-  UniDataPerfiles, cxLocalization, Vcl.Buttons, inLibUnitForm, Vcl.AppEvnts;
+  UniDataPerfiles, cxLocalization, Vcl.Buttons, inLibUnitForm;
 
 type
   TcxPageControlPropertiesAccess = class(TcxPageControlProperties);
@@ -63,7 +63,6 @@ type
     Panel1: TPanel;
     pcPrincipal: TcxPageControl;
     pnlPPBottom: TPanel;
-    ApplicationEvents1: TApplicationEvents;
     cxMemo1: TcxMemo;
     frmHelp: TMenuItem;
     mnuAcercade: TMenuItem;
@@ -156,9 +155,8 @@ begin
     + ' (' + FdmConn.conUni.Database + ')';
   if oRootGroup = 'S' then
     sDis := ' ✪';
-  dxstsbr1.Panels[2].Text := oUser + '  (' + oGroup + ')' + sDis;
+  dxstsbr1.Panels[2].Text := oUser + '  (' + oGroup + ') : ' + sDis + ' : ';
   Self.Caption := oAppName + ' ' + oVersion;
-
   pnlPPBottom.Visible := False;
   cxMemo1.Visible := False;
   {$IFDEF DEBUG}

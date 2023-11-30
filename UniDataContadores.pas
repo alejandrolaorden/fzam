@@ -31,5 +31,8 @@ implementation
 
 {$R *.dfm}
 
+procedure ForceReferenceToClass(C: TClass); begin end;
 
+initialization
+  ForceReferenceToClass(TdmContadores);
 end.

@@ -40,6 +40,7 @@ uses inLibtb, inLibGlobalVar;
 
 {$R *.dfm}
 
+procedure ForceReferenceToClass(C: TClass); begin end;
 
 procedure TdmIvas.unqryTablaGAfterInsert(DataSet: TDataSet);
 begin
@@ -174,4 +175,6 @@ begin
   end;
 end;
 
+initialization
+  ForceReferenceToClass(TdmIvas);
 end.

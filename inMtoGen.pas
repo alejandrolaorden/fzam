@@ -106,6 +106,7 @@ type
     procedure CargarPerfilesComunes(sUser:string = 'Todos');
   public
     tdmDataModule:TdmBase;
+    sDataModuleName:string;
     oPerfilDic : TProfileDicc;
     sUso:string;
     pkFieldName:string;
@@ -113,10 +114,11 @@ type
     tsFichBut:TcxTabSheet;
     procedure ProcesarPerfiles;
     procedure AplicarEtiquetas;     virtual;
-    procedure CrearTablaPrincipal;  virtual; abstract;
+    procedure CrearTablaPrincipal;  virtual;
     procedure ResetForm;  virtual;
     procedure AbrirPerfiles(bTabVisible:Boolean);
     procedure CargarPerfilesParticulares; virtual;
+//    constructor CreateWithDataModule(AOwner: TComponent; ADataModule: TdmBase);
   end;
 var
   frmMtoGen: TfrmMtoGen;
@@ -129,6 +131,7 @@ implementation
 
 uses inMtoGenSearch,
      inLibGlobalVar,
+     inLibShowMto,
      inMtoModalGenImpSave;
 
 {https://stackoverflow.com/questions/3979298/
@@ -156,7 +159,7 @@ procedure TfrmMtoGen.AbrirPerfiles(bTabVisible:Boolean);
 begin
   if (bTabVisible = true) then
   begin
-    if (tdmDataModule = nil) then //es caja de busqueda
+    if (tdmDataModule = nil) then //es caja de busqueda modal
     begin
       with (Self as TfrmMtoSearch).unqryPerfiles do
       begin
@@ -420,6 +423,20 @@ begin
     GrabarPerfilDatam(tdmDataModule, Self.Owner);
 end;
 
+procedure TfrmMtoGen.CrearTablaPrincipal;
+var
+  sNameModule:string;
+begin
+  tdmDataModule := nil;
+  sNameModule := '';
+  sNameModule :=
+        (Self.Owner as TfrmOpenApp2).oFzaWinf.GetDataModuleName(Self.UnitName +
+                                                          '.' + Self.ClassName);
+  if (sNameModule <> '') then
+    tdmDataModule := CrearDataModule(sNameModule, Self);
+  inherited;
+end;
+
 procedure TfrmMtoGen.cxGrdDBTabPrinDblClick(Sender: TObject);
 begin
   inherited;
@@ -465,9 +482,10 @@ begin
   inherited;
   sConsultaO := '';
   sConsultaP := '';
-//  oPerfilDic.Clear;
-  FreeAndNil(oPerfilDic);
-//  Action := caFree;
+  if (oPerfilDic <> nil) then
+    FreeAndNil(oPerfilDic);
+  if (tdmDataModule <> nil) then
+    FreeAndNil(tdmDataModule);
 end;
 
 procedure TfrmMtoGen.FormCreate(Sender: TObject);
@@ -492,6 +510,7 @@ begin
     rbBBDD.Checked := false;
     rbGrid.Checked := true;
   end;
+
 end;
 
 procedure TfrmMtoGen.FormKeyUp(Sender: TObject; var Key: Word;

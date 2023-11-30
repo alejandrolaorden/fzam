@@ -2,8 +2,6 @@ inherited frmOpenApp2: TfrmOpenApp2
   Caption = 'Fzam'
   ClientHeight = 553
   ClientWidth = 1140
-  Font.Height = -11
-  Font.Name = 'Tahoma'
   Menu = mnMenuPrin
   Position = poScreenCenter
   WindowState = wsMaximized
@@ -12,7 +10,7 @@ inherited frmOpenApp2: TfrmOpenApp2
   ExplicitWidth = 1156
   ExplicitHeight = 612
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 19
   object dxstsbr1: TdxStatusBar [0]
     AlignWithMargins = True
     Left = 3
@@ -71,6 +69,7 @@ inherited frmOpenApp2: TfrmOpenApp2
       Height = 452
       Align = alClient
       TabOrder = 0
+      Properties.CloseButtonMode = cbmActiveAndHoverTabs
       Properties.CustomButtons.Buttons = <>
       Properties.Options = [pcoAlwaysShowGoDialogButton, pcoCloseButton, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize]
       ClientRectBottom = 446
@@ -90,6 +89,7 @@ inherited frmOpenApp2: TfrmOpenApp2
         Top = 1
         TabStop = False
         Align = alClient
+        ParentColor = True
         Properties.ReadOnly = True
         Properties.ScrollBars = ssVertical
         TabOrder = 0
@@ -98,6 +98,10 @@ inherited frmOpenApp2: TfrmOpenApp2
         Width = 1138
       end
     end
+  end
+  inherited Localizer1: TcxLocalizer
+    Left = 72
+    Top = 264
   end
   object mnMenuPrin: TMainMenu
     Left = 72
@@ -1816,18 +1820,18 @@ inherited frmOpenApp2: TfrmOpenApp2
     Options.GenerateHeader = False
     Options.QuoteNames = True
     Options.CompleteInsert = True
-    Left = 568
-    Top = 224
+    Left = 240
+    Top = 32
   end
   object tmr1: TTimer
     Interval = 10000
     OnTimer = tmr1Timer
-    Left = 464
-    Top = 240
+    Left = 160
+    Top = 32
   end
   object StyleRepository1: TcxStyleRepository
-    Left = 472
-    Top = 147
+    Left = 400
+    Top = 139
     PixelsPerInch = 96
     object StylCab: TcxStyle
       AssignedValues = [svColor, svFont, svTextColor]
@@ -1866,9 +1870,5 @@ inherited frmOpenApp2: TfrmOpenApp2
     SkinName = 'Office2007Pink'
     Left = 72
     Top = 144
-  end
-  object ApplicationEvents1: TApplicationEvents
-    Left = 568
-    Top = 296
   end
 end

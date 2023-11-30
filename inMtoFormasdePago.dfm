@@ -4,7 +4,6 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
   Caption = 'Formas de pago'
   ClientHeight = 674
   ClientWidth = 894
-  OnDestroy = FormDestroy
   ExplicitWidth = 894
   ExplicitHeight = 674
   PixelsPerInch = 96
@@ -86,8 +85,6 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
         end
       end
       inherited tsFicha: TcxTabSheet
-        ExplicitLeft = 3
-        ExplicitTop = 32
         ExplicitWidth = 745
         ExplicitHeight = 596
         object pnl1: TPanel
@@ -262,7 +259,6 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
                   Margins.Bottom = 4
                   Align = alClient
                   TabOrder = 0
-                  ExplicitWidth = 620
                   object tvFacturacion: TcxGridDBTableView
                     Navigator.Buttons.ConfirmDelete = True
                     Navigator.Buttons.CustomButtons = <>
@@ -791,8 +787,6 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
         end
       end
       inherited tsPerfil: TcxTabSheet
-        ExplicitLeft = 3
-        ExplicitTop = 32
         ExplicitWidth = 745
         ExplicitHeight = 596
         inherited pnlPerfilTop: TPanel
@@ -823,9 +817,6 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
       inherited pnlTopGrid: TPanel
         Width = 754
         ExplicitWidth = 754
-        inherited edtBusqGlobal: TcxTextEdit
-          ExplicitHeight = 27
-        end
       end
     end
   end

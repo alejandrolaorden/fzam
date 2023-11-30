@@ -99,6 +99,8 @@ uses
 
 {$R *.dfm}
 
+procedure ForceReferenceToClass(C: TClass); begin end;
+
 function TdmFacturas.GetUserEmpresaDef:String;
 var
   unqrySol:TUniQuery;
@@ -325,6 +327,7 @@ begin
      FindField('TIPOIVA_ARTICULO_FACTURA_LINEA').AsString :=
                          DataSet.FindField('TIPOIVA_ARTICULO').AsString;
      sPpTipoIVA :=  DataSet.FindField('TIPOIVA_ARTICULO').AsString;
+     iPorcen := 0;
       case IndexStr(sPpTipoIVA, ['N', 'R', 'S', 'E']) of
          0: iPorcen := unqryTablaG.FindField('PORCEN_IVAN_FACTURA').AsInteger;
          1: iPorcen := unqryTablaG.FindField('PORCEN_IVAR_FACTURA').AsInteger;
@@ -952,4 +955,6 @@ begin
   end;
 end;
 
+initialization
+  ForceReferenceToClass(TdmFacturas);
 end.

@@ -25,7 +25,7 @@ type
     procedure unqryTablaGBeforePost(DataSet: TDataSet);
     procedure unqryTablaGBeforeInsert(DataSet: TDataSet);
   private
-    { Private declarations }
+
   public
     procedure ResetGridsProfile(sGrid, sForm, sPermisos:String);
   end;
@@ -38,7 +38,7 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses inMtoGen, inLibGlobalVar, inMtoPrincipal2;
+uses  inLibGlobalVar, inMtoPrincipal2, inMtoGen;
 
 {$R *.dfm}
 

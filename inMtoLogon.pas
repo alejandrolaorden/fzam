@@ -87,33 +87,20 @@ type
   public
     function IsInitializeAuto:Boolean;
     function CheckIfExistsDataBase:Boolean;
-    //    function getMd5(const vValue: string): string;
-        { Public declarations }
   end;
-procedure ShowMtoLogon(Owner: TComponent);
-//procedure ShowMtoPrin(Owner        : TComponent);
-//function sMD5(const texto:string):string;
 var
   frmLogon          : TfrmLogon;
   sPass, sPassEn, sUserPassOK, sSuccess: string;
 
 implementation
 
-uses inLibWin, //md5,
-  //inLibDate,
-  inLibGlobalVar,
-  inlibtb,
-  inLibDir,
-  inLibLog;
+uses  inLibWin,
+      inLibGlobalVar,
+      inlibtb,
+      inLibDir,
+      inLibLog;
 
 {$R *.dfm}
-
-procedure ShowMtoLogon(Owner: TComponent);
-var
-  FfrmLog           : TfrmLogon;
-begin
-  Application.CreateForm(TfrmLogon, FfrmLog);
-end;
 
 procedure TfrmLogon.FormCreate(Sender: TObject);
 begin
@@ -302,6 +289,7 @@ function TfrmLogon.CheckIfExistsDataBase: Boolean;
 var
   unqryTestBD       : TUniQuery;
 begin
+  Result := false;
   ConstruirConexionConnect( ucConexion,
                             edtUserBD.Text,
                             sPass,
@@ -330,10 +318,6 @@ begin
          ShowMessage('La Base de Datos se creó exitosamente');
          btChangePassRootClick(Self);
          Result := True;
-       end
-       else
-       begin
-         Result := False;
        end;
     end;
 end;

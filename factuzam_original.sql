@@ -2113,7 +2113,7 @@ INSERT INTO `fza_contadores`(`TIPODOC_CONTADOR`, `SERIE_CONTADOR`, `EMPRESA_CONT
  ('EO','-','-',5,'S',3,'S','2023-10-26 16:37:14','2023-05-19 15:02:02','Administrador','Administrador'),
  ('ES','-','-',5,'S',3,'S','2023-06-30 12:49:26','2023-05-13 12:25:25','Administrador','Administrador'),
  ('FA','-','-',3,'S',3,'S','2023-07-07 13:54:00','2023-06-02 13:04:22','Administrador','Administrador'),
- ('FC','A1','1',25,'S',8,'S','2023-10-21 12:22:01','2022-09-13 15:47:45','Administrador','Administrador'),
+ ('FC','A1','1',25,'N',8,'S','2023-11-17 15:04:53','2022-09-13 15:47:45','Administrador','Administrador'),
  ('FC','A3','1',0,'N',8,'S','2023-10-21 12:22:05','2023-05-12 12:24:25','Administrador','Administrador'),
  ('FC','AGRO','1',8,'N',6,'S','2023-10-26 15:57:56','2023-06-01 13:45:24','Administrador','Administrador'),
  ('FC','ANA/2023','008',3,'N',6,'S','2023-10-31 19:35:00','2023-10-31 18:12:26','Administrador','Administrador'),
@@ -2121,8 +2121,8 @@ INSERT INTO `fza_contadores`(`TIPODOC_CONTADOR`, `SERIE_CONTADOR`, `EMPRESA_CONT
  ('FO','-','-',2,'S',3,'S','2023-07-07 13:54:00','2023-07-07 13:54:00','Administrador','Administrador'),
  ('GO','-','-',2,'S',3,'S','2023-11-08 21:12:56','2023-11-08 21:12:56','Administrador','Administrador'),
  ('GP','-','-',12,'S',3,'S','2023-10-28 13:39:47','2023-04-27 12:30:24','Administrador','Administrador'),
- ('IG','-','-',3,'S',3,'S','2023-06-30 12:49:26','2023-01-19 10:41:29','Administrador','Administrador'),
- ('IV','-','-',17,'S',3,'S','2023-06-30 12:49:26','2021-06-10 20:11:25','Administrador','Administrador'),
+ ('IG','-','-',4,'S',3,'S','2023-11-17 12:36:00','2023-01-19 10:41:29','Administrador','Administrador'),
+ ('IV','-','-',18,'S',3,'S','2023-11-17 12:36:55','2021-06-10 20:11:25','Administrador','Administrador'),
  ('PG','-','-',2,'S',3,'S','2023-11-08 21:12:56','2023-11-08 21:12:56','Administrador','Administrador'),
  ('PV','-','-',25,'S',3,'S','2023-06-30 12:49:26','2021-06-10 18:47:22','Administrador','Administrador'),
  ('RT','-','-',3,'S',3,'S','2023-10-26 16:38:00','2023-10-26 16:34:31','Administrador','Administrador');
@@ -2287,7 +2287,7 @@ INSERT INTO `fza_facturas`(`NRO_FACTURA`, `SERIE_FACTURA`, `FECHA_FACTURA`, `COD
  ('00000021','A1','2023-05-12','1','AGRICULTOR','NIF DEL AGRICULTOR','TFNO DEL AGRICULTOR','EMAIL DEL AGRICULTOR','DIRECCION DEL AGRICULTOR','','POBLACION DEL AGRICULTOR','PROVINCIA DEL AGRICULTOR','PAIS DEL AGRICULTOR','POSAGRI','S','2','S','PUBLICO','PUBLICO','NIF CLIENTE','TFNO CLIENTE','EMAIL DEL CLIENTE','DIRECCION DEL CLIENTE','','POBLACION AGRICULTOR','PROVINCIA CLIENTE','POSCLI','PAIS DEL CLIENTE','N','S','N','N','0','S','N','S','N','S','REAGP','2','N',0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,5327.771800,5327.771800,0.000000,'30Y60',0.000000,0.000000,5327.771800,NULL,NULL,'','Empresario emisor acogido al régimen especial de agricultura ganadería y pesca',NULL,'','060','N','S','S','2023-11-08 20:50:28','2023-01-25 10:32:24','Administrador','Administrador'),
  ('00000022','A1','2023-01-28','1','AGRICULTOR','NIF','TFNO','EMAIL','DIRECCION','','POBLACION','PROVINCIA','','CODPOSTAL','S','2','S','TIENDA','TIENDA','NIF','658963325','EMAIL','DIRECCION','','POBLACION','PROVINCIA','CODPOSTAL','España','N','N','N','S','0','S','N','S','N','S','REAGP','2','N',12.000000,2.357143,0.000000,0.000000,19.642857,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,19.642857,2.357143,'CONTADO',25.000000,5.500000,16.500000,NULL,NULL,'','Empresario emisor acogido al régimen especial de agricultura ganadería y pesca',NULL,'','030','N','N','N','2023-10-25 16:18:28','2023-01-28 10:24:06','Administrador','Administrador'),
  ('000006','AGRO','2023-10-22','1','AGRICULTOR','NIF AGRICULTOR','TFNO AGRICULTOR','EMAIL AGRICULTOR','DIRECCION AGRICULTOR','','POBLACION AGRICULTOR','PROVINCIA AGRICULTOR','PAIS AGRICULTOR','49190','S','2','S','293','PEDRO COJOS','46589963j','','pedro.cojos@gmail.com','CALLE CAIDOS ','','VILLAVEZA DEL AGUA','ZAMORA','49760','','N','N','N','S','1','N','N','S','N','S','REAGP','2','N',12.000000,1008.000000,0.000000,0.000000,8400.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,8400.000000,1008.000000,'30DIAS',1.000000,94.080000,9313.920000,NULL,NULL,'','Empresario emisor acogido al régimen especial de agricultura ganadería y pesca',NULL,'','100','N','N','N','2023-11-01 17:32:13','2023-10-22 14:28:40','Administrador','Administrador'),
- ('000007','AGRO','2023-10-26','1','AGRICULTOR','NIF','TFNO','EMAIL','DIRECCION','','POBLACION','PROVINCIA','','CODPOSTAL','S','2','S','PUBLICO','PUBLICO','NIF','TFNO','EMAIL','DIRECCION','','POBLACION','PROVINCIA','CODPOSTAL','España','N','S','N','N','0','S','N','S','N','S','REAGP','2','N',0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,20678.972000,20678.972000,0.000000,'30Y60',0.000000,0.000000,20678.972000,NULL,NULL,NULL,'Empresario emisor acogido al régimen especial de agricultura ganadería y pesca',NULL,NULL,'020','N','N','N','2023-11-08 22:44:06','2023-10-26 15:57:56','Administrador','Administrador'),
+ ('000007','AGRO','2023-10-26','1','AGRICULTOR','NIF','TFNO','EMAIL','DIRECCION','','POBLACION','PROVINCIA','','CODPOSTAL','S','2','S','PUBLICO','PUBLICO','NIF','TFNO','EMAIL','DIRECCION','','POBLACION','PROVINCIA','CODPOSTAL','España','N','S','N','N','0','S','N','S','N','S','REAGP','2','N',0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,20648.000000,20648.000000,0.000000,'CONTADO',0.000000,0.000000,20648.000000,NULL,NULL,NULL,'Empresario emisor acogido al régimen especial de agricultura ganadería y pesca',NULL,NULL,'020','N','N','N','2023-11-17 15:17:18','2023-10-26 15:57:56','Administrador','Administrador'),
  ('000002','ANA/2023','2023-10-31','008','ANA MARTIN','45684135Q','66533256','ana@hotmail.com','CALLE SANTA CLARA, 2','','MORALES DEL VINO','ZAMORA','ESPAÑA','49190','S','1','N','TIENDA','TIENDA DE ROSA','11256658R','658963325','EMAIL','CALLE MAYOR, 2','','MORALES DEL VINO','ZAMORA','49190','España','S','N','N','S','1','N','N','N','S','N','IVA','1','N',21.000000,21.000000,5.200000,5.200000,100.000000,10.000000,10.000000,1.400000,1.400000,100.000000,4.000000,4.000000,0.500000,0.500000,100.000000,0.000000,0.000000,0.000000,0.000000,35.000000,335.000000,42.100000,'CONTADO',15.000000,50.250000,326.850000,NULL,NULL,NULL,'',NULL,NULL,'050','N','N','N','2023-10-31 19:42:38','2023-10-31 19:35:00','Administrador','Administrador');
 
 DROP TABLE IF EXISTS `fza_facturas_lineas`;
@@ -2321,7 +2321,7 @@ INSERT INTO `fza_facturas_lineas`(`NRO_FACTURA_LINEA`, `SERIE_FACTURA_LINEA`, `L
  ('00000021','A1','050','CALABAZAS',NULL,NULL,NULL,'Kgs','S','E','Calabazas para jalogüin y para después hacer una cremita.',NULL,100.090000,53.020000,0.000000,53.020000,5306.771800,'2023-10-26 12:44:30','2023-10-25 19:31:19','Administrador','Administrador'),
  ('00000022','A1','010','CEBADA',NULL,NULL,'2023-05-12 14:11:39',NULL,'S','N','Cebada',NULL,1.000000,19.642857,12.000000,22.000000,22.000000,'2023-10-25 16:18:28','2023-01-28 10:24:06','Administrador','Administrador'),
  ('000006','AGRO','010','CEBADA',NULL,NULL,NULL,'Tns','N','N','CEBADA',NULL,35.000000,240.000000,12.000000,268.800000,9408.000000,'2023-10-26 14:27:47','2023-10-22 14:29:32','Administrador','Administrador'),
- ('000007','AGRO','010','ALFALFA',NULL,NULL,NULL,'Kgs','S','E','Alfalfa de la finca',NULL,200.300000,103.240000,0.000000,103.240000,20678.972000,'2023-10-26 15:58:08','2023-10-26 15:58:08','Administrador','Administrador'),
+ ('000007','AGRO','010','ALFALFA',NULL,NULL,NULL,'Kgs','S','E','Alfalfa de la finca',NULL,200.000000,103.240000,0.000000,103.240000,20648.000000,'2023-10-26 15:58:08','2023-10-26 15:58:08','Administrador','Administrador'),
  ('000002','ANA/2023','010','CHUPITANGAS',NULL,NULL,NULL,'Uds.','N','R','CHUCHES VARIADAS',NULL,100.000000,1.000000,10.000000,1.100000,110.000000,'2023-10-31 19:35:34','2023-10-31 19:35:34','Administrador','Administrador'),
  ('000002','ANA/2023','020','PANDEPUEBLO',NULL,NULL,NULL,'Uds.','N','S','CHAPATAS',NULL,100.000000,1.000000,4.000000,1.040000,104.000000,'2023-10-31 19:36:03','2023-10-31 19:36:02','Administrador','Administrador'),
  ('000002','ANA/2023','030','LITRONAS',NULL,NULL,NULL,'Uds.','N','N','LITRONA MAHOU 1L.',NULL,100.000000,1.000000,21.000000,1.210000,121.000000,'2023-10-31 19:36:32','2023-10-31 19:36:32','Administrador','Administrador'),
@@ -2363,7 +2363,7 @@ CREATE TABLE `fza_generadorprocesos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci ROW_FORMAT=DYNAMIC;
 
 INSERT INTO `fza_generadorprocesos`(`CODIGO_GENERADORPROCESO`, `NOMBRE_GENERADORPROCESO`, `PROCESO_GENERADORPROCESO`, `INSTANTEMODIF`, `INSTANTEALTA`, `USUARIOALTA`, `USUARIOMODIF`) VALUES
- ('001','INSERTAR CAMPOS GRID POR MTO','INSERT INTO fza_usuarios_perfiles \r\n\r\n  Select        USUARIO_GRUPO_PERFILES,\r\n                \'frmMtoFormasdePago\' AS KEY_PERFILES,\r\n                SUBKEY_PERFILES,\r\n                VALUE_PERFILES,\r\n                VALUE_TEXT_PERFILES,\r\n                TYPE_BLOB_PERFILES,\r\n                VALUE_BLOB_PERFILES,\r\n                INSTANTEMODIF,\r\n                INSTANTEALTA,\r\n                USUARIOMODIF,\r\n                USUARIOALTA\r\n	  from fza_usuarios_perfiles \r\n	 where KEY_PERFILES = \'frmMtoEmpresas\' \r\n	   and (SUBKEY_PERFILES like \'%tvFacturacion%\' or\r\n         SUBKEY_PERFILES like \'%tvLineasFacturacion%\') ','2023-05-08 13:43:20','2023-04-27 12:30:24','Administrador','Administrador'),
+ ('001','INSERTAR CAMPOS GRID POR MTO','  Select        USUARIO_GRUPO_PERFILES,\r\n                \'frmMtoFormasdePago\' AS KEY_PERFILES,\r\n                SUBKEY_PERFILES,\r\n                VALUE_PERFILES,\r\n                VALUE_TEXT_PERFILES,\r\n                TYPE_BLOB_PERFILES,\r\n                VALUE_BLOB_PERFILES,\r\n                INSTANTEMODIF,\r\n                INSTANTEALTA,\r\n                USUARIOMODIF,\r\n                USUARIOALTA\r\n	  from fza_usuarios_perfiles \r\n	 where KEY_PERFILES = \'frmMtoEmpresas\' \r\n	   and (SUBKEY_PERFILES like \'%tvFacturacion%\' or\r\n         SUBKEY_PERFILES like \'%tvLineasFacturacion%\') ','2023-11-17 15:03:37','2023-04-27 12:30:24','Administrador','Administrador'),
  ('002','update cosas','UPDATE fza_ivas\r\n   SET PORCENEXENTO_RE_IVA = 0','2023-04-28 21:13:07','2023-04-28 12:28:56','Administrador','Administrador'),
  ('003','ACTUALIZACION DE CAMPO FZA_IVAS','           ALTER TABLE FZA_IVAS    MODIFY COLUMN   `GRUPO_ZONA_IVA` varchar(10) NOT NULL;','2023-04-28 12:46:20','2023-04-28 12:45:28','Administrador','Administrador'),
  ('004','SELECT FACTURAS','SELECT * FROM FZA_USUARIOS_PERFILES\r\nWHERE KEY_PERFILES = \'frmMtoFormasdePago\'','2023-05-08 13:44:52','2023-04-29 12:04:43','Administrador','Administrador'),
@@ -2399,6 +2399,7 @@ CREATE TABLE `fza_ivas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci ROW_FORMAT=DYNAMIC;
 
 INSERT INTO `fza_ivas`(`CODIGO_IVA`, `GRUPO_ZONA_IVA`, `DESCRIPCION_ZONA_IVA`, `PORCENEXENTO_IVA`, `PORCENEXENTO_RE_IVA`, `PORCENNORMAL_IVA`, `PORCENNORMAL_RE_IVA`, `PORCENREDUCIDO_IVA`, `PORCENREDUCIDO_RE_IVA`, `PORCENSUPERREDUCIDO_IVA`, `PORCENSUPERREDUCIDO_RE_IVA`, `FECHA_DESDE_IVA`, `FECHA_HASTA_IVA`, `INSTANTEMODIF`, `INSTANTEALTA`, `USUARIOALTA`, `USUARIOMODIF`) VALUES
+ ('017','003','IVA PORTUGAL',0.000000,0.000000,20.000000,2.000000,9.000000,1.000000,2.000000,1.000000,'1999-08-01',NULL,'2023-11-17 12:37:19','2023-11-17 12:37:19','Administrador','Administrador'),
  ('1','1','ESPAÑA PENINSULA',0.000000,0.000000,21.000000,5.200000,10.000000,1.400000,4.000000,0.500000,'1999-04-28',NULL,'2023-10-22 14:16:22','2021-04-28 21:03:03','Administrador','Administrador'),
  ('2','2','COMPENSACIÓN AGRARIA',0.000000,0.000000,12.000000,0.000000,0.000000,0.000000,0.000000,0.000000,'1999-08-01',NULL,'2023-10-22 14:16:16','2022-05-27 20:04:13','Administrador','Administrador'),
  ('3','5','IGIC CANARIAS',0.000000,0.000000,5.000000,0.000000,0.000000,0.000000,0.000000,0.000000,'1999-08-01',NULL,'2023-04-28 12:43:22','2022-05-27 20:05:09','Administrador','Administrador'),
@@ -2421,6 +2422,7 @@ CREATE TABLE `fza_ivas_grupos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci ROW_FORMAT=DYNAMIC;
 
 INSERT INTO `fza_ivas_grupos`(`GRUPO_ZONA_IVA`, `DESCRIPCION_ZONA_IVA`, `ESIRPF_IMP_INCL_ZONA_IVA`, `ESIVAAGRICOLA_ZONA_IVA`, `ESAPLICA_RE_ZONA_IVA`, `ESDEFAULT_ZONA_IVA`, `PALABRA_REPORTS_ZONA_IVA`, `INSTANTEMODIF`, `INSTANTEALTA`, `USUARIOALTA`, `USUARIOMODIF`) VALUES
+ ('003','IVA PORTUGUES','N','N','S','N','IVAÇ','2023-11-17 12:36:00','2023-11-17 12:36:00','Administrador','Administrador'),
  ('1','ESPAÑA PENINSULA','N','N','S','S','IVA','2023-01-29 10:01:39','2022-08-31 15:18:11','Administrador','Administrador'),
  ('2','COMPENSACIÓN AGRARIA Y FORESTAL','S','S','N','N','REAGP','2023-04-24 13:07:34','2022-08-31 15:18:41','Administrador','Administrador'),
  ('3','IGIC CANARIAS','N','N','S','N','IGIC','2022-10-26 15:03:54','2022-08-31 15:19:52','Administrador','Administrador'),
@@ -2642,6 +2644,7 @@ CREATE TABLE `fza_recibos` (
 INSERT INTO `fza_recibos`(`NRO_FACTURA_RECIBO`, `SERIE_FACTURA_RECIBO`, `NRO_PLAZO_RECIBO`, `FORMA_PAGO_ORIGEN_RECIBO`, `FORMA_PAGO_DESCRIPCION_ORIGEN_RECIBO`, `EUROS_RECIBO`, `STADO_RECIBO`, `FECHA_EXPEDICION_RECIBO`, `FECHA_VENCIMIENTO_RECIBO`, `IBAN_CLIENTE_RECIBO`, `FECHA_PAGO_RECIBO`, `LOCALIDAD_EXPEDICION_RECIBO`, `CODIGO_CLIENTE_RECIBO`, `RAZONSOCIAL_CLIENTE_RECIBO`, `DIRECCION1_CLIENTE_RECIBO`, `POBLACION_CLIENTE_RECIBO`, `PROVINCIA_CLIENTE_RECIBO`, `CPOSTAL_CLIENTE_RECIBO`, `IMPORTE_LETRA_RECIBO`, `INSTANTEMODIF`, `INSTANTEALTA`, `USUARIOALTA`, `USUARIOMODIF`) VALUES
  ('00000021','A1',1,'30Y60','30Y60',2663.885900,'Emitido','2023-05-12','2023-06-11',NULL,NULL,'POBLACION DEL AGRICULTOR','PUBLICO','PUBLICO','DIRECCION DEL CLIENTE','POBLACION AGRICULTOR','PROVINCIA CLIENTE','POSCLI','DOS MIL SEISCIENTOS SESENTA Y TRES CON OCHENTA Y NUEVE CÉNTIMOS ','2023-11-09 04:22:30','2023-11-09 04:22:30','Administrador','Administrador'),
  ('00000021','A1',2,'30Y60','30Y60',2663.885900,'Emitido','2023-05-12','2023-07-11',NULL,NULL,'POBLACION DEL AGRICULTOR','PUBLICO','PUBLICO','DIRECCION DEL CLIENTE','POBLACION AGRICULTOR','PROVINCIA CLIENTE','POSCLI','DOS MIL SEISCIENTOS SESENTA Y TRES CON OCHENTA Y NUEVE CÉNTIMOS ','2023-11-09 04:22:30','2023-11-09 04:22:30','Administrador','Administrador'),
+ ('000002','ANA/2023',1,'CONTADO','CONTADO',326.850000,'Pagado','2023-10-31','2023-10-31',NULL,'2023-10-31','MORALES DEL VINO','TIENDA','TIENDA DE ROSA','CALLE MAYOR, 2','MORALES DEL VINO','ZAMORA','49190','TRESCIENTOS VEINTISEIS CON OCHENTA Y CINCO CÉNTIMOS ','2023-11-28 21:56:54','2023-11-28 21:56:53','Administrador','Administrador'),
  ('000006','AGRO',1,'30DIAS','30DIAS',9313.920000,'Emitido','2023-10-22','2023-11-21',NULL,NULL,'POBLACION AGRICULTOR','293','PEDRO COJOS','CALLE CAIDOS ','VILLAVEZA DEL AGUA','ZAMORA','49760','NUEVE MIL TRESCIENTOS TRECE CON NOVENTA Y DOS CÉNTIMOS ','2023-11-08 22:45:00','2023-11-08 22:45:00','Administrador','Administrador'),
  ('000007','AGRO',1,'30Y60','30Y60',10339.486000,'Emitido','2023-10-26','2023-11-25',NULL,NULL,'POBLACION','PUBLICO','PUBLICO','DIRECCION','POBLACION','PROVINCIA','CODPOSTAL','DIEZ MIL TRESCIENTOS TREINTA Y NUEVE CON CUARENTA Y NUEVE CÉNTIMOS ','2023-11-09 04:23:05','2023-11-09 04:23:05','Administrador','Administrador'),
  ('000007','AGRO',2,'30Y60','30Y60',10339.486000,'Emitido','2023-10-26','2023-12-25',NULL,NULL,'POBLACION','PUBLICO','PUBLICO','DIRECCION','POBLACION','PROVINCIA','CODPOSTAL','DIEZ MIL TRESCIENTOS TREINTA Y NUEVE CON CUARENTA Y NUEVE CÉNTIMOS ','2023-11-09 04:23:05','2023-11-09 04:23:05','Administrador','Administrador'),
@@ -2710,7 +2713,7 @@ CREATE TABLE `fza_usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci ROW_FORMAT=DYNAMIC;
 
 INSERT INTO `fza_usuarios`(`USUARIO_USUARIO`, `PASSWORD_USUARIO`, `GRUPO_USUARIO`, `EMPRESADEF_USUARIO`, `ULTIMOLOGIN_USUARIO`, `INSTANTEMODIF`, `INSTANTEALTA`, `USUARIOALTA`, `USUARIOMODIF`) VALUES
- ('Administrador','4F8239A5B05A0E22D3DD4D7853808AF3','Administradores','1','2023-11-16 23:19:25','2023-11-16 23:19:25','2021-05-14 19:54:29','Administrador','Administrador');
+ ('Administrador','4F8239A5B05A0E22D3DD4D7853808AF3','Administradores','1','2023-11-30 18:40:06','2023-11-30 18:40:06','2021-05-14 19:54:29','Administrador','Administrador');
 
 DROP TABLE IF EXISTS `fza_usuarios_grupos`;
 CREATE TABLE `fza_usuarios_grupos` (
@@ -7002,31 +7005,31 @@ INSERT INTO `fza_variaciones_columnas`(`CODIGO_VAR_COL`, `CODIGO_VARIACION_VAR_C
 
 DROP TABLE IF EXISTS `fza_winforms`;
 CREATE TABLE `fza_winforms` (
-  `CALL_WINF` varchar(100) NOT NULL,
-  `CAPTION_WINF` varchar(100) DEFAULT NULL,
-  `MENUITEM_WINF` varchar(100) DEFAULT NULL,
-  `UNITF_WINF` varchar(100) DEFAULT NULL,
+  `CALL_WINF` varchar(255) NOT NULL,
+  `CAPTION_WINF` varchar(255) DEFAULT NULL,
+  `MENUITEM_WINF` varchar(255) DEFAULT NULL,
+  `UNITF_WINF` varchar(255) DEFAULT NULL,
   `SHORTCUT_WINF` varchar(20) DEFAULT NULL,
+  `DATAMODULE_WINF` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`CALL_WINF`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci ROW_FORMAT=DYNAMIC;
 
-INSERT INTO `fza_winforms`(`CALL_WINF`, `CAPTION_WINF`, `MENUITEM_WINF`, `UNITF_WINF`, `SHORTCUT_WINF`) VALUES
- ('AcercaDe','Acerca del autor','mnuAcercade','inMtoSplash.TfrmSplash',NULL),
- ('Articulos','Artículos','mnuArticulos','inMtoArticulos.TfrmMtoArticulos','A'),
- ('Clientes','Clientes','mnuClientes','inMtoClientes.TfrmMtoClientes','K'),
- ('Contadores','Contadores','mnuContadores','inMtoContadores.TfrmMtoContadores','R'),
- ('Empresas','Empresas','mnuEmpresas','inMtoEmpresas.TfrmMtoEmpresas','E'),
- ('Facturas','Facturas','mnuFacturas','inMtoFacturas.TfrmMtoFacturas','F'),
- ('Familias','Familias','mnuFamilias','inMtoFamilias.TfrmMtoFamilias','N'),
- ('FormasdePago','Formas de Pago','mnuFormasdePago','inMtoFormasdePago.TfrmMtoFormasdePago','Q'),
- ('GeneradorProcesos','Generador de Procesos','mnuGeneradorProcesos','inMtoGeneradorProcesos.TfrmMtoGeneradorProcesos','G'),
- ('Grupos','Grupos de Usuarios','mnuGrupos','inMtoGrupos.TfrmMtoGrupos','J'),
- ('Ivas','Impuestos IVA','mnuIvas','inMtoIvas.TfrmMtoIvas','I'),
- ('IvasGrupos','Grupos de Impuestos IVA','mnuGruposdeIVA','inMtoIvasGrupos.TfrmMtoIvasGrupos','O'),
- ('Proveedores','Proveedores','mnuProveedores','inMtoProveedores.TfrmMtoProveedores','P'),
- ('Tarifas','Tarifas','mnuTarifas','inMtoTarifas.TfrmMtoTarifas','T'),
- ('Usuarios','Usuarios','mnuUsuarios','inMtoUsuarios.TfrmMtoUsuarios','H'),
- ('UsuariosPerfiles','Perfiles de Usuarios','mnuPerfiles','inMtoUsuariosPerfiles.TfrmMtoUsuariosPerfiles','M');
+INSERT INTO `fza_winforms`(`CALL_WINF`, `CAPTION_WINF`, `MENUITEM_WINF`, `UNITF_WINF`, `SHORTCUT_WINF`, `DATAMODULE_WINF`) VALUES
+ ('Articulos','Artículos','mnuArticulos','inMtoArticulos.TfrmMtoArticulos','A','UniDataArticulos.TdmArticulos'),
+ ('Clientes','Clientes','mnuClientes','inMtoClientes.TfrmMtoClientes','K','UniDataClientes.TdmClientes'),
+ ('Contadores','Contadores','mnuContadores','inMtoContadores.TfrmMtoContadores','R','UniDataContadores.TdmContadores'),
+ ('Empresas','Empresas','mnuEmpresas','inMtoEmpresas.TfrmMtoEmpresas','E','UniDataEmpresas.TdmEmpresas'),
+ ('Facturas','Facturas','mnuFacturas','inMtoFacturas.TfrmMtoFacturas','F','UniDataFacturas.TdmFacturas'),
+ ('Familias','Familias','mnuFamilias','inMtoFamilias.TfrmMtoFamilias','N','UniDataFamilias.TdmFamilias'),
+ ('FormasdePago','Formas de Pago','mnuFormasdePago','inMtoFormasdePago.TfrmMtoFormasdePago','Q','UniDataFormasdePago.TdmFormasdePago'),
+ ('GeneradorProcesos','Generador de Procesos','mnuGeneradorProcesos','inMtoGeneradorProcesos.TfrmMtoGeneradorProcesos','G','UniDataGeneradorProcesos.TdmGeneradorProcesos'),
+ ('Grupos','Grupos de Usuarios','mnuGrupos','inMtoGrupos.TfrmMtoGrupos','J','UniDataGrupos.TdmGrupos'),
+ ('Ivas','Impuestos IVA','mnuIvas','inMtoIvas.TfrmMtoIvas','I','UniDataIvas.TdmIvas'),
+ ('IvasGrupos','Grupos de Impuestos IVA','mnuGruposdeIVA','inMtoIvasGrupos.TfrmMtoIvasGrupos','O','UniDataIvasGrupos.TdmIvasGrupos'),
+ ('Proveedores','Proveedores','mnuProveedores','inMtoProveedores.TfrmMtoProveedores','P','UniDataProveedores.TdmProveedores'),
+ ('Tarifas','Tarifas','mnuTarifas','inMtoTarifas.TfrmMtoTarifas','T','UniDataTarifas.TdmTarifas'),
+ ('Usuarios','Usuarios','mnuUsuarios','inMtoUsuarios.TfrmMtoUsuarios','H','UniDataUsuarios.TdmUsuarios'),
+ ('UsuariosPerfiles','Perfiles de Usuarios','mnuPerfiles','inMtoUsuariosPerfiles.TfrmMtoUsuariosPerfiles','M','UniDataUsuariosPerfiles.TdmUsuariosPerfiles');
 
 DROP VIEW IF EXISTS `vi_art_busquedas`;
 CREATE ALGORITHM=UNDEFINED  SQL SECURITY DEFINER VIEW `vi_art_busquedas` AS select `fza_articulos`.`CODIGO_ARTICULO` AS `CODIGO_ARTICULO`,`fza_articulos`.`ACTIVO_ARTICULO` AS `ACTIVO_ARTICULO`,`fza_articulos`.`DESCRIPCION_ARTICULO` AS `DESCRIPCION_ARTICULO`,`fza_articulos`.`CODIGO_FAMILIA_ARTICULO` AS `CODIGO_FAMILIA_ARTICULO`,`fza_articulos_familias`.`DESCRIPCION_FAMILIA` AS `DESCRIPCION_FAMILIA`,`fza_articulos_proveedores`.`CODIGO_PROVEEDOR_ARTICULO_PROVEEDOR` AS `CODIGO_PROVEEDOR_PRINCIPAL`,`fza_proveedores`.`RAZONSOCIAL_PROVEEDOR` AS `RAZON_SOCIAL_PROVEEDOR_PRINCIPAL`,`fza_articulos_tarifas`.`CODIGO_TARIFA` AS `CODIGO_TARIFA`,`fza_tarifas`.`NOMBRE_TARIFA` AS `NOMBRE_TARIFA`,`fza_articulos_tarifas`.`PRECIOFINAL_TARIFA` AS `PRECIOFINAL_TARIFA`,`fza_tarifas`.`ESIMP_INCL_TARIFA` AS `ESIMP_INCL_TARIFA`,`fza_ivas_tipos`.`NOMBRE_TIPO_IVA` AS `NOMBRE_TIPO_IVA`,`fza_articulos`.`TIPOIVA_ARTICULO` AS `TIPOIVA_ARTICULO`,`fza_articulos`.`TIPO_CANTIDAD_ARTICULO` AS `TIPO_CANTIDAD_ARTICULO`,`fza_articulos`.`USUARIOMODIF` AS `USUARIOMODIF`,`fza_articulos`.`INSTANTEALTA` AS `INSTANTEALTA`,`fza_articulos`.`INSTANTEMODIF` AS `INSTANTEMODIF`,`fza_articulos`.`USUARIOALTA` AS `USUARIOALTA`,`fza_articulos`.`ESACTIVO_FIJO_ARTICULO` AS `ESACTIVO_FIJO_ARTICULO` from ((((((`fza_articulos` left join `fza_articulos_familias` on(`fza_articulos`.`CODIGO_FAMILIA_ARTICULO` = `fza_articulos_familias`.`CODIGO_FAMILIA`)) left join `fza_articulos_tarifas` on(`fza_articulos`.`CODIGO_ARTICULO` = `fza_articulos_tarifas`.`CODIGO_ARTICULO_TARIFA`)) left join `fza_tarifas` on(`fza_articulos_tarifas`.`CODIGO_TARIFA` = `fza_tarifas`.`CODIGO_TARIFA` and `fza_tarifas`.`ESDEFAULT_TARIFA` = 'S')) left join `fza_ivas_tipos` on(`fza_articulos`.`TIPOIVA_ARTICULO` = `fza_ivas_tipos`.`CODIGO_ABREVIATURA_TIPO_IVA`)) left join `fza_articulos_proveedores` on(`fza_articulos`.`CODIGO_ARTICULO` = `fza_articulos_proveedores`.`CODIGO_ARTICULO_ARTICULO_PROVEEDOR` and `fza_articulos_proveedores`.`ESPROVEEDORPRINCIPAL_ARTICULO_PROVEEDOR` = 'S')) left join `fza_proveedores` on(`fza_proveedores`.`CODIGO_PROVEEDOR` = `fza_articulos_proveedores`.`CODIGO_PROVEEDOR_ARTICULO_PROVEEDOR`)) where `fza_articulos`.`ACTIVO_ARTICULO` = 'S' order by `fza_articulos`.`ORDEN_ARTICULO`;
@@ -7038,7 +7041,7 @@ DROP VIEW IF EXISTS `vi_articulos_familias`;
 CREATE ALGORITHM=UNDEFINED  SQL SECURITY DEFINER VIEW `vi_articulos_familias` AS select `fza_articulos_familias`.`CODIGO_FAMILIA` AS `CODIGO_FAMILIA`,`fza_articulos_familias`.`ACTIVO_FAMILIA` AS `ACTIVO_FAMILIA`,`fza_articulos_familias`.`ORDEN_FAMILIA` AS `ORDEN_FAMILIA`,`fza_articulos_familias`.`ESDEFAULT_FAMILIA` AS `ESDEFAULT_FAMILIA`,`fza_articulos_familias`.`CODIGO_SUBFAMILIA` AS `CODIGO_SUBFAMILIA`,`fza_articulos_familias2`.`NOMBRE_FAMILIA` AS `NOMBRE_SUBFAMILIA`,`fza_articulos_familias`.`NOMBRE_FAMILIA` AS `NOMBRE_FAMILIA`,`fza_articulos_familias`.`DESCRIPCION_FAMILIA` AS `DESCRIPCION_FAMILIA`,`fza_articulos_familias`.`INSTANTEMODIF` AS `INSTANTEMODIF`,`fza_articulos_familias`.`INSTANTEALTA` AS `INSTANTEALTA`,`fza_articulos_familias`.`USUARIOALTA` AS `USUARIOALTA`,`fza_articulos_familias`.`USUARIOMODIF` AS `USUARIOMODIF` from (`fza_articulos_familias` left join `fza_articulos_familias` `fza_articulos_familias2` on(`fza_articulos_familias`.`CODIGO_SUBFAMILIA` = `fza_articulos_familias2`.`CODIGO_FAMILIA`));
 
 DROP VIEW IF EXISTS `vi_articulos_familias_list`;
-CREATE ALGORITHM=UNDEFINED  SQL SECURITY DEFINER VIEW `vi_articulos_familias_list` AS select `fza_articulos_familias`.`CODIGO_FAMILIA` AS `CODIGO_FAMILIA`,`fza_articulos_familias`.`ACTIVO_FAMILIA` AS `ACTIVO_FAMILIA`,`fza_articulos_familias`.`ORDEN_FAMILIA` AS `ORDEN_FAMILIA`,`fza_articulos_familias`.`ESDEFAULT_FAMILIA` AS `ESDEFAULT_FAMILIA`,`fza_articulos_familias`.`CODIGO_SUBFAMILIA` AS `CODIGO_SUBFAMILIA`,`fza_articulos_familias`.`NOMBRE_FAMILIA` AS `NOMBRE_FAMILIA`,`fza_articulos_familias`.`DESCRIPCION_FAMILIA` AS `DESCRIPCION_FAMILIA`,`fza_articulos_familias`.`INSTANTEMODIF` AS `INSTANTEMODIF`,`fza_articulos_familias`.`INSTANTEALTA` AS `INSTANTEALTA`,`fza_articulos_familias`.`USUARIOALTA` AS `USUARIOALTA`,`fza_articulos_familias`.`USUARIOMODIF` AS `USUARIOMODIF` from `fza_articulos_familias` where `fza_articulos_familias`.`ACTIVO_FAMILIA` = 'S' order by `fza_articulos_familias`.`ORDEN_FAMILIA`,`fza_articulos_familias`.`CODIGO_FAMILIA`;
+CREATE ALGORITHM=UNDEFINED  SQL SECURITY DEFINER VIEW `vi_articulos_familias_list` AS select `fza_articulos_familias`.`CODIGO_FAMILIA` AS `CODIGO_FAMILIA`,`fza_articulos_familias`.`ACTIVO_FAMILIA` AS `ACTIVO_FAMILIA`,`fza_articulos_familias`.`ORDEN_FAMILIA` AS `ORDEN_FAMILIA`,`fza_articulos_familias`.`ESDEFAULT_FAMILIA` AS `ESDEFAULT_FAMILIA`,`fza_articulos_familias`.`CODIGO_SUBFAMILIA` AS `CODIGO_SUBFAMILIA`,`fza_articulos_familias`.`NOMBRE_FAMILIA` AS `NOMBRE_FAMILIA`,`fza_articulos_familias`.`DESCRIPCION_FAMILIA` AS `DESCRIPCION_FAMILIA`,`fza_articulos_familias`.`INSTANTEMODIF` AS `INSTANTEMODIF`,`fza_articulos_familias`.`INSTANTEALTA` AS `INSTANTEALTA`,`fza_articulos_familias`.`USUARIOALTA` AS `USUARIOALTA`,`fza_articulos_familias`.`USUARIOMODIF` AS `USUARIOMODIF` from `fza_articulos_familias` where `fza_articulos_familias`.`ACTIVO_FAMILIA` = 'S' order by `fza_articulos_familias`.`ORDEN_FAMILIA`;
 
 DROP VIEW IF EXISTS `vi_articulos_list`;
 CREATE ALGORITHM=UNDEFINED  SQL SECURITY DEFINER VIEW `vi_articulos_list` AS select `fza_articulos`.`CODIGO_ARTICULO` AS `CODIGO_ARTICULO`,`fza_articulos`.`ACTIVO_ARTICULO` AS `ACTIVO_ARTICULO`,`fza_articulos`.`ORDEN_ARTICULO` AS `ORDEN_ARTICULO`,`fza_articulos`.`DESCRIPCION_ARTICULO` AS `DESCRIPCION_ARTICULO`,`fza_articulos`.`CODIGO_FAMILIA_ARTICULO` AS `CODIGO_FAMILIA_ARTICULO`,`fza_articulos_familias`.`DESCRIPCION_FAMILIA` AS `DESCRIPCION_FAMILIA`,`fza_articulos`.`TIPOIVA_ARTICULO` AS `TIPOIVA_ARTICULO`,`fza_articulos`.`ESACTIVO_FIJO_ARTICULO` AS `ESACTIVO_FIJO_ARTICULO`,`fza_articulos`.`TIPO_CANTIDAD_ARTICULO` AS `TIPO_CANTIDAD_ARTICULO`,`fza_articulos_proveedores`.`CODIGO_PROVEEDOR_ARTICULO_PROVEEDOR` AS `CODIGO_PROVEEDOR`,`fza_proveedores`.`RAZONSOCIAL_PROVEEDOR` AS `RAZONSOCIAL_PROVEEDOR`,`fza_articulos`.`INSTANTEMODIF` AS `INSTANTEMODIF`,`fza_articulos`.`INSTANTEALTA` AS `INSTANTEALTA`,`fza_articulos`.`USUARIOALTA` AS `USUARIOALTA`,`fza_articulos`.`USUARIOMODIF` AS `USUARIOMODIF` from (((`fza_articulos` left join `fza_articulos_familias` on(`fza_articulos`.`CODIGO_FAMILIA_ARTICULO` = `fza_articulos_familias`.`CODIGO_FAMILIA`)) left join `fza_articulos_proveedores` on(`fza_articulos_proveedores`.`CODIGO_ARTICULO_ARTICULO_PROVEEDOR` = `fza_articulos`.`CODIGO_ARTICULO` and `fza_articulos_proveedores`.`ESPROVEEDORPRINCIPAL_ARTICULO_PROVEEDOR` = 'S')) left join `fza_proveedores` on(`fza_proveedores`.`CODIGO_PROVEEDOR` = `fza_articulos_proveedores`.`CODIGO_PROVEEDOR_ARTICULO_PROVEEDOR`)) where `fza_articulos`.`ACTIVO_ARTICULO` = 'S' order by `fza_articulos`.`ORDEN_ARTICULO`;

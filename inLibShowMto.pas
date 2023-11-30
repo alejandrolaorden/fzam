@@ -12,13 +12,13 @@ interface
 
 uses
   System.Generics.Defaults, System.Generics.Collections, System.Contnrs,
-  Classes, Windows, Forms, Menus, Controls, Uni,   System.SysUtils,
+  Classes, Windows, Forms, Menus, Controls, Uni,   System.SysUtils, UniDataGen,
   Vcl.Dialogs, ShellAPI, System.Rtti, System.TypInfo, System.Variants,
-  System.StrUtils, inLibUser, Vcl.Buttons, inlibGlobalVar,
+  System.StrUtils, inLibUser, Vcl.Buttons, inlibGlobalVar, inMtoGen,
   system.math, System.IOUtils, inLibWin, cxPC, Types, Vcl.Consts;
 
 type
-
+  //TDataMBaseClass = class of TdmBase;
   TFormBaseClass = class of TForm;
   function GetPropAsObject(AObj: TObject; const PropName:String):TObject;
   function BuscarTabla(Query: TUniQuery;
@@ -28,13 +28,13 @@ type
                     sCall:String;
                     sBusq:string = '');
 
+  function CrearDataModule(sDataUnit:String;var pOwner:TfrmMtoGen):TdmBase;
+
 implementation
 
- uses UniDataGen,
-      inMtoGen,
+ uses
       inLibMsg,
       inMtoPrincipal2,
-      inMtoFacturas,
       inLibUnitForm;
 
 procedure ShowMto (Owner:TComponent;
@@ -47,15 +47,17 @@ var
   tsNew: TcxTabSheet;
   ctx:TRttiContext;
   lType:TRttiType;
-  t : TRttiInstanceType;
+  //t : TRttiInstanceType;
   f,val : TValue;
   prop: TRttiProperty;
   dmDat: TdmBase;
   frmGen:TfrmMtoGen;
   sUnidadTipo:String;
+  sDataUnit:String;
   sPkTab:String;
   mMenu : TMenuItem;
   ofzaF: TfzaForm;
+  dmmModule:TdmBase;
 begin
   frmOpen2 := (Owner as TfrmOpenApp2);
   ofzaF := frmOpen2.oFzaWinf.GetElement(sCall);
@@ -67,6 +69,7 @@ begin
   mMenu := ofzaF.mnMenuItem;
   sTitle := ofzaf.Caption;
   sUnidadTipo := ofzaf.UnitForm;
+  sDataUnit := ofzaf.DataUnit;
   if (mMenu.Visible) then
   begin
     iAbiertaPes := EncuentraPagina(frmOpen2.pcPrincipal, sTitle);
@@ -82,10 +85,12 @@ begin
         lType:= ctx.FindType(sUnidadTipo);
         if (lType<>nil) then
         begin
-          t:=lType.AsInstance;
+          //t:=lType.AsInstance;
+          //dmmModule := ;
           //de esta forma, tienen Owner, de la segunda, no....
           f:= TFormBaseClass(
                          GetTypeData(lType.Handle)^.ClassType).Create(frmOpen2);
+            // CrearDataModule(sDataUnit,GetTypeData(lType.Handle)^.ClassType));
           //f:= t.GetMethod('Create').Invoke(t.MetaclassType,[nil]);
           tsNew.Caption := sTitle;
           prop := lType.GetProperty('Parent');
@@ -126,6 +131,36 @@ begin
         end;
       end;
     end;
+  end;
+end;
+
+//https://stackoverflow.com/questions/14742505/
+// how-do-i-instantiate-a-class-from-its-trttitype
+function CrearDataModule(sDataUnit:String; var pOwner:TfrmMtoGen):TdmBase;
+type
+    TDataMBaseClass = class of TDataModule;
+var
+  ctx: TRttiContext;
+  lType: TRttiType;
+  f: TValue;
+  t : TRttiInstanceType;
+begin
+  ctx := TRttiContext.Create;
+  Result := nil;
+  try
+    lType:= ctx.FindType(sDataUnit);
+    if (lType<>nil) then
+    begin
+      t:=lType.AsInstance;
+      //f := t.GetMethod('Create').Invoke(t.MetaclassType, [pOwner]);
+      f:= TDataMBaseClass(
+                         GetTypeData(lType.Handle)^.ClassType).Create(pOwner);
+      begin
+        Result := f.AsObject as TdmBase;
+      end;
+    end;
+  finally
+    ctx.Free;
   end;
 end;
 

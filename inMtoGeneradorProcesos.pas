@@ -299,7 +299,7 @@ end;
 procedure TfrmMtoGeneradorProcesos.CrearTablaPrincipal;
 begin
   inherited;
-  dmmGeneradorProcesos := TdmGeneradorProcesos.Create(Self);
+  dmmGeneradorProcesos := tdmDataModule as TdmGeneradorProcesos;
   tv1.DataSource := dmmGeneradorProcesos.dsMetadatos;
   tvMetadatostvVista.DataController.DataSource :=
                                                dmmGeneradorProcesos.dsContenido;
@@ -333,7 +333,8 @@ begin
       unqryEstructura.SQL.Text := 'SHOW CREATE VIEW ' +
                          unqryMetadatos.FieldByName('NOMBRE_METADATO').AsString;
       unqryEstructura.Open;
-      mmo1.Lines.Text := unqryEstructura.FieldByName('Create View').AsString;
+      mmo1.Lines.Text :=
+                      Trim(unqryEstructura.FieldByName('Create View').AsString);
       mmo1.Lines.Text := StringReplace(mmo1.Lines.Text,
                            'ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` '+
                            'SQL SECURITY DEFINER',
