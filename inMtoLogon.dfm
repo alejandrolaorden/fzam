@@ -11,21 +11,20 @@ inherited frmLogon: TfrmLogon
   Position = poScreenCenter
   OnClose = FormClose
   OnKeyDown = FormKeyDown
-  ExplicitWidth = 799
-  ExplicitHeight = 282
-  PixelsPerInch = 96
+  ExplicitWidth = 805
+  ExplicitHeight = 291
   TextHeight = 19
   object lblUsuario: TLabel [0]
     Left = 47
     Top = 31
-    Width = 66
+    Width = 65
     Height = 19
     Caption = 'Usuario'
   end
   object lblContrasena: TLabel [1]
     Left = 15
     Top = 113
-    Width = 94
+    Width = 98
     Height = 19
     Caption = 'Contrase'#241'a'
   end
@@ -45,28 +44,28 @@ inherited frmLogon: TfrmLogon
   object lblNomBBDD: TLabel [4]
     Left = 391
     Top = 83
-    Width = 91
+    Width = 90
     Height = 19
     Caption = 'Nom BBDD'
   end
   object lblUserBBDD: TLabel [5]
     Left = 365
     Top = 115
-    Width = 117
+    Width = 116
     Height = 19
     Caption = 'Usuario BBDD'
   end
   object lblPasswordBBDD: TLabel [6]
     Left = 351
     Top = 147
-    Width = 131
+    Width = 130
     Height = 19
     Caption = 'Password BBDD'
   end
   object lblPortHost: TLabel [7]
     Left = 385
     Top = 50
-    Width = 97
+    Width = 99
     Height = 19
     Caption = 'Puerto Host'
   end

@@ -32,7 +32,6 @@ inherited frmMtoFacturas: TfrmMtoFacturas
       Margins.Right = 5
       Margins.Bottom = 5
       TabOrder = 1
-      Properties.ActivePage = tsLista
       ExplicitWidth = 1087
       ExplicitHeight = 804
       ClientRectBottom = 798
@@ -723,8 +722,6 @@ inherited frmMtoFacturas: TfrmMtoFacturas
         Margins.Top = 5
         Margins.Right = 5
         Margins.Bottom = 5
-        ExplicitLeft = 0
-        ExplicitTop = 0
         ExplicitWidth = 1078
         ExplicitHeight = 766
         object pnl1: TPanel
@@ -765,10 +762,6 @@ inherited frmMtoFacturas: TfrmMtoFacturas
               Margins.Bottom = 4
               Caption = '&1_Lineas de Factura - '
               ImageIndex = 1
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object cxgrdLineasFactura: TcxGrid
                 Left = 0
                 Top = 0
@@ -1539,10 +1532,6 @@ inherited frmMtoFacturas: TfrmMtoFacturas
             object tsRecibos: TcxTabSheet
               Caption = '&3_Recibos'
               ImageIndex = 4
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object pnlRightRecibos: TPanel
                 Left = 916
                 Top = 0
@@ -1778,10 +1767,6 @@ inherited frmMtoFacturas: TfrmMtoFacturas
               Margins.Bottom = 4
               Caption = '&4_Otros'
               ImageIndex = 4
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object lblComentarios: TcxLabel
                 Left = 32
                 Top = 65
@@ -2001,9 +1986,6 @@ inherited frmMtoFacturas: TfrmMtoFacturas
               object tsEmpresa: TcxTabSheet
                 Caption = 'Datos E&mpresa Emisora -'
                 ImageIndex = 2
-                ExplicitTop = 0
-                ExplicitWidth = 0
-                ExplicitHeight = 0
                 object grpEmpresa: TcxGroupBox
                   Left = 22
                   Top = 13
@@ -2591,7 +2573,6 @@ inherited frmMtoFacturas: TfrmMtoFacturas
           HotZone.SizePercent = 50
           AlignSplitter = salTop
           Control = pnl1
-          ExplicitWidth = 4
         end
       end
       inherited tsPerfil: TcxTabSheet

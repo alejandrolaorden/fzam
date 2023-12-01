@@ -87,6 +87,7 @@ type
   public
     function IsInitializeAuto:Boolean;
     function CheckIfExistsDataBase:Boolean;
+    function CheckIfDatabaseIsUpdated:Boolean;
   end;
 var
   frmLogon          : TfrmLogon;
@@ -275,8 +276,6 @@ begin
       sPassEnBD := EncriptAES(sNewPass);
       sPass := sNewPass;
       ShowMessage('Password de la BBDD cambiado correctamente.' + sLineBreak +
-                  'Reinicie el sistema o el servicio ' +
-                  'para que tome efecto.' + sLineBreak +
                   'Anote el password en un lugar seguro para evitar problemas:'+
                   sPass);
       esCadIniDir('ConnData', 'PasswordEn', sPassEnBD, GetUserFolder);
@@ -285,11 +284,59 @@ begin
   end;
 end;
 
+function TfrmLogon.CheckIfDatabaseIsUpdated: Boolean;
+var
+  unqryTestBD       : TUniQuery;
+  bActualizar: boolean;
+begin
+  Result := false;
+  unqryTestBD := TUniQuery.Create(nil);
+  unqryTestBD.Connection := ucConexion;
+  unqryTestBD.SQL.Text := 'SELECT VALUE_PERFILES ' +
+                          '  FROM fza_usuarios_perfiles ' +
+                          ' WHERE SUBKEY_PERFILES = ' +
+                                                QuotedStr('DataBaseVersion')  +
+                          '   AND VALUE_PERFILES = :VerBBDD ' ;
+  unqryTestBD.ParamByName('VerBBDD').AsString := inLibGlobalVar.oVersion;
+  unqryTestBD.Open;
+  if (unqryTestBD.RecordCount = 1) then
+    Result := True;
+  bActualizar := (unqryTestBD.RecordCount = 0);
+  unqryTestBD.Close;
+  FreeAndNil(unqryTestBD);
+  if (bActualizar) then
+  begin
+    if ( Application.MessageBox('Es necesario actualizar la BBDD' +
+                                ' con nuevos cambios,' + sLineBreak +
+                                ' ¿desea proceder con el procedimiento' +
+                                ' de actualización?', 'Mensaje Advertencia',
+                                 MB_YESNO ) = ID_YES ) then
+    begin
+      var MyText := TStringList.Create;
+      if (Not(FileExists(DirApp + '\factuzam_original_update_script.sql'))) then
+      begin
+        ShowMessage('No existe script de actualización, instalación fallida');
+        Exit;
+      end;
+      MyText.LoadFromFile(DirApp + '\factuzam_original_update_script.sql');
+      var sScript :string := StringReplace(MyText.Text,
+                                   'factuzam',
+                                   edtNomBD.Text,
+                                   [rfReplaceAll,rfIgnoreCase]);
+      UdDump.SQL.Text := sScript;
+      UdDump.Restore;
+      ShowMessage('La Base de Datos se actualizó a ' + inLibGlobalVar.oVersion);
+      Result := True;
+      FreeAndNil(MyText);
+    end;
+  end;
+end;
+
 function TfrmLogon.CheckIfExistsDataBase: Boolean;
 var
   unqryTestBD       : TUniQuery;
 begin
-  Result := false;
+  Result := False;
   ConstruirConexionConnect( ucConexion,
                             edtUserBD.Text,
                             sPass,
@@ -314,12 +361,17 @@ begin
          'Error',  MB_YESNO) = ID_YES then
        begin
          UdDump.SQL.Text := CrearBD(edtNomBD.Text);
-         UdDump.Restore;
-         ShowMessage('La Base de Datos se creó exitosamente');
-         btChangePassRootClick(Self);
-         Result := True;
+         if UdDump.SQL.Text <> '' then
+         begin
+           UdDump.Restore;
+           ShowMessage('La Base de Datos se creó exitosamente');
+           btChangePassRootClick(Self);
+           Result := True;
+         end;
        end;
     end;
+  unqryTestBD.Close;
+  FreeAndNil(unqryTestBD);
 end;
 
 function TfrmLogon.CrearBD(sDatabaseN: string):String;
@@ -327,10 +379,18 @@ var
   MyText            : TSTringList;
 begin
   MyText := TStringList.Create;
-  MyText.LoadFromFile(DirApp + '\factuzam_original.sql');
-  Result := StringReplace(MyText.Text, 'factuzam', sDatabaseN, [rfReplaceAll,
+  Result := '';
+  if (Not(FileExists(DirApp + '\factuzam_original.sql'))) then
+  begin
+    ShowMessage('No existe script de creación de BD, instalación fallida');
+  end
+  else
+  begin
+    MyText.LoadFromFile(DirApp + '\factuzam_original.sql');
+    Result := StringReplace(MyText.Text, 'factuzam', sDatabaseN, [rfReplaceAll,
                                                                 rfIgnoreCase]);
-  MyText.Free;
+  end;
+  FreeAndNil(MyText);
 end;
 
 procedure TfrmLogon.btnRecoverClick(Sender: TObject);
@@ -395,6 +455,8 @@ begin
   else
     ShowMessage('Se canceló la carga del script.');
   FreeAndNil(opendialog);
+  unqryTestBD.Close;
+  FreeAndNil(unqryTestBD);
 end;
 
 procedure TfrmLogon.btnSalirClick(Sender: TObject);
@@ -482,6 +544,11 @@ begin
                               edtPortBD.Text,
                               edtNomBD.Text);
     //Log(ucConexion, edtUser.Text, 'Intento de conexión');
+    if not CheckIfDatabaseIsUpdated then
+    begin
+      ShowMessage('No puede entrar a una base de datos sin actualizar');
+      Exit;
+    end;
     if not ExisteUser(edtUser.Text, ucConexion) then
     begin
       raise EInvalidUser.Create('El nombre de usuario no existe');

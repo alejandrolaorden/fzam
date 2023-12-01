@@ -23,7 +23,7 @@ type
     procedure unqryTablaGBeforePost(DataSet: TDataSet);
     procedure unqryTablaGAfterInsert(DataSet: TDataSet);
   private
-    { Private declarations }
+    function UsuarioEsGrupo(sUsuario:string):boolean;
   public
     { Public declarations }
   end;
@@ -34,13 +34,30 @@ type
 implementation
 
 uses
-  inLibtb;
+  inLibtb, inLibGlobalVar;
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
 
 procedure ForceReferenceToClass(C: TClass); begin end;
+
+function TdmUsuarios.UsuarioEsGrupo(sUsuario: string): boolean;
+var
+  unqrySol:TUniQuery;
+begin
+  unqrySol := TUniQuery.Create(Self);
+  with unqrySol do
+  begin
+    Connection := inLibGlobalVar.oConn;
+    SQL.Text :=  'SELECT * FROM fza_usuarios_grupos ' +
+                 ' WHERE GRUPO_GRUPO = :grupo ';
+    ParamByName('grupo').AsString := sUsuario;
+    Open;
+    Result := unqrySol.RecordCount > 0;
+  end;
+  FreeAndNil(unqrySol);
+end;
 
 procedure TdmUsuarios.unqryTablaGAfterInsert(DataSet: TDataSet);
 begin
@@ -64,7 +81,12 @@ begin
     if ((sUsuario = '') or (SimbolosProhibidos(sUsuario))) then
     begin
       ShowMessageFmt('%s no es un valor de registro válido ' +
-                     'para el campo Usuario',[sUsuario]);
+                     'para el campo usuario',[sUsuario]);
+      bError := True;
+    end;
+    if (UsuarioEsGrupo(sUsuario)) then
+    begin
+      ShowMessageFmt('El usuario %s es coincidente con el grupo %s',[sUsuario]);
       bError := True;
     end;
     if bError then

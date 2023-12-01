@@ -147,7 +147,7 @@ begin
   oConn := FdmConn.conUni;
   odmConn := FdmConn;
   ofrmMto2 := Self;
-  //carga de todos los forms con sus propiedades
+  //carga de todos los forms con sus propiedades y módulos de datos
   oFzaWinF := TfzaWinf.Create(Self);
   oFzaWinF.Charge(oConn);
   dxstsbr1.Panels[1].Text := FdmConn.conUni.Server + ':'

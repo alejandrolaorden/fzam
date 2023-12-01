@@ -9,7 +9,6 @@ inherited frmOpenApp2: TfrmOpenApp2
   OnShow = FormShow
   ExplicitWidth = 1156
   ExplicitHeight = 612
-  PixelsPerInch = 96
   TextHeight = 19
   object dxstsbr1: TdxStatusBar [0]
     AlignWithMargins = True
