@@ -1,5 +1,4 @@
 inherited dmClientes: TdmClientes
-  OldCreateOrder = True
   Height = 170
   Width = 772
   inherited unqryTablaG: TUniQuery
@@ -219,6 +218,7 @@ inherited dmClientes: TdmClientes
     MasterFields = 'CODIGO_CLIENTE'
     DetailFields = 'CODIGO_CLIENTE_FACTURA'
     ReadOnly = True
+    Active = True
     Left = 408
     Top = 96
   end

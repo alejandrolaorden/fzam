@@ -1,5 +1,4 @@
 inherited dmFamilias: TdmFamilias
-  OldCreateOrder = True
   Width = 407
   inherited unqryTablaG: TUniQuery
     SQLInsert.Strings = (
@@ -52,6 +51,7 @@ inherited dmFamilias: TdmFamilias
       'SELECT *  '
       '  FROM vi_articulos_familias'
       '')
+    Active = True
     AfterInsert = unqryTablaGAfterInsert
   end
   inherited unqryPerfiles: TUniQuery
@@ -118,8 +118,10 @@ inherited dmFamilias: TdmFamilias
       'SELECT *  '
       '  FROM vi_art_busquedas'
       '')
+    MasterSource = frmMtoFamilias.dsTablaG
     MasterFields = 'CODIGO_FAMILIA'
     DetailFields = 'CODIGO_FAMILIA_ARTICULO'
+    Active = True
     BeforeInsert = unqryTablaGBeforeInsert
     AfterInsert = unqryTablaGAfterInsert
     BeforePost = unqryTablaGBeforePost
@@ -130,7 +132,7 @@ inherited dmFamilias: TdmFamilias
         DataType = ftWideString
         Name = 'CODIGO_FAMILIA'
         ParamType = ptInput
-        Value = 'CER'
+        Value = 'ANI'
       end>
   end
   object dsArticulosFamilias: TDataSource

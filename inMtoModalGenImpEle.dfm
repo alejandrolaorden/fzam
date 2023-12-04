@@ -5,9 +5,8 @@ inherited frmMtoModalGenImpEle: TfrmMtoModalGenImpEle
   ClientWidth = 713
   Position = poMainFormCenter
   OnClose = FormClose
-  ExplicitWidth = 729
-  ExplicitHeight = 192
-  PixelsPerInch = 96
+  ExplicitWidth = 725
+  ExplicitHeight = 191
   TextHeight = 19
   object pnl1: TPanel [0]
     Left = 510
@@ -16,8 +15,8 @@ inherited frmMtoModalGenImpEle: TfrmMtoModalGenImpEle
     Height = 153
     Align = alRight
     TabOrder = 0
-    ExplicitLeft = 488
-    ExplicitHeight = 98
+    ExplicitLeft = 506
+    ExplicitHeight = 152
     object btnUsarOriginal: TcxButton
       Left = 0
       Top = 1
@@ -62,8 +61,8 @@ inherited frmMtoModalGenImpEle: TfrmMtoModalGenImpEle
     Height = 153
     Align = alClient
     TabOrder = 1
-    ExplicitWidth = 488
-    ExplicitHeight = 98
+    ExplicitWidth = 506
+    ExplicitHeight = 152
     object lstFormatos: TcxListBox
       Left = 1
       Top = 1
@@ -74,6 +73,8 @@ inherited frmMtoModalGenImpEle: TfrmMtoModalGenImpEle
       ItemHeight = 19
       ScrollWidth = 50
       TabOrder = 0
+      ExplicitWidth = 504
+      ExplicitHeight = 150
     end
   end
   inherited Localizer1: TcxLocalizer

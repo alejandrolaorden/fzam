@@ -150,7 +150,6 @@ type
     tvLineasFacturacionTIPO_CANTIDAD_ARTICULO_FACTURA_LINEA: TcxGridDBColumn;
     tvLineasFacturacionPRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA: TcxGridDBColumn;
     tvLineasFacturacionPORCEN_IVA_FACTURA_LINEA: TcxGridDBColumn;
-    tvLineasFacturacionTIPOIVA_ARTICULO_FACTURA_LINEA: TcxGridDBColumn;
     cxgrdbclmncxgrdbtblvwcxgrd1DBTableView1PRECIOVENTA_ARTICULO_LINEA: TcxGridDBColumn;
     cxgrdbclmncxgrdbtblvwcxgrd1DBTableView1SUM_TOTAL_LINEA: TcxGridDBColumn;
     tvLineasFacturacionFECHA_ENTREGA_FACTURA_LINEA: TcxGridDBColumn;
@@ -168,6 +167,11 @@ type
     actEmpresas: TAction;
     btnIraEmpresa: TcxButton;
     btnIraArticulo: TcxButton;
+    tvFacturacionDESCRIPCION_FORMAPAGO: TcxGridDBColumn;
+    tvFacturacionGRUPO_ZONA_IVA_EMPRESA_FACTURA: TcxGridDBColumn;
+    tvFacturacionTARIFA_ARTICULO_CLIENTE_FACTURA: TcxGridDBColumn;
+    tvFacturacionCODIGO_IVA_FACTURA: TcxGridDBColumn;
+    tvLineasFacturacionNOMBRE_TIPO_IVA: TcxGridDBColumn;
     procedure btnGrabarClick(Sender: TObject);
     procedure dsTablaGStateChange(Sender: TObject);
     procedure btnIraFacturaClick(Sender: TObject);

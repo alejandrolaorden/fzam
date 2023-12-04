@@ -28,7 +28,7 @@ uses
   Vcl.Menus, dxSkinsForm, cxButtons, dxSkinsDefaultPainters, cxMemo, cxSpinEdit,
   cxCalendar, cxBlobEdit, dxScrollbarAnnotations, dxCore, cxRadioGroup,
   cxSplitter, System.Actions, Vcl.ActnList, Vcl.PlatformDefaultStyleActnCtrls,
-  Vcl.ActnMan, JvComponentBase, JvEnterTab;
+  Vcl.ActnMan, JvComponentBase, JvEnterTab, cxDBLabel;
 
 type
   TfrmMtoFamilias = class(TfrmMtoGen)
@@ -102,6 +102,7 @@ type
     actArticulo: TAction;
     actProveedores: TAction;
     actTarifas: TAction;
+    cxDBLabel1: TcxDBLabel;
     procedure btnGrabarClick(Sender: TObject);
     procedure actArticulosExecute(Sender: TObject);
     procedure actProveedoresExecute(Sender: TObject);
@@ -210,6 +211,7 @@ procedure TfrmMtoFamilias.CrearTablaPrincipal;
 begin
   inherited;
   dmmFamilias := tdmDataModule as tdmFamilias;
+
   tvArticulos.DataController.DataSource := dmmFamilias.dsArticulosFamilias;
   cbbFamilia.Properties.ListSource := dmmFamilias.dsSubfamilias;
   ResetForm;

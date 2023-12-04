@@ -1,33 +1,33 @@
 inherited frmMtoClientes: TfrmMtoClientes
   Caption = 'Clientes'
-  ClientHeight = 604
-  ClientWidth = 1071
-  ExplicitWidth = 1071
-  ExplicitHeight = 604
-  PixelsPerInch = 96
+  ClientHeight = 703
+  ClientWidth = 1141
+  ExplicitTop = -13
+  ExplicitWidth = 1141
+  ExplicitHeight = 703
   TextHeight = 19
   inherited pButtonPage: TPanel
-    Width = 931
-    Height = 604
+    Width = 1001
+    Height = 703
     TabOrder = 0
     ExplicitWidth = 931
     ExplicitHeight = 604
     inherited pcPantalla: TcxPageControl
-      Width = 931
-      Height = 564
+      Width = 1001
+      Height = 663
       TabOrder = 1
       ExplicitWidth = 931
       ExplicitHeight = 564
-      ClientRectBottom = 558
-      ClientRectRight = 925
+      ClientRectBottom = 657
+      ClientRectRight = 995
       inherited tsLista: TcxTabSheet
         ExplicitLeft = 3
         ExplicitTop = 32
         ExplicitWidth = 922
         ExplicitHeight = 526
         inherited cxGrdPrincipal: TcxGrid
-          Width = 922
-          Height = 526
+          Width = 992
+          Height = 625
           Font.Pitch = fpDefault
           ParentFont = False
           ExplicitWidth = 922
@@ -36,11 +36,13 @@ inherited frmMtoClientes: TfrmMtoClientes
             object cxgrdbclmnGrdDBTabPrinCODIGO_CLIENTE: TcxGridDBColumn
               Caption = 'C'#243'digo'
               DataBinding.FieldName = 'CODIGO_CLIENTE'
+              DataBinding.IsNullValueType = True
               Width = 106
             end
             object cxgrdbclmnGrdDBTabPrinACTIVO_CLIENTE: TcxGridDBColumn
               Caption = 'Activo'
               DataBinding.FieldName = 'ACTIVO_CLIENTE'
+              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxCheckBoxProperties'
               Properties.ValueChecked = 'S'
               Properties.ValueUnchecked = 'N'
@@ -49,88 +51,105 @@ inherited frmMtoClientes: TfrmMtoClientes
             object cxgrdbclmnGrdDBTabPrinRAZONSOCIAL_CLIENTE: TcxGridDBColumn
               Caption = 'Raz'#243'n Social'
               DataBinding.FieldName = 'RAZONSOCIAL_CLIENTE'
+              DataBinding.IsNullValueType = True
               Width = 212
             end
             object cxgrdbclmnGrdDBTabPrinNIF_CLIENTE: TcxGridDBColumn
               Caption = 'Nif Cif'
               DataBinding.FieldName = 'NIF_CLIENTE'
+              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxMaskEditProperties'
               Width = 104
             end
             object cxgrdbclmnGrdDBTabPrinMOVIL_CLIENTE: TcxGridDBColumn
               Caption = 'Tel'#233'fono M'#243'vil'
               DataBinding.FieldName = 'MOVIL_CLIENTE'
+              DataBinding.IsNullValueType = True
               Width = 150
             end
             object cxgrdbclmnGrdDBTabPrinTELEFONO_CLIENTE: TcxGridDBColumn
               Caption = 'Tel'#233'fono fijo'
               DataBinding.FieldName = 'TELEFONO_CLIENTE'
+              DataBinding.IsNullValueType = True
               Width = 123
             end
             object cxgrdbclmnGrdDBTabPrinEMAIL_CLIENTE: TcxGridDBColumn
               Caption = 'Email'
               DataBinding.FieldName = 'EMAIL_CLIENTE'
+              DataBinding.IsNullValueType = True
               Width = 196
             end
             object cxgrdbclmnGrdDBTabPrinDIRECCION1_CLIENTE: TcxGridDBColumn
               Caption = 'Direcci'#243'n'
               DataBinding.FieldName = 'DIRECCION1_CLIENTE'
+              DataBinding.IsNullValueType = True
               Width = 251
             end
             object cxgrdbclmnGrdDBTabPrinDIRECCION2_CLIENTE: TcxGridDBColumn
               Caption = 'M'#225's Direcci'#243'n'
               DataBinding.FieldName = 'DIRECCION2_CLIENTE'
+              DataBinding.IsNullValueType = True
               Width = 173
             end
             object cxgrdbclmnGrdDBTabPrinPOBLACION_CLIENTE: TcxGridDBColumn
               Caption = 'Poblaci'#243'n'
               DataBinding.FieldName = 'POBLACION_CLIENTE'
+              DataBinding.IsNullValueType = True
               Width = 146
             end
             object cxgrdbclmnGrdDBTabPrinPROVINCIA_CLIENTE: TcxGridDBColumn
               Caption = 'Provincia'
               DataBinding.FieldName = 'PROVINCIA_CLIENTE'
+              DataBinding.IsNullValueType = True
               Width = 135
             end
             object cxgrdbclmnGrdDBTabPrinCPOSTAL_CLIENTE: TcxGridDBColumn
               Caption = 'C'#243'digo Postal'
               DataBinding.FieldName = 'CPOSTAL_CLIENTE'
+              DataBinding.IsNullValueType = True
               Width = 95
             end
             object cxgrdbclmnGrdDBTabPrinPAIS_CLIENTE: TcxGridDBColumn
               Caption = 'Pa'#237's'
               DataBinding.FieldName = 'PAIS_CLIENTE'
+              DataBinding.IsNullValueType = True
               Width = 118
             end
             object cxgrdbclmnGrdDBTabPrinOBSERVACIONES_CLIENTE: TcxGridDBColumn
               Caption = 'Observaciones'
               DataBinding.FieldName = 'OBSERVACIONES_CLIENTE'
+              DataBinding.IsNullValueType = True
               Width = 192
             end
             object cxgrdbclmnGrdDBTabPrinREFERENCIA_CLIENTE: TcxGridDBColumn
               Caption = 'Referencia'
               DataBinding.FieldName = 'REFERENCIA_CLIENTE'
+              DataBinding.IsNullValueType = True
               Width = 184
             end
             object cxgrdbclmnGrdDBTabPrinCONTACTO_CLIENTE: TcxGridDBColumn
               Caption = 'Contacto'
               DataBinding.FieldName = 'CONTACTO_CLIENTE'
+              DataBinding.IsNullValueType = True
               Width = 151
             end
             object cxgrdbclmnGrdDBTabPrinTELEFONO_CONTACTO_CLIENTE: TcxGridDBColumn
               Caption = 'Tel'#233'fono de Contacto'
               DataBinding.FieldName = 'TELEFONO_CONTACTO_CLIENTE'
+              DataBinding.IsNullValueType = True
               Width = 140
             end
             object cxgrdbclmnGrdDBTabPrinIBAN_CLIENTE: TcxGridDBColumn
               Caption = 'Nro Cuenta'
               DataBinding.FieldName = 'IBAN_CLIENTE'
+              DataBinding.IsNullValueType = True
               Visible = False
               Width = 50
             end
             object cxgrdbclmnGrdDBTabPrinIVA_RECARGO_CLIENTE: TcxGridDBColumn
               Caption = 'Aplicar RE'
               DataBinding.FieldName = 'ESIVA_RECARGO_CLIENTE'
+              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxCheckBoxProperties'
               Properties.DisplayChecked = 'False'
               Properties.ValueChecked = 'S'
@@ -140,12 +159,14 @@ inherited frmMtoClientes: TfrmMtoClientes
             object cxgrdbclmnGrdDBTabPrinTEXTO_LEGAL_FACTURA_CLIENTE: TcxGridDBColumn
               Caption = 'Texto Legal Factura'
               DataBinding.FieldName = 'TEXTO_LEGAL_FACTURA_CLIENTE'
+              DataBinding.IsNullValueType = True
               Visible = False
               Width = 100
             end
             object cxgrdbclmnGrdDBTabPrinRETENCIONES_CLIENTE: TcxGridDBColumn
               Caption = 'Aplicar Retenciones'
               DataBinding.FieldName = 'ESRETENCIONES_CLIENTE'
+              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxCheckBoxProperties'
               Properties.ValueChecked = 'S'
               Properties.ValueUnchecked = 'N'
@@ -154,6 +175,7 @@ inherited frmMtoClientes: TfrmMtoClientes
             object cxGrdDBTabPrinESIVA_EXENTO_CLIENTE: TcxGridDBColumn
               Caption = 'Tiene IVA exento'
               DataBinding.FieldName = 'ESIVA_EXENTO_CLIENTE'
+              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxCheckBoxProperties'
               Properties.ValueChecked = 'S'
               Properties.ValueUnchecked = 'N'
@@ -162,6 +184,7 @@ inherited frmMtoClientes: TfrmMtoClientes
             object cxGrdDBTabPrinESINTRACOMUNITARIO_CLIENTE: TcxGridDBColumn
               Caption = 'Es Intracomunitario'
               DataBinding.FieldName = 'ESINTRACOMUNITARIO_CLIENTE'
+              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxCheckBoxProperties'
               Properties.ValueChecked = 'S'
               Properties.ValueUnchecked = 'N'
@@ -170,6 +193,7 @@ inherited frmMtoClientes: TfrmMtoClientes
             object cxGrdDBTabPrinESREGIMENESPECIALAGRICOLA_CLIENTE: TcxGridDBColumn
               Caption = 'Es Agricultor'
               DataBinding.FieldName = 'ESREGIMENESPECIALAGRICOLA_CLIENTE'
+              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxCheckBoxProperties'
               Properties.ValueChecked = 'S'
               Properties.ValueUnchecked = 'N'
@@ -178,18 +202,21 @@ inherited frmMtoClientes: TfrmMtoClientes
             object cxGrdDBTabPrinCODIGO_FORMA_PAGO_CLIENTE: TcxGridDBColumn
               Caption = 'Forma de pago por defecto'
               DataBinding.FieldName = 'CODIGO_FORMA_PAGO_CLIENTE'
+              DataBinding.IsNullValueType = True
               Width = 278
             end
           end
         end
       end
       inherited tsFicha: TcxTabSheet
+        ExplicitLeft = 3
+        ExplicitTop = 32
         ExplicitWidth = 922
         ExplicitHeight = 526
         object pnl1: TPanel
           Left = 0
           Top = 0
-          Width = 922
+          Width = 992
           Height = 179
           Margins.Left = 4
           Margins.Top = 4
@@ -198,8 +225,9 @@ inherited frmMtoClientes: TfrmMtoClientes
           Align = alTop
           BevelOuter = bvNone
           TabOrder = 0
+          ExplicitWidth = 922
           DesignSize = (
-            922
+            992
             179)
           object cxgrpbx4: TcxGroupBox
             AlignWithMargins = True
@@ -208,8 +236,9 @@ inherited frmMtoClientes: TfrmMtoClientes
             TabStop = True
             Anchors = [akLeft, akTop, akRight, akBottom]
             TabOrder = 0
+            ExplicitWidth = 815
             Height = 167
-            Width = 815
+            Width = 885
             object lblRazonSocial: TcxLabel
               Left = 200
               Top = 10
@@ -352,8 +381,8 @@ inherited frmMtoClientes: TfrmMtoClientes
         object pnl2: TPanel
           Left = 0
           Top = 183
-          Width = 922
-          Height = 343
+          Width = 992
+          Height = 442
           Margins.Left = 4
           Margins.Top = 4
           Margins.Right = 4
@@ -361,22 +390,26 @@ inherited frmMtoClientes: TfrmMtoClientes
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 2
+          ExplicitWidth = 922
+          ExplicitHeight = 343
           object pcPestanas: TcxPageControl
             Left = 0
             Top = 0
-            Width = 922
-            Height = 343
+            Width = 992
+            Height = 442
             Margins.Left = 4
             Margins.Top = 4
             Margins.Right = 4
             Margins.Bottom = 4
             Align = alClient
             TabOrder = 0
-            Properties.ActivePage = tsOtros
+            Properties.ActivePage = tsHistoriaFacturacion
             Properties.CustomButtons.Buttons = <>
-            ClientRectBottom = 337
+            ExplicitWidth = 922
+            ExplicitHeight = 343
+            ClientRectBottom = 436
             ClientRectLeft = 3
-            ClientRectRight = 916
+            ClientRectRight = 986
             ClientRectTop = 32
             object tsDomicilioFiscal: TcxTabSheet
               Margins.Left = 4
@@ -385,9 +418,11 @@ inherited frmMtoClientes: TfrmMtoClientes
               Margins.Bottom = 4
               Caption = '&1_Domicilio fiscal'
               ImageIndex = 0
+              ExplicitWidth = 913
+              ExplicitHeight = 305
               DesignSize = (
-                913
-                305)
+                983
+                404)
               object cxgrpbx1: TcxGroupBox
                 AlignWithMargins = True
                 Left = 21
@@ -395,8 +430,10 @@ inherited frmMtoClientes: TfrmMtoClientes
                 TabStop = True
                 Anchors = [akLeft, akTop, akRight, akBottom]
                 TabOrder = 0
-                Height = 220
-                Width = 566
+                ExplicitWidth = 566
+                ExplicitHeight = 220
+                Height = 319
+                Width = 636
                 object lblDireccion1: TcxLabel
                   Left = 35
                   Top = 25
@@ -549,8 +586,9 @@ inherited frmMtoClientes: TfrmMtoClientes
                 Anchors = [akLeft, akTop, akRight]
                 Caption = 'Tratamiento Fiscal'
                 TabOrder = 1
+                ExplicitWidth = 831
                 Height = 85
-                Width = 831
+                Width = 901
                 object chkREGIMENAGRICOLA: TcxDBCheckBox
                   Left = 6
                   Top = 24
@@ -627,13 +665,11 @@ inherited frmMtoClientes: TfrmMtoClientes
             object tsMasDatos: TcxTabSheet
               Caption = '&2_M'#225's datos'
               ImageIndex = 1
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
+              ExplicitWidth = 913
+              ExplicitHeight = 305
               DesignSize = (
-                913
-                305)
+                983
+                404)
               object cxgrpbx3: TcxGroupBox
                 AlignWithMargins = True
                 Left = 21
@@ -641,8 +677,10 @@ inherited frmMtoClientes: TfrmMtoClientes
                 TabStop = True
                 Anchors = [akLeft, akTop, akRight, akBottom]
                 TabOrder = 0
-                Height = 301
-                Width = 810
+                ExplicitWidth = 810
+                ExplicitHeight = 301
+                Height = 400
+                Width = 880
                 object lblContacto: TcxLabel
                   Left = 81
                   Top = 23
@@ -827,35 +865,39 @@ inherited frmMtoClientes: TfrmMtoClientes
             object tsHistoriaFacturacion: TcxTabSheet
               Caption = '&3_Historia Facturaci'#243'n'
               ImageIndex = 3
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
+              ExplicitWidth = 913
+              ExplicitHeight = 305
               object pnlFacturaCli: TPanel
                 Left = 0
                 Top = 0
-                Width = 913
-                Height = 305
+                Width = 983
+                Height = 404
                 Align = alClient
                 BevelOuter = bvNone
                 TabOrder = 0
+                ExplicitWidth = 913
+                ExplicitHeight = 305
                 object cxgrdClientesFacturas: TcxGrid
                   Left = 0
                   Top = 0
-                  Width = 796
-                  Height = 305
+                  Width = 866
+                  Height = 404
                   Margins.Left = 4
                   Margins.Top = 4
                   Margins.Right = 4
                   Margins.Bottom = 4
                   Align = alClient
                   TabOrder = 0
+                  ExplicitLeft = 19
+                  ExplicitWidth = 796
+                  ExplicitHeight = 305
                   object tvFacturacion: TcxGridDBTableView
                     Navigator.Buttons.ConfirmDelete = True
                     Navigator.Buttons.CustomButtons = <>
                     Navigator.Visible = True
                     ScrollbarAnnotations.CustomAnnotations = <>
                     DataController.DataModeController.SmartRefresh = True
+                    DataController.DataSource = dmClientes.dsFacturasClientes
                     DataController.Summary.DefaultGroupSummaryItems = <
                       item
                         Kind = skSum
@@ -875,22 +917,22 @@ inherited frmMtoClientes: TfrmMtoClientes
                       end>
                     DataController.Summary.FooterSummaryItems = <
                       item
-                        Format = '0.00 '#8364';-0.00 '#8364
+                        Format = '##,##.## '#8364
                         Kind = skSum
                         Column = tvFacturacionTOTAL_LIQUIDO_FACTURA
                       end
                       item
-                        Format = '0.00 '#8364';-0.00 '#8364
+                        Format = '##,##.## '#8364
                         Kind = skSum
                         Column = tvFacturacionTOTAL_RETENCION_FACTURA
                       end
                       item
-                        Format = '0.00 '#8364';-0.00 '#8364
+                        Format = '##,##.## '#8364
                         Kind = skSum
                         Column = tvFacturacionTOTAL_IMPUESTOS_FACTURA
                       end
                       item
-                        Format = '0.00 '#8364';-0.00 '#8364
+                        Format = '##,##.## '#8364
                         Kind = skSum
                         Column = tvFacturacionTOTAL_BASES_FACTURA
                       end>
@@ -906,205 +948,417 @@ inherited frmMtoClientes: TfrmMtoClientes
                     OptionsView.GroupByBox = False
                     OptionsView.GroupFooters = gfAlwaysVisible
                     object tvFacturacionFECHA_FACTURA: TcxGridDBColumn
+                      Caption = 'Fecha'
                       DataBinding.FieldName = 'FECHA_FACTURA'
                     end
                     object tvFacturacionNRO_FACTURA: TcxGridDBColumn
+                      Caption = 'Nro'
                       DataBinding.FieldName = 'NRO_FACTURA'
                     end
                     object tvFacturacionSERIE_FACTURA: TcxGridDBColumn
+                      Caption = 'Serie'
                       DataBinding.FieldName = 'SERIE_FACTURA'
                     end
                     object tvFacturacionTOTAL_LIQUIDO_FACTURA: TcxGridDBColumn
+                      Caption = 'Total a pagar'
                       DataBinding.FieldName = 'TOTAL_LIQUIDO_FACTURA'
+                      PropertiesClassName = 'TcxCurrencyEditProperties'
+                      Width = 117
                     end
                     object tvFacturacionPORCEN_RETENCION_FACTURA: TcxGridDBColumn
+                      Caption = '% IRPF'
                       DataBinding.FieldName = 'PORCEN_RETENCION_FACTURA'
                     end
                     object tvFacturacionTOTAL_RETENCION_FACTURA: TcxGridDBColumn
+                      Caption = 'Total IRPF'
                       DataBinding.FieldName = 'TOTAL_RETENCION_FACTURA'
+                      PropertiesClassName = 'TcxCurrencyEditProperties'
+                      Width = 99
                     end
                     object tvFacturacionTOTAL_IMPUESTOS_FACTURA: TcxGridDBColumn
+                      Caption = 'Total IVA + RE'
                       DataBinding.FieldName = 'TOTAL_IMPUESTOS_FACTURA'
+                      PropertiesClassName = 'TcxCurrencyEditProperties'
+                      Width = 134
                     end
                     object tvFacturacionTOTAL_BASES_FACTURA: TcxGridDBColumn
+                      Caption = 'Bases Imponible'
                       DataBinding.FieldName = 'TOTAL_BASES_FACTURA'
+                      PropertiesClassName = 'TcxCurrencyEditProperties'
+                      Width = 142
                     end
                     object tvFacturacionFORMA_PAGO_FACTURA: TcxGridDBColumn
+                      Caption = 'Forma Pago'
                       DataBinding.FieldName = 'FORMA_PAGO_FACTURA'
+                      Width = 103
+                    end
+                    object tvFacturacionDESCRIPCION_FORMAPAGO: TcxGridDBColumn
+                      DataBinding.FieldName = 'DESCRIPCION_FORMAPAGO'
+                      Width = 230
                     end
                     object tvFacturacionCODIGO_EMPRESA_FACTURA: TcxGridDBColumn
+                      Caption = 'C'#243'digo Empresa'
                       DataBinding.FieldName = 'CODIGO_EMPRESA_FACTURA'
+                      Width = 142
                     end
                     object tvFacturacionRAZONSOCIAL_EMPRESA_FACTURA: TcxGridDBColumn
+                      Caption = 'Raz'#243'n Social Empresa'
                       DataBinding.FieldName = 'RAZONSOCIAL_EMPRESA_FACTURA'
+                      Width = 188
                     end
                     object tvFacturacionNIF_EMPRESA_FACTURA: TcxGridDBColumn
+                      Caption = 'Nif Empresa'
                       DataBinding.FieldName = 'NIF_EMPRESA_FACTURA'
+                      Width = 105
                     end
                     object tvFacturacionMOVIL_EMPRESA_FACTURA: TcxGridDBColumn
+                      Caption = 'M'#243'vil Empresa'
                       DataBinding.FieldName = 'MOVIL_EMPRESA_FACTURA'
+                      Width = 126
                     end
                     object tvFacturacionEMAIL_EMPRESA_FACTURA: TcxGridDBColumn
+                      Caption = 'Email Empresa'
                       DataBinding.FieldName = 'EMAIL_EMPRESA_FACTURA'
+                      Width = 125
                     end
                     object tvFacturacionDIRECCION1_EMPRESA_FACTURA: TcxGridDBColumn
+                      Caption = 'Direcci'#243'n1 Empresa'
                       DataBinding.FieldName = 'DIRECCION1_EMPRESA_FACTURA'
+                      Width = 172
                     end
                     object tvFacturacionDIRECCION2_EMPRESA_FACTURA: TcxGridDBColumn
+                      Caption = 'Direcci'#243'n2 Empresa'
                       DataBinding.FieldName = 'DIRECCION2_EMPRESA_FACTURA'
+                      Width = 172
                     end
                     object tvFacturacionPOBLACION_EMPRESA_FACTURA: TcxGridDBColumn
+                      Caption = 'Poblaci'#243'n Empresa'
                       DataBinding.FieldName = 'POBLACION_EMPRESA_FACTURA'
+                      Width = 175
                     end
                     object tvFacturacionPROVINCIA_EMPRESA_FACTURA: TcxGridDBColumn
+                      Caption = 'Provincia Empresa'
                       DataBinding.FieldName = 'PROVINCIA_EMPRESA_FACTURA'
+                      Width = 157
                     end
                     object tvFacturacionPAIS_EMPRESA_FACTURA: TcxGridDBColumn
+                      Caption = 'Pa'#237's Empresa'
                       DataBinding.FieldName = 'PAIS_EMPRESA_FACTURA'
+                      Width = 114
                     end
                     object tvFacturacionCPOSTAL_EMPRESA_FACTURA: TcxGridDBColumn
+                      Caption = 'CPostal Empresa'
                       DataBinding.FieldName = 'CPOSTAL_EMPRESA_FACTURA'
+                      Width = 156
                     end
                     object tvFacturacionESRETENCIONES_EMPRESA_FACTURA: TcxGridDBColumn
+                      Caption = 'Empresa Retiene IRPF'
                       DataBinding.FieldName = 'ESRETENCIONES_EMPRESA_FACTURA'
+                      PropertiesClassName = 'TcxCheckBoxProperties'
+                      Properties.ValueChecked = 'S'
+                      Properties.ValueUnchecked = 'N'
+                      Width = 184
                     end
                     object tvFacturacionDESCRIPCION_ZONA_IVA_EMPRESA_FACTURA: TcxGridDBColumn
+                      Caption = 'Zona IVA'
                       DataBinding.FieldName = 'DESCRIPCION_ZONA_IVA_EMPRESA_FACTURA'
+                      DataBinding.IsNullValueType = True
+                      Visible = False
+                      Width = 80
+                    end
+                    object tvFacturacionDESCRIPCION_ZONA_IVA: TcxGridDBColumn
+                      Caption = 'Zona IVA'
+                      DataBinding.FieldName = 'DESCRIPCION_ZONA_IVA'
+                      DataBinding.IsNullValueType = True
+                      Visible = False
+                      Width = 80
                     end
                     object tvFacturacionESREGIMENESPECIALAGRICOLA_EMPRESA_FACTURA: TcxGridDBColumn
+                      Caption = 'Es REAGP'
                       DataBinding.FieldName = 'ESREGIMENESPECIALAGRICOLA_EMPRESA_FACTURA'
+                      PropertiesClassName = 'TcxCheckBoxProperties'
+                      Properties.ValueChecked = 'S'
+                      Properties.ValueUnchecked = 'N'
+                      Width = 81
                     end
                     object tvFacturacionESIRPF_IMP_INCL_ZONA_IVA_FACTURA: TcxGridDBColumn
                       DataBinding.FieldName = 'ESIRPF_IMP_INCL_ZONA_IVA_FACTURA'
+                      Visible = False
                     end
                     object tvFacturacionESAPLICA_RE_ZONA_IVA_FACTURA: TcxGridDBColumn
                       DataBinding.FieldName = 'ESAPLICA_RE_ZONA_IVA_FACTURA'
+                      Visible = False
                     end
                     object tvFacturacionESIVAAGRICOLA_ZONA_IVA_FACTURA: TcxGridDBColumn
                       DataBinding.FieldName = 'ESIVAAGRICOLA_ZONA_IVA_FACTURA'
+                      Visible = False
                     end
                     object tvFacturacionPALABRA_REPORTS_ZONA_IVA_FACTURA: TcxGridDBColumn
                       DataBinding.FieldName = 'PALABRA_REPORTS_ZONA_IVA_FACTURA'
-                    end
-                    object tvFacturacionDESCRIPCION_ZONA_IVA: TcxGridDBColumn
-                      DataBinding.FieldName = 'DESCRIPCION_ZONA_IVA'
+                      Visible = False
                     end
                     object tvFacturacionESVENTA_ACTIVO_FIJO_FACTURA: TcxGridDBColumn
                       DataBinding.FieldName = 'ESVENTA_ACTIVO_FIJO_FACTURA'
+                      Visible = False
                     end
                     object tvFacturacionPORCEN_IVAN_FACTURA: TcxGridDBColumn
+                      Caption = '% IVA Normal'
                       DataBinding.FieldName = 'PORCEN_IVAN_FACTURA'
+                      PropertiesClassName = 'TcxSpinEditProperties'
+                      Properties.DisplayFormat = '0.00 %'
+                      Properties.EditFormat = '0.00 %'
+                      Properties.Increment = 0.100000000000000000
+                      Properties.LargeIncrement = 1.000000000000000000
+                      Properties.MaxValue = 100.000000000000000000
+                      Properties.ValueType = vtFloat
+                      Width = 115
                     end
                     object tvFacturacionTOTAL_IVAN_FACTURA: TcxGridDBColumn
+                      Caption = 'Total IVA Normal'
                       DataBinding.FieldName = 'TOTAL_IVAN_FACTURA'
+                      PropertiesClassName = 'TcxCurrencyEditProperties'
+                      Width = 159
                     end
                     object tvFacturacionPORCEN_REN_FACTURA: TcxGridDBColumn
+                      Caption = '% RE Normal'
                       DataBinding.FieldName = 'PORCEN_REN_FACTURA'
+                      PropertiesClassName = 'TcxSpinEditProperties'
+                      Properties.DisplayFormat = '0.00 %'
+                      Properties.EditFormat = '0.00 %'
+                      Properties.Increment = 0.100000000000000000
+                      Properties.LargeIncrement = 1.000000000000000000
+                      Properties.MaxValue = 100.000000000000000000
+                      Properties.ValueType = vtFloat
+                      Width = 107
                     end
                     object tvFacturacionTOTAL_REN_FACTURA: TcxGridDBColumn
+                      Caption = 'Total RE Normal'
                       DataBinding.FieldName = 'TOTAL_REN_FACTURA'
+                      PropertiesClassName = 'TcxCurrencyEditProperties'
+                      Width = 139
                     end
                     object tvFacturacionTOTAL_BASEI_IVAN_FACTURA: TcxGridDBColumn
+                      Caption = 'Base Imponible IVA Normal'
                       DataBinding.FieldName = 'TOTAL_BASEI_IVAN_FACTURA'
+                      PropertiesClassName = 'TcxCurrencyEditProperties'
+                      Width = 232
                     end
                     object tvFacturacionPORCEN_IVAR_FACTURA: TcxGridDBColumn
+                      Caption = '% IVA Reducido'
                       DataBinding.FieldName = 'PORCEN_IVAR_FACTURA'
+                      PropertiesClassName = 'TcxSpinEditProperties'
+                      Properties.DisplayFormat = '0.00 %'
+                      Properties.EditFormat = '0.00 %'
+                      Properties.Increment = 0.100000000000000000
+                      Properties.LargeIncrement = 1.000000000000000000
+                      Properties.MaxValue = 100.000000000000000000
+                      Properties.ValueType = vtFloat
+                      Width = 133
                     end
                     object tvFacturacionTOTAL_IVAR_FACTURA: TcxGridDBColumn
+                      Caption = 'IVA Reducido'
                       DataBinding.FieldName = 'TOTAL_IVAR_FACTURA'
+                      PropertiesClassName = 'TcxCurrencyEditProperties'
+                      Width = 129
                     end
                     object tvFacturacionPORCEN_RER_FACTURA: TcxGridDBColumn
+                      Caption = '% RE Reducido'
                       DataBinding.FieldName = 'PORCEN_RER_FACTURA'
+                      PropertiesClassName = 'TcxSpinEditProperties'
+                      Properties.DisplayFormat = '0.00 %'
+                      Properties.EditFormat = '0.00 %'
+                      Properties.Increment = 0.100000000000000000
+                      Properties.LargeIncrement = 1.000000000000000000
+                      Properties.MaxValue = 100.000000000000000000
+                      Properties.ValueType = vtFloat
+                      Width = 137
                     end
                     object tvFacturacionTOTAL_RER_FACTURA: TcxGridDBColumn
+                      Caption = 'RE Reducido'
                       DataBinding.FieldName = 'TOTAL_RER_FACTURA'
+                      PropertiesClassName = 'TcxCurrencyEditProperties'
+                      Width = 109
                     end
                     object tvFacturacionTOTAL_BASEI_IVAR_FACTURA: TcxGridDBColumn
+                      Caption = 'Base Imponible IVA Reducido'
                       DataBinding.FieldName = 'TOTAL_BASEI_IVAR_FACTURA'
+                      PropertiesClassName = 'TcxCurrencyEditProperties'
+                      Width = 310
                     end
                     object tvFacturacionPORCEN_IVAS_FACTURA: TcxGridDBColumn
+                      Caption = '% IVA S'#250'per Reducido'
                       DataBinding.FieldName = 'PORCEN_IVAS_FACTURA'
+                      PropertiesClassName = 'TcxSpinEditProperties'
+                      Properties.DisplayFormat = '0.00 %'
+                      Properties.EditFormat = '0.00 %'
+                      Properties.Increment = 0.100000000000000000
+                      Properties.LargeIncrement = 1.000000000000000000
+                      Properties.MaxValue = 100.000000000000000000
+                      Properties.ValueType = vtFloat
+                      Width = 186
                     end
                     object tvFacturacionTOTAL_IVAS_FACTURA: TcxGridDBColumn
+                      Caption = 'IVA S'#250'per Reducido'
                       DataBinding.FieldName = 'TOTAL_IVAS_FACTURA'
+                      PropertiesClassName = 'TcxCurrencyEditProperties'
+                      Width = 170
                     end
                     object tvFacturacionPORCEN_RES_FACTURA: TcxGridDBColumn
+                      Caption = '% RE S'#250'per Reducido'
                       DataBinding.FieldName = 'PORCEN_RES_FACTURA'
+                      PropertiesClassName = 'TcxSpinEditProperties'
+                      Properties.DisplayFormat = '0.00 %'
+                      Properties.EditFormat = '0.00 %'
+                      Properties.Increment = 0.100000000000000000
+                      Properties.LargeIncrement = 1.000000000000000000
+                      Properties.MaxValue = 100.000000000000000000
+                      Properties.ValueType = vtFloat
+                      Width = 178
                     end
                     object tvFacturacionTOTAL_RES_FACTURA: TcxGridDBColumn
+                      Caption = 'RE S'#250'per Reducido'
                       DataBinding.FieldName = 'TOTAL_RES_FACTURA'
+                      Width = 162
                     end
                     object tvFacturacionTOTAL_BASEI_IVAS_FACTURA: TcxGridDBColumn
+                      Caption = 'Base Imponible IVA S'#250'per Reducido'
                       DataBinding.FieldName = 'TOTAL_BASEI_IVAS_FACTURA'
+                      PropertiesClassName = 'TcxCurrencyEditProperties'
+                      Width = 298
                     end
                     object tvFacturacionPORCEN_IVAE_FACTURA: TcxGridDBColumn
+                      Caption = '% IVA Exento'
                       DataBinding.FieldName = 'PORCEN_IVAE_FACTURA'
+                      PropertiesClassName = 'TcxSpinEditProperties'
+                      Properties.DisplayFormat = '0.00 %'
+                      Properties.EditFormat = '0.00 %'
+                      Properties.Increment = 0.100000000000000000
+                      Properties.LargeIncrement = 1.000000000000000000
+                      Properties.MaxValue = 100.000000000000000000
+                      Properties.ValueType = vtFloat
+                      Width = 112
                     end
                     object tvFacturacionTOTAL_IVAE_FACTURA: TcxGridDBColumn
+                      Caption = 'IVA Exento'
                       DataBinding.FieldName = 'TOTAL_IVAE_FACTURA'
+                      PropertiesClassName = 'TcxCurrencyEditProperties'
                     end
                     object tvFacturacionPORCEN_REE_FACTURA: TcxGridDBColumn
+                      Caption = '% RE Exento'
                       DataBinding.FieldName = 'PORCEN_REE_FACTURA'
+                      PropertiesClassName = 'TcxSpinEditProperties'
+                      Properties.DisplayFormat = '0.00 %'
+                      Properties.EditFormat = '0.00 %'
+                      Properties.Increment = 0.100000000000000000
+                      Properties.LargeIncrement = 1.000000000000000000
+                      Properties.MaxValue = 100.000000000000000000
+                      Properties.ValueType = vtFloat
+                      Width = 107
                     end
                     object tvFacturacionTOTAL_REE_FACTURA: TcxGridDBColumn
+                      Caption = 'RE Exento'
                       DataBinding.FieldName = 'TOTAL_REE_FACTURA'
+                      PropertiesClassName = 'TcxCurrencyEditProperties'
+                      Width = 100
                     end
                     object tvFacturacionTOTAL_BASEI_IVAE_FACTURA: TcxGridDBColumn
+                      Caption = 'Base Imponible Exento'
                       DataBinding.FieldName = 'TOTAL_BASEI_IVAE_FACTURA'
+                      PropertiesClassName = 'TcxCurrencyEditProperties'
+                      Width = 208
                     end
                     object tvFacturacionCODIGO_CLIENTE_FACTURA: TcxGridDBColumn
                       DataBinding.FieldName = 'CODIGO_CLIENTE_FACTURA'
+                      Visible = False
                     end
                     object tvFacturacionRAZONSOCIAL_CLIENTE_FACTURA: TcxGridDBColumn
                       DataBinding.FieldName = 'RAZONSOCIAL_CLIENTE_FACTURA'
+                      Visible = False
                     end
                     object tvFacturacionNIF_CLIENTE_FACTURA: TcxGridDBColumn
                       DataBinding.FieldName = 'NIF_CLIENTE_FACTURA'
+                      Visible = False
                     end
                     object tvFacturacionMOVIL_CLIENTE_FACTURA: TcxGridDBColumn
                       DataBinding.FieldName = 'MOVIL_CLIENTE_FACTURA'
+                      Visible = False
                     end
                     object tvFacturacionEMAIL_CLIENTE_FACTURA: TcxGridDBColumn
                       DataBinding.FieldName = 'EMAIL_CLIENTE_FACTURA'
+                      Visible = False
                     end
                     object tvFacturacionDIRECCION1_CLIENTE_FACTURA: TcxGridDBColumn
                       DataBinding.FieldName = 'DIRECCION1_CLIENTE_FACTURA'
+                      Visible = False
                     end
                     object tvFacturacionDIRECCION2_CLIENTE_FACTURA: TcxGridDBColumn
                       DataBinding.FieldName = 'DIRECCION2_CLIENTE_FACTURA'
+                      Visible = False
                     end
                     object tvFacturacionPOBLACION_CLIENTE_FACTURA: TcxGridDBColumn
                       DataBinding.FieldName = 'POBLACION_CLIENTE_FACTURA'
+                      Visible = False
                     end
                     object tvFacturacionPROVINCIA_CLIENTE_FACTURA: TcxGridDBColumn
                       DataBinding.FieldName = 'PROVINCIA_CLIENTE_FACTURA'
+                      Visible = False
                     end
                     object tvFacturacionCPOSTAL_CLIENTE_FACTURA: TcxGridDBColumn
                       DataBinding.FieldName = 'CPOSTAL_CLIENTE_FACTURA'
+                      Visible = False
                     end
                     object tvFacturacionPAIS_CLIENTE_FACTURA: TcxGridDBColumn
                       DataBinding.FieldName = 'PAIS_CLIENTE_FACTURA'
+                      Visible = False
                     end
                     object tvFacturacionESIVA_RECARGO_CLIENTE_FACTURA: TcxGridDBColumn
                       DataBinding.FieldName = 'ESIVA_RECARGO_CLIENTE_FACTURA'
+                      Visible = False
                     end
                     object tvFacturacionESIVA_EXENTO_CLIENTE_FACTURA: TcxGridDBColumn
                       DataBinding.FieldName = 'ESIVA_EXENTO_CLIENTE_FACTURA'
+                      Visible = False
                     end
                     object tvFacturacionESREGIMENESPECIALAGRICOLA_CLIENTE_FACTURA: TcxGridDBColumn
                       DataBinding.FieldName = 'ESREGIMENESPECIALAGRICOLA_CLIENTE_FACTURA'
+                      Visible = False
                     end
                     object tvFacturacionESRETENCIONES_CLIENTE_FACTURA: TcxGridDBColumn
                       DataBinding.FieldName = 'ESRETENCIONES_CLIENTE_FACTURA'
+                      Visible = False
                     end
                     object tvFacturacionNOMBRE_TARIFA_CLIENTE: TcxGridDBColumn
                       DataBinding.FieldName = 'NOMBRE_TARIFA_CLIENTE'
+                      DataBinding.IsNullValueType = True
+                      Visible = False
                     end
                     object tvFacturacionESIMP_INCL_TARIFA_CLIENTE_FACTURA: TcxGridDBColumn
+                      Caption = 'Precios incl. Impuestos'
                       DataBinding.FieldName = 'ESIMP_INCL_TARIFA_CLIENTE_FACTURA'
+                      PropertiesClassName = 'TcxCheckBoxProperties'
+                      Properties.ValueChecked = 'S'
+                      Properties.ValueUnchecked = 'N'
+                      Width = 198
                     end
                     object tvFacturacionESINTRACOMUNITARIO_CLIENTE_FACTURA: TcxGridDBColumn
+                      Caption = 'Venta Intracomunitaria'
                       DataBinding.FieldName = 'ESINTRACOMUNITARIO_CLIENTE_FACTURA'
+                      PropertiesClassName = 'TcxCheckBoxProperties'
+                      Properties.ValueChecked = 'S'
+                      Properties.ValueUnchecked = 'N'
+                      Width = 212
+                    end
+                    object tvFacturacionGRUPO_ZONA_IVA_EMPRESA_FACTURA: TcxGridDBColumn
+                      DataBinding.FieldName = 'GRUPO_ZONA_IVA_EMPRESA_FACTURA'
+                      Visible = False
+                    end
+                    object tvFacturacionTARIFA_ARTICULO_CLIENTE_FACTURA: TcxGridDBColumn
+                      DataBinding.FieldName = 'TARIFA_ARTICULO_CLIENTE_FACTURA'
+                      Visible = False
+                    end
+                    object tvFacturacionCODIGO_IVA_FACTURA: TcxGridDBColumn
+                      DataBinding.FieldName = 'CODIGO_IVA_FACTURA'
+                      Visible = False
                     end
                   end
                   object tvLineasFacturacion: TcxGridDBTableView
@@ -1126,54 +1380,70 @@ inherited frmMtoClientes: TfrmMtoClientes
                     OptionsData.Inserting = False
                     OptionsView.GroupByBox = False
                     object cxgrdbclmncxgrdbtblvwcxgrd1DBTableView1LINEA_LINEA: TcxGridDBColumn
+                      Caption = 'C'#243'digo Linea'
                       DataBinding.FieldName = 'LINEA_FACTURA_LINEA'
+                      DataBinding.IsNullValueType = True
                       Width = 28
                     end
                     object cxgrdbclmncxgrdbtblvwcxgrd1DBTableView1CODIGO_ARTICULO_LINEA: TcxGridDBColumn
-                      Caption = 'C'#243'digo Tratamiento'
+                      Caption = 'C'#243'digo Art'#237'culo'
                       DataBinding.FieldName = 'CODIGO_ARTICULO_FACTURA_LINEA'
+                      DataBinding.IsNullValueType = True
                       Width = 164
                     end
                     object cxgrdbclmncxgrdbtblvwcxgrd1DBTableView1DESCRIPCION_ARTICULO_LINEA: TcxGridDBColumn
-                      Caption = 'Descripci'#243'n Tratamiento'
+                      Caption = 'Descripci'#243'n Art'#237'culo'
                       DataBinding.FieldName = 'DESCRIPCION_ARTICULO_FACTURA_LINEA'
+                      DataBinding.IsNullValueType = True
                       Width = 162
                     end
                     object tvLineasFacturacionTIPO_CANTIDAD_ARTICULO_FACTURA_LINEA: TcxGridDBColumn
+                      Caption = 'Tipo Ctd'
                       DataBinding.FieldName = 'TIPO_CANTIDAD_ARTICULO_FACTURA_LINEA'
+                      DataBinding.IsNullValueType = True
                     end
                     object cxgrdbclmncxgrdbtblvwcxgrd1DBTableView1CANTIDAD_LINEA: TcxGridDBColumn
                       Caption = 'Cantidad'
                       DataBinding.FieldName = 'CANTIDAD_FACTURA_LINEA'
+                      DataBinding.IsNullValueType = True
                       Width = 84
                     end
                     object tvLineasFacturacionPRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA: TcxGridDBColumn
+                      Caption = 'Precio Sin IVA'
                       DataBinding.FieldName = 'PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA'
+                      DataBinding.IsNullValueType = True
+                      PropertiesClassName = 'TcxCurrencyEditProperties'
                     end
                     object dbcLineasFacturacionNOMBRE_TIPO_IVA: TcxGridDBColumn
+                      Caption = 'Tipo IVA'
                       DataBinding.FieldName = 'NOMBRE_TIPO_IVA'
+                      DataBinding.IsNullValueType = True
                     end
                     object tvLineasFacturacionPORCEN_IVA_FACTURA_LINEA: TcxGridDBColumn
                       Caption = 'Porcentaje IVA'
                       DataBinding.FieldName = 'PORCEN_IVA_FACTURA_LINEA'
+                      DataBinding.IsNullValueType = True
                       PropertiesClassName = 'TcxSpinEditProperties'
                       Properties.EditFormat = '0.00 %'
                     end
                     object cxgrdbclmncxgrdbtblvwcxgrd1DBTableView1PRECIOVENTA_ARTICULO_LINEA: TcxGridDBColumn
-                      Caption = 'Precio'
+                      Caption = 'Precio Con IVA'
                       DataBinding.FieldName = 'PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA'
+                      DataBinding.IsNullValueType = True
                       PropertiesClassName = 'TcxCurrencyEditProperties'
                       Width = 84
                     end
                     object cxgrdbclmncxgrdbtblvwcxgrd1DBTableView1SUM_TOTAL_LINEA: TcxGridDBColumn
                       Caption = 'Total'
                       DataBinding.FieldName = 'TOTAL_FACTURA_LINEA'
+                      DataBinding.IsNullValueType = True
                       PropertiesClassName = 'TcxCurrencyEditProperties'
                       Width = 84
                     end
                     object tvLineasFacturacionFECHA_ENTREGA_FACTURA_LINEA: TcxGridDBColumn
                       Caption = 'Fecha de Entrega'
                       DataBinding.FieldName = 'FECHA_ENTREGA_FACTURA_LINEA'
+                      DataBinding.IsNullValueType = True
                       PropertiesClassName = 'TcxDateEditProperties'
                     end
                   end
@@ -1185,13 +1455,15 @@ inherited frmMtoClientes: TfrmMtoClientes
                   end
                 end
                 object pnlFacturaOpts: TPanel
-                  Left = 796
+                  Left = 866
                   Top = 0
                   Width = 117
-                  Height = 305
+                  Height = 404
                   Align = alRight
                   BevelOuter = bvNone
                   TabOrder = 1
+                  ExplicitLeft = 796
+                  ExplicitHeight = 305
                   object btnIraFactura: TcxButton
                     Left = 6
                     Top = 16
@@ -1235,21 +1507,21 @@ inherited frmMtoClientes: TfrmMtoClientes
               Caption = 'Historia Presupuestos'
               ImageIndex = 4
               TabVisible = False
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
+              ExplicitWidth = 913
+              ExplicitHeight = 305
               object cxgrd3: TcxGrid
                 Left = 0
                 Top = 0
-                Width = 913
-                Height = 305
+                Width = 983
+                Height = 404
                 Margins.Left = 4
                 Margins.Top = 4
                 Margins.Right = 4
                 Margins.Bottom = 4
                 Align = alClient
                 TabOrder = 0
+                ExplicitWidth = 913
+                ExplicitHeight = 305
                 object tv2: TcxGridDBTableView
                   Navigator.Buttons.ConfirmDelete = True
                   Navigator.Buttons.CustomButtons = <>
@@ -1271,6 +1543,7 @@ inherited frmMtoClientes: TfrmMtoClientes
                     AlternateCaption = 'Fecha Presupuesto'
                     Caption = 'Fecha Presupuesto'
                     DataBinding.FieldName = 'FECHA_FACTURA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxDateEditProperties'
                     Width = 102
                   end
@@ -1278,78 +1551,94 @@ inherited frmMtoClientes: TfrmMtoClientes
                     AlternateCaption = 'Nro Presupuesto'
                     Caption = 'Nro Presupuesto'
                     DataBinding.FieldName = 'NRO_FACTURA'
+                    DataBinding.IsNullValueType = True
                     Width = 101
                   end
                   object cxgrdbclmn3: TcxGridDBColumn
                     Caption = 'Serie'
                     DataBinding.FieldName = 'SERIE_FACTURA'
+                    DataBinding.IsNullValueType = True
                   end
                   object cxgrdbclmn4: TcxGridDBColumn
                     Caption = 'C'#243'digo Paciente'
                     DataBinding.FieldName = 'CODIGO_CLIENTE_FACTURA'
+                    DataBinding.IsNullValueType = True
                     Width = 104
                   end
                   object cxgrdbclmn5: TcxGridDBColumn
                     Caption = 'Raz'#243'n Social'
                     DataBinding.FieldName = 'RAZONSOCIAL_CLIENTE_FACTURA'
+                    DataBinding.IsNullValueType = True
                     Width = 203
                   end
                   object cxgrdbclmn6: TcxGridDBColumn
                     Caption = 'Nif'
                     DataBinding.FieldName = 'NIF_CLIENTE_FACTURA'
+                    DataBinding.IsNullValueType = True
                     Width = 144
                   end
                   object cxgrdbclmn7: TcxGridDBColumn
                     Caption = 'Tel'#233'fono1'
                     DataBinding.FieldName = 'MOVIL_CLIENTE_FACTURA'
+                    DataBinding.IsNullValueType = True
                     Width = 164
                   end
                   object cxgrdbclmn8: TcxGridDBColumn
                     Caption = 'Email'
                     DataBinding.FieldName = 'EMAIL_CLIENTE_FACTURA'
+                    DataBinding.IsNullValueType = True
                     Width = 179
                   end
                   object cxgrdbclmn9: TcxGridDBColumn
                     Caption = 'Direcci'#243'n1'
                     DataBinding.FieldName = 'DIRECCION1_CLIENTE_FACTURA'
+                    DataBinding.IsNullValueType = True
                     Width = 204
                   end
                   object cxgrdbclmn10: TcxGridDBColumn
                     Caption = 'Direcci'#243'n2'
                     DataBinding.FieldName = 'DIRECCION2_CLIENTE_FACTURA'
+                    DataBinding.IsNullValueType = True
                     Width = 190
                   end
                   object cxgrdbclmn11: TcxGridDBColumn
                     Caption = 'Poblaci'#243'n'
                     DataBinding.FieldName = 'POBLACION_CLIENTE_FACTURA'
+                    DataBinding.IsNullValueType = True
                     Width = 185
                   end
                   object cxgrdbclmn12: TcxGridDBColumn
                     Caption = 'Provincia'
                     DataBinding.FieldName = 'PROVINCIA_CLIENTE_FACTURA'
+                    DataBinding.IsNullValueType = True
                     Width = 183
                   end
                   object cxgrdbclmn13: TcxGridDBColumn
                     Caption = 'C'#243'digo Postal'
                     DataBinding.FieldName = 'CPOSTAL_CLIENTE_FACTURA'
+                    DataBinding.IsNullValueType = True
                   end
                   object cxgrdbclmn14: TcxGridDBColumn
                     Caption = 'Pa'#237's'
                     DataBinding.FieldName = 'PAIS_CLIENTE_FACTURA'
+                    DataBinding.IsNullValueType = True
                     Width = 144
                   end
                   object cxgrdbclmn15: TcxGridDBColumn
                     Caption = 'Total L'#237'quido'
                     DataBinding.FieldName = 'TOTAL_LIQUIDO_FACTURA'
+                    DataBinding.IsNullValueType = True
                   end
                   object cxgrdbclmn16: TcxGridDBColumn
                     Caption = 'Forma de Pago'
                     DataBinding.FieldName = 'FORMA_PAGO_FACTURA'
+                    DataBinding.IsNullValueType = True
                     Width = 151
                   end
                   object cxgrdbclmn17: TcxGridDBColumn
                     Caption = 'Comentarios'
                     DataBinding.FieldName = 'COMENTARIOS_FACTURA'
+                    DataBinding.IsNullValueType = True
                   end
                 end
                 object tv3: TcxGridDBTableView
@@ -1372,41 +1661,49 @@ inherited frmMtoClientes: TfrmMtoClientes
                   OptionsView.GroupByBox = False
                   object cxgrdbclmn18: TcxGridDBColumn
                     DataBinding.FieldName = 'LINEA_LINEA'
+                    DataBinding.IsNullValueType = True
                     Width = 28
                   end
                   object cxgrdbclmn19: TcxGridDBColumn
                     Caption = 'C'#243'digo Tratamiento'
                     DataBinding.FieldName = 'CODIGO_ARTICULO_LINEA'
+                    DataBinding.IsNullValueType = True
                     Width = 164
                   end
                   object cxgrdbclmn20: TcxGridDBColumn
                     Caption = 'Descripci'#243'n Tratamiento'
                     DataBinding.FieldName = 'DESCRIPCION_ARTICULO_LINEA'
+                    DataBinding.IsNullValueType = True
                     Width = 804
                   end
                   object cxgrdbclmn21: TcxGridDBColumn
                     Caption = 'Nro Pieza'
                     DataBinding.FieldName = 'ZONA'
+                    DataBinding.IsNullValueType = True
                     Width = 484
                   end
                   object cxgrdbclmn22: TcxGridDBColumn
                     Caption = 'Precio'
                     DataBinding.FieldName = 'PRECIOVENTA_ARTICULO_LINEA'
+                    DataBinding.IsNullValueType = True
                     Width = 84
                   end
                   object cxgrdbclmn23: TcxGridDBColumn
                     Caption = 'Cantidad'
                     DataBinding.FieldName = 'CANTIDAD_LINEA'
+                    DataBinding.IsNullValueType = True
                     Width = 84
                   end
                   object cxgrdbclmn24: TcxGridDBColumn
                     Caption = 'Total'
                     DataBinding.FieldName = 'SUM_TOTAL_LINEA'
+                    DataBinding.IsNullValueType = True
                     Width = 84
                   end
                   object cxgrdbclmn25: TcxGridDBColumn
                     Caption = 'Nro Odont'#243'logo'
                     DataBinding.FieldName = 'ODONTOLOGO'
+                    DataBinding.IsNullValueType = True
                     Width = 68
                   end
                 end
@@ -1421,14 +1718,18 @@ inherited frmMtoClientes: TfrmMtoClientes
             object tsOtros: TcxTabSheet
               Caption = '&4_Otros'
               ImageIndex = 4
+              ExplicitWidth = 913
+              ExplicitHeight = 305
               object pnlUserInstantBottom: TPanel
                 Left = 0
-                Top = 226
-                Width = 913
+                Top = 325
+                Width = 983
                 Height = 79
                 Align = alBottom
                 BevelOuter = bvNone
                 TabOrder = 6
+                ExplicitTop = 226
+                ExplicitWidth = 913
                 object txtUSUARIOALTA: TcxDBTextEdit
                   Left = 17
                   Top = 37
@@ -1587,46 +1888,71 @@ inherited frmMtoClientes: TfrmMtoClientes
         object cxspltr1: TcxSplitter
           Left = 0
           Top = 179
-          Width = 922
+          Width = 992
           Height = 4
           HotZoneClassName = 'TcxMediaPlayer9Style'
           AlignSplitter = salTop
           Control = pnl1
+          ExplicitWidth = 922
         end
       end
       inherited tsPerfil: TcxTabSheet
         ExplicitWidth = 922
         ExplicitHeight = 526
         inherited pnlPerfilTop: TPanel
-          Width = 922
+          Width = 992
           ExplicitWidth = 922
           inherited edtPerfilBusq: TcxTextEdit
             ExplicitHeight = 27
           end
         end
         inherited pnlPerfilDetail: TPanel
-          Width = 922
-          Height = 469
+          Width = 992
+          Height = 568
           ExplicitWidth = 922
           ExplicitHeight = 469
           inherited cxgrdPerfil: TcxGrid
-            Width = 922
-            Height = 469
+            Width = 992
+            Height = 568
             ExplicitWidth = 922
             ExplicitHeight = 469
+            inherited tvPerfil: TcxGridDBTableView
+              inherited tvPerfilUSUARIO_GRUPO_PERFILES: TcxGridDBColumn
+                DataBinding.IsNullValueType = True
+              end
+              inherited tvPerfilKEY_PERFILES: TcxGridDBColumn
+                DataBinding.IsNullValueType = True
+              end
+              inherited tvPerfilSUBKEY_PERFILES: TcxGridDBColumn
+                DataBinding.IsNullValueType = True
+              end
+              inherited tvPerfilVALUE_PERFILES: TcxGridDBColumn
+                DataBinding.IsNullValueType = True
+              end
+              inherited tvPerfilVALUE_TEXT_PERFILES: TcxGridDBColumn
+                DataBinding.IsNullValueType = True
+              end
+              inherited tvPerfilTYPE_BLOB_PERFILES: TcxGridDBColumn
+                DataBinding.IsNullValueType = True
+              end
+              inherited tvPerfilVALUE_BLOB_PERFILES: TcxGridDBColumn
+                DataBinding.IsNullValueType = True
+              end
+            end
           end
         end
       end
     end
     inherited pnlTopPage: TPanel
-      Width = 931
+      Width = 1001
       TabOrder = 0
       ExplicitWidth = 931
       inherited pnlTopGrid: TPanel
-        Width = 931
+        Width = 1001
         ExplicitWidth = 931
         inherited edtBusqGlobal: TcxTextEdit
           TabOrder = 3
+          ExplicitHeight = 27
         end
         inherited nvNavegador: TcxDBNavigator
           Top = 5
@@ -1641,13 +1967,13 @@ inherited frmMtoClientes: TfrmMtoClientes
     end
   end
   inherited pButtonRightBar: TPanel
-    Left = 931
-    Height = 604
+    Left = 1001
+    Height = 703
     TabOrder = 1
     ExplicitLeft = 931
     ExplicitHeight = 604
     inherited pButtonGen: TPanel
-      Top = 406
+      Top = 505
       TabOrder = 2
       ExplicitTop = 406
     end
@@ -1682,5 +2008,9 @@ inherited frmMtoClientes: TfrmMtoClientes
       ShortCut = 16449
       OnExecute = actArticulosExecute
     end
+  end
+  inherited JvEnterAsTab1: TJvEnterAsTab
+    Left = 992
+    Top = 320
   end
 end

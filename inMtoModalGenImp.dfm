@@ -8,9 +8,9 @@ inherited frmPrint: TfrmPrint
   ClientWidth = 405
   FormStyle = fsStayOnTop
   Scaled = False
-  ExplicitWidth = 411
-  ExplicitHeight = 330
-  PixelsPerInch = 96
+  OnClose = FormClose
+  ExplicitWidth = 417
+  ExplicitHeight = 339
   TextHeight = 19
   object pnl1: TPanel [0]
     Left = 261
@@ -19,13 +19,15 @@ inherited frmPrint: TfrmPrint
     Height = 301
     Align = alRight
     TabOrder = 0
+    ExplicitLeft = 257
+    ExplicitHeight = 300
     object btnPDF: TcxButton
       Left = 0
       Top = 48
       Width = 142
       Height = 25
       Caption = '&PDF'
-      TabOrder = 0
+      TabOrder = 2
       OnClick = btnPDFClick
     end
     object btnImprimir: TcxButton
@@ -34,7 +36,7 @@ inherited frmPrint: TfrmPrint
       Width = 142
       Height = 25
       Caption = '&Imprimir'
-      TabOrder = 1
+      TabOrder = 4
       OnClick = btnImprimirClick
     end
     object btnVistaPreliminar: TcxButton
@@ -43,7 +45,7 @@ inherited frmPrint: TfrmPrint
       Width = 142
       Height = 25
       Caption = '&Vista Preliminar'
-      TabOrder = 2
+      TabOrder = 0
       OnClick = btnVistaPreliminarClick
     end
     object btnSalir: TcxButton
@@ -53,8 +55,9 @@ inherited frmPrint: TfrmPrint
       Height = 25
       Align = alBottom
       Caption = '&Salir'
-      TabOrder = 3
+      TabOrder = 5
       OnClick = btnSalirClick
+      ExplicitTop = 274
     end
     object btnEditar: TcxButton
       Left = 0
@@ -62,7 +65,7 @@ inherited frmPrint: TfrmPrint
       Width = 142
       Height = 25
       Caption = '&Editar'
-      TabOrder = 4
+      TabOrder = 3
       OnClick = btnEditarClick
     end
     object btnExcel: TcxButton
@@ -71,12 +74,12 @@ inherited frmPrint: TfrmPrint
       Width = 142
       Height = 25
       Caption = 'E&xcel'
-      TabOrder = 5
+      TabOrder = 1
       OnClick = btnExcelClick
     end
   end
   object frxrprt1: TfrxReport
-    Version = '6.9.3'
+    Version = '6.9.14'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -119,6 +122,7 @@ inherited frmPrint: TfrmPrint
     DataOnly = False
     Compressed = False
     EmbeddedFonts = True
+    EmbedFontsIfProtected = False
     InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
     OpenAfterExport = False
     PrintOptimized = True
@@ -219,7 +223,7 @@ inherited frmPrint: TfrmPrint
     Top = 120
   end
   object frxReportOrigen: TfrxReport
-    Version = '6.9.3'
+    Version = '6.9.14'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

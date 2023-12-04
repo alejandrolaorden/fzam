@@ -1,5 +1,4 @@
 inherited dmFormasdePago: TdmFormasdePago
-  OldCreateOrder = True
   Height = 155
   Width = 522
   inherited unqryTablaG: TUniQuery
@@ -76,6 +75,7 @@ inherited dmFormasdePago: TdmFormasdePago
     MasterFields = 'CODIGO_FORMAPAGO'
     DetailFields = 'FORMA_PAGO_FACTURA'
     ReadOnly = True
+    Active = True
     Left = 215
     Top = 24
     ParamData = <
@@ -133,6 +133,7 @@ inherited dmFormasdePago: TdmFormasdePago
     MasterFields = 'CODIGO_FORMAPAGO'
     DetailFields = 'FORMA_PAGO_FACTURA'
     ReadOnly = True
+    Active = True
     Left = 359
     Top = 24
     ParamData = <

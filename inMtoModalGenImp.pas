@@ -48,6 +48,7 @@ type
     procedure btnExcelClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     function frxdsgnr1SaveReport(Report: TfrxReport; SaveAs: Boolean): Boolean;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     sElegido:String;
 
@@ -76,8 +77,11 @@ begin
   Preparar_consulta;
   Self.Hide;
   Consultar_Formularios;
-  frxrprt1.PrepareReport(True);
-  frxrprt1.DesignReport();
+  if (sElegido <> '') then
+  begin
+    frxrprt1.PrepareReport(True);
+    frxrprt1.DesignReport();
+  end;
   Self.Show;
 end;
 
@@ -87,8 +91,11 @@ begin
   Preparar_consulta;
   Self.Hide;
   Consultar_Formularios;
-  frxrprt1.PrepareReport(True);
-  frxrprt1.Export(frxlsxprtExcel);
+  if (sElegido <> '') then
+  begin
+    frxrprt1.PrepareReport(True);
+    frxrprt1.Export(frxlsxprtExcel);
+  end;
   Self.Show;
 end;
 
@@ -97,8 +104,11 @@ begin
   Preparar_consulta;
   Self.Hide;
   Consultar_Formularios;
-  frxrprt1.PrepareReport(True);
-  frxrprt1.Print;
+    if (sElegido <> '') then
+  begin
+    frxrprt1.PrepareReport(True);
+    frxrprt1.Print;
+  end;
   Self.Show;
 end;
 
@@ -112,8 +122,11 @@ begin
   Preparar_consulta;
   Self.Hide;
   Consultar_Formularios;
-  frxrprt1.PrepareReport(True);
-  frxrprt1.Export(frxpdfxprtPedWeb);
+    if (sElegido <> '') then
+  begin
+    frxrprt1.PrepareReport(True);
+    frxrprt1.Export(frxpdfxprtPedWeb);
+  end;
   Self.Show;
 end;
 
@@ -122,7 +135,8 @@ begin
   Preparar_consulta;
   Self.Hide;
   Consultar_Formularios;
-  frxrprt1.ShowReport;
+  if sElegido <> '' then
+    frxrprt1.ShowReport;
   Self.Show;
 end;
 
@@ -218,6 +232,13 @@ begin
     FreeAndNil(unqrySol);
     CargarFormatos(form);
   end;
+end;
+
+procedure TfrmPrint.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  inherited;
+  unqryPerfiles.Close;
+  FreeAndNil(unqryPerfiles);
 end;
 
 procedure TfrmPrint.FormCreate(Sender: TObject);

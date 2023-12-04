@@ -1,5 +1,4 @@
 object dmConn: TdmConn
-  OldCreateOrder = False
   OnCreate = DataModuleCreate
   Height = 239
   Width = 405

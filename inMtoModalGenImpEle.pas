@@ -62,6 +62,8 @@ end;
 procedure TfrmMtoModalGenImpEle.btnSalirClick(Sender: TObject);
 begin
   inherited;
+  sFicha := 'E';
+  sElegido := '';
   PostMessage(Handle, WM_CLOSE, 0, 0);
 end;
 

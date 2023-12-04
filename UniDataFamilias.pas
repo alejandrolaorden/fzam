@@ -60,8 +60,10 @@ begin
   unstrdprcContador.Connection := oConn;
   unqryArticulosFamilias.Connection := oConn;
   unqrySubFamilias.Connection := oConn;
+  unqryArticulosFamilias.MasterSource := (Owner as TfrmMtoFamilias).dsTablaG;
   unqryArticulosFamilias.Open;
   unqrySubFamilias.Open;
+
 end;
 
 procedure TdmFamilias.GetCodigoAutoFamilia;

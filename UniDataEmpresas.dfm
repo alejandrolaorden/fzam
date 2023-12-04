@@ -1,5 +1,4 @@
 inherited dmEmpresas: TdmEmpresas
-  OldCreateOrder = True
   Height = 168
   Width = 970
   inherited unqryTablaG: TUniQuery
@@ -251,6 +250,7 @@ inherited dmEmpresas: TdmEmpresas
     MasterFields = 'CODIGO_EMPRESA'
     DetailFields = 'CODIGO_EMPRESA_FACTURA'
     ReadOnly = True
+    Active = True
     Left = 480
     Top = 24
     ParamData = <

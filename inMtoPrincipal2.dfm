@@ -7,8 +7,8 @@ inherited frmOpenApp2: TfrmOpenApp2
   WindowState = wsMaximized
   OnClose = FormClose
   OnShow = FormShow
-  ExplicitWidth = 1156
-  ExplicitHeight = 612
+  ExplicitWidth = 1152
+  ExplicitHeight = 611
   TextHeight = 19
   object dxstsbr1: TdxStatusBar [0]
     AlignWithMargins = True
@@ -52,6 +52,8 @@ inherited frmOpenApp2: TfrmOpenApp2
     Font.Height = -12
     Font.Name = 'Lucida Sans Unicode'
     Font.Style = []
+    ExplicitTop = 525
+    ExplicitWidth = 1130
   end
   object Panel1: TPanel [1]
     Left = 0
@@ -61,6 +63,8 @@ inherited frmOpenApp2: TfrmOpenApp2
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1
+    ExplicitWidth = 1136
+    ExplicitHeight = 522
     object pcPrincipal: TcxPageControl
       Left = 0
       Top = 0
@@ -71,6 +75,8 @@ inherited frmOpenApp2: TfrmOpenApp2
       Properties.CloseButtonMode = cbmActiveAndHoverTabs
       Properties.CustomButtons.Buttons = <>
       Properties.Options = [pcoAlwaysShowGoDialogButton, pcoCloseButton, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize]
+      ExplicitWidth = 1136
+      ExplicitHeight = 451
       ClientRectBottom = 446
       ClientRectLeft = 3
       ClientRectRight = 1134
@@ -83,6 +89,8 @@ inherited frmOpenApp2: TfrmOpenApp2
       Height = 71
       Align = alBottom
       TabOrder = 1
+      ExplicitTop = 451
+      ExplicitWidth = 1136
       object cxMemo1: TcxMemo
         Left = 1
         Top = 1
@@ -93,6 +101,7 @@ inherited frmOpenApp2: TfrmOpenApp2
         Properties.ScrollBars = ssVertical
         TabOrder = 0
         Visible = False
+        ExplicitWidth = 1134
         Height = 69
         Width = 1138
       end

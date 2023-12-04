@@ -273,6 +273,10 @@ type
     actEmpresas: TAction;
     actFacturas: TAction;
     actArticulos: TAction;
+    tvFacturacionDESCRIPCION_FORMAPAGO: TcxGridDBColumn;
+    tvFacturacionGRUPO_ZONA_IVA_EMPRESA_FACTURA: TcxGridDBColumn;
+    tvFacturacionTARIFA_ARTICULO_CLIENTE_FACTURA: TcxGridDBColumn;
+    tvFacturacionCODIGO_IVA_FACTURA: TcxGridDBColumn;
     procedure btnGrabarClick(Sender: TObject);
     procedure btnNuevoClienteClick(Sender: TObject);
     procedure btnIraFacturaClick(Sender: TObject);

@@ -165,7 +165,8 @@ begin
 end;
 
 function BuscarTabla(Query: TUniQuery;
-                     const ClavePrimaria, Valores: string):Boolean;
+                     const ClavePrimaria,
+                           Valores: string):Boolean;
 var
   ValArr: TArray<string>;
   bIsOnlyOne:boolean;

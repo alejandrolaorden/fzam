@@ -242,6 +242,10 @@ type
     actClientes: TAction;
     actArticulos: TAction;
     actFacturas: TAction;
+    tvFacturacionDESCRIPCION_FORMAPAGO: TcxGridDBColumn;
+    tvFacturacionGRUPO_ZONA_IVA_EMPRESA_FACTURA: TcxGridDBColumn;
+    tvFacturacionTARIFA_ARTICULO_CLIENTE_FACTURA: TcxGridDBColumn;
+    tvFacturacionCODIGO_IVA_FACTURA: TcxGridDBColumn;
     procedure tsFichaEnter(Sender: TObject);
     procedure chkAplicaRetencionesPropertiesChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);

@@ -12,7 +12,7 @@ InstallDir "$PROGRAMFILES\${APPNAME}"
 InstallDirRegKey HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" UninstallString
 
 # define installer name
-OutFile "Fzam_Installer_x86.exe"
+OutFile "Fzam_Installer_x86_20230412_alpha.exe"
  
 # set desktop as install directory
 #InstallDir $DESKTOP
@@ -28,7 +28,8 @@ SetOutPath $INSTDIR
 File fzam.exe
 File fsqlf.exe
 File fzam.ico
-File "factuzam_original.sql"
+File factuzam_original.sql
+File factuzam_original_update_script.sql
 
 createShortCut "$DESKTOP\${APPNAME}.lnk" "$INSTDIR\fzam.exe" "" "$INSTDIR\fzam.ico"
 
@@ -43,8 +44,7 @@ WriteUninstaller $INSTDIR\uninstaller.exe
 # Install MariaDB silently
 DetailPrint "Instalando MariaDB silenciosamente..."
 SetOutPath $TEMP
-File "mariadb_installer.msi" 
-
+File "mariadb_installer.msi"
 #mariadb_installer.msi
 #SERVICENAME=MariaDB DATADIR="$APPDATA\Fzam\mariadb\data" PORT=3310 PASSWORD=default REMOVE=DEVEL REMOVE=HeidiSQL /qn
 ExecWait 'msiexec /i "$TEMP\mariadb_installer.msi" DATADIR="$INSTDIR\BaseDatos\mariadb\data" PORT=3310 PASSWORD=Zamora2023 SERVICENAME=MariaDBFzam ADDLOCAL=ALL REMOVE=HeidiSQL  /qn  '
@@ -63,6 +63,7 @@ Delete $INSTDIR\fzam.exe
 Delete $INSTDIR\fsqlf.exe
 Delete $INSTDIR\fzam.ico
 Delete $INSTDIR\factuzam_original.sql
+Delete $INSTDIR\factuzam_original_update_script.sql
 
 Delete "$DESKTOP\${APPNAME}.lnk"
 
@@ -70,7 +71,7 @@ DetailPrint "Desinstalando MariaDB silenciosamente..."
 #mariadb_installer.msi
 ExecWait 'msiexec /i "$TEMP\mariadb_installer.msi" REMOVE=ALL /qn ' 
 
-DeleteRegKey HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}"
+DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}"
 
 # Delete the uninstaller
 Delete $INSTDIR\uninstaller.exe
