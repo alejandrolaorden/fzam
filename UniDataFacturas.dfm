@@ -1,5 +1,4 @@
 inherited dmFacturas: TdmFacturas
-  OldCreateOrder = True
   Height = 638
   Width = 1332
   inherited unqryTablaG: TUniQuery

@@ -88,6 +88,7 @@ public
     function GetCodigoGrupoIVAAGricola:Integer;
     function GetUserEmpresaDef:String;
     procedure CalcularFactura;
+    function GetTipoIVA(sTipoIVA:string):Integer;
   end;
 //var
 //  dmFacturas: TdmFacturas;
@@ -264,14 +265,15 @@ end;
 
 procedure TdmFacturas.CalcularLinea;
 begin
-  if     (( dsLinFac.Dataset.State = dsInsert ) or
-          ( dsLinFac.Dataset.State = dsEdit )
-         ) then
+  with dsLinFac.DataSet do
   begin
-    dsLinFac.Dataset.FindField('TOTAL_FACTURA_LINEA').AsCurrency :=
-      dsLinFac.Dataset.FindField('CANTIDAD_FACTURA_LINEA').AsCurrency *
-      dsLinFac.Dataset.FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA')
-                                                                    .AsCurrency;
+    if ((State = dsInsert) or
+        (State = dsEdit)) then
+    begin
+      FindField('TOTAL_FACTURA_LINEA').AsCurrency :=
+                                FindField('CANTIDAD_FACTURA_LINEA').AsCurrency *
+                FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsCurrency;
+    end;
   end;
 end;
 
@@ -317,7 +319,7 @@ begin
      if ( (dsLinFac.DataSet.State <> dsEdit) and
           (dsLinFac.DataSet.State <> dsInsert)
         ) then
-          dsLinFac.DataSet.Edit;
+       dsLinFac.DataSet.Edit;
      FindField('CODIGO_ARTICULO_FACTURA_LINEA').AsString :=
                          DataSet.FindField('CODIGO_ARTICULO').AsString;
      FindField('TIPO_CANTIDAD_ARTICULO_FACTURA_LINEA').AsString :=
@@ -432,7 +434,7 @@ end;
 
 procedure TdmFacturas.CopiarEmpresaaFactura(DataSet:TDataSet);
 begin
-  with  unqryTablaG do
+  with unqryTablaG do
   begin
       if ((State <> dsEdit) and (State <> dsInsert)) then
         Edit;
@@ -665,6 +667,28 @@ begin
   Result := iResul;
 end;
 
+function TdmFacturas.GetTipoIVA(sTipoIVA: string): Integer;
+var
+  iPorcen:Integer;
+begin
+  with dmmFacturas.unqryTablaG do
+  begin
+  case IndexStr(sTipoIVA, ['N', 'R', 'S', 'E']) of
+    0: iPorcen := FindField('PORCEN_IVAN_FACTURA').AsInteger;
+    1: iPorcen := FindField('PORCEN_IVAR_FACTURA').AsInteger;
+    2: iPorcen := FindField('PORCEN_IVAS_FACTURA').AsInteger;
+    3: iPorcen := FindField('PORCEN_IVAE_FACTURA').AsInteger;
+    else
+    begin
+      ShowMessage('Tipo de Iva incorrecto');
+      iPorcen := unqryLinFac.FindField('PORCEN_IVAN_FACTURA').AsInteger;
+      unqryLinFac.FindField('TIPOIVA_ARTICULO_FACTURA_LINEA').AsString := 'N';
+    end;
+  end;
+  end;
+  Result := iPorcen;
+end;
+
 procedure TdmFacturas.GetCodigoAutoFactura;
 begin
   if ((unqryTablaG.FindField('NRO_FACTURA').AsString = '0') or
@@ -760,6 +784,7 @@ begin
     FieldByName('TIPO_CANTIDAD_ARTICULO_FACTURA_LINEA').AsString := 'Uds.';
     FieldByName('TOTAL_FACTURA_LINEA').AsString := '0';
     FieldByName('TIPOIVA_ARTICULO_FACTURA_LINEA').AsString := 'N';
+    FindField('PORCEN_IVA_FACTURA_LINEA').AsInteger := GetTipoIVA('N');
     FieldByName('ESIMP_INCL_TARIFA_FACTURA_LINEA').AsString :=
          unqryTablaG.FieldByName('ESIMP_INCL_TARIFA_CLIENTE_FACTURA').AsString;
     FindField('LINEA_FACTURA_LINEA').AsString := '0';

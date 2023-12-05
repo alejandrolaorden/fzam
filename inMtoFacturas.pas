@@ -296,6 +296,7 @@ type
     actCliente: TAction;
     lbldbCODIGO_CLIENTE_FACTURA: TcxDBLabel;
     lbldbCODIGO_CLIENTE: TcxDBLabel;
+    cxDBCheckBox1: TcxDBCheckBox;
     procedure sbGrabarClick(Sender: TObject);
     procedure btnUpdateClienteClick(Sender: TObject);
     procedure sbNuevaFacturaClick(Sender: TObject);
@@ -334,9 +335,6 @@ type
       Sender: TObject);
     procedure sbRectificarClick(Sender: TObject);
     procedure sbImprimirClick(Sender: TObject);
-    procedure
-          cxgrdbclmntv1TIPOIVA_ARTICULO_FACTURA_LINEAPropertiesEditValueChanged(
-      Sender: TObject);
     procedure chkESIVA_RECARGO_CLIENTE_FACTURAPropertiesChange(
       Sender: TObject);
     procedure btnImprimirReciboClick(Sender: TObject);
@@ -360,6 +358,8 @@ type
     procedure btnIrAEmpresaClick(Sender: TObject);
     procedure cxgrdbclmntv1CANTIDAD_FACTURA_LINEAPropertiesEditValueChanged(
       Sender: TObject);
+    procedure cxgrdbclmntv1TIPOIVA_ARTICULO_FACTURA_LINEAPropertiesChange(
+      Sender: TObject);
 //    procedure FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
   public
     procedure ActualizarComboSeries;
@@ -367,6 +367,7 @@ type
     procedure CrearTablaPrincipal; override;
     procedure ResetForm; override;
     procedure CambiarIVA;
+    procedure CalcularLinea;
   end;
 
 var
@@ -751,6 +752,33 @@ begin
    end;
 end;
 
+procedure TfrmMtoFacturas.CalcularLinea;
+begin
+  with dmmFacturas.unqryLinFac do
+  begin
+    if SameText( dmmFacturas.unqryTablaG.FieldByName(
+            'ESIMP_INCL_TARIFA_CLIENTE_FACTURA').AsString, 'S') then
+    begin
+      FindField('PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA').AsFloat :=
+               (FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat /
+                 (1 + FindField('PORCEN_IVA_FACTURA_LINEA').AsInteger/100));
+      FindField('TOTAL_FACTURA_LINEA').AsFloat :=
+               FindField('CANTIDAD_FACTURA_LINEA').AsFloat *
+               FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat;
+    end
+    else
+    begin
+      FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat :=
+               ( FindField('PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA').AsFloat *
+                    (1 +
+                    FindField('PORCEN_IVA_FACTURA_LINEA').AsInteger/100));
+      FindField('TOTAL_FACTURA_LINEA').AsFloat :=
+               FindField('CANTIDAD_FACTURA_LINEA').AsFloat *
+               FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat;
+    end;
+  end;
+end;
+
 procedure TfrmMtoFacturas.CambiarEstadoRecibo(sEstado: string);
 begin
   with dmmFacturas.unqryRecibos do
@@ -884,7 +912,6 @@ begin
       dbcPORCEN_REE_FACTURA.Visible := False;
       dbcTOTAL_REE_FACTURA.Visible := False;
   end;
-
 end;
 
 procedure TfrmMtoFacturas.
@@ -1186,44 +1213,26 @@ begin
 end;
 
 procedure TfrmMtoFacturas.
-          cxgrdbclmntv1TIPOIVA_ARTICULO_FACTURA_LINEAPropertiesEditValueChanged(
-                                                               Sender: TObject);
+                    cxgrdbclmntv1TIPOIVA_ARTICULO_FACTURA_LINEAPropertiesChange(
+  Sender: TObject);
 var
-    e: TcxCustomEdit;
-    iPorcen : Integer;
-    sTipoIVA : string;
+  e: TcxCustomEdit;
+  sTipoIVA : string;
 begin
   inherited;
-   inherited;
-    if (dmmFacturas <> nil) then
-    with dmmFacturas.unqryLinFac do
+  with dmmFacturas.unqryLinFac do
+  begin
+    if ((State = dsInsert) or (State = dsEdit)) then
     begin
-      if ((State = dsInsert) or (State = dsEdit)) then
-      begin
-        e := Sender as TcxCustomEdit;
-        FindField('TIPOIVA_ARTICULO_FACTURA_LINEA').AsString :=
-                                                       VarToStr(e.EditingValue);
-        sTipoIVA := FindField('TIPOIVA_ARTICULO_FACTURA_LINEA').AsString;
-        case IndexStr(sTipoIVA, ['N', 'R', 'S', 'E']) of
-          0: iPorcen :=
-             dmmFacturas.unqryTablaG.FindField('PORCEN_IVAN_FACTURA').AsInteger;
-          1: iPorcen :=
-             dmmFacturas.unqryTablaG.FindField('PORCEN_IVAR_FACTURA').AsInteger;
-          2: iPorcen :=
-             dmmFacturas.unqryTablaG.FindField('PORCEN_IVAS_FACTURA').AsInteger;
-          3: iPorcen :=
-             dmmFacturas.unqryTablaG.FindField('PORCEN_IVAE_FACTURA').AsInteger;
-          else
-          begin
-            ShowMessage('Tipo de Iva incorrecto');
-            iPorcen :=
-             dmmFacturas.unqryTablaG.FindField('PORCEN_IVAN_FACTURA').AsInteger;
-            FindField('TIPOIVA_ARTICULO_FACTURA_LINEA').AsString := 'N';
-          end;
-        end;
-        FindField('PORCEN_IVA_FACTURA_LINEA').AsInteger := iPorcen;
-      end;
+      e := Sender as TcxCustomEdit;
+      FindField('TIPOIVA_ARTICULO_FACTURA_LINEA').AsString :=
+                                                     VarToStr(e.EditingValue);
+      sTipoIVA := FindField('TIPOIVA_ARTICULO_FACTURA_LINEA').AsString;
+      FindField('PORCEN_IVA_FACTURA_LINEA').AsInteger :=
+                                               dmmFacturas.GetTipoIVA(sTipoIVA);
+      CalcularLinea;
     end;
+  end;
 end;
 
 procedure TfrmMtoFacturas.sbGrabarClick(Sender: TObject);
@@ -1266,13 +1275,15 @@ end;
 
 procedure TfrmMtoFacturas.CambiarIVA;
 begin
-    if ((dmmFacturas <> nil) and
-      (dsTablaG.DataSet <> nil) and
-      ((dsTablaG.DataSet.State = dsEdit) or
-       (dsTablaG.DataSet.State = dsInsert))) then
-         dmmFacturas.AsignarIVA(
+  if ( (dmmFacturas <> nil) and
+       (dsTablaG.DataSet <> nil) and
+       ((dsTablaG.DataSet.State = dsEdit) or
+        (dsTablaG.DataSet.State = dsInsert)
+       )
+     ) then
+       dmmFacturas.AsignarIVA(
         dsTablaG.DataSet.FieldByName('GRUPO_ZONA_IVA_EMPRESA_FACTURA').AsString,
-          dmmFacturas.unqryTablaG);
+        dmmFacturas.unqryTablaG);
 end;
 initialization
   ForceReferenceToClass(TfrmMtoFacturas);

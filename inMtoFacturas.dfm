@@ -8,7 +8,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
   ClientHeight = 844
   ClientWidth = 1231
   Scaled = False
-  ExplicitTop = -171
+  ExplicitTop = -208
   ExplicitWidth = 1231
   ExplicitHeight = 844
   TextHeight = 19
@@ -968,8 +968,10 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                     DataBinding.FieldName = 'ESIMP_INCL_TARIFA_FACTURA_LINEA'
                     DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxCheckBoxProperties'
+                    Properties.ReadOnly = True
                     Properties.ValueChecked = 'S'
                     Properties.ValueUnchecked = 'N'
+                    Visible = False
                     Width = 79
                   end
                   object cxgrdbclmntv1TIPOIVA_ARTICULO_FACTURA_LINEA: TcxGridDBColumn
@@ -985,7 +987,8 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                         FieldName = 'NOMBRE_TIPO_IVA'
                       end>
                     Properties.ListOptions.ShowHeader = False
-                    Properties.OnEditValueChanged = cxgrdbclmntv1TIPOIVA_ARTICULO_FACTURA_LINEAPropertiesEditValueChanged
+                    Properties.ReadOnly = False
+                    Properties.OnChange = cxgrdbclmntv1TIPOIVA_ARTICULO_FACTURA_LINEAPropertiesChange
                     Width = 109
                   end
                   object cxgrdbclmntv1PORCEN_IVA_FACTURA_LINEA: TcxGridDBColumn
@@ -1663,6 +1666,10 @@ inherited frmMtoFacturas: TfrmMtoFacturas
             object tsRecibos: TcxTabSheet
               Caption = '&3_Recibos'
               ImageIndex = 4
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object pnlRightRecibos: TPanel
                 Left = 916
                 Top = 0
@@ -1978,7 +1985,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
               Margins.Bottom = 4
               Align = alClient
               TabOrder = 0
-              Properties.ActivePage = tsCabecera
+              Properties.ActivePage = tsDatosCliente
               Properties.CustomButtons.Buttons = <>
               Properties.Options = [pcoAlwaysShowGoDialogButton, pcoRedrawOnResize]
               Properties.Style = 9
@@ -2685,6 +2692,21 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                     Height = 21
                     Width = 94
                   end
+                  object cxDBCheckBox1: TcxDBCheckBox
+                    Left = 524
+                    Top = 242
+                    Caption = 'Tarifa con Imp Incl'
+                    DataBinding.DataField = 'ESIMP_INCL_TARIFA_CLIENTE_FACTURA'
+                    DataBinding.DataSource = dsTablaG
+                    Properties.DisplayUnchecked = 'True'
+                    Properties.DisplayGrayed = 'False'
+                    Properties.ReadOnly = True
+                    Properties.ValueChecked = 'S'
+                    Properties.ValueUnchecked = 'N'
+                    Style.TransparentBorder = False
+                    TabOrder = 23
+                    Transparent = True
+                  end
                 end
                 object btnUpdateCliente: TcxButton
                   Left = 799
@@ -2726,11 +2748,13 @@ inherited frmMtoFacturas: TfrmMtoFacturas
         end
       end
       inherited tsPerfil: TcxTabSheet
-        ExplicitWidth = 1078
-        ExplicitHeight = 766
+        ExplicitLeft = 4
+        ExplicitTop = 30
+        ExplicitWidth = 1077
+        ExplicitHeight = 768
         inherited pnlPerfilTop: TPanel
           Width = 1078
-          ExplicitWidth = 1078
+          ExplicitWidth = 1077
           inherited edtPerfilBusq: TcxTextEdit
             ExplicitHeight = 27
           end
@@ -2883,6 +2907,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
     Top = 395
   end
   inherited dsTablaG: TDataSource
+    DataSet = dmFacturas.unqryTablaG
     Left = 1020
     Top = 471
   end
