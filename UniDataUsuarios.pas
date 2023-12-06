@@ -50,7 +50,8 @@ begin
   with unqrySol do
   begin
     Connection := inLibGlobalVar.oConn;
-    SQL.Text :=  'SELECT * FROM fza_usuarios_grupos ' +
+    SQL.Text :=  'SELECT * '+
+                 '  FROM fza_usuarios_grupos ' +
                  ' WHERE GRUPO_GRUPO = :grupo ';
     ParamByName('grupo').AsString := sUsuario;
     Open;

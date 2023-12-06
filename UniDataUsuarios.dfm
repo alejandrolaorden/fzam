@@ -1,5 +1,4 @@
 inherited dmUsuarios: TdmUsuarios
-  OldCreateOrder = True
   Width = 330
   inherited unqryTablaG: TUniQuery
     Connection = dmConn.conUni
