@@ -206,27 +206,28 @@ end;
 procedure TfrmMtoGen.AplicarEtiquetas;
 var
   i:integer;
+  cComponent : TComponent;
   cxGrid: TcxGridDBTableView;
 begin
   if (DsTablaG.Dataset <> nil) then
     lblTablaOrigen.Caption :=
                 GetTableNameFromQuery((dsTablaG.Dataset as TUNIQuery).SQL.Text);
-//  if (StrToBool(GetPerfilValueDef(oPerfilDic, 'oCreateItems', 'False'))) then
-//  begin
-//   for i:= 0 to Self.Componentcount - 1 do
-//   begin
-//     if Self.Components[i].ClassNameis('TcxGridDBTableView') then
-//     begin
-//    if ((GetPerfilValueDef(oPerfilDic, 'oApplyWidth', 'False')) = 'True') then
-//       begin
-//         cxGrid := (Self.Components[i] as TcxGridDBTableView);
-//         cxGrid.ClearItems;
-//         cxGrid.DataController.CreateAllItems;
-//         cxGrid.ApplyBestFit();
-//       end;
-//     end;
-//   end;
-//  end;
+  if (StrToBool(GetPerfilValueDef(oPerfilDic, 'oCreateItems', 'False'))) then
+  begin
+   for cComponent in (Self as TComponent) do
+   begin
+     if cComponent.ClassNameis('TcxGridDBTableView') then
+     begin
+      if ((GetPerfilValueDef(oPerfilDic, 'oApplyWidth', 'False')) = 'True') then
+       begin
+         cxGrid := (cComponent as TcxGridDBTableView);
+         cxGrid.ClearItems;
+         cxGrid.DataController.CreateAllItems;
+         cxGrid.ApplyBestFit();
+       end;
+     end;
+   end;
+  end;
   if ((GetPerfilValueDef(oPerfilDic, 'oApplyWidth', 'False')) = 'True') then
   begin
     for i:= 0 to Self.Componentcount - 1 do
@@ -258,19 +259,6 @@ begin
   if (tsPerfil.TabVisible = true) then
     AbrirPerfiles(tsPerfil.TabVisible);
 end;
-
-//procedure TfrmMtoGen.ApplicationEvents1ShortCut(var Msg: TWMKey;
-//  var Handled: Boolean);
-//var
-//  Shift: TShiftState;
-//begin
-//  inherited;
-////  Handled := False;
-////  Handled := (Shift = [ssCtrl]) and
-////           (Msg.CharCode in [Ord('F'), Ord('A'), Ord('E'), Ord('K')]);
-////  if Handled then
-////    ShowMessage('Has pulsado Control + cosa, jeje');
-//end;
 
 procedure TfrmMtoGen.btnCargarCaptionsClick(Sender: TObject);
 begin
@@ -406,12 +394,10 @@ procedure TfrmMtoGen.CargarPerfilesComunes(sUser:string = 'Todos');
 begin
   with odmPerfiles do
   begin
-    //GrabarPerfil('Todos', Self.Name, 'oSkin', 'cxPCPainter' );
     GrabarPerfil(sUser, Self.Name, 'oRenameComponents', 'False' );
-    GrabarPerfil(sUser, Self.Name, 'oCreateItems', 'False' );
+    GrabarPerfil(sUser, Self.Name, 'oCreateItems', 'True' );
     GrabarPerfil(sUser, Self.Name, 'oBusqGlobal', 'Grid' );
-    //GrabarPerfil('Todos', Self.Name, 'oApplySkin', 'False' );
-    GrabarPerfil(sUser, Self.Name, 'oApplyWidth', 'False' );
+    GrabarPerfil(sUser, Self.Name, 'oApplyWidth', 'True' );
     GrabarPerfil(sUser, Self.Name, 'oMostrarPerfil', 'False' );
     GrabarPerfil(sUser, Self.Name, 'oGetSQLFromDB', 'False' );
   end;

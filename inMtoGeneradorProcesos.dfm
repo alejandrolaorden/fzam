@@ -7,7 +7,6 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
   OnKeyDown = FormKeyDown
   ExplicitWidth = 999
   ExplicitHeight = 571
-  PixelsPerInch = 96
   TextHeight = 19
   inherited pButtonPage: TPanel
     Width = 859
@@ -19,45 +18,52 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
       Width = 859
       Height = 531
       TabOrder = 1
+      Properties.ActivePage = tsFicha
       ExplicitWidth = 859
       ExplicitHeight = 531
       ClientRectBottom = 525
       ClientRectRight = 853
       inherited tsLista: TcxTabSheet
-        ExplicitWidth = 851
-        ExplicitHeight = 497
+        ExplicitWidth = 850
+        ExplicitHeight = 493
         inherited cxGrdPrincipal: TcxGrid
-          Width = 851
-          Height = 497
-          ExplicitWidth = 851
-          ExplicitHeight = 497
+          Width = 850
+          Height = 493
+          ExplicitWidth = 850
+          ExplicitHeight = 493
           inherited cxGrdDBTabPrin: TcxGridDBTableView
             object cxgrdbclmnGrdDBTabPrinCODIGO_GENERADORPROCESO: TcxGridDBColumn
               Caption = 'C'#243'digo Proceso'
               DataBinding.FieldName = 'CODIGO_GENERADORPROCESO'
+              DataBinding.IsNullValueType = True
             end
             object cxgrdbclmnGrdDBTabPrinNOMBRE_GENERADORPROCESO: TcxGridDBColumn
               Caption = 'Nombre Proceso'
               DataBinding.FieldName = 'NOMBRE_GENERADORPROCESO'
+              DataBinding.IsNullValueType = True
               Width = 471
             end
             object cxgrdbclmnGrdDBTabPrinINSTANTEMODIF: TcxGridDBColumn
               DataBinding.FieldName = 'INSTANTEMODIF'
+              DataBinding.IsNullValueType = True
               Visible = False
               VisibleForCustomization = False
             end
             object cxgrdbclmnGrdDBTabPrinINSTANTEALTA: TcxGridDBColumn
               DataBinding.FieldName = 'INSTANTEALTA'
+              DataBinding.IsNullValueType = True
               Visible = False
               VisibleForCustomization = False
             end
             object cxgrdbclmnGrdDBTabPrinUSUARIOALTA: TcxGridDBColumn
               DataBinding.FieldName = 'USUARIOALTA'
+              DataBinding.IsNullValueType = True
               Visible = False
               VisibleForCustomization = False
             end
             object cxgrdbclmnGrdDBTabPrinUSUARIOMODIF: TcxGridDBColumn
               DataBinding.FieldName = 'USUARIOMODIF'
+              DataBinding.IsNullValueType = True
               Visible = False
               VisibleForCustomization = False
             end
@@ -151,7 +157,7 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
             Height = 374
             Align = alClient
             TabOrder = 0
-            Properties.ActivePage = tsMetadatos
+            Properties.ActivePage = tsSQL
             Properties.CustomButtons.Buttons = <>
             ClientRectBottom = 368
             ClientRectLeft = 3
@@ -160,10 +166,6 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
             object tsSQL: TcxTabSheet
               Caption = '&1_C'#243'digo SQL'
               ImageIndex = 0
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object pnl6: TPanel
                 Left = 0
                 Top = 251
@@ -171,8 +173,6 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
                 Height = 85
                 Align = alBottom
                 TabOrder = 0
-                ExplicitTop = 255
-                ExplicitWidth = 841
                 object cxmResul: TcxMemo
                   Left = 1
                   Top = 1
@@ -189,8 +189,6 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
                 Height = 251
                 Align = alClient
                 TabOrder = 1
-                ExplicitWidth = 841
-                ExplicitHeight = 255
                 object dbsyndtPROCESO_GENERADORPROCESO: TDBSynEdit
                   Left = 1
                   Top = 1
@@ -200,16 +198,12 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
                   DataField = 'PROCESO_GENERADORPROCESO'
                   DataSource = dsTablaG
                   Align = alClient
-                  Ctl3D = True
-                  Font.Charset = DEFAULT_CHARSET
+                  Font.Charset = ANSI_CHARSET
                   Font.Color = clWindowText
-                  Font.Height = -15
-                  Font.Name = 'Consolas'
-                  Font.Pitch = fpFixed
+                  Font.Height = -19
+                  Font.Name = 'Lucida Console'
                   Font.Style = []
                   Font.Quality = fqClearTypeNatural
-                  ParentColor = False
-                  ParentCtl3D = False
                   ParentFont = False
                   TabOrder = 0
                   OnKeyDown = dbsyndtPROCESO_GENERADORPROCESOKeyDown
@@ -245,8 +239,6 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
                   SelectedColor.Alpha = 0.400000005960464500
                   TabWidth = 2
                   WantTabs = True
-                  ExplicitWidth = 839
-                  ExplicitHeight = 253
                   RemovedKeystrokes = <
                     item
                       Command = ecTab
@@ -274,53 +266,50 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
               Caption = '&2_Metadatos'
               ImageIndex = 2
               object cxspltr2: TcxSplitter
-                Left = 233
+                Left = 377
                 Top = 0
                 Width = 4
                 Height = 336
                 HotZoneClassName = 'TcxMediaPlayer9Style'
                 Control = pnlTree
+                ExplicitLeft = 233
               end
               object pnlTabs: TPanel
-                Left = 237
+                Left = 381
                 Top = 0
-                Width = 602
+                Width = 458
                 Height = 336
                 Align = alClient
                 Caption = 'pnlTabs'
                 TabOrder = 1
+                ExplicitLeft = 237
+                ExplicitWidth = 602
                 object pcMetadato: TcxPageControl
                   Left = 1
                   Top = 1
-                  Width = 600
+                  Width = 456
                   Height = 334
                   Align = alClient
                   TabOrder = 0
-                  Properties.ActivePage = tsContenido
+                  Properties.ActivePage = tsEstructura
                   Properties.CustomButtons.Buttons = <>
+                  ExplicitWidth = 600
                   ClientRectBottom = 328
                   ClientRectLeft = 3
-                  ClientRectRight = 594
+                  ClientRectRight = 450
                   ClientRectTop = 32
                   object tsEstructura: TcxTabSheet
                     Caption = '&Estructura Metadato'
                     ImageIndex = 0
-                    ExplicitLeft = 0
-                    ExplicitTop = 0
-                    ExplicitWidth = 0
-                    ExplicitHeight = 0
+                    ExplicitWidth = 591
                     object syndtEstructura: TSynEdit
                       Left = 0
                       Top = 0
-                      Width = 591
+                      Width = 447
                       Height = 296
                       Align = alClient
-                      Font.Charset = DEFAULT_CHARSET
-                      Font.Color = clWindowText
-                      Font.Height = -13
-                      Font.Name = 'Courier New'
-                      Font.Style = []
-                      Font.Quality = fqClearTypeNatural
+                      ParentColor = True
+                      ParentFont = True
                       TabOrder = 0
                       OnKeyDown = syndtEstructuraKeyDown
                       UseCodeFolding = False
@@ -353,8 +342,7 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
                       Highlighter = synsqlsyn2
                       Options = [eoAutoIndent, eoDragDropEditing, eoEnhanceHomeKey, eoEnhanceEndKey, eoGroupUndo, eoScrollPastEol, eoShowScrollHint, eoSmartTabDelete, eoSmartTabs, eoTabIndent, eoTabsToSpaces]
                       SelectedColor.Alpha = 0.400000005960464500
-                      ExplicitWidth = 590
-                      ExplicitHeight = 304
+                      ExplicitWidth = 591
                       RemovedKeystrokes = <
                         item
                           Command = ecTab
@@ -391,10 +379,11 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
                   object tsContenido: TcxTabSheet
                     Caption = '&Vista Contenido'
                     ImageIndex = 1
+                    ExplicitWidth = 591
                     object cxgrdMetadatos1: TcxGrid
                       Left = 0
                       Top = 0
-                      Width = 474
+                      Width = 330
                       Height = 296
                       Margins.Left = 4
                       Margins.Top = 4
@@ -402,6 +391,7 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
                       Margins.Bottom = 4
                       Align = alClient
                       TabOrder = 0
+                      ExplicitWidth = 474
                       object tvMetadatostvVista: TcxGridDBTableView
                         Navigator.Buttons.ConfirmDelete = True
                         Navigator.Buttons.CustomButtons = <>
@@ -466,34 +456,41 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
                         object cxgrdbclmncxgrdbtblvwcxgrd1DBTableView1LINEA_LINEA1: TcxGridDBColumn
                           Caption = 'Nro Linea'
                           DataBinding.FieldName = 'LINEA_FACTURA_LINEA'
+                          DataBinding.IsNullValueType = True
                           Width = 28
                         end
                         object cxgrdbclmncxgrdbtblvwcxgrd1DBTableView1CODIGO_ARTICULO_LINEA1: TcxGridDBColumn
                           Caption = 'C'#243'digo Art'#237'culo'
                           DataBinding.FieldName = 'CODIGO_ARTICULO_FACTURA_LINEA'
+                          DataBinding.IsNullValueType = True
                           Width = 164
                         end
                         object cxgrdbclmncxgrdbtblvwcxgrd1DBTableView1DESCRIPCION_ARTICULO_LINEA1: TcxGridDBColumn
                           Caption = 'Descripci'#243'n'
                           DataBinding.FieldName = 'DESCRIPCION_ARTICULO_FACTURA_LINEA'
+                          DataBinding.IsNullValueType = True
                           Width = 162
                         end
                         object cxgrdbclmncxgrdbtblvwcxgrd1DBTableView1CANTIDAD_LINEA1: TcxGridDBColumn
                           Caption = 'Cantidad'
                           DataBinding.FieldName = 'CANTIDAD_FACTURA_LINEA'
+                          DataBinding.IsNullValueType = True
                           Width = 84
                         end
                         object cxgrdbclmnLineasFacturacionTIPO_CANTIDAD_ARTICULO_FACTURA_LINEA1: TcxGridDBColumn
                           Caption = 'Tipo Cantidad'
                           DataBinding.FieldName = 'TIPO_CANTIDAD_ARTICULO_FACTURA_LINEA'
+                          DataBinding.IsNullValueType = True
                         end
                         object cxgrdbclmnLineasFacturacionPRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA1: TcxGridDBColumn
                           Caption = 'Precio SIVA'
                           DataBinding.FieldName = 'PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA'
+                          DataBinding.IsNullValueType = True
                         end
                         object cxgrdbclmnLineasFacturacionPORCEN_IVA_FACTURA_LINEA1: TcxGridDBColumn
                           Caption = 'Porcentaje IVA'
                           DataBinding.FieldName = 'PORCEN_IVA_FACTURA_LINEA'
+                          DataBinding.IsNullValueType = True
                           PropertiesClassName = 'TcxSpinEditProperties'
                           Properties.DisplayFormat = '0.00 %'
                           Properties.EditFormat = '0.00 %'
@@ -504,22 +501,26 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
                         object cxgrdbclmnLineasFacturacionTIPOIVA_ARTICULO_FACTURA_LINEA1: TcxGridDBColumn
                           Caption = 'Tipo IVA'
                           DataBinding.FieldName = 'TIPOIVA_ARTICULO_FACTURA_LINEA'
+                          DataBinding.IsNullValueType = True
                         end
                         object cxgrdbclmncxgrdbtblvwcxgrd1DBTableView1PRECIOVENTA_ARTICULO_LINEA1: TcxGridDBColumn
                           Caption = 'Precio CIVA'
                           DataBinding.FieldName = 'PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA'
+                          DataBinding.IsNullValueType = True
                           PropertiesClassName = 'TcxCurrencyEditProperties'
                           Width = 84
                         end
                         object cxgrdbclmncxgrdbtblvwcxgrd1DBTableView1SUM_TOTAL_LINEA1: TcxGridDBColumn
                           Caption = 'Total'
                           DataBinding.FieldName = 'TOTAL_FACTURA_LINEA'
+                          DataBinding.IsNullValueType = True
                           PropertiesClassName = 'TcxCurrencyEditProperties'
                           Width = 84
                         end
                         object cxgrdbclmnLineasFacturacionFECHA_ENTREGA_FACTURA_LINEA1: TcxGridDBColumn
                           Caption = 'Fecha de Entrega'
                           DataBinding.FieldName = 'FECHA_ENTREGA_FACTURA_LINEA'
+                          DataBinding.IsNullValueType = True
                           PropertiesClassName = 'TcxDateEditProperties'
                         end
                       end
@@ -528,12 +529,13 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
                       end
                     end
                     object pnlFacturaOpts1: TPanel
-                      Left = 474
+                      Left = 330
                       Top = 0
                       Width = 117
                       Height = 296
                       Align = alRight
                       TabOrder = 1
+                      ExplicitLeft = 474
                       object btnExportarExcelMeta: TcxButton
                         Left = 6
                         Top = 8
@@ -559,7 +561,7 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
               object pnlTree: TPanel
                 Left = 0
                 Top = 0
-                Width = 233
+                Width = 377
                 Height = 336
                 Align = alLeft
                 Caption = 'pnlTree'
@@ -567,7 +569,7 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
                 object tv1: TdxDBTreeView
                   Left = 1
                   Top = 1
-                  Width = 231
+                  Width = 375
                   Height = 293
                   ShowNodeHint = False
                   DataSource = dmGeneradorProcesos.dsMetadatos
@@ -580,19 +582,20 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
                   ReadOnly = True
                   Indent = 19
                   Align = alClient
-                  ParentColor = False
                   Options = [trCanDBNavigate, trSmartRecordCopy, trCheckHasChildren]
                   SelectedIndex = -1
                   TabOrder = 0
                   OnDblClick = tv1DblClick
+                  ExplicitWidth = 231
                 end
                 object pnlTreeBotton: TPanel
                   Left = 1
                   Top = 294
-                  Width = 231
+                  Width = 375
                   Height = 41
                   Align = alBottom
                   TabOrder = 1
+                  ExplicitWidth = 231
                   object btRefresh: TcxButton
                     Left = 5
                     Top = 6
@@ -618,15 +621,11 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
             object tsVistaDatos: TcxTabSheet
               Caption = '&3_VistaDatos'
               ImageIndex = 3
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object cxVista: TcxGrid
                 Left = 0
                 Top = 0
-                Width = 724
-                Height = 340
+                Width = 722
+                Height = 336
                 Margins.Left = 4
                 Margins.Top = 4
                 Margins.Right = 4
@@ -698,34 +697,41 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
                   object cxgrdbclmncxgrdbtblvwcxgrd1DBTableView1LINEA_LINEA11: TcxGridDBColumn
                     Caption = 'Nro Linea'
                     DataBinding.FieldName = 'LINEA_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     Width = 28
                   end
                   object cxgrdbclmncxgrdbtblvwcxgrd1DBTableView1CODIGO_ARTICULO_LINEA11: TcxGridDBColumn
                     Caption = 'C'#243'digo Art'#237'culo'
                     DataBinding.FieldName = 'CODIGO_ARTICULO_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     Width = 164
                   end
                   object cxgrdbclmncxgrdbtblvwcxgrd1DBTableView1DESCRIPCION_ARTICULO_LINEA11: TcxGridDBColumn
                     Caption = 'Descripci'#243'n'
                     DataBinding.FieldName = 'DESCRIPCION_ARTICULO_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     Width = 162
                   end
                   object cxgrdbclmncxgrdbtblvwcxgrd1DBTableView1CANTIDAD_LINEA11: TcxGridDBColumn
                     Caption = 'Cantidad'
                     DataBinding.FieldName = 'CANTIDAD_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     Width = 84
                   end
                   object cxgrdbclmnLineasFacturacionTIPO_CANTIDAD_ARTICULO_FACTURA_LINEA11: TcxGridDBColumn
                     Caption = 'Tipo Cantidad'
                     DataBinding.FieldName = 'TIPO_CANTIDAD_ARTICULO_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                   end
                   object cxgrdbclmnLineasFacturacionPRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA11: TcxGridDBColumn
                     Caption = 'Precio SIVA'
                     DataBinding.FieldName = 'PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                   end
                   object cxgrdbclmnLineasFacturacionPORCEN_IVA_FACTURA_LINEA11: TcxGridDBColumn
                     Caption = 'Porcentaje IVA'
                     DataBinding.FieldName = 'PORCEN_IVA_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxSpinEditProperties'
                     Properties.DisplayFormat = '0.00 %'
                     Properties.EditFormat = '0.00 %'
@@ -736,22 +742,26 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
                   object cxgrdbclmnLineasFacturacionTIPOIVA_ARTICULO_FACTURA_LINEA11: TcxGridDBColumn
                     Caption = 'Tipo IVA'
                     DataBinding.FieldName = 'TIPOIVA_ARTICULO_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                   end
                   object cxgrdbclmncxgrdbtblvwcxgrd1DBTableView1PRECIOVENTA_ARTICULO_LINEA11: TcxGridDBColumn
                     Caption = 'Precio CIVA'
                     DataBinding.FieldName = 'PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxCurrencyEditProperties'
                     Width = 84
                   end
                   object cxgrdbclmncxgrdbtblvwcxgrd1DBTableView1SUM_TOTAL_LINEA11: TcxGridDBColumn
                     Caption = 'Total'
                     DataBinding.FieldName = 'TOTAL_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxCurrencyEditProperties'
                     Width = 84
                   end
                   object cxgrdbclmnLineasFacturacionFECHA_ENTREGA_FACTURA_LINEA11: TcxGridDBColumn
                     Caption = 'Fecha de Entrega'
                     DataBinding.FieldName = 'FECHA_ENTREGA_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxDateEditProperties'
                   end
                 end
@@ -760,10 +770,10 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
                 end
               end
               object pnlFacturaOpts: TPanel
-                Left = 724
+                Left = 722
                 Top = 0
                 Width = 117
-                Height = 340
+                Height = 336
                 Align = alRight
                 TabOrder = 1
                 object btnExportarExcel: TcxButton
@@ -908,60 +918,89 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
         inherited pnlPerfilTop: TPanel
           Width = 850
           ExplicitWidth = 850
-          inherited edtPerfilBusq: TcxTextEdit
-            ExplicitHeight = 27
-          end
         end
         inherited pnlPerfilDetail: TPanel
           Width = 850
           Height = 436
-          ExplicitWidth = 851
-          ExplicitHeight = 440
+          ExplicitWidth = 850
+          ExplicitHeight = 436
           inherited cxgrdPerfil: TcxGrid
-            Width = 851
-            Height = 440
-            ExplicitWidth = 851
-            ExplicitHeight = 440
+            Width = 850
+            Height = 436
+            ExplicitWidth = 850
+            ExplicitHeight = 436
             inherited tvPerfil: TcxGridDBTableView
+              inherited tvPerfilUSUARIO_GRUPO_PERFILES: TcxGridDBColumn
+                DataBinding.IsNullValueType = True
+              end
+              inherited tvPerfilKEY_PERFILES: TcxGridDBColumn
+                DataBinding.IsNullValueType = True
+              end
+              inherited tvPerfilSUBKEY_PERFILES: TcxGridDBColumn
+                DataBinding.IsNullValueType = True
+              end
+              inherited tvPerfilVALUE_PERFILES: TcxGridDBColumn
+                DataBinding.IsNullValueType = True
+              end
+              inherited tvPerfilVALUE_TEXT_PERFILES: TcxGridDBColumn
+                DataBinding.IsNullValueType = True
+              end
+              inherited tvPerfilTYPE_BLOB_PERFILES: TcxGridDBColumn
+                DataBinding.IsNullValueType = True
+              end
+              inherited tvPerfilVALUE_BLOB_PERFILES: TcxGridDBColumn
+                DataBinding.IsNullValueType = True
+              end
               object cxgrdbclmnPerfilUSUARIO_GRUPO_PERFILES: TcxGridDBColumn
                 DataBinding.FieldName = 'USUARIO_GRUPO_PERFILES'
+                DataBinding.IsNullValueType = True
                 Width = 167
               end
               object cxgrdbclmnPerfilKEY_PERFILES: TcxGridDBColumn
                 DataBinding.FieldName = 'KEY_PERFILES'
+                DataBinding.IsNullValueType = True
                 Width = 112
               end
               object cxgrdbclmnPerfilSUBKEY_PERFILES: TcxGridDBColumn
                 DataBinding.FieldName = 'SUBKEY_PERFILES'
+                DataBinding.IsNullValueType = True
                 Width = 291
               end
               object cxgrdbclmnPerfilVALUE_PERFILES: TcxGridDBColumn
                 DataBinding.FieldName = 'VALUE_PERFILES'
+                DataBinding.IsNullValueType = True
                 Width = 188
               end
               object cxgrdbclmnPerfilVALUE_TEXT_PERFILES: TcxGridDBColumn
                 DataBinding.FieldName = 'VALUE_TEXT_PERFILES'
+                DataBinding.IsNullValueType = True
                 PropertiesClassName = 'TcxBlobEditProperties'
                 Properties.BlobEditKind = bekMemo
               end
               object cxgrdbclmnPerfilTYPE_BLOB_PERFILES: TcxGridDBColumn
                 DataBinding.FieldName = 'TYPE_BLOB_PERFILES'
+                DataBinding.IsNullValueType = True
               end
               object cxgrdbclmnPerfilVALUE_BLOB_PERFILES: TcxGridDBColumn
                 DataBinding.FieldName = 'VALUE_BLOB_PERFILES'
+                DataBinding.IsNullValueType = True
               end
               object cxgrdbclmnPerfilINSTANTEMODIF: TcxGridDBColumn
                 DataBinding.FieldName = 'INSTANTEMODIF'
+                DataBinding.IsNullValueType = True
               end
               object cxgrdbclmnPerfilINSTANTEALTA: TcxGridDBColumn
                 DataBinding.FieldName = 'INSTANTEALTA'
+                DataBinding.IsNullValueType = True
               end
               object cxgrdbclmnPerfilUSUARIOALTA: TcxGridDBColumn
                 DataBinding.FieldName = 'USUARIOALTA'
+                DataBinding.IsNullValueType = True
                 Width = 88
               end
               object cxgrdbclmnPerfilUSUARIOMODIF: TcxGridDBColumn
                 DataBinding.FieldName = 'USUARIOMODIF'
+                DataBinding.IsNullValueType = True
                 Width = 96
               end
             end

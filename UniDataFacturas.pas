@@ -58,6 +58,8 @@ type
     unqryIvasTipos: TUniQuery;
     dsIvasTipos: TDataSource;
     dsFactura: TDataSource;
+    unqryCabIVA: TUniQuery;
+    dsCabIVA: TDataSource;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
     procedure zqryLinFacBeforeInsert(DataSet: TDataSet);
@@ -581,8 +583,11 @@ begin
   unqryRecibosPrint.Connection := inLibGlobalVar.oConn;
   unqrySeriesEditCombo.Connection := inLibGlobalVar.oConn;
   unqryIvasTipos.Connection := inLibGlobalVar.oConn;
+  unqryCabIVA.Connection := inlibGlobalVar.oConn;
+  unqryCabIVA.MasterSource := (Self.Owner as TfrmMtoFacturas).dsTablaG;
   unqryLinfac.MasterSource := (Self.Owner as TfrmMtoFacturas).dsTablaG;
   unqryRecibos.MasterSource := (Self.Owner as TfrmMtoFacturas).dsTablaG;
+  unqryCabIVA.Open;
   unqryIvasTipos.Open;
   unqryLinFac.Open;
   unqrySeries.Open;
@@ -603,6 +608,7 @@ begin
   unqryPerfiles.Close;
   unqryRecibos.Close;
   unqrySeriesEditCombo.Close;
+  unqryCabIVA.Close;
 end;
 
 function TdmFacturas.FormaPagoDefault: String;

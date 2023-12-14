@@ -1,25 +1,23 @@
 inherited frmMtoGrupos: TfrmMtoGrupos
   Caption = 'Grupos'
-  PixelsPerInch = 96
   TextHeight = 19
   inherited pButtonPage: TPanel
     inherited pcPantalla: TcxPageControl
+      Properties.ActivePage = tsFicha
       inherited tsLista: TcxTabSheet
-        ExplicitLeft = 3
-        ExplicitTop = 32
-        ExplicitWidth = 942
-        ExplicitHeight = 480
         inherited cxGrdPrincipal: TcxGrid
           inherited cxGrdDBTabPrin: TcxGridDBTableView
             OptionsData.Editing = True
             object cxGrdDBTabPrinGRUPO_USUARIO: TcxGridDBColumn
               Caption = 'Nombre Grupo'
               DataBinding.FieldName = 'GRUPO_GRUPO'
+              DataBinding.IsNullValueType = True
               Width = 136
             end
             object cxGrdDBTabPrinESGRUPOADMINISTRADOR: TcxGridDBColumn
               Caption = 'Es Grupo Administrador'
               DataBinding.FieldName = 'ESGRUPOADMINISTRADOR_GRUPO'
+              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxCheckBoxProperties'
               Properties.ValueChecked = 'S'
               Properties.ValueUnchecked = 'N'
@@ -40,11 +38,13 @@ inherited frmMtoGrupos: TfrmMtoGrupos
             Left = 88
             Top = 39
             Caption = 'Nombre grupo'
+            Transparent = True
           end
           object cxLabel2: TcxLabel
             Left = 24
             Top = 75
             Caption = 'Es grupo administradores'
+            Transparent = True
           end
           object txtNOMBRE_GRUPO: TcxDBTextEdit
             Left = 221
@@ -127,21 +127,25 @@ inherited frmMtoGrupos: TfrmMtoGrupos
             object tvUsuariosUSUARIO_USUARIO: TcxGridDBColumn
               Caption = 'Usuario'
               DataBinding.FieldName = 'USUARIO_USUARIO'
+              DataBinding.IsNullValueType = True
               Width = 133
             end
             object tvUsuariosGRUPO_USUARIO: TcxGridDBColumn
               Caption = 'Grupo'
               DataBinding.FieldName = 'GRUPO_USUARIO'
+              DataBinding.IsNullValueType = True
               Width = 140
             end
             object tvUsuariosEMPRESADEF_USUARIO: TcxGridDBColumn
               Caption = 'Empresa por defecto'
               DataBinding.FieldName = 'EMPRESADEF_USUARIO'
+              DataBinding.IsNullValueType = True
               Width = 156
             end
             object tvUsuariosULTIMOLOGIN_USUARIO: TcxGridDBColumn
               Caption = #218'ltima conexi'#243'n'
               DataBinding.FieldName = 'ULTIMOLOGIN_USUARIO'
+              DataBinding.IsNullValueType = True
               Width = 177
             end
           end
@@ -151,17 +155,32 @@ inherited frmMtoGrupos: TfrmMtoGrupos
         end
       end
       inherited tsPerfil: TcxTabSheet
-        inherited pnlPerfilTop: TPanel
-          inherited edtPerfilBusq: TcxTextEdit
-            ExplicitHeight = 27
+        inherited pnlPerfilDetail: TPanel
+          inherited cxgrdPerfil: TcxGrid
+            inherited tvPerfil: TcxGridDBTableView
+              inherited tvPerfilUSUARIO_GRUPO_PERFILES: TcxGridDBColumn
+                DataBinding.IsNullValueType = True
+              end
+              inherited tvPerfilKEY_PERFILES: TcxGridDBColumn
+                DataBinding.IsNullValueType = True
+              end
+              inherited tvPerfilSUBKEY_PERFILES: TcxGridDBColumn
+                DataBinding.IsNullValueType = True
+              end
+              inherited tvPerfilVALUE_PERFILES: TcxGridDBColumn
+                DataBinding.IsNullValueType = True
+              end
+              inherited tvPerfilVALUE_TEXT_PERFILES: TcxGridDBColumn
+                DataBinding.IsNullValueType = True
+              end
+              inherited tvPerfilTYPE_BLOB_PERFILES: TcxGridDBColumn
+                DataBinding.IsNullValueType = True
+              end
+              inherited tvPerfilVALUE_BLOB_PERFILES: TcxGridDBColumn
+                DataBinding.IsNullValueType = True
+              end
+            end
           end
-        end
-      end
-    end
-    inherited pnlTopPage: TPanel
-      inherited pnlTopGrid: TPanel
-        inherited edtBusqGlobal: TcxTextEdit
-          ExplicitHeight = 21
         end
       end
     end

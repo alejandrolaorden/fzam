@@ -22,8 +22,6 @@ inherited frmMtoFamilias: TfrmMtoFamilias
       ClientRectBottom = 546
       ClientRectRight = 734
       inherited tsLista: TcxTabSheet
-        ExplicitLeft = 3
-        ExplicitTop = 32
         ExplicitWidth = 731
         ExplicitHeight = 514
         inherited cxGrdPrincipal: TcxGrid
@@ -79,8 +77,6 @@ inherited frmMtoFamilias: TfrmMtoFamilias
         end
       end
       inherited tsFicha: TcxTabSheet
-        ExplicitLeft = 3
-        ExplicitTop = 32
         ExplicitWidth = 731
         ExplicitHeight = 514
         object pnl1: TPanel
@@ -185,7 +181,7 @@ inherited frmMtoFamilias: TfrmMtoFamilias
               Width = 202
             end
             object cxlbllbl1: TcxLabel
-              Left = 21
+              Left = 20
               Top = 112
               Margins.Left = 4
               Margins.Top = 4
@@ -208,14 +204,6 @@ inherited frmMtoFamilias: TfrmMtoFamilias
               TabOrder = 7
               Transparent = True
             end
-            object cxDBLabel1: TcxDBLabel
-              Left = 368
-              Top = 112
-              DataBinding.DataField = 'NOMBRE_SUBFAMILIA'
-              DataBinding.DataSource = dsTablaG
-              Height = 21
-              Width = 177
-            end
           end
         end
         object pnlDetailFich: TPanel
@@ -233,7 +221,7 @@ inherited frmMtoFamilias: TfrmMtoFamilias
             Height = 345
             Align = alClient
             TabOrder = 0
-            Properties.ActivePage = tsArticulos
+            Properties.ActivePage = tsMasDatos
             Properties.CustomButtons.Buttons = <>
             ClientRectBottom = 339
             ClientRectLeft = 3
@@ -601,9 +589,6 @@ inherited frmMtoFamilias: TfrmMtoFamilias
         inherited pnlPerfilTop: TPanel
           Width = 731
           ExplicitWidth = 731
-          inherited edtPerfilBusq: TcxTextEdit
-            ExplicitHeight = 27
-          end
         end
         inherited pnlPerfilDetail: TPanel
           Width = 731
@@ -649,9 +634,6 @@ inherited frmMtoFamilias: TfrmMtoFamilias
       inherited pnlTopGrid: TPanel
         Width = 740
         ExplicitWidth = 740
-        inherited edtBusqGlobal: TcxTextEdit
-          ExplicitHeight = 27
-        end
       end
     end
   end
@@ -665,7 +647,6 @@ inherited frmMtoFamilias: TfrmMtoFamilias
       Top = 394
       ExplicitTop = 394
       inherited btnGrabar: TcxButton
-        Font.Pitch = fpDefault
         ParentFont = False
       end
     end

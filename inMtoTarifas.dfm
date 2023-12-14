@@ -6,7 +6,6 @@ inherited frmMtoTarifas: TfrmMtoTarifas
   ClientWidth = 855
   ExplicitWidth = 855
   ExplicitHeight = 614
-  PixelsPerInch = 96
   TextHeight = 19
   inherited pButtonPage: TPanel
     Width = 715
@@ -18,13 +17,12 @@ inherited frmMtoTarifas: TfrmMtoTarifas
       Width = 715
       Height = 574
       TabOrder = 1
+      Properties.ActivePage = tsFicha
       ExplicitWidth = 715
       ExplicitHeight = 574
       ClientRectBottom = 568
       ClientRectRight = 709
       inherited tsLista: TcxTabSheet
-        ExplicitLeft = 3
-        ExplicitTop = 32
         ExplicitWidth = 706
         ExplicitHeight = 536
         inherited cxGrdPrincipal: TcxGrid
@@ -36,68 +34,68 @@ inherited frmMtoTarifas: TfrmMtoTarifas
             object cxgrdbclmnGrdDBTabPrinCODIGO_TARIFA: TcxGridDBColumn
               Caption = 'C'#243'digo Tarifa'
               DataBinding.FieldName = 'CODIGO_TARIFA'
-              Styles.Header = frmOpenApp2.StylCab
+              DataBinding.IsNullValueType = True
               Width = 141
             end
             object cxgrdbclmnGrdDBTabPrinNOMBRE_TARIFA: TcxGridDBColumn
               Caption = 'Nombre Tarifa'
               DataBinding.FieldName = 'NOMBRE_TARIFA'
-              Styles.Header = frmOpenApp2.StylCab
+              DataBinding.IsNullValueType = True
               Width = 188
             end
             object cxgrdbclmnGrdDBTabPrinACTIVO_TARIFA: TcxGridDBColumn
               Caption = 'Activa'
               DataBinding.FieldName = 'ACTIVO_TARIFA'
-              Styles.Header = frmOpenApp2.StylCab
+              DataBinding.IsNullValueType = True
               Width = 75
             end
             object cxgrdbclmnGrdDBTabPrinFECHA_DESDE_TARIFA: TcxGridDBColumn
               Caption = 'Fecha Validez Desde'
               DataBinding.FieldName = 'FECHA_DESDE_TARIFA'
-              Styles.Header = frmOpenApp2.StylCab
+              DataBinding.IsNullValueType = True
               Width = 206
             end
             object cxgrdbclmnGrdDBTabPrinFECHA_HASTA_TARIFA: TcxGridDBColumn
               Caption = 'Fecha Validez Hasta'
               DataBinding.FieldName = 'FECHA_HASTA_TARIFA'
-              Styles.Header = frmOpenApp2.StylCab
+              DataBinding.IsNullValueType = True
               Width = 201
             end
             object cxgrdbclmnGrdDBTabPrinESIMP_INCL_TARIFA: TcxGridDBColumn
               Caption = 'Impuestos incl.'
               DataBinding.FieldName = 'ESIMP_INCL_TARIFA'
-              Styles.Header = frmOpenApp2.StylCab
+              DataBinding.IsNullValueType = True
               Width = 141
             end
             object cxgrdbclmnGrdDBTabPrinESDEFAULT_TARIFA: TcxGridDBColumn
               Caption = 'Tarifa por defecto'
               DataBinding.FieldName = 'ESDEFAULT_TARIFA'
-              Styles.Header = frmOpenApp2.StylCab
+              DataBinding.IsNullValueType = True
               Width = 202
             end
             object cxgrdbclmnGrdDBTabPrinINSTANTEMODIF: TcxGridDBColumn
               DataBinding.FieldName = 'INSTANTEMODIF'
+              DataBinding.IsNullValueType = True
               Visible = False
-              Styles.Header = frmOpenApp2.StylCab
               VisibleForCustomization = False
             end
             object cxgrdbclmnGrdDBTabPrinINSTANTEALTA: TcxGridDBColumn
               DataBinding.FieldName = 'INSTANTEALTA'
+              DataBinding.IsNullValueType = True
               Visible = False
-              Styles.Header = frmOpenApp2.StylCab
               VisibleForCustomization = False
             end
             object cxgrdbclmnGrdDBTabPrinUSUARIOALTA: TcxGridDBColumn
               DataBinding.FieldName = 'USUARIOALTA'
+              DataBinding.IsNullValueType = True
               Visible = False
-              Styles.Header = frmOpenApp2.StylCab
               VisibleForCustomization = False
               Width = 109
             end
             object cxgrdbclmnGrdDBTabPrinUSUARIOMODIF: TcxGridDBColumn
               DataBinding.FieldName = 'USUARIOMODIF'
+              DataBinding.IsNullValueType = True
               Visible = False
-              Styles.Header = frmOpenApp2.StylCab
               VisibleForCustomization = False
               Width = 119
             end
@@ -189,7 +187,7 @@ inherited frmMtoTarifas: TfrmMtoTarifas
             object cxdbchckbxACTIVO_TARIFA: TcxDBCheckBox
               Left = 237
               Top = 11
-              Caption = 'Impuestos inclu'#237'dos en el precio'
+              Caption = 'Impuestos inclu'#237'dos en el precio final'
               DataBinding.DataField = 'ESIMP_INCL_TARIFA'
               DataBinding.DataSource = dsTablaG
               Properties.ValueChecked = 'S'
@@ -214,7 +212,7 @@ inherited frmMtoTarifas: TfrmMtoTarifas
             Height = 417
             Align = alClient
             TabOrder = 0
-            Properties.ActivePage = tsArticulos
+            Properties.ActivePage = tsOtros
             Properties.CustomButtons.Buttons = <>
             ClientRectBottom = 411
             ClientRectLeft = 3
@@ -326,87 +324,105 @@ inherited frmMtoTarifas: TfrmMtoTarifas
                     object cxgrdbclmnArticulosACTIVO_TARIFA: TcxGridDBColumn
                       Caption = 'Precio Activo'
                       DataBinding.FieldName = 'ACTIVO_TARIFA'
+                      DataBinding.IsNullValueType = True
                       Width = 126
                     end
                     object cxgrdbclmnArticulosCODIGO_ARTICULO_TARIFA: TcxGridDBColumn
                       Caption = 'C'#243'digo Art'#237'culo'
                       DataBinding.FieldName = 'CODIGO_ARTICULO_TARIFA'
+                      DataBinding.IsNullValueType = True
                       Width = 138
                     end
                     object cxgrdbclmnArticulosDESCRIPCION_ARTICULO: TcxGridDBColumn
                       Caption = 'Descripci'#243'n Art'#237'culo'
                       DataBinding.FieldName = 'DESCRIPCION_ARTICULO'
+                      DataBinding.IsNullValueType = True
                       Width = 96
                     end
                     object cxgrdbclmnArticulosCODIGO_FAMILIA_ARTICULO: TcxGridDBColumn
                       Caption = 'C'#243'digo Familia'
                       DataBinding.FieldName = 'CODIGO_FAMILIA_ARTICULO'
+                      DataBinding.IsNullValueType = True
                       Width = 122
                     end
                     object cxgrdbclmnArticulosDESCRIPCION_FAMILIA: TcxGridDBColumn
                       Caption = 'Descripci'#243'n Familia'
                       DataBinding.FieldName = 'DESCRIPCION_FAMILIA'
+                      DataBinding.IsNullValueType = True
                       Width = 265
                     end
                     object cxgrdbclmnArticulosCODIGO_PROVEEDOR: TcxGridDBColumn
                       Caption = 'C'#243'digo Proveedor'
                       DataBinding.FieldName = 'CODIGO_PROVEEDOR'
+                      DataBinding.IsNullValueType = True
                       Width = 125
                     end
                     object cxgrdbclmnArticulosRAZONSOCIAL_PROVEEDOR: TcxGridDBColumn
                       Caption = 'Nombre Proveedor'
                       DataBinding.FieldName = 'RAZONSOCIAL_PROVEEDOR'
+                      DataBinding.IsNullValueType = True
                       Width = 208
                     end
                     object cxgrdbclmnArticulosTIPOIVA_ARTICULO: TcxGridDBColumn
                       Caption = 'Tipo de IVA'
                       DataBinding.FieldName = 'TIPOIVA_ARTICULO'
+                      DataBinding.IsNullValueType = True
                       Width = 152
                     end
                     object cxgrdbclmnArticulosFECHA_DESDE_TARIFA: TcxGridDBColumn
                       Caption = 'Precio desde Fecha'
                       DataBinding.FieldName = 'FECHA_DESDE_TARIFA'
+                      DataBinding.IsNullValueType = True
                     end
                     object cxgrdbclmnArticulosFECHA_HASTA_TARIFA: TcxGridDBColumn
                       Caption = 'Precio Hasta Fecha'
                       DataBinding.FieldName = 'FECHA_HASTA_TARIFA'
+                      DataBinding.IsNullValueType = True
                     end
                     object cxgrdbclmnArticulosTIPO_CANTIDAD_ARTICULO: TcxGridDBColumn
                       Caption = 'Tipo Cantidad'
                       DataBinding.FieldName = 'TIPO_CANTIDAD_ARTICULO'
+                      DataBinding.IsNullValueType = True
                       Width = 129
                     end
                     object cxgrdbclmnArticulosPRECIO_ULT_COMPRA: TcxGridDBColumn
                       Caption = 'Precio '#218'ltima Compra'
                       DataBinding.FieldName = 'PRECIO_ULT_COMPRA'
+                      DataBinding.IsNullValueType = True
                       Width = 190
                     end
                     object cxgrdbclmnArticulosFECHA_VALIDEZ: TcxGridDBColumn
                       Caption = 'Fecha '#218'ltima Compra'
                       DataBinding.FieldName = 'FECHA_VALIDEZ'
+                      DataBinding.IsNullValueType = True
                     end
                     object cxgrdbclmnArticulosPRECIOFINAL: TcxGridDBColumn
                       Caption = 'Precio Salida'
                       DataBinding.FieldName = 'PRECIOFINAL'
+                      DataBinding.IsNullValueType = True
                     end
                     object cxgrdbclmnArticulosINSTANTEALTA: TcxGridDBColumn
                       DataBinding.FieldName = 'INSTANTEALTA'
+                      DataBinding.IsNullValueType = True
                       Visible = False
                       VisibleForCustomization = False
                     end
                     object cxgrdbclmnArticulosINSTANTEMODIF: TcxGridDBColumn
                       DataBinding.FieldName = 'INSTANTEMODIF'
+                      DataBinding.IsNullValueType = True
                       Visible = False
                       VisibleForCustomization = False
                     end
                     object cxgrdbclmnArticulosUSUARIOALTA: TcxGridDBColumn
                       DataBinding.FieldName = 'USUARIOALTA'
+                      DataBinding.IsNullValueType = True
                       Visible = False
                       VisibleForCustomization = False
                       Width = 109
                     end
                     object cxgrdbclmnArticulosUSUARIOMODIF: TcxGridDBColumn
                       DataBinding.FieldName = 'USUARIOMODIF'
+                      DataBinding.IsNullValueType = True
                       Visible = False
                       VisibleForCustomization = False
                       Width = 131
@@ -432,54 +448,65 @@ inherited frmMtoTarifas: TfrmMtoTarifas
                     OptionsView.GroupByBox = False
                     object cxgrdbclmncxgrdbtblvwcxgrd1DBTableView1LINEA_LINEA: TcxGridDBColumn
                       DataBinding.FieldName = 'LINEA_FACTURA_LINEA'
+                      DataBinding.IsNullValueType = True
                       Width = 28
                     end
                     object cxgrdbclmncxgrdbtblvwcxgrd1DBTableView1CODIGO_ARTICULO_LINEA: TcxGridDBColumn
                       Caption = 'C'#243'digo Tratamiento'
                       DataBinding.FieldName = 'CODIGO_ARTICULO_FACTURA_LINEA'
+                      DataBinding.IsNullValueType = True
                       Width = 164
                     end
                     object cxgrdbclmncxgrdbtblvwcxgrd1DBTableView1DESCRIPCION_ARTICULO_LINEA: TcxGridDBColumn
                       Caption = 'Descripci'#243'n Tratamiento'
                       DataBinding.FieldName = 'DESCRIPCION_ARTICULO_FACTURA_LINEA'
+                      DataBinding.IsNullValueType = True
                       Width = 162
                     end
                     object cxgrdbclmnLineasFacturacionTIPO_CANTIDAD_ARTICULO_FACTURA_LINEA: TcxGridDBColumn
                       DataBinding.FieldName = 'TIPO_CANTIDAD_ARTICULO_FACTURA_LINEA'
+                      DataBinding.IsNullValueType = True
                     end
                     object cxgrdbclmncxgrdbtblvwcxgrd1DBTableView1CANTIDAD_LINEA: TcxGridDBColumn
                       Caption = 'Cantidad'
                       DataBinding.FieldName = 'CANTIDAD_FACTURA_LINEA'
+                      DataBinding.IsNullValueType = True
                       Width = 84
                     end
                     object cxgrdbclmnLineasFacturacionPRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA: TcxGridDBColumn
                       DataBinding.FieldName = 'PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA'
+                      DataBinding.IsNullValueType = True
                     end
                     object cxgrdbclmnLineasFacturacionPORCEN_IVA_FACTURA_LINEA: TcxGridDBColumn
                       Caption = 'Porcentaje IVA'
                       DataBinding.FieldName = 'PORCEN_IVA_FACTURA_LINEA'
+                      DataBinding.IsNullValueType = True
                       PropertiesClassName = 'TcxSpinEditProperties'
                       Properties.EditFormat = '0.00 %'
                     end
                     object cxgrdbclmncxgrdbtblvwcxgrd1DBTableView1PRECIOVENTA_ARTICULO_LINEA: TcxGridDBColumn
                       Caption = 'Precio'
                       DataBinding.FieldName = 'PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA'
+                      DataBinding.IsNullValueType = True
                       PropertiesClassName = 'TcxCurrencyEditProperties'
                       Width = 84
                     end
                     object cxgrdbclmncxgrdbtblvwcxgrd1DBTableView1SUM_TOTAL_LINEA: TcxGridDBColumn
                       Caption = 'Total'
                       DataBinding.FieldName = 'TOTAL_FACTURA_LINEA'
+                      DataBinding.IsNullValueType = True
                       PropertiesClassName = 'TcxCurrencyEditProperties'
                       Width = 84
                     end
                     object cxgrdbclmnLineasFacturacionFECHA_ENTREGA_FACTURA_LINEA: TcxGridDBColumn
                       Caption = 'Fecha de Entrega'
                       DataBinding.FieldName = 'FECHA_ENTREGA_FACTURA_LINEA'
+                      DataBinding.IsNullValueType = True
                       PropertiesClassName = 'TcxDateEditProperties'
                     end
                     object cxgrdbclmnLineasFacturacionTIPOIVA_ARTICULO_FACTURA_LINEA: TcxGridDBColumn
                       DataBinding.FieldName = 'TIPOIVA_ARTICULO_FACTURA_LINEA'
+                      DataBinding.IsNullValueType = True
                     end
                   end
                   object cxgrdlvlArticulosTarifas: TcxGridLevel
@@ -618,6 +645,7 @@ inherited frmMtoTarifas: TfrmMtoTarifas
                 Margins.Right = 4
                 Margins.Bottom = 4
                 Caption = 'Fecha Validez Desde'
+                Transparent = True
               end
               object cxdbdtdtFECHA_FACTURA1: TcxDBDateEdit
                 Left = 215
@@ -640,6 +668,7 @@ inherited frmMtoTarifas: TfrmMtoTarifas
                 Margins.Right = 4
                 Margins.Bottom = 4
                 Caption = 'Fecha Validez Hasta'
+                Transparent = True
               end
             end
           end
@@ -660,9 +689,6 @@ inherited frmMtoTarifas: TfrmMtoTarifas
         inherited pnlPerfilTop: TPanel
           Width = 706
           ExplicitWidth = 706
-          inherited edtPerfilBusq: TcxTextEdit
-            ExplicitHeight = 27
-          end
         end
         inherited pnlPerfilDetail: TPanel
           Width = 706
@@ -674,6 +700,29 @@ inherited frmMtoTarifas: TfrmMtoTarifas
             Height = 479
             ExplicitWidth = 706
             ExplicitHeight = 479
+            inherited tvPerfil: TcxGridDBTableView
+              inherited tvPerfilUSUARIO_GRUPO_PERFILES: TcxGridDBColumn
+                DataBinding.IsNullValueType = True
+              end
+              inherited tvPerfilKEY_PERFILES: TcxGridDBColumn
+                DataBinding.IsNullValueType = True
+              end
+              inherited tvPerfilSUBKEY_PERFILES: TcxGridDBColumn
+                DataBinding.IsNullValueType = True
+              end
+              inherited tvPerfilVALUE_PERFILES: TcxGridDBColumn
+                DataBinding.IsNullValueType = True
+              end
+              inherited tvPerfilVALUE_TEXT_PERFILES: TcxGridDBColumn
+                DataBinding.IsNullValueType = True
+              end
+              inherited tvPerfilTYPE_BLOB_PERFILES: TcxGridDBColumn
+                DataBinding.IsNullValueType = True
+              end
+              inherited tvPerfilVALUE_BLOB_PERFILES: TcxGridDBColumn
+                DataBinding.IsNullValueType = True
+              end
+            end
           end
         end
       end

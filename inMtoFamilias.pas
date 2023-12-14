@@ -102,7 +102,6 @@ type
     actArticulo: TAction;
     actProveedores: TAction;
     actTarifas: TAction;
-    cxDBLabel1: TcxDBLabel;
     procedure btnGrabarClick(Sender: TObject);
     procedure actArticulosExecute(Sender: TObject);
     procedure actProveedoresExecute(Sender: TObject);

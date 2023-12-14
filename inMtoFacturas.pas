@@ -838,6 +838,7 @@ begin
   tvLineasFactura.DataController.DataSource := dmmFacturas.dsLinFac;
   cbbTARIFA_ARTICULOS_CLIENTES.Properties.ListSource := dmmFacturas.dsTarifas;
   tvRecibos.DataController.DataSource := dmmFacturas.dsRecibos;
+  tvIVA.DataController.DataSource := dmmFacturas.dsCabIVA;
   (cxgrdbclmntv1TIPOIVA_ARTICULO_FACTURA_LINEA.Properties as
              TcxLookupComboBoxProperties).ListSource := dmmFacturas.dsIvasTipos;
   tsFichBut := tsLineasFactura;

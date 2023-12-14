@@ -3,6 +3,9 @@ inherited frmMtoGen: TfrmMtoGen
   Caption = 'Ventana Gen'#233'rica'
   ClientHeight = 558
   ClientWidth = 1091
+  Font.Charset = ANSI_CHARSET
+  Font.Pitch = fpDefault
+  Font.Quality = fqDefault
   KeyPreview = True
   Visible = True
   OnClose = FormClose
@@ -10,7 +13,6 @@ inherited frmMtoGen: TfrmMtoGen
   OnShow = FormShow
   ExplicitWidth = 1091
   ExplicitHeight = 558
-  PixelsPerInch = 96
   TextHeight = 19
   object pButtonPage: TPanel [0]
     Left = 0
@@ -42,10 +44,6 @@ inherited frmMtoGen: TfrmMtoGen
       object tsLista: TcxTabSheet
         Caption = '&Lista'
         ImageIndex = 0
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object cxGrdPrincipal: TcxGrid
           Left = 0
           Top = 0
@@ -117,10 +115,6 @@ inherited frmMtoGen: TfrmMtoGen
       object tsFicha: TcxTabSheet
         Caption = '&Ficha'
         ImageIndex = 1
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
       end
       object tsPerfil: TcxTabSheet
         Caption = 'Perfil'
@@ -244,33 +238,40 @@ inherited frmMtoGen: TfrmMtoGen
               OptionsView.GroupByBox = False
               object tvPerfilUSUARIO_GRUPO_PERFILES: TcxGridDBColumn
                 DataBinding.FieldName = 'USUARIO_GRUPO_PERFILES'
+                DataBinding.IsNullValueType = True
                 Width = 167
               end
               object tvPerfilKEY_PERFILES: TcxGridDBColumn
                 DataBinding.FieldName = 'KEY_PERFILES'
+                DataBinding.IsNullValueType = True
                 Width = 132
               end
               object tvPerfilSUBKEY_PERFILES: TcxGridDBColumn
                 DataBinding.FieldName = 'SUBKEY_PERFILES'
+                DataBinding.IsNullValueType = True
                 Width = 190
               end
               object tvPerfilVALUE_PERFILES: TcxGridDBColumn
                 DataBinding.FieldName = 'VALUE_PERFILES'
+                DataBinding.IsNullValueType = True
                 Width = 112
               end
               object tvPerfilVALUE_TEXT_PERFILES: TcxGridDBColumn
                 DataBinding.FieldName = 'VALUE_TEXT_PERFILES'
+                DataBinding.IsNullValueType = True
                 PropertiesClassName = 'TcxBlobEditProperties'
                 Properties.BlobEditKind = bekMemo
                 Width = 140
               end
               object tvPerfilTYPE_BLOB_PERFILES: TcxGridDBColumn
                 DataBinding.FieldName = 'TYPE_BLOB_PERFILES'
+                DataBinding.IsNullValueType = True
                 PropertiesClassName = 'TcxBlobEditProperties'
                 Properties.BlobEditKind = bekBlob
               end
               object tvPerfilVALUE_BLOB_PERFILES: TcxGridDBColumn
                 DataBinding.FieldName = 'VALUE_BLOB_PERFILES'
+                DataBinding.IsNullValueType = True
               end
             end
             object cxgrdlvlPerfil: TcxGridLevel

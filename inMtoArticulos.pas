@@ -173,6 +173,7 @@ type
     dbcTarifasESIMP_INCL_TARIFA: TcxGridDBColumn;
     dbcTarifasESDEFAULT_TARIFA: TcxGridDBColumn;
     cxDBLabel1: TcxDBLabel;
+    cxDBLabel2: TcxDBLabel;
     procedure btnAddProveedorClick(Sender: TObject);
     procedure cxgrdbclmnProveedoresCODIGO_PROVEEDORPropertiesButtonClick(
       Sender: TObject; AButtonIndex: Integer);

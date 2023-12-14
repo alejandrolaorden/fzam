@@ -1,5 +1,4 @@
 inherited dmFacturas: TdmFacturas
-  OldCreateOrder = True
   Height = 638
   Width = 1332
   inherited unqryTablaG: TUniQuery
@@ -348,6 +347,7 @@ inherited dmFacturas: TdmFacturas
       'ESVERBANCOEMPRESA_FORMAPAGO=ESVERBANCOEMPRESA_FORMAPAGO')
     DataSource = dsFacPrint
     BCDToCurrency = False
+    DataSetOptions = []
     Left = 568
     Top = 432
   end
@@ -387,6 +387,7 @@ inherited dmFacturas: TdmFacturas
       'USUARIOMODIF=USUARIOMODIF')
     DataSource = dsLinFacPrint
     BCDToCurrency = False
+    DataSetOptions = []
     Left = 648
     Top = 432
   end
@@ -1398,6 +1399,7 @@ inherited dmFacturas: TdmFacturas
       'USUARIOMODIF=USUARIOMODIF')
     DataSource = dsRecibosPrint
     BCDToCurrency = False
+    DataSetOptions = []
     Left = 776
     Top = 432
   end
@@ -1902,5 +1904,36 @@ inherited dmFacturas: TdmFacturas
     DataSet = unqryTablaG
     Left = 368
     Top = 440
+  end
+  object unqryCabIVA: TUniQuery
+    Connection = dmConn.conUni
+    SQL.Strings = (
+      'select * from vi_facturas'
+      'WHERE NRO_FACTURA = :NRO_FACTURA'
+      'AND SERIE_FACTURA = :SERIE_FACTURA')
+    MasterSource = frmMtoFacturas.dsTablaG
+    MasterFields = 'NRO_FACTURA;SERIE_FACTURA'
+    DetailFields = 'NRO_FACTURA;SERIE_FACTURA'
+    AfterInsert = unqryTablaGAfterInsert
+    BeforePost = zqryFacBeforePost
+    BeforeDelete = unqryTablaGBeforeDelete
+    Left = 256
+    Top = 144
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'NRO_FACTURA'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'SERIE_FACTURA'
+        Value = nil
+      end>
+  end
+  object dsCabIVA: TDataSource
+    DataSet = unqryCabIVA
+    Left = 256
+    Top = 88
   end
 end

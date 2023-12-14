@@ -15,6 +15,7 @@ uses
    Vcl.Dialogs, ShellAPI, System.Rtti, System.TypInfo, System.Variants,
    System.StrUtils, inLibUser, cxLabel, cxPC, cxDBEdit, cxButtons, Uni,
    cxGroupBox, cxRadioGroup, Vcl.Buttons, inlibGlobalVar,
+  System.Win.Registry,
    system.math,IdGlobal, IdHash, IdHashMessageDigest, System.IOUtils;
 
 //  function IsOpenMDI(sName: String; Owner : TComponent):boolean; overload;
@@ -47,10 +48,46 @@ uses
   function sMD5(const texto:string):string;
   function EncuentraPagina(pc: TcxPageControl;
                            sName:string):integer;
+  function DarkModeIsEnabled:Boolean;
 
 implementation
 
 //  procedure ShowMto<T>(Owner: TComponent; sOdon: String); overload;
+
+function DarkModeIsEnabled: boolean;
+{$IFDEF MSWINDOWS}
+const
+  TheKey   = 'Software\Microsoft\Windows\CurrentVersion\Themes\Personalize\';
+  TheValue = 'AppsUseLightTheme';
+var
+  Reg: TRegistry;
+{$ENDIF}
+begin
+
+  Result := False;  // There is no dark side - the Jedi are victorious!
+
+// This relies on a registry setting only available on MS Windows
+// If the developer has somehow managed to get to this point then tell
+// them not to do this!
+{$IFNDEF MSWINDOWS}
+{$MESSAGE WARN '"DarkModeIsEnabled" will only work on MS Windows targets'}
+{$ELSE}
+  Reg    := TRegistry.Create(KEY_READ);
+  try
+    Reg.RootKey := HKEY_CURRENT_USER;
+    if Reg.KeyExists(TheKey) then
+      if Reg.OpenKey(TheKey, False) then
+      try
+        if Reg.ValueExists(TheValue) then
+          Result := Reg.ReadInteger(TheValue) = 0;
+      finally
+        Reg.CloseKey;
+      end;
+  finally
+    Reg.Free;
+  end;
+{$ENDIF}
+end;
 
 
 function EncuentraPagina(pc: TcxPageControl;

@@ -91,7 +91,6 @@ type
     FException: boolean;
 //    procedure AppException(Sender: TObject; E: Exception);
     procedure CopiaSeguridad;
-
   public
     { Public declarations }
     FDmConn: TdmConn;
@@ -137,8 +136,10 @@ begin
 //  Application.OnException := AppException;
   sDis := '';
   oMemoSQL := cxMemo1;
+  //ShowMessage('CREANDO CONEXIÓN');
   FdmConn := TdmConn.Create(Self);
   FdmConn.conUni.Connect;
+  //ShowMessage('CREANDO PERFILES');
   FdmDataPerfiles := TdmPerfiles.Create(Self);
   odmPerfiles := FdmDataPerfiles;
   oConn := FdmConn.conUni;
@@ -146,6 +147,7 @@ begin
   ofrmMto2 := Self;
   //carga de todos los forms con sus propiedades y módulos de datos
   oFzaWinF := TfzaWinf.Create(Self);
+  //ShowMessage('CARGANDO OBJETOS FORMS Y DATA EN MARIADB');
   oFzaWinF.Charge(oConn);
   dxstsbr1.Panels[1].Text := FdmConn.conUni.Server + ':'
     + IntToStr(fdmconn.conUni.Port)
@@ -173,9 +175,15 @@ begin
 
   //https://stackoverflow.com/questions/2750102/
   //how-can-i-change-the-fontsize-of-the-mainmenu-items-in-delphi
+  //ShowMessage('ESTABLECIENDO FUENTES DE MENU');
   Screen.MenuFont.Name := 'Lucida Sans';
   Screen.MenuFont.Size := 13;
 //  https://www.tek-tips.com/viewthread.cfm?qid=1360646
+  if DarkModeIsEnabled then
+  begin
+    LookAndFeelController1.SkinName := 'MetropolisDark';
+    SkinController1.SkinName := 'MetropolisDark';
+  end;
 end;
 
 procedure TfrmOpenApp2.mnuTarifasClick(Sender: TObject);

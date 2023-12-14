@@ -15,6 +15,7 @@ inherited frmMtoClientes: TfrmMtoClientes
       Width = 1001
       Height = 663
       TabOrder = 1
+      Properties.ActivePage = tsFicha
       ExplicitWidth = 1001
       ExplicitHeight = 663
       ClientRectBottom = 657
@@ -22,15 +23,14 @@ inherited frmMtoClientes: TfrmMtoClientes
       inherited tsLista: TcxTabSheet
         ExplicitLeft = 3
         ExplicitTop = 32
-        ExplicitWidth = 922
-        ExplicitHeight = 526
+        ExplicitWidth = 992
+        ExplicitHeight = 625
         inherited cxGrdPrincipal: TcxGrid
           Width = 992
           Height = 625
-          Font.Pitch = fpDefault
           ParentFont = False
-          ExplicitWidth = 922
-          ExplicitHeight = 526
+          ExplicitWidth = 992
+          ExplicitHeight = 625
           inherited cxGrdDBTabPrin: TcxGridDBTableView
             object cxgrdbclmnGrdDBTabPrinCODIGO_CLIENTE: TcxGridDBColumn
               Caption = 'C'#243'digo'
@@ -398,7 +398,7 @@ inherited frmMtoClientes: TfrmMtoClientes
             Margins.Bottom = 4
             Align = alClient
             TabOrder = 0
-            Properties.ActivePage = tsHistoriaFacturacion
+            Properties.ActivePage = tsDomicilioFiscal
             Properties.CustomButtons.Buttons = <>
             ClientRectBottom = 436
             ClientRectLeft = 3
@@ -424,7 +424,7 @@ inherited frmMtoClientes: TfrmMtoClientes
                 Height = 319
                 Width = 636
                 object lblDireccion1: TcxLabel
-                  Left = 35
+                  Left = 34
                   Top = 25
                   Margins.Left = 4
                   Margins.Top = 4
@@ -448,7 +448,7 @@ inherited frmMtoClientes: TfrmMtoClientes
                   Width = 303
                 end
                 object lblDireccion2: TcxLabel
-                  Left = 35
+                  Left = 34
                   Top = 64
                   Margins.Left = 4
                   Margins.Top = 4
@@ -496,7 +496,7 @@ inherited frmMtoClientes: TfrmMtoClientes
                   Width = 77
                 end
                 object lblPoblacion: TcxLabel
-                  Left = 49
+                  Left = 48
                   Top = 143
                   Margins.Left = 4
                   Margins.Top = 4
@@ -520,7 +520,7 @@ inherited frmMtoClientes: TfrmMtoClientes
                   Width = 303
                 end
                 object lblProvincia: TcxLabel
-                  Left = 55
+                  Left = 54
                   Top = 182
                   Margins.Left = 4
                   Margins.Top = 4
@@ -653,10 +653,6 @@ inherited frmMtoClientes: TfrmMtoClientes
             object tsMasDatos: TcxTabSheet
               Caption = '&2_M'#225's datos'
               ImageIndex = 1
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 913
-              ExplicitHeight = 305
               DesignSize = (
                 983
                 404)
@@ -670,7 +666,7 @@ inherited frmMtoClientes: TfrmMtoClientes
                 Height = 400
                 Width = 880
                 object lblContacto: TcxLabel
-                  Left = 81
+                  Left = 84
                   Top = 23
                   Margins.Left = 4
                   Margins.Top = 4
@@ -716,7 +712,7 @@ inherited frmMtoClientes: TfrmMtoClientes
                   Width = 159
                 end
                 object lblReferencia: TcxLabel
-                  Left = 70
+                  Left = 73
                   Top = 66
                   Margins.Left = 4
                   Margins.Top = 4
@@ -740,7 +736,7 @@ inherited frmMtoClientes: TfrmMtoClientes
                   Width = 537
                 end
                 object lblObservaciones: TcxLabel
-                  Left = 35
+                  Left = 37
                   Top = 101
                   Margins.Left = 4
                   Margins.Top = 4
@@ -768,6 +764,7 @@ inherited frmMtoClientes: TfrmMtoClientes
                   Margins.Right = 4
                   Margins.Bottom = 4
                   Caption = 'Forma de Pago'
+                  Transparent = True
                 end
                 object cbbFORMAPAGO: TcxDBLookupComboBox
                   Left = 170
@@ -788,7 +785,7 @@ inherited frmMtoClientes: TfrmMtoClientes
                   Width = 263
                 end
                 object lblNroCuenta: TcxLabel
-                  Left = 41
+                  Left = 42
                   Top = 224
                   Margins.Left = 4
                   Margins.Top = 4
@@ -1554,10 +1551,6 @@ inherited frmMtoClientes: TfrmMtoClientes
               Caption = 'Historia Presupuestos'
               ImageIndex = 4
               TabVisible = False
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 913
-              ExplicitHeight = 305
               object cxgrd3: TcxGrid
                 Left = 0
                 Top = 0
@@ -1569,8 +1562,6 @@ inherited frmMtoClientes: TfrmMtoClientes
                 Margins.Bottom = 4
                 Align = alClient
                 TabOrder = 0
-                ExplicitWidth = 913
-                ExplicitHeight = 305
                 object tv2: TcxGridDBTableView
                   Navigator.Buttons.ConfirmDelete = True
                   Navigator.Buttons.CustomButtons = <>
@@ -1767,10 +1758,6 @@ inherited frmMtoClientes: TfrmMtoClientes
             object tsOtros: TcxTabSheet
               Caption = '&4_Otros'
               ImageIndex = 4
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 913
-              ExplicitHeight = 305
               object pnlUserInstantBottom: TPanel
                 Left = 0
                 Top = 325
@@ -1957,13 +1944,13 @@ inherited frmMtoClientes: TfrmMtoClientes
         inherited pnlPerfilDetail: TPanel
           Width = 992
           Height = 568
-          ExplicitWidth = 922
-          ExplicitHeight = 469
+          ExplicitWidth = 992
+          ExplicitHeight = 568
           inherited cxgrdPerfil: TcxGrid
             Width = 992
             Height = 568
-            ExplicitWidth = 922
-            ExplicitHeight = 469
+            ExplicitWidth = 992
+            ExplicitHeight = 568
             inherited tvPerfil: TcxGridDBTableView
               inherited tvPerfilUSUARIO_GRUPO_PERFILES: TcxGridDBColumn
                 DataBinding.IsNullValueType = True
