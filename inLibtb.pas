@@ -215,7 +215,8 @@ begin
     begin
       cli.Close;
       FreeAndNil(cli);
-      FreeAndNil(Dsp);
+//      if (Dsp <> nil) then
+//        FreeAndNil(Dsp);
     end;
     Result := bFechaOrd;
   end

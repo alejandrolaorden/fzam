@@ -17,41 +17,12 @@ uses
   cxControls, cxLookAndFeels, cxLookAndFeelPainters, dxCore, cxContainer,
   cxEdit, dxSkinsForm, cxStyles, cxClasses, Vcl.ExtCtrls, DADump, UniDump,
   Vcl.Menus, cxPC, cxTextEdit, cxMemo, dxStatusBar, inMtoFrmBase, UniDataConn,
-  UniDataPerfiles, cxLocalization, Vcl.Buttons, inLibUnitForm;
+  UniDataPerfiles, cxLocalization, Vcl.Buttons, inLibUnitForm, JvMenus,
+  System.UITypes;
 
 type
   TcxPageControlPropertiesAccess = class(TcxPageControlProperties);
   TfrmOpenApp2 = class(TfrmBase)
-    mnMenuPrin: TMainMenu;
-    mnuArchivo: TMenuItem;
-    mnuEmpresas: TMenuItem;
-    mnuClientes: TMenuItem;
-    mnuProveedores: TMenuItem;
-    mnuArticulos: TMenuItem;
-    mnuTablasauxiliares: TMenuItem;
-    mnuTarifas: TMenuItem;
-    mnuFamilias: TMenuItem;
-    mnArchivoSalir: TMenuItem;
-    mnuVentas: TMenuItem;
-    mnuPresupuestos: TMenuItem;
-    mnuPedidos: TMenuItem;
-    mnuAlbaranes: TMenuItem;
-    mnuFacturas: TMenuItem;
-    mnuUtilidades: TMenuItem;
-    mnuParmetrosdeEntorno: TMenuItem;
-    mnuGruposdeIVA: TMenuItem;
-    mnuIvas: TMenuItem;
-    mnuContadores: TMenuItem;
-    mnuUsuariosGruposPermisos: TMenuItem;
-    mnuUsuarios: TMenuItem;
-    mnuGrupos: TMenuItem;
-    mnuPerfiles: TMenuItem;
-    mnuFormasdepago: TMenuItem;
-    CopiasdeSeguridad1: TMenuItem;
-    mnuEjecutarScript: TMenuItem;
-    N1: TMenuItem;
-    mnuGeneradorProcesos: TMenuItem;
-    mnuSincroPresta: TMenuItem;
     undmp1: TUniDump;
     tmr1: TTimer;
     StyleRepository1: TcxStyleRepository;
@@ -64,8 +35,33 @@ type
     pcPrincipal: TcxPageControl;
     pnlPPBottom: TPanel;
     cxMemo1: TcxMemo;
-    frmHelp: TMenuItem;
-    mnuAcercade: TMenuItem;
+    jvMnMenuPrin: TJvMainMenu;
+    Archivo1: TMenuItem;
+    Ventas1: TMenuItem;
+    Utilidades1: TMenuItem;
+    Ayuda1: TMenuItem;
+    mnuEmpresas: TMenuItem;
+    mnuClientes: TMenuItem;
+    mnuProveedores: TMenuItem;
+    mnuArticulos: TMenuItem;
+    mnuFacturas: TMenuItem;
+    ablasAuxiliares1: TMenuItem;
+    mnuTarifas: TMenuItem;
+    mnuFamilias: TMenuItem;
+    Salir1: TMenuItem;
+    mnuGruposdeIVA: TMenuItem;
+    mnuIvas: TMenuItem;
+    mnuContadores: TMenuItem;
+    mnuFormasdePago: TMenuItem;
+    N1: TMenuItem;
+    UsuariosGruposyPerfiles1: TMenuItem;
+    HacerCopiadeSeguridad1: TMenuItem;
+    mnuEjecutarScript: TMenuItem;
+    mnuGeneradorProcesos: TMenuItem;
+    mnuUsuarios: TMenuItem;
+    mnuGrupos: TMenuItem;
+    mnuPerfiles: TMenuItem;
+    Acercade1: TMenuItem;
     procedure mnuEmpresasClick(Sender: TObject);
     procedure mnuClientesClick(Sender: TObject);
     procedure mnuProveedoresClick(Sender: TObject);
@@ -90,11 +86,12 @@ type
     procedure FormShow(Sender: TObject);
     procedure sbCerrarClick(Sender: TObject);
     procedure mnuAcercadeClick(Sender: TObject);
+    function IsShortCut(var Message: TWMKey): Boolean; override;
   private
     FException: boolean;
 //    procedure AppException(Sender: TObject; E: Exception);
     procedure CopiaSeguridad;
-    function IsShortCut(var Message: TWMKey): Boolean; override;
+
   public
     { Public declarations }
     FDmConn: TdmConn;
@@ -173,6 +170,12 @@ begin
   //  zqryPermisoMenu.Open;
   //  SetPermisosMenu(mnMenuPrin, oUser, oGroup);
   //  zqryPermisoMenu.Close;
+
+  //https://stackoverflow.com/questions/2750102/
+  //how-can-i-change-the-fontsize-of-the-mainmenu-items-in-delphi
+  Screen.MenuFont.Name := 'Lucida Sans';
+  Screen.MenuFont.Size := 13;
+//  https://www.tek-tips.com/viewthread.cfm?qid=1360646
 end;
 
 procedure TfrmOpenApp2.mnuTarifasClick(Sender: TObject);
@@ -194,6 +197,9 @@ procedure TfrmOpenApp2.CopiasdeSeguridad1Click(Sender: TObject);
 begin
   CopiaSeguridad;
 end;
+
+//validar iban online https://www.iban.com
+//validar nif europeo https://ec.europa.eu/taxation_customs/tin/#/check-tin
 
 procedure TfrmOpenApp2.CopiaSeguridad;
 var
@@ -257,7 +263,7 @@ begin
   for I := Pred(pcPrincipal.PageCount) downto 0 do
     TcxPageControlPropertiesAccess((pcPrincipal).Properties).DoCloseTab(I);
   //FdmDataPerfiles.unqryPerfiles.Close;
-  if FdmDataPerfiles <> nil then
+  if (FdmDataPerfiles <> nil) then
     FreeAndNil(FdmDataPerfiles);
   FreeAndNil(oFzaWinf);
   FreeAndNil(FdmConn);
@@ -293,13 +299,14 @@ var
   aShortCut:TList<integer>;
 begin
   I := 0;
+  Result := True;
   bFound := False;
   //Defino los posibles ShortCuts que envío desde TActionList
   //Mejor usar el respositorio de ventanas y añadir el shortcut en algún sitio
   if (GetKeyState(VK_CONTROL) < 0) then
   begin
     //Empiezo con la 'A' de la tabla ascii. Lo minimo será Control + 'A'
-    if Message.CharCode >= 65 then
+    if (Message.CharCode >= 65) then
     begin
       aShortCut := oFzaWinf.GetShortCutListOrd;
       if (  (aShortCut.Contains(Message.CharCode))

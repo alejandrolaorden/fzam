@@ -7,6 +7,7 @@ inherited dmFormasdePago: TdmFormasdePago
       'SELECT *  '
       '  FROM vi_formapago'
       '')
+    Active = True
     AfterInsert = unqryTablaGAfterInsert
   end
   inherited unqryPerfiles: TUniQuery

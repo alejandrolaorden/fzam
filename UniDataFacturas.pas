@@ -405,19 +405,16 @@ begin
       FindField('FORMA_PAGO_FACTURA').AsString := FormapagoDefault;
     if (unqryTablaG.State = dsInsert) then
     begin
-      if  (FindField('TARIFA_ARTICULO_CLIENTE_FACTURA').AsString = '0') then
-        if ( (DataSet.FieldByName('TARIFA_ARTICULO_CLIENTE').AsString <> '') or
-             (DataSet.FieldByName('TARIFA_ARTICULO_CLIENTE').IsNull)
-        ) then
-        begin
-          FindField('TARIFA_ARTICULO_CLIENTE_FACTURA').AsString :=
-                          DataSet.FindField('TARIFA_ARTICULO_CLIENTE').AsString;
-        end
-        else
-         FindField('TARIFA_ARTICULO_CLIENTE_FACTURA').AsString := TarifaDefault;
-      if ( (FindField('TARIFA_ARTICULO_CLIENTE_FACTURA').AsString <> '0') and
-           (FindField('TARIFA_ARTICULO_CLIENTE_FACTURA').AsString <> '')
-         ) then
+      if ( (DataSet.FieldByName('TARIFA_ARTICULO_CLIENTE').AsString <> '') or
+           (DataSet.FieldByName('TARIFA_ARTICULO_CLIENTE').IsNull)
+      ) then
+      begin
+        FindField('TARIFA_ARTICULO_CLIENTE_FACTURA').AsString :=
+                        DataSet.FindField('TARIFA_ARTICULO_CLIENTE').AsString;
+      end
+      else
+        FindField('TARIFA_ARTICULO_CLIENTE_FACTURA').AsString := TarifaDefault;
+      if (FindField('TARIFA_ARTICULO_CLIENTE_FACTURA').AsString <> '') then
       begin
         unqryTarifas.Locate('CODIGO_TARIFA',
                   FindField('TARIFA_ARTICULO_CLIENTE_FACTURA').AsString, [] );

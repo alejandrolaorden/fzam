@@ -1040,7 +1040,8 @@ begin
                                             'CODIGO_EMPRESA_FACTURA').AsString);
 end;
 
-procedure TfrmMtoFacturas.cxgrdbclmntv1CANTIDAD_FACTURA_LINEAPropertiesEditValueChanged(
+procedure TfrmMtoFacturas.
+                  cxgrdbclmntv1CANTIDAD_FACTURA_LINEAPropertiesEditValueChanged(
   Sender: TObject);
 var
   e : TcxCustomEdit;
@@ -1088,7 +1089,7 @@ end;
 
 procedure TfrmMtoFacturas.
            cxgrdbclmntv1CODIGO_ARTICULO_FACTURA_LINEAPropertiesEditValueChanged(
-  Sender: TObject);
+                                                               Sender: TObject);
  var
     e: TcxCustomEdit;
     sCodigo:String;
@@ -1134,8 +1135,8 @@ end;
 
 procedure TfrmMtoFacturas.
                    cxgrdbclmntv1CODIGO_ARTICULO_LINEAPropertiesEditValueChanged(
-  Sender: TObject);
-  var
+                                                               Sender: TObject);
+var
   E : TcxCustomEdit;
 begin
   inherited;
@@ -1214,7 +1215,7 @@ end;
 
 procedure TfrmMtoFacturas.
                     cxgrdbclmntv1TIPOIVA_ARTICULO_FACTURA_LINEAPropertiesChange(
-  Sender: TObject);
+                                                               Sender: TObject);
 var
   e: TcxCustomEdit;
   sTipoIVA : string;
@@ -1262,8 +1263,9 @@ begin
     oDmConn.conUni.Commit;
 end;
 
-procedure TfrmMtoFacturas.tvLineasFacturaKeyDown(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
+procedure TfrmMtoFacturas.tvLineasFacturaKeyDown(Sender: TObject;
+                                                 var Key: Word;
+                                                 Shift: TShiftState);
 begin
   inherited;
   if (Shift <> [ssCtrl]) then

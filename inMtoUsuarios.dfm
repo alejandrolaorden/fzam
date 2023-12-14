@@ -1,9 +1,9 @@
 inherited frmMtoUsuarios: TfrmMtoUsuarios
   Caption = 'Usuarios'
+  PixelsPerInch = 96
   TextHeight = 19
   inherited pButtonPage: TPanel
     inherited pcPantalla: TcxPageControl
-      Properties.ActivePage = tsLista
       inherited tsLista: TcxTabSheet
         ExplicitLeft = 3
         ExplicitTop = 32
@@ -15,13 +15,11 @@ inherited frmMtoUsuarios: TfrmMtoUsuarios
             object cxGrdDBTabPrinUSUARIO_USUARIO: TcxGridDBColumn
               Caption = 'Nombre de Usuario'
               DataBinding.FieldName = 'USUARIO_USUARIO'
-              DataBinding.IsNullValueType = True
               Width = 189
             end
             object cxGrdDBTabPrinGRUPO_USUARIO: TcxGridDBColumn
               Caption = 'Grupo'
               DataBinding.FieldName = 'GRUPO_USUARIO'
-              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxLookupComboBoxProperties'
               Properties.KeyFieldNames = 'GRUPO_GRUPO'
               Properties.ListColumns = <
@@ -35,7 +33,6 @@ inherited frmMtoUsuarios: TfrmMtoUsuarios
             object cxgrdbclmnGrdDBTabPrinESGRUPOADMINISTRADOR_GRUPO: TcxGridDBColumn
               Caption = 'Es Administrador'
               DataBinding.FieldName = 'ESGRUPOADMINISTRADOR_GRUPO'
-              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxCheckBoxProperties'
               Properties.ReadOnly = True
               Properties.ValueChecked = 'S'
@@ -45,7 +42,6 @@ inherited frmMtoUsuarios: TfrmMtoUsuarios
             object cxGrdDBTabPrinEMPRESADEF_USUARIO: TcxGridDBColumn
               Caption = 'Empresa por defecto en documentos'
               DataBinding.FieldName = 'EMPRESADEF_USUARIO'
-              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxLookupComboBoxProperties'
               Properties.KeyFieldNames = 'CODIGO_EMPRESA'
               Properties.ListColumns = <
@@ -63,13 +59,11 @@ inherited frmMtoUsuarios: TfrmMtoUsuarios
             object cxgrdbclmnGrdDBTabPrinRAZONSOCIAL_EMPRESA: TcxGridDBColumn
               Caption = 'Raz'#243'n Social Empresa'
               DataBinding.FieldName = 'RAZONSOCIAL_EMPRESA'
-              DataBinding.IsNullValueType = True
               Width = 218
             end
             object cxGrdDBTabPrinPASSWORD_USUARIO: TcxGridDBColumn
               Caption = 'Password Encriptado'
               DataBinding.FieldName = 'PASSWORD_USUARIO'
-              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxTextEditProperties'
               Properties.EchoMode = eemPassword
               Properties.PasswordChar = '*'
@@ -79,7 +73,6 @@ inherited frmMtoUsuarios: TfrmMtoUsuarios
             object cxGrdDBTabPrinULTIMOLOGIN_USUARIO: TcxGridDBColumn
               Caption = #218'ltima Conexi'#243'n'
               DataBinding.FieldName = 'ULTIMOLOGIN_USUARIO'
-              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxDateEditProperties'
               Properties.ReadOnly = True
               Width = 190
@@ -99,33 +92,6 @@ inherited frmMtoUsuarios: TfrmMtoUsuarios
           ExplicitWidth = 943
           inherited edtPerfilBusq: TcxTextEdit
             ExplicitHeight = 27
-          end
-        end
-        inherited pnlPerfilDetail: TPanel
-          inherited cxgrdPerfil: TcxGrid
-            inherited tvPerfil: TcxGridDBTableView
-              inherited tvPerfilUSUARIO_GRUPO_PERFILES: TcxGridDBColumn
-                DataBinding.IsNullValueType = True
-              end
-              inherited tvPerfilKEY_PERFILES: TcxGridDBColumn
-                DataBinding.IsNullValueType = True
-              end
-              inherited tvPerfilSUBKEY_PERFILES: TcxGridDBColumn
-                DataBinding.IsNullValueType = True
-              end
-              inherited tvPerfilVALUE_PERFILES: TcxGridDBColumn
-                DataBinding.IsNullValueType = True
-              end
-              inherited tvPerfilVALUE_TEXT_PERFILES: TcxGridDBColumn
-                DataBinding.IsNullValueType = True
-              end
-              inherited tvPerfilTYPE_BLOB_PERFILES: TcxGridDBColumn
-                DataBinding.IsNullValueType = True
-              end
-              inherited tvPerfilVALUE_BLOB_PERFILES: TcxGridDBColumn
-                DataBinding.IsNullValueType = True
-              end
-            end
           end
         end
       end

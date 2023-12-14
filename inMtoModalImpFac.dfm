@@ -3,17 +3,16 @@ inherited frmPrintFac: TfrmPrintFac
   ClientHeight = 278
   ClientWidth = 444
   Position = poMainFormCenter
-  ExplicitWidth = 450
-  ExplicitHeight = 307
-  PixelsPerInch = 96
+  ExplicitWidth = 456
+  ExplicitHeight = 316
   TextHeight = 19
   inherited pnl1: TPanel
     Left = 290
     Width = 154
     Height = 278
-    ExplicitLeft = 290
+    ExplicitLeft = 286
     ExplicitWidth = 154
-    ExplicitHeight = 278
+    ExplicitHeight = 277
     inherited btnPDF: TcxButton
       Left = 11
       ExplicitLeft = 11
@@ -29,7 +28,7 @@ inherited frmPrintFac: TfrmPrintFac
     inherited btnSalir: TcxButton
       Top = 252
       Width = 152
-      ExplicitTop = 252
+      ExplicitTop = 251
       ExplicitWidth = 152
     end
     inherited btnEditar: TcxButton
@@ -42,11 +41,11 @@ inherited frmPrintFac: TfrmPrintFac
     end
   end
   object edtNroFac: TcxTextEdit [1]
-    Left = 72
+    Left = 104
     Top = 24
     Enabled = False
     TabOrder = 1
-    Width = 137
+    Width = 105
   end
   object lblcxlbl1: TcxLabel [2]
     Left = 8
@@ -58,7 +57,7 @@ inherited frmPrintFac: TfrmPrintFac
     Top = 24
     Enabled = False
     TabOrder = 3
-    Width = 41
+    Width = 90
   end
   object cxrdgrp1: TcxRadioGroup [4]
     Left = 8
@@ -121,7 +120,7 @@ inherited frmPrintFac: TfrmPrintFac
     Top = 200
   end
   inherited frxrprt1: TfrxReport
-    ReportOptions.LastChange = 45065.596828229170000000
+    ReportOptions.LastChange = 45266.651521481500000000
     ScriptText.Strings = (
       'procedure RetencionTotalOnBeforePrint(Sender: TfrxComponent);'
       'begin'
@@ -429,611 +428,6 @@ inherited frmPrintFac: TfrmPrintFac
       end
     end
     inherited Page1: TfrxReportPage
-      object MasterData1: TfrxMasterData
-        FillType = ftBrush
-        Frame.Typ = []
-        Height = 351.496290000000000000
-        Top = 18.897650000000000000
-        Width = 755.906000000000000000
-        DataSet = dmFacturas.fxdsPrintFac
-        DataSetName = 'Facturas'
-        RowCount = 0
-        object Memo1: TfrxMemoView
-          AllowVectorExport = True
-          Left = 332.598640000000000000
-          Top = 3.779530000000000000
-          Width = 90.708720000000000000
-          Height = 22.677180000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -19
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'FACTURA')
-          ParentFont = False
-        end
-        object Memo2: TfrxMemoView
-          AllowVectorExport = True
-          Left = 16.677180000000000000
-          Top = 170.078850000000000000
-          Width = 355.275820000000000000
-          Height = 136.063080000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          ParentFont = False
-        end
-        object Memo3: TfrxMemoView
-          AllowVectorExport = True
-          Left = 389.291590000000000000
-          Top = 170.078850000000000000
-          Width = 355.275820000000000000
-          Height = 136.063080000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          ParentFont = False
-        end
-        object FacturasRAZONSOCIAL_EMPRESA_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 18.897650000000000000
-          Top = 173.858380000000000000
-          Width = 340.157700000000000000
-          Height = 18.897650000000000000
-          DataField = 'RAZONSOCIAL_EMPRESA_FACTURA'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[Facturas."RAZONSOCIAL_EMPRESA_FACTURA"]')
-          ParentFont = False
-        end
-        object FacturasDIRECCION1_EMPRESA_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 18.897650000000000000
-          Top = 196.535560000000000000
-          Width = 340.157700000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            
-              '[Facturas."DIRECCION1_EMPRESA_FACTURA"] [Facturas."DIRECCION2_EM' +
-              'PRESA_FACTURA"]')
-          ParentFont = False
-          Formats = <
-            item
-            end
-            item
-            end>
-        end
-        object FacturasCPOSTAL_EMPRESA_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 18.897650000000000000
-          Top = 217.889920000000000000
-          Width = 340.157700000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            
-              '[Facturas."CPOSTAL_EMPRESA_FACTURA"]   [Facturas."POBLACION_EMPR' +
-              'ESA_FACTURA"]')
-          ParentFont = False
-        end
-        object FacturasPROVINCIA_EMPRESA_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 18.897650000000000000
-          Top = 240.567100000000000000
-          Width = 340.157700000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '( [Facturas."PROVINCIA_EMPRESA_FACTURA"] )')
-          ParentFont = False
-        end
-        object FacturasMOVIL_EMPRESA_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 18.897650000000000000
-          Top = 263.244280000000000000
-          Width = 117.165430000000000000
-          Height = 18.897650000000000000
-          DataField = 'MOVIL_EMPRESA_FACTURA'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[Facturas."MOVIL_EMPRESA_FACTURA"]')
-          ParentFont = False
-        end
-        object FacturasEMAIL_EMPRESA_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 143.622140000000000000
-          Top = 263.244280000000000000
-          Width = 215.433210000000000000
-          Height = 18.897650000000000000
-          DataField = 'EMAIL_EMPRESA_FACTURA'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -11
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[Facturas."EMAIL_EMPRESA_FACTURA"]')
-          ParentFont = False
-        end
-        object Memo4: TfrxMemoView
-          AllowVectorExport = True
-          Left = 22.677180000000000000
-          Top = 139.842610000000000000
-          Width = 52.913420000000000000
-          Height = 22.677180000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -16
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            'Emisor')
-          ParentFont = False
-        end
-        object Memo5: TfrxMemoView
-          AllowVectorExport = True
-          Left = 668.976810000000000000
-          Top = 139.842610000000000000
-          Width = 75.590600000000000000
-          Height = 22.677180000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -16
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            'Receptor')
-          ParentFont = False
-        end
-        object FacturasRAZONSOCIAL_CLIENTE_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 402.071120000000000000
-          Top = 173.858380000000000000
-          Width = 347.716760000000000000
-          Height = 18.897650000000000000
-          DataField = 'RAZONSOCIAL_CLIENTE_FACTURA'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[Facturas."RAZONSOCIAL_CLIENTE_FACTURA"]')
-          ParentFont = False
-        end
-        object FacturasDIRECCION1_EMPRESA_FACTURA1: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 401.850650000000000000
-          Top = 197.315090000000000000
-          Width = 347.716760000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            
-              '[Facturas."DIRECCION1_CLIENTE_FACTURA"] [Facturas."DIRECCION2_CL' +
-              'IENTE_FACTURA"]')
-          ParentFont = False
-        end
-        object FacturasCPOSTAL_CLIENTE_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 402.071120000000000000
-          Top = 215.433210000000000000
-          Width = 302.362400000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            
-              '[Facturas."CPOSTAL_CLIENTE_FACTURA"]   [Facturas."POBLACION_CLIE' +
-              'NTE_FACTURA"]')
-          ParentFont = False
-        end
-        object FacturasPROVINCIA_EMPRESA_FACTURA1: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 402.071120000000000000
-          Top = 234.330860000000000000
-          Width = 347.716760000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '( [Facturas."PROVINCIA_CLIENTE_FACTURA"] )')
-          ParentFont = False
-        end
-        object FacturasPAIS_CLIENTE_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 574.488560000000000000
-          Top = 257.008040000000000000
-          Width = 166.299320000000000000
-          Height = 18.897650000000000000
-          DataField = 'PAIS_CLIENTE_FACTURA'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -12
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[Facturas."PAIS_CLIENTE_FACTURA"]')
-          ParentFont = False
-        end
-        object FacturasMOVIL_CLIENTE_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 402.071120000000000000
-          Top = 275.905690000000000000
-          Width = 128.504020000000000000
-          Height = 18.897650000000000000
-          DataField = 'MOVIL_CLIENTE_FACTURA'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -12
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[Facturas."MOVIL_CLIENTE_FACTURA"]')
-          ParentFont = False
-        end
-        object FacturasEMAIL_CLIENTE_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 536.693260000000000000
-          Top = 275.905690000000000000
-          Width = 204.094620000000000000
-          Height = 18.897650000000000000
-          DataField = 'EMAIL_CLIENTE_FACTURA'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -12
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[Facturas."EMAIL_CLIENTE_FACTURA"]')
-          ParentFont = False
-        end
-        object Memo6: TfrxMemoView
-          AllowVectorExport = True
-          Left = 22.677180000000000000
-          Top = 52.913420000000000000
-          Width = 238.110390000000000000
-          Height = 22.677180000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'Fecha: [Facturas."FECHA_FACTURA"]')
-          ParentFont = False
-        end
-        object FacturasNRO_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 22.677180000000000000
-          Top = 83.149660000000000000
-          Width = 238.110390000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            
-              'N'#250'mero de Factura: [Facturas."SERIE_FACTURA"].[Facturas."NRO_FAC' +
-              'TURA"]')
-          ParentFont = False
-          Formats = <
-            item
-            end
-            item
-            end>
-        end
-        object Memo7: TfrxMemoView
-          AllowVectorExport = True
-          Left = 22.677180000000000000
-          Top = 325.039580000000000000
-          Width = 729.449290000000000000
-          Height = 26.456710000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          ParentFont = False
-        end
-        object Memo8: TfrxMemoView
-          AllowVectorExport = True
-          Left = 26.897650000000000000
-          Top = 328.819110000000000000
-          Width = 79.370130000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'Descripci'#243'n')
-          ParentFont = False
-        end
-        object Memo9: TfrxMemoView
-          AllowVectorExport = True
-          Left = 653.858690000000000000
-          Top = 328.819110000000000000
-          Width = 143.622140000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'Total')
-          ParentFont = False
-        end
-        object Memo10: TfrxMemoView
-          AllowVectorExport = True
-          Left = 398.953000000000000000
-          Top = 328.819110000000000000
-          Width = 75.590600000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haCenter
-          Memo.UTF8W = (
-            'Ctd')
-          ParentFont = False
-        end
-        object Memo11: TfrxMemoView
-          AllowVectorExport = True
-          Left = 485.323130000000000000
-          Top = 328.819110000000000000
-          Width = 83.149660000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'Precio')
-          ParentFont = False
-        end
-        object TituloIvaColumna: TfrxMemoView
-          AllowVectorExport = True
-          Left = 582.047620000000000000
-          Top = 328.819110000000000000
-          Width = 75.590600000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '% [Facturas."PALABRA_REPORTS_ZONA_IVA_FACTURA"]')
-          ParentFont = False
-        end
-        object FechaEntregaTittle: TfrxMemoView
-          AllowVectorExport = True
-          Left = 315.244280000000000000
-          Top = 328.819110000000000000
-          Width = 90.708720000000000000
-          Height = 18.897650000000000000
-          OnBeforePrint = 'FechaEntregaTittleOnBeforePrint'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'Fecha Entrega')
-          ParentFont = False
-        end
-      end
-      object DetailData1: TfrxDetailData
-        FillType = ftBrush
-        Frame.Typ = []
-        Height = 26.456710000000000000
-        Top = 393.071120000000000000
-        Width = 755.906000000000000000
-        OnBeforePrint = 'DetailData1OnBeforePrint'
-        DataSet = dmFacturas.fxdstPrintLinFac
-        DataSetName = 'Lineas Facturas'
-        RowCount = 0
-        object LineasFacturasTOTAL_LINEA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 653.858690000000000000
-          Top = 4.338590000000000000
-          Width = 79.370130000000000000
-          Height = 18.897650000000000000
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%2.2m'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[Lineas Facturas."TOTAL_FACTURA_LINEA"]')
-          ParentFont = False
-        end
-        object LineasFacturasCANTIDAD_FACTURA_LINEA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 398.953000000000000000
-          Top = 3.779530000000000000
-          Width = 79.370130000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haCenter
-          Memo.UTF8W = (
-            
-              '[Lineas Facturas."CANTIDAD_FACTURA_LINEA"] [Lineas Facturas."TIP' +
-              'O_CANTIDAD_ARTICULO_FACTURA_LINEA"]')
-          ParentFont = False
-          Formats = <
-            item
-            end
-            item
-            end>
-        end
-        object LineasFacturasPRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 489.102660000000000000
-          Top = 3.779530000000000000
-          Width = 79.370130000000000000
-          Height = 18.897650000000000000
-          DataField = 'PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA'
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%2.2m'
-          DisplayFormat.Kind = fkNumeric
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[Lineas Facturas."PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA"]')
-        end
-        object LineasFacturasPORCEN_IVA_FACTURA_LINEA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 582.047620000000000000
-          Top = 3.779530000000000000
-          Width = 56.692950000000000000
-          Height = 18.897650000000000000
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%g %'
-          DisplayFormat.Kind = fkNumeric
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[Lineas Facturas."PORCEN_IVA_FACTURA_LINEA"]%')
-        end
-        object LineasFacturasFECHA_ENTREGA_FACTURA_LINEA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 315.244280000000000000
-          Top = 3.779530000000000000
-          Width = 79.370130000000000000
-          Height = 18.897650000000000000
-          DataField = 'FECHA_ENTREGA_FACTURA_LINEA'
-          DataSet = dmFacturas.fxdstPrintLinFac
-          DataSetName = 'Lineas Facturas'
-          DisplayFormat.FormatStr = 'dd/mm/yyyy'
-          DisplayFormat.Kind = fkDateTime
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[Lineas Facturas."FECHA_ENTREGA_FACTURA_LINEA"]')
-          ParentFont = False
-        end
-        object LineasFacturasDESCRIPCION_ARTICULO_FACTURA_LINEA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 22.677180000000000000
-          Top = 3.779530000000000000
-          Width = 287.244280000000000000
-          Height = 18.897650000000000000
-          DataField = 'DESCRIPCION_ARTICULO_FACTURA_LINEA'
-          DataSet = dmFacturas.fxdstPrintLinFac
-          DataSetName = 'Lineas Facturas'
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[Lineas Facturas."DESCRIPCION_ARTICULO_FACTURA_LINEA"]')
-        end
-      end
       object Memo19: TfrxMemoView
         AllowVectorExport = True
         Left = 876.850974650000000000
@@ -1118,758 +512,12 @@ inherited frmPrintFac: TfrmPrintFac
           '[Facturas."TOTAL_BASES_FACTURA"]')
         ParentFont = False
       end
-      object PageFooter1: TfrxPageFooter
-        FillType = ftBrush
-        Frame.Typ = []
-        Height = 257.008040000000000000
-        Top = 480.000310000000000000
-        Width = 755.906000000000000000
-        OnBeforePrint = 'PageFooter1OnBeforePrint'
-        object CajaIVA: TfrxMemoView
-          AllowVectorExport = True
-          Left = 22.677194650000000000
-          Top = 3.779530000000000000
-          Width = 468.661720000000000000
-          Height = 143.622140000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          ParentFont = False
-        end
-        object CajaTitulosIVA: TfrxMemoView
-          AllowVectorExport = True
-          Left = 22.677180000000000000
-          Top = 3.779530000000000000
-          Width = 468.661417320000000000
-          Height = 26.456710000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          ParentFont = False
-        end
-        object Memo13: TfrxMemoView
-          AllowVectorExport = True
-          Left = 653.858704650000000000
-          Top = 132.283550000000000000
-          Width = 79.370130000000000000
-          Height = 18.897650000000000000
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%2.2m'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[Facturas."TOTAL_LIQUIDO_FACTURA"]')
-          ParentFont = False
-        end
-        object Retencion: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 512.897974650000000000
-          Top = 94.488250000000000000
-          Width = 143.622140000000000000
-          Height = 18.897650000000000000
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%g'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            'Retenci'#243'n IRPF [Facturas."PORCEN_RETENCION_FACTURA"]%')
-          ParentFont = False
-        end
-        object RetencionTotal: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 653.858704650000000000
-          Top = 94.488250000000000000
-          Width = 79.370130000000000000
-          Height = 18.897650000000000000
-          OnBeforePrint = 'RetencionTotalOnBeforePrint'
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%2.2m'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[<Facturas."TOTAL_RETENCION_FACTURA"> * (-1)]')
-          ParentFont = False
-        end
-        object Memo14: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 512.897974650000000000
-          Top = 132.283550000000000000
-          Width = 143.622140000000000000
-          Height = 18.897650000000000000
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%g'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            'Total Factura')
-          ParentFont = False
-        end
-        object ImpuestosTotal: TfrxMemoView
-          AllowVectorExport = True
-          Left = 654.976824650000000000
-          Top = 66.141775000000000000
-          Width = 79.370130000000000000
-          Height = 18.897650000000000000
-          OnBeforePrint = 'ImpuestosTotalOnBeforePrint'
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%2.2m'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[Facturas."TOTAL_IMPUESTOS_FACTURA"]')
-          ParentFont = False
-        end
-        object Impuestos: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 514.016094650000000000
-          Top = 66.141775000000000000
-          Width = 143.622140000000000000
-          Height = 18.897650000000000000
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%g'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            'Total Impuestos')
-          ParentFont = False
-        end
-        object TotalBases: TfrxMemoView
-          AllowVectorExport = True
-          Left = 654.976824650000000000
-          Top = 37.795300000000000000
-          Width = 79.370130000000000000
-          Height = 18.897650000000000000
-          OnBeforePrint = 'ImpuestosTotalOnBeforePrint'
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%2.2m'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[Facturas."TOTAL_BASES_FACTURA"]')
-          ParentFont = False
-        end
-        object Memo17: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 514.016094650000000000
-          Top = 37.795300000000000000
-          Width = 143.622140000000000000
-          Height = 18.897650000000000000
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%g'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            'Total Base Imponible')
-          ParentFont = False
-        end
-        object BaseImponibleN: TfrxMemoView
-          AllowVectorExport = True
-          Left = 30.236254650000000000
-          Top = 34.015770000000000000
-          Width = 90.708720000000000000
-          Height = 15.118120000000000000
-          OnBeforePrint = 'BaseImponibleNOnBeforePrint'
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%2.3m'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[Facturas."TOTAL_BASEI_IVAN_FACTURA"]')
-          ParentFont = False
-        end
-        object BaseImponibleCajaIVA: TfrxMemoView
-          AllowVectorExport = True
-          Left = 30.236254650000000000
-          Top = 7.559060000000000000
-          Width = 102.047310000000000000
-          Height = 15.118120000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'Base Imponible')
-          ParentFont = False
-        end
-        object BaseImponibleE: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 26.456724650000000000
-          Top = 113.385900000000000000
-          Width = 94.488250000000000000
-          Height = 18.897650000000000000
-          OnBeforePrint = 'BaseImponibleEOnBeforePrint'
-          DataField = 'TOTAL_BASEI_IVAE_FACTURA'
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%2.3m'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[Facturas."TOTAL_BASEI_IVAE_FACTURA"]')
-          ParentFont = False
-        end
-        object TituloPorcenCajaIVA: TfrxMemoView
-          AllowVectorExport = True
-          Left = 151.181214650000000000
-          Top = 7.559060000000000000
-          Width = 68.031540000000000000
-          Height = 15.118120000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '% [Facturas."PALABRA_REPORTS_ZONA_IVA_FACTURA"]')
-          ParentFont = False
-        end
-        object TituloTotalCajaIVA: TfrxMemoView
-          AllowVectorExport = True
-          Left = 226.771814650000000000
-          Top = 7.559060000000000000
-          Width = 86.929190000000000000
-          Height = 15.118120000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'Total [Facturas."PALABRA_REPORTS_ZONA_IVA_FACTURA"]')
-          ParentFont = False
-        end
-        object RetencionPorc: TfrxMemoView
-          AllowVectorExport = True
-          Left = 317.480534650000000000
-          Top = 7.559060000000000000
-          Width = 71.811070000000000000
-          Height = 15.118120000000000000
-          OnBeforePrint = 'RetencionPorcOnBeforePrint'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '% R.E.')
-          ParentFont = False
-        end
-        object RetencionTot: TfrxMemoView
-          AllowVectorExport = True
-          Left = 398.409724650000000000
-          Top = 7.559060000000000000
-          Width = 71.811070000000000000
-          Height = 15.118120000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'Total R.E.')
-          ParentFont = False
-        end
-        object FacturasTOTAL_IVAN_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 226.771814650000000000
-          Top = 34.015770000000000000
-          Width = 56.692950000000000000
-          Height = 18.897650000000000000
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%2.3m'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[Facturas."TOTAL_IVAN_FACTURA"]')
-          ParentFont = False
-        end
-        object FacturasPORCEN_IVAN_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 151.181214650000000000
-          Top = 34.015770000000000000
-          Width = 56.692950000000000000
-          Height = 18.897650000000000000
-          DisplayFormat.FormatStr = '%g'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[Facturas."PORCEN_IVAN_FACTURA"]%')
-          ParentFont = False
-        end
-        object FacturasPORCEN_IVAR_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 151.181214650000000000
-          Top = 60.472480000000000000
-          Width = 56.692950000000000000
-          Height = 18.897650000000000000
-          DisplayFormat.FormatStr = '%g'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[Facturas."PORCEN_IVAR_FACTURA"]%')
-          ParentFont = False
-        end
-        object FacturasPORCEN_IVAS_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 151.181214650000000000
-          Top = 86.929190000000000000
-          Width = 56.692950000000000000
-          Height = 18.897650000000000000
-          DisplayFormat.FormatStr = '%g'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[Facturas."PORCEN_IVAS_FACTURA"]%')
-          ParentFont = False
-        end
-        object FacturasPORCEN_IVAE_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 151.181214650000000000
-          Top = 113.385900000000000000
-          Width = 56.692950000000000000
-          Height = 18.897650000000000000
-          DisplayFormat.FormatStr = '%g'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[Facturas."PORCEN_IVAE_FACTURA"]%')
-          ParentFont = False
-        end
-        object FacturasTOTAL_IVAR_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 226.771814650000000000
-          Top = 60.472480000000000000
-          Width = 56.692950000000000000
-          Height = 18.897650000000000000
-          DataField = 'TOTAL_IVAR_FACTURA'
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%2.3m'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[Facturas."TOTAL_IVAR_FACTURA"]')
-          ParentFont = False
-        end
-        object FacturasTOTAL_IVAS_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 226.771814650000000000
-          Top = 86.929190000000000000
-          Width = 56.692950000000000000
-          Height = 18.897650000000000000
-          DataField = 'TOTAL_IVAS_FACTURA'
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%2.3m'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[Facturas."TOTAL_IVAS_FACTURA"]')
-          ParentFont = False
-        end
-        object FacturasTOTAL_IVAE_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 226.771814650000000000
-          Top = 113.385900000000000000
-          Width = 56.692950000000000000
-          Height = 18.897650000000000000
-          DataField = 'TOTAL_IVAE_FACTURA'
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%2.3m'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[Facturas."TOTAL_IVAE_FACTURA"]')
-          ParentFont = False
-        end
-        object FacturasPORCEN_REN_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 317.480534650000000000
-          Top = 34.015770000000000000
-          Width = 56.692950000000000000
-          Height = 18.897650000000000000
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%g'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[Facturas."PORCEN_REN_FACTURA"]%')
-          ParentFont = False
-        end
-        object FacturasPORCEN_RER_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 317.480534650000000000
-          Top = 60.472480000000000000
-          Width = 56.692950000000000000
-          Height = 18.897650000000000000
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%g'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[Facturas."PORCEN_RER_FACTURA"]%')
-          ParentFont = False
-        end
-        object FacturasPORCEN_REE_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 317.480534650000000000
-          Top = 113.385900000000000000
-          Width = 56.692950000000000000
-          Height = 18.897650000000000000
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%g'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[Facturas."PORCEN_REE_FACTURA"]%')
-          ParentFont = False
-        end
-        object FacturasPORCEN_RES_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 317.480534650000000000
-          Top = 86.929190000000000000
-          Width = 52.913420000000000000
-          Height = 18.897650000000000000
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%g'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[Facturas."PORCEN_RES_FACTURA"]%')
-          ParentFont = False
-        end
-        object FacturasTOTAL_REN_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 398.409724650000000000
-          Top = 34.015770000000000000
-          Width = 64.252010000000000000
-          Height = 18.897650000000000000
-          OnBeforePrint = 'FacturasTOTAL_REN_FACTURAOnBeforePrint'
-          DataField = 'TOTAL_REN_FACTURA'
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%2.3m'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[Facturas."TOTAL_REN_FACTURA"]')
-          ParentFont = False
-        end
-        object FacturasTOTAL_REE_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 398.409724650000000000
-          Top = 113.385900000000000000
-          Width = 64.252010000000000000
-          Height = 18.897650000000000000
-          OnBeforePrint = 'FacturasTOTAL_REE_FACTURAOnBeforePrint'
-          DataField = 'TOTAL_REE_FACTURA'
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%2.3m'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[Facturas."TOTAL_REE_FACTURA"]')
-          ParentFont = False
-        end
-        object BaseImponibleR: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 26.456724650000000000
-          Top = 60.472480000000000000
-          Width = 94.488250000000000000
-          Height = 18.897650000000000000
-          OnBeforePrint = 'BaseImponibleROnBeforePrint'
-          DataField = 'TOTAL_BASEI_IVAR_FACTURA'
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%2.3m'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[Facturas."TOTAL_BASEI_IVAR_FACTURA"]')
-          ParentFont = False
-        end
-        object BaseImponibleS: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 26.456724650000000000
-          Top = 86.929190000000000000
-          Width = 94.488250000000000000
-          Height = 18.897650000000000000
-          OnBeforePrint = 'BaseImponibleSOnBeforePrint'
-          DataField = 'TOTAL_BASEI_IVAS_FACTURA'
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%2.3m'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[Facturas."TOTAL_BASEI_IVAS_FACTURA"]')
-          ParentFont = False
-        end
-        object FacturasTOTAL_RER_FACTURA1: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 394.630194650000000000
-          Top = 60.472480000000000000
-          Width = 68.031540000000000000
-          Height = 18.897650000000000000
-          DataField = 'TOTAL_RER_FACTURA'
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%2.3m'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[Facturas."TOTAL_RER_FACTURA"]')
-          ParentFont = False
-        end
-        object FacturasTOTAL_RES_FACTURA1: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 394.630194650000000000
-          Top = 86.929190000000000000
-          Width = 68.031540000000000000
-          Height = 18.897650000000000000
-          DataField = 'TOTAL_RES_FACTURA'
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%2.3m'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[Facturas."TOTAL_RES_FACTURA"]')
-          ParentFont = False
-        end
-        object FacturasCOMENTARIOS_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 23.677194650000000000
-          Top = 178.401670000000000000
-          Width = 710.551640000000000000
-          Height = 30.236240000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -11
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            
-              '[VarToStr(<Facturas."TEXTO_LEGAL_FACTURA_CLIENTE_FACTURA">)+'#39'  '#39 +
-              '+'
-            
-              ' VarToStr(<Facturas."TEXTO_LEGAL_FACTURA_EMPRESA_FACTURA">) +'#39'  ' +
-              #39'+'
-            ' VarToStr(<Facturas."COMENTARIOS_FACTURA">)]')
-          ParentFont = False
-        end
-        object Memo15: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 26.456724650000000000
-          Top = 154.960730000000000000
-          Width = 706.772110000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'Forma de Pago: [Facturas."DESCRIPCION_FORMAPAGO"]')
-          ParentFont = False
-        end
-      end
     end
   end
   inherited frxpdfxprtPedWeb: TfrxPDFExport
-    CreationTime = 0.000000000000000000
+    FileName = 'C:\Users\34667\OneDrive\Escritorio\FACTURA KIOSCO.pdf'
+    CreationTime = 45274.521397164350000000
+    Author = 'FactuZam Report System'
     Left = 232
     Top = 200
   end
@@ -1891,7 +539,8 @@ inherited frmPrintFac: TfrmPrintFac
     Top = 208
   end
   inherited frxReportOrigen: TfrxReport
-    ReportOptions.LastChange = 45230.829662789350000000
+    EngineOptions.DoublePass = True
+    ReportOptions.LastChange = 45269.385296875000000000
     ScriptText.Strings = (
       'procedure RetencionTotalOnBeforePrint(Sender: TfrxComponent);'
       'begin'
@@ -2100,7 +749,99 @@ inherited frmPrintFac: TfrmPrintFac
       ''
       'procedure PageFooter1OnBeforePrint(Sender: TfrxComponent);'
       'begin'
-      '   Engine.CurY := (20.5 * fr1cm);'
+      '  Engine.CurY := (20 * fr1cm);'
+      '  if ((<TotalPages> > 1) and (<Page> <> <TotalPages>)) then'
+      '  begin'
+      '    CajaTitulosIVA.Visible := False;'
+      '    BaseImponibleCajaIVA.Visible := False;'
+      '    TituloPorcenCajaIVA.Visible := False;'
+      '    TituloTotalCajaIVA.Visible := False;'
+      '    TotalBases.Visible := False;'
+      '    Impuestos.Font.Color := clWhite;'
+      '    ImpuestosTotal.Font.Color := clWhite;'
+      '    RetencionTot.Font.Color := clWhite;'
+      '    mTotalFactura.Visible := False;'
+      
+        '    mTotalFacturaCtd.Visible := False;                          ' +
+        '                    '
+      '    RetencionTotal.Font.Color := clWhite;'
+      '    Retencion.Font.Color := clWhite;'
+      '    RetencionPorc.Font.Color := clWhite;'
+      '    CajaIVA.Visible := False;'
+      '    FormaPago.Visible := False;'
+      
+        '    Continua.Visible := True;                                   ' +
+        '                       '
+      '    BaseImponibleN.Font.Color := clWhite;'
+      '    BaseImponibleR.Font.Color := clWhite;'
+      '    BaseImponibleS.Font.Color := clWhite;'
+      '    BaseImponibleE.Font.Color := clWhite;'
+      '    TotalBaseImponible.Visible := False;'
+      '    FacturasPORCEN_IVAN_FACTURA.Font.Color := clWhite;'
+      '    FacturasPORCEN_IVAR_FACTURA.Font.Color := clWhite;'
+      '    FacturasPORCEN_IVAS_FACTURA.Font.Color := clWhite;'
+      '    FacturasPORCEN_IVAE_FACTURA.Font.Color := clWhite;'
+      '    FacturasTOTAL_IVAN_FACTURA.Font.Color := clWhite;'
+      '    FacturasTOTAL_IVAR_FACTURA.Font.Color := clWhite;'
+      '    FacturasTOTAL_IVAS_FACTURA.Font.Color := clWhite;'
+      '    FacturasTOTAL_IVAE_FACTURA.Font.Color := clWhite;'
+      '    FacturasPORCEN_REN_FACTURA.Font.Color := clWhite;'
+      '    FacturasPORCEN_RER_FACTURA.Font.Color := clWhite;'
+      '    FacturasPORCEN_RES_FACTURA.Font.Color := clWhite;'
+      '    FacturasPORCEN_REE_FACTURA.Font.Color := clWhite;'
+      '    FacturasTOTAL_REN_FACTURA.Font.Color := clWhite;'
+      '    FacturasTOTAL_RER_FACTURA.Font.Color := clWhite;'
+      '    FacturasTOTAL_RES_FACTURA.Font.Color := clWhite;'
+      '    FacturasTOTAL_REE_FACTURA.Font.Color := clWhite;'
+      '    FacturasTOTAL_RER_FACTURA1.Font.Color := clWhite;'
+      '    FacturasTOTAL_RES_FACTURA1.Font.Color := clWhite;'
+      '  end'
+      '  else'
+      '  begin'
+      
+        '    Continua.Visible := False;                                  ' +
+        '                                           '
+      '    CajaTitulosIVA.Visible := True;'
+      '    BaseImponibleCajaIVA.Visible := True;'
+      '    TituloPorcenCajaIVA.Visible := True;'
+      '    TituloTotalCajaIVA.Visible := True;'
+      '    TotalBases.Visible := True;'
+      '    Impuestos.Font.Color := clBlack;'
+      '    ImpuestosTotal.Font.Color := clBlack;'
+      '    RetencionTot.Font.Color := clBlack;'
+      '    mTotalFactura.Visible := True;'
+      
+        '    mTotalFacturaCtd.Visible := True;                           ' +
+        '                 '
+      '    CajaIVA.Visible := True;'
+      '    RetencionTotal.Font.Color := clBlack;'
+      '    Retencion.Font.Color := clBlack;'
+      '    RetencionPorc.Font.Color := clBlack;'
+      '    FormaPago.Visible := True;'
+      '    BaseImponibleN.Font.Color := clBlack;'
+      '    BaseImponibleR.Font.Color := clBlack;'
+      '    BaseImponibleS.Font.Color := clBlack;'
+      '    BaseImponibleE.Font.Color := clBlack;'
+      '    TotalBaseImponible.Visible := True;'
+      '    FacturasPORCEN_IVAN_FACTURA.Font.Color := clBlack;'
+      '    FacturasPORCEN_IVAR_FACTURA.Font.Color := clBlack;'
+      '    FacturasPORCEN_IVAS_FACTURA.Font.Color := clBlack;'
+      '    FacturasPORCEN_IVAE_FACTURA.Font.Color := clBlack;'
+      '    FacturasTOTAL_IVAN_FACTURA.Font.Color := clBlack;'
+      '    FacturasTOTAL_IVAR_FACTURA.Font.Color := clBlack;'
+      '    FacturasTOTAL_IVAS_FACTURA.Font.Color := clBlack;'
+      '    FacturasTOTAL_IVAE_FACTURA.Font.Color := clBlack;'
+      '    FacturasPORCEN_REN_FACTURA.Font.Color := clBlack;'
+      '    FacturasPORCEN_RER_FACTURA.Font.Color := clBlack;'
+      '    FacturasPORCEN_RES_FACTURA.Font.Color := clBlack;'
+      '    FacturasPORCEN_REE_FACTURA.Font.Color := clBlack;'
+      '    FacturasTOTAL_REN_FACTURA.Font.Color := clBlack;'
+      '    FacturasTOTAL_RER_FACTURA.Font.Color := clBlack;'
+      '    FacturasTOTAL_RES_FACTURA.Font.Color := clBlack;'
+      '    FacturasTOTAL_REE_FACTURA.Font.Color := clBlack;'
+      '    FacturasTOTAL_RER_FACTURA1.Font.Color := clBlack;'
+      '    FacturasTOTAL_RES_FACTURA1.Font.Color := clBlack;'
+      '  end;'
       'end;'
       ''
       'procedure DetailData1OnBeforePrint(Sender: TfrxComponent);'
@@ -2128,6 +869,94 @@ inherited frmPrintFac: TfrmPrintFac
       '    FechaEntregaTittle.Visible := False'
       '  else'
       '    FechaEntregaTittle.Visible := True;'
+      'end;'
+      ''
+      
+        'procedure FacturasPROVINCIA_EMPRESA_FACTURAOnBeforePrint(Sender:' +
+        ' TfrxComponent);'
+      'begin'
+      
+        '  IF (<Facturas."POBLACION_EMPRESA_FACTURA"> = <Facturas."PROVIN' +
+        'CIA_EMPRESA_FACTURA">) then'
+      '    FacturasPROVINCIA_EMPRESA_FACTURA.Visible := False'
+      '  else'
+      '    FacturasPROVINCIA_EMPRESA_FACTURA.Visible := True;'
+      'end;'
+      ''
+      ''
+      
+        'procedure FacturasPROVINCIA_CLIENTE_FACTURAOnBeforePrint(Sender:' +
+        ' TfrxComponent);'
+      'begin'
+      
+        '  IF (<Facturas."POBLACION_CLIENTE_FACTURA"> = <Facturas."PROVIN' +
+        'CIA_CLIENTE_FACTURA">) then'
+      '    FacturasPROVINCIA_CLIENTE_FACTURA.Visible := False'
+      '  else'
+      '    FacturasPROVINCIA_CLIENTE_FACTURA.Visible := True;'
+      'end;'
+      ''
+      'procedure ImpuestosOnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '  If (( <Facturas."TOTAL_REE_FACTURA"> +'
+      '        <Facturas."TOTAL_RES_FACTURA"> +'
+      '        <Facturas."TOTAL_RER_FACTURA"> +'
+      '        <Facturas."TOTAL_REN_FACTURA"> ) = 0) then'
+      
+        '    Impuestos.Memo.Text := '#39'Total [Facturas."PALABRA_REPORTS_ZON' +
+        'A_IVA_FACTURA"]'#39
+      '  else'
+      
+        '    Impuestos.Memo.Text := '#39'Total [Facturas."PALABRA_REPORTS_ZON' +
+        'A_IVA_FACTURA"] + RE'#39
+      'end;'
+      ''
+      'procedure mNumPaginasOnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '  if (<TotalPages> > 1) then'
+      '    mNumPaginas.Visible := True'
+      '  else'
+      '    mNumPaginas.Visible := False;'
+      ''
+      'end;'
+      ''
+      'procedure FormaPagoOnBeforePrint(Sender: TfrxComponent);'
+      'begin           '
+      '  if ((<Facturas."ESVERBANCOEMPRESA_FORMAPAGO"> = '#39'S'#39') and '
+      '      (<Facturas."ESCONTADO_FORMAPAGO"> = '#39'N'#39') and '
+      '      (<Facturas."IBAN_EMPRESA"> <> '#39#39'))  then'
+      
+        '    FormaPago.Memo.Text := Trim(FormaPago.Memo.Text) + '#39' '#39' + <Fa' +
+        'cturas."IBAN_EMPRESA">;'
+      '  if ((<Facturas."ESVERBANCOEMPRESA_FORMAPAGO"> = '#39'N'#39') and '
+      '      (<Facturas."ESCONTADO_FORMAPAGO"> = '#39'N'#39') and '
+      '      (<Facturas."IBAN_CLIENTE"> <> '#39#39')) then'
+      
+        '    FormaPago.Memo.Text := Trim(FormaPago.Memo.Text) + '#39' '#39' + <Fa' +
+        'cturas."IBAN_CLIENTE">;'
+      '  if (<Facturas."VENCIMIENTOS_RECIBOS"> <> '#39#39') then'
+      
+        '    FormaPago.Memo.Text := FormaPago.Memo.Text + '#39'Vencimiento/s:' +
+        ' '#39' + <Facturas."VENCIMIENTOS_RECIBOS">;              '
+      'end;'
+      ''
+      
+        'procedure LineasFacturasTOTAL_LINEAOnBeforePrint(Sender: TfrxCom' +
+        'ponent);'
+      'begin'
+      
+        '  if (<Lineas Facturas."ESIMP_INCL_TARIFA_FACTURA_LINEA"> = '#39'S'#39')' +
+        ' then'
+      
+        '    LineasFacturasTOTAL_LINEA.Memo.Text := '#39'[Lineas Facturas."TO' +
+        'TAL_FACTURA_LINEA"]'#39
+      '  else                      '
+      
+        '    LineasFacturasTOTAL_LINEA.Memo.Text := '#39'[<Lineas Facturas."C' +
+        'ANTIDAD_FACTURA_LINEA"> '#39'+ '
+      
+        '                                           '#39'*<Lineas Facturas."P' +
+        'RECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA">]'#39';'
       'end;'
       ''
       'begin'
@@ -2194,536 +1023,17 @@ inherited frmPrintFac: TfrmPrintFac
       end
     end
     inherited Page1: TfrxReportPage
-      object MasterData1: TfrxMasterData
-        FillType = ftBrush
-        Frame.Typ = []
-        Height = 393.071120000000000000
-        Top = 18.897650000000000000
-        Width = 755.906000000000000000
-        DataSet = dmFacturas.fxdsPrintFac
-        DataSetName = 'Facturas'
-        RowCount = 0
-        object Memo1: TfrxMemoView
-          AllowVectorExport = True
-          Left = 332.598640000000000000
-          Top = 30.236240000000000000
-          Width = 90.708720000000000000
-          Height = 22.677180000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -19
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'FACTURA')
-          ParentFont = False
-        end
-        object Memo2: TfrxMemoView
-          AllowVectorExport = True
-          Left = 16.677180000000000000
-          Top = 173.858380000000000000
-          Width = 355.275820000000000000
-          Height = 154.960730000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          ParentFont = False
-        end
-        object Memo3: TfrxMemoView
-          AllowVectorExport = True
-          Left = 389.291590000000000000
-          Top = 173.858380000000000000
-          Width = 355.275820000000000000
-          Height = 154.960730000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          ParentFont = False
-        end
-        object FacturasRAZONSOCIAL_EMPRESA_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 22.677180000000000000
-          Top = 177.637910000000000000
-          Width = 340.157700000000000000
-          Height = 18.897650000000000000
-          DataField = 'RAZONSOCIAL_EMPRESA_FACTURA'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[Facturas."RAZONSOCIAL_EMPRESA_FACTURA"]')
-          ParentFont = False
-        end
-        object FacturasDIRECCION1_EMPRESA_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 22.677180000000000000
-          Top = 200.315090000000000000
-          Width = 340.157700000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            
-              '[Facturas."DIRECCION1_EMPRESA_FACTURA"] [Facturas."DIRECCION2_EM' +
-              'PRESA_FACTURA"]')
-          ParentFont = False
-          Formats = <
-            item
-            end
-            item
-            end>
-        end
-        object FacturasCPOSTAL_EMPRESA_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 22.677180000000000000
-          Top = 221.669450000000000000
-          Width = 340.157700000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            
-              '[Facturas."CPOSTAL_EMPRESA_FACTURA"]   [Facturas."POBLACION_EMPR' +
-              'ESA_FACTURA"]')
-          ParentFont = False
-        end
-        object FacturasPROVINCIA_EMPRESA_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 22.677180000000000000
-          Top = 244.346630000000000000
-          Width = 340.157700000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '( [Facturas."PROVINCIA_EMPRESA_FACTURA"] )')
-          ParentFont = False
-        end
-        object FacturasMOVIL_EMPRESA_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 22.677180000000000000
-          Top = 267.023810000000000000
-          Width = 117.165430000000000000
-          Height = 18.897650000000000000
-          DataField = 'MOVIL_EMPRESA_FACTURA'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[Facturas."MOVIL_EMPRESA_FACTURA"]')
-          ParentFont = False
-        end
-        object FacturasEMAIL_EMPRESA_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 143.622140000000000000
-          Top = 267.023810000000000000
-          Width = 215.433210000000000000
-          Height = 18.897650000000000000
-          DataField = 'EMAIL_EMPRESA_FACTURA'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -11
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[Facturas."EMAIL_EMPRESA_FACTURA"]')
-          ParentFont = False
-        end
-        object Memo4: TfrxMemoView
-          AllowVectorExport = True
-          Left = 22.677180000000000000
-          Top = 143.622140000000000000
-          Width = 52.913420000000000000
-          Height = 22.677180000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -16
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            'Emisor')
-          ParentFont = False
-        end
-        object Memo5: TfrxMemoView
-          AllowVectorExport = True
-          Left = 668.976810000000000000
-          Top = 143.622140000000000000
-          Width = 75.590600000000000000
-          Height = 22.677180000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -16
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            'Receptor')
-          ParentFont = False
-        end
-        object FacturasRAZONSOCIAL_CLIENTE_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 402.071120000000000000
-          Top = 177.637910000000000000
-          Width = 347.716760000000000000
-          Height = 18.897650000000000000
-          DataField = 'RAZONSOCIAL_CLIENTE_FACTURA'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[Facturas."RAZONSOCIAL_CLIENTE_FACTURA"]')
-          ParentFont = False
-        end
-        object FacturasDIRECCION1_EMPRESA_FACTURA1: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 401.850650000000000000
-          Top = 201.094620000000000000
-          Width = 347.716760000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            
-              '[Facturas."DIRECCION1_CLIENTE_FACTURA"] [Facturas."DIRECCION2_CL' +
-              'IENTE_FACTURA"]')
-          ParentFont = False
-        end
-        object FacturasCPOSTAL_CLIENTE_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 402.071120000000000000
-          Top = 219.212740000000000000
-          Width = 302.362400000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            
-              '[Facturas."CPOSTAL_CLIENTE_FACTURA"]   [Facturas."POBLACION_CLIE' +
-              'NTE_FACTURA"]')
-          ParentFont = False
-        end
-        object FacturasPROVINCIA_EMPRESA_FACTURA1: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 402.071120000000000000
-          Top = 238.110390000000000000
-          Width = 347.716760000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '( [Facturas."PROVINCIA_CLIENTE_FACTURA"] )')
-          ParentFont = False
-        end
-        object FacturasPAIS_CLIENTE_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 574.488560000000000000
-          Top = 260.787570000000000000
-          Width = 166.299320000000000000
-          Height = 18.897650000000000000
-          DataField = 'PAIS_CLIENTE_FACTURA'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -12
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[Facturas."PAIS_CLIENTE_FACTURA"]')
-          ParentFont = False
-        end
-        object FacturasMOVIL_CLIENTE_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 402.071120000000000000
-          Top = 279.685220000000000000
-          Width = 128.504020000000000000
-          Height = 18.897650000000000000
-          DataField = 'MOVIL_CLIENTE_FACTURA'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -12
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[Facturas."MOVIL_CLIENTE_FACTURA"]')
-          ParentFont = False
-        end
-        object FacturasEMAIL_CLIENTE_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 536.693260000000000000
-          Top = 279.685220000000000000
-          Width = 204.094620000000000000
-          Height = 18.897650000000000000
-          DataField = 'EMAIL_CLIENTE_FACTURA'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -12
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[Facturas."EMAIL_CLIENTE_FACTURA"]')
-          ParentFont = False
-        end
-        object Memo6: TfrxMemoView
-          AllowVectorExport = True
-          Left = 22.677180000000000000
-          Top = 56.692950000000000000
-          Width = 238.110390000000000000
-          Height = 22.677180000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'Fecha: [Facturas."FECHA_FACTURA"]')
-          ParentFont = False
-        end
-        object FacturasNRO_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 22.677180000000000000
-          Top = 86.929190000000000000
-          Width = 238.110390000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            
-              'N'#250'mero de Factura: [Facturas."SERIE_FACTURA"].[Facturas."NRO_FAC' +
-              'TURA"]')
-          ParentFont = False
-          Formats = <
-            item
-            end
-            item
-            end>
-        end
-        object Memo7: TfrxMemoView
-          AllowVectorExport = True
-          Left = 22.677180000000000000
-          Top = 351.496290000000000000
-          Width = 729.449290000000000000
-          Height = 26.456710000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          ParentFont = False
-        end
-        object Memo8: TfrxMemoView
-          AllowVectorExport = True
-          Left = 26.897650000000000000
-          Top = 355.275820000000000000
-          Width = 79.370130000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'Descripci'#243'n')
-          ParentFont = False
-        end
-        object Memo9: TfrxMemoView
-          AllowVectorExport = True
-          Left = 653.858690000000000000
-          Top = 355.275820000000000000
-          Width = 143.622140000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'Total')
-          ParentFont = False
-        end
-        object Memo10: TfrxMemoView
-          AllowVectorExport = True
-          Left = 398.953000000000000000
-          Top = 355.275820000000000000
-          Width = 75.590600000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haCenter
-          Memo.UTF8W = (
-            'Ctd')
-          ParentFont = False
-        end
-        object Memo11: TfrxMemoView
-          AllowVectorExport = True
-          Left = 485.323130000000000000
-          Top = 355.275820000000000000
-          Width = 83.149660000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'Precio')
-          ParentFont = False
-        end
-        object TituloIvaColumna: TfrxMemoView
-          AllowVectorExport = True
-          Left = 582.047620000000000000
-          Top = 355.275820000000000000
-          Width = 75.590600000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '% [Facturas."PALABRA_REPORTS_ZONA_IVA_FACTURA"]')
-          ParentFont = False
-        end
-        object FechaEntregaTittle: TfrxMemoView
-          AllowVectorExport = True
-          Left = 315.244280000000000000
-          Top = 355.275820000000000000
-          Width = 90.708720000000000000
-          Height = 18.897650000000000000
-          OnBeforePrint = 'FechaEntregaTittleOnBeforePrint'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'Fecha Entrega')
-          ParentFont = False
-        end
-        object FacturasNIF_CLIENTE_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 464.882190000000000000
-          Top = 302.362400000000000000
-          Width = 272.126160000000000000
-          Height = 18.897650000000000000
-          DataField = 'NIF_CLIENTE_FACTURA'
-          DataSet = dmFacturas.fxdsPrintFac
-          DataSetName = 'Facturas'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -15
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[Facturas."NIF_CLIENTE_FACTURA"]')
-          ParentFont = False
-        end
-        object FacturasNIF_EMPRESA_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 22.677180000000000000
-          Top = 302.362400000000000000
-          Width = 275.905690000000000000
-          Height = 18.897650000000000000
-          DataField = 'NIF_EMPRESA_FACTURA'
-          DataSet = dmFacturas.fxdsPrintFac
-          DataSetName = 'Facturas'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -15
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[Facturas."NIF_EMPRESA_FACTURA"]')
-          ParentFont = False
-        end
-      end
+      LeftMargin = 10.000000000000000000
       object DetailData1: TfrxDetailData
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 26.456710000000000000
-        Top = 434.645950000000000000
-        Width = 755.906000000000000000
+        Top = 525.354670000000000000
+        Width = 737.008350000000000000
         OnBeforePrint = 'DetailData1OnBeforePrint'
         DataSet = dmFacturas.fxdstPrintLinFac
         DataSetName = 'Lineas Facturas'
@@ -2731,10 +1041,11 @@ inherited frmPrintFac: TfrmPrintFac
         object LineasFacturasTOTAL_LINEA: TfrxMemoView
           IndexTag = 1
           AllowVectorExport = True
-          Left = 653.858690000000000000
+          Left = 644.858690000000000000
           Top = 4.338590000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
+          OnBeforePrint = 'LineasFacturasTOTAL_LINEAOnBeforePrint'
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2m'
           DisplayFormat.Kind = fkNumeric
@@ -2746,13 +1057,16 @@ inherited frmPrintFac: TfrmPrintFac
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[Lineas Facturas."TOTAL_FACTURA_LINEA"]')
+            ''
+            
+              '[<Lineas Facturas."CANTIDAD_FACTURA_LINEA">*<Lineas Facturas."PR' +
+              'ECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA">]')
           ParentFont = False
         end
         object LineasFacturasCANTIDAD_FACTURA_LINEA: TfrxMemoView
           IndexTag = 1
           AllowVectorExport = True
-          Left = 398.953000000000000000
+          Left = 386.055350000000000000
           Top = 3.779530000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
@@ -2762,7 +1076,7 @@ inherited frmPrintFac: TfrmPrintFac
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          HAlign = haCenter
+          HAlign = haRight
           Memo.UTF8W = (
             
               '[Lineas Facturas."CANTIDAD_FACTURA_LINEA"] [Lineas Facturas."TIP' +
@@ -2777,7 +1091,7 @@ inherited frmPrintFac: TfrmPrintFac
         object LineasFacturasPRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA: TfrxMemoView
           IndexTag = 1
           AllowVectorExport = True
-          Left = 489.102660000000000000
+          Left = 479.984540000000000000
           Top = 3.779530000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
@@ -2785,9 +1099,16 @@ inherited frmPrintFac: TfrmPrintFac
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2m'
           DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
           Frame.Typ = []
+          HAlign = haRight
           Memo.UTF8W = (
             '[Lineas Facturas."PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA"]')
+          ParentFont = False
         end
         object LineasFacturasPORCEN_IVA_FACTURA_LINEA: TfrxMemoView
           IndexTag = 1
@@ -2799,14 +1120,21 @@ inherited frmPrintFac: TfrmPrintFac
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%g %'
           DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
           Frame.Typ = []
+          HAlign = haCenter
           Memo.UTF8W = (
-            '[Lineas Facturas."PORCEN_IVA_FACTURA_LINEA"]%')
+            '[Lineas Facturas."PORCEN_IVA_FACTURA_LINEA"]')
+          ParentFont = False
         end
         object LineasFacturasFECHA_ENTREGA_FACTURA_LINEA: TfrxMemoView
           IndexTag = 1
           AllowVectorExport = True
-          Left = 315.244280000000000000
+          Left = 306.126160000000000000
           Top = 3.779530000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
@@ -2835,9 +1163,15 @@ inherited frmPrintFac: TfrmPrintFac
           DataField = 'DESCRIPCION_ARTICULO_FACTURA_LINEA'
           DataSet = dmFacturas.fxdstPrintLinFac
           DataSetName = 'Lineas Facturas'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
           Frame.Typ = []
           Memo.UTF8W = (
             '[Lineas Facturas."DESCRIPCION_ARTICULO_FACTURA_LINEA"]')
+          ParentFont = False
         end
       end
       object Memo19: TfrxMemoView
@@ -2924,19 +1258,538 @@ inherited frmPrintFac: TfrmPrintFac
           '[Facturas."TOTAL_BASES_FACTURA"]')
         ParentFont = False
       end
+      object PageHeader1: TfrxPageHeader
+        FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
+        Frame.Typ = []
+        Height = 400.630180000000000000
+        Top = 18.897650000000000000
+        Width = 737.008350000000000000
+        object Memo7: TfrxMemoView
+          AllowVectorExport = True
+          Left = 13.559060000000000000
+          Top = 362.834880000000000000
+          Width = 710.551640000000000000
+          Height = 26.456710000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          ParentFont = False
+        end
+        object Memo1: TfrxMemoView
+          AllowVectorExport = True
+          Left = 319.700990000000000000
+          Top = 45.354360000000000000
+          Width = 109.606370000000000000
+          Height = 22.677180000000000000
+          AutoWidth = True
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -21
+          Font.Name = 'Arial'
+          Font.Style = [fsBold, fsUnderline]
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'FACTURA')
+          ParentFont = False
+        end
+        object Memo2: TfrxMemoView
+          AllowVectorExport = True
+          Left = 7.559060000000000000
+          Top = 207.874150000000000000
+          Width = 355.275820000000000000
+          Height = 136.063080000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          ParentFont = False
+        end
+        object Memo3: TfrxMemoView
+          AllowVectorExport = True
+          Left = 379.512060000000000000
+          Top = 207.874150000000000000
+          Width = 343.937230000000000000
+          Height = 136.063080000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          ParentFont = False
+        end
+        object FacturasRAZONSOCIAL_EMPRESA_FACTURA: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 20.779530000000000000
+          Top = 211.653680000000000000
+          Width = 340.157700000000000000
+          Height = 18.897650000000000000
+          DataField = 'RAZONSOCIAL_EMPRESA_FACTURA'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[Facturas."RAZONSOCIAL_EMPRESA_FACTURA"]')
+          ParentFont = False
+        end
+        object FacturasDIRECCION1_EMPRESA_FACTURA: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 20.779530000000000000
+          Top = 234.330860000000000000
+          Width = 340.157700000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            
+              '[Facturas."DIRECCION1_EMPRESA_FACTURA"] [Facturas."DIRECCION2_EM' +
+              'PRESA_FACTURA"]')
+          ParentFont = False
+          Formats = <
+            item
+            end
+            item
+            end>
+        end
+        object FacturasCPOSTAL_EMPRESA_FACTURA: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 20.779530000000000000
+          Top = 256.228510000000000000
+          Width = 340.157700000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            
+              '[Facturas."CPOSTAL_EMPRESA_FACTURA"]   [Facturas."POBLACION_EMPR' +
+              'ESA_FACTURA"]')
+          ParentFont = False
+        end
+        object FacturasPROVINCIA_EMPRESA_FACTURA: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 20.779530000000000000
+          Top = 278.362400000000000000
+          Width = 340.157700000000000000
+          Height = 18.897650000000000000
+          OnBeforePrint = 'FacturasPROVINCIA_EMPRESA_FACTURAOnBeforePrint'
+          OnPreviewClick = 'FacturasPROVINCIA_EMPRESA_FACTURAOnPreviewClick'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[Facturas."PROVINCIA_EMPRESA_FACTURA"]')
+          ParentFont = False
+        end
+        object FacturasMOVIL_EMPRESA_FACTURA: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 20.779530000000000000
+          Top = 301.039580000000000000
+          Width = 340.157700000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            
+              '[Facturas."MOVIL_EMPRESA_FACTURA"] [Facturas."EMAIL_EMPRESA_FACT' +
+              'URA"]')
+          ParentFont = False
+        end
+        object Memo4: TfrxMemoView
+          AllowVectorExport = True
+          Left = 13.559060000000000000
+          Top = 173.858380000000000000
+          Width = 52.913420000000000000
+          Height = 22.677180000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Emisor')
+          ParentFont = False
+        end
+        object Memo5: TfrxMemoView
+          AllowVectorExport = True
+          Left = 380.173470000000000000
+          Top = 173.858380000000000000
+          Width = 75.590600000000000000
+          Height = 22.677180000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Receptor')
+          ParentFont = False
+        end
+        object FacturasRAZONSOCIAL_CLIENTE_FACTURA: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 392.953000000000000000
+          Top = 211.653680000000000000
+          Width = 347.716760000000000000
+          Height = 18.897650000000000000
+          DataField = 'RAZONSOCIAL_CLIENTE_FACTURA'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[Facturas."RAZONSOCIAL_CLIENTE_FACTURA"]')
+          ParentFont = False
+        end
+        object FacturasDIRECCION1_EMPRESA_FACTURA1: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 392.953000000000000000
+          Top = 234.330860000000000000
+          Width = 347.716760000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            
+              '[Facturas."DIRECCION1_CLIENTE_FACTURA"] [Facturas."DIRECCION2_CL' +
+              'IENTE_FACTURA"]')
+          ParentFont = False
+        end
+        object FacturasCPOSTAL_CLIENTE_FACTURA: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 392.953000000000000000
+          Top = 256.228510000000000000
+          Width = 302.362400000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            
+              '[Facturas."CPOSTAL_CLIENTE_FACTURA"]   [Facturas."POBLACION_CLIE' +
+              'NTE_FACTURA"]')
+          ParentFont = False
+        end
+        object FacturasPROVINCIA_CLIENTE_FACTURA: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 392.953000000000000000
+          Top = 278.362400000000000000
+          Width = 347.716760000000000000
+          Height = 18.897650000000000000
+          OnBeforePrint = 'FacturasPROVINCIA_CLIENTE_FACTURAOnBeforePrint'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            
+              '[Facturas."PROVINCIA_CLIENTE_FACTURA"]   [Facturas."PAIS_CLIENTE' +
+              '_FACTURA"]')
+          ParentFont = False
+        end
+        object FacturasMOVIL_CLIENTE_FACTURA: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 392.953000000000000000
+          Top = 322.464750000000000000
+          Width = 264.567100000000000000
+          Height = 18.897650000000000000
+          DataSet = dmFacturas.fxdsPrintFac
+          DataSetName = 'Facturas'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'NIF: [Facturas."NIF_CLIENTE_FACTURA"]')
+          ParentFont = False
+        end
+        object Memo6: TfrxMemoView
+          AllowVectorExport = True
+          Left = 13.559060000000000000
+          Top = 90.708720000000000000
+          Width = 340.157700000000000000
+          Height = 22.677180000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Fecha: [Facturas."FECHA_FACTURA"]')
+          ParentFont = False
+        end
+        object FacturasNRO_FACTURA: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 13.559060000000000000
+          Top = 120.944960000000000000
+          Width = 340.157700000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            
+              'N'#250'mero de Factura: [Facturas."SERIE_FACTURA"].[Facturas."NRO_FAC' +
+              'TURA"]')
+          ParentFont = False
+          Formats = <
+            item
+            end
+            item
+            end>
+        end
+        object Memo8: TfrxMemoView
+          AllowVectorExport = True
+          Left = 17.779530000000000000
+          Top = 366.614410000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Descripci'#243'n')
+          ParentFont = False
+        end
+        object Memo9: TfrxMemoView
+          AllowVectorExport = True
+          Left = 635.740570000000000000
+          Top = 366.614410000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Total')
+          ParentFont = False
+        end
+        object Memo10: TfrxMemoView
+          AllowVectorExport = True
+          Left = 389.834880000000000000
+          Top = 366.614410000000000000
+          Width = 75.590600000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Cantidad')
+          ParentFont = False
+        end
+        object Memo11: TfrxMemoView
+          AllowVectorExport = True
+          Left = 476.205010000000000000
+          Top = 366.614410000000000000
+          Width = 83.149660000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Precio')
+          ParentFont = False
+        end
+        object TituloIvaColumna: TfrxMemoView
+          AllowVectorExport = True
+          Left = 572.929500000000000000
+          Top = 366.614410000000000000
+          Width = 75.590600000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '% [Facturas."PALABRA_REPORTS_ZONA_IVA_FACTURA"]')
+          ParentFont = False
+        end
+        object FechaEntregaTittle: TfrxMemoView
+          AllowVectorExport = True
+          Left = 306.126160000000000000
+          Top = 366.614410000000000000
+          Width = 90.708720000000000000
+          Height = 18.897650000000000000
+          OnBeforePrint = 'FechaEntregaTittleOnBeforePrint'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Fecha Entrega')
+          ParentFont = False
+        end
+        object FacturasMOVIL_CLIENTE_FACTURA1: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 392.953000000000000000
+          Top = 301.039580000000000000
+          Width = 328.819110000000000000
+          Height = 18.897650000000000000
+          DataSet = dmFacturas.fxdsPrintFac
+          DataSetName = 'Facturas'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            
+              '[Facturas."MOVIL_CLIENTE_FACTURA"] [Facturas."EMAIL_CLIENTE_FACT' +
+              'URA"]')
+          ParentFont = False
+        end
+        object FacturasNIF_EMPRESA_FACTURA: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 20.779530000000000000
+          Top = 322.464750000000000000
+          Width = 272.126160000000000000
+          Height = 18.897650000000000000
+          DataSet = dmFacturas.fxdsPrintFac
+          DataSetName = 'Facturas'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Frame.Width = 1.500000000000000000
+          Memo.UTF8W = (
+            'NIF: [Facturas."NIF_EMPRESA_FACTURA"]')
+          ParentFont = False
+        end
+      end
+      object MasterData1: TfrxMasterData
+        FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
+        Frame.Typ = []
+        Height = 22.677180000000000000
+        Top = 480.000310000000000000
+        Visible = False
+        Width = 737.008350000000000000
+        DataSet = dmFacturas.fxdsPrintFac
+        DataSetName = 'Facturas'
+        RowCount = 0
+        object FacturasNRO_FACTURA1: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 64.252010000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          DataField = 'NRO_FACTURA'
+          DataSet = dmFacturas.fxdsPrintFac
+          DataSetName = 'Facturas'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[Facturas."NRO_FACTURA"]')
+          ParentFont = False
+        end
+      end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
-        Height = 257.008040000000000000
-        Top = 521.575140000000000000
-        Width = 755.906000000000000000
+        Height = 249.448980000000000000
+        Top = 612.283860000000000000
+        Width = 737.008350000000000000
         OnBeforePrint = 'PageFooter1OnBeforePrint'
         object CajaIVA: TfrxMemoView
           AllowVectorExport = True
-          Left = 22.677194650000000000
-          Top = 3.779530000000000000
-          Width = 468.661720000000000000
-          Height = 143.622140000000000000
+          Left = 18.897650000000000000
+          Top = 32.677180000000000000
+          Width = 468.661417320000000000
+          Height = 113.385900000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -2947,8 +1800,8 @@ inherited frmPrintFac: TfrmPrintFac
         end
         object CajaTitulosIVA: TfrxMemoView
           AllowVectorExport = True
-          Left = 22.677180000000000000
-          Top = 3.779530000000000000
+          Left = 18.897650000000000000
+          Top = 6.220470000000000000
           Width = 468.661417320000000000
           Height = 26.456710000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -2959,11 +1812,158 @@ inherited frmPrintFac: TfrmPrintFac
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
           ParentFont = False
         end
-        object Memo13: TfrxMemoView
+        object mTotalFactura: TfrxMemoView
+          IndexTag = 1
           AllowVectorExport = True
-          Left = 653.858704650000000000
-          Top = 132.283550000000000000
-          Width = 79.370130000000000000
+          Left = 507.677504650000000000
+          Top = 124.724490000000000000
+          Width = 215.433210000000000000
+          Height = 22.677180000000000000
+          DisplayFormat.DecimalSeparator = ','
+          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Frame.Width = 1.500000000000000000
+          Memo.UTF8W = (
+            'Total Factura ')
+          ParentFont = False
+        end
+        object BaseImponibleN: TfrxMemoView
+          AllowVectorExport = True
+          Left = 22.677194650000000000
+          Top = 36.456710000000000000
+          Width = 90.708720000000000000
+          Height = 15.118120000000000000
+          OnBeforePrint = 'BaseImponibleNOnBeforePrint'
+          DisplayFormat.DecimalSeparator = ','
+          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[Facturas."TOTAL_BASEI_IVAN_FACTURA"]')
+          ParentFont = False
+        end
+        object BaseImponibleCajaIVA: TfrxMemoView
+          AllowVectorExport = True
+          Left = 26.456724650000000000
+          Top = 10.000000000000000000
+          Width = 102.047310000000000000
+          Height = 15.118120000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Base Imponible')
+          ParentFont = False
+        end
+        object BaseImponibleE: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 18.897664650000000000
+          Top = 115.826840000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          OnBeforePrint = 'BaseImponibleEOnBeforePrint'
+          DataField = 'TOTAL_BASEI_IVAE_FACTURA'
+          DisplayFormat.DecimalSeparator = ','
+          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[Facturas."TOTAL_BASEI_IVAE_FACTURA"]')
+          ParentFont = False
+        end
+        object TituloPorcenCajaIVA: TfrxMemoView
+          AllowVectorExport = True
+          Left = 147.401684650000000000
+          Top = 10.000000000000000000
+          Width = 68.031540000000000000
+          Height = 15.118120000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '% [Facturas."PALABRA_REPORTS_ZONA_IVA_FACTURA"]')
+          ParentFont = False
+        end
+        object TituloTotalCajaIVA: TfrxMemoView
+          AllowVectorExport = True
+          Left = 222.992284650000000000
+          Top = 10.000000000000000000
+          Width = 86.929190000000000000
+          Height = 15.118120000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Total [Facturas."PALABRA_REPORTS_ZONA_IVA_FACTURA"]')
+          ParentFont = False
+        end
+        object RetencionPorc: TfrxMemoView
+          AllowVectorExport = True
+          Left = 313.701004650000000000
+          Top = 10.000000000000000000
+          Width = 71.811070000000000000
+          Height = 15.118120000000000000
+          OnBeforePrint = 'RetencionPorcOnBeforePrint'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '% R.E.')
+          ParentFont = False
+        end
+        object RetencionTot: TfrxMemoView
+          AllowVectorExport = True
+          Left = 394.630194650000000000
+          Top = 10.000000000000000000
+          Width = 71.811070000000000000
+          Height = 15.118120000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Total R.E.')
+          ParentFont = False
+        end
+        object FacturasTOTAL_IVAN_FACTURA: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 222.992284650000000000
+          Top = 36.456710000000000000
+          Width = 56.692950000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2m'
@@ -2976,14 +1976,372 @@ inherited frmPrintFac: TfrmPrintFac
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[Facturas."TOTAL_LIQUIDO_FACTURA"]')
+            '[Facturas."TOTAL_IVAN_FACTURA"]')
+          ParentFont = False
+        end
+        object FacturasPORCEN_IVAN_FACTURA: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 147.401684650000000000
+          Top = 36.456710000000000000
+          Width = 56.692950000000000000
+          Height = 18.897650000000000000
+          DisplayFormat.FormatStr = '%g'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[Facturas."PORCEN_IVAN_FACTURA"]%')
+          ParentFont = False
+        end
+        object FacturasPORCEN_IVAR_FACTURA: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 147.401684650000000000
+          Top = 62.913420000000000000
+          Width = 56.692950000000000000
+          Height = 18.897650000000000000
+          DisplayFormat.FormatStr = '%g'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[Facturas."PORCEN_IVAR_FACTURA"]%')
+          ParentFont = False
+        end
+        object FacturasPORCEN_IVAS_FACTURA: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 147.401684650000000000
+          Top = 89.370130000000000000
+          Width = 56.692950000000000000
+          Height = 18.897650000000000000
+          DisplayFormat.FormatStr = '%g'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[Facturas."PORCEN_IVAS_FACTURA"]%')
+          ParentFont = False
+        end
+        object FacturasPORCEN_IVAE_FACTURA: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 147.401684650000000000
+          Top = 115.826840000000000000
+          Width = 56.692950000000000000
+          Height = 18.897650000000000000
+          DisplayFormat.FormatStr = '%g'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[Facturas."PORCEN_IVAE_FACTURA"]%')
+          ParentFont = False
+        end
+        object FacturasTOTAL_IVAR_FACTURA: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 222.992284650000000000
+          Top = 62.913420000000000000
+          Width = 56.692950000000000000
+          Height = 18.897650000000000000
+          DataField = 'TOTAL_IVAR_FACTURA'
+          DisplayFormat.DecimalSeparator = ','
+          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[Facturas."TOTAL_IVAR_FACTURA"]')
+          ParentFont = False
+        end
+        object FacturasTOTAL_IVAS_FACTURA: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 222.992284650000000000
+          Top = 89.370130000000000000
+          Width = 56.692950000000000000
+          Height = 18.897650000000000000
+          DataField = 'TOTAL_IVAS_FACTURA'
+          DisplayFormat.DecimalSeparator = ','
+          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[Facturas."TOTAL_IVAS_FACTURA"]')
+          ParentFont = False
+        end
+        object FacturasTOTAL_IVAE_FACTURA: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 222.992284650000000000
+          Top = 115.826840000000000000
+          Width = 56.692950000000000000
+          Height = 18.897650000000000000
+          DataField = 'TOTAL_IVAE_FACTURA'
+          DisplayFormat.DecimalSeparator = ','
+          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[Facturas."TOTAL_IVAE_FACTURA"]')
+          ParentFont = False
+        end
+        object FacturasPORCEN_REN_FACTURA: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 313.701004650000000000
+          Top = 36.456710000000000000
+          Width = 56.692950000000000000
+          Height = 18.897650000000000000
+          DisplayFormat.DecimalSeparator = ','
+          DisplayFormat.FormatStr = '%g'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[Facturas."PORCEN_REN_FACTURA"]%')
+          ParentFont = False
+        end
+        object FacturasPORCEN_RER_FACTURA: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 313.701004650000000000
+          Top = 62.913420000000000000
+          Width = 56.692950000000000000
+          Height = 18.897650000000000000
+          DisplayFormat.DecimalSeparator = ','
+          DisplayFormat.FormatStr = '%g'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[Facturas."PORCEN_RER_FACTURA"]%')
+          ParentFont = False
+        end
+        object FacturasPORCEN_REE_FACTURA: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 313.701004650000000000
+          Top = 115.826840000000000000
+          Width = 56.692950000000000000
+          Height = 18.897650000000000000
+          DisplayFormat.DecimalSeparator = ','
+          DisplayFormat.FormatStr = '%g'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[Facturas."PORCEN_REE_FACTURA"]%')
+          ParentFont = False
+        end
+        object FacturasPORCEN_RES_FACTURA: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 313.701004650000000000
+          Top = 89.370130000000000000
+          Width = 52.913420000000000000
+          Height = 18.897650000000000000
+          DisplayFormat.DecimalSeparator = ','
+          DisplayFormat.FormatStr = '%g'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[Facturas."PORCEN_RES_FACTURA"]%')
+          ParentFont = False
+        end
+        object FacturasTOTAL_REN_FACTURA: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 390.850664650000000000
+          Top = 36.456710000000000000
+          Width = 64.252010000000000000
+          Height = 18.897650000000000000
+          OnBeforePrint = 'FacturasTOTAL_REN_FACTURAOnBeforePrint'
+          DataField = 'TOTAL_REN_FACTURA'
+          DisplayFormat.DecimalSeparator = ','
+          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[Facturas."TOTAL_REN_FACTURA"]')
+          ParentFont = False
+        end
+        object FacturasTOTAL_REE_FACTURA: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 390.850664650000000000
+          Top = 115.826840000000000000
+          Width = 64.252010000000000000
+          Height = 18.897650000000000000
+          OnBeforePrint = 'FacturasTOTAL_REE_FACTURAOnBeforePrint'
+          DataField = 'TOTAL_REE_FACTURA'
+          DisplayFormat.DecimalSeparator = ','
+          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[Facturas."TOTAL_REE_FACTURA"]')
+          ParentFont = False
+        end
+        object BaseImponibleR: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 18.897664650000000000
+          Top = 62.913420000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          OnBeforePrint = 'BaseImponibleROnBeforePrint'
+          DataField = 'TOTAL_BASEI_IVAR_FACTURA'
+          DisplayFormat.DecimalSeparator = ','
+          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[Facturas."TOTAL_BASEI_IVAR_FACTURA"]')
+          ParentFont = False
+        end
+        object BaseImponibleS: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 18.897664650000000000
+          Top = 89.370130000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          OnBeforePrint = 'BaseImponibleSOnBeforePrint'
+          DataField = 'TOTAL_BASEI_IVAS_FACTURA'
+          DisplayFormat.DecimalSeparator = ','
+          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[Facturas."TOTAL_BASEI_IVAS_FACTURA"]')
+          ParentFont = False
+        end
+        object FacturasTOTAL_RER_FACTURA1: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 387.071134650000000000
+          Top = 62.913420000000000000
+          Width = 68.031540000000000000
+          Height = 18.897650000000000000
+          DataField = 'TOTAL_RER_FACTURA'
+          DisplayFormat.DecimalSeparator = ','
+          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[Facturas."TOTAL_RER_FACTURA"]')
+          ParentFont = False
+        end
+        object FacturasTOTAL_RES_FACTURA1: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 387.071134650000000000
+          Top = 89.370130000000000000
+          Width = 68.031540000000000000
+          Height = 18.897650000000000000
+          DataField = 'TOTAL_RES_FACTURA'
+          DisplayFormat.DecimalSeparator = ','
+          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[Facturas."TOTAL_RES_FACTURA"]')
           ParentFont = False
         end
         object Retencion: TfrxMemoView
           IndexTag = 1
           AllowVectorExport = True
-          Left = 512.897974650000000000
-          Top = 94.488250000000000000
+          Left = 507.118444650000000000
+          Top = 86.929190000000000000
           Width = 143.622140000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -2995,7 +2353,6 @@ inherited frmPrintFac: TfrmPrintFac
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          HAlign = haRight
           Memo.UTF8W = (
             'Retenci'#243'n IRPF [Facturas."PORCEN_RETENCION_FACTURA"]%')
           ParentFont = False
@@ -3003,8 +2360,8 @@ inherited frmPrintFac: TfrmPrintFac
         object RetencionTotal: TfrxMemoView
           IndexTag = 1
           AllowVectorExport = True
-          Left = 653.858704650000000000
-          Top = 94.488250000000000000
+          Left = 641.079174650000000000
+          Top = 86.929190000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
           OnBeforePrint = 'RetencionTotalOnBeforePrint'
@@ -3022,31 +2379,10 @@ inherited frmPrintFac: TfrmPrintFac
             '[<Facturas."TOTAL_RETENCION_FACTURA"> * (-1)]')
           ParentFont = False
         end
-        object Memo14: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 512.897974650000000000
-          Top = 132.283550000000000000
-          Width = 143.622140000000000000
-          Height = 18.897650000000000000
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%g'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            'Total Factura')
-          ParentFont = False
-        end
         object ImpuestosTotal: TfrxMemoView
           AllowVectorExport = True
-          Left = 654.976824650000000000
-          Top = 66.141775000000000000
+          Left = 642.197294650000000000
+          Top = 58.582715000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
           OnBeforePrint = 'ImpuestosTotalOnBeforePrint'
@@ -3067,10 +2403,11 @@ inherited frmPrintFac: TfrmPrintFac
         object Impuestos: TfrxMemoView
           IndexTag = 1
           AllowVectorExport = True
-          Left = 514.016094650000000000
-          Top = 66.141775000000000000
+          Left = 508.236564650000000000
+          Top = 58.582715000000000000
           Width = 143.622140000000000000
           Height = 18.897650000000000000
+          OnBeforePrint = 'ImpuestosOnBeforePrint'
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%g'
           DisplayFormat.Kind = fkNumeric
@@ -3080,15 +2417,14 @@ inherited frmPrintFac: TfrmPrintFac
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          HAlign = haRight
           Memo.UTF8W = (
-            'Total Impuestos')
+            'Total IVA + RE')
           ParentFont = False
         end
         object TotalBases: TfrxMemoView
           AllowVectorExport = True
-          Left = 654.976824650000000000
-          Top = 37.795300000000000000
+          Left = 642.197294650000000000
+          Top = 30.236240000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
           OnBeforePrint = 'ImpuestosTotalOnBeforePrint'
@@ -3106,11 +2442,11 @@ inherited frmPrintFac: TfrmPrintFac
             '[Facturas."TOTAL_BASES_FACTURA"]')
           ParentFont = False
         end
-        object Memo17: TfrxMemoView
+        object TotalBaseImponible: TfrxMemoView
           IndexTag = 1
           AllowVectorExport = True
-          Left = 514.016094650000000000
-          Top = 37.795300000000000000
+          Left = 508.236564650000000000
+          Top = 30.236240000000000000
           Width = 143.622140000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -3122,520 +2458,15 @@ inherited frmPrintFac: TfrmPrintFac
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          HAlign = haRight
           Memo.UTF8W = (
             'Total Base Imponible')
-          ParentFont = False
-        end
-        object BaseImponibleN: TfrxMemoView
-          AllowVectorExport = True
-          Left = 30.236254650000000000
-          Top = 34.015770000000000000
-          Width = 90.708720000000000000
-          Height = 15.118120000000000000
-          OnBeforePrint = 'BaseImponibleNOnBeforePrint'
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%2.3m'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[Facturas."TOTAL_BASEI_IVAN_FACTURA"]')
-          ParentFont = False
-        end
-        object BaseImponibleCajaIVA: TfrxMemoView
-          AllowVectorExport = True
-          Left = 30.236254650000000000
-          Top = 7.559060000000000000
-          Width = 102.047310000000000000
-          Height = 15.118120000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'Base Imponible')
-          ParentFont = False
-        end
-        object BaseImponibleE: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 26.456724650000000000
-          Top = 113.385900000000000000
-          Width = 94.488250000000000000
-          Height = 18.897650000000000000
-          OnBeforePrint = 'BaseImponibleEOnBeforePrint'
-          DataField = 'TOTAL_BASEI_IVAE_FACTURA'
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%2.3m'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[Facturas."TOTAL_BASEI_IVAE_FACTURA"]')
-          ParentFont = False
-        end
-        object TituloPorcenCajaIVA: TfrxMemoView
-          AllowVectorExport = True
-          Left = 151.181214650000000000
-          Top = 7.559060000000000000
-          Width = 68.031540000000000000
-          Height = 15.118120000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '% [Facturas."PALABRA_REPORTS_ZONA_IVA_FACTURA"]')
-          ParentFont = False
-        end
-        object TituloTotalCajaIVA: TfrxMemoView
-          AllowVectorExport = True
-          Left = 226.771814650000000000
-          Top = 7.559060000000000000
-          Width = 86.929190000000000000
-          Height = 15.118120000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'Total [Facturas."PALABRA_REPORTS_ZONA_IVA_FACTURA"]')
-          ParentFont = False
-        end
-        object RetencionPorc: TfrxMemoView
-          AllowVectorExport = True
-          Left = 317.480534650000000000
-          Top = 7.559060000000000000
-          Width = 71.811070000000000000
-          Height = 15.118120000000000000
-          OnBeforePrint = 'RetencionPorcOnBeforePrint'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '% R.E.')
-          ParentFont = False
-        end
-        object RetencionTot: TfrxMemoView
-          AllowVectorExport = True
-          Left = 398.409724650000000000
-          Top = 7.559060000000000000
-          Width = 71.811070000000000000
-          Height = 15.118120000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'Total R.E.')
-          ParentFont = False
-        end
-        object FacturasTOTAL_IVAN_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 226.771814650000000000
-          Top = 34.015770000000000000
-          Width = 56.692950000000000000
-          Height = 18.897650000000000000
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%2.3m'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[Facturas."TOTAL_IVAN_FACTURA"]')
-          ParentFont = False
-        end
-        object FacturasPORCEN_IVAN_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 151.181214650000000000
-          Top = 34.015770000000000000
-          Width = 56.692950000000000000
-          Height = 18.897650000000000000
-          DisplayFormat.FormatStr = '%g'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[Facturas."PORCEN_IVAN_FACTURA"]%')
-          ParentFont = False
-        end
-        object FacturasPORCEN_IVAR_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 151.181214650000000000
-          Top = 60.472480000000000000
-          Width = 56.692950000000000000
-          Height = 18.897650000000000000
-          DisplayFormat.FormatStr = '%g'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[Facturas."PORCEN_IVAR_FACTURA"]%')
-          ParentFont = False
-        end
-        object FacturasPORCEN_IVAS_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 151.181214650000000000
-          Top = 86.929190000000000000
-          Width = 56.692950000000000000
-          Height = 18.897650000000000000
-          DisplayFormat.FormatStr = '%g'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[Facturas."PORCEN_IVAS_FACTURA"]%')
-          ParentFont = False
-        end
-        object FacturasPORCEN_IVAE_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 151.181214650000000000
-          Top = 113.385900000000000000
-          Width = 56.692950000000000000
-          Height = 18.897650000000000000
-          DisplayFormat.FormatStr = '%g'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[Facturas."PORCEN_IVAE_FACTURA"]%')
-          ParentFont = False
-        end
-        object FacturasTOTAL_IVAR_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 226.771814650000000000
-          Top = 60.472480000000000000
-          Width = 56.692950000000000000
-          Height = 18.897650000000000000
-          DataField = 'TOTAL_IVAR_FACTURA'
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%2.3m'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[Facturas."TOTAL_IVAR_FACTURA"]')
-          ParentFont = False
-        end
-        object FacturasTOTAL_IVAS_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 226.771814650000000000
-          Top = 86.929190000000000000
-          Width = 56.692950000000000000
-          Height = 18.897650000000000000
-          DataField = 'TOTAL_IVAS_FACTURA'
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%2.3m'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[Facturas."TOTAL_IVAS_FACTURA"]')
-          ParentFont = False
-        end
-        object FacturasTOTAL_IVAE_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 226.771814650000000000
-          Top = 113.385900000000000000
-          Width = 56.692950000000000000
-          Height = 18.897650000000000000
-          DataField = 'TOTAL_IVAE_FACTURA'
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%2.3m'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[Facturas."TOTAL_IVAE_FACTURA"]')
-          ParentFont = False
-        end
-        object FacturasPORCEN_REN_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 317.480534650000000000
-          Top = 34.015770000000000000
-          Width = 56.692950000000000000
-          Height = 18.897650000000000000
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%g'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[Facturas."PORCEN_REN_FACTURA"]%')
-          ParentFont = False
-        end
-        object FacturasPORCEN_RER_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 317.480534650000000000
-          Top = 60.472480000000000000
-          Width = 56.692950000000000000
-          Height = 18.897650000000000000
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%g'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[Facturas."PORCEN_RER_FACTURA"]%')
-          ParentFont = False
-        end
-        object FacturasPORCEN_REE_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 317.480534650000000000
-          Top = 113.385900000000000000
-          Width = 56.692950000000000000
-          Height = 18.897650000000000000
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%g'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[Facturas."PORCEN_REE_FACTURA"]%')
-          ParentFont = False
-        end
-        object FacturasPORCEN_RES_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 317.480534650000000000
-          Top = 86.929190000000000000
-          Width = 52.913420000000000000
-          Height = 18.897650000000000000
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%g'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[Facturas."PORCEN_RES_FACTURA"]%')
-          ParentFont = False
-        end
-        object FacturasTOTAL_REN_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 398.409724650000000000
-          Top = 34.015770000000000000
-          Width = 64.252010000000000000
-          Height = 18.897650000000000000
-          OnBeforePrint = 'FacturasTOTAL_REN_FACTURAOnBeforePrint'
-          DataField = 'TOTAL_REN_FACTURA'
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%2.3m'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[Facturas."TOTAL_REN_FACTURA"]')
-          ParentFont = False
-        end
-        object FacturasTOTAL_REE_FACTURA: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 398.409724650000000000
-          Top = 113.385900000000000000
-          Width = 64.252010000000000000
-          Height = 18.897650000000000000
-          OnBeforePrint = 'FacturasTOTAL_REE_FACTURAOnBeforePrint'
-          DataField = 'TOTAL_REE_FACTURA'
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%2.3m'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[Facturas."TOTAL_REE_FACTURA"]')
-          ParentFont = False
-        end
-        object BaseImponibleR: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 26.456724650000000000
-          Top = 60.472480000000000000
-          Width = 94.488250000000000000
-          Height = 18.897650000000000000
-          OnBeforePrint = 'BaseImponibleROnBeforePrint'
-          DataField = 'TOTAL_BASEI_IVAR_FACTURA'
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%2.3m'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[Facturas."TOTAL_BASEI_IVAR_FACTURA"]')
-          ParentFont = False
-        end
-        object BaseImponibleS: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 26.456724650000000000
-          Top = 86.929190000000000000
-          Width = 94.488250000000000000
-          Height = 18.897650000000000000
-          OnBeforePrint = 'BaseImponibleSOnBeforePrint'
-          DataField = 'TOTAL_BASEI_IVAS_FACTURA'
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%2.3m'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[Facturas."TOTAL_BASEI_IVAS_FACTURA"]')
-          ParentFont = False
-        end
-        object FacturasTOTAL_RER_FACTURA1: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 394.630194650000000000
-          Top = 60.472480000000000000
-          Width = 68.031540000000000000
-          Height = 18.897650000000000000
-          DataField = 'TOTAL_RER_FACTURA'
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%2.3m'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[Facturas."TOTAL_RER_FACTURA"]')
-          ParentFont = False
-        end
-        object FacturasTOTAL_RES_FACTURA1: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 394.630194650000000000
-          Top = 86.929190000000000000
-          Width = 68.031540000000000000
-          Height = 18.897650000000000000
-          DataField = 'TOTAL_RES_FACTURA'
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%2.3m'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[Facturas."TOTAL_RES_FACTURA"]')
           ParentFont = False
         end
         object FacturasCOMENTARIOS_FACTURA: TfrxMemoView
           IndexTag = 1
           AllowVectorExport = True
-          Left = 23.677194650000000000
-          Top = 178.401670000000000000
+          Left = 19.897664650000000000
+          Top = 188.401670000000000000
           Width = 710.551640000000000000
           Height = 30.236240000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -3654,13 +2485,16 @@ inherited frmPrintFac: TfrmPrintFac
             ' VarToStr(<Facturas."COMENTARIOS_FACTURA">)]')
           ParentFont = False
         end
-        object Memo15: TfrxMemoView
+        object FormaPago: TfrxMemoView
           IndexTag = 1
           AllowVectorExport = True
-          Left = 26.456724650000000000
-          Top = 154.960730000000000000
-          Width = 706.772110000000000000
-          Height = 18.897650000000000000
+          Left = 22.677194650000000000
+          Top = 157.401670000000000000
+          Width = 699.213050000000000000
+          Height = 37.795300000000000000
+          OnBeforePrint = 'FormaPagoOnBeforePrint'
+          StretchMode = smActualHeight
+          AutoWidth = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3669,6 +2503,65 @@ inherited frmPrintFac: TfrmPrintFac
           Frame.Typ = []
           Memo.UTF8W = (
             'Forma de Pago: [Facturas."DESCRIPCION_FORMAPAGO"]')
+          ParentFont = False
+        end
+        object mNumPaginas: TfrxMemoView
+          AllowVectorExport = True
+          Left = 616.283860000000000000
+          Top = 219.771800000000000000
+          Width = 113.385900000000000000
+          Height = 22.677180000000000000
+          OnBeforePrint = 'mNumPaginasOnBeforePrint'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'P'#225'gina [<Page>] de [<TotalPages#>]')
+          ParentFont = False
+          Formats = <
+            item
+            end
+            item
+            end>
+        end
+        object Continua: TfrxMemoView
+          AllowVectorExport = True
+          Left = 22.677180000000000000
+          Width = 309.921460000000000000
+          Height = 22.677180000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Contin'#250'a en la siguiente p'#225'gina ...')
+          ParentFont = False
+        end
+        object mTotalFacturaCtd: TfrxMemoView
+          AllowVectorExport = True
+          Left = 596.606680000000000000
+          Top = 125.724490000000000000
+          Width = 124.724490000000000000
+          Height = 22.677180000000000000
+          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Frame.Width = 1.500000000000000000
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[Facturas."TOTAL_LIQUIDO_FACTURA"]')
           ParentFont = False
         end
       end

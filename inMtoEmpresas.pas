@@ -246,6 +246,10 @@ type
     tvFacturacionGRUPO_ZONA_IVA_EMPRESA_FACTURA: TcxGridDBColumn;
     tvFacturacionTARIFA_ARTICULO_CLIENTE_FACTURA: TcxGridDBColumn;
     tvFacturacionCODIGO_IVA_FACTURA: TcxGridDBColumn;
+    cxDBTextEdit1: TcxDBTextEdit;
+    cxLabel1: TcxLabel;
+    txtIBAN_EMPRESA: TcxDBTextEdit;
+    cxLabel2: TcxLabel;
     procedure tsFichaEnter(Sender: TObject);
     procedure chkAplicaRetencionesPropertiesChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);

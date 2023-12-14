@@ -59,7 +59,7 @@ begin
     begin
       Params.Clear;
       SQL.Text := '     SELECT *  ' +
-                  '       FROM vi_FACTURAS f' +
+                  '       FROM vi_FACTURAS_print f' +
                   '      WHERE NRO_FACTURA = :numfac' +
                   '        AND SERIE_FACTURA = :serie';
       Params.ParamByName('numfac').Value := edtNroFac.text;
@@ -91,7 +91,7 @@ begin
     begin
       Params.Clear;
       SQL.Text := '     SELECT *  ' +
-                  '       FROM vi_FACTURAS' +
+                  '       FROM VI_FACTURAS_PRINT' +
                   '      WHERE FECHA_FACTURA >= :fecha_ini ' +
                   '        AND  FECHA_FACTURA <= :fecha_fin ' +
                   '   order by NRO_FACTURA';
@@ -120,7 +120,6 @@ begin
       Params.ParamByName('fecha_fin').Value := dedHasta.date;
       end;
     dmmFacturas.unqryLinFacPrint.Open;
-    //dmmFacturas.fxdstPrintLinFac.OpenDataSource;
     dmmFacturas.fxdstPrintLinFac.UpdateBounds;
   end;
 end;

@@ -10,8 +10,10 @@ Total Productos SIVA: 47,84 €
 Total Productos CIVA: 57,89 €
 Total Pedido CIVA: 57,89 €
 Total Pedido SIVA: 47,84 €
+
 Total Portes CIVA: 0,00 €
 Total Portes SIVA: 0,00 €
+
 Transportista: Click and collect
 Estado del pedido: En espera de pago por transferencia bancaria
 -------Dirección Envío------------------------- 
@@ -76,6 +78,20 @@ Saludos
 Fecha/Hora Envío : 20/11/2023 19:34:33
 _______________________________________________________
 
+CREATE TABLE `fza_pedidos_mensajes` (
+  `IDPS_MENSAJES_PEDIDO` varchar(20) DEFAULT NULL,
+  `IDMENSAJEPS_MENSAJE_PEDIDO` varchar(20) DEFAULT NULL,  
+  `IDEMPLEADOPS_MENSAJE_PEDIDO` varchar(20) DEFAULT NULL,  
+  `MENSAJEPS_MENSAJE_PEDIDO` varchar(1000) DEFAULT NULL, 
+  `FECHAPS_MENSAJE_PEDIDO` datetime NULL,
+
+  `INSTANTEMODIF` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `INSTANTEALTA` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `USUARIOALTA` varchar(100) NOT NULL,
+  `USUARIOMODIF` varchar(100) NOT NULL,
+  PRIMARY KEY (`IDPS_MENSAJES_PEDIDO`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci ROW_FORMAT=DYNAMIC
+
 
 CREATE TABLE `fza_pedidos` (
   `NRO_PEDIDO` varchar(12) NOT NULL,
@@ -92,15 +108,21 @@ CREATE TABLE `fza_pedidos` (
   `PROVINCIA_EMPRESA_PEDIDO` varchar(200) DEFAULT NULL,
   `PAIS_EMPRESA_PEDIDO` varchar(150) DEFAULT NULL,
   `CPOSTAL_EMPRESA_PEDIDO` varchar(15) DEFAULT NULL,
-  `ESRETENCIONES_EMPRESA_PEDIDO` varchar(1) DEFAULT 'S' COMMENT 'S o N si la empresa aplica retenciones como autónomos',
+  `ESRETENCIONES_EMPRESA_PEDIDO` varchar(1) DEFAULT 'N' COMMENT 'S o N si la empresa aplica retenciones como autónomos',
   `GRUPO_ZONA_IVA_EMPRESA_PEDIDO` varchar(10) DEFAULT NULL,
   `ESREGIMENESPECIALAGRICOLA_EMPRESA_PEDIDO` varchar(1) DEFAULT 'N',
   `CODIGO_CLIENTE_PEDIDO` varchar(10) DEFAULT NULL,
   `NIF_CLIENTE_PEDIDO` varchar(50) DEFAULT NULL,
-  `EMAIL_CLIENTE_PEDIDO` varchar(200) DEFAULT NULL,
-  
+  `EMAIL_CLIENTE_PEDIDO` varchar(200) DEFAULT NULL,  
   `REFERENCIAPS_PEDIDO` varchar(20) DEFAULT NULL,
+  
   `IDPS_PEDIDO` varchar(20) DEFAULT NULL,
+  `FECHAPS_PEDIDO` datetime NULL,
+  `FORMAPAGOPS_PEDIDO` varchar(200) NULL,
+  `TRANSPORTISTAPS_PEDIDO` varchar(200) NULL,  
+  `ESTADOPEDIDOPS_PEDIDO` varchar(300) NULL,
+  `ESTADOMENSAJEPS_PEDIDO` varchar(300) NULL,    
+  `IDHILOPS_MENSAJES_PEDIDO` varchar(20) DEFAULT NULL,
   
   `NOMBRE_CLIENTE_ENVIO_PEDIDO` varchar(200) DEFAULT NULL,
   `MOVIL_CLIENTE_ENVIO_PEDIDO` varchar(40) DEFAULT NULL,
@@ -120,7 +142,6 @@ CREATE TABLE `fza_pedidos` (
   `PROVINCIA_CLIENTE_FISCAL_PEDIDO` varchar(200) DEFAULT NULL,
   `CPOSTAL_CLIENTE_FISCAL_PEDIDO` varchar(15) DEFAULT NULL,
   `PAIS_CLIENTE_FISCAL_PEDIDO` varchar(150) DEFAULT NULL,
-
   
   `ESIVA_RECARGO_CLIENTE_PEDIDO` varchar(1) DEFAULT 'N',
   `ESIVA_EXENTO_CLIENTE_PEDIDO` varchar(1) DEFAULT 'N',
@@ -135,7 +156,8 @@ CREATE TABLE `fza_pedidos` (
   `PALABRA_REPORTS_ZONA_IVA_PEDIDO` varchar(10) DEFAULT 'IVA' COMMENT 'Palabra que sustituye a IVA desde la tabla de fza_ivas_grupos',
   `CODIGO_IVA_PEDIDO` varchar(20) DEFAULT NULL COMMENT 'Código de IVA de la tabla fza_ivas',
   `ESVENTA_ACTIVO_FIJO_PEDIDO` varchar(1) DEFAULT 'N' COMMENT 'Sólo REAGP cuando se vende activos fijos, exime irpf',
-  `PORCEN_IVAN_PEDIDO` decimal(19,6) DEFAULT NULL COMMENT 'Porcentaje IVA Normal',
+  
+  `PORCEN_IVAN_PEDIDO` decimal(19,6) DEFAULT  NULL COMMENT 'Porcentaje IVA Normal',
   `TOTAL_IVAN_PEDIDO` decimal(18,6) DEFAULT NULL COMMENT 'Total IVA Normal',
   `PORCEN_REN_PEDIDO` decimal(19,6) DEFAULT NULL COMMENT 'Porcentaje RE Normal',
   `TOTAL_REN_PEDIDO` decimal(19,6) DEFAULT NULL COMMENT 'Total RE Normal',
@@ -161,7 +183,10 @@ CREATE TABLE `fza_pedidos` (
   `PORCEN_RETENCION_PEDIDO` decimal(19,6) DEFAULT NULL COMMENT 'Porcentaje Retenciones',
   `TOTAL_RETENCION_PEDIDO` decimal(18,6) DEFAULT NULL COMMENT 'Total Retenciones PEDIDO',
   `TOTAL_LIQUIDO_PEDIDO` decimal(18,6) DEFAULT NULL COMMENT 'Total PEDIDO a pagar',
-  `NRO_PEDIDO_ABONO_PEDIDO` varchar(8) DEFAULT NULL COMMENT 'Nro PEDIDO Abono',
+
+  `TOTAL_PAGADOREALPS_PEDIDO` decimal(18,6) DEFAULT NULL COMMENT 'Total pagado cliente',
+ 
+ `NRO_PEDIDO_ABONO_PEDIDO` varchar(8) DEFAULT NULL COMMENT 'Nro PEDIDO Abono',
   `SERIE_PEDIDO_ABONO_PEDIDO` varchar(8) DEFAULT NULL COMMENT 'Serie PEDIDO Abono',
   `TEXTO_LEGAL_PEDIDO_CLIENTE_PEDIDO` varchar(1000) DEFAULT '',
   `TEXTO_LEGAL_PEDIDO_EMPRESA_PEDIDO` varchar(1000) DEFAULT '',
@@ -178,10 +203,18 @@ CREATE TABLE `fza_pedidos` (
   PRIMARY KEY (`SERIE_PEDIDO`,`NRO_PEDIDO`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci ROW_FORMAT=DYNAMIC
 
-CREATE TABLE `fza_PEDIDOs_lineas` (
+
+CREATE TABLE `fza_pedidos_lineas` (
   `NRO_PEDIDO_LINEA` varchar(12) NOT NULL,
   `SERIE_PEDIDO_LINEA` varchar(12) NOT NULL,
   `LINEA_PEDIDO_LINEA` varchar(3) NOT NULL,
+  
+  `IDLINEAPS_PEDIDO_LINEA` varchar(12) NULL,
+  `IDPRODPS_PEDIDO_LINEA` varchar(20) NULL,  
+  `CODIGOPRODPS_PEDIDO_LINEA` varchar(200) NULL,  
+  `IDATRIBPRODPS_PEDIDO_LINEA` varchar(20) NULL,  
+  `CODEAN13PRODPS_PEDIDO_LINEA` varchar(20) NULL,  
+
   `CODIGO_ARTICULO_PEDIDO_LINEA` varchar(20) DEFAULT NULL,
   `CODIGO_FAMILIA_PEDIDO_LINEA` varchar(10) DEFAULT NULL,
   `NOMBRE_FAMILIA_PEDIDO_LINEA` varchar(150) DEFAULT NULL,

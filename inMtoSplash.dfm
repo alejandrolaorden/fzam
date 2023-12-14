@@ -12,7 +12,6 @@ object frmSplash: TfrmSplash
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
-  PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
     Left = 0
@@ -22,8 +21,6 @@ object frmSplash: TfrmSplash
     Align = alClient
     BevelInner = bvLowered
     TabOrder = 0
-    ExplicitWidth = 428
-    ExplicitHeight = 472
     object JvGIFAnimator1: TJvGIFAnimator
       Left = 2
       Top = 2
@@ -31,7 +28,7 @@ object frmSplash: TfrmSplash
       Height = 334
       Animate = True
       Center = True
-      FrameIndex = 44
+      FrameIndex = 9
       Image.Data = {
         8A191500474946383961A802E801D5000096856AE8E8E78E7957A7A7A2E9CDB3
         161613CBB4A172706BDEDEDB49463653514CB08A42A0917A786953CBCBC5444F

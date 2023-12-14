@@ -1,4 +1,5 @@
 inherited dmFacturas: TdmFacturas
+  OldCreateOrder = True
   Height = 638
   Width = 1332
   inherited unqryTablaG: TUniQuery
@@ -339,7 +340,12 @@ inherited dmFacturas: TdmFacturas
       'INSTANTEALTA=INSTANTEALTA'
       'USUARIOALTA=USUARIOALTA'
       'USUARIOMODIF=USUARIOMODIF'
-      'DESCRIPCION_FORMAPAGO=DESCRIPCION_FORMAPAGO')
+      'DESCRIPCION_FORMAPAGO=DESCRIPCION_FORMAPAGO'
+      'ESCONTADO_FORMAPAGO=ESCONTADO_FORMAPAGO'
+      'VENCIMIENTOS_RECIBOS=VENCIMIENTOS_RECIBOS'
+      'IBAN_EMPRESA=IBAN_EMPRESA'
+      'IBAN_CLIENTE=IBAN_CLIENTE'
+      'ESVERBANCOEMPRESA_FORMAPAGO=ESVERBANCOEMPRESA_FORMAPAGO')
     DataSource = dsFacPrint
     BCDToCurrency = False
     Left = 568
@@ -388,8 +394,11 @@ inherited dmFacturas: TdmFacturas
     Connection = dmConn.conUni
     SQL.Strings = (
       'SELECT *'
-      'from vi_FACTURAS'
+      'from VI_FACTURAS_PRINT'
+      'where SERIE_FACTURA = '#39'A1.2023'#39' '
+      'AND NRO_FACTURA = '#39'000001'#39
       'order by NRO_FACTURA Asc')
+    Active = True
     Left = 568
     Top = 552
   end
@@ -461,6 +470,7 @@ inherited dmFacturas: TdmFacturas
     MasterSource = dsFacPrint
     MasterFields = 'SERIE_FACTURA;NRO_FACTURA'
     DetailFields = 'SERIE_FACTURA_LINEA;NRO_FACTURA_LINEA'
+    Active = True
     Left = 648
     Top = 552
     ParamData = <
@@ -468,13 +478,13 @@ inherited dmFacturas: TdmFacturas
         DataType = ftWideString
         Name = 'NRO_FACTURA'
         ParamType = ptInput
-        Value = '00000022'
+        Value = '000001'
       end
       item
         DataType = ftWideString
         Name = 'SERIE_FACTURA'
         ParamType = ptInput
-        Value = 'A1'
+        Value = 'A1.2023'
       end>
   end
   object unqrySeries: TUniQuery

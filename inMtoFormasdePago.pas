@@ -172,6 +172,12 @@ type
     tvFacturacionTARIFA_ARTICULO_CLIENTE_FACTURA: TcxGridDBColumn;
     tvFacturacionCODIGO_IVA_FACTURA: TcxGridDBColumn;
     tvLineasFacturacionNOMBRE_TIPO_IVA: TcxGridDBColumn;
+    cxGrdDBTabPrinESVERBANCOEMPRESA_FORMAPAGO: TcxGridDBColumn;
+    cxGrdDBTabPrinINSTANTEMODIF: TcxGridDBColumn;
+    cxGrdDBTabPrinINSTANTEALTA: TcxGridDBColumn;
+    cxGrdDBTabPrinUSUARIOALTA: TcxGridDBColumn;
+    cxGrdDBTabPrinUSUARIOMODIF: TcxGridDBColumn;
+    cxDBCheckBox1: TcxDBCheckBox;
     procedure btnGrabarClick(Sender: TObject);
     procedure dsTablaGStateChange(Sender: TObject);
     procedure btnIraFacturaClick(Sender: TObject);

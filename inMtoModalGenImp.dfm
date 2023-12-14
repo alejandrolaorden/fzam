@@ -4,23 +4,23 @@ inherited frmPrint: TfrmPrint
   HorzScrollBar.Visible = False
   BorderStyle = bsSingle
   Caption = 'Imprimir'
-  ClientHeight = 301
-  ClientWidth = 405
+  ClientHeight = 299
+  ClientWidth = 397
   FormStyle = fsStayOnTop
   Scaled = False
   OnClose = FormClose
-  ExplicitWidth = 417
-  ExplicitHeight = 339
+  ExplicitWidth = 409
+  ExplicitHeight = 337
   TextHeight = 19
   object pnl1: TPanel [0]
-    Left = 261
+    Left = 253
     Top = 0
     Width = 144
-    Height = 301
+    Height = 299
     Align = alRight
     TabOrder = 0
-    ExplicitLeft = 257
-    ExplicitHeight = 300
+    ExplicitLeft = 249
+    ExplicitHeight = 298
     object btnPDF: TcxButton
       Left = 0
       Top = 48
@@ -50,14 +50,14 @@ inherited frmPrint: TfrmPrint
     end
     object btnSalir: TcxButton
       Left = 1
-      Top = 275
+      Top = 273
       Width = 142
       Height = 25
       Align = alBottom
       Caption = '&Salir'
       TabOrder = 5
       OnClick = btnSalirClick
-      ExplicitTop = 274
+      ExplicitTop = 272
     end
     object btnEditar: TcxButton
       Left = 0
@@ -79,7 +79,7 @@ inherited frmPrint: TfrmPrint
     end
   end
   object frxrprt1: TfrxReport
-    Version = '6.9.14'
+    Version = '2022.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -223,7 +223,7 @@ inherited frmPrint: TfrmPrint
     Top = 120
   end
   object frxReportOrigen: TfrxReport
-    Version = '6.9.14'
+    Version = '2022.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

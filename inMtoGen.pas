@@ -515,11 +515,9 @@ end;
 
 procedure TfrmMtoGen.FormKeyUp(Sender: TObject; var Key: Word;
   Shift: TShiftState);
-var
-  AContainer: TcxCustomEdit;
 begin
   inherited;
-  if Key = VK_ESCAPE then
+  if (Key = VK_ESCAPE) then
   begin
     CancelarGrids(Owner);
     if ((pcPantalla.ActivePage = tsFicha)) then
@@ -533,19 +531,25 @@ begin
 //                                   MB_YESNO ) = ID_YES ) then
 //         Close;
   end;
-  if dsTablaG.State = dsBrowse then
+  if (dsTablaG.State = dsBrowse) then
   begin
-    if Key = VK_PRIOR then
+    if (Key = VK_PRIOR) then
        nvNavegador.Buttons.Prior.Click;
-    if Key = VK_NEXT then
+    if (Key = VK_NEXT) then
        nvNavegador.Buttons.Next.Click;
-    if Key = VK_INSERT then
+    if (Key = VK_INSERT) then
       dsTablaG.DataSet.Insert;
-    if key = VK_HOME then
+    if (key = VK_HOME) then
       dsTablaG.DataSet.First;
-    if key = VK_END then
+    if (key = VK_END) then
       dsTablaG.DataSet.Last;
+    if (key = VK_F2) then
+      dsTablaG.DataSet.Edit;
   end;
+    if (key = VK_F12) then
+      if ((dsTablaG.State = dsEdit) or
+          (dsTablaG.State = dsInsert)) then
+        dsTablaG.DataSet.Post;
 //  if ((Key = VK_RETURN) and (Shift <> [ssCtrl])) then
 //    Perform(CM_DIALOGKEY, VK_TAB, 0);
 end;
@@ -607,8 +611,8 @@ begin
 end;
 
 procedure TfrmMtoGen.btnBusqClick(Sender: TObject);
-var
-  sBusq:string;
+//var
+//  sBusq:string;
 begin
   inherited;
 //  if (rbBBDD.Checked = true) then

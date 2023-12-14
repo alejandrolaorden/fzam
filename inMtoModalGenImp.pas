@@ -2,7 +2,7 @@
 {                                                       }
 {       FactuZam                                        }
 {                                                       }
-{       Copyright (C) 2023 fzam.6dvdy@slmail.me    }
+{       Copyright (C) 2023 fzam.6dvdy@slmail.me         }
 {                                                       }
 {*******************************************************}
 
@@ -210,9 +210,9 @@ begin
   unqrySol.ParamByName('Descripcion').AsString := sElegido;
   unqrySol.Open;
   sUserProp := unqrySol.FindField('USUARIO_GRUPO_PERFILES').AsString;
-  if ((inLibGlobalVar.orootGroup <> 'S') or
-      (oUser <> sUserProp) or
-      (oGroup <> sUserProp)) then
+  if not((inLibGlobalVar.orootGroup = 'S') or
+      (oUser = sUserProp) or
+      (oGroup = sUserProp)) then
     ShowMessage('No tiene privilegios suficientes para efectuar la operación')
   else
   begin

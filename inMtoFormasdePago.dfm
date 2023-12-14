@@ -17,6 +17,7 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
       Width = 754
       Height = 634
       TabOrder = 1
+      Properties.ActivePage = tsFicha
       ExplicitWidth = 754
       ExplicitHeight = 634
       ClientRectBottom = 628
@@ -35,13 +36,11 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
             object cxGrdDBTabPrinCODIGO_FORMAPAGO: TcxGridDBColumn
               Caption = 'C'#243'digo'
               DataBinding.FieldName = 'CODIGO_FORMAPAGO'
-              DataBinding.IsNullValueType = True
               Width = 196
             end
             object cxGrdDBTabPrinACTIVO_FORMAPAGO: TcxGridDBColumn
               Caption = 'Activo'
               DataBinding.FieldName = 'ACTIVO_FORMAPAGO'
-              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxCheckBoxProperties'
               Properties.ValueChecked = 'S'
               Properties.ValueUnchecked = 'N'
@@ -50,43 +49,61 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
             object cxGrdDBTabPrinORDEN_FORMAPAGO: TcxGridDBColumn
               Caption = 'Orden'
               DataBinding.FieldName = 'ORDEN_FORMAPAGO'
-              DataBinding.IsNullValueType = True
               Width = 120
             end
             object cxGrdDBTabPrinDESCRIPCION_FORMAPAGO: TcxGridDBColumn
               Caption = 'Descripci'#243'n'
               DataBinding.FieldName = 'DESCRIPCION_FORMAPAGO'
-              DataBinding.IsNullValueType = True
               Width = 231
             end
             object cxGrdDBTabPrinN_PLAZOS_FORMAPAGO: TcxGridDBColumn
               Caption = 'N'#250'mero de Plazos'
               DataBinding.FieldName = 'N_PLAZOS_FORMAPAGO'
-              DataBinding.IsNullValueType = True
               Width = 169
             end
             object cxGrdDBTabPrinDIAS_ENTRE_PLAZOS_FORMAPAGO: TcxGridDBColumn
               Caption = 'D'#237'as entre plazos'
               DataBinding.FieldName = 'N_DIAS_ENTRE_PLAZOS_FORMAPAGO'
-              DataBinding.IsNullValueType = True
               Width = 165
             end
             object cxGrdDBTabPrinDEFAULT_FORMAPAGO: TcxGridDBColumn
               Caption = 'Por defecto'
               DataBinding.FieldName = 'ESDEFAULT_FORMAPAGO'
-              DataBinding.IsNullValueType = True
               Width = 159
             end
             object cxGrdDBTabPrinPORCEN_ANTICIPO_FORMAPAGO: TcxGridDBColumn
               Caption = '% Anticipo'
               DataBinding.FieldName = 'PORCEN_ANTICIPO_FORMAPAGO'
-              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxSpinEditProperties'
               Properties.DisplayFormat = '0.00 %'
               Properties.EditFormat = '0.00 %'
               Properties.MaxValue = 100.000000000000000000
               Properties.ValueType = vtFloat
               Width = 92
+            end
+            object cxGrdDBTabPrinESVERBANCOEMPRESA_FORMAPAGO: TcxGridDBColumn
+              Caption = 'Ver Banco Empresa Factura'
+              DataBinding.FieldName = 'ESVERBANCOEMPRESA_FORMAPAGO'
+              PropertiesClassName = 'TcxCheckBoxProperties'
+              Properties.ValueChecked = 'S'
+              Properties.ValueUnchecked = 'N'
+              Width = 233
+            end
+            object cxGrdDBTabPrinINSTANTEMODIF: TcxGridDBColumn
+              DataBinding.FieldName = 'INSTANTEMODIF'
+              Visible = False
+            end
+            object cxGrdDBTabPrinINSTANTEALTA: TcxGridDBColumn
+              DataBinding.FieldName = 'INSTANTEALTA'
+              Visible = False
+            end
+            object cxGrdDBTabPrinUSUARIOALTA: TcxGridDBColumn
+              DataBinding.FieldName = 'USUARIOALTA'
+              Visible = False
+            end
+            object cxGrdDBTabPrinUSUARIOMODIF: TcxGridDBColumn
+              DataBinding.FieldName = 'USUARIOMODIF'
+              Visible = False
             end
           end
         end
@@ -246,6 +263,18 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
                 TabOrder = 5
                 Width = 106
               end
+              object cxDBCheckBox1: TcxDBCheckBox
+                Left = 76
+                Top = 198
+                Caption = 'Ver Banco Empresa en Factura'
+                DataBinding.DataField = 'ESVERBANCOEMPRESA_FORMAPAGO'
+                DataBinding.DataSource = dsTablaG
+                Properties.ValueChecked = 'S'
+                Properties.ValueUnchecked = 'N'
+                Style.TransparentBorder = False
+                TabOrder = 6
+                Transparent = True
+              end
             end
             object tsVentas: TcxTabSheet
               Caption = '&2_Ventas-'
@@ -287,22 +316,22 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
                       end>
                     DataController.Summary.FooterSummaryItems = <
                       item
-                        Format = '##,##.## '#8364
+                        Format = '##,##.00 '#8364
                         Kind = skSum
                         Column = tvFacturacionTOTAL_LIQUIDO_FACTURA
                       end
                       item
-                        Format = '##,##.## '#8364
+                        Format = '##,##.00 '#8364
                         Kind = skSum
                         Column = tvFacturacionTOTAL_BASES_FACTURA
                       end
                       item
-                        Format = '##,##.## '#8364
+                        Format = '##,##.00 '#8364
                         Kind = skSum
                         Column = tvFacturacionTOTAL_RETENCION_FACTURA
                       end
                       item
-                        Format = '##,##.## '#8364
+                        Format = '##,##.00 '#8364
                         Kind = skSum
                         Column = tvFacturacionTOTAL_IMPUESTOS_FACTURA
                       end>
@@ -1105,6 +1134,7 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
     end
   end
   inherited dsTablaG: TDataSource
+    DataSet = dmFormasdePago.unqryTablaG
     Left = 612
     Top = 559
   end

@@ -2,11 +2,12 @@ program Fzam;
 
 uses
   {$IFDEF DEBUG}
-  FastMM4,
+    FastMM4,
   {$ENDIF }
+  Forms,
   MidasLib,
-  Vcl.Forms,
-  Vcl.Controls,
+  vcl.Consts in '.\vcl\Vcl.Consts.pas',
+  System.SysConst in '.\vcl\System.SysConst.pas',
   UniDataArticulos in 'UniDataArticulos.pas',
   UniDataClientes in 'UniDataClientes.pas',
   UniDataConn in 'UniDataConn.pas' {dmConn: TDataModule},
@@ -65,8 +66,6 @@ uses
   inLibUnitForm in 'inLibUnitForm.pas',
   inLibMsg in 'inLibMsg.pas',
   inLibNet in 'inLibNet.pas',
-  vcl.consts in 'vcl\vcl.consts.pas',
-  system.sysconst in 'vcl\system.sysconst.pas',
   inLibScriptDB in 'inLibScriptDB.pas',
   inMtoSplash in 'inMtoSplash.pas' {frmSplash};
 

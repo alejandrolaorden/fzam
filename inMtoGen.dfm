@@ -32,7 +32,7 @@ inherited frmMtoGen: TfrmMtoGen
       Height = 518
       Align = alClient
       TabOrder = 0
-      Properties.ActivePage = tsFicha
+      Properties.ActivePage = tsLista
       Properties.CustomButtons.Buttons = <>
       OnPageChanging = pcPantallaPageChanging
       ClientRectBottom = 512
@@ -117,6 +117,10 @@ inherited frmMtoGen: TfrmMtoGen
       object tsFicha: TcxTabSheet
         Caption = '&Ficha'
         ImageIndex = 1
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
       end
       object tsPerfil: TcxTabSheet
         Caption = 'Perfil'

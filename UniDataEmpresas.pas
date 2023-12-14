@@ -148,7 +148,7 @@ var
   unqrySol: TUniQuery;
   bSinErrores, bFechaFinNul, bFechaIniNul:Boolean;
   dtFechaIni, dtFechaFin:TDateTime;
-  sCodigoSerie:String;
+//  sCodigoSerie:String;
 begin
   inherited;
   if ( (unqryTablaG.State = dsInsert) and
@@ -167,10 +167,10 @@ begin
              [FindField('SERIE_SERIE').AsString]);
       bSinErrores := False;
     end;
-    if (State = dsEdit) then
-      sCodigoSerie := FindField('CODIGO_SERIE').AsString
-    else
-      sCodigoSerie := '';
+//    if (State = dsEdit) then
+//      sCodigoSerie := FindField('CODIGO_SERIE').AsString
+//    else
+//      sCodigoSerie := '';
     if (bSinErrores) then
     begin
       unqrySol := TUniQuery.Create(nil);
@@ -178,9 +178,9 @@ begin
       unqrySol.SQL.Text := 'SELECT * ' +
                            '  FROM vi_empresas_series ' +
                            ' WHERE CODIGO_EMPRESA_SERIE = :CODIGO_EMPRESA';
-      if (sCodigoSerie <> '') then
-        unqrySol.SQL.Text := unqrySol.SQL.Text + ' AND CODIGO_SERIE <> ' +
-                                                                   sCodigoSerie;
+//      if (sCodigoSerie <> '') then
+//        unqrySol.SQL.Text := unqrySol.SQL.Text + ' AND CODIGO_SERIE <> ' +
+//                                                                 sCodigoSerie;
       unqrySol.ParamByName('CODIGO_EMPRESA').AsString :=
                                  FindField('CODIGO_EMPRESA_SERIE').AsString;
       unqrySol.Open;

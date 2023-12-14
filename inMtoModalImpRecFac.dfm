@@ -1,19 +1,18 @@
 inherited frmPrintRecFac: TfrmPrintRecFac
   Caption = 'Imprimir Recibos'
-  ClientHeight = 256
-  ClientWidth = 446
-  ExplicitWidth = 452
-  ExplicitHeight = 285
-  PixelsPerInch = 96
+  ClientHeight = 255
+  ClientWidth = 442
+  ExplicitWidth = 454
+  ExplicitHeight = 293
   TextHeight = 19
   inherited pnl1: TPanel
-    Left = 302
-    Height = 256
-    ExplicitLeft = 302
-    ExplicitHeight = 256
+    Left = 298
+    Height = 255
+    ExplicitLeft = 294
+    ExplicitHeight = 254
     inherited btnSalir: TcxButton
-      Top = 230
-      ExplicitTop = 230
+      Top = 229
+      ExplicitTop = 228
     end
   end
   object lblcxlbl1: TcxLabel [1]
@@ -82,6 +81,7 @@ inherited frmPrintRecFac: TfrmPrintRecFac
     Top = 184
     Datasets = <
       item
+        DataSet = dmFacturas.fxdsRecibos
         DataSetName = 'Recibos'
       end>
     Variables = <>
@@ -89,10 +89,15 @@ inherited frmPrintRecFac: TfrmPrintRecFac
     inherited Page1: TfrxReportPage
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 343.937230000000000000
         Top = 18.897650000000000000
         Width = 755.906000000000000000
+        DataSet = dmFacturas.fxdsRecibos
         DataSetName = 'Recibos'
         RowCount = 0
         object Memo10: TfrxMemoView
@@ -101,6 +106,7 @@ inherited frmPrintRecFac: TfrmPrintRecFac
           Top = 59.252010000000000000
           Width = 343.937230000000000000
           Height = 49.133890000000000000
+          DataSet = dmFacturas.fxdsPrintFac
           DataSetName = 'Facturas'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -218,6 +224,7 @@ inherited frmPrintRecFac: TfrmPrintRecFac
           Top = 9.897650000000000000
           Width = 222.992270000000000000
           Height = 49.133890000000000000
+          DataSet = dmFacturas.fxdsPrintFac
           DataSetName = 'Facturas'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -265,6 +272,7 @@ inherited frmPrintRecFac: TfrmPrintRecFac
           Top = 59.031540000000000000
           Width = 359.055350000000000000
           Height = 49.133890000000000000
+          DataSet = dmFacturas.fxdsPrintFac
           DataSetName = 'Facturas'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -313,6 +321,7 @@ inherited frmPrintRecFac: TfrmPrintRecFac
           Top = 158.212740000000000000
           Width = 702.992580000000000000
           Height = 30.236240000000000000
+          DataSet = dmFacturas.fxdsPrintFac
           DataSetName = 'Facturas'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -344,6 +353,7 @@ inherited frmPrintRecFac: TfrmPrintRecFac
           Top = 195.023810000000000000
           Width = 468.661720000000000000
           Height = 124.724490000000000000
+          DataSet = dmFacturas.fxdsPrintFac
           DataSetName = 'Facturas'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -376,6 +386,7 @@ inherited frmPrintRecFac: TfrmPrintRecFac
           Top = 225.260050000000000000
           Width = 400.630180000000000000
           Height = 18.897650000000000000
+          DataSet = dmFacturas.fxdsPrintFac
           DataSetName = 'Facturas'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -394,6 +405,7 @@ inherited frmPrintRecFac: TfrmPrintRecFac
           Top = 247.937230000000000000
           Width = 400.630180000000000000
           Height = 18.897650000000000000
+          DataSet = dmFacturas.fxdsPrintFac
           DataSetName = 'Facturas'
           Frame.Typ = []
           Memo.UTF8W = (
@@ -406,6 +418,7 @@ inherited frmPrintRecFac: TfrmPrintRecFac
           Top = 266.834880000000000000
           Width = 120.944960000000000000
           Height = 18.897650000000000000
+          DataSet = dmFacturas.fxdsPrintFac
           DataSetName = 'Facturas'
           Frame.Typ = []
           Memo.UTF8W = (
@@ -418,6 +431,7 @@ inherited frmPrintRecFac: TfrmPrintRecFac
           Top = 266.834880000000000000
           Width = 272.126160000000000000
           Height = 18.897650000000000000
+          DataSet = dmFacturas.fxdsPrintFac
           DataSetName = 'Facturas'
           Frame.Typ = []
           Memo.UTF8W = (
@@ -430,6 +444,7 @@ inherited frmPrintRecFac: TfrmPrintRecFac
           Top = 289.512060000000000000
           Width = 328.819110000000000000
           Height = 18.897650000000000000
+          DataSet = dmFacturas.fxdsPrintFac
           DataSetName = 'Facturas'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -448,6 +463,7 @@ inherited frmPrintRecFac: TfrmPrintRecFac
           Top = 198.803340000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
+          DataSet = dmFacturas.fxdsPrintFac
           DataSetName = 'Facturas'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -483,6 +499,7 @@ inherited frmPrintRecFac: TfrmPrintRecFac
           Top = 113.385900000000000000
           Width = 514.016080000000000000
           Height = 37.795300000000000000
+          DataSet = dmFacturas.fxdsPrintFac
           DataSetName = 'Facturas'
           Frame.Typ = []
           Memo.UTF8W = (
@@ -495,6 +512,7 @@ inherited frmPrintRecFac: TfrmPrintRecFac
           Top = 162.771800000000000000
           Width = 272.126160000000000000
           Height = 18.897650000000000000
+          DataSet = dmFacturas.fxdsPrintFac
           DataSetName = 'Facturas'
           Frame.Typ = []
           Memo.UTF8W = (
@@ -507,6 +525,7 @@ inherited frmPrintRecFac: TfrmPrintRecFac
           Top = 81.590600000000000000
           Width = 109.606370000000000000
           Height = 18.897650000000000000
+          DataSet = dmFacturas.fxdsPrintFac
           DataSetName = 'Facturas'
           DisplayFormat.FormatStr = 'dd/mm/yyyy'
           DisplayFormat.Kind = fkDateTime
@@ -521,6 +540,7 @@ inherited frmPrintRecFac: TfrmPrintRecFac
           Top = 81.590600000000000000
           Width = 102.047310000000000000
           Height = 18.897650000000000000
+          DataSet = dmFacturas.fxdsPrintFac
           DataSetName = 'Facturas'
           DisplayFormat.FormatStr = 'dd/mm/yyyy'
           DisplayFormat.Kind = fkDateTime
@@ -535,6 +555,7 @@ inherited frmPrintRecFac: TfrmPrintRecFac
           Top = 32.456710000000000000
           Width = 173.858380000000000000
           Height = 18.897650000000000000
+          DataSet = dmFacturas.fxdsPrintFac
           DataSetName = 'Facturas'
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2m'
@@ -591,6 +612,7 @@ inherited frmPrintRecFac: TfrmPrintRecFac
     Top = 184
     Datasets = <
       item
+        DataSet = dmFacturas.fxdsRecibos
         DataSetName = 'Recibos'
       end>
     Variables = <>
@@ -598,10 +620,15 @@ inherited frmPrintRecFac: TfrmPrintRecFac
     inherited Page1: TfrxReportPage
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 343.937230000000000000
         Top = 18.897650000000000000
         Width = 755.906000000000000000
+        DataSet = dmFacturas.fxdsRecibos
         DataSetName = 'Recibos'
         RowCount = 0
         object Memo10: TfrxMemoView
@@ -610,6 +637,7 @@ inherited frmPrintRecFac: TfrmPrintRecFac
           Top = 59.252010000000000000
           Width = 343.937230000000000000
           Height = 49.133890000000000000
+          DataSet = dmFacturas.fxdsPrintFac
           DataSetName = 'Facturas'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -727,6 +755,7 @@ inherited frmPrintRecFac: TfrmPrintRecFac
           Top = 9.897650000000000000
           Width = 222.992270000000000000
           Height = 49.133890000000000000
+          DataSet = dmFacturas.fxdsPrintFac
           DataSetName = 'Facturas'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -774,6 +803,7 @@ inherited frmPrintRecFac: TfrmPrintRecFac
           Top = 59.031540000000000000
           Width = 359.055350000000000000
           Height = 49.133890000000000000
+          DataSet = dmFacturas.fxdsPrintFac
           DataSetName = 'Facturas'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -822,6 +852,7 @@ inherited frmPrintRecFac: TfrmPrintRecFac
           Top = 158.212740000000000000
           Width = 702.992580000000000000
           Height = 30.236240000000000000
+          DataSet = dmFacturas.fxdsPrintFac
           DataSetName = 'Facturas'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -853,6 +884,7 @@ inherited frmPrintRecFac: TfrmPrintRecFac
           Top = 195.023810000000000000
           Width = 468.661720000000000000
           Height = 124.724490000000000000
+          DataSet = dmFacturas.fxdsPrintFac
           DataSetName = 'Facturas'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -885,6 +917,7 @@ inherited frmPrintRecFac: TfrmPrintRecFac
           Top = 225.260050000000000000
           Width = 400.630180000000000000
           Height = 18.897650000000000000
+          DataSet = dmFacturas.fxdsPrintFac
           DataSetName = 'Facturas'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -903,6 +936,7 @@ inherited frmPrintRecFac: TfrmPrintRecFac
           Top = 247.937230000000000000
           Width = 400.630180000000000000
           Height = 18.897650000000000000
+          DataSet = dmFacturas.fxdsPrintFac
           DataSetName = 'Facturas'
           Frame.Typ = []
           Memo.UTF8W = (
@@ -915,6 +949,7 @@ inherited frmPrintRecFac: TfrmPrintRecFac
           Top = 266.834880000000000000
           Width = 120.944960000000000000
           Height = 18.897650000000000000
+          DataSet = dmFacturas.fxdsPrintFac
           DataSetName = 'Facturas'
           Frame.Typ = []
           Memo.UTF8W = (
@@ -927,6 +962,7 @@ inherited frmPrintRecFac: TfrmPrintRecFac
           Top = 266.834880000000000000
           Width = 272.126160000000000000
           Height = 18.897650000000000000
+          DataSet = dmFacturas.fxdsPrintFac
           DataSetName = 'Facturas'
           Frame.Typ = []
           Memo.UTF8W = (
@@ -939,6 +975,7 @@ inherited frmPrintRecFac: TfrmPrintRecFac
           Top = 289.512060000000000000
           Width = 328.819110000000000000
           Height = 18.897650000000000000
+          DataSet = dmFacturas.fxdsPrintFac
           DataSetName = 'Facturas'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -957,6 +994,7 @@ inherited frmPrintRecFac: TfrmPrintRecFac
           Top = 198.803340000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
+          DataSet = dmFacturas.fxdsPrintFac
           DataSetName = 'Facturas'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -992,6 +1030,7 @@ inherited frmPrintRecFac: TfrmPrintRecFac
           Top = 113.385900000000000000
           Width = 514.016080000000000000
           Height = 37.795300000000000000
+          DataSet = dmFacturas.fxdsPrintFac
           DataSetName = 'Facturas'
           Frame.Typ = []
           Memo.UTF8W = (
@@ -1004,6 +1043,7 @@ inherited frmPrintRecFac: TfrmPrintRecFac
           Top = 162.771800000000000000
           Width = 272.126160000000000000
           Height = 18.897650000000000000
+          DataSet = dmFacturas.fxdsPrintFac
           DataSetName = 'Facturas'
           Frame.Typ = []
           Memo.UTF8W = (
@@ -1016,6 +1056,7 @@ inherited frmPrintRecFac: TfrmPrintRecFac
           Top = 81.590600000000000000
           Width = 109.606370000000000000
           Height = 18.897650000000000000
+          DataSet = dmFacturas.fxdsPrintFac
           DataSetName = 'Facturas'
           DisplayFormat.FormatStr = 'dd/mm/yyyy'
           DisplayFormat.Kind = fkDateTime
@@ -1030,6 +1071,7 @@ inherited frmPrintRecFac: TfrmPrintRecFac
           Top = 81.590600000000000000
           Width = 102.047310000000000000
           Height = 18.897650000000000000
+          DataSet = dmFacturas.fxdsPrintFac
           DataSetName = 'Facturas'
           DisplayFormat.FormatStr = 'dd/mm/yyyy'
           DisplayFormat.Kind = fkDateTime
@@ -1044,6 +1086,7 @@ inherited frmPrintRecFac: TfrmPrintRecFac
           Top = 32.456710000000000000
           Width = 173.858380000000000000
           Height = 18.897650000000000000
+          DataSet = dmFacturas.fxdsPrintFac
           DataSetName = 'Facturas'
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2m'

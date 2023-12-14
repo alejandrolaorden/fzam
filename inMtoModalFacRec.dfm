@@ -4,14 +4,13 @@ inherited frmGenFacRec: TfrmGenFacRec
   HorzScrollBar.Visible = False
   BorderStyle = bsSingle
   Caption = 'Duplicar/Abonar Factura'
-  ClientHeight = 302
-  ClientWidth = 399
+  ClientHeight = 301
+  ClientWidth = 395
   FormStyle = fsStayOnTop
   Position = poMainFormCenter
   Scaled = False
-  ExplicitWidth = 405
-  ExplicitHeight = 331
-  PixelsPerInch = 96
+  ExplicitWidth = 411
+  ExplicitHeight = 340
   TextHeight = 19
   object cxlbl1: TcxLabel [0]
     Left = 9
@@ -26,10 +25,10 @@ inherited frmGenFacRec: TfrmGenFacRec
     Width = 129
   end
   object pnl1: TPanel [2]
-    Left = 284
+    Left = 280
     Top = 0
     Width = 115
-    Height = 302
+    Height = 301
     Align = alRight
     TabOrder = 0
     object btn3: TcxButton

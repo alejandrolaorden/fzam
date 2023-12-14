@@ -22,7 +22,7 @@ inherited frmMtoModalGenImpEle: TfrmMtoModalGenImpEle
       Top = 1
       Width = 202
       Height = 25
-      Caption = 'Usar Original'
+      Caption = 'Usar &Original'
       TabOrder = 0
       OnClick = btnUsarOriginalClick
     end
@@ -31,7 +31,7 @@ inherited frmMtoModalGenImpEle: TfrmMtoModalGenImpEle
       Top = 25
       Width = 202
       Height = 25
-      Caption = 'Usar Formato Elegido'
+      Caption = 'Usar &Formato Elegido'
       TabOrder = 1
       OnClick = btnSelectFormatoClick
     end
@@ -40,7 +40,7 @@ inherited frmMtoModalGenImpEle: TfrmMtoModalGenImpEle
       Top = 49
       Width = 202
       Height = 25
-      Caption = 'Borrar Formato Elegido'
+      Caption = '&Borrar Formato Elegido'
       TabOrder = 2
       OnClick = btnDeleteFormatoClick
     end
@@ -49,7 +49,7 @@ inherited frmMtoModalGenImpEle: TfrmMtoModalGenImpEle
       Top = 73
       Width = 202
       Height = 25
-      Caption = 'Volver'
+      Caption = '&Volver'
       TabOrder = 3
       OnClick = btnSalirClick
     end

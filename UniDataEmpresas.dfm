@@ -68,6 +68,7 @@ inherited dmEmpresas: TdmEmpresas
       'SELECT *  '
       '  FROM vi_empresas '
       ' ORDER BY orden_empresa')
+    Active = True
     AfterInsert = unqryTablaGAfterInsert
     BeforeDelete = unqryTablaGBeforeDelete
     AfterDelete = unqryTablaGAfterDelete

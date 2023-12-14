@@ -897,22 +897,22 @@ inherited frmMtoClientes: TfrmMtoClientes
                       end>
                     DataController.Summary.FooterSummaryItems = <
                       item
-                        Format = '##,##.## '#8364
+                        Format = '##,##.00 '#8364
                         Kind = skSum
                         Column = tvFacturacionTOTAL_LIQUIDO_FACTURA
                       end
                       item
-                        Format = '##,##.## '#8364
+                        Format = '##,##.00 '#8364
                         Kind = skSum
                         Column = tvFacturacionTOTAL_RETENCION_FACTURA
                       end
                       item
-                        Format = '##,##.## '#8364
+                        Format = '##,##.00 '#8364
                         Kind = skSum
                         Column = tvFacturacionTOTAL_IMPUESTOS_FACTURA
                       end
                       item
-                        Format = '##,##.## '#8364
+                        Format = '##,##.00 '#8364
                         Kind = skSum
                         Column = tvFacturacionTOTAL_BASES_FACTURA
                       end>

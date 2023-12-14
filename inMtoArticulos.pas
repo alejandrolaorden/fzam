@@ -30,7 +30,8 @@ uses
   cxGroupBox, cxCheckGroup, cxDBCheckGroup, cxRadioGroup,
   dxScrollbarAnnotations, dxCore, System.Actions, Vcl.ActnList,
   Vcl.PlatformDefaultStyleActnCtrls, Vcl.ActnMan, cxButtonEdit, cxSplitter,
-  cxDBExtLookupComboBox, cxListView, Vcl.AppEvnts, JvComponentBase, JvEnterTab;
+  cxDBExtLookupComboBox, cxListView, Vcl.AppEvnts, JvComponentBase, JvEnterTab,
+  cxDBLabel;
 
 type
   TfrmMtoArticulos = class(TfrmMtoGen)
@@ -171,6 +172,7 @@ type
     dbcTarifasCODIGO_UNICO_TARIFA: TcxGridDBColumn;
     dbcTarifasESIMP_INCL_TARIFA: TcxGridDBColumn;
     dbcTarifasESDEFAULT_TARIFA: TcxGridDBColumn;
+    cxDBLabel1: TcxDBLabel;
     procedure btnAddProveedorClick(Sender: TObject);
     procedure cxgrdbclmnProveedoresCODIGO_PROVEEDORPropertiesButtonClick(
       Sender: TObject; AButtonIndex: Integer);
