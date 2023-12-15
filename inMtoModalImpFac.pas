@@ -35,7 +35,7 @@ type
     lblcxlbl3: TcxLabel;
     procedure rbRangoFechasClick(Sender: TObject);
     procedure rbActualClick(Sender: TObject);
-  private
+  public
     procedure preparar_consulta; override;
     { Private declarations }
   public

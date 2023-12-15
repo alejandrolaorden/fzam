@@ -122,7 +122,6 @@ begin
   inherited;
   unqryTablaG.FindField('CODIGO_CLIENTE').AsString := '0';
   unqryTablaG.FindField('ORDEN_CLIENTE').AsString := '0';
-  //unqryTablaG.FindField('TARIFA_ARTICULO_CLIENTE').AsString := '0';
   unqryTablaG.FindField('ACTIVO_CLIENTE').AsString := 'S';
   unqryTablaG.FindField('ESIVA_RECARGO_CLIENTE').AsString := 'N';
   unqryTablaG.FindField('ESRETENCIONES_CLIENTE').AsString := 'N';
@@ -151,8 +150,6 @@ begin
                                            unqryTarifaDef.Fields[0].AsString;
   unqryTarifaDef.Close;
   FreeAndNil(unqryTarifaDef);
-
-  //(Self.Owner as TfrmMtoClientes).txtRAZONSOCIAL_CLIENTE.SetFocus;
 end;
 
 procedure TdmClientes.unqryTablaGBeforeDelete(DataSet: TDataSet);

@@ -93,7 +93,7 @@ end;
 function EncuentraPagina(pc: TcxPageControl;
                            sName:string):integer; overload;
 Var
-   AComponent: TComponent;
+//   AComponent: TComponent;
    aIndex, I: Integer;
    IsFound : Boolean;
 begin
@@ -118,7 +118,7 @@ var
 begin
   idmd5 := TIdHashMessageDigest5.Create;
   try
-    result := idmd5.HashStringAsHex(UTF8Encode(texto));
+    Result := idmd5.HashStringAsHex(String(UTF8Encode(texto)));
   finally
     idmd5.Free;
   end;
@@ -207,6 +207,7 @@ end;
 
 function FindFormOwner(oSender: TObject):TComponent;
 begin
+  Result := nil;
   while not oSender.InheritsFrom(TForm) do
     oSender := TObject((oSender as TComponent).Owner);
   if Assigned(oSender) then
@@ -280,6 +281,7 @@ function EncontrarObjeto(oControl:TComponent; sBusquedaTipo:String):TObject; ove
 var
   i:Integer;
 begin
+  Result := nil;
   for i := 0 to oControl.ComponentCount - 1 do
     if oControl.Components[i].ClassName = sBusquedaTipo then
       Result := oControl.Components[i];
@@ -485,16 +487,16 @@ procedure CargarCaptions(oControl:TComponent;
          PropInfo := PropList^[I];
           if not (PropInfo^.PropType^.Kind = tkMethod) then
           begin
-            if SameText(PropInfo^.Name, APropName) then
+            if SameText(String(PropInfo^.Name), APropName) then
             begin
 
               if (PropInfo^.PropType^.Kind = tkSet) then
               begin
+                SetList := TStringList.Create;
                 try
-                  SetList := TStringList.Create;
                   SetList.CommaText :=
-                  System.Variants.VarToStr(GetPropValue(Component,
-                                                        PropInfo^.Name));
+                                System.Variants.VarToStr(GetPropValue(Component,
+                                                       String(PropInfo^.Name)));
                   for X := 0 to 255 do
                   begin
                     SetName :=
@@ -511,9 +513,8 @@ procedure CargarCaptions(oControl:TComponent;
                   SetList.Free;
                 end;
               end else
-                Result := System.Variants.VarToStr(
-                                          GetPropValue(Component,
-                                                       PropInfo^.Name));
+                Result := System.Variants.VarToStr(GetPropValue(Component,
+                                                   String(PropInfo^.Name)));
               Exit;
             end;
           end;
@@ -534,13 +535,13 @@ begin
         StartsText('rb', sCompName)  Or
         StartsText('rg', sCompName)  Or
         StartsText('ts', sCompNAme) Or
-        StartsText('chk', sCompNAme) Or
+        StartsText('chk', sCompName) Or
         StartsText('btn', sCompName)) then
     begin
       sValue := GetComponentPropertyValue(oControl.Components[i], 'Caption');
       if (sValue <> '') then
         odmPerfiles.GrabarPerfil(sUser, sName, sCompName + '_Caption', sValue );
-        sValue := '';
+      sValue := '';
     end;
   end;
 end;
@@ -552,10 +553,11 @@ var
   i:Integer;
 
 begin
-    for i := 0 to oControl.ComponentCount - 1 do
-      if oControl.Components[i].ClassName = sBusquedaTipo then
-        if oControl.Components[i].Name = sNameObject then
-          Result := oControl.Components[i];
+  Result := nil;
+  for i := 0 to oControl.ComponentCount - 1 do
+    if oControl.Components[i].ClassName = sBusquedaTipo then
+      if oControl.Components[i].Name = sNameObject then
+        Result := oControl.Components[i];
 end;
 
 procedure GetImageURL(sUrl: String; var memStream: TMemoryStream);

@@ -540,6 +540,9 @@ inherited frmPrintFac: TfrmPrintFac
   end
   inherited frxReportOrigen: TfrxReport
     EngineOptions.DoublePass = True
+    PreviewOptions.AllowEdit = False
+    PreviewOptions.AllowPreviewEdit = False
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbNavigator, pbExportQuick]
     ReportOptions.LastChange = 45269.385296875000000000
     ScriptText.Strings = (
       'procedure RetencionTotalOnBeforePrint(Sender: TfrxComponent);'
@@ -1158,8 +1161,9 @@ inherited frmPrintFac: TfrmPrintFac
           AllowVectorExport = True
           Left = 22.677180000000000000
           Top = 3.779530000000000000
-          Width = 287.244280000000000000
+          Width = 272.126160000000000000
           Height = 18.897650000000000000
+          StretchMode = smActualHeight
           DataField = 'DESCRIPCION_ARTICULO_FACTURA_LINEA'
           DataSet = dmFacturas.fxdstPrintLinFac
           DataSetName = 'Lineas Facturas'
@@ -1169,9 +1173,11 @@ inherited frmPrintFac: TfrmPrintFac
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
+          LineSpacing = 4.000000000000000000
           Memo.UTF8W = (
             '[Lineas Facturas."DESCRIPCION_ARTICULO_FACTURA_LINEA"]')
           ParentFont = False
+          WordBreak = True
         end
       end
       object Memo19: TfrxMemoView

@@ -110,22 +110,7 @@ uses inLibUser,
   inLibGlobalVar,
   inLibLog,
   inLibDir,
-  inMtoSplash,
-  inMtoClientes,
-  inMtoEmpresas,
-  inMtoIvas,
-  inMtoIvasGrupos,
-  inMtoProveedores,
-  inMtoFamilias,
-  inMtoArticulos,
-  inMtoFacturas,
-  inMtoUsuarios,
-  inMtoGrupos,
-  inMtoContadores,
-  inMtoFormasdePago,
-  inMtoTarifas,
-  inMtoUsuariosPerfiles,
-  inMtoGeneradorProcesos;
+  inMtoSplash;
 
 {$R *.dfm}
 
@@ -183,7 +168,13 @@ begin
   begin
     LookAndFeelController1.SkinName := 'MetropolisDark';
     SkinController1.SkinName := 'MetropolisDark';
-  end;
+  end
+  else
+    begin
+      LookAndFeelController1.SkinName := 'Office2007Pink';
+      SkinController1.SkinName := 'Office2007Pink';
+
+    end;
 end;
 
 procedure TfrmOpenApp2.mnuTarifasClick(Sender: TObject);
@@ -220,7 +211,7 @@ begin
   saveDialog.Title := 'Guardar copia de seguridad';
   saveDialog.InitialDir := GetCurrentDir;
   savedialog.FileName := 'copiaseguridad' + FormatDateTime('_dd_mm', Now) +
-    '.sql';
+                                                                         '.sql';
   undmp1.Connection := FDmConn.conUni;
   if saveDialog.Execute then
   begin
@@ -228,27 +219,14 @@ begin
     begin
       iButtonSel := MessageDlg('¿Desea reemplazar el fichero existente?',
         mtCustom, [mbYes, mbNo], 0);
+    end;
+    if ((iButtonSel = mrYes) or (not FileExists(saveDialog.FileName))) then
+    begin
       s:= 'DROP DATABASE IF EXISTS factuzam; ' + sLineBreak +
                        'CREATE DATABASE factuzam ' +
                        '  CHARACTER SET utf8mb4 ' +
                        '       COLLATE utf8mb4_spanish_ci; ' +  sLineBreak +
                        'USE factuzam;' + sLineBreak + sLineBreak + s;
-      if iButtonSel = mrYes then
-      begin
-        undmp1.Backup;
-        s := s + undmp1.SQL.Text;
-        s := StringReplace(s, 'DEFINER=`root`@`localhost`', '', [rfReplaceAll,
-            rfIgnoreCase]);
-        MyText := TStringlist.Create;
-        MyText.Text := s;
-        saveDialog.InitialDir := GetUserDeskFolder;
-        MyText.SaveToFile(saveDialog.FileName, TEncoding.UTF8);
-        MyText.Free;
-        ShowMessage('La copia se guardó exitosamente');
-      end;
-    end
-    else
-    begin
       undmp1.Backup;
       s := s + undmp1.SQL.Text;
       s := StringReplace(s, 'DEFINER=`root`@`localhost`', '', [rfReplaceAll,

@@ -349,7 +349,10 @@ begin
           ShowMto(Self.Owner,
                   'Facturas',
                   sNroFactura + ',' + sSerieFactura);
-       end;
+       end
+     else
+       ShowMto(Self.Owner,
+               'Facturas');
   end;
 end;
 
@@ -453,9 +456,7 @@ begin
   if (dsTablaG.State = dsInsert) then
     txtCODIGO_EMPRESA.Enabled := True
   else
-  begin
     txtCODIGO_EMPRESA.Enabled := False;
-  end;
 end;
 
 procedure TfrmMtoEmpresas.btnIraArticuloClick(Sender: TObject);

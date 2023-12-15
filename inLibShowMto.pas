@@ -57,7 +57,7 @@ var
   sPkTab:String;
   mMenu : TMenuItem;
   ofzaF: TfzaForm;
-  dmmModule:TdmBase;
+//  dmmModule:TdmBase;
 begin
   frmOpen2 := (Owner as TfrmOpenApp2);
   ofzaF := frmOpen2.oFzaWinf.GetElement(sCall);
@@ -127,7 +127,6 @@ begin
         begin
           if (frmGen.tsFicha.TabVisible = True) then
             frmGen.pcPantalla.ActivePage := frmGen.tsFicha;
-          frmGen.ResetForm;
         end;
       end;
     end;
@@ -143,7 +142,6 @@ var
   ctx: TRttiContext;
   lType: TRttiType;
   f: TValue;
-  t : TRttiInstanceType;
 begin
   ctx := TRttiContext.Create;
   Result := nil;
@@ -151,8 +149,6 @@ begin
     lType:= ctx.FindType(sDataUnit);
     if (lType<>nil) then
     begin
-      t:=lType.AsInstance;
-      //f := t.GetMethod('Create').Invoke(t.MetaclassType, [pOwner]);
       f:= TDataMBaseClass(
                          GetTypeData(lType.Handle)^.ClassType).Create(pOwner);
       begin

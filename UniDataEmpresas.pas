@@ -81,8 +81,7 @@ end;
 procedure TdmEmpresas.unqryRetencionesBeforePost(DataSet: TDataSet);
 var
   unqrySol: TUniQuery;
-  bSinErrores, bFechaFinNul, bFechaIniNul:Boolean;
-  dtFechaIni, dtFechaFin:TDateTime;
+  bSinErrores:Boolean;
 begin
   inherited;
   if ( (unqryTablaG.State = dsInsert) and
@@ -146,8 +145,7 @@ end;
 procedure TdmEmpresas.unqrySeriesBeforePost(DataSet: TDataSet);
 var
   unqrySol: TUniQuery;
-  bSinErrores, bFechaFinNul, bFechaIniNul:Boolean;
-  dtFechaIni, dtFechaFin:TDateTime;
+  bSinErrores:Boolean;
 //  sCodigoSerie:String;
 begin
   inherited;
@@ -245,7 +243,6 @@ begin
   unqryTablaG.FindField('ESRETENCIONES_EMPRESA').AsString := 'S';
   unqryTablaG.FindField('ACTIVO_EMPRESA').AsString := 'S';
   unqryTablaG.FindField('GRUPO_ZONA_IVA_EMPRESA').AsString := GetZonaDefault;
-  (Self.Owner AS TfrmMtoEmpresas).btnNuevaEmpresaClick(Self.Owner);
 end;
 
 procedure TdmEmpresas.DataModuleCreate(Sender: TObject);

@@ -484,7 +484,6 @@ begin
   tsFichBut := nil;
   Self.Position  := poScreenCenter;
   ProcesarPerfiles;
-  //Self.OnShortCut := FormShortCut;
   sModoBusq := GetPerfilValueDef(oPerfilDic, 'oBusqGlobal', 'Database');
   if sModoBusq = 'DataBase' then
   begin
@@ -496,7 +495,6 @@ begin
     rbBBDD.Checked := false;
     rbGrid.Checked := true;
   end;
-
 end;
 
 procedure TfrmMtoGen.FormKeyUp(Sender: TObject; var Key: Word;
@@ -550,6 +548,7 @@ begin
 //  if SameText(sUso, 'Busq') then
 //    Self.WindowState := wsNormal;
   edtBusqGlobal.SetFocus;
+  ResetForm;
 end;
 
 procedure TfrmMtoGen.pcPantallaPageChanging(Sender: TObject;

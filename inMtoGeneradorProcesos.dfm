@@ -166,6 +166,10 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
             object tsSQL: TcxTabSheet
               Caption = '&1_C'#243'digo SQL'
               ImageIndex = 0
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object pnl6: TPanel
                 Left = 0
                 Top = 251
@@ -204,6 +208,7 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
                   Font.Name = 'Lucida Console'
                   Font.Style = []
                   Font.Quality = fqClearTypeNatural
+                  ParentColor = False
                   ParentFont = False
                   TabOrder = 0
                   OnKeyDown = dbsyndtPROCESO_GENERADORPROCESOKeyDown
@@ -265,6 +270,10 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
             object tsMetadatos: TcxTabSheet
               Caption = '&2_Metadatos'
               ImageIndex = 2
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object cxspltr2: TcxSplitter
                 Left = 377
                 Top = 0
@@ -301,7 +310,10 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
                   object tsEstructura: TcxTabSheet
                     Caption = '&Estructura Metadato'
                     ImageIndex = 0
+                    ExplicitLeft = 0
+                    ExplicitTop = 0
                     ExplicitWidth = 591
+                    ExplicitHeight = 0
                     object syndtEstructura: TSynEdit
                       Left = 0
                       Top = 0
@@ -379,7 +391,10 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
                   object tsContenido: TcxTabSheet
                     Caption = '&Vista Contenido'
                     ImageIndex = 1
+                    ExplicitLeft = 0
+                    ExplicitTop = 0
                     ExplicitWidth = 591
+                    ExplicitHeight = 0
                     object cxgrdMetadatos1: TcxGrid
                       Left = 0
                       Top = 0
@@ -582,11 +597,11 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
                   ReadOnly = True
                   Indent = 19
                   Align = alClient
+                  ParentColor = False
                   Options = [trCanDBNavigate, trSmartRecordCopy, trCheckHasChildren]
                   SelectedIndex = -1
                   TabOrder = 0
                   OnDblClick = tv1DblClick
-                  ExplicitWidth = 231
                 end
                 object pnlTreeBotton: TPanel
                   Left = 1
@@ -621,6 +636,10 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
             object tsVistaDatos: TcxTabSheet
               Caption = '&3_VistaDatos'
               ImageIndex = 3
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object cxVista: TcxGrid
                 Left = 0
                 Top = 0
@@ -910,6 +929,7 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
           HotZoneClassName = 'TcxMediaPlayer9Style'
           AlignSplitter = salTop
           Control = pnl1
+          ExplicitWidth = 4
         end
       end
       inherited tsPerfil: TcxTabSheet

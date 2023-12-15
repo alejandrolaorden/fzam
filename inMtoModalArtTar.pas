@@ -31,7 +31,7 @@ type
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
-    InitializeNewForm: TListItem;
+
   public
     sFicha:string;
     { Public declarations }

@@ -175,8 +175,8 @@ var
   qrySol: TUniQuery;
   ozaForm:TfzaForm;
 begin
+  qrySol := TUniQuery.Create(nil);
   try
-    qrySol := TUniQuery.Create(nil);
     qrySol.Connection := nConn;
     qrySol.SQL.Text := 'SELECT * FROM fza_winforms';
     qrySol.Open;

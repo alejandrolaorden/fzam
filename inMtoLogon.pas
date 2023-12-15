@@ -98,6 +98,7 @@ implementation
 uses  inLibWin,
       inLibGlobalVar,
       inlibtb,
+      inLibMsg,
       inLibDir,
       inLibLog;
 
@@ -111,6 +112,7 @@ begin
   Self.Width := 338;
   Self.ClientHeight := 253;
   edtUser.Text := '';
+  //ShowMessage('leyendo ini');
   leerini;
   try
     GetIniValues;
@@ -118,8 +120,7 @@ begin
     on E:Exception do
     if (E is EAccessViolation) or (E is ERangeError) then
       begin
-        raise EPassWordCorrupt.Create('Fallo en la lectura y desencriptación' +
-                                      ' de password de usuario.');
+        raise EPassWordCorrupt.Create(SErrorDecryptPass);
       end;
   end;
   sPassEn := leCadINIDir('ConnData',
@@ -133,8 +134,7 @@ begin
     except
     on E:Exception do
       begin
-        raise EPassWordCorrupt.Create('Fallo en la lectura y desencriptación' +
-                                      ' de password BBDD.');
+        raise EPassWordCorrupt.Create(SErrorDecryptPassBBDD);
       end;
     end;
   end;
@@ -150,9 +150,9 @@ end;
 
 procedure TfrmLogon.btnCopiaSeguridadClick(Sender: TObject);
 var
-  savedialog        : TSaveDialog;
-  s                 : string;
-  MyText            : TStringlist;
+  savedialog: TSaveDialog;
+  s         : string;
+  MyText    : TStringlist;
 begin
   ConstruirConexionConnect(ucConexion, edtUserBD.Text,
     sPass,
@@ -175,7 +175,7 @@ begin
          '  CHARACTER SET utf8mb4 ' +
          '       COLLATE utf8mb4_spanish_ci; ' +  sLineBreak +
          'USE factuzam;' + sLineBreak + sLineBreak + s;
-    s := EncriptAESPass(s, sPass);
+    s := EncriptAESPass(s, AnsiString(sPass));
     MyText := TStringlist.Create;
     MyText.Text := s;
     saveDialog.InitialDir := GetUserDeskFolder;
@@ -241,12 +241,13 @@ end;
 procedure TfrmLogon.btnTestClick(Sender: TObject);
 begin
   escribirini;
-  ConstruirConexionConnect(ucConexion, edtUserBD.Text,
-    sPass,
-    edtHostName.Text,
-    edtPortBD.Text,
-    edtNomBD.Text);
-  ShowMessage('La conexión se estableció exitosamente.');
+  ConstruirConexionConnect( ucConexion,
+                            edtUserBD.Text,
+                            sPass,
+                            edtHostName.Text,
+                            edtPortBD.Text,
+                            edtNomBD.Text);
+  ShowMessage(SConnSuccBBDD);
   Exit;
 end;
 
@@ -257,13 +258,11 @@ var
   sPassEnBD:String;
 begin
   if not f.Connected then
-    ShowMessage('No hay conexión con la bbdd')
+    ShowMessage(SNoConnBBDD)
   else
   begin
-    if ( Application.MessageBox(' ¿Desea cambiar el password por defecto ' +
-                                'de la Base de Datos?',
-                                'Mensaje Advertencia',
-                                MB_YESNO ) = ID_YES ) then
+    if (Application.MessageBox(PWideChar(SWantDefChgBBDD),
+                               PWideChar(SAdvMsg), MB_YESNO ) = ID_YES ) then
     begin
       sNewPass := InputBox('Introduzca el nuevo password de la BBDD', '','');
       qryCommand := TUniQuery.Create(nil);
@@ -275,9 +274,7 @@ begin
       qryCommand.ExecSQL;
       sPassEnBD := EncriptAES(sNewPass);
       sPass := sNewPass;
-      ShowMessage('Password de la BBDD cambiado correctamente.' + sLineBreak +
-                  'Anote el password en un lugar seguro para evitar problemas:'+
-                  sPass);
+      ShowMessageFmt(SPasswordBBDDChanged, [sPass]);
       esCadIniDir('ConnData', 'PasswordEn', sPassEnBD, GetUserFolder);
       qryCommand.Free;
     end;
@@ -287,6 +284,7 @@ end;
 function TfrmLogon.CheckIfDatabaseIsUpdated: Boolean;
 var
   unqryTestBD       : TUniQuery;
+  sFileUp:String;
   bActualizar: boolean;
 begin
   Result := false;
@@ -306,26 +304,25 @@ begin
   FreeAndNil(unqryTestBD);
   if (bActualizar) then
   begin
-    if ( Application.MessageBox('Es necesario actualizar la BBDD' +
-                                ' con nuevos cambios,' + sLineBreak +
-                                ' ¿desea proceder con el procedimiento' +
-                                ' de actualización?', 'Mensaje Advertencia',
-                                 MB_YESNO ) = ID_YES ) then
+    if ( Application.MessageBox(PWideChar(SAdviceUpdateBBDD),
+                                PWideChar(SAdvMsg),
+                                MB_YESNO ) = ID_YES ) then
     begin
       var MyText := TStringList.Create;
-      if (Not(FileExists(DirApp + '\factuzam_original_update_script.sql'))) then
+      sFileUp := DirApp + '\factuzam_original_update_script.sql';
+      if (Not(FileExists(sFileUp))) then
       begin
-        ShowMessage('No existe script de actualización, instalación fallida');
+        ShowMessageFmt(SNotExistsUpBBDDFile, [sFileUp]);
         Exit;
       end;
-      MyText.LoadFromFile(DirApp + '\factuzam_original_update_script.sql');
+      MyText.LoadFromFile(sFileUp);
       var sScript :string := StringReplace(MyText.Text,
                                    'factuzam',
                                    edtNomBD.Text,
                                    [rfReplaceAll,rfIgnoreCase]);
       UdDump.SQL.Text := sScript;
       UdDump.Restore;
-      ShowMessage('La Base de Datos se actualizó a ' + inLibGlobalVar.oVersion);
+      ShowMessage(SBBDDUpdateTo + inLibGlobalVar.oVersion);
       Result := True;
       FreeAndNil(MyText);
     end;
@@ -355,16 +352,15 @@ begin
   else
     if (unqryTestBD.RecordCount = 0) then
     begin
-       if Application.MessageBox(PWideChar(Format(
-         'No existe una base de datos llamada %s, '  +
-         '¿desea crearla? ', [edtNomBD.Text])),
+       if Application.MessageBox(PWideChar(Format( SErrorCreateBBDD,
+                                                   [edtNomBD.Text])),
          'Error',  MB_YESNO) = ID_YES then
        begin
          UdDump.SQL.Text := CrearBD(edtNomBD.Text);
          if UdDump.SQL.Text <> '' then
          begin
            UdDump.Restore;
-           ShowMessage('La Base de Datos se creó exitosamente');
+           ShowMessage(SCreateSuccBBDD);
            btChangePassRootClick(Self);
            Result := True;
          end;
@@ -376,17 +372,19 @@ end;
 
 function TfrmLogon.CrearBD(sDatabaseN: string):String;
 var
-  MyText            : TSTringList;
+  MyText: TSTringList;
+  sFile : String;
 begin
   MyText := TStringList.Create;
   Result := '';
-  if (Not(FileExists(DirApp + '\factuzam_original.sql'))) then
+  sFile := DirApp + '\factuzam_original.sql';
+  if (Not(FileExists(sFile))) then
   begin
-    ShowMessage('No existe script de creación de BD, instalación fallida');
+    ShowMessage(SFailLoadScriptBBDD);
   end
   else
   begin
-    MyText.LoadFromFile(DirApp + '\factuzam_original.sql');
+    MyText.LoadFromFile(sFile);
     Result := StringReplace(MyText.Text, 'factuzam', sDatabaseN, [rfReplaceAll,
                                                                 rfIgnoreCase]);
   end;
@@ -400,7 +398,7 @@ var
   s                 : string;
   unqryTestBD       : TUniQuery;
 begin
-  sPass := InputBox('Escriba password de la BBDD', '', '');
+  sPass := InputBox(SGetPassBBDD, '', '');
   ConstruirConexionConnect(ucConexion, edtUserBD.Text,
     sPass,
     edtHostName.Text,
@@ -437,20 +435,18 @@ begin
     s := MyText.Text;
     MyText.Free;
     try
-      udDump.SQL.Text := DecriptAESPass(s, edtPassBD.Text);
+      udDump.SQL.Text := DecriptAESPass(s, AnsiString(edtPassBD.Text));
     except
       on E: Exception do
       begin
-        ShowMessage('Contraseña incorrecta.E:' + E.ClassName +
+        ShowMessage(SErrorPassMatchBBDD +' '+ E.ClassName +
           ' Mensaje:' + E.Message);
         raise;
         Exit;
       end;
     end;
     udDump.Restore;
-    //Log(ucConexion, edtUser.Text, 'Recuperada copia encriptada de ' +
-    //  openDialog.FileName);
-    ShowMessage('El script se ejecutó exitosamente.');
+    ShowMessage(SScriptSuccess);
   end
   else
     ShowMessage('Se canceló la carga del script.');
@@ -472,9 +468,9 @@ var
   sResult           : string;
 begin
   qryGrupo := TUniQuery.Create(Self);
-  qryGrupo.SQL.Text := 'SELECT GRUPO_USUARIO, ESGRUPOADMINISTRADOR_GRUPO ' +
-    '  FROM VI_USUARIOS  ' +
-    ' WHERE USUARIO_USUARIO = ' + QuotedStr(sUser);
+  qryGrupo.SQL.Text := ' SELECT GRUPO_USUARIO, ESGRUPOADMINISTRADOR_GRUPO ' +
+                        '  FROM VI_USUARIOS  ' +
+                        ' WHERE USUARIO_USUARIO = ' + QuotedStr(sUser);
   qryGrupo.Connection := conn;
   qryGrupo.Open;
   sResult := qryGrupo.Fields[0].AsString;
@@ -501,7 +497,7 @@ begin
     bAllowChange := True
   else
   begin
-    sOldPass := InputBox('Introduzca el password actual de la BBDD', '','');
+    sOldPass := InputBox(SEnterPassBBDD, '','');
   end;
   if not bAllowChange then
   begin
@@ -522,14 +518,13 @@ begin
   end
   else
   begin
-    ShowMessage('El password que ha introducido no coincide.');
+    ShowMessage(SErrorPassMatch);
   end;
 end;
 
 procedure TfrmLogon.btnAceptarClick(Sender: TObject);
 var
-  sGrupoAdmin       : string;
-
+  sGrupoAdmin: string;
 begin
   if ucConexion.Connected then
     ucConexion.Disconnect;
@@ -538,11 +533,11 @@ begin
     if ucConexion.Connected then
       ucConexion.Disconnect;
     ConstruirConexionConnect(ucConexion,
-                              edtUserBD.Text,
-                              sPass,
-                              edtHostName.Text,
-                              edtPortBD.Text,
-                              edtNomBD.Text);
+                             edtUserBD.Text,
+                             sPass,
+                             edtHostName.Text,
+                             edtPortBD.Text,
+                             edtNomBD.Text);
     //Log(ucConexion, edtUser.Text, 'Intento de conexión');
     if not CheckIfDatabaseIsUpdated then
     begin
@@ -555,8 +550,7 @@ begin
     end
     else if not LoginCorrecto(edtUser.text, edtPass.Text, ucConexion) then
     begin
-      Log(ucConexion, edtUser.Text, 'La contraseña de usuario no es correcta. ');
-      ShowMessage('La contraseña de usuario no es correcta. ');
+      ShowMessage(SErrorAuthPass);
     end
     else
     begin
@@ -567,8 +561,6 @@ begin
       oUser := edtUser.Text;
       oGroup := GetGrupo(edtUser.Text, ucConexion, sGrupoAdmin);
       orootGroup := sGrupoAdmin;
-      //Log(ucConexion, oUser + '\' + Group + '\' + orootGroup,
-      //  'Conexión exitosa');
       sUserPassOK := 'true';
       sSuccess := 'S';
       PostMessage(Handle, WM_CLOSE, 0, 0);
@@ -585,7 +577,7 @@ begin
 end;
 
 function TfrmLogon.LoginCorrecto(sNom, sPassLogin: string;
-  f: TUniConnection): Boolean;
+                                 f: TUniConnection): Boolean;
 var
   sPassMd5          : string;
   sPassBD           : string;

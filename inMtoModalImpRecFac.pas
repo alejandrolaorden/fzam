@@ -32,7 +32,7 @@ type
     edtPlazoRecFac: TcxTextEdit;
     procedure rbActualClick(Sender: TObject);
     procedure rbRangoFechasClick(Sender: TObject);
-  private
+  public
     procedure preparar_consulta; override;
     { Private declarations }
   public

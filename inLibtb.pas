@@ -16,15 +16,15 @@ uses  SysUtils, Variants, DB, ADODB, ExtCtrls, DBCtrls, Controls, Grids,
       System.StrUtils, DCPrijndael, dcpbase64,DCPcrypt2, System.NetEncoding,
       inLibUser, Datasnap.Provider, Datasnap.DBClient, System.DateUtils,
       MidasLib,   Datasnap.Midas,   Soap.SOAPMidas, Datasnap.Win.MidasCon,
-      inLibGlobalVar, Dialogs, vcl.consts;
+      inLibGlobalVar, Dialogs, vcl.consts, inLibMsg;
 
   type
   TStringArray = array of string;
   function EncriptAES(s:String):String;
-  function EncriptAESPass(s:String; sPass:String):String;
+  function EncriptAESPass(s:String; sPass:AnsiString):String;
   function DecriptAES(s:String):String;
-  function DecriptAESPass(s:String; sPass:String):String;
-  function EncryptData(Data: string; AKey: AnsiString; AIv: AnsiString): string;
+  function DecriptAESPass(s:String; sPass:AnsiString):String;
+  function EncryptData(Data: string; AKey:AnsiString; AIv: AnsiString): string;
   function DecryptData(Data: string; AKey: AnsiString; AIv: AnsiString): string;
   function SoloNumeros(S:String):String;
   function LetraNIF(DNI: String): Char;
@@ -97,8 +97,8 @@ begin
 end;
 
 function ExisteSerieEmpresa(sSerie,
-         sEmpresa,
-         sTipoDoc:string): Boolean;
+                            sEmpresa,
+                            sTipoDoc:string): Boolean;
 var
   unqrySol:TUniQuery;
   sResul : String;
@@ -131,8 +131,7 @@ end;
 
 function ExistePeriodoUnico(qryData:TUniQuery;
                             fFechaIni,
-                            fFechaFin:TField
-                           ): boolean;
+                            fFechaFin:TField): boolean;
 var
  Dsp: TDataSetProvider;
  cli: TClientDataset;
@@ -154,17 +153,10 @@ begin
          (CompareDate(dtFechaIni, dtFechaFin) > 0)
        ) then
     begin
-     (* raise ERangeError.CreateFmt('La FechaFin %s ha de ser mayor' +
-                                  'y distinta de la FechaInicio %s',
-             [FindField('FECHA_HASTA_RETENCION').AsString,
-              FindField('FECHA_DESDE_RETENCION').AsString]);*)
       bFechaOrd := False;
     end;
     if bFechaIniNul and bFechaOrd then
     begin
-      (*raise ERangeError.CreateFmt('La FechaInicio %s ha de ser una fecha' +
-                                                        'válida',
-             [FindField('FECHA_DESDE_RETENCION').AsString]); *)
       bFechaOrd := False;
     end;
     if ((bFechaOrd)) then
@@ -182,7 +174,7 @@ begin
       begin
         if (cli.FieldByName(sFechaFin).isnull) then
           bFechaOrd := False;
-        //  FECHA_HASTA tiene que ser menor que dFechaFin, sino dar error
+        // FECHA_HASTA tiene que ser menor que dFechaFin, sino dar error
         // Si hay dos fechas_fin null ha de dar error.
         if (bFechaOrd) then
         begin
@@ -239,11 +231,12 @@ begin
     Result := False;
 end;
 
-procedure ConstruirConexionConnect(conUni:TUniConnection; sUser,
-                                                   sPassword,
-                                                   sHostName,
-                                                   sPort,
-                                                   sDataBase:String);
+procedure ConstruirConexionConnect(conUni:TUniConnection;
+                                   sUser,
+                                   sPassword,
+                                   sHostName,
+                                   sPort,
+                                   sDataBase:String);
 begin
   with Conuni do
   begin
@@ -264,9 +257,7 @@ begin
       except
         on E: Exception do
         begin
-          ShowMessage('Conexión fallida. Usuario, password, ' +
-                      'host, puerto o Nombre de la BBDD no es válido. E:' +
-                      E.ClassName + ' Mensaje: ' + E.Message);
+          ShowMessage(SConnFailBBDD + E.ClassName + ' Mensaje: ' + E.Message);
           raise;
           Exit;
         end;
@@ -315,8 +306,8 @@ begin
     // Validar la longitud de los datos de entrada
     if Length(Data) = 0 then
       raise Exception.Create('Datos de entrada vacíos');
-    key := TEncoding.ASCII.GetBytes(AKey);
-    iv := TEncoding.ASCII.GetBytes(AIv);
+    key := TEncoding.ASCII.GetBytes(String(AKey));
+    iv := TEncoding.ASCII.GetBytes(String(AIv));
     src := Base64DecodeBytes(TEncoding.UTF8.GetBytes(Data));
     //  Validar la longitud de los datos de entrada
     //  después de la decodificación Base64
@@ -362,8 +353,8 @@ var
   key, iv, src, dest, b64: TBytes;
   index, slen, bsize, pad: integer;
 begin
-  key := TEncoding.ASCII.GetBytes(AKey);
-  iv := TEncoding.ASCII.GetBytes(AIv);
+  key := TEncoding.ASCII.GetBytes(String(AKey));
+  iv := TEncoding.ASCII.GetBytes(String(AIv));
   src := TEncoding.UTF8.GetBytes(Data);
   cipher := TDCP_rijndael.Create(nil);
   try
@@ -387,9 +378,10 @@ begin
   end;
 end;
 
-function EncriptAESPass(s:String; sPass:String):String;
+function EncriptAESPass(s:String; sPass:AnsiString):String;
 var
-   Adata, AKey, IV, EncryptedText: string;
+   Adata: String;
+   AKey, IV: AnsiString;
 begin
   AKey := 'Key1234567890-1234567890-1234567' + sPass;
   IV := '12345678901234561234567890123456';
@@ -399,7 +391,8 @@ end;
 
 function EncriptAES(s:String):String;
 var
-   Adata, AKey, IV, EncryptedText: string;
+   Adata:String;
+   AKey, IV: AnsiString;
 begin
   AKey := 'Key1234567890-1234567890-1234567';
   IV := '12345678901234561234567890123456';
@@ -407,9 +400,10 @@ begin
   Result := Adata;
 end;
 
-function DecriptAESPass(s:String; sPass:String):String;
+function DecriptAESPass(s:String; sPass:AnsiString):String;
 var
-  Adata, AKey, IV, EncryptedText: string;
+  Adata: String;
+  AKey, IV : AnsiString;
 begin
   AKey := ('Key1234567890-1234567890-1234567'+ sPass);
   IV := ('12345678901234561234567890123456');
@@ -419,7 +413,8 @@ end;
 
 function DecriptAES(s:String):String;
 var
-  Adata, AKey, IV, EncryptedText: string;
+  Adata : String;
+  AKey, IV : AnsiString;
 begin
   AKey := ('Key1234567890-1234567890-1234567');
   IV := ('12345678901234561234567890123456');

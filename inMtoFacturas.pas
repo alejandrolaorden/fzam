@@ -435,9 +435,9 @@ end;
 procedure TfrmMtoFacturas.ResetForm;
 begin
   inherited;
-  pcPantalla.ActivePage := tsFicha;
-  pcCab.ActivePage := tsFichCab;
-  pcDetail.ActivePage := tsFichBut;
+  //pcPantalla.ActivePage := tsFicha;
+  pcCab.ActivePage := tsCabecera;
+  pcDetail.ActivePage := tsLineasFactura;
 end;
 
 procedure TfrmMtoFacturas.btnUpdateClienteClick(Sender: TObject);

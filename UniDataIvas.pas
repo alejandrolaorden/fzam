@@ -63,11 +63,9 @@ end;
 
 procedure TdmIvas.unqryTablaGBeforePost(DataSet: TDataSet);
 var
-  sCodigo, sDescripcion:String;
-  bError : Boolean;
+  sCodigo :String;
+  bError  : Boolean;
   unqrySol: TUniQuery;
-  bSinErrores, bFechaFinNul, bFechaIniNul:Boolean;
-  dtFechaIni, dtFechaFin:TDateTime;
 begin
   inherited;
   bError := False;

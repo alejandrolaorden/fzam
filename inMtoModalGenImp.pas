@@ -19,7 +19,7 @@ uses
   cxCalendar, frxDesgn, cxGroupBox, cxRadioGroup, frxExportBaseDialog,
   frxExportXLSX, MemDS, DBAccess, Uni, UniDataConn,
   inLibGlobalVar, inMtoPrincipal2, inMtoModalGenImpEle, cxStyles, dxSkinsForm,
-  cxClasses, cxLocalization, Vcl.Menus;
+  cxClasses, cxLocalization, Vcl.Menus, System.UITypes;
 type
   TfrmPrint = class(TfrmBase)
     pnl1: TPanel;
@@ -169,14 +169,17 @@ begin
   begin
       form := TfrmMtoModalGenImpEle.Create(Self);
       CargarFormatos(form);
-      form.ShowModal;
+      if (RecordCount > 0) then
+        form.ShowModal
+      else
+        form.sElegido := 'O';
       sElegido := form.sElegido;
       if form.sFicha = 'S' then
       begin
         //guarda el formato
-         sDescripcion := form.lstFormatos.items[form.lstFormatos.ItemIndex ];
+        sDescripcion := form.lstFormatos.items[form.lstFormatos.ItemIndex ];
+        memStream:=TMemoryStream.Create;
         try
-          memStream:=TMemoryStream.Create;
           unqryPerfiles.Locate('VALUE_PERFILES',sDescripcion, []);
           TBlobField(unqryPerfiles.FieldByName('VALUE_BLOB_PERFILES')).
                                                         SaveToStream(memStream);
@@ -260,6 +263,7 @@ var
   bGuardar : Boolean;
   sDescripcion, sPermisos : string;
 begin
+  Result := False;
   bGuardar := False;
   formulario := TfrmModalGenImpSave.Create(Application);
   formulario.edtNombreOrigen.Text := Self.Name;
@@ -274,8 +278,8 @@ begin
   FreeAndNil(formulario);
   if bGuardar then
   begin
+    memStream:=TMemoryStream.Create;
     try
-      memStream:=TMemoryStream.Create;
       frxrprt1.SaveToStream(memStream);
       memStream.Position:=0;
       if unqryPerfiles.Locate('VALUE_PERFILES',sDescripcion, []) then

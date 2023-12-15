@@ -70,23 +70,23 @@ uses
   inMtoSplash in 'inMtoSplash.pas' {frmSplash};
 
 begin
-    {$IFDEF DEBUG}
-      ReportMemoryLeaksOnShutdown := True;
-    {$ENDIF}
-    Application.Initialize;
-    Application.MainFormOnTaskbar := True;
-    Application.Title := 'Login';
-      with TfrmLogon.Create(Application) do
-      begin
-        try
-          ShowModal;
-          Caption := Application.Title;
-          if sSuccess <> 'S' then
-            Exit;
-        finally
-          Free;
-        end;
-      end;
-    Application.CreateForm(TfrmOpenApp2, frmOpenApp2);
-    Application.Run;
+  {$IFDEF DEBUG}
+    ReportMemoryLeaksOnShutdown := True;
+  {$ENDIF}
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.Title := 'Login';
+  with TfrmLogon.Create(Application) do
+  begin
+    try
+      ShowModal;
+      Caption := Application.Title;
+      if sSuccess <> 'S' then
+        Exit;
+    finally
+      Free;
+    end;
+  end;
+  Application.CreateForm(TfrmOpenApp2, frmOpenApp2);
+  Application.Run;
 end.

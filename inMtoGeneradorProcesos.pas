@@ -270,9 +270,6 @@ begin
 end;
 
 procedure TfrmMtoGeneradorProcesos.btnVerDatosClick(Sender: TObject);
-var
-    startTime:TDateTime;
-    sformatteddt:String;
 begin
   inherited;
   if ((dsTablaG.DataSet.State = dsInsert) or

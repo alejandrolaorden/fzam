@@ -4,9 +4,8 @@ inherited frmMtoModalArtTar: TfrmMtoModalArtTar
   ClientHeight = 184
   ClientWidth = 469
   OnClose = FormClose
-  ExplicitWidth = 485
-  ExplicitHeight = 223
-  PixelsPerInch = 96
+  ExplicitWidth = 481
+  ExplicitHeight = 222
   TextHeight = 19
   object pnl1: TPanel [0]
     Left = 0
@@ -15,6 +14,8 @@ inherited frmMtoModalArtTar: TfrmMtoModalArtTar
     Height = 41
     Align = alBottom
     TabOrder = 1
+    ExplicitTop = 142
+    ExplicitWidth = 465
     object btnCancelar1: TcxButton
       Left = 10
       Top = 6
@@ -53,6 +54,8 @@ inherited frmMtoModalArtTar: TfrmMtoModalArtTar
     ReadOnly = True
     TabOrder = 0
     ViewStyle = vsReport
+    ExplicitWidth = 465
+    ExplicitHeight = 142
   end
   inherited Localizer1: TcxLocalizer
     Left = 232

@@ -8,7 +8,6 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
   Caption = 'Empresas'
   ClientHeight = 715
   ClientWidth = 1085
-  ExplicitTop = -25
   ExplicitWidth = 1085
   ExplicitHeight = 715
   TextHeight = 19
@@ -28,6 +27,8 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
       ClientRectBottom = 669
       ClientRectRight = 939
       inherited tsLista: TcxTabSheet
+        ExplicitLeft = 0
+        ExplicitTop = 0
         ExplicitWidth = 936
         ExplicitHeight = 637
         inherited cxGrdPrincipal: TcxGrid
@@ -39,16 +40,19 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
             object cxgrdbclmnGrdDBTabPrinCODIGO_EMPRESA: TcxGridDBColumn
               Caption = 'C'#243'digo'
               DataBinding.FieldName = 'CODIGO_EMPRESA'
+              DataBinding.IsNullValueType = True
               Width = 79
             end
             object cxgrdbclmnGrdDBTabPrinORDEN_EMPRESA: TcxGridDBColumn
               Caption = 'Orden'
               DataBinding.FieldName = 'ORDEN_EMPRESA'
+              DataBinding.IsNullValueType = True
               Width = 70
             end
             object cxgrdbclmnGrdDBTabPrinACTIVA_EMPRESA: TcxGridDBColumn
               Caption = 'Activo'
               DataBinding.FieldName = 'ACTIVO_EMPRESA'
+              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxCheckBoxProperties'
               Properties.ValueChecked = 'S'
               Properties.ValueUnchecked = 'N'
@@ -57,56 +61,67 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
             object cxgrdbclmnGrdDBTabPrinRAZONSOCIAL_EMPRESA: TcxGridDBColumn
               Caption = 'Raz'#243'n Social'
               DataBinding.FieldName = 'RAZONSOCIAL_EMPRESA'
+              DataBinding.IsNullValueType = True
               Width = 186
             end
             object cxgrdbclmnGrdDBTabPrinNIF_EMPRESA: TcxGridDBColumn
               Caption = 'Nif'
               DataBinding.FieldName = 'NIF_EMPRESA'
+              DataBinding.IsNullValueType = True
               Width = 91
             end
             object cxgrdbclmnGrdDBTabPrinMOVIL_EMPRESA: TcxGridDBColumn
               Caption = 'M'#243'vil'
               DataBinding.FieldName = 'MOVIL_EMPRESA'
+              DataBinding.IsNullValueType = True
               Width = 115
             end
             object cxgrdbclmnGrdDBTabPrinEMAIL_EMPRESA: TcxGridDBColumn
               Caption = 'Email'
               DataBinding.FieldName = 'EMAIL_EMPRESA'
+              DataBinding.IsNullValueType = True
               Width = 189
             end
             object cxgrdbclmnGrdDBTabPrinDIRECCION1_EMPRESA: TcxGridDBColumn
               Caption = 'Direci'#243'n'
               DataBinding.FieldName = 'DIRECCION1_EMPRESA'
+              DataBinding.IsNullValueType = True
               Width = 146
             end
             object cxgrdbclmnGrdDBTabPrinDIRECCION2_EMPRESA: TcxGridDBColumn
               Caption = 'M'#225's Direcci'#243'n'
               DataBinding.FieldName = 'DIRECCION2_EMPRESA'
+              DataBinding.IsNullValueType = True
               Width = 138
             end
             object cxgrdbclmnGrdDBTabPrinPOBLACION_EMPRESA: TcxGridDBColumn
               Caption = 'Poblaci'#243'n'
               DataBinding.FieldName = 'POBLACION_EMPRESA'
+              DataBinding.IsNullValueType = True
               Width = 132
             end
             object cxgrdbclmnGrdDBTabPrinPROVINCIA_EMPRESA: TcxGridDBColumn
               Caption = 'Provincia'
               DataBinding.FieldName = 'PROVINCIA_EMPRESA'
+              DataBinding.IsNullValueType = True
               Width = 113
             end
             object cxgrdbclmnGrdDBTabPrinCPOSTAL_EMPRESA: TcxGridDBColumn
               Caption = 'C'#243'digo Postal'
               DataBinding.FieldName = 'CPOSTAL_EMPRESA'
+              DataBinding.IsNullValueType = True
               Width = 138
             end
             object cxGrdDBTabPrinDESCRIPCION_ZONA_IVA: TcxGridDBColumn
               Caption = 'Zona de IVA principal'
               DataBinding.FieldName = 'DESCRIPCION_ZONA_IVA'
+              DataBinding.IsNullValueType = True
               Width = 302
             end
             object cxgrdbclmnGrdDBTabPrin_ESREGIMENESPECIALAGRICOLA_EMPRESA: TcxGridDBColumn
               Caption = 'Es REAGP'
               DataBinding.FieldName = 'ESREGIMENESPECIALAGRICOLA_EMPRESA'
+              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxCheckBoxProperties'
               Properties.ValueChecked = 'S'
               Properties.ValueUnchecked = 'N'
@@ -115,6 +130,7 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
             object cxgrdbclmnGrdDBTabPrinESRETENCIONES_EMPRESA: TcxGridDBColumn
               Caption = 'Aplica Retenciones'
               DataBinding.FieldName = 'ESRETENCIONES_EMPRESA'
+              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxCheckBoxProperties'
               Properties.ValueChecked = 'S'
               Properties.ValueUnchecked = 'N'
@@ -123,37 +139,45 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
             object cxgrdbclmnGrdDBTabPrinTEXTO_LEGAL_FACTURA_EMPRESA: TcxGridDBColumn
               Caption = 'Texto en Factura'
               DataBinding.FieldName = 'TEXTO_LEGAL_FACTURA_EMPRESA'
+              DataBinding.IsNullValueType = True
               Width = 366
             end
             object cxgrdbclmnGrdDBTabPrinINSTANTEMODIF: TcxGridDBColumn
               DataBinding.FieldName = 'INSTANTEMODIF'
+              DataBinding.IsNullValueType = True
               Visible = False
             end
             object cxgrdbclmnGrdDBTabPrinINSTANTEALTA: TcxGridDBColumn
               DataBinding.FieldName = 'INSTANTEALTA'
+              DataBinding.IsNullValueType = True
               Visible = False
             end
             object cxgrdbclmnGrdDBTabPrinUSUARIOALTA: TcxGridDBColumn
               DataBinding.FieldName = 'USUARIOALTA'
+              DataBinding.IsNullValueType = True
               Visible = False
               Width = 88
             end
             object cxgrdbclmnGrdDBTabPrinUSUARIOMODIF: TcxGridDBColumn
               DataBinding.FieldName = 'USUARIOMODIF'
+              DataBinding.IsNullValueType = True
               Visible = False
               Width = 96
             end
             object cxGrdDBTabPrinSERIE_CONTADOR_EMPRESA: TcxGridDBColumn
               Caption = 'Serie por Defecto en Facturas'
               DataBinding.FieldName = 'SERIE_CONTADOR_EMPRESA'
+              DataBinding.IsNullValueType = True
               Width = 280
             end
             object cxGrdDBTabPrinPAIS_EMPRESA: TcxGridDBColumn
               DataBinding.FieldName = 'PAIS_EMPRESA'
+              DataBinding.IsNullValueType = True
               Visible = False
             end
             object cxGrdDBTabPrinGRUPO_ZONA_IVA_EMPRESA: TcxGridDBColumn
               DataBinding.FieldName = 'GRUPO_ZONA_IVA_EMPRESA'
+              DataBinding.IsNullValueType = True
               Visible = False
             end
           end
@@ -329,6 +353,10 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
             object tsRetenciones: TcxTabSheet
               Caption = '&2_Retenciones'
               ImageIndex = 2
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object pnlRetenOpts: TPanel
                 Left = 817
                 Top = 0
@@ -479,6 +507,10 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
             object tsHistoriaFacturacion: TcxTabSheet
               Caption = '&3_Hist'#243'rico Facturas'
               ImageIndex = 3
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object pnlFactura: TPanel
                 Left = 0
                 Top = 0
@@ -1122,6 +1154,10 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
             object tsSeries: TcxTabSheet
               Caption = '&4_Series'
               ImageIndex = 4
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object pnlSeriesOpts: TPanel
                 Left = 809
                 Top = 0

@@ -289,8 +289,6 @@ end;
 procedure TdmArticulos.unqryTarifasArticulosBeforePost(DataSet: TDataSet);
 var
   unqrySol:TUniQuery;
-  sTarifa: String;
-  bEdit:boolean;
 begin
   inherited;
   with unqryTarifasArticulos do

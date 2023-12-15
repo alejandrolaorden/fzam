@@ -30,7 +30,6 @@ inherited frmMtoFacturas: TfrmMtoFacturas
       Margins.Right = 5
       Margins.Bottom = 5
       TabOrder = 1
-      Properties.ActivePage = tsFicha
       ExplicitWidth = 1087
       ExplicitHeight = 804
       ClientRectBottom = 798
@@ -162,6 +161,12 @@ inherited frmMtoFacturas: TfrmMtoFacturas
               DataBinding.FieldName = 'FORMA_PAGO_FACTURA'
               DataBinding.IsNullValueType = True
               Width = 143
+            end
+            object cxgrdbclmnGrdDBTabPrinDESCRIPCION_FORMAPAGO: TcxGridDBColumn
+              Caption = 'Descripci'#243'n Forma de Pago'
+              DataBinding.FieldName = 'DESCRIPCION_FORMAPAGO'
+              DataBinding.IsNullValueType = True
+              Width = 256
             end
             object cxgrdbclmnGrdDBTabPrinRAZONSOCIAL_EMPRESA_FACTURA: TcxGridDBColumn
               Caption = 'Raz'#243'n Social Empresa'
@@ -462,12 +467,14 @@ inherited frmMtoFacturas: TfrmMtoFacturas
               Caption = 'Nro Factura Abono'
               DataBinding.FieldName = 'NRO_FACTURA_ABONO_FACTURA'
               DataBinding.IsNullValueType = True
+              Visible = False
               Width = 170
             end
             object cxgrdbclmnGrdDBTabPrinSERIE_FACTURA_ABONO_FACTURA: TcxGridDBColumn
               Caption = 'Serie Factura Abono'
               DataBinding.FieldName = 'SERIE_FACTURA_ABONO_FACTURA'
               DataBinding.IsNullValueType = True
+              Visible = False
               Width = 194
             end
             object cxgrdbclmnGrdDBTabPrinDOCUMENTO_FACTURA: TcxGridDBColumn
@@ -479,18 +486,21 @@ inherited frmMtoFacturas: TfrmMtoFacturas
               Caption = 'Comentarios Factura'
               DataBinding.FieldName = 'COMENTARIOS_FACTURA'
               DataBinding.IsNullValueType = True
+              Visible = False
               Width = 213
             end
             object cxgrdbclmnGrdDBTabPrinTEXTO_LEGAL_FACTURA_EMPRESA_FACTURA: TcxGridDBColumn
               Caption = 'Texto Legal Empresa'
               DataBinding.FieldName = 'TEXTO_LEGAL_FACTURA_EMPRESA_FACTURA'
               DataBinding.IsNullValueType = True
+              Visible = False
               Width = 685
             end
             object cxgrdbclmnGrdDBTabPrinTEXTO_LEGAL_FACTURA_CLIENTE_FACTURA: TcxGridDBColumn
               Caption = 'Texto legal Cliente en Factura'
               DataBinding.FieldName = 'TEXTO_LEGAL_FACTURA_CLIENTE_FACTURA'
               DataBinding.IsNullValueType = True
+              Visible = False
               Width = 376
             end
             object cxgrdbclmnGrdDBTabPrinINSTANTEMODIF: TcxGridDBColumn
@@ -556,12 +566,14 @@ inherited frmMtoFacturas: TfrmMtoFacturas
               Caption = 'Palabra IVA'
               DataBinding.FieldName = 'PALABRA_REPORTS_ZONA_IVA_FACTURA'
               DataBinding.IsNullValueType = True
+              Visible = False
               Width = 106
             end
             object cxGrdDBTabPrinCODIGO_IVA_FACTURA: TcxGridDBColumn
               Caption = 'C'#243'digo IVA Factura'
               DataBinding.FieldName = 'CODIGO_IVA_FACTURA'
               DataBinding.IsNullValueType = True
+              Visible = False
               Width = 186
             end
             object cxGrdDBTabPrinVENTA_ACTIVO_FIJO_FACTURA: TcxGridDBColumn
@@ -571,6 +583,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
               PropertiesClassName = 'TcxCheckBoxProperties'
               Properties.ValueChecked = 'S'
               Properties.ValueUnchecked = 'N'
+              Visible = False
               Width = 265
             end
             object cxGrdDBTabPrinTOTAL_BASES_FACTURA: TcxGridDBColumn
@@ -601,12 +614,14 @@ inherited frmMtoFacturas: TfrmMtoFacturas
               PropertiesClassName = 'TcxCheckBoxProperties'
               Properties.ValueChecked = 'S'
               Properties.ValueUnchecked = 'N'
+              Visible = False
               Width = 172
             end
             object cxgrdbclmnGrdDBTabPrinGRUPO_ZONA_IVA_EMPRESA_FACTURA: TcxGridDBColumn
               Caption = 'Zona IVA Empresa'
               DataBinding.FieldName = 'GRUPO_ZONA_IVA_EMPRESA_FACTURA'
               DataBinding.IsNullValueType = True
+              Visible = False
               Width = 164
             end
             object cxgrdbclmnGrdDBTabPrinESREGIMENESPECIALAGRICOLA_EMPRESA_FACTURA: TcxGridDBColumn
@@ -631,6 +646,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
               Caption = 'Precios Tarifa con Impuestos'
               DataBinding.FieldName = 'ESIMP_INCL_TARIFA_CLIENTE_FACTURA'
               DataBinding.IsNullValueType = True
+              Visible = False
               Width = 263
             end
             object cxgrdbclmnGrdDBTabPrinESIRPF_IMP_INCL_ZONA_IVA_FACTURA: TcxGridDBColumn
@@ -649,6 +665,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
               PropertiesClassName = 'TcxCheckBoxProperties'
               Properties.ValueChecked = 'S'
               Properties.ValueUnchecked = 'N'
+              Visible = False
               Width = 96
             end
             object cxgrdbclmnGrdDBTabPrinESVENTA_ACTIVO_FIJO_FACTURA: TcxGridDBColumn
@@ -667,6 +684,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
               PropertiesClassName = 'TcxCheckBoxProperties'
               Properties.ValueChecked = 'S'
               Properties.ValueUnchecked = 'N'
+              Visible = False
               Width = 142
             end
             object cxgrdbclmnGrdDBTabPrinESDESCRIPCIONES_AMP_FACTURA: TcxGridDBColumn
@@ -676,6 +694,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
               PropertiesClassName = 'TcxCheckBoxProperties'
               Properties.ValueChecked = 'S'
               Properties.ValueUnchecked = 'N'
+              Visible = False
               Width = 297
             end
             object cxgrdbclmnGrdDBTabPrinESFECHADEENTREGA_FACTURA: TcxGridDBColumn
@@ -685,13 +704,8 @@ inherited frmMtoFacturas: TfrmMtoFacturas
               PropertiesClassName = 'TcxCheckBoxProperties'
               Properties.ValueChecked = 'S'
               Properties.ValueUnchecked = 'N'
+              Visible = False
               Width = 226
-            end
-            object cxgrdbclmnGrdDBTabPrinDESCRIPCION_FORMAPAGO: TcxGridDBColumn
-              Caption = 'Descripci'#243'n Forma de Pago'
-              DataBinding.FieldName = 'DESCRIPCION_FORMAPAGO'
-              DataBinding.IsNullValueType = True
-              Width = 256
             end
             object cxgrdbclmnGrdDBTabPrinESREGIMENESPECIALAGRICOLA_CLIENTE_FACTURA: TcxGridDBColumn
               Caption = 'Cliente es REAGP'
@@ -700,6 +714,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
               PropertiesClassName = 'TcxCheckBoxProperties'
               Properties.ValueChecked = 'S'
               Properties.ValueUnchecked = 'N'
+              Visible = False
               Width = 164
             end
             object cxgrdbclmnGrdDBTabPrinESIVAAGRICOLA_ZONA_IVA_FACTURA: TcxGridDBColumn
@@ -709,6 +724,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
               PropertiesClassName = 'TcxCheckBoxProperties'
               Properties.ValueChecked = 'S'
               Properties.ValueUnchecked = 'N'
+              Visible = False
               Width = 138
             end
           end
@@ -719,6 +735,8 @@ inherited frmMtoFacturas: TfrmMtoFacturas
         Margins.Top = 5
         Margins.Right = 5
         Margins.Bottom = 5
+        ExplicitLeft = 3
+        ExplicitTop = 32
         ExplicitWidth = 1078
         ExplicitHeight = 766
         object pnl1: TPanel
@@ -745,7 +763,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
             Margins.Bottom = 4
             Align = alClient
             TabOrder = 0
-            Properties.ActivePage = tsOtros
+            Properties.ActivePage = tsLineasFactura
             Properties.CustomButtons.Buttons = <>
             ClientRectBottom = 439
             ClientRectLeft = 3
@@ -1265,6 +1283,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                   BevelOuter = bvNone
                   BorderWidth = 2
                   TabOrder = 0
+                  ExplicitHeight = 57
                   object tvIVA: TcxGridDBTableView
                     Navigator.Buttons.CustomButtons = <>
                     FindPanel.ClearFindFilterTextOnClose = False
@@ -1298,7 +1317,6 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                     OptionsSelection.CellSelect = False
                     OptionsSelection.InvertSelect = False
                     OptionsView.ScrollBars = ssHorizontal
-                    OptionsView.CellTextMaxLineCount = 1
                     OptionsView.GridLineColor = clBtnText
                     OptionsView.GroupByBox = False
                     OptionsView.HeaderEndEllipsis = True

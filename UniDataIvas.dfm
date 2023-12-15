@@ -1,5 +1,4 @@
 inherited dmIvas: TdmIvas
-  OldCreateOrder = True
   Height = 159
   Width = 267
   inherited unqryTablaG: TUniQuery
