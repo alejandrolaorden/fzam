@@ -22,7 +22,7 @@ interface
     cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGridLevel,
     cxClasses, cxGridCustomView, cxGrid, cxGridCardView, cxSpinEdit,
     cxGridDBCardView, cxGridBandedTableView, cxGridDBBandedTableView,
-    cxRadioGroup, inMtoPrincipal2, cxPc,
+    cxRadioGroup, inMtoPrincipal2, cxPc, dxShellDialogs,
     cxGroupBox, cxLabel,  cxListBox, //inMtoPrincipal,
     cxCheckBox, cxMemo, cxCurrencyEdit, ExtDlgs, OleServer, AxCtrls,
     OleCtrls, DBOleCtl, cxLookAndFeels, System.Generics.Collections, TypInfo;
@@ -55,15 +55,16 @@ implementation
 
   procedure ExportarExcel(cxGrd: TcxGrid; sNomFile: string);
     var
-      saveDialog: tsavedialog;
+      saveDialog: TdxSaveFileDialog;
     begin
-      saveDialog := tsavedialog.Create(nil);
+      saveDialog := TdxSaveFileDialog.Create(nil);
       saveDialog.Title := 'Guardar listado a Excel';
       saveDialog.InitialDir := GetSpecialFolderPath(CSIDL_MYDOCUMENTS);
       saveDialog.Filter := 'Archivo Excel|*.xlsx';
       saveDialog.DefaultExt := 'xlsx';
       saveDialog.FilterIndex := 1;
       saveDialog.FileName := sNomFile;
+      //saveDialog.Options.ofOverwritePrompt := True;
       if (saveDialog.Execute)
       then
         ExportGridToXLSX(saveDialog.FileName, cxGrd);

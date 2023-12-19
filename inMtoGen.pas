@@ -25,7 +25,7 @@ uses
   inLibDevExp, cxGridExportLink, inLibUser, System.UITypes, UniDataPerfiles,
   Uni, inLibDir, inLibtb, Data.DBCommon, inLibWin, UniDataConn, cxBlobEdit,
   dxCore, dxScrollbarAnnotations, cxRadioGroup, Vcl.AppEvnts, JvComponentBase,
-  JvEnterTab;
+  JvEnterTab, dxShellDialogs;
 type
   TcxPageControlPropertiesAccess = class(TcxPageControlProperties);
   THackWinControl = class(TWinControl);
@@ -77,6 +77,7 @@ type
     lblTablaOrigen: TcxLabel;
     JvEnterAsTab1: TJvEnterAsTab;
     btnBusq: TcxButton;
+    saveDialog: TdxSaveFileDialog;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     //procedure btnSalirClick(Sender: TObject);
@@ -630,9 +631,10 @@ begin
 end;
 
 procedure TfrmMtoGen.sbExportExcelClick(Sender: TObject);
-var
-  saveDialog : tsavedialog;
-begin  saveDialog := TSaveDialog.Create(self);
+//var
+//  saveDialog : tsavedialog;
+begin
+//  saveDialog := TSaveDialog.Create(self);
   saveDialog.Title := 'Guardar listado a Excel';
   saveDialog.InitialDir :=  GetSpecialFolderPath(CSIDL_MYDOCUMENTS);
   saveDialog.Filter := 'Archivo Excel|*.xlsx';
@@ -640,7 +642,7 @@ begin  saveDialog := TSaveDialog.Create(self);
   saveDialog.FilterIndex := 1;
   if ( saveDialog.Execute ) then
     ExportGridToXLSX(saveDialog.FileName, cxGrdPrincipal);
-  saveDialog.Free;
+//  saveDialog.Free;
 end;
 
 //procedure TfrmMtoGen.btnSalirClick(Sender: TObject);

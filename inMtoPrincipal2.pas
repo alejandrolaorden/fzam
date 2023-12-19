@@ -18,7 +18,7 @@ uses
   cxEdit, dxSkinsForm, cxStyles, cxClasses, Vcl.ExtCtrls, DADump, UniDump,
   Vcl.Menus, cxPC, cxTextEdit, cxMemo, dxStatusBar, inMtoFrmBase, UniDataConn,
   UniDataPerfiles, cxLocalization, Vcl.Buttons, inLibUnitForm, JvMenus,
-  System.UITypes;
+  System.UITypes, DAScript, Uni, dxShellDialogs;
 
 type
   TcxPageControlPropertiesAccess = class(TcxPageControlProperties);
@@ -62,6 +62,8 @@ type
     mnuGrupos: TMenuItem;
     mnuPerfiles: TMenuItem;
     Acercade1: TMenuItem;
+    openDialog: TdxOpenFileDialog;
+    saveDialog: TdxSaveFileDialog;
     procedure mnuEmpresasClick(Sender: TObject);
     procedure mnuClientesClick(Sender: TObject);
     procedure mnuProveedoresClick(Sender: TObject);
@@ -87,6 +89,8 @@ type
     procedure sbCerrarClick(Sender: TObject);
     procedure mnuAcercadeClick(Sender: TObject);
     function IsShortCut(var Message: TWMKey): Boolean; override;
+    procedure undmp1Error(Sender: TObject; E: Exception; SQL: string;
+      var Action: TErrorAction);
   private
     FException: boolean;
 //    procedure AppException(Sender: TObject; E: Exception);
@@ -202,18 +206,19 @@ end;
 
 procedure TfrmOpenApp2.CopiaSeguridad;
 var
-  savedialog        : TSaveDialog;
-  iButtonSel        : Integer;
-  s                 : string;
-  MyText            : TStringlist;
+  savedialog:TSaveDialog;
+  iButtonSel:Integer;
+  s         :string;
+  MyText    :TStringlist;
 begin
+  iButtonSel := 0;
   savedialog := TSaveDialog.Create(Self);
   saveDialog.Title := 'Guardar copia de seguridad';
   saveDialog.InitialDir := GetCurrentDir;
   savedialog.FileName := 'copiaseguridad' + FormatDateTime('_dd_mm', Now) +
                                                                          '.sql';
   undmp1.Connection := FDmConn.conUni;
-  if saveDialog.Execute then
+  if (saveDialog.Execute) then
   begin
     if FileExists(savedialog.FileName) then
     begin
@@ -227,6 +232,9 @@ begin
                        '  CHARACTER SET utf8mb4 ' +
                        '       COLLATE utf8mb4_spanish_ci; ' +  sLineBreak +
                        'USE factuzam;' + sLineBreak + sLineBreak + s;
+      //undmp1.SpecificOptions.Values['UseExtSyntax'] := 'False';
+      //To make TUniDump component generate an INSERT statement for each row
+      //La anterior orden genera un insert por cada fila.
       undmp1.Backup;
       s := s + undmp1.SQL.Text;
       s := StringReplace(s, 'DEFINER=`root`@`localhost`', '', [rfReplaceAll,
@@ -333,12 +341,12 @@ begin
 end;
 
 procedure TfrmOpenApp2.mnuEjecutarScriptClick(Sender: TObject);
-var
-  openDialog        : topendialog;
+//var
+//  openDialog        : topendialog;
 begin
   if (mnuEjecutarScript.Visible) then
   begin
-    opendialog := TOpenDialog.Create(Self);
+//    opendialog := TOpenDialog.Create(Self);
     opendialog.Title := 'Cargar script';
     openDialog.InitialDir := GetCurrentDir;
     undmp1.Connection := FDmConn.conUni;
@@ -356,7 +364,7 @@ begin
           Exit;
         end;
       end;
-      FreeAndNil(opendialog);
+//      FreeAndNil(opendialog);
     end;
   end;
 end;
@@ -391,6 +399,18 @@ begin
     dxstsbr1.Panels.Items[3].Text := '' + ADateStr + ' ' +
                                             ATimeStr + 'NO Conn';
   end;
+end;
+
+procedure TfrmOpenApp2.undmp1Error(Sender: TObject; E: Exception; SQL: string;
+  var Action: TErrorAction);
+begin
+  inherited;
+  ShowMessage('Ha habido incidencias');
+  Action := eaAbort;
+  //https://forums.devart.com/viewtopic.php?t=21244
+  //Continúa a pesar de los errores, por ejemplo si hay filas duplicadas
+  //if (EUniError(E).ErrorCode = 1062) then // ER_DUP_ENTRY
+  //  Action := eaContinue;
 end;
 
 procedure TfrmOpenApp2.mnuAcercadeClick(Sender: TObject);

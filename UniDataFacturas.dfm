@@ -395,8 +395,8 @@ inherited dmFacturas: TdmFacturas
     SQL.Strings = (
       'SELECT *'
       'from VI_FACTURAS_PRINT'
-      'where SERIE_FACTURA = '#39'A1'#39' '
-      'AND NRO_FACTURA = '#39'00000021'#39
+      'where SERIE_FACTURA = '#39'ANA/2023'#39' '
+      'AND NRO_FACTURA = '#39'000003'#39
       'order by NRO_FACTURA Asc')
     Active = True
     Left = 568
@@ -478,13 +478,13 @@ inherited dmFacturas: TdmFacturas
         DataType = ftWideString
         Name = 'NRO_FACTURA'
         ParamType = ptInput
-        Value = '00000021'
+        Value = '000003'
       end
       item
         DataType = ftWideString
         Name = 'SERIE_FACTURA'
         ParamType = ptInput
-        Value = 'A1'
+        Value = 'ANA/2023'
       end>
   end
   object unqrySeries: TUniQuery
@@ -1909,7 +1909,6 @@ inherited dmFacturas: TdmFacturas
       'select * from vi_facturas'
       'WHERE NRO_FACTURA = :NRO_FACTURA'
       'AND SERIE_FACTURA = :SERIE_FACTURA')
-    MasterSource = frmMtoFacturas.dsTablaG
     MasterFields = 'NRO_FACTURA;SERIE_FACTURA'
     DetailFields = 'NRO_FACTURA;SERIE_FACTURA'
     AfterInsert = unqryTablaGAfterInsert

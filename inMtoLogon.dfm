@@ -4,15 +4,16 @@ inherited frmLogon: TfrmLogon
   BorderIcons = []
   BorderStyle = bsSingle
   Caption = 'Login FactuZam'
-  ClientHeight = 253
-  ClientWidth = 793
+  ClientHeight = 493
+  ClientWidth = 783
   Font.Charset = ANSI_CHARSET
   KeyPreview = True
   Position = poScreenCenter
   OnClose = FormClose
   OnKeyDown = FormKeyDown
-  ExplicitWidth = 809
-  ExplicitHeight = 292
+  ExplicitWidth = 789
+  ExplicitHeight = 522
+  PixelsPerInch = 96
   TextHeight = 19
   object lblUsuario: TLabel [0]
     Left = 47
@@ -229,6 +230,27 @@ inherited frmLogon: TfrmLogon
     Style.TransparentBorder = False
     TabOrder = 18
   end
+  object pnlPPBottom: TPanel [27]
+    Left = 0
+    Top = 312
+    Width = 783
+    Height = 181
+    Align = alBottom
+    TabOrder = 19
+    object cxMemo1: TcxMemo
+      Left = 1
+      Top = 1
+      TabStop = False
+      Align = alClient
+      ParentColor = True
+      Properties.ReadOnly = True
+      Properties.ScrollBars = ssVertical
+      TabOrder = 0
+      Visible = False
+      Height = 179
+      Width = 781
+    end
+  end
   object MySQLUniProvider1: TMySQLUniProvider
     Left = 752
     Top = 72
@@ -264,5 +286,26 @@ inherited frmLogon: TfrmLogon
     Connection = ucConexion
     Left = 664
     Top = 128
+  end
+  object UniSQLMonitor1: TUniSQLMonitor
+    Active = False
+    Options = [moDialog, moSQLMonitor, moDBMonitor, moCustom, moHandled]
+    DBMonitorOptions.Host = '0'
+    DBMonitorOptions.Port = 0
+    DBMonitorOptions.ReconnectTimeout = 0
+    DBMonitorOptions.SendTimeout = 0
+    TraceFlags = [tfQPrepare, tfQExecute, tfQFetch, tfError, tfStmt, tfConnect, tfTransact, tfBlob, tfService, tfMisc, tfParams, tfObjDestroy, tfPool]
+    OnSQL = UniSQLMonitor1SQL
+    Left = 696
+    Top = 31
+  end
+  object saveDialog: TdxSaveFileDialog
+    Options = [ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]
+    Left = 384
+    Top = 248
+  end
+  object openDialog: TdxOpenFileDialog
+    Left = 456
+    Top = 248
   end
 end

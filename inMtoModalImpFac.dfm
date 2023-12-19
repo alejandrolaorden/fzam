@@ -77,6 +77,7 @@ inherited frmPrintFac: TfrmPrintFac
       TabOrder = 0
       TabStop = True
       OnClick = rbActualClick
+      Transparent = True
     end
     object rbRangoFechas: TcxRadioButton
       Left = 8
@@ -87,6 +88,7 @@ inherited frmPrintFac: TfrmPrintFac
       Enabled = False
       TabOrder = 1
       OnClick = rbRangoFechasClick
+      Transparent = True
     end
     object dedDesde: TcxDateEdit
       Left = 63
@@ -107,12 +109,14 @@ inherited frmPrintFac: TfrmPrintFac
       Top = 77
       Caption = 'Desde'
       Enabled = False
+      Transparent = True
     end
     object lblcxlbl3: TcxLabel
       Left = 12
       Top = 105
       Caption = 'Hasta'
       Enabled = False
+      Transparent = True
     end
   end
   inherited Localizer1: TcxLocalizer
@@ -911,7 +915,7 @@ inherited frmPrintFac: TfrmPrintFac
       '  else'
       
         '    Impuestos.Memo.Text := '#39'Total [Facturas."PALABRA_REPORTS_ZON' +
-        'A_IVA_FACTURA"] + RE'#39
+        'A_IVA_FACTURA"] + R.E.'#39
       'end;'
       ''
       'procedure mNumPaginasOnBeforePrint(Sender: TfrxComponent);'
@@ -920,7 +924,6 @@ inherited frmPrintFac: TfrmPrintFac
       '    mNumPaginas.Visible := True'
       '  else'
       '    mNumPaginas.Visible := False;'
-      ''
       'end;'
       ''
       'procedure FormaPagoOnBeforePrint(Sender: TfrxComponent);'
@@ -929,14 +932,16 @@ inherited frmPrintFac: TfrmPrintFac
       '      (<Facturas."ESCONTADO_FORMAPAGO"> = '#39'N'#39') and '
       '      (<Facturas."IBAN_EMPRESA"> <> '#39#39'))  then'
       
-        '    FormaPago.Memo.Text := Trim(FormaPago.Memo.Text) + '#39' '#39' + <Fa' +
-        'cturas."IBAN_EMPRESA">;'
+        '    FormaPago.Memo.Text := Trim(FormaPago.Memo.Text) + '#39'     '#39' +' +
+        ' FormatMaskText('#39'>LL00 aaaa aaaa aaaa aaaa aaaa aaaa aaaa aa;0;'#39 +
+        ',<Facturas."IBAN_EMPRESA">);'
       '  if ((<Facturas."ESVERBANCOEMPRESA_FORMAPAGO"> = '#39'N'#39') and '
       '      (<Facturas."ESCONTADO_FORMAPAGO"> = '#39'N'#39') and '
       '      (<Facturas."IBAN_CLIENTE"> <> '#39#39')) then'
       
-        '    FormaPago.Memo.Text := Trim(FormaPago.Memo.Text) + '#39' '#39' + <Fa' +
-        'cturas."IBAN_CLIENTE">;'
+        '    FormaPago.Memo.Text := Trim(FormaPago.Memo.Text) + '#39'     '#39' +' +
+        ' FormatMaskText('#39'>LL00 aaaa aaaa aaaa aaaa aaaa aaaa aaaa aa;0;'#39 +
+        ',<Facturas."IBAN_CLIENTE">);'
       '  if (<Facturas."VENCIMIENTOS_RECIBOS"> <> '#39#39') then'
       
         '    FormaPago.Memo.Text := FormaPago.Memo.Text + '#39'Vencimiento/s:' +
@@ -960,6 +965,22 @@ inherited frmPrintFac: TfrmPrintFac
       
         '                                           '#39'*<Lineas Facturas."P' +
         'RECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA">]'#39';'
+      'end;'
+      ''
+      
+        'procedure PrecioUnitarioLineasFacturasOnBeforePrint(Sender: Tfrx' +
+        'Component);'
+      'begin'
+      
+        '  if (<Lineas Facturas."ESIMP_INCL_TARIFA_FACTURA_LINEA"> = '#39'S'#39')' +
+        ' then'
+      
+        '    PrecioUnitarioLineasFacturas.Memo.Text := '#39'[<Lineas Facturas' +
+        '."PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA">]'#39
+      '  else'
+      
+        '    PrecioUnitarioLineasFacturas.Memo.Text := '#39'[<Lineas Facturas' +
+        '."PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA">]'#39'                 '
       'end;'
       ''
       'begin'
@@ -1091,13 +1112,14 @@ inherited frmPrintFac: TfrmPrintFac
             item
             end>
         end
-        object LineasFacturasPRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA: TfrxMemoView
+        object PrecioUnitarioLineasFacturas: TfrxMemoView
           IndexTag = 1
           AllowVectorExport = True
           Left = 479.984540000000000000
           Top = 3.779530000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
+          OnBeforePrint = 'PrecioUnitarioLineasFacturasOnBeforePrint'
           DataField = 'PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA'
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2m'
@@ -1163,7 +1185,7 @@ inherited frmPrintFac: TfrmPrintFac
           Top = 3.779530000000000000
           Width = 272.126160000000000000
           Height = 18.897650000000000000
-          StretchMode = smActualHeight
+          StretchMode = smMaxHeight
           DataField = 'DESCRIPCION_ARTICULO_FACTURA_LINEA'
           DataSet = dmFacturas.fxdstPrintLinFac
           DataSetName = 'Lineas Facturas'
@@ -1419,7 +1441,7 @@ inherited frmPrintFac: TfrmPrintFac
           AllowVectorExport = True
           Left = 20.779530000000000000
           Top = 301.039580000000000000
-          Width = 340.157700000000000000
+          Width = 83.149660000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1428,10 +1450,13 @@ inherited frmPrintFac: TfrmPrintFac
           Font.Style = []
           Frame.Typ = []
           Memo.UTF8W = (
-            
-              '[Facturas."MOVIL_EMPRESA_FACTURA"] [Facturas."EMAIL_EMPRESA_FACT' +
-              'URA"]')
+            '[Facturas."MOVIL_EMPRESA_FACTURA"]')
           ParentFont = False
+          Formats = <
+            item
+            end
+            item
+            end>
         end
         object Memo4: TfrxMemoView
           AllowVectorExport = True
@@ -1708,7 +1733,7 @@ inherited frmPrintFac: TfrmPrintFac
           AllowVectorExport = True
           Left = 392.953000000000000000
           Top = 301.039580000000000000
-          Width = 328.819110000000000000
+          Width = 94.488250000000000000
           Height = 18.897650000000000000
           DataSet = dmFacturas.fxdsPrintFac
           DataSetName = 'Facturas'
@@ -1719,10 +1744,13 @@ inherited frmPrintFac: TfrmPrintFac
           Font.Style = []
           Frame.Typ = []
           Memo.UTF8W = (
-            
-              '[Facturas."MOVIL_CLIENTE_FACTURA"] [Facturas."EMAIL_CLIENTE_FACT' +
-              'URA"]')
+            '[Facturas."MOVIL_CLIENTE_FACTURA"]')
           ParentFont = False
+          Formats = <
+            item
+            end
+            item
+            end>
         end
         object FacturasNIF_EMPRESA_FACTURA: TfrxMemoView
           IndexTag = 1
@@ -1742,6 +1770,54 @@ inherited frmPrintFac: TfrmPrintFac
           Frame.Width = 1.500000000000000000
           Memo.UTF8W = (
             'NIF: [Facturas."NIF_EMPRESA_FACTURA"]')
+          ParentFont = False
+        end
+        object Memo12: TfrxMemoView
+          AllowVectorExport = True
+          Left = 468.661720000000000000
+          Top = 301.039592200000000000
+          Width = 249.448980000000000000
+          Height = 18.897637800000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[Facturas."EMAIL_CLIENTE_FACTURA"]')
+          ParentFont = False
+        end
+        object Memo13: TfrxMemoView
+          AllowVectorExport = True
+          Left = 506.457020000000000000
+          Top = 94.488250000000000000
+          Height = 22.677180000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          ParentFont = False
+        end
+        object Memo14: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 109.606370000000000000
+          Top = 301.362400000000000000
+          Width = 249.448980000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[Facturas."EMAIL_EMPRESA_FACTURA"]')
           ParentFont = False
         end
       end
@@ -2210,7 +2286,7 @@ inherited frmPrintFac: TfrmPrintFac
         object FacturasTOTAL_REN_FACTURA: TfrxMemoView
           IndexTag = 1
           AllowVectorExport = True
-          Left = 390.850664650000000000
+          Left = 394.630194650000000000
           Top = 36.456710000000000000
           Width = 64.252010000000000000
           Height = 18.897650000000000000
@@ -2225,7 +2301,6 @@ inherited frmPrintFac: TfrmPrintFac
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          HAlign = haRight
           Memo.UTF8W = (
             '[Facturas."TOTAL_REN_FACTURA"]')
           ParentFont = False
@@ -2233,7 +2308,7 @@ inherited frmPrintFac: TfrmPrintFac
         object FacturasTOTAL_REE_FACTURA: TfrxMemoView
           IndexTag = 1
           AllowVectorExport = True
-          Left = 390.850664650000000000
+          Left = 394.630194650000000000
           Top = 115.826840000000000000
           Width = 64.252010000000000000
           Height = 18.897650000000000000
@@ -2248,7 +2323,6 @@ inherited frmPrintFac: TfrmPrintFac
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          HAlign = haRight
           Memo.UTF8W = (
             '[Facturas."TOTAL_REE_FACTURA"]')
           ParentFont = False
@@ -2302,10 +2376,11 @@ inherited frmPrintFac: TfrmPrintFac
         object FacturasTOTAL_RER_FACTURA1: TfrxMemoView
           IndexTag = 1
           AllowVectorExport = True
-          Left = 387.071134650000000000
+          Left = 394.630194650000000000
           Top = 62.913420000000000000
           Width = 68.031540000000000000
           Height = 18.897650000000000000
+          OnBeforePrint = 'FacturasTOTAL_RER_FACTURAOnBeforePrint'
           DataField = 'TOTAL_RER_FACTURA'
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2m'
@@ -2316,7 +2391,6 @@ inherited frmPrintFac: TfrmPrintFac
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          HAlign = haRight
           Memo.UTF8W = (
             '[Facturas."TOTAL_RER_FACTURA"]')
           ParentFont = False
@@ -2324,10 +2398,11 @@ inherited frmPrintFac: TfrmPrintFac
         object FacturasTOTAL_RES_FACTURA1: TfrxMemoView
           IndexTag = 1
           AllowVectorExport = True
-          Left = 387.071134650000000000
+          Left = 394.630194650000000000
           Top = 89.370130000000000000
           Width = 68.031540000000000000
           Height = 18.897650000000000000
+          OnBeforePrint = 'FacturasTOTAL_RES_FACTURAOnBeforePrint'
           DataField = 'TOTAL_RES_FACTURA'
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2m'
@@ -2338,7 +2413,6 @@ inherited frmPrintFac: TfrmPrintFac
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          HAlign = haRight
           Memo.UTF8W = (
             '[Facturas."TOTAL_RES_FACTURA"]')
           ParentFont = False
@@ -2416,7 +2490,6 @@ inherited frmPrintFac: TfrmPrintFac
           OnBeforePrint = 'ImpuestosOnBeforePrint'
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%g'
-          DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -2553,7 +2626,7 @@ inherited frmPrintFac: TfrmPrintFac
         object mTotalFacturaCtd: TfrxMemoView
           AllowVectorExport = True
           Left = 596.606680000000000000
-          Top = 125.724490000000000000
+          Top = 124.724490000000000000
           Width = 124.724490000000000000
           Height = 22.677180000000000000
           DisplayFormat.FormatStr = '%2.2m'

@@ -1,39 +1,59 @@
 ﻿[Closed Files]
-File_0=TSourceModule,'C:\Program Files (x86)\Embarcadero\Studio\20.0\source\rtl\win\Winapi.Windows.pas',0,1,37218,1,37236,0,0,,
-File_1=TSourceModule,'C:\DISCO DURO\proyectos\fzam\UniDataFamilias.pas',0,1,112,1,125,0,0,,
-File_2=TSourceModule,'C:\DISCO DURO\proyectos\fzam\inMtoIvas.pas',0,1,66,1,79,0,0,,
-File_3=TSourceModule,'C:\DISCO DURO\proyectos\fzam\inMtoClientes.pas',0,1,396,27,410,0,0,,
-File_4=TSourceModule,'C:\DISCO DURO\proyectos\fzam\inMtoContadores.pas',0,1,49,29,63,0,0,,
-File_5=TSourceModule,'C:\DISCO DURO\proyectos\fzam\inMtoEmpresas.pas',0,1,414,27,428,0,0,,
-File_6=TSourceModule,'C:\DISCO DURO\proyectos\fzam\inMtoFamilias.pas',0,1,195,27,207,0,0,,
-File_7=TSourceModule,'C:\DISCO DURO\proyectos\fzam\inMtoFormasdePago.pas',0,1,286,30,299,0,0,,
-File_8=TSourceModule,'C:\DISCO DURO\proyectos\fzam\inMtoGeneradorProcesos.pas',0,1,285,36,299,0,0,,
+File_0=TSourceModule,'C:\Program Files (x86)\FastReport 6 VCL Enterprise\LIBD26\frxClass.pas',0,1,10713,1,10727,0,0,,
+File_1=TSourceModule,'C:\DISCO DURO\proyectos\fzam\inLibDir.pas',0,1,17,3,30,0,0,,
+File_2=TSourceModule,'c:\program files (x86)\embarcadero\studio\20.0\SOURCE\VCL\Vcl.Dialogs.pas',0,1,1470,1,1480,0,0,,
+File_3=TSourceModule,'C:\Program Files (x86)\Embarcadero\Studio\20.0\source\rtl\win\Winapi.Windows.pas',0,1,37218,1,37236,0,0,,
+File_4=TSourceModule,'C:\DISCO DURO\proyectos\fzam\UniDataFamilias.pas',0,1,112,1,125,0,0,,
+File_5=TSourceModule,'C:\DISCO DURO\proyectos\fzam\inMtoIvas.pas',0,1,66,1,79,0,0,,
+File_6=TSourceModule,'C:\DISCO DURO\proyectos\fzam\inMtoClientes.pas',0,1,396,27,410,0,0,,
+File_7=TSourceModule,'C:\DISCO DURO\proyectos\fzam\inMtoContadores.pas',0,1,49,29,63,0,0,,
+File_8=TSourceModule,'C:\DISCO DURO\proyectos\fzam\inMtoEmpresas.pas',0,1,414,27,428,0,0,,
+File_9=TSourceModule,'C:\DISCO DURO\proyectos\fzam\inMtoFamilias.pas',0,1,195,27,207,0,0,,
 
 [Modules]
-Module0=C:\DISCO DURO\proyectos\fzam\inLibDir.pas
-Module1=C:\DISCO DURO\proyectos\fzam\fzam.dproj
-Module2=C:\DISCO DURO\proyectos\fzam\inLibLog.pas
-Module3=C:\DISCO DURO\proyectos\fzam\UniDataFacturas.pas
-Module4=C:\DISCO DURO\proyectos\fzam\UniDataGen.pas
-Module5=C:\DISCO DURO\proyectos\fzam\UniDataConn.pas
-Module6=C:\DISCO DURO\proyectos\fzam\UniDataArticulos.pas
-Module7=C:\DISCO DURO\proyectos\fzam\inMtoArticulos.pas
-Module8=C:\DISCO DURO\proyectos\fzam\inMtoGen.pas
-Module9=C:\DISCO DURO\proyectos\fzam\inMtoFrmBase.pas
-Module10=C:\DISCO DURO\proyectos\fzam\inMtoLogon.pas
-Module11=C:\DISCO DURO\proyectos\fzam\inMtoPrincipal2.pas
-Module12=C:\DISCO DURO\proyectos\fzam\inLibWin.pas
-Module13=C:\DISCO DURO\proyectos\fzam\UniDataUsuarios.pas
-Module14=C:\DISCO DURO\proyectos\fzam\inMtoUsuarios.pas
-Module15=C:\DISCO DURO\proyectos\fzam\inLibGlobalVar.pas
-Module16=C:\DISCO DURO\proyectos\fzam\inMtoFacturas.pas
-Module17=C:\DISCO DURO\proyectos\fzam\inLibUnitForm.pas
-Module18=C:\DISCO DURO\proyectos\fzam\inLibShowMto.pas
-Count=19
+Module0=C:\DISCO DURO\proyectos\fzam\inMtoLogon.pas
+Module1=C:\DISCO DURO\proyectos\fzam\UniDataConn.pas
+Module2=C:\DISCO DURO\proyectos\fzam\inLibDevExp.pas
+Module3=C:\DISCO DURO\proyectos\fzam\inMtoPrincipal2.pas
+Module4=C:\DISCO DURO\proyectos\fzam\inMtoFacturas.pas
+Module5=C:\DISCO DURO\proyectos\fzam\inMtoGen.pas
+Module6=default.htm
+Module7=C:\DISCO DURO\proyectos\fzam\fzam.dproj
+Module8=C:\DISCO DURO\proyectos\fzam\inLibLog.pas
+Module9=C:\DISCO DURO\proyectos\fzam\UniDataFacturas.pas
+Module10=C:\DISCO DURO\proyectos\fzam\UniDataGen.pas
+Module11=C:\DISCO DURO\proyectos\fzam\UniDataArticulos.pas
+Module12=C:\DISCO DURO\proyectos\fzam\inMtoArticulos.pas
+Module13=C:\DISCO DURO\proyectos\fzam\inMtoFrmBase.pas
+Module14=C:\DISCO DURO\proyectos\fzam\inLibWin.pas
+Module15=C:\DISCO DURO\proyectos\fzam\UniDataUsuarios.pas
+Module16=C:\DISCO DURO\proyectos\fzam\inMtoUsuarios.pas
+Module17=C:\DISCO DURO\proyectos\fzam\inLibGlobalVar.pas
+Module18=C:\DISCO DURO\proyectos\fzam\inLibUnitForm.pas
+Module19=C:\DISCO DURO\proyectos\fzam\inLibShowMto.pas
+Count=20
 EditWindowCount=1
 
-[C:\DISCO DURO\proyectos\fzam\inLibDir.pas]
+[C:\DISCO DURO\proyectos\fzam\inMtoLogon.pas]
 ModuleType=TSourceModule
+
+[C:\DISCO DURO\proyectos\fzam\UniDataConn.pas]
+ModuleType=TSourceModule
+
+[C:\DISCO DURO\proyectos\fzam\inLibDevExp.pas]
+ModuleType=TSourceModule
+
+[C:\DISCO DURO\proyectos\fzam\inMtoPrincipal2.pas]
+ModuleType=TSourceModule
+
+[C:\DISCO DURO\proyectos\fzam\inMtoFacturas.pas]
+ModuleType=TSourceModule
+
+[C:\DISCO DURO\proyectos\fzam\inMtoGen.pas]
+ModuleType=TSourceModule
+
+[default.htm]
+ModuleType=TURLModule
 
 [C:\DISCO DURO\proyectos\fzam\fzam.dproj]
 ModuleType=TBaseProject
@@ -47,25 +67,13 @@ ModuleType=TSourceModule
 [C:\DISCO DURO\proyectos\fzam\UniDataGen.pas]
 ModuleType=TSourceModule
 
-[C:\DISCO DURO\proyectos\fzam\UniDataConn.pas]
-ModuleType=TSourceModule
-
 [C:\DISCO DURO\proyectos\fzam\UniDataArticulos.pas]
 ModuleType=TSourceModule
 
 [C:\DISCO DURO\proyectos\fzam\inMtoArticulos.pas]
 ModuleType=TSourceModule
 
-[C:\DISCO DURO\proyectos\fzam\inMtoGen.pas]
-ModuleType=TSourceModule
-
 [C:\DISCO DURO\proyectos\fzam\inMtoFrmBase.pas]
-ModuleType=TSourceModule
-
-[C:\DISCO DURO\proyectos\fzam\inMtoLogon.pas]
-ModuleType=TSourceModule
-
-[C:\DISCO DURO\proyectos\fzam\inMtoPrincipal2.pas]
 ModuleType=TSourceModule
 
 [C:\DISCO DURO\proyectos\fzam\inLibWin.pas]
@@ -80,9 +88,6 @@ ModuleType=TSourceModule
 [C:\DISCO DURO\proyectos\fzam\inLibGlobalVar.pas]
 ModuleType=TSourceModule
 
-[C:\DISCO DURO\proyectos\fzam\inMtoFacturas.pas]
-ModuleType=TSourceModule
-
 [C:\DISCO DURO\proyectos\fzam\inLibUnitForm.pas]
 ModuleType=TSourceModule
 
@@ -90,8 +95,8 @@ ModuleType=TSourceModule
 ModuleType=TSourceModule
 
 [EditWindow0]
-ViewCount=19
-CurrentEditView=C:\DISCO DURO\proyectos\fzam\inLibDir.pas
+ViewCount=20
+CurrentEditView=C:\DISCO DURO\proyectos\fzam\inMtoLogon.pas
 View0=0
 View1=1
 View2=2
@@ -111,6 +116,7 @@ View15=15
 View16=16
 View17=17
 View18=18
+View19=19
 PercentageSizes=1
 Create=1
 Visible=1
@@ -141,28 +147,32 @@ BottomMiddlePanelClients=DockSite0,GraphDrawingModel
 BottomMiddelPanelData=0000080001020200000009000000446F636B536974653010000000477261706844726177696E67566965779F1D00000000000002F206000000000000FFFFFFFF
 
 [View0]
+CustomEditViewType=TWelcomePageView
+WelcomePageURL=bds:/default.htm
+
+[View1]
 CustomEditViewType=TEditView
 Module=C:\DISCO DURO\proyectos\fzam\inMtoPrincipal2.pas
-CursorX=18
-CursorY=182
-TopLine=168
+CursorX=48
+CursorY=21
+TopLine=1
 LeftCol=1
 Elisions=
 Bookmarks=
 EditViewName=C:\DISCO DURO\proyectos\fzam\inMtoPrincipal2.pas
 
-[View1]
+[View2]
 CustomEditViewType=TEditView
 Module=C:\DISCO DURO\proyectos\fzam\inMtoLogon.pas
-CursorX=13
-CursorY=698
-TopLine=698
+CursorX=35
+CursorY=126
+TopLine=114
 LeftCol=1
 Elisions=
 Bookmarks=
 EditViewName=C:\DISCO DURO\proyectos\fzam\inMtoLogon.pas
 
-[View2]
+[View3]
 CustomEditViewType=TEditView
 Module=C:\DISCO DURO\proyectos\fzam\inMtoFrmBase.pas
 CursorX=61
@@ -173,7 +183,7 @@ Elisions=
 Bookmarks=
 EditViewName=C:\DISCO DURO\proyectos\fzam\inMtoFrmBase.pas
 
-[View3]
+[View4]
 CustomEditViewType=TEditView
 Module=C:\DISCO DURO\proyectos\fzam\inLibWin.pas
 CursorX=24
@@ -184,40 +194,40 @@ Elisions=
 Bookmarks=
 EditViewName=C:\DISCO DURO\proyectos\fzam\inLibWin.pas
 
-[View4]
+[View5]
 CustomEditViewType=TEditView
 Module=C:\DISCO DURO\proyectos\fzam\UniDataConn.pas
-CursorX=70
-CursorY=49
+CursorX=9
+CursorY=64
 TopLine=38
-LeftCol=11
+LeftCol=1
 Elisions=
 Bookmarks=
 EditViewName=C:\DISCO DURO\proyectos\fzam\UniDataConn.pas
 
-[View5]
-CustomEditViewType=TEditView
-Module=C:\DISCO DURO\proyectos\fzam\inLibDir.pas
-CursorX=3
-CursorY=119
-TopLine=103
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=C:\DISCO DURO\proyectos\fzam\inLibDir.pas
-
 [View6]
 CustomEditViewType=TEditView
 Module=C:\DISCO DURO\proyectos\fzam\inMtoFacturas.pas
-CursorX=1
-CursorY=1043
-TopLine=1037
+CursorX=10
+CursorY=566
+TopLine=563
 LeftCol=1
 Elisions=
 Bookmarks=
 EditViewName=C:\DISCO DURO\proyectos\fzam\inMtoFacturas.pas
 
 [View7]
+CustomEditViewType=TEditView
+Module=C:\DISCO DURO\proyectos\fzam\inLibDevExp.pas
+CursorX=59
+CursorY=62
+TopLine=51
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\DISCO DURO\proyectos\fzam\inLibDevExp.pas
+
+[View8]
 CustomEditViewType=TEditView
 Module=C:\DISCO DURO\proyectos\fzam\UniDataFacturas.pas
 CursorX=1
@@ -228,7 +238,7 @@ Elisions=
 Bookmarks=
 EditViewName=C:\DISCO DURO\proyectos\fzam\UniDataFacturas.pas
 
-[View8]
+[View9]
 CustomEditViewType=TEditView
 Module=C:\DISCO DURO\proyectos\fzam\inLibLog.pas
 CursorX=40
@@ -239,7 +249,7 @@ Elisions=
 Bookmarks=
 EditViewName=C:\DISCO DURO\proyectos\fzam\inLibLog.pas
 
-[View9]
+[View10]
 CustomEditViewType=TEditView
 Module=C:\DISCO DURO\proyectos\fzam\inLibGlobalVar.pas
 CursorX=50
@@ -250,7 +260,7 @@ Elisions=
 Bookmarks=
 EditViewName=C:\DISCO DURO\proyectos\fzam\inLibGlobalVar.pas
 
-[View10]
+[View11]
 CustomEditViewType=TEditView
 Module=C:\DISCO DURO\proyectos\fzam\inMtoUsuarios.pas
 CursorX=1
@@ -261,7 +271,7 @@ Elisions=
 Bookmarks=
 EditViewName=C:\DISCO DURO\proyectos\fzam\inMtoUsuarios.pas
 
-[View11]
+[View12]
 CustomEditViewType=TEditView
 Module=C:\DISCO DURO\proyectos\fzam\UniDataUsuarios.pas
 CursorX=16
@@ -272,7 +282,7 @@ Elisions=
 Bookmarks=
 EditViewName=C:\DISCO DURO\proyectos\fzam\UniDataUsuarios.pas
 
-[View12]
+[View13]
 CustomEditViewType=TEditView
 Module=C:\DISCO DURO\proyectos\fzam\fzam.dpr
 CursorX=23
@@ -283,7 +293,7 @@ Elisions=
 Bookmarks=
 EditViewName=C:\DISCO DURO\proyectos\fzam\fzam.dpr
 
-[View13]
+[View14]
 CustomEditViewType=TEditView
 Module=C:\DISCO DURO\proyectos\fzam\inLibShowMto.pas
 CursorX=1
@@ -294,7 +304,7 @@ Elisions=
 Bookmarks=
 EditViewName=C:\DISCO DURO\proyectos\fzam\inLibShowMto.pas
 
-[View14]
+[View15]
 CustomEditViewType=TEditView
 Module=C:\DISCO DURO\proyectos\fzam\UniDataGen.pas
 CursorX=1
@@ -305,10 +315,10 @@ Elisions=
 Bookmarks=
 EditViewName=C:\DISCO DURO\proyectos\fzam\UniDataGen.pas
 
-[View15]
+[View16]
 CustomEditViewType=TEditView
 Module=C:\DISCO DURO\proyectos\fzam\inMtoArticulos.pas
-CursorX=39
+CursorX=10
 CursorY=11
 TopLine=1
 LeftCol=1
@@ -316,7 +326,7 @@ Elisions=
 Bookmarks=
 EditViewName=C:\DISCO DURO\proyectos\fzam\inMtoArticulos.pas
 
-[View16]
+[View17]
 CustomEditViewType=TEditView
 Module=C:\DISCO DURO\proyectos\fzam\UniDataArticulos.pas
 CursorX=1
@@ -327,18 +337,18 @@ Elisions=
 Bookmarks=
 EditViewName=C:\DISCO DURO\proyectos\fzam\UniDataArticulos.pas
 
-[View17]
+[View18]
 CustomEditViewType=TEditView
 Module=C:\DISCO DURO\proyectos\fzam\inMtoGen.pas
-CursorX=54
-CursorY=433
-TopLine=424
+CursorX=3
+CursorY=646
+TopLine=632
 LeftCol=1
 Elisions=
 Bookmarks=
 EditViewName=C:\DISCO DURO\proyectos\fzam\inMtoGen.pas
 
-[View18]
+[View19]
 CustomEditViewType=TEditView
 Module=C:\DISCO DURO\proyectos\fzam\inLibUnitForm.pas
 CursorX=7
@@ -509,8 +519,8 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=0
-Top=0
+Left=-1519
+Top=247
 Width=276
 Height=359
 MaxLeft=-1
@@ -543,7 +553,7 @@ TBDockHeight=3188
 LRDockWidth=1932
 Dockable=1
 StayOnTop=0
-SplitPos=98
+SplitPos=148
 
 [DebugLogView]
 PercentageSizes=1
@@ -634,11 +644,11 @@ State=0
 Left=0
 Top=0
 Width=2047
-Height=6153
+Height=6405
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=2047
-ClientHeight=6153
+ClientHeight=6405
 TBDockHeight=4884
 LRDockWidth=7151
 Dockable=1
@@ -653,11 +663,11 @@ State=0
 Left=0
 Top=0
 Width=2047
-Height=6153
+Height=6405
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=2047
-ClientHeight=6153
+ClientHeight=6405
 TBDockHeight=5959
 LRDockWidth=2510
 Dockable=1
@@ -691,11 +701,11 @@ State=0
 Left=0
 Top=0
 Width=2339
-Height=1211
+Height=969
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=2339
-ClientHeight=1211
+ClientHeight=969
 TBDockHeight=2316
 LRDockWidth=2823
 Dockable=1
@@ -726,8 +736,8 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=-37
-Top=-236
+Left=-8
+Top=-120
 Width=1849
 Height=3140
 MaxLeft=-1
@@ -810,8 +820,8 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=0
-Top=0
+Left=380
+Top=809
 Width=2854
 Height=3207
 MaxLeft=-1
@@ -877,11 +887,11 @@ State=0
 Left=0
 Top=0
 Width=2047
-Height=6153
+Height=6405
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=2047
-ClientHeight=6153
+ClientHeight=6405
 TBDockHeight=4884
 LRDockWidth=5307
 Dockable=1
@@ -896,11 +906,11 @@ State=0
 Left=0
 Top=0
 Width=1932
-Height=2994
+Height=2849
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1932
-ClientHeight=2994
+ClientHeight=2849
 TBDockHeight=3682
 LRDockWidth=1896
 Dockable=1
@@ -960,8 +970,8 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=8
-Top=8
+Left=952
+Top=28
 Width=3823
 Height=1376
 MaxLeft=-1
@@ -992,7 +1002,7 @@ MaxLeft=-1
 MaxTop=-1
 ClientWidth=2047
 ClientHeight=4545
-TBDockHeight=4545
+TBDockHeight=8760
 LRDockWidth=2047
 Dockable=1
 StayOnTop=0
@@ -1040,7 +1050,7 @@ MaxLeft=-1
 MaxTop=-1
 ClientWidth=2047
 ClientHeight=2141
-TBDockHeight=2141
+TBDockHeight=8760
 LRDockWidth=2047
 Dockable=1
 StayOnTop=0

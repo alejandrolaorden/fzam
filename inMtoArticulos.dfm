@@ -81,6 +81,7 @@ inherited frmMtoArticulos: TfrmMtoArticulos
           Align = alTop
           BevelOuter = bvNone
           TabOrder = 0
+          ExplicitWidth = 848
           object pnlBodyFicha: TPanel
             Left = 0
             Top = 0
@@ -89,6 +90,7 @@ inherited frmMtoArticulos: TfrmMtoArticulos
             Align = alClient
             BevelOuter = bvNone
             TabOrder = 0
+            ExplicitWidth = 848
             object txtCODIGO_ARTICULO: TcxDBTextEdit
               Left = 100
               Top = 13
@@ -1215,15 +1217,16 @@ inherited frmMtoArticulos: TfrmMtoArticulos
           HotZoneClassName = 'TcxMediaPlayer9Style'
           AlignSplitter = salTop
           Control = pnlButtonFicha
-          ExplicitWidth = 4
         end
       end
       inherited tsPerfil: TcxTabSheet
-        ExplicitWidth = 847
-        ExplicitHeight = 635
+        ExplicitLeft = 4
+        ExplicitTop = 30
+        ExplicitWidth = 846
+        ExplicitHeight = 637
         inherited pnlPerfilTop: TPanel
           Width = 847
-          ExplicitWidth = 847
+          ExplicitWidth = 846
         end
         inherited pnlPerfilDetail: TPanel
           Width = 847

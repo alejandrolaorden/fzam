@@ -40,10 +40,10 @@ uses inLibDir, inLibtb, inLibWin, inMtoPrincipal2, inLibGlobalVar;
 
 procedure TdmConn.connBeforeConnect(Sender: TObject);
 var
-  sDatabase         ,
-  sHostName         ,
-  sPasswordEn       ,
-  sPort             ,
+  sDatabase,
+  sHostName,
+  sPasswordEn,
+  sPort,
   sUser: string;
 begin
   sDatabase := leCadINIDir('ConnData', 'Database','factuzam', GetUserFolder);

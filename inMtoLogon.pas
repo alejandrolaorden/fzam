@@ -15,11 +15,12 @@ uses
     FastMM4,
   {$ENDIF}
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, cxLookAndFeelPainters, StdCtrls, cxButtons,
+  Dialogs, cxLookAndFeelPainters, StdCtrls, cxButtons, rtti,
   UniDataConn, inLibUser, ImgList, Buttons, cxControls, cxContainer,
   Vcl.ExtCtrls, Data.DB, DBAccess, Uni, UniProvider, MySQLUniProvider, DADump,
   UniDump, MemDS, cxGraphics, cxLookAndFeels, Vcl.Menus, cxEdit, cxCheckBox,
-  cxTextEdit, dxSkinsCore, inMtoFrmBase, cxClasses, cxLocalization;
+  cxTextEdit, dxSkinsCore, inMtoFrmBase, cxClasses, cxLocalization, cxMemo,
+  DASQLMonitor, UniSQLMonitor, System.UITypes, dxShellDialogs;
 
 type
   EInvalidUser = class(Exception);
@@ -56,6 +57,11 @@ type
     tbUsers: TUniTable;
     btChangePassRoot: TcxButton;
     chkAuto: TcxCheckBox;
+    pnlPPBottom: TPanel;
+    cxMemo1: TcxMemo;
+    UniSQLMonitor1: TUniSQLMonitor;
+    saveDialog: TdxSaveFileDialog;
+    openDialog: TdxOpenFileDialog;
     procedure FormCreate(Sender: TObject);
     procedure btnSalirClick(Sender: TObject);
     procedure btnAceptarClick(Sender: TObject);
@@ -72,6 +78,9 @@ type
     procedure edtPassBDExit(Sender: TObject);
     procedure btChangePassRootClick(Sender: TObject);
     procedure edtPortBDPropertiesChange(Sender: TObject);
+    procedure UniSQLMonitor1SQL(Sender: TObject; Text: string;
+      Flag: TDATraceFlag);
+//    procedure cxButton1Click(Sender: TObject);
   private
     procedure CambiarPass(f:TUniConnection);
     function CrearBD(sDatabaseN:string):string;
@@ -107,12 +116,21 @@ uses  inLibWin,
 procedure TfrmLogon.FormCreate(Sender: TObject);
 begin
 //  Application.OnException := AppException;
-  sUserPassOK := 'false';
-  Self.Position := poScreenCenter;
+  UniSQLMonitor1.Active := False;
   Self.Width := 338;
   Self.ClientHeight := 253;
+  cxMemo1.Visible := False;
+  pnlPPBottom.Visible := False;
+  {$IFDEF DEBUG}
+    pnlPPBottom.Visible := True;
+    UniSQLMonitor1.Active := True;
+    cxMemo1.Visible := True;
+    Self.ClientHeight := 493;
+    Self.Width := 783;
+  {$ENDIF}
+  sUserPassOK := 'false';
+  Self.Position := poScreenCenter;
   edtUser.Text := '';
-  //ShowMessage('leyendo ini');
   leerini;
   try
     GetIniValues;
@@ -138,6 +156,7 @@ begin
       end;
     end;
   end;
+
   if (IsInitializeAuto) then
     btnAceptarClick(Self);
 end;
@@ -150,49 +169,59 @@ end;
 
 procedure TfrmLogon.btnCopiaSeguridadClick(Sender: TObject);
 var
-  savedialog: TSaveDialog;
+  //savedialog: TSaveDialog;
   s         : string;
   MyText    : TStringlist;
+  iButtonSel:Integer;
 begin
   ConstruirConexionConnect(ucConexion, edtUserBD.Text,
     sPass,
     edtHostName.Text,
     edtPortBD.Text,
     edtNomBD.Text);
-  savedialog := TSaveDialog.Create(Self);
+  iButtonSel := 0;
+  //savedialog := TSaveDialog.Create(nil);
   saveDialog.Title := 'Guardar copia de seguridad';
-  saveDialog.InitialDir := GetUserDeskFolder;
-  savedialog.FileName := 'copia_seguridad_' + sPassEn + '_'
-    + FormatDateTime('_dd_mm_yy__hh_mm', Now) + '.crypt';
-  if (saveDialog.Execute = True) then
+  saveDialog.InitialDir := GetCurrentDir;
+  savedialog.FileName := 'copiaseguridad_' +sPassEn+
+                                       FormatDateTime('_dd_mm', Now) + '.crypt';
+  if (saveDialog.Execute) then
   begin
-    udDump.Backup;
-    s := udDump.SQL.Text;
-    s := StringReplace(s, 'DEFINER=`root`@`localhost`', '',
-      [rfReplaceAll, rfIgnoreCase]);
-    s := 'DROP DATABASE IF EXISTS factuzam; ' + sLineBreak +
-         'CREATE DATABASE factuzam ' +
-         '  CHARACTER SET utf8mb4 ' +
-         '       COLLATE utf8mb4_spanish_ci; ' +  sLineBreak +
-         'USE factuzam;' + sLineBreak + sLineBreak + s;
-    s := EncriptAESPass(s, AnsiString(sPass));
-    MyText := TStringlist.Create;
-    MyText.Text := s;
-    saveDialog.InitialDir := GetUserDeskFolder;
-    MyText.SaveToFile(saveDialog.FileName);
-    MyText.Free;
-    Log(ucConexion, edtUser.Text, 'Guardada copia Encriptada en ' +
-      savedialog.FileName);
-    ShowMessage('La copia se guardó exitosamente');
+    if FileExists(savedialog.FileName) then
+    begin
+      iButtonSel := MessageDlg('¿Desea reemplazar el fichero existente?',
+        mtCustom, [mbYes, mbNo], 0);
+    end;
+    if ((iButtonSel = mrYes) or (not FileExists(saveDialog.FileName))) then
+    begin
+      udDump.Backup;
+      s := udDump.SQL.Text;
+      s := StringReplace(s, 'DEFINER=`root`@`localhost`', '',
+        [rfReplaceAll, rfIgnoreCase]);
+      s := 'DROP DATABASE IF EXISTS factuzam; ' + sLineBreak +
+           'CREATE DATABASE factuzam ' +
+           '  CHARACTER SET utf8mb4 ' +
+           '       COLLATE utf8mb4_spanish_ci; ' +  sLineBreak +
+           'USE factuzam;' + sLineBreak + sLineBreak + s;
+      s := EncriptAESPass(s, AnsiString(sPass));
+      MyText := TStringlist.Create;
+      MyText.Text := s;
+      saveDialog.InitialDir := GetUserDeskFolder;
+      MyText.SaveToFile(saveDialog.FileName);
+      MyText.Free;
+      Log(ucConexion, edtUser.Text, 'Guardada copia Encriptada en ' +
+        savedialog.FileName);
+      ShowMessage('La copia se guardó exitosamente');
+    end;
   end
   else
     ShowMessage('La copia se canceló');
-  FreeAndNil(savedialog);
+  //FreeAndNil(savedialog);
 end;
 
 procedure TfrmLogon.btnSubirScriptClick(Sender: TObject);
 var
-  openDialog        : TOpenDialog;
+  //openDialog        : TOpenDialog;
   unqryTestBD: TUniQuery;
 begin
   sPass := InputBox('Introduzca password de la BBDD', '','');
@@ -221,7 +250,7 @@ begin
                              edtNomBD.Text);
      end;
   end;
-  opendialog := TOpenDialog.Create(Self);
+//  opendialog := TOpenDialog.Create(Self);
   opendialog.Title := 'Cargar script';
   opendialog.Filter := 'Fichero SQL (*.sql)|*.sql';
   openDialog.InitialDir := GetUserDeskFolder;
@@ -232,7 +261,7 @@ begin
   end
   else
     ShowMessage('El script no fue ejecutado');
-  FreeAndNil(opendialog);
+  //FreeAndNil(opendialog);
   FreeAndNil(unqryTestBD);
   if (ucConexion.Connected = true) then
     ucConexion.Disconnect;
@@ -391,9 +420,30 @@ begin
   FreeAndNil(MyText);
 end;
 
+//procedure TfrmLogon.cxButton1Click(Sender: TObject);
+//  procedure ListClassesDeclaredInNamedUnit(const UnitName: string);
+//  var
+//    Context: TRttiContext;
+//    t: TRttiType;
+//    DeclaringUnitName: string;
+//  begin
+//    Context := TRttiContext.Create;
+//    for t in Context.GetTypes do
+//      if t.IsInstance then
+//      begin
+//        DeclaringUnitName := t.AsInstance.DeclaringUnitName;
+//        if SameText(DeclaringUnitName, UnitName) then
+//          mList.Lines.add(t.ToString +' '+ DeclaringUnitName);
+//      end;
+//  end;
+//begin
+//  inherited;
+//  ListClassesDeclaredInNamedUnit(edtUnit.Text);
+//end;
+
 procedure TfrmLogon.btnRecoverClick(Sender: TObject);
 var
-  openDialog        : topendialog;
+//  openDialog        : topendialog;
   MyText            : TSTringList;
   s                 : string;
   unqryTestBD       : TUniQuery;
@@ -424,7 +474,7 @@ begin
                                  edtNomBD.Text);
      end;
   end;
-  opendialog := TOpenDialog.Create(Self);
+  //opendialog := TOpenDialog.Create(Self);
   opendialog.Title := 'Cargar copia';
   opendialog.Filter := 'Copia encriptada (*.crypt)|*.crypt';
   openDialog.InitialDir := GetUserDeskFolder;
@@ -450,7 +500,7 @@ begin
   end
   else
     ShowMessage('Se canceló la carga del script.');
-  FreeAndNil(opendialog);
+  //FreeAndNil(opendialog);
   unqryTestBD.Close;
   FreeAndNil(unqryTestBD);
 end;
@@ -663,7 +713,7 @@ begin
   begin
     esCadINIDir('UserInfo', 'RememberPassword', 'Yes', GetUserFolder);
     esCadINIDir('UserInfo', 'PasswordEn',
-      EncriptAES(edtPass.Text), GetUserFolder);
+                                       EncriptAES(edtPass.Text), GetUserFolder);
   end;
   if (chkAuto.Checked = True) then
       esCadINIDir('UserInfo', 'AutoLogin', 'Yes', GetUserFolder);
@@ -673,6 +723,15 @@ procedure TfrmLogon.ucConexionError(Sender: TObject; E: EDAError;
   var Fail: Boolean);
 begin
   Fail := False;
+end;
+
+procedure TfrmLogon.UniSQLMonitor1SQL(Sender: TObject; Text: string;
+  Flag: TDATraceFlag);
+begin
+  inherited;
+  {$IFDEF DEBUG}
+    cxMemo1.Lines.Add(Text);
+  {$ENDIF}
 end;
 
 procedure TfrmLogon.GetIniValues;
@@ -718,6 +777,9 @@ end;
 function TfrmLogon.IsInitializeAuto: Boolean;
 begin
   Result := chkAuto.Checked;
+  {$IFDEF DEBUG}
+    Result := False;
+  {$ENDIF }
 end;
 
 procedure TfrmLogon.FormClose(Sender: TObject; var Action: TCloseAction);

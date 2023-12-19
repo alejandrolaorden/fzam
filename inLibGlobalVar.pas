@@ -12,7 +12,7 @@ interface
 
 uses Uni,
      UniDataPerfiles,
-     UniDataConn, cxMemo, inMtoPrincipal2;
+     UniDataConn,cxMemo, inMtoPrincipal2;
 
 var
   odmPerfiles:TdmPerfiles;

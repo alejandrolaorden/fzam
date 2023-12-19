@@ -29,7 +29,7 @@ uses
   cxDBLabel, dxGDIPlusClasses, dxSkinsForm, cxBlobEdit,
   dxScrollbarAnnotations, dxCore, cxRadioGroup, System.Actions, Vcl.ActnList,
   IDETheme.ActnCtrls, Vcl.ActnMan, Vcl.StdStyleActnCtrls, Vcl.AppEvnts,
-  JvComponentBase, JvEnterTab, UniDataFacturas;
+  JvComponentBase, JvEnterTab, UniDataFacturas, dxShellDialogs;
 
 type
   TfrmMtoFacturas = class(TfrmMtoGen)

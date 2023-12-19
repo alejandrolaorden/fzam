@@ -189,7 +189,7 @@ begin
           memStream.Free;
         end;
       end
-      else if (form.sFicha = 'O') then
+      else if (form.sElegido = 'O') then
       begin
         frxrprt1.AssignAll(frxReportOrigen);
       end;
@@ -216,11 +216,13 @@ begin
   if not((inLibGlobalVar.orootGroup = 'S') or
       (oUser = sUserProp) or
       (oGroup = sUserProp)) then
-    ShowMessage('No tiene privilegios suficientes para efectuar la operación')
+    ShowMessageFmt('No tiene privilegios suficientes ' +
+                   'para borrar el formato de %s. '+
+                   'Consulte con el Administrador', [sUserProp])
   else
   begin
-  iButtonSel := MessageDlg('¿Está seguro de borrar el formato?',
-                                    mtCustom,[mbYes,mbNo], 0);
+    iButtonSel := MessageDlg('¿Está seguro de borrar el formato?',
+                             mtCustom,[mbYes,mbNo], 0);
   if (iButtonSel = mrYes) then
   begin
     unqrySol.SQL.Text := 'DELETE  ' +
