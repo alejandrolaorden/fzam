@@ -45,7 +45,7 @@ uses
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier, dxSkinValentine,
   dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
-  dxSkinXmas2008Blue, Vcl.AppEvnts, JvComponentBase, JvEnterTab;
+  dxSkinXmas2008Blue, Vcl.AppEvnts, JvComponentBase, JvEnterTab, dxShellDialogs;
 
 type
   TfrmMtoClientes = class(TfrmMtoGen)
@@ -252,7 +252,6 @@ type
     lblFormadePago: TcxLabel;
     cbbFORMAPAGO: TcxDBLookupComboBox;
     lblNroCuenta: TcxLabel;
-    txtIBAN_CLIENTE: TcxDBTextEdit;
     lblTextoLegal2: TcxLabel;
     cbbTARIFA: TcxDBLookupComboBox;
     txtTARIFA_ARTICULO_CLIENTE: TcxDBTextEdit;
@@ -277,6 +276,8 @@ type
     tvFacturacionGRUPO_ZONA_IVA_EMPRESA_FACTURA: TcxGridDBColumn;
     tvFacturacionTARIFA_ARTICULO_CLIENTE_FACTURA: TcxGridDBColumn;
     tvFacturacionCODIGO_IVA_FACTURA: TcxGridDBColumn;
+    txtIBAN_CLIENTE: TcxDBMaskEdit;
+    btnValidar: TcxButton;
     procedure btnGrabarClick(Sender: TObject);
     procedure btnNuevoClienteClick(Sender: TObject);
     procedure btnIraFacturaClick(Sender: TObject);
@@ -288,6 +289,7 @@ type
     procedure actArticulosExecute(Sender: TObject);
 //    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure dsTablaGStateChange(Sender: TObject);
+    procedure btnValidarClick(Sender: TObject);
   public
     procedure CrearTablaPrincipal; override;
   end;
@@ -306,6 +308,7 @@ uses
   inMtoEmpresas,
   inMtoArticulos,
   inLibDir,
+  inLibIBAN.Utils,
   inMtoPrincipal2;
 
 {$R *.dfm}
@@ -409,6 +412,55 @@ begin
   pcPestanas.Properties.ActivePage := tsDomicilioFiscal;
   tsDomicilioFiscal.SetFocus;
   txtRAZONSOCIAL_CLIENTE.SetFocus;
+end;
+
+procedure TfrmMtoClientes.btnValidarClick(Sender: TObject);
+var
+  sIBAN, sPref, sPref4:String;
+  iLen:Integer;
+  sErr:String;
+  EsIBANErr:boolean;
+  stErr:TStringList;
+begin
+  inherited;
+  EsIBANErr := False;
+  stErr := TStringList.Create;
+  sIBAN := StringReplace(dsTablaG.DataSet.FieldByName('IBAN_CLIENTE').Text,
+                         ' ', '', [rfReplaceAll]);
+  iLen := Length(sIBAN);
+  sPref := (Copy(sIBAN, 1, 2));
+  if ((sPref = 'ES') or (iLen = 20)) then
+  begin
+    TIBANUtils.IsValidDC(sIBAN, stErr);
+    sErr := stErr.Text;
+    if (sErr <> '') then
+    begin
+      ShowMessage(sErr);
+      EsIBANErr := True;
+    end;
+  end;
+  if ((iLen = 20) and
+      (StrToIntDef(sPref, 0) <> 0) and
+      not(EsIBANErr)) then
+  begin
+    sPref4 := TIBANUtils.GetIBAN('ES', sIBAN);
+    if (dsTablaG.State = dsBrowse) then
+      dsTablaG.DataSet.Edit;
+    dsTablaG.DataSet.FieldByName('IBAN_CLIENTE').Text := sPref4 + sIBAN;
+  end;
+  if (not(EsIBANErr) and (StrToIntDef(sPref, 0) = 0)) then
+  begin
+    TIBANUtils.IsValidIBAN(sIBAN, stErr);
+    sErr := stErr.Text;
+    if (sErr <> '') then
+    begin
+      ShowMessage(sErr);
+      EsIBANErr := True;
+    end;
+  end;
+  if not(EsIBANErr) then
+    ShowMessage('IBAN Validado OK');
+  FreeAndNil(stErr);
 end;
 
 procedure TfrmMtoClientes.CrearTablaPrincipal;
