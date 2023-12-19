@@ -373,7 +373,7 @@ inherited frmMtoClientes: TfrmMtoClientes
             Margins.Bottom = 4
             Align = alClient
             TabOrder = 0
-            Properties.ActivePage = tsMasDatos
+            Properties.ActivePage = tsDomicilioFiscal
             Properties.CustomButtons.Buttons = <>
             ClientRectBottom = 436
             ClientRectLeft = 3

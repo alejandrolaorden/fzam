@@ -19,7 +19,8 @@ uses
   cxControls, cxContainer, cxEdit, Vcl.ComCtrls, dxCore, cxDateUtils,
   cxMaskEdit, cxDropDownEdit, cxCalendar, cxRadioGroup, cxGroupBox, cxLabel,
   cxTextEdit, UniDataFacturas, inMtoFacturas, DB, frxExportXLSX, MemDS,
-  DBAccess, Uni, frxDesgn, cxStyles, dxSkinsForm, cxClasses, cxLocalization;
+  DBAccess, Uni, frxDesgn, cxStyles, dxSkinsForm, cxClasses, cxLocalization,
+  dxSkinsCore, dxSkinBlue;
 
 type
   TfrmPrintFac = class(TfrmPrint)

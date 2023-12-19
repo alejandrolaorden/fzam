@@ -292,6 +292,7 @@ type
     procedure btnValidarClick(Sender: TObject);
   public
     procedure CrearTablaPrincipal; override;
+    procedure ResetForm; override;
   end;
 
 var
@@ -483,6 +484,12 @@ begin
     txtCODIGO_CLIENTE.Enabled := True
   else
     txtCODIGO_CLIENTE.Enabled := False;
+end;
+
+procedure TfrmMtoClientes.ResetForm;
+begin
+  inherited;
+  pcPestanas.ActivePage := tsDomicilioFiscal;
 end;
 
 initialization

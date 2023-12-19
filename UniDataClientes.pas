@@ -12,7 +12,8 @@ interface
 
 uses
   System.SysUtils, System.Classes, UniDataGen, Data.DB, MemDS, DBAccess,
-  inMtoPrincipal2, Uni, inLibUser, UniDataConn, inLibWin, Forms, Windows;
+  inMtoPrincipal2, Uni, inLibUser, UniDataConn, inLibWin, Forms, Windows,
+  Datasnap.DBClient, Datasnap.Provider, frxClass, frxDBSet;
 
 type
   TdmClientes = class(TdmBase)
@@ -25,6 +26,11 @@ type
     unqryFacturasClientes: TUniQuery;
     dsFacturasLineasClientes: TDataSource;
     unqryFacturasLineasClientes: TUniQuery;
+    cdsEtiquetas: TClientDataSet;
+    dtstprvEtiquetas: TDataSetProvider;
+    unqryCliPrint: TUniQuery;
+    dsEtiquetas: TDataSource;
+    fxdsEtiquetas: TfrxDBDataset;
     procedure unqryTablaGAfterInsert(DataSet: TDataSet);
     procedure unqryTablaGBeforePost(DataSet: TDataSet);
     procedure DataModuleCreate(Sender: TObject);
@@ -34,6 +40,8 @@ type
     { Private declarations }
   public
     procedure GetCodigoAutoCliente;
+    procedure CrearDataSetEtiquetas(iNroEspaciosBlanco: Integer;
+                                    sCodCli:String);
   end;
 
 //var
@@ -49,6 +57,38 @@ uses
 {$R *.dfm}
 
 procedure ForceReferenceToClass(C: TClass); begin end;
+
+procedure TdmClientes.CrearDataSetEtiquetas(iNroEspaciosBlanco: Integer;
+                                            sCodCli:String);
+var
+  i:Integer;
+begin
+  unqryCliPrint.Connection := oConn;
+  unqryCliPrint.SQL.Text := ' SELECT * ' +
+                            ' from vi_clientes ' +
+                            ' where CODIGO_CLIENTE = :CODIGO';
+  unqryCliPrint.ParamByName('CODIGO').AsString := sCodCli;
+  unqryCliPrint.Open;
+  cdsEtiquetas.Data := dtstprvEtiquetas.Data;
+  cdsEtiquetas.ReadOnly := False;
+  cdsEtiquetas.Active := True;
+  cdsEtiquetas.First;
+  cdsEtiquetas.DisableControls;
+  cdsEtiquetas.DisableConstraints;
+  //cdsEtiquetas.IndexDefs.Clear;
+  for i := 0 to (cdsEtiquetas.Fieldcount-1) do
+  begin
+    cdsEtiquetas.fields[i].ReadOnly := false;
+    cdsEtiquetas.Fields[i].Required := false;
+    cdsEtiquetas.FieldDefs[i].Attributes := [];
+  end;
+  for i := 1 to iNroEspaciosBlanco do
+  begin
+    cdsEtiquetas.Insert;
+    cdsEtiquetas.FieldByName('CODIGO_CLIENTE').AsString := '0';
+    cdsEtiquetas.Post;
+  end;
+end;
 
 procedure TdmClientes.DataModuleCreate(Sender: TObject);
 begin

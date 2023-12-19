@@ -11,9 +11,8 @@ inherited frmLogon: TfrmLogon
   Position = poScreenCenter
   OnClose = FormClose
   OnKeyDown = FormKeyDown
-  ExplicitWidth = 789
-  ExplicitHeight = 522
-  PixelsPerInch = 96
+  ExplicitWidth = 799
+  ExplicitHeight = 532
   TextHeight = 19
   object lblUsuario: TLabel [0]
     Left = 47

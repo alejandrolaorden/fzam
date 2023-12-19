@@ -1,6 +1,6 @@
 inherited dmClientes: TdmClientes
-  Height = 170
-  Width = 772
+  Height = 296
+  Width = 866
   inherited unqryTablaG: TUniQuery
     Connection = dmConn.conUni
     SQL.Strings = (
@@ -290,5 +290,80 @@ inherited dmClientes: TdmClientes
         ParamType = ptInput
         Value = 'AGRICULTOR'
       end>
+  end
+  object cdsEtiquetas: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 800
+    Top = 24
+  end
+  object dtstprvEtiquetas: TDataSetProvider
+    DataSet = unqryCliPrint
+    Constraints = False
+    Options = []
+    Left = 800
+    Top = 96
+  end
+  object unqryCliPrint: TUniQuery
+    Connection = dmConn.conUni
+    SQL.Strings = (
+      'select * from vi_clientes')
+    Active = True
+    BeforeInsert = unqryTablaGBeforeInsert
+    AfterInsert = unqryTablaGAfterInsert
+    BeforePost = unqryTablaGBeforePost
+    BeforeDelete = unqryTablaGBeforeDelete
+    Left = 712
+    Top = 32
+  end
+  object dsEtiquetas: TDataSource
+    DataSet = unqryCliPrint
+    Left = 800
+    Top = 168
+  end
+  object fxdsEtiquetas: TfrxDBDataset
+    Description = 'Etiquetas'
+    UserName = 'Etiquetas'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'CODIGO_CLIENTE=CODIGO_CLIENTE'
+      'ORDEN_CLIENTE=ORDEN_CLIENTE'
+      'ACTIVO_CLIENTE=ACTIVO_CLIENTE'
+      'RAZONSOCIAL_CLIENTE=RAZONSOCIAL_CLIENTE'
+      'NIF_CLIENTE=NIF_CLIENTE'
+      'MOVIL_CLIENTE=MOVIL_CLIENTE'
+      'EMAIL_CLIENTE=EMAIL_CLIENTE'
+      'DIRECCION1_CLIENTE=DIRECCION1_CLIENTE'
+      'DIRECCION2_CLIENTE=DIRECCION2_CLIENTE'
+      'POBLACION_CLIENTE=POBLACION_CLIENTE'
+      'PROVINCIA_CLIENTE=PROVINCIA_CLIENTE'
+      'CPOSTAL_CLIENTE=CPOSTAL_CLIENTE'
+      'PAIS_CLIENTE=PAIS_CLIENTE'
+      'OBSERVACIONES_CLIENTE=OBSERVACIONES_CLIENTE'
+      'REFERENCIA_CLIENTE=REFERENCIA_CLIENTE'
+      'CONTACTO_CLIENTE=CONTACTO_CLIENTE'
+      'TELEFONO_CONTACTO_CLIENTE=TELEFONO_CONTACTO_CLIENTE'
+      'TELEFONO_CLIENTE=TELEFONO_CLIENTE'
+      'IBAN_CLIENTE=IBAN_CLIENTE'
+      'ESIVA_RECARGO_CLIENTE=ESIVA_RECARGO_CLIENTE'
+      'ESRETENCIONES_CLIENTE=ESRETENCIONES_CLIENTE'
+      'ESIVA_EXENTO_CLIENTE=ESIVA_EXENTO_CLIENTE'
+      'ESINTRACOMUNITARIO_CLIENTE=ESINTRACOMUNITARIO_CLIENTE'
+      
+        'ESREGIMENESPECIALAGRICOLA_CLIENTE=ESREGIMENESPECIALAGRICOLA_CLIE' +
+        'NTE'
+      'CODIGO_FORMA_PAGO_CLIENTE=CODIGO_FORMA_PAGO_CLIENTE'
+      'TARIFA_ARTICULO_CLIENTE=TARIFA_ARTICULO_CLIENTE'
+      'SERIE_CONTADOR_CLIENTE=SERIE_CONTADOR_CLIENTE'
+      'TEXTO_LEGAL_FACTURA_CLIENTE=TEXTO_LEGAL_FACTURA_CLIENTE'
+      'INSTANTEMODIF=INSTANTEMODIF'
+      'INSTANTEALTA=INSTANTEALTA'
+      'USUARIOALTA=USUARIOALTA'
+      'USUARIOMODIF=USUARIOMODIF')
+    DataSet = unqryCliPrint
+    BCDToCurrency = False
+    DataSetOptions = []
+    Left = 800
+    Top = 232
   end
 end

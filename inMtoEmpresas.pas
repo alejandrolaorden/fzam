@@ -44,7 +44,7 @@ uses
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier, dxSkinValentine,
   dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
-  dxSkinXmas2008Blue, JvComponentBase, JvEnterTab;
+  dxSkinXmas2008Blue, JvComponentBase, JvEnterTab, dxShellDialogs;
 
 type
   TfrmMtoEmpresas = class(TfrmMtoGen)
@@ -248,8 +248,9 @@ type
     tvFacturacionCODIGO_IVA_FACTURA: TcxGridDBColumn;
     cxDBTextEdit1: TcxDBTextEdit;
     cxLabel1: TcxLabel;
-    txtIBAN_EMPRESA: TcxDBTextEdit;
     cxLabel2: TcxLabel;
+    txtIBAN_EMPRESA: TcxDBMaskEdit;
+    btnValidar: TcxButton;
     procedure tsFichaEnter(Sender: TObject);
     procedure chkAplicaRetencionesPropertiesChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -266,8 +267,10 @@ type
     procedure btnIraArticuloClick(Sender: TObject);
     procedure btnAddSerieClick(Sender: TObject);
     procedure dsTablaGStateChange(Sender: TObject);
+    procedure btnValidarClick(Sender: TObject);
   public
     procedure CrearTablaPrincipal; override;
+    procedure ResetForm; override;
   end;
 
 var
@@ -282,6 +285,7 @@ uses
   inLibShowMto,
   inLibDir,
   inLibDevExp,
+  inLibIBAN.Utils,
   inMtoPrincipal2,
   inMtoFacturas,
   inMtoArticulos,
@@ -402,6 +406,55 @@ begin
   txtRAZONSOCIAL_EMPRESA.SetFocus;
 end;
 
+procedure TfrmMtoEmpresas.btnValidarClick(Sender: TObject);
+var
+  sIBAN, sPref, sPref4:String;
+  iLen:Integer;
+  sErr:String;
+  EsIBANErr:boolean;
+  stErr:TStringList;
+begin
+  inherited;
+  EsIBANErr := False;
+  stErr := TStringList.Create;
+  sIBAN := StringReplace(dsTablaG.DataSet.FieldByName('IBAN_EMPRESA').Text,
+                         ' ', '', [rfReplaceAll]);
+  iLen := Length(sIBAN);
+  sPref := (Copy(sIBAN, 1, 2));
+  if ((sPref = 'ES') or (iLen = 20)) then
+  begin
+    TIBANUtils.IsValidDC(sIBAN, stErr);
+    sErr := stErr.Text;
+    if (sErr <> '') then
+    begin
+      ShowMessage(sErr);
+      EsIBANErr := True;
+    end;
+  end;
+  if ((iLen = 20) and
+      (StrToIntDef(sPref, 0) <> 0) and
+      not(EsIBANErr)) then
+  begin
+    sPref4 := TIBANUtils.GetIBAN('ES', sIBAN);
+    if (dsTablaG.State = dsBrowse) then
+      dsTablaG.DataSet.Edit;
+    dsTablaG.DataSet.FieldByName('IBAN_EMPRESA').Text := sPref4 + sIBAN;
+  end;
+  if (not(EsIBANErr) and (StrToIntDef(sPref, 0) = 0)) then
+  begin
+    TIBANUtils.IsValidIBAN(sIBAN, stErr);
+    sErr := stErr.Text;
+    if (sErr <> '') then
+    begin
+      ShowMessage(sErr);
+      EsIBANErr := True;
+    end;
+  end;
+  if not(EsIBANErr) then
+    ShowMessage('IBAN Validado OK');
+  FreeAndNil(stErr);
+end;
+
 procedure TfrmMtoEmpresas.btnCargarColumnasClick(Sender: TObject);
 begin
   inherited;
@@ -481,6 +534,12 @@ procedure TfrmMtoEmpresas.FormCreate(Sender: TObject);
 begin
   inherited;
   chkAplicaRetencionesPropertiesChange(Sender);
+end;
+
+procedure TfrmMtoEmpresas.ResetForm;
+begin
+  inherited;
+  pcPestana.ActivePage := tsMasDatos;
 end;
 
 procedure TfrmMtoEmpresas.tsFichaEnter(Sender: TObject);

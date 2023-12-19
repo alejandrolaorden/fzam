@@ -18,7 +18,7 @@ uses
   cxEdit, dxSkinsForm, cxStyles, cxClasses, Vcl.ExtCtrls, DADump, UniDump,
   Vcl.Menus, cxPC, cxTextEdit, cxMemo, dxStatusBar, inMtoFrmBase, UniDataConn,
   UniDataPerfiles, cxLocalization, Vcl.Buttons, inLibUnitForm, JvMenus,
-  System.UITypes, DAScript, Uni, dxShellDialogs;
+  System.UITypes, DAScript, Uni, dxShellDialogs, dxSkinsCore, dxSkinBlue;
 
 type
   TcxPageControlPropertiesAccess = class(TcxPageControlProperties);

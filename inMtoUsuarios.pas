@@ -23,7 +23,7 @@ uses
   cxGridDBTableView, cxGrid, cxPC, Vcl.ExtCtrls, UniDataUsuarios, cxCheckBox,
   cxSpinEdit, cxBlobEdit, dxScrollbarAnnotations, dxCore, cxRadioGroup,
   cxDBExtLookupComboBox, cxDBLookupComboBox, cxCalendar, Vcl.AppEvnts,
-  JvComponentBase, JvEnterTab, dxShellDialogs;
+  JvComponentBase, JvEnterTab, dxShellDialogs, dxSkinBlue;
 
 type
   TfrmMtoUsuarios = class(TfrmMtoGen)

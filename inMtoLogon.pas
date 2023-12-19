@@ -20,7 +20,7 @@ uses
   Vcl.ExtCtrls, Data.DB, DBAccess, Uni, UniProvider, MySQLUniProvider, DADump,
   UniDump, MemDS, cxGraphics, cxLookAndFeels, Vcl.Menus, cxEdit, cxCheckBox,
   cxTextEdit, dxSkinsCore, inMtoFrmBase, cxClasses, cxLocalization, cxMemo,
-  DASQLMonitor, UniSQLMonitor, System.UITypes, dxShellDialogs;
+  DASQLMonitor, UniSQLMonitor, System.UITypes, dxShellDialogs, dxSkinBlue;
 
 type
   EInvalidUser = class(Exception);

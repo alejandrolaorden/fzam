@@ -25,7 +25,7 @@ uses
   inLibDevExp, cxGridExportLink, inLibUser, System.UITypes, UniDataPerfiles,
   Uni, inLibDir, inLibtb, Data.DBCommon, inLibWin, UniDataConn, cxBlobEdit,
   dxCore, dxScrollbarAnnotations, cxRadioGroup, Vcl.AppEvnts, JvComponentBase,
-  JvEnterTab, dxShellDialogs;
+  JvEnterTab, dxShellDialogs, dxSkinBlue;
 type
   TcxPageControlPropertiesAccess = class(TcxPageControlProperties);
   THackWinControl = class(TWinControl);
