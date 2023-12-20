@@ -75,6 +75,7 @@ begin
   cdsEtiquetas.First;
   cdsEtiquetas.DisableControls;
   cdsEtiquetas.DisableConstraints;
+  fxdsEtiquetas.UpdateBounds;
   //cdsEtiquetas.IndexDefs.Clear;
   for i := 0 to (cdsEtiquetas.Fieldcount-1) do
   begin
@@ -86,6 +87,11 @@ begin
   begin
     cdsEtiquetas.Insert;
     cdsEtiquetas.FieldByName('CODIGO_CLIENTE').AsString := '0';
+    cdsEtiquetas.FieldByName('RAZONSOCIAL_CLIENTE').AsString := '';
+    cdsEtiquetas.FieldByName('INSTANTEMODIF').AsString := '';
+    cdsEtiquetas.FieldByName('INSTANTEALTA').AsString := '';
+    cdsEtiquetas.FieldByName('USUARIOMODIF').AsString := '';
+    cdsEtiquetas.FieldByName('USUARIOALTA').AsString := '';
     cdsEtiquetas.Post;
   end;
 end;

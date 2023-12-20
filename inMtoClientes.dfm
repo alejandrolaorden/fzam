@@ -35,11 +35,13 @@ inherited frmMtoClientes: TfrmMtoClientes
             object cxgrdbclmnGrdDBTabPrinCODIGO_CLIENTE: TcxGridDBColumn
               Caption = 'C'#243'digo'
               DataBinding.FieldName = 'CODIGO_CLIENTE'
+              DataBinding.IsNullValueType = True
               Width = 106
             end
             object cxgrdbclmnGrdDBTabPrinACTIVO_CLIENTE: TcxGridDBColumn
               Caption = 'Activo'
               DataBinding.FieldName = 'ACTIVO_CLIENTE'
+              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxCheckBoxProperties'
               Properties.ValueChecked = 'S'
               Properties.ValueUnchecked = 'N'
@@ -48,88 +50,105 @@ inherited frmMtoClientes: TfrmMtoClientes
             object cxgrdbclmnGrdDBTabPrinRAZONSOCIAL_CLIENTE: TcxGridDBColumn
               Caption = 'Raz'#243'n Social'
               DataBinding.FieldName = 'RAZONSOCIAL_CLIENTE'
+              DataBinding.IsNullValueType = True
               Width = 212
             end
             object cxgrdbclmnGrdDBTabPrinNIF_CLIENTE: TcxGridDBColumn
               Caption = 'Nif Cif'
               DataBinding.FieldName = 'NIF_CLIENTE'
+              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxMaskEditProperties'
               Width = 104
             end
             object cxgrdbclmnGrdDBTabPrinMOVIL_CLIENTE: TcxGridDBColumn
               Caption = 'Tel'#233'fono M'#243'vil'
               DataBinding.FieldName = 'MOVIL_CLIENTE'
+              DataBinding.IsNullValueType = True
               Width = 150
             end
             object cxgrdbclmnGrdDBTabPrinTELEFONO_CLIENTE: TcxGridDBColumn
               Caption = 'Tel'#233'fono fijo'
               DataBinding.FieldName = 'TELEFONO_CLIENTE'
+              DataBinding.IsNullValueType = True
               Width = 123
             end
             object cxgrdbclmnGrdDBTabPrinEMAIL_CLIENTE: TcxGridDBColumn
               Caption = 'Email'
               DataBinding.FieldName = 'EMAIL_CLIENTE'
+              DataBinding.IsNullValueType = True
               Width = 196
             end
             object cxgrdbclmnGrdDBTabPrinDIRECCION1_CLIENTE: TcxGridDBColumn
               Caption = 'Direcci'#243'n'
               DataBinding.FieldName = 'DIRECCION1_CLIENTE'
+              DataBinding.IsNullValueType = True
               Width = 251
             end
             object cxgrdbclmnGrdDBTabPrinDIRECCION2_CLIENTE: TcxGridDBColumn
               Caption = 'M'#225's Direcci'#243'n'
               DataBinding.FieldName = 'DIRECCION2_CLIENTE'
+              DataBinding.IsNullValueType = True
               Width = 173
             end
             object cxgrdbclmnGrdDBTabPrinPOBLACION_CLIENTE: TcxGridDBColumn
               Caption = 'Poblaci'#243'n'
               DataBinding.FieldName = 'POBLACION_CLIENTE'
+              DataBinding.IsNullValueType = True
               Width = 146
             end
             object cxgrdbclmnGrdDBTabPrinPROVINCIA_CLIENTE: TcxGridDBColumn
               Caption = 'Provincia'
               DataBinding.FieldName = 'PROVINCIA_CLIENTE'
+              DataBinding.IsNullValueType = True
               Width = 135
             end
             object cxgrdbclmnGrdDBTabPrinCPOSTAL_CLIENTE: TcxGridDBColumn
               Caption = 'C'#243'digo Postal'
               DataBinding.FieldName = 'CPOSTAL_CLIENTE'
+              DataBinding.IsNullValueType = True
               Width = 95
             end
             object cxgrdbclmnGrdDBTabPrinPAIS_CLIENTE: TcxGridDBColumn
               Caption = 'Pa'#237's'
               DataBinding.FieldName = 'PAIS_CLIENTE'
+              DataBinding.IsNullValueType = True
               Width = 118
             end
             object cxgrdbclmnGrdDBTabPrinOBSERVACIONES_CLIENTE: TcxGridDBColumn
               Caption = 'Observaciones'
               DataBinding.FieldName = 'OBSERVACIONES_CLIENTE'
+              DataBinding.IsNullValueType = True
               Width = 192
             end
             object cxgrdbclmnGrdDBTabPrinREFERENCIA_CLIENTE: TcxGridDBColumn
               Caption = 'Referencia'
               DataBinding.FieldName = 'REFERENCIA_CLIENTE'
+              DataBinding.IsNullValueType = True
               Width = 184
             end
             object cxgrdbclmnGrdDBTabPrinCONTACTO_CLIENTE: TcxGridDBColumn
               Caption = 'Contacto'
               DataBinding.FieldName = 'CONTACTO_CLIENTE'
+              DataBinding.IsNullValueType = True
               Width = 151
             end
             object cxgrdbclmnGrdDBTabPrinTELEFONO_CONTACTO_CLIENTE: TcxGridDBColumn
               Caption = 'Tel'#233'fono de Contacto'
               DataBinding.FieldName = 'TELEFONO_CONTACTO_CLIENTE'
+              DataBinding.IsNullValueType = True
               Width = 140
             end
             object cxgrdbclmnGrdDBTabPrinIBAN_CLIENTE: TcxGridDBColumn
               Caption = 'Nro Cuenta'
               DataBinding.FieldName = 'IBAN_CLIENTE'
+              DataBinding.IsNullValueType = True
               Visible = False
               Width = 50
             end
             object cxgrdbclmnGrdDBTabPrinIVA_RECARGO_CLIENTE: TcxGridDBColumn
               Caption = 'Aplicar RE'
               DataBinding.FieldName = 'ESIVA_RECARGO_CLIENTE'
+              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxCheckBoxProperties'
               Properties.DisplayChecked = 'False'
               Properties.ValueChecked = 'S'
@@ -139,12 +158,14 @@ inherited frmMtoClientes: TfrmMtoClientes
             object cxgrdbclmnGrdDBTabPrinTEXTO_LEGAL_FACTURA_CLIENTE: TcxGridDBColumn
               Caption = 'Texto Legal Factura'
               DataBinding.FieldName = 'TEXTO_LEGAL_FACTURA_CLIENTE'
+              DataBinding.IsNullValueType = True
               Visible = False
               Width = 100
             end
             object cxgrdbclmnGrdDBTabPrinRETENCIONES_CLIENTE: TcxGridDBColumn
               Caption = 'Aplicar Retenciones'
               DataBinding.FieldName = 'ESRETENCIONES_CLIENTE'
+              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxCheckBoxProperties'
               Properties.ValueChecked = 'S'
               Properties.ValueUnchecked = 'N'
@@ -153,6 +174,7 @@ inherited frmMtoClientes: TfrmMtoClientes
             object cxGrdDBTabPrinESIVA_EXENTO_CLIENTE: TcxGridDBColumn
               Caption = 'Tiene IVA exento'
               DataBinding.FieldName = 'ESIVA_EXENTO_CLIENTE'
+              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxCheckBoxProperties'
               Properties.ValueChecked = 'S'
               Properties.ValueUnchecked = 'N'
@@ -161,6 +183,7 @@ inherited frmMtoClientes: TfrmMtoClientes
             object cxGrdDBTabPrinESINTRACOMUNITARIO_CLIENTE: TcxGridDBColumn
               Caption = 'Es Intracomunitario'
               DataBinding.FieldName = 'ESINTRACOMUNITARIO_CLIENTE'
+              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxCheckBoxProperties'
               Properties.ValueChecked = 'S'
               Properties.ValueUnchecked = 'N'
@@ -169,6 +192,7 @@ inherited frmMtoClientes: TfrmMtoClientes
             object cxGrdDBTabPrinESREGIMENESPECIALAGRICOLA_CLIENTE: TcxGridDBColumn
               Caption = 'Es Agricultor'
               DataBinding.FieldName = 'ESREGIMENESPECIALAGRICOLA_CLIENTE'
+              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxCheckBoxProperties'
               Properties.ValueChecked = 'S'
               Properties.ValueUnchecked = 'N'
@@ -177,6 +201,7 @@ inherited frmMtoClientes: TfrmMtoClientes
             object cxGrdDBTabPrinCODIGO_FORMA_PAGO_CLIENTE: TcxGridDBColumn
               Caption = 'Forma de pago por defecto'
               DataBinding.FieldName = 'CODIGO_FORMA_PAGO_CLIENTE'
+              DataBinding.IsNullValueType = True
               Width = 278
             end
           end
@@ -391,12 +416,12 @@ inherited frmMtoClientes: TfrmMtoClientes
                 404)
               object cxgrpbx1: TcxGroupBox
                 AlignWithMargins = True
-                Left = 21
-                Top = -3
+                Left = 18
+                Top = 0
                 TabStop = True
                 Anchors = [akLeft, akTop, akRight, akBottom]
                 TabOrder = 0
-                Height = 319
+                Height = 253
                 Width = 636
                 object lblDireccion1: TcxLabel
                   Left = 34
@@ -544,8 +569,8 @@ inherited frmMtoClientes: TfrmMtoClientes
                 end
               end
               object cxgrpbxTratamientoFiscal: TcxGroupBox
-                Left = 21
-                Top = 219
+                Left = 18
+                Top = 263
                 TabStop = True
                 Anchors = [akLeft, akTop, akRight]
                 Caption = 'Tratamiento Fiscal'
@@ -2003,9 +2028,19 @@ inherited frmMtoClientes: TfrmMtoClientes
       TabOrder = 1
       OnClick = btnNuevoClienteClick
     end
+    object cxButton1: TcxButton
+      Left = 1
+      Top = 253
+      Width = 138
+      Height = 25
+      Caption = '&Imprimir'
+      DropDownMenu = dxBarPopupMenu1
+      Kind = cxbkOfficeDropDown
+      TabOrder = 3
+      OnClick = btnNuevoClienteClick
+    end
   end
   inherited dsTablaG: TDataSource
-    DataSet = dmClientes.unqryTablaG
     Left = 552
   end
   object ActionListClientes: TActionList [4]
@@ -2028,7 +2063,49 @@ inherited frmMtoClientes: TfrmMtoClientes
     end
   end
   inherited JvEnterAsTab1: TJvEnterAsTab
-    Left = 992
-    Top = 320
+    Left = 800
+    Top = 104
+  end
+  object dxBarPopupMenu1: TdxBarPopupMenu
+    BarManager = dxBarManager1
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -17
+    Font.Name = 'Lucida Sans'
+    Font.Style = []
+    ItemLinks = <
+      item
+        Visible = True
+        ItemName = 'blbEtiqueta'
+      end>
+    UseOwnFont = True
+    Left = 1080
+    Top = 304
+    PixelsPerInch = 96
+  end
+  object dxBarManager1: TdxBarManager
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = 'Lucida Sans'
+    Font.Style = []
+    Categories.Strings = (
+      'Default')
+    Categories.ItemsVisibles = (
+      2)
+    Categories.Visibles = (
+      True)
+    PopupMenuLinks = <>
+    UseSystemFont = False
+    Left = 984
+    Top = 304
+    PixelsPerInch = 96
+    object blbEtiqueta: TdxBarLargeButton
+      Caption = 'Etiqueta'
+      Category = 0
+      Hint = 'Etiqueta'
+      Visible = ivAlways
+      OnClick = blbEtiquetaClick
+    end
   end
 end

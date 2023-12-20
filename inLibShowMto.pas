@@ -18,16 +18,13 @@ uses
   system.math, System.IOUtils, inLibWin, cxPC, Types, Vcl.Consts;
 
 type
-  //TDataMBaseClass = class of TdmBase;
   TFormBaseClass = class of TForm;
-  function GetPropAsObject(AObj: TObject; const PropName:String):TObject;
   function BuscarTabla(Query: TUniQuery;
                        const ClavePrimaria,
                        Valores: string):Boolean;
   procedure ShowMto(Owner: TComponent;
                     sCall:String;
                     sBusq:string = '');
-
   function CrearDataModule(sDataUnit:String;var pOwner:TfrmMtoGen):TdmBase;
 
 implementation
@@ -47,7 +44,6 @@ var
   tsNew: TcxTabSheet;
   ctx:TRttiContext;
   lType:TRttiType;
-  //t : TRttiInstanceType;
   f,val : TValue;
   prop: TRttiProperty;
   dmDat: TdmBase;
@@ -57,7 +53,6 @@ var
   sPkTab:String;
   mMenu : TMenuItem;
   ofzaF: TfzaForm;
-//  dmmModule:TdmBase;
 begin
   frmOpen2 := (Owner as TfrmOpenApp2);
   ofzaF := frmOpen2.oFzaWinf.GetElement(sCall);
@@ -85,12 +80,8 @@ begin
         lType:= ctx.FindType(sUnidadTipo);
         if (lType<>nil) then
         begin
-          //t:=lType.AsInstance;
-          //dmmModule := ;
-          //de esta forma, tienen Owner, de la segunda, no....
           f:= TFormBaseClass(
                          GetTypeData(lType.Handle)^.ClassType).Create(frmOpen2);
-            // CrearDataModule(sDataUnit,GetTypeData(lType.Handle)^.ClassType));
           //f:= t.GetMethod('Create').Invoke(t.MetaclassType,[nil]);
           tsNew.Caption := sTitle;
           prop := lType.GetProperty('Parent');
@@ -137,7 +128,7 @@ end;
 // how-do-i-instantiate-a-class-from-its-trttitype
 function CrearDataModule(sDataUnit:String; var pOwner:TfrmMtoGen):TdmBase;
 type
-    TDataMBaseClass = class of TDataModule;
+  TDataMBaseClass = class of TDataModule;
 var
   ctx: TRttiContext;
   lType: TRttiType;
@@ -149,10 +140,9 @@ begin
     lType:= ctx.FindType(sDataUnit);
     if (lType<>nil) then
     begin
-      f:= TDataMBaseClass(
-                         GetTypeData(lType.Handle)^.ClassType).Create(pOwner);
+      f:= TDataMBaseClass(GetTypeData(lType.Handle)^.ClassType).Create(pOwner);
       begin
-        Result := f.AsObject as TdmBase;
+        Result := (f.AsObject as TdmBase);
       end;
     end;
   finally
@@ -162,7 +152,7 @@ end;
 
 function BuscarTabla(Query: TUniQuery;
                      const ClavePrimaria,
-                           Valores: string):Boolean;
+                     Valores: string):Boolean;
 var
   ValArr: TArray<string>;
   bIsOnlyOne:boolean;
@@ -198,32 +188,5 @@ begin
     end;
   end;
 end;
-
-//https://www.clubdelphi.com/foros/showthread.php?t=80803
-function GetPropAsObject(AObj: TObject; const PropName:String):TObject;
-const
-  EBLOCK = 'GetPropAsString';
-var
-  PInfo: PPropInfo;
-  LObject: TObject;
-Begin
-  Result := nil;
-  // Intentamos acceder (con un puntero) a la info. de la propiedad
-  PInfo := GetPropInfo(AObj.ClassInfo, PropName);
-  // Se ha encontrado la propiedad con éste nombre; Chequear el tipo...
-  if (PInfo^.PropType^.Kind = tkClass) then
-  begin
-    LObject := GetObjectProp(AObj, PInfo);
-    // Nada...
-    if (LObject <> nil) then begin
-      Result := LObject;
-    end;
-  end
-  else
-  begin
-    Result := nil;
-  end;
-end;
-
 
 end.

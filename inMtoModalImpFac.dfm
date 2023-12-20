@@ -1,15 +1,15 @@
 inherited frmPrintFac: TfrmPrintFac
   Caption = 'Imprimir Factura'
-  ClientHeight = 278
-  ClientWidth = 444
+  ClientHeight = 277
+  ClientWidth = 440
   Position = poMainFormCenter
   ExplicitWidth = 456
   ExplicitHeight = 316
   TextHeight = 19
   inherited pnl1: TPanel
-    Left = 290
+    Left = 286
     Width = 154
-    Height = 278
+    Height = 277
     ExplicitLeft = 286
     ExplicitWidth = 154
     ExplicitHeight = 277
@@ -374,11 +374,9 @@ inherited frmPrintFac: TfrmPrintFac
     Top = 176
     Datasets = <
       item
-        DataSet = dmFacturas.fxdsPrintFac
         DataSetName = 'Facturas'
       end
       item
-        DataSet = dmFacturas.fxdstPrintLinFac
         DataSetName = 'Lineas Facturas'
       end>
     Variables = <>
@@ -989,11 +987,9 @@ inherited frmPrintFac: TfrmPrintFac
     Top = 192
     Datasets = <
       item
-        DataSet = dmFacturas.fxdsPrintFac
         DataSetName = 'Facturas'
       end
       item
-        DataSet = dmFacturas.fxdstPrintLinFac
         DataSetName = 'Lineas Facturas'
       end>
     Variables = <>
@@ -1059,7 +1055,6 @@ inherited frmPrintFac: TfrmPrintFac
         Top = 525.354670000000000000
         Width = 737.008350000000000000
         OnBeforePrint = 'DetailData1OnBeforePrint'
-        DataSet = dmFacturas.fxdstPrintLinFac
         DataSetName = 'Lineas Facturas'
         RowCount = 0
         object LineasFacturasTOTAL_LINEA: TfrxMemoView
@@ -1164,7 +1159,6 @@ inherited frmPrintFac: TfrmPrintFac
           Width = 79.370130000000000000
           Height = 18.897650000000000000
           DataField = 'FECHA_ENTREGA_FACTURA_LINEA'
-          DataSet = dmFacturas.fxdstPrintLinFac
           DataSetName = 'Lineas Facturas'
           DisplayFormat.FormatStr = 'dd/mm/yyyy'
           DisplayFormat.Kind = fkDateTime
@@ -1187,7 +1181,6 @@ inherited frmPrintFac: TfrmPrintFac
           Height = 18.897650000000000000
           StretchMode = smMaxHeight
           DataField = 'DESCRIPCION_ARTICULO_FACTURA_LINEA'
-          DataSet = dmFacturas.fxdstPrintLinFac
           DataSetName = 'Lineas Facturas'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1575,7 +1568,6 @@ inherited frmPrintFac: TfrmPrintFac
           Top = 322.464750000000000000
           Width = 264.567100000000000000
           Height = 18.897650000000000000
-          DataSet = dmFacturas.fxdsPrintFac
           DataSetName = 'Facturas'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1735,7 +1727,6 @@ inherited frmPrintFac: TfrmPrintFac
           Top = 301.039580000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          DataSet = dmFacturas.fxdsPrintFac
           DataSetName = 'Facturas'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1759,7 +1750,6 @@ inherited frmPrintFac: TfrmPrintFac
           Top = 322.464750000000000000
           Width = 272.126160000000000000
           Height = 18.897650000000000000
-          DataSet = dmFacturas.fxdsPrintFac
           DataSetName = 'Facturas'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1832,7 +1822,6 @@ inherited frmPrintFac: TfrmPrintFac
         Top = 480.000310000000000000
         Visible = False
         Width = 737.008350000000000000
-        DataSet = dmFacturas.fxdsPrintFac
         DataSetName = 'Facturas'
         RowCount = 0
         object FacturasNRO_FACTURA1: TfrxMemoView
@@ -1842,7 +1831,6 @@ inherited frmPrintFac: TfrmPrintFac
           Width = 94.488250000000000000
           Height = 18.897650000000000000
           DataField = 'NRO_FACTURA'
-          DataSet = dmFacturas.fxdsPrintFac
           DataSetName = 'Facturas'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText

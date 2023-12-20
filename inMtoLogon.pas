@@ -156,7 +156,6 @@ begin
       end;
     end;
   end;
-
   if (IsInitializeAuto) then
     btnAceptarClick(Self);
 end;

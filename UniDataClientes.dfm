@@ -293,6 +293,7 @@ inherited dmClientes: TdmClientes
   end
   object cdsEtiquetas: TClientDataSet
     Aggregates = <>
+    AutoCalcFields = False
     Params = <>
     Left = 800
     Top = 24
@@ -360,7 +361,7 @@ inherited dmClientes: TdmClientes
       'INSTANTEALTA=INSTANTEALTA'
       'USUARIOALTA=USUARIOALTA'
       'USUARIOMODIF=USUARIOMODIF')
-    DataSet = unqryCliPrint
+    DataSet = cdsEtiquetas
     BCDToCurrency = False
     DataSetOptions = []
     Left = 800

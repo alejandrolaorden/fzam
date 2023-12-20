@@ -70,7 +70,8 @@ uses
   inMtoSplash in 'inMtoSplash.pas' {frmSplash},
   inLibIBAN.Utils in 'inLibIBAN.Utils.pas',
   inLibIBAN.Types in 'inLibIBAN.Types.pas',
-  inLibIBAN.Funcs in 'inLibIBAN.Funcs.pas';
+  inLibIBAN.Funcs in 'inLibIBAN.Funcs.pas',
+  inMtoModalCliEti in 'inMtoModalCliEti.pas' {frmPrintCliEti};
 
 begin
   {$IFDEF DEBUG}

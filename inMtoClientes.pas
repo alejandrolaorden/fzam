@@ -278,6 +278,10 @@ type
     tvFacturacionCODIGO_IVA_FACTURA: TcxGridDBColumn;
     txtIBAN_CLIENTE: TcxDBMaskEdit;
     btnValidar: TcxButton;
+    cxButton1: TcxButton;
+    dxBarPopupMenu1: TdxBarPopupMenu;
+    dxBarManager1: TdxBarManager;
+    blbEtiqueta: TdxBarLargeButton;
     procedure btnGrabarClick(Sender: TObject);
     procedure btnNuevoClienteClick(Sender: TObject);
     procedure btnIraFacturaClick(Sender: TObject);
@@ -290,6 +294,7 @@ type
 //    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure dsTablaGStateChange(Sender: TObject);
     procedure btnValidarClick(Sender: TObject);
+    procedure blbEtiquetaClick(Sender: TObject);
   public
     procedure CrearTablaPrincipal; override;
     procedure ResetForm; override;
@@ -308,6 +313,7 @@ uses
   inMtoFacturas,
   inMtoEmpresas,
   inMtoArticulos,
+  inMtoModalCliEti,
   inLibDir,
   inLibIBAN.Utils,
   inMtoPrincipal2;
@@ -350,6 +356,21 @@ begin
     else
       ShowMto(Self.Owner,
               'Facturas');
+end;
+
+procedure TfrmMtoClientes.blbEtiquetaClick(Sender: TObject);
+var
+  formulario : TfrmPrintCliEti;
+begin
+  inherited;
+  formulario := TfrmPrintCliEti.Create(Application);
+  try
+    formulario.edtCodCli.Text :=
+                        dsTablaG.Dataset.FieldByName('CODIGO_CLIENTE').AsString;
+    formulario.ShowModal;
+  finally
+    FreeAndNil(formulario);
+  end;
 end;
 
 procedure TfrmMtoClientes.btnExportarClick(Sender: TObject);

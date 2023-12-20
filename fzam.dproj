@@ -6,7 +6,7 @@
         <MainSource>fzam.dpr</MainSource>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
-        <Platform Condition="'$(Platform)'==''">Win32</Platform>
+        <Platform Condition="'$(Platform)'==''">Win64</Platform>
         <TargetedPlatforms>4227</TargetedPlatforms>
         <AppType>Application</AppType>
     </PropertyGroup>
@@ -330,6 +330,10 @@
         <DCCReference Include="inLibIBAN.Utils.pas"/>
         <DCCReference Include="inLibIBAN.Types.pas"/>
         <DCCReference Include="inLibIBAN.Funcs.pas"/>
+        <DCCReference Include="inMtoModalCliEti.pas">
+            <Form>frmPrintCliEti</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
