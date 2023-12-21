@@ -396,40 +396,39 @@ procedure ForceReferenceToClass(C: TClass); begin end;
 
 procedure TfrmMtoFacturas.btnCODIGO_EMPRESA_FACTURAPropertiesEditValueChanged(
   Sender: TObject);
- var
-    e: TcxCustomEdit;
-    sCodigo:String;
-    unqrySol:TUniQuery;
+var
+  e: TcxCustomEdit;
+  sCodigo:String;
+  unqrySol:TUniQuery;
 begin
   inherited;
-  if ((dmmFacturas <> nil)) then
-    if ((dsTablaG.DataSet.State = dsInsert) or
-       (dsTablaG.Dataset.State = dsEdit))
-         //and not dmmFacturas.bEsNuevaEmpresa
-       then
+  if ((dsTablaG.DataSet.State = dsInsert) or
+     (dsTablaG.Dataset.State = dsEdit))
+       //and not dmmFacturas.bEsNuevaEmpresa
+     then
+  begin
+    e := Sender as TcxCustomEdit;
+    sCodigo := VarToStr(e.EditingValue);
+    if ((sCodigo <> '') and (sCodigo <> '0')) then
     begin
-      e := Sender as TcxCustomEdit;
-      sCodigo := VarToStr(e.EditingValue);
-      if ((sCodigo <> '') and (sCodigo <> '0')) then
-      begin
-        dsTablaG.Dataset.FindField('CODIGO_EMPRESA_FACTURA').AsString :=
-                                                       VarToStr(e.EditingValue);
-        unqrySol := TUniQuery.Create(Self);
-        unqrySol.Connection := oConn;
-        unqrySol.SQL.Text := 'SELECT * ' +
-                             '  FROM fza_empresas ' +
-                             ' WHERE CODIGO_EMPRESA = :empresa';
-        unqrySol.ParamByName('empresa').AsString := VarToStr(e.EditingValue);
-        unqrySol.Open;
-        if unqrySol.RecordCount = 0 then
-          Sleep(0)
-          //MessageDlg('Empresa: #' + VarToStr(e.EditingValue) + '# no existe')
-        else
-          dmmFacturas.CopiarEmpresaaFactura(unqrySol);
-        unqrySol.Close;
-        FreeAndNil(unqrySol);
-      end;
+      dsTablaG.Dataset.FindField('CODIGO_EMPRESA_FACTURA').AsString :=
+                                                     VarToStr(e.EditingValue);
+      unqrySol := TUniQuery.Create(Self);
+      unqrySol.Connection := oConn;
+      unqrySol.SQL.Text := 'SELECT * ' +
+                           '  FROM fza_empresas ' +
+                           ' WHERE CODIGO_EMPRESA = :empresa';
+      unqrySol.ParamByName('empresa').AsString := VarToStr(e.EditingValue);
+      unqrySol.Open;
+      if unqrySol.RecordCount = 0 then
+        Sleep(0)
+        //MessageDlg('Empresa: #' + VarToStr(e.EditingValue) + '# no existe')
+      else
+        dmmFacturas.CopiarEmpresaaFactura(unqrySol);
+      unqrySol.Close;
+      FreeAndNil(unqrySol);
     end;
+  end;
 end;
 
 procedure TfrmMtoFacturas.ResetForm;
@@ -679,29 +678,29 @@ begin
   begin
     if ((State = dsEdit) or (State = dsInsert)) then
       Post;
-    if (dmmFacturas.unqryRecibos.RecordCount > 0) then
+  end;
+  if (dmmFacturas.unqryRecibos.RecordCount > 0) then
+  begin
+    if ( Application.MessageBox( 'Hay recibos creados, ¿desea reemplazarlos?',
+                                 'Mensaje Advertencia',
+                                 MB_YESNO ) = ID_YES ) then
+      bReemplazar := True
+    else
+      bReemplazar := False;
+  end;
+  if bReemplazar = True then
+  begin
+    with dmmFacturas.unstrdprcGetRecibos do
     begin
-      if ( Application.MessageBox( 'Hay recibos creados, ¿desea reemplazarlos?',
-                                   'Mensaje Advertencia',
-                                   MB_YESNO ) = ID_YES ) then
-        bReemplazar := True
-      else
-        bReemplazar := False;
-    end;
-    if bReemplazar = True then
-    begin
-      with dmmFacturas do
-      begin
-        unstrdprcGetRecibos.ParamByName('pNRO_FACTURA').AsString :=
-                                 FieldByName('NRO_FACTURA').AsString;
-        unstrdprcGetRecibos.ParamByName('pSERIE_FACTURA').AsString :=
-                                FieldByName('SERIE_FACTURA').AsString;
-        unstrdprcGetRecibos.ParamByName('pINSTANTEMODIF').AsDateTime := Now;
-        unstrdprcGetRecibos.ParamByName('pUSUARIO').AsString := oUser;
-        unstrdprcGetRecibos.ExecProc;
-        unqryRecibos.Close;
-        unqryRecibos.Open;
-      end;
+      ParamByName('pNRO_FACTURA').AsString :=
+           FieldByName('NRO_FACTURA').AsString;
+      ParamByName('pSERIE_FACTURA').AsString :=
+          FieldByName('SERIE_FACTURA').AsString;
+      ParamByName('pINSTANTEMODIF').AsDateTime := Now;
+      ParamByName('pUSUARIO').AsString := oUser;
+      ExecProc;
+      dmmFacturas.unqryRecibos.Close;
+      dmmFacturas.unqryRecibos.Open;
     end;
   end;
 end;
@@ -801,19 +800,16 @@ var
  NewValue: Variant;
 begin
   inherited;
-  if (dmmFacturas <> nil) then
+  Edit := Sender as TcxCustomEdit;
+  NewValue := Edit.EditingValue;
+  if (NewValue <> null) then
   begin
-    Edit := Sender as TcxCustomEdit;
-    NewValue := Edit.EditingValue;
-    if (NewValue <> null) then
+    if ((dsTablaG.DataSet.State = dsEdit) or
+        (dsTablaG.DataSet.State = dsInsert)) then
     begin
-      if ((dsTablaG.DataSet.State = dsEdit) or
-          (dsTablaG.DataSet.State = dsInsert)) then
-      begin
-      dsTablaG.DataSet.FieldByName('GRUPO_ZONA_IVA_EMPRESA_FACTURA').AsString :=
-                                                             VarToStr(NewValue);
-        CambiarIVA;
-      end;
+    dsTablaG.DataSet.FieldByName('GRUPO_ZONA_IVA_EMPRESA_FACTURA').AsString :=
+                                                           VarToStr(NewValue);
+      CambiarIVA;
     end;
   end;
 end;
@@ -831,7 +827,7 @@ begin
   inherited;
   if dmmFacturas <> nil then
     dmmFacturas := nil;
-  dmmFacturas := tdmDataModule as TdmFacturas;
+  dmmFacturas := (tdmDataModule as TdmFacturas);
   cbbSerieFactura.Properties.ListSource := dmmFacturas.dsSeries;
   cbbCanalIVA.Properties.ListSource := dmmFacturas.dsIvas;
   cbbFORMAPAGO.Properties.ListSource := dmmFacturas.dsFormasPago;
@@ -948,44 +944,40 @@ end;
 procedure TfrmMtoFacturas.dsTablaGStateChange(Sender: TObject);
 begin
   inherited;
-
-  if (dmmFacturas <> nil) then
+  if (dsTablaG.State = dsInsert) then
   begin
-    if (dsTablaG.State = dsInsert) then
+    txtNRO_FACTURA.Enabled := True;
+    spnRetencion.Enabled := True;
+  end
+  else
+  begin
+    txtNRO_FACTURA.Enabled := False;
+    spnRetencion.Enabled := False;
+  end;
+  if (dsTablaG.DataSet.State <> dsInsert) then
+  begin
+    txtNRO_FACTURA.Properties.ReadOnly := True;
+    cbbSerieFactura.Properties.ReadOnly := True;
+    cbbTARIFA_ARTICULOS_CLIENTES.Properties.ReadOnly := True;
+    cbbCanalIVA.Properties.ReadOnly := True;
+    if (cbbSerieFactura.Properties.ListSource <> dmmFacturas.dsSeries) then
     begin
-      txtNRO_FACTURA.Enabled := True;
-      spnRetencion.Enabled := True;
-    end
-    else
-    begin
-      txtNRO_FACTURA.Enabled := False;
-      spnRetencion.Enabled := False;
+      cbbSerieFactura.Properties.ListSource := dmmFacturas.dsSeries;
+      cbbSerieFactura.Refresh;
     end;
-    if (dsTablaG.DataSet.State <> dsInsert) then
-    begin
-      txtNRO_FACTURA.Properties.ReadOnly := True;
-      cbbSerieFactura.Properties.ReadOnly := True;
-      cbbTARIFA_ARTICULOS_CLIENTES.Properties.ReadOnly := True;
-      cbbCanalIVA.Properties.ReadOnly := True;
-      if (cbbSerieFactura.Properties.ListSource <> dmmFacturas.dsSeries) then
-      begin
-        cbbSerieFactura.Properties.ListSource := dmmFacturas.dsSeries;
-        cbbSerieFactura.Refresh;
-      end;
-    end;
-    if ((dsTablaG.DataSet.State = dsInsert) or
-        (dsTablaG.DataSet.State = dsEdit)) then
-    begin
-      btnNuevaFactura.Enabled := False;
-      btnRectificar.Enabled := False;
-      btnImprimir.Enabled := False;
-    end
-    else
-    begin
-      btnNuevaFactura.Enabled := True;
-      btnRectificar.Enabled := True;
-      btnImprimir.Enabled := True;
-    end;
+  end;
+  if ((dsTablaG.DataSet.State = dsInsert) or
+      (dsTablaG.DataSet.State = dsEdit)) then
+  begin
+    btnNuevaFactura.Enabled := False;
+    btnRectificar.Enabled := False;
+    btnImprimir.Enabled := False;
+  end
+  else
+  begin
+    btnNuevaFactura.Enabled := True;
+    btnRectificar.Enabled := True;
+    btnImprimir.Enabled := True;
   end;
 end;
 
@@ -995,7 +987,7 @@ procedure TfrmMtoFacturas.dteFECHA_FACTURAKeyUp(Sender: TObject;
 begin
   inherited;
   if ((Key = VK_DOWN) and (Shift = [ssShift])) then
-      dteFECHA_FACTURA.DroppedDown := True;
+    dteFECHA_FACTURA.DroppedDown := True;
 end;
 
 procedure TfrmMtoFacturas.dteFECHA_FACTURAPropertiesChange(Sender: TObject);
@@ -1004,23 +996,22 @@ var
   NewValue : Variant;
 begin
   inherited;
-  if (dmmFacturas <> nil) then
-    if ((dsTablaG.DataSet.State = dsInsert) or
+  if ((dsTablaG.DataSet.State = dsInsert) or
       (dsTablaG.DataSet.State = dsEdit)
      ) then
+  begin
+    e := Sender as TcxCustomEdit;
+    NewValue := e.EditingValue;
+    if (NewValue <> null) then
     begin
-      e := Sender as TcxCustomEdit;
-      NewValue := e.EditingValue;
-      if (NewValue <> null) then
-      begin
-        dmmFacturas.unqryTablaG.FindField('FECHA_FACTURA').AsDateTime :=
-                                                        VarToDateTime(NewValue);
-        CambiarIVA;
-        dmmFacturas.CalcularRetencionesEmpresa;
-        if (dsTablaG.DataSet.State = dsInsert) then
-          ActualizarComboSeries;
-      end;
+      dmmFacturas.unqryTablaG.FindField('FECHA_FACTURA').AsDateTime :=
+                                                      VarToDateTime(NewValue);
+      CambiarIVA;
+      dmmFacturas.CalcularRetencionesEmpresa;
+      if (dsTablaG.DataSet.State = dsInsert) then
+        ActualizarComboSeries;
     end;
+  end;
 end;
 
 procedure TfrmMtoFacturas.btnIrAClienteClick(Sender: TObject);
@@ -1048,19 +1039,18 @@ var
   e : TcxCustomEdit;
 begin
   inherited;
-      if (dmmFacturas <> nil) then
-    with dmmFacturas.unqryLinFac do
+  with dmmFacturas.unqryLinFac do
+  begin
+    if ((State = dsInsert) or (State = dsEdit)) then
     begin
-      if ((State = dsInsert) or (State = dsEdit)) then
-      begin
-        e := Sender as TcxCustomEdit;
-        FindField('CANTIDAD_FACTURA_LINEA').AsString :=
-                                                       VarToStr(e.EditingValue);
-        FindField('TOTAL_FACTURA_LINEA').AsFloat :=
-               FindField('CANTIDAD_FACTURA_LINEA').AsFloat *
-               FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat;
-      end;
+      e := Sender as TcxCustomEdit;
+      FindField('CANTIDAD_FACTURA_LINEA').AsString :=
+                                                     VarToStr(e.EditingValue);
+      FindField('TOTAL_FACTURA_LINEA').AsFloat :=
+             FindField('CANTIDAD_FACTURA_LINEA').AsFloat *
+             FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat;
     end;
+  end;
 end;
 
 procedure TfrmMtoFacturas.
@@ -1069,22 +1059,23 @@ procedure TfrmMtoFacturas.
 var
   formulario : TfrmMtoSearch;
 begin
+  inherited;
   formulario := TfrmMtoSearch.Create(Self.Owner);
-  formulario.Name := 'frmMtoArtFacSearch';
   try
+    formulario.Name := 'frmMtoArtFacSearch';
     dmmFacturas.unqryArtDataLinFac.ParamByName('TARIFA').AsString :=
-  dmmFacturas.unqryTablaG.FindField('TARIFA_ARTICULO_CLIENTE_FACTURA').AsString;
+    dmmFacturas.unqryTablaG.FindField(
+                                    'TARIFA_ARTICULO_CLIENTE_FACTURA').AsString;
     formulario.dsTablaG.DataSet := dmmFacturas.unqryArtDataLinFac;
     formulario.dsTablaG.DataSet.Open;
     formulario.ProcesarPerfiles;
     formulario.Caption := 'Búsqueda de Artículos en Lineas de Facturas';
     formulario.ShowModal;
-  finally
-   inherited;
    if (formulario.sFicha = 'S') then
         dmmFacturas.CopiarArticuloaLinea(dmmFacturas.unqryArtDataLinFac);
-      formulario.dsTablaG.DataSet.Close;
-      FreeAndNil(formulario);
+   formulario.dsTablaG.DataSet.Close;
+  finally
+   FreeAndNil(formulario);
   end;
 end;
 
@@ -1097,38 +1088,35 @@ procedure TfrmMtoFacturas.
     unqrySol:TUniQuery;
 begin
   inherited;
-  if (dmmFacturas <> nil) then
+  with dmmFacturas.unqryLinFac do
   begin
-    with dmmFacturas.unqryLinFac do
+    if (((State = dsInsert) or
+         (State = dsEdit))
+       ) then
     begin
-      if (((State = dsInsert) or
-           (State = dsEdit))
-         ) then
+      e := Sender as TcxCustomEdit;
+      sCodigo := VarToStr(e.EditingValue);
+      if ((sCodigo <> '') ) then
       begin
-        e := Sender as TcxCustomEdit;
-        sCodigo := VarToStr(e.EditingValue);
-        if ((sCodigo <> '') ) then
-        begin
-          dmmFacturas.unqryLinFac.FindField(
-                                    'CODIGO_ARTICULO_FACTURA_LINEA').AsString :=
-                                                       VarToStr(e.EditingValue);
-          unqrySol := TUniQuery.Create(Self);
-          unqrySol.Connection := inLibGlobalVar.oConn;
-          unqrySol.SQL.Text := 'SELECT * FROM vi_art_busquedas ' +
-                               ' WHERE CODIGO_TARIFA = :tarifa' +
-                               ' AND CODIGO_ARTICULO = :articulo';
-          unqrySol.ParamByName('articulo').AsString := VarToStr(e.EditingValue);
-          unqrySol.ParamByName('tarifa').AsString :=
-            dmmFacturas.unqryTablaG.FindField(
-                                    'TARIFA_ARTICULO_CLIENTE_FACTURA').AsString;
-          unqrySol.Open;
-          if unqrySol.RecordCount = 0 then
-            Sleep(0) //si no existe artículo y tarifa, no hago nada
-           else
-             dmmFacturas.CopiarArticuloaLinea(unqrySol);
-          unqrySol.Close;
-          FreeAndNil(unqrySol);
-        end;
+        dmmFacturas.unqryLinFac.FindField(
+                                  'CODIGO_ARTICULO_FACTURA_LINEA').AsString :=
+                                                     VarToStr(e.EditingValue);
+        unqrySol := TUniQuery.Create(Self);
+        unqrySol.Connection := inLibGlobalVar.oConn;
+        unqrySol.SQL.Text := 'SELECT * FROM vi_art_busquedas ' +
+                             ' WHERE CODIGO_TARIFA = :tarifa' +
+                             ' AND CODIGO_ARTICULO = :articulo';
+        unqrySol.ParamByName('articulo').AsString := VarToStr(e.EditingValue);
+        unqrySol.ParamByName('tarifa').AsString :=
+          dmmFacturas.unqryTablaG.FindField(
+                                  'TARIFA_ARTICULO_CLIENTE_FACTURA').AsString;
+        unqrySol.Open;
+        if unqrySol.RecordCount = 0 then
+          Sleep(0) //si no existe artículo y tarifa, no hago nada
+         else
+           dmmFacturas.CopiarArticuloaLinea(unqrySol);
+        unqrySol.Close;
+        FreeAndNil(unqrySol);
       end;
     end;
   end;
@@ -1141,51 +1129,49 @@ var
   E : TcxCustomEdit;
 begin
   inherited;
-  if (dmmFacturas <> nil) then
-    if ((dmmFacturas.unqryLinFac.State = dsInsert) or
-        (dmmFacturas.unqryLinFac.State = dsEdit)) then
-    begin
-       with dmmFacturas.unstrdprcGetDataArticulo do
-       begin
-         e := Sender as TcxCustomEdit;
-         ParamByName('pidcodarticulo').AsString :=  VarToStr(e.EditingValue);
-         ExecProc;
-         dmmFacturas.unqryLinFac.FindField('CODIGO_ARTICULO_LINEA').AsString :=
-                                                       VarToStr(e.EditingValue);
-         dmmFacturas.unqryLinFac.FindField(
-                                       'DESCRIPCION_ARTICULO_LINEA').AsString :=
-                                         ParamByName('pidnomarticulo').AsString;
-         dmmFacturas.unqryLinFac.FindField(
-                                        'PRECIOVENTA_ARTICULO_LINEA').AsFloat :=
-                                          ParamByName('pidprecioventa').AsFloat;
-       end;
-    end;
+  if ((dmmFacturas.unqryLinFac.State = dsInsert) or
+      (dmmFacturas.unqryLinFac.State = dsEdit)) then
+  begin
+     with dmmFacturas.unstrdprcGetDataArticulo do
+     begin
+       e := Sender as TcxCustomEdit;
+       ParamByName('pidcodarticulo').AsString :=  VarToStr(e.EditingValue);
+       ExecProc;
+       dmmFacturas.unqryLinFac.FindField('CODIGO_ARTICULO_LINEA').AsString :=
+                                                     VarToStr(e.EditingValue);
+       dmmFacturas.unqryLinFac.FindField(
+                                     'DESCRIPCION_ARTICULO_LINEA').AsString :=
+                                       ParamByName('pidnomarticulo').AsString;
+       dmmFacturas.unqryLinFac.FindField(
+                                      'PRECIOVENTA_ARTICULO_LINEA').AsFloat :=
+                                        ParamByName('pidprecioventa').AsFloat;
+     end;
+  end;
 end;
 
 procedure TfrmMtoFacturas.
  cxgrdbclmntv1PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEAPropertiesEditValueChanged(
                                                                Sender: TObject);
 var
-    e: TcxCustomEdit;
+  e: TcxCustomEdit;
 begin
   inherited;
-  if (dmmFacturas <> nil) then
-    with dmmFacturas.unqryLinFac do
+  with dmmFacturas.unqryLinFac do
+  begin
+  if ((State = dsInsert) or (State = dsEdit)) then
     begin
-    if ((State = dsInsert) or (State = dsEdit)) then
-      begin
-        e := Sender as TcxCustomEdit;
-        FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsString :=
-                                                      VarToStr(e.EditingValue);
-        FindField('PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA').AsFloat :=
-               ( FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat /
-                 (1 + FindField('PORCEN_IVA_FACTURA_LINEA').AsInteger/100)
-               );
-        FindField('TOTAL_FACTURA_LINEA').AsFloat :=
-               FindField('CANTIDAD_FACTURA_LINEA').AsFloat *
-               FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat;
-      end;
+      e := Sender as TcxCustomEdit;
+      FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsString :=
+                                                    VarToStr(e.EditingValue);
+      FindField('PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA').AsFloat :=
+             ( FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat /
+               (1 + FindField('PORCEN_IVA_FACTURA_LINEA').AsInteger/100)
+             );
+      FindField('TOTAL_FACTURA_LINEA').AsFloat :=
+             FindField('CANTIDAD_FACTURA_LINEA').AsFloat *
+             FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat;
     end;
+  end;
 end;
 
 procedure TfrmMtoFacturas.
@@ -1195,23 +1181,22 @@ var
     e: TcxCustomEdit;
 begin
   inherited;
-    if (dmmFacturas <> nil) then
-    with dmmFacturas.unqryLinFac do
+  with dmmFacturas.unqryLinFac do
+  begin
+    if ((State = dsInsert) or (State = dsEdit)) then
     begin
-      if ((State = dsInsert) or (State = dsEdit)) then
-      begin
-        e := Sender as TcxCustomEdit;
-        FindField('PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA').AsString :=
-                                                       VarToStr(e.EditingValue);
-        FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat :=
-               ( FindField('PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA').AsFloat *
-                    (1 +
-                    FindField('PORCEN_IVA_FACTURA_LINEA').AsInteger/100));
-        FindField('TOTAL_FACTURA_LINEA').AsFloat :=
-               FindField('CANTIDAD_FACTURA_LINEA').AsFloat *
-               FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat;
-      end;
+      e := Sender as TcxCustomEdit;
+      FindField('PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA').AsString :=
+                                                     VarToStr(e.EditingValue);
+      FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat :=
+             ( FindField('PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA').AsFloat *
+                  (1 +
+                  FindField('PORCEN_IVA_FACTURA_LINEA').AsInteger/100));
+      FindField('TOTAL_FACTURA_LINEA').AsFloat :=
+             FindField('CANTIDAD_FACTURA_LINEA').AsFloat *
+             FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat;
     end;
+  end;
 end;
 
 procedure TfrmMtoFacturas.
@@ -1250,8 +1235,6 @@ begin
         (dsLinFac.Dataset.State = dsEdit)) then
     begin
       dsLinFac.Dataset.Post;
-//      dsLinFac.Dataset.Refresh;
-//      unqryTablaG.Refresh;
     end;
     if ((dsRecibos.Dataset.State = dsInsert) or
         (dsRecibos.Dataset.State = dsEdit)) then
@@ -1260,8 +1243,6 @@ begin
       dsRecibos.Dataset.Refresh;
     end;
   end;
-  if oDmConn.conUni.InTransaction = True then
-    oDmConn.conUni.Commit;
 end;
 
 procedure TfrmMtoFacturas.tvLineasFacturaKeyDown(Sender: TObject;
@@ -1278,9 +1259,7 @@ end;
 
 procedure TfrmMtoFacturas.CambiarIVA;
 begin
-  if ( (dmmFacturas <> nil) and
-       (dsTablaG.DataSet <> nil) and
-       ((dsTablaG.DataSet.State = dsEdit) or
+  if ( ((dsTablaG.DataSet.State = dsEdit) or
         (dsTablaG.DataSet.State = dsInsert)
        )
      ) then

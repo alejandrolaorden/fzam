@@ -195,7 +195,7 @@ begin
       ParamByName('fecha_fin').AsDateTime :=
                               unqryT.FieldByName('FECHA_FACTURA').AsDateTime;
       Open;
-      if unqrySol.RecordCount > 0 then
+      if (unqrySol.RecordCount > 0) then
       begin
          unqryT.FindField('PORCEN_IVAN_FACTURA').AsString :=
                               FieldByName('PORCENNORMAL_IVA').AsString;
@@ -694,8 +694,7 @@ end;
 
 procedure TdmFacturas.GetCodigoAutoFactura;
 begin
-  if ((unqryTablaG.FindField('NRO_FACTURA').AsString = '0') or
-      (unqryTablaG.FindField('NRO_FACTURA').AsString = '')) then
+  if (unqryTablaG.FindField('NRO_FACTURA').AsString = '0') then
   begin
     with unstrdprcGetContadorFactura do
     begin
@@ -720,8 +719,7 @@ end;
 
 procedure TdmFacturas.GetCodigoAutoCliente;
 begin
-  if ((unqryTablaG.FindField('CODIGO_CLIENTE_FACTURA').AsString = '0') or
-      (unqryTablaG.FindField('CODIGO_CLIENTE_FACTURA').AsString = '')) then
+  if (unqryTablaG.FindField('CODIGO_CLIENTE_FACTURA').AsString = '0') then
   begin
     //bEsNuevoCliente := True;
     with unstrdprcGetContador do

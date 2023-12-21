@@ -206,13 +206,11 @@ end;
 
 procedure TfrmOpenApp2.CopiaSeguridad;
 var
-  savedialog:TSaveDialog;
   iButtonSel:Integer;
   s         :string;
   MyText    :TStringlist;
 begin
   iButtonSel := 0;
-  savedialog := TSaveDialog.Create(Self);
   saveDialog.Title := 'Guardar copia de seguridad';
   saveDialog.InitialDir := GetCurrentDir;
   savedialog.FileName := 'copiaseguridad' + FormatDateTime('_dd_mm', Now) +
@@ -247,7 +245,6 @@ begin
       ShowMessage('La copia se guardó exitosamente');
     end;
   end;
-  FreeAndNil(savedialog);
 end;
 
 procedure TfrmOpenApp2.FormClose(Sender: TObject; var Action: TCloseAction);

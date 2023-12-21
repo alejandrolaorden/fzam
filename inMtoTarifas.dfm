@@ -17,12 +17,13 @@ inherited frmMtoTarifas: TfrmMtoTarifas
       Width = 715
       Height = 574
       TabOrder = 1
-      Properties.ActivePage = tsFicha
       ExplicitWidth = 715
       ExplicitHeight = 574
       ClientRectBottom = 568
       ClientRectRight = 709
       inherited tsLista: TcxTabSheet
+        ExplicitLeft = 3
+        ExplicitTop = 32
         ExplicitWidth = 706
         ExplicitHeight = 536
         inherited cxGrdPrincipal: TcxGrid
@@ -48,18 +49,6 @@ inherited frmMtoTarifas: TfrmMtoTarifas
               DataBinding.FieldName = 'ACTIVO_TARIFA'
               DataBinding.IsNullValueType = True
               Width = 75
-            end
-            object cxgrdbclmnGrdDBTabPrinFECHA_DESDE_TARIFA: TcxGridDBColumn
-              Caption = 'Fecha Validez Desde'
-              DataBinding.FieldName = 'FECHA_DESDE_TARIFA'
-              DataBinding.IsNullValueType = True
-              Width = 206
-            end
-            object cxgrdbclmnGrdDBTabPrinFECHA_HASTA_TARIFA: TcxGridDBColumn
-              Caption = 'Fecha Validez Hasta'
-              DataBinding.FieldName = 'FECHA_HASTA_TARIFA'
-              DataBinding.IsNullValueType = True
-              Width = 201
             end
             object cxgrdbclmnGrdDBTabPrinESIMP_INCL_TARIFA: TcxGridDBColumn
               Caption = 'Impuestos incl.'
@@ -103,6 +92,8 @@ inherited frmMtoTarifas: TfrmMtoTarifas
         end
       end
       inherited tsFicha: TcxTabSheet
+        ExplicitLeft = 3
+        ExplicitTop = 32
         ExplicitWidth = 706
         ExplicitHeight = 536
         object pnl1: TPanel
@@ -624,52 +615,6 @@ inherited frmMtoTarifas: TfrmMtoTarifas
                   Transparent = True
                 end
               end
-              object cxdbdtdtFECHA_FACTURA: TcxDBDateEdit
-                Left = 215
-                Top = 71
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
-                DataBinding.DataField = 'FECHA_DESDE_TARIFA'
-                DataBinding.DataSource = dsTablaG
-                Properties.DateButtons = [btnClear, btnToday]
-                TabOrder = 1
-                Width = 143
-              end
-              object cxlbllblcxlbl3: TcxLabel
-                Left = 33
-                Top = 72
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
-                Caption = 'Fecha Validez Desde'
-                Transparent = True
-              end
-              object cxdbdtdtFECHA_FACTURA1: TcxDBDateEdit
-                Left = 215
-                Top = 108
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
-                DataBinding.DataField = 'FECHA_HASTA_TARIFA'
-                DataBinding.DataSource = dsTablaG
-                Properties.DateButtons = [btnClear, btnToday]
-                TabOrder = 3
-                Width = 143
-              end
-              object cxlbllblcxlbl31: TcxLabel
-                Left = 38
-                Top = 109
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
-                Caption = 'Fecha Validez Hasta'
-                Transparent = True
-              end
             end
           end
         end
@@ -689,6 +634,9 @@ inherited frmMtoTarifas: TfrmMtoTarifas
         inherited pnlPerfilTop: TPanel
           Width = 706
           ExplicitWidth = 706
+          inherited edtPerfilBusq: TcxTextEdit
+            ExplicitHeight = 27
+          end
         end
         inherited pnlPerfilDetail: TPanel
           Width = 706
@@ -734,6 +682,9 @@ inherited frmMtoTarifas: TfrmMtoTarifas
       inherited pnlTopGrid: TPanel
         Width = 715
         ExplicitWidth = 715
+        inherited edtBusqGlobal: TcxTextEdit
+          ExplicitHeight = 27
+        end
       end
     end
   end

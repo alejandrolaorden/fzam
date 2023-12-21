@@ -1,5 +1,4 @@
 inherited dmFacturas: TdmFacturas
-  OldCreateOrder = True
   Height = 638
   Width = 1332
   inherited unqryTablaG: TUniQuery
@@ -348,6 +347,7 @@ inherited dmFacturas: TdmFacturas
       'ESVERBANCOEMPRESA_FORMAPAGO=ESVERBANCOEMPRESA_FORMAPAGO')
     DataSource = dsFacPrint
     BCDToCurrency = False
+    DataSetOptions = []
     Left = 568
     Top = 432
   end
@@ -387,6 +387,7 @@ inherited dmFacturas: TdmFacturas
       'USUARIOMODIF=USUARIOMODIF')
     DataSource = dsLinFacPrint
     BCDToCurrency = False
+    DataSetOptions = []
     Left = 648
     Top = 432
   end
@@ -1398,6 +1399,7 @@ inherited dmFacturas: TdmFacturas
       'USUARIOMODIF=USUARIOMODIF')
     DataSource = dsRecibosPrint
     BCDToCurrency = False
+    DataSetOptions = []
     Left = 776
     Top = 432
   end

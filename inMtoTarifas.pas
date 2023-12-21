@@ -28,7 +28,7 @@ uses
   Vcl.Menus, dxSkinsForm, cxButtons, dxSkinsDefaultPainters, cxMemo, cxSpinEdit,
   cxCalendar, cxBlobEdit, dxScrollbarAnnotations, dxCore, cxRadioGroup,
   System.Actions, Vcl.ActnList, Vcl.PlatformDefaultStyleActnCtrls, Vcl.ActnMan,
-  cxSplitter, JvComponentBase, JvEnterTab;
+  cxSplitter, JvComponentBase, JvEnterTab, dxShellDialogs;
 
 type
   TfrmMtoTarifas = class(TfrmMtoGen)
@@ -58,18 +58,12 @@ type
     cxgrdbclmnGrdDBTabPrinCODIGO_TARIFA: TcxGridDBColumn;
     cxgrdbclmnGrdDBTabPrinNOMBRE_TARIFA: TcxGridDBColumn;
     cxgrdbclmnGrdDBTabPrinACTIVO_TARIFA: TcxGridDBColumn;
-    cxgrdbclmnGrdDBTabPrinFECHA_DESDE_TARIFA: TcxGridDBColumn;
-    cxgrdbclmnGrdDBTabPrinFECHA_HASTA_TARIFA: TcxGridDBColumn;
     cxgrdbclmnGrdDBTabPrinESIMP_INCL_TARIFA: TcxGridDBColumn;
     cxgrdbclmnGrdDBTabPrinESDEFAULT_TARIFA: TcxGridDBColumn;
     cxgrdbclmnGrdDBTabPrinINSTANTEMODIF: TcxGridDBColumn;
     cxgrdbclmnGrdDBTabPrinINSTANTEALTA: TcxGridDBColumn;
     cxgrdbclmnGrdDBTabPrinUSUARIOALTA: TcxGridDBColumn;
     cxgrdbclmnGrdDBTabPrinUSUARIOMODIF: TcxGridDBColumn;
-    cxdbdtdtFECHA_FACTURA: TcxDBDateEdit;
-    cxlbllblcxlbl3: TcxLabel;
-    cxdbdtdtFECHA_FACTURA1: TcxDBDateEdit;
-    cxlbllblcxlbl31: TcxLabel;
     cxdbchckbxACTIVO_TARIFA: TcxDBCheckBox;
     pnl6: TPanel;
     btnIraArticulo: TcxButton;
