@@ -373,6 +373,9 @@ inherited dmFacturas: TdmFacturas
         'LINEA'
       'CODIGO_TARIFA_FACTURA_LINEA=CODIGO_TARIFA_FACTURA_LINEA'
       'CANTIDAD_FACTURA_LINEA=CANTIDAD_FACTURA_LINEA'
+      'PRECIOSALIDA_FACTURA_LINEA=PRECIOSALIDA_FACTURA_LINEA'
+      'PORCEN_DTO_FACTURA_LINEA=PORCEN_DTO_FACTURA_LINEA'
+      'PRECIO_DTO_FACTURA_LINEA=PRECIO_DTO_FACTURA_LINEA'
       
         'PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA=PRECIOVENTA_SIVA_ARTICUL' +
         'O_FACTURA_LINEA'
@@ -464,7 +467,7 @@ inherited dmFacturas: TdmFacturas
     Connection = dmConn.conUni
     SQL.Strings = (
       'SELECT *'
-      ' FROM vi_FACTURAS_LINEAS'
+      ' FROM vi_FACTURAS_LINEAS_print'
       'WHERE NRO_FACTURA_LINEA = :NRO_FACTURA'
       '  AND SERIE_FACTURA_LINEA = :SERIE_FACTURA'
       'ORDER BY LINEA_FACTURA_LINEA;')
@@ -688,6 +691,7 @@ inherited dmFacturas: TdmFacturas
     MasterSource = dsFactura
     MasterFields = 'SERIE_FACTURA;NRO_FACTURA'
     DetailFields = 'SERIE_FACTURA_LINEA;NRO_FACTURA_LINEA'
+    Active = True
     BeforeInsert = zqryLinFacBeforeInsert
     AfterInsert = unqryLinFacAfterInsert
     BeforeEdit = zqryLinFacBeforeInsert

@@ -73,7 +73,7 @@ begin
     begin
       Params.Clear;
       SQL.Text := '       SELECT * ' +
-                  '         FROM vi_FACTURAS_LINEAS V  ' +
+                  '         FROM vi_FACTURAS_LINEAS_print V  ' +
                   '        WHERE V.NRO_FACTURA_LINEA = :numfac' +
                   '          AND V.SERIE_FACTURA_LINEA = :serie ' +
                   '     order by V.LINEA_FACTURA_LINEA';
@@ -106,8 +106,8 @@ begin
     begin
       Params.Clear;
       SQL.Text := '    SELECT *  ' +
-                  '      FROM vi_FACTURAS_LINEAS L ' +
-                  'INNER JOIN vi_FACTURAS F ' +
+                  '      FROM vi_FACTURAS_LINEAS_print L ' +
+                  'INNER JOIN vi_FACTURAS_print F ' +
                   '        ON F.NRO_FACTURA = L.NRO_FACTURA_LINEA ' +
                   '       AND F.SERIE_FACTURA = L.SERIE_FACTURA_LINEA ' +
                   '     WHERE F.fecha_FACTURA >= :fecha_ini ' +
@@ -138,4 +138,5 @@ begin
   dedDesde.Enabled := true;
   dedHasta.Enabled := true;
 end;
+
 end.

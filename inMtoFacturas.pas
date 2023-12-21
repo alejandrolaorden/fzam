@@ -297,6 +297,9 @@ type
     lbldbCODIGO_CLIENTE_FACTURA: TcxDBLabel;
     lbldbCODIGO_CLIENTE: TcxDBLabel;
     cxDBCheckBox1: TcxDBCheckBox;
+    tvLineasFacturaPRECIOSALIDA_FACTURA_LINEA: TcxGridDBColumn;
+    tvLineasFacturaPORCEN_DTO_FACTURA_LINEA: TcxGridDBColumn;
+    tvLineasFacturaPRECIO_DTO_FACTURA_LINEA: TcxGridDBColumn;
     procedure sbGrabarClick(Sender: TObject);
     procedure btnUpdateClienteClick(Sender: TObject);
     procedure sbNuevaFacturaClick(Sender: TObject);
@@ -359,6 +362,8 @@ type
     procedure cxgrdbclmntv1CANTIDAD_FACTURA_LINEAPropertiesEditValueChanged(
       Sender: TObject);
     procedure cxgrdbclmntv1TIPOIVA_ARTICULO_FACTURA_LINEAPropertiesChange(
+      Sender: TObject);
+    procedure tvLineasFacturaPRECIOSALIDA_FACTURA_LINEAPropertiesEditValueChanged(
       Sender: TObject);
 //    procedure FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
   public
@@ -960,11 +965,11 @@ begin
     cbbSerieFactura.Properties.ReadOnly := True;
     cbbTARIFA_ARTICULOS_CLIENTES.Properties.ReadOnly := True;
     cbbCanalIVA.Properties.ReadOnly := True;
-    if (cbbSerieFactura.Properties.ListSource <> dmmFacturas.dsSeries) then
-    begin
-      cbbSerieFactura.Properties.ListSource := dmmFacturas.dsSeries;
-      cbbSerieFactura.Refresh;
-    end;
+//    if (cbbSerieFactura.Properties.ListSource <> dmmFacturas.dsSeries) then
+//    begin
+//      cbbSerieFactura.Properties.ListSource := dmmFacturas.dsSeries;
+//      cbbSerieFactura.Refresh;
+//    end;
   end;
   if ((dsTablaG.DataSet.State = dsInsert) or
       (dsTablaG.DataSet.State = dsEdit)) then
@@ -1178,7 +1183,7 @@ procedure TfrmMtoFacturas.
  cxgrdbclmntv1PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEAPropertiesEditValueChanged(
                                                                Sender: TObject);
 var
-    e: TcxCustomEdit;
+  e: TcxCustomEdit;
 begin
   inherited;
   with dmmFacturas.unqryLinFac do
@@ -1255,6 +1260,30 @@ begin
         (dmmFacturas.dsLinFac.DataSet.RecordCount = 0)
        ) then
       tvLineasFactura.DataController.Insert;
+end;
+
+procedure TfrmMtoFacturas.tvLineasFacturaPRECIOSALIDA_FACTURA_LINEAPropertiesEditValueChanged(
+  Sender: TObject);
+var
+  e: TcxCustomEdit;
+begin
+  inherited;
+    with dmmFacturas.unqryLinFac do
+  begin
+    if ((State = dsInsert) or (State = dsEdit)) then
+    begin
+      e := Sender as TcxCustomEdit;
+      FieldByName('ESIMP_INCL_TARIFA_FACTURA_LINEA').AsString :=
+                                                       VarToStr(e.EditingValue);
+      if (FieldByName('ESIMP_INCL_TARIFA_FACTURA_LINEA').AsString = 'S') then
+        FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsString :=
+                                                        VarToStr(e.EditingValue)
+      else
+        FindField('PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA').AsString :=
+                                                       VarToStr(e.EditingValue);
+
+    end;
+  end;
 end;
 
 procedure TfrmMtoFacturas.CambiarIVA;

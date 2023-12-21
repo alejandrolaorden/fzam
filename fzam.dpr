@@ -71,7 +71,8 @@ uses
   inLibIBAN.Utils in 'inLibIBAN.Utils.pas',
   inLibIBAN.Types in 'inLibIBAN.Types.pas',
   inLibIBAN.Funcs in 'inLibIBAN.Funcs.pas',
-  inMtoModalCliEti in 'inMtoModalCliEti.pas' {frmPrintCliEti};
+  inMtoModalCliEti in 'inMtoModalCliEti.pas' {frmPrintCliEti},
+  inLibFacturas in 'inLibFacturas.pas';
 
 begin
   {$IFDEF DEBUG}
