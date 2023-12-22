@@ -580,15 +580,24 @@ inherited dmFacturas: TdmFacturas
   object unqryArtDataLinFac: TUniQuery
     Connection = dmConn.conUni
     SQL.Strings = (
-      'select * from vi_art_busquedas'
-      'where codigo_tarifa = :tarifa'
-      'or codigo_tarifa is null')
+      'select * '
+      '  from vi_art_busquedas'
+      ' where (codigo_tarifa = :tarifa'
+      '    or codigo_tarifa is null)'
+      '   AND FECHA_DESDE_TARIFA < :FECHA_FACTURA'
+      '   AND (FECHA_HASTA_TARIFA IS NULL'
+      '        OR FECHA_HASTA_TARIFA > :FECHA_FACTURA)')
     Left = 250
     Top = 536
     ParamData = <
       item
         DataType = ftUnknown
         Name = 'tarifa'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'FECHA_FACTURA'
         Value = nil
       end>
   end

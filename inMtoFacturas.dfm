@@ -12,6 +12,13 @@ inherited frmMtoFacturas: TfrmMtoFacturas
   ExplicitWidth = 1231
   ExplicitHeight = 844
   TextHeight = 19
+  object Shape6: TShape [0]
+    Left = 76
+    Top = 79
+    Width = 533
+    Height = 50
+    Brush.Style = bsClear
+  end
   inherited pButtonPage: TPanel
     Width = 1087
     Height = 844
@@ -41,6 +48,8 @@ inherited frmMtoFacturas: TfrmMtoFacturas
         Margins.Top = 5
         Margins.Right = 5
         Margins.Bottom = 5
+        ExplicitLeft = 3
+        ExplicitTop = 32
         ExplicitWidth = 1078
         ExplicitHeight = 766
         inherited cxGrdPrincipal: TcxGrid
@@ -884,10 +893,15 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                   object tvLineasFacturaPORCEN_DTO_FACTURA_LINEA: TcxGridDBColumn
                     Caption = '% Dto'
                     DataBinding.FieldName = 'PORCEN_DTO_FACTURA_LINEA'
+                    PropertiesClassName = 'TcxSpinEditProperties'
+                    Properties.DisplayFormat = '0.00 %'
+                    Properties.EditFormat = '0.00 %'
+                    Properties.MaxValue = 100.000000000000000000
                   end
                   object tvLineasFacturaPRECIO_DTO_FACTURA_LINEA: TcxGridDBColumn
                     Caption = 'Menos Dto'
                     DataBinding.FieldName = 'PRECIO_DTO_FACTURA_LINEA'
+                    PropertiesClassName = 'TcxCurrencyEditProperties'
                   end
                   object cxgrdbclmntv1PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA: TcxGridDBColumn
                     Caption = 'Precio sin IVA'
@@ -1116,18 +1130,18 @@ inherited frmMtoFacturas: TfrmMtoFacturas
               Caption = '&2_Totales'
               ImageIndex = 2
               object cxdbmskdt1: TcxDBMaskEdit
-                Left = 272
-                Top = 218
+                Left = 225
+                Top = 134
                 DataBinding.DataField = 'PORCEN_RETENCION_FACTURA'
                 DataBinding.DataSource = dsTablaG
                 Properties.EditMask = '!99;1;_'
-                TabOrder = 5
+                TabOrder = 4
                 Visible = False
                 Width = 34
               end
               object lblTotalaPagar: TcxLabel
-                Left = 117
-                Top = 261
+                Left = 105
+                Top = 237
                 Margins.Left = 4
                 Margins.Top = 4
                 Margins.Right = 4
@@ -1136,8 +1150,8 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                 Transparent = True
               end
               object curTotalAPagar: TcxDBCurrencyEdit
-                Left = 246
-                Top = 260
+                Left = 230
+                Top = 233
                 Margins.Left = 4
                 Margins.Top = 4
                 Margins.Right = 4
@@ -1145,24 +1159,25 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                 DataBinding.DataField = 'TOTAL_LIQUIDO_FACTURA'
                 DataBinding.DataSource = dsTablaG
                 Properties.ReadOnly = True
-                TabOrder = 15
+                TabOrder = 14
                 Width = 133
               end
               object curTOTAL_LIQUIDO_FACTURA: TcxDBCurrencyEdit
-                Left = 246
-                Top = 217
+                Left = 230
+                Top = 184
                 Margins.Left = 4
                 Margins.Top = 4
                 Margins.Right = 4
                 Margins.Bottom = 4
                 DataBinding.DataField = 'TOTAL_RETENCION_FACTURA'
                 DataBinding.DataSource = dsTablaG
-                TabOrder = 8
+                Properties.ReadOnly = True
+                TabOrder = 7
                 Width = 133
               end
               object lblTotalRetencionFactura: TcxLabel
-                Left = 33
-                Top = 221
+                Left = 18
+                Top = 188
                 Margins.Left = 4
                 Margins.Top = 4
                 Margins.Right = 4
@@ -1171,8 +1186,8 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                 Transparent = True
               end
               object lblPorcRetencionFactura: TcxLabel
-                Left = 65
-                Top = 182
+                Left = 49
+                Top = 134
                 Margins.Left = 4
                 Margins.Top = 4
                 Margins.Right = 4
@@ -1181,22 +1196,21 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                 Transparent = True
               end
               object spnRetencion: TcxDBSpinEdit
-                Left = 246
-                Top = 181
+                Left = 230
+                Top = 133
                 DataBinding.DataField = 'PORCEN_RETENCION_FACTURA'
                 DataBinding.DataSource = dsTablaG
-                Enabled = False
                 Properties.AssignedValues.MinValue = True
                 Properties.DisplayFormat = '0.00 %'
                 Properties.EditFormat = '0.00 %'
                 Properties.MaxValue = 100.000000000000000000
                 Properties.ReadOnly = False
-                TabOrder = 6
+                TabOrder = 5
                 Width = 133
               end
               object curTOTAL_RETENCION_FACTURA: TcxDBCurrencyEdit
-                Left = 246
-                Top = 108
+                Left = 230
+                Top = 35
                 Margins.Left = 4
                 Margins.Top = 4
                 Margins.Right = 4
@@ -1205,12 +1219,12 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                 DataBinding.DataSource = dsTablaG
                 Properties.DecimalPlaces = 3
                 Properties.ReadOnly = True
-                TabOrder = 1
+                TabOrder = 0
                 Width = 133
               end
               object lblTotalBaseImponible: TcxLabel
-                Left = 54
-                Top = 109
+                Left = 38
+                Top = 36
                 Margins.Left = 4
                 Margins.Top = 4
                 Margins.Right = 4
@@ -1219,8 +1233,8 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                 Transparent = True
               end
               object curTOTAL_BASES_FACTURA: TcxDBCurrencyEdit
-                Left = 246
-                Top = 144
+                Left = 230
+                Top = 80
                 Margins.Left = 4
                 Margins.Top = 4
                 Margins.Right = 4
@@ -1230,12 +1244,12 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                 Properties.DecimalPlaces = 3
                 Properties.DisplayFormat = ',0.00 '#8364';-,0.00 '#8364
                 Properties.ReadOnly = True
-                TabOrder = 2
+                TabOrder = 1
                 Width = 133
               end
               object lbl1TotalImpuestos: TcxLabel
-                Left = 96
-                Top = 145
+                Left = 79
+                Top = 81
                 Margins.Left = 4
                 Margins.Top = 4
                 Margins.Right = 4
@@ -1244,293 +1258,30 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                 Transparent = True
               end
               object chkESIRPF_IMP_INCL_ZONA_IVA_FACTURA: TcxDBCheckBox
-                Left = 422
-                Top = 148
+                Left = 582
+                Top = 352
                 Caption = 'C'#225'lculo IRPF con impuestos (S'#243'lo REAGP)'
                 DataBinding.DataField = 'ESIRPF_IMP_INCL_ZONA_IVA_FACTURA'
                 DataBinding.DataSource = dsTablaG
                 Properties.ValueChecked = 'S'
                 Properties.ValueUnchecked = 'N'
-                TabOrder = 3
+                TabOrder = 2
                 Transparent = True
               end
               object chkESVENTA_ACTIVO_FIJO_FACTURA: TcxDBCheckBox
-                Left = 422
-                Top = 181
+                Left = 582
+                Top = 318
                 Caption = 'Venta de Activo Fijo --Maquinaria, Aperos-- (S'#243'lo REAGP)'
                 DataBinding.DataField = 'ESVENTA_ACTIVO_FIJO_FACTURA'
                 DataBinding.DataSource = dsTablaG
                 Properties.ValueChecked = 'S'
                 Properties.ValueUnchecked = 'N'
-                TabOrder = 7
+                TabOrder = 6
                 Transparent = True
               end
-              object pnl7: TPanel
-                Left = 0
-                Top = 0
-                Width = 1069
-                Height = 89
-                Align = alTop
-                BevelOuter = bvNone
-                TabOrder = 0
-                object cxgrdIVA: TcxGrid
-                  Left = 0
-                  Top = 0
-                  Width = 1069
-                  Height = 89
-                  Margins.Left = 2
-                  Margins.Top = 2
-                  Margins.Right = 2
-                  Margins.Bottom = 2
-                  Align = alClient
-                  BevelOuter = bvNone
-                  BorderWidth = 2
-                  TabOrder = 0
-                  object tvIVA: TcxGridDBTableView
-                    Navigator.Buttons.CustomButtons = <>
-                    FindPanel.ClearFindFilterTextOnClose = False
-                    FindPanel.HighlightSearchResults = False
-                    ScrollbarAnnotations.CustomAnnotations = <>
-                    DataController.DataModeController.SmartRefresh = True
-                    DataController.DataSource = dmFacturas.dsCabIVA
-                    DataController.Options = [dcoAssignMasterDetailKeys, dcoSaveExpanding]
-                    DataController.Summary.DefaultGroupSummaryItems = <>
-                    DataController.Summary.FooterSummaryItems = <>
-                    DataController.Summary.SummaryGroups = <>
-                    Filtering.MRUItemsList = False
-                    Filtering.ColumnAddValueItems = False
-                    Filtering.ColumnMRUItemsList = False
-                    OptionsBehavior.DragHighlighting = False
-                    OptionsBehavior.DragOpening = False
-                    OptionsBehavior.ColumnHeaderHints = False
-                    OptionsBehavior.ImmediateEditor = False
-                    OptionsCustomize.ColumnFiltering = False
-                    OptionsCustomize.ColumnGrouping = False
-                    OptionsCustomize.ColumnHidingOnGrouping = False
-                    OptionsCustomize.ColumnHorzSizing = False
-                    OptionsCustomize.ColumnMoving = False
-                    OptionsCustomize.ColumnSorting = False
-                    OptionsCustomize.ColumnsQuickCustomizationShowCommands = False
-                    OptionsData.CancelOnExit = False
-                    OptionsData.Deleting = False
-                    OptionsData.DeletingConfirmation = False
-                    OptionsData.Editing = False
-                    OptionsData.Inserting = False
-                    OptionsSelection.CellSelect = False
-                    OptionsSelection.InvertSelect = False
-                    OptionsView.ScrollBars = ssHorizontal
-                    OptionsView.GridLineColor = clBtnText
-                    OptionsView.GroupByBox = False
-                    OptionsView.HeaderEndEllipsis = True
-                    object dbcTOTAL_BASEI_IVAN_FACTURA: TcxGridDBColumn
-                      Caption = 'Base Neta Normal'
-                      DataBinding.FieldName = 'TOTAL_BASEI_IVAN_FACTURA'
-                      DataBinding.IsNullValueType = True
-                      PropertiesClassName = 'TcxCurrencyEditProperties'
-                      Properties.DecimalPlaces = 3
-                      Width = 155
-                    end
-                    object dbcPORCEN_IVAN_FACTURA: TcxGridDBColumn
-                      Caption = '%IVA Normal'
-                      DataBinding.FieldName = 'PORCEN_IVAN_FACTURA'
-                      DataBinding.IsNullValueType = True
-                      PropertiesClassName = 'TcxSpinEditProperties'
-                      Properties.AssignedValues.MinValue = True
-                      Properties.DisplayFormat = '0.00 %'
-                      Properties.EditFormat = '0.00 %'
-                      Properties.Increment = 0.100000000000000000
-                      Properties.LargeIncrement = 1.000000000000000000
-                      Properties.MaxValue = 100.000000000000000000
-                    end
-                    object dbcTOTAL_IVAN_FACTURA: TcxGridDBColumn
-                      Caption = 'Total IVA Normal'
-                      DataBinding.FieldName = 'TOTAL_IVAN_FACTURA'
-                      DataBinding.IsNullValueType = True
-                      PropertiesClassName = 'TcxCurrencyEditProperties'
-                      Properties.DecimalPlaces = 3
-                      Width = 150
-                    end
-                    object dbcPORCEN_REN_FACTURA: TcxGridDBColumn
-                      Caption = '%RE Normal'
-                      DataBinding.FieldName = 'PORCEN_REN_FACTURA'
-                      DataBinding.IsNullValueType = True
-                      PropertiesClassName = 'TcxSpinEditProperties'
-                      Properties.AssignedValues.MinValue = True
-                      Properties.DisplayFormat = '0.00 %'
-                      Properties.EditFormat = '0.00 %'
-                      Properties.Increment = 0.100000000000000000
-                      Properties.LargeIncrement = 1.000000000000000000
-                      Properties.MaxValue = 100.000000000000000000
-                    end
-                    object dbcTOTAL_REN_FACTURA: TcxGridDBColumn
-                      Caption = 'Total RE Normal'
-                      DataBinding.FieldName = 'TOTAL_REN_FACTURA'
-                      DataBinding.IsNullValueType = True
-                      PropertiesClassName = 'TcxCurrencyEditProperties'
-                      Properties.DecimalPlaces = 3
-                      Options.IncSearch = False
-                      Options.ShowEditButtons = isebNever
-                      Options.Grouping = False
-                      Options.Moving = False
-                      Width = 150
-                    end
-                    object dbcTOTAL_BASEI_IVAR_FACTURA: TcxGridDBColumn
-                      Caption = 'Base Neta Reducida'
-                      DataBinding.FieldName = 'TOTAL_BASEI_IVAR_FACTURA'
-                      DataBinding.IsNullValueType = True
-                      PropertiesClassName = 'TcxCurrencyEditProperties'
-                      Properties.DecimalPlaces = 3
-                      Width = 170
-                    end
-                    object dbcPORCEN_IVAR_FACTURA: TcxGridDBColumn
-                      Caption = '%IVA Reducido'
-                      DataBinding.FieldName = 'PORCEN_IVAR_FACTURA'
-                      DataBinding.IsNullValueType = True
-                      PropertiesClassName = 'TcxSpinEditProperties'
-                      Properties.AssignedValues.MinValue = True
-                      Properties.DisplayFormat = '0.00 %'
-                      Properties.EditFormat = '0.00 %'
-                      Properties.Increment = 0.100000000000000000
-                      Properties.LargeIncrement = 1.000000000000000000
-                      Properties.MaxValue = 100.000000000000000000
-                      Width = 140
-                    end
-                    object dbcTOTAL_IVAR_FACTURA: TcxGridDBColumn
-                      Caption = 'Total IVA Reducido'
-                      DataBinding.FieldName = 'TOTAL_IVAR_FACTURA'
-                      DataBinding.IsNullValueType = True
-                      PropertiesClassName = 'TcxCurrencyEditProperties'
-                      Properties.DecimalPlaces = 3
-                      Width = 170
-                    end
-                    object dbcPORCEN_RER_FACTURA: TcxGridDBColumn
-                      Caption = '%RE Reducido'
-                      DataBinding.FieldName = 'PORCEN_RER_FACTURA'
-                      DataBinding.IsNullValueType = True
-                      PropertiesClassName = 'TcxSpinEditProperties'
-                      Properties.AssignedValues.MinValue = True
-                      Properties.DisplayFormat = '0.00 %'
-                      Properties.EditFormat = '0.00 %'
-                      Properties.Increment = 0.100000000000000000
-                      Properties.LargeIncrement = 1.000000000000000000
-                      Properties.MaxValue = 100.000000000000000000
-                      Width = 130
-                    end
-                    object dbcTOTAL_RER_FACTURA: TcxGridDBColumn
-                      Caption = 'Total RE Reducido'
-                      DataBinding.FieldName = 'TOTAL_RER_FACTURA'
-                      DataBinding.IsNullValueType = True
-                      PropertiesClassName = 'TcxCurrencyEditProperties'
-                      Properties.DecimalPlaces = 3
-                      Width = 160
-                    end
-                    object dbcTOTAL_BASEI_IVAS_FACTURA: TcxGridDBColumn
-                      Caption = 'Base Neta S'#250'perReducida'
-                      DataBinding.FieldName = 'TOTAL_BASEI_IVAS_FACTURA'
-                      DataBinding.IsNullValueType = True
-                      PropertiesClassName = 'TcxCurrencyEditProperties'
-                      Properties.DecimalPlaces = 3
-                      Width = 230
-                    end
-                    object dbcPORCEN_IVAS_FACTURA: TcxGridDBColumn
-                      Caption = '%IVA S'#250'perReducido'
-                      DataBinding.FieldName = 'PORCEN_IVAS_FACTURA'
-                      DataBinding.IsNullValueType = True
-                      PropertiesClassName = 'TcxSpinEditProperties'
-                      Properties.AssignedValues.MinValue = True
-                      Properties.DisplayFormat = '0.00 %'
-                      Properties.EditFormat = '0.00 %'
-                      Properties.Increment = 0.100000000000000000
-                      Properties.LargeIncrement = 1.000000000000000000
-                      Properties.MaxValue = 100.000000000000000000
-                      Width = 180
-                    end
-                    object dbcPORCEN_RES_FACTURA: TcxGridDBColumn
-                      Caption = '%RE S'#250'perReducido'
-                      DataBinding.FieldName = 'PORCEN_RES_FACTURA'
-                      DataBinding.IsNullValueType = True
-                      PropertiesClassName = 'TcxSpinEditProperties'
-                      Properties.AssignedValues.MinValue = True
-                      Properties.DisplayFormat = '0.00 %'
-                      Properties.EditFormat = '0.00 %'
-                      Properties.Increment = 0.100000000000000000
-                      Properties.LargeIncrement = 1.000000000000000000
-                      Properties.MaxValue = 100.000000000000000000
-                      Width = 180
-                    end
-                    object dbcTOTAL_RES_FACTURA: TcxGridDBColumn
-                      Caption = 'Total RE S'#250'perReducido'
-                      DataBinding.FieldName = 'TOTAL_RES_FACTURA'
-                      DataBinding.IsNullValueType = True
-                      PropertiesClassName = 'TcxCurrencyEditProperties'
-                      Properties.DecimalPlaces = 3
-                      Width = 220
-                    end
-                    object dbcTOTAL_IVAS_FACTURA: TcxGridDBColumn
-                      Caption = 'Total IVA S'#250'perReducido'
-                      DataBinding.FieldName = 'TOTAL_IVAS_FACTURA'
-                      DataBinding.IsNullValueType = True
-                      PropertiesClassName = 'TcxCurrencyEditProperties'
-                      Properties.DecimalPlaces = 3
-                      Width = 220
-                    end
-                    object dbcTOTAL_BASEI_IVAE_FACTURA: TcxGridDBColumn
-                      Caption = 'Base Neta Exenta'
-                      DataBinding.FieldName = 'TOTAL_BASEI_IVAE_FACTURA'
-                      DataBinding.IsNullValueType = True
-                      PropertiesClassName = 'TcxCurrencyEditProperties'
-                      Properties.DecimalPlaces = 3
-                      Width = 150
-                    end
-                    object dbcPORCEN_IVAE_FACTURA: TcxGridDBColumn
-                      Caption = '%IVA Exento'
-                      DataBinding.FieldName = 'PORCEN_IVAE_FACTURA'
-                      DataBinding.IsNullValueType = True
-                      PropertiesClassName = 'TcxSpinEditProperties'
-                      Properties.AssignedValues.MinValue = True
-                      Properties.DisplayFormat = '0.00 %'
-                      Properties.EditFormat = '0.00 %'
-                      Properties.Increment = 0.100000000000000000
-                      Properties.LargeIncrement = 1.000000000000000000
-                      Properties.MaxValue = 100.000000000000000000
-                    end
-                    object dbcTOTAL_IVAE_FACTURA: TcxGridDBColumn
-                      Caption = 'Total IVA Exento'
-                      DataBinding.FieldName = 'TOTAL_IVAE_FACTURA'
-                      DataBinding.IsNullValueType = True
-                      PropertiesClassName = 'TcxCurrencyEditProperties'
-                      Properties.DecimalPlaces = 3
-                      Width = 200
-                    end
-                    object dbcPORCEN_REE_FACTURA: TcxGridDBColumn
-                      Caption = '%RE Exento'
-                      DataBinding.FieldName = 'PORCEN_REE_FACTURA'
-                      DataBinding.IsNullValueType = True
-                      PropertiesClassName = 'TcxSpinEditProperties'
-                      Properties.AssignedValues.MinValue = True
-                      Properties.DisplayFormat = '0.00 %'
-                      Properties.EditFormat = '0.00 %'
-                      Properties.Increment = 0.100000000000000000
-                      Properties.LargeIncrement = 1.000000000000000000
-                      Properties.MaxValue = 100.000000000000000000
-                    end
-                    object dbcTOTAL_REE_FACTURA: TcxGridDBColumn
-                      Caption = 'Total RE Exento'
-                      DataBinding.FieldName = 'TOTAL_REE_FACTURA'
-                      DataBinding.IsNullValueType = True
-                      PropertiesClassName = 'TcxCurrencyEditProperties'
-                      Properties.DecimalPlaces = 3
-                      Width = 200
-                    end
-                  end
-                  object lvIVA: TcxGridLevel
-                    GridView = tvIVA
-                  end
-                end
-              end
               object lblFormadePago: TcxLabel
-                Left = 448
-                Top = 237
+                Left = 91
+                Top = 314
                 Margins.Left = 4
                 Margins.Top = 4
                 Margins.Right = 4
@@ -1539,8 +1290,8 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                 Transparent = True
               end
               object cbbFORMAPAGO: TcxDBLookupComboBox
-                Left = 448
-                Top = 260
+                Left = 226
+                Top = 310
                 Margins.Left = 4
                 Margins.Top = 4
                 Margins.Right = 4
@@ -1563,27 +1314,359 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                     FieldName = 'DESCRIPCION_FORMAPAGO'
                   end>
                 Properties.ListOptions.CaseInsensitive = True
-                TabOrder = 9
+                TabOrder = 8
                 OnKeyUp = cbbSerieFacturaKeyUp
-                Width = 300
+                Width = 335
               end
               object btnGenerarRecibos: TcxButton
-                Left = 777
-                Top = 260
+                Left = 225
+                Top = 346
                 Width = 160
                 Height = 25
                 Caption = 'Generar &Recibo/s'
-                TabOrder = 10
+                TabOrder = 9
                 OnClick = btnGenerarRecibosClick
+              end
+              object GroupBox1: TGroupBox
+                Left = 432
+                Top = 11
+                Width = 617
+                Height = 294
+                Caption = 'Desglose Impuestos'
+                TabOrder = 16
+                object Shape1: TShape
+                  Left = 163
+                  Top = 32
+                  Width = 438
+                  Height = 40
+                  Brush.Style = bsClear
+                end
+                object Shape2: TShape
+                  Left = 68
+                  Top = 71
+                  Width = 533
+                  Height = 50
+                  Brush.Style = bsClear
+                end
+                object Shape3: TShape
+                  Left = 13
+                  Top = 169
+                  Width = 588
+                  Height = 50
+                  Brush.Style = bsClear
+                end
+                object Shape4: TShape
+                  Left = 68
+                  Top = 120
+                  Width = 533
+                  Height = 50
+                  Brush.Style = bsClear
+                end
+                object Shape5: TShape
+                  Left = 68
+                  Top = 218
+                  Width = 533
+                  Height = 50
+                  Brush.Style = bsClear
+                end
+                object lblTotRE: TcxLabel
+                  Left = 504
+                  Top = 40
+                  Caption = 'Total R.E.'
+                end
+                object PorRE: TcxLabel
+                  Left = 440
+                  Top = 40
+                  Caption = '%R.E.'
+                end
+                object lblTotIVA: TcxLabel
+                  Left = 336
+                  Top = 40
+                  Caption = 'Total IVA'
+                end
+                object lblPorIVA: TcxLabel
+                  Left = 280
+                  Top = 40
+                  Caption = '%IVA'
+                end
+                object lblBaseNeta: TcxLabel
+                  Left = 176
+                  Top = 40
+                  Caption = 'BaseNeta'
+                end
+                object lblNormal: TcxLabel
+                  Left = 90
+                  Top = 82
+                  Caption = 'Normal'
+                end
+                object lblReducido: TcxLabel
+                  Left = 73
+                  Top = 133
+                  Caption = 'Reducido'
+                end
+                object lblSReducido: TcxLabel
+                  Left = 21
+                  Top = 181
+                  Caption = 'S'#250'per Reducido'
+                end
+                object lblExento: TcxLabel
+                  Left = 94
+                  Top = 229
+                  Caption = 'Exento'
+                end
+                object cxDBCurrencyEdit1: TcxDBCurrencyEdit
+                  Left = 162
+                  Top = 78
+                  DataBinding.DataField = 'TOTAL_BASEI_IVAN_FACTURA'
+                  DataBinding.DataSource = dsTablaG
+                  Properties.ReadOnly = True
+                  Style.BorderStyle = ebsNone
+                  TabOrder = 9
+                  Width = 113
+                end
+                object cxDBCurrencyEdit2: TcxDBCurrencyEdit
+                  Left = 162
+                  Top = 132
+                  DataBinding.DataField = 'TOTAL_BASEI_IVAR_FACTURA'
+                  DataBinding.DataSource = dsTablaG
+                  Properties.ReadOnly = True
+                  Style.BorderStyle = ebsNone
+                  TabOrder = 10
+                  Width = 113
+                end
+                object cxDBCurrencyEdit3: TcxDBCurrencyEdit
+                  Left = 162
+                  Top = 180
+                  DataBinding.DataField = 'TOTAL_BASEI_IVAS_FACTURA'
+                  DataBinding.DataSource = dsTablaG
+                  Properties.ReadOnly = True
+                  Style.BorderStyle = ebsNone
+                  TabOrder = 11
+                  Width = 113
+                end
+                object cxDBCurrencyEdit4: TcxDBCurrencyEdit
+                  Left = 160
+                  Top = 228
+                  DataBinding.DataField = 'TOTAL_BASEI_IVAE_FACTURA'
+                  DataBinding.DataSource = dsTablaG
+                  Properties.ReadOnly = True
+                  Style.BorderStyle = ebsNone
+                  TabOrder = 12
+                  Width = 115
+                end
+                object cxDBCurrencyEdit5: TcxDBCurrencyEdit
+                  Left = 337
+                  Top = 78
+                  DataBinding.DataField = 'TOTAL_IVAN_FACTURA'
+                  DataBinding.DataSource = dsTablaG
+                  Properties.ReadOnly = True
+                  Style.BorderStyle = ebsNone
+                  TabOrder = 13
+                  Width = 100
+                end
+                object cxDBCurrencyEdit6: TcxDBCurrencyEdit
+                  Left = 337
+                  Top = 132
+                  DataBinding.DataField = 'TOTAL_IVAR_FACTURA'
+                  DataBinding.DataSource = dsTablaG
+                  Properties.ReadOnly = True
+                  Style.BorderStyle = ebsNone
+                  TabOrder = 14
+                  Width = 100
+                end
+                object cxDBCurrencyEdit7: TcxDBCurrencyEdit
+                  Left = 337
+                  Top = 180
+                  DataBinding.DataField = 'TOTAL_IVAS_FACTURA'
+                  DataBinding.DataSource = dsTablaG
+                  Properties.ReadOnly = True
+                  Style.BorderStyle = ebsNone
+                  TabOrder = 15
+                  Width = 100
+                end
+                object cxDBCurrencyEdit8: TcxDBCurrencyEdit
+                  Left = 337
+                  Top = 228
+                  DataBinding.DataField = 'TOTAL_IVAE_FACTURA'
+                  DataBinding.DataSource = dsTablaG
+                  Properties.ReadOnly = True
+                  Style.BorderStyle = ebsNone
+                  TabOrder = 16
+                  Width = 100
+                end
+                object cxDBCurrencyEdit9: TcxDBCurrencyEdit
+                  Left = 501
+                  Top = 78
+                  DataBinding.DataField = 'TOTAL_REN_FACTURA'
+                  DataBinding.DataSource = dsTablaG
+                  Properties.ReadOnly = True
+                  Style.BorderStyle = ebsNone
+                  TabOrder = 17
+                  Width = 95
+                end
+                object cxDBCurrencyEdit10: TcxDBCurrencyEdit
+                  Left = 501
+                  Top = 132
+                  DataBinding.DataField = 'TOTAL_RER_FACTURA'
+                  DataBinding.DataSource = dsTablaG
+                  Properties.ReadOnly = True
+                  Style.BorderStyle = ebsNone
+                  TabOrder = 18
+                  Width = 95
+                end
+                object cxDBCurrencyEdit11: TcxDBCurrencyEdit
+                  Left = 501
+                  Top = 180
+                  DataBinding.DataField = 'TOTAL_RES_FACTURA'
+                  DataBinding.DataSource = dsTablaG
+                  Properties.ReadOnly = True
+                  Style.BorderStyle = ebsNone
+                  TabOrder = 19
+                  Width = 95
+                end
+                object cxDBCurrencyEdit12: TcxDBCurrencyEdit
+                  Left = 501
+                  Top = 228
+                  DataBinding.DataField = 'TOTAL_REE_FACTURA'
+                  DataBinding.DataSource = dsTablaG
+                  Properties.ReadOnly = True
+                  Style.BorderStyle = ebsNone
+                  TabOrder = 20
+                  Width = 95
+                end
+                object cxDBSpinEdit1: TcxDBSpinEdit
+                  Left = 272
+                  Top = 78
+                  DataBinding.DataField = 'PORCEN_IVAN_FACTURA'
+                  DataBinding.DataSource = dsTablaG
+                  ParentColor = True
+                  Properties.AssignedValues.MinValue = True
+                  Properties.DisplayFormat = '0.0'
+                  Properties.EditFormat = '0.0'
+                  Properties.MaxValue = 100.000000000000000000
+                  Properties.ReadOnly = True
+                  Properties.SpinButtons.Visible = False
+                  Style.BorderStyle = ebsNone
+                  TabOrder = 21
+                  Width = 59
+                end
+                object cxDBSpinEdit2: TcxDBSpinEdit
+                  Left = 272
+                  Top = 132
+                  DataBinding.DataField = 'PORCEN_IVAR_FACTURA'
+                  DataBinding.DataSource = dsTablaG
+                  ParentColor = True
+                  Properties.AssignedValues.MinValue = True
+                  Properties.DisplayFormat = '0.0'
+                  Properties.EditFormat = '0.0'
+                  Properties.MaxValue = 100.000000000000000000
+                  Properties.ReadOnly = True
+                  Properties.SpinButtons.Visible = False
+                  Style.BorderStyle = ebsNone
+                  TabOrder = 22
+                  Width = 64
+                end
+                object cxDBSpinEdit3: TcxDBSpinEdit
+                  Left = 272
+                  Top = 180
+                  DataBinding.DataField = 'PORCEN_IVAS_FACTURA'
+                  DataBinding.DataSource = dsTablaG
+                  ParentColor = True
+                  Properties.AssignedValues.MinValue = True
+                  Properties.DisplayFormat = '0.0'
+                  Properties.EditFormat = '0.0'
+                  Properties.MaxValue = 100.000000000000000000
+                  Properties.ReadOnly = True
+                  Properties.SpinButtons.Visible = False
+                  Style.BorderStyle = ebsNone
+                  TabOrder = 23
+                  Width = 64
+                end
+                object cxDBSpinEdit4: TcxDBSpinEdit
+                  Left = 272
+                  Top = 228
+                  DataBinding.DataField = 'PORCEN_IVAE_FACTURA'
+                  DataBinding.DataSource = dsTablaG
+                  ParentColor = True
+                  Properties.AssignedValues.MinValue = True
+                  Properties.DisplayFormat = '0.0'
+                  Properties.EditFormat = '0.0'
+                  Properties.MaxValue = 100.000000000000000000
+                  Properties.ReadOnly = True
+                  Properties.SpinButtons.Visible = False
+                  Style.BorderStyle = ebsNone
+                  TabOrder = 24
+                  Width = 64
+                end
+                object cxDBSpinEdit5: TcxDBSpinEdit
+                  Left = 440
+                  Top = 132
+                  DataBinding.DataField = 'PORCEN_RER_FACTURA'
+                  DataBinding.DataSource = dsTablaG
+                  ParentColor = True
+                  Properties.AssignedValues.MinValue = True
+                  Properties.DisplayFormat = '0.00 %'
+                  Properties.EditFormat = '0.00 %'
+                  Properties.MaxValue = 100.000000000000000000
+                  Properties.ReadOnly = True
+                  Properties.SpinButtons.Visible = False
+                  Style.BorderStyle = ebsNone
+                  TabOrder = 25
+                  Width = 63
+                end
+                object cxDBSpinEdit7: TcxDBSpinEdit
+                  Left = 440
+                  Top = 78
+                  DataBinding.DataField = 'PORCEN_REN_FACTURA'
+                  DataBinding.DataSource = dsTablaG
+                  ParentColor = True
+                  Properties.AssignedValues.MinValue = True
+                  Properties.DisplayFormat = '0.00 %'
+                  Properties.EditFormat = '0.00 %'
+                  Properties.MaxValue = 100.000000000000000000
+                  Properties.ReadOnly = True
+                  Properties.SpinButtons.Visible = False
+                  Style.BorderStyle = ebsNone
+                  TabOrder = 26
+                  Width = 63
+                end
+                object cxDBSpinEdit8: TcxDBSpinEdit
+                  Left = 440
+                  Top = 180
+                  DataBinding.DataField = 'PORCEN_RES_FACTURA'
+                  DataBinding.DataSource = dsTablaG
+                  ParentColor = True
+                  Properties.AssignedValues.MinValue = True
+                  Properties.DisplayFormat = '0.00 %'
+                  Properties.EditFormat = '0.00 %'
+                  Properties.MaxValue = 100.000000000000000000
+                  Properties.ReadOnly = True
+                  Properties.SpinButtons.Visible = False
+                  Style.BorderStyle = ebsNone
+                  TabOrder = 27
+                  Width = 63
+                end
+                object cxDBSpinEdit9: TcxDBSpinEdit
+                  Left = 440
+                  Top = 228
+                  DataBinding.DataField = 'PORCEN_REE_FACTURA'
+                  DataBinding.DataSource = dsTablaG
+                  ParentColor = True
+                  Properties.AssignedValues.MinValue = True
+                  Properties.DisplayFormat = '0.00 %'
+                  Properties.EditFormat = '0.00 %'
+                  Properties.MaxValue = 100.000000000000000000
+                  Properties.ReadOnly = True
+                  Properties.SpinButtons.Visible = False
+                  Style.BorderStyle = ebsNone
+                  TabOrder = 28
+                  Width = 63
+                end
               end
             end
             object tsRecibos: TcxTabSheet
               Caption = '&3_Recibos'
               ImageIndex = 4
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object pnlRightRecibos: TPanel
                 Left = 916
                 Top = 0
@@ -1840,10 +1923,6 @@ inherited frmMtoFacturas: TfrmMtoFacturas
               Margins.Bottom = 4
               Caption = '&4_Otros'
               ImageIndex = 4
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object lblComentarios: TcxLabel
                 Left = 32
                 Top = 65
@@ -1964,8 +2043,8 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                   Transparent = True
                 end
                 object btnCODIGO_CLIENTE: TcxDBButtonEdit
-                  Left = 155
-                  Top = 104
+                  Left = 159
+                  Top = 105
                   DataBinding.DataField = 'CODIGO_CLIENTE_FACTURA'
                   DataBinding.DataSource = dsTablaG
                   Properties.Buttons = <
@@ -2043,7 +2122,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                   Top = 12
                   DataBinding.DataField = 'NRO_FACTURA'
                   DataBinding.DataSource = dsTablaG
-                  Enabled = False
+                  Properties.ReadOnly = True
                   TabOrder = 0
                   Width = 121
                 end
@@ -2074,10 +2153,6 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                 Color = clBtnFace
                 ImageIndex = 2
                 ParentColor = False
-                ExplicitLeft = 0
-                ExplicitTop = 0
-                ExplicitWidth = 0
-                ExplicitHeight = 0
                 object grpEmpresa: TcxGroupBox
                   Left = 22
                   Top = 13
@@ -2694,6 +2769,9 @@ inherited frmMtoFacturas: TfrmMtoFacturas
         inherited pnlPerfilTop: TPanel
           Width = 1078
           ExplicitWidth = 1078
+          inherited edtPerfilBusq: TcxTextEdit
+            ExplicitHeight = 27
+          end
         end
         inherited pnlPerfilDetail: TPanel
           Width = 1078
@@ -2843,10 +2921,11 @@ inherited frmMtoFacturas: TfrmMtoFacturas
     Top = 395
   end
   inherited dsTablaG: TDataSource
-    Left = 1020
-    Top = 471
+    DataSet = dmFacturas.unqryTablaG
+    Left = 1092
+    Top = 407
   end
-  object ActionListFacturas: TActionList [4]
+  object ActionListFacturas: TActionList [5]
     Left = 1040
     Top = 392
     object actArticulo: TAction
@@ -2864,5 +2943,9 @@ inherited frmMtoFacturas: TfrmMtoFacturas
       ShortCut = 16459
       OnExecute = actClienteExecute
     end
+  end
+  inherited saveDialog: TdxSaveFileDialog
+    Left = 696
+    Top = 256
   end
 end

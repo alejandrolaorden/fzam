@@ -229,7 +229,6 @@ type
     btnImprimirRecibo: TcxButton;
     btnReciboEmitido: TcxButton;
     btnReciboPagado: TcxButton;
-    pnl7: TPanel;
     pnlRightLineas: TPanel;
     chkFechaEntrega: TcxDBCheckBox;
     chkDescripcion_ampliada: TcxDBCheckBox;
@@ -254,29 +253,6 @@ type
     lblFormadePago: TcxLabel;
     cbbFORMAPAGO: TcxDBLookupComboBox;
     btnGenerarRecibos: TcxButton;
-    cxgrdIVA: TcxGrid;
-    tvIVA: TcxGridDBTableView;
-    dbcTOTAL_BASEI_IVAN_FACTURA: TcxGridDBColumn;
-    dbcPORCEN_IVAN_FACTURA: TcxGridDBColumn;
-    dbcTOTAL_IVAN_FACTURA: TcxGridDBColumn;
-    dbcPORCEN_REN_FACTURA: TcxGridDBColumn;
-    dbcTOTAL_REN_FACTURA: TcxGridDBColumn;
-    dbcTOTAL_BASEI_IVAR_FACTURA: TcxGridDBColumn;
-    dbcPORCEN_IVAR_FACTURA: TcxGridDBColumn;
-    dbcTOTAL_IVAR_FACTURA: TcxGridDBColumn;
-    dbcPORCEN_RER_FACTURA: TcxGridDBColumn;
-    dbcTOTAL_RER_FACTURA: TcxGridDBColumn;
-    dbcTOTAL_BASEI_IVAS_FACTURA: TcxGridDBColumn;
-    dbcPORCEN_IVAS_FACTURA: TcxGridDBColumn;
-    dbcPORCEN_RES_FACTURA: TcxGridDBColumn;
-    dbcTOTAL_RES_FACTURA: TcxGridDBColumn;
-    dbcTOTAL_IVAS_FACTURA: TcxGridDBColumn;
-    dbcTOTAL_BASEI_IVAE_FACTURA: TcxGridDBColumn;
-    dbcPORCEN_IVAE_FACTURA: TcxGridDBColumn;
-    dbcTOTAL_IVAE_FACTURA: TcxGridDBColumn;
-    dbcPORCEN_REE_FACTURA: TcxGridDBColumn;
-    dbcTOTAL_REE_FACTURA: TcxGridDBColumn;
-    lvIVA: TcxGridLevel;
     cbbCanalIVA: TcxDBLookupComboBox;
     lblCanalIVA: TcxLabel;
     dbcLineasFacturaCODIGO_FAMILIA_FACTURA_LINEA: TcxGridDBColumn;
@@ -300,11 +276,47 @@ type
     tvLineasFacturaPRECIOSALIDA_FACTURA_LINEA: TcxGridDBColumn;
     tvLineasFacturaPORCEN_DTO_FACTURA_LINEA: TcxGridDBColumn;
     tvLineasFacturaPRECIO_DTO_FACTURA_LINEA: TcxGridDBColumn;
+    GroupBox1: TGroupBox;
+    lblTotRE: TcxLabel;
+    PorRE: TcxLabel;
+    lblTotIVA: TcxLabel;
+    lblPorIVA: TcxLabel;
+    lblBaseNeta: TcxLabel;
+    lblNormal: TcxLabel;
+    lblReducido: TcxLabel;
+    lblSReducido: TcxLabel;
+    lblExento: TcxLabel;
+    cxDBCurrencyEdit1: TcxDBCurrencyEdit;
+    cxDBCurrencyEdit2: TcxDBCurrencyEdit;
+    cxDBCurrencyEdit3: TcxDBCurrencyEdit;
+    cxDBCurrencyEdit4: TcxDBCurrencyEdit;
+    cxDBCurrencyEdit5: TcxDBCurrencyEdit;
+    cxDBCurrencyEdit6: TcxDBCurrencyEdit;
+    cxDBCurrencyEdit7: TcxDBCurrencyEdit;
+    cxDBCurrencyEdit8: TcxDBCurrencyEdit;
+    cxDBCurrencyEdit9: TcxDBCurrencyEdit;
+    cxDBCurrencyEdit10: TcxDBCurrencyEdit;
+    cxDBCurrencyEdit11: TcxDBCurrencyEdit;
+    cxDBCurrencyEdit12: TcxDBCurrencyEdit;
+    Shape1: TShape;
+    Shape2: TShape;
+    Shape3: TShape;
+    Shape4: TShape;
+    Shape5: TShape;
+    cxDBSpinEdit1: TcxDBSpinEdit;
+    cxDBSpinEdit2: TcxDBSpinEdit;
+    cxDBSpinEdit3: TcxDBSpinEdit;
+    cxDBSpinEdit4: TcxDBSpinEdit;
+    cxDBSpinEdit5: TcxDBSpinEdit;
+    Shape6: TShape;
+    cxDBSpinEdit7: TcxDBSpinEdit;
+    cxDBSpinEdit8: TcxDBSpinEdit;
+    cxDBSpinEdit9: TcxDBSpinEdit;
     procedure sbGrabarClick(Sender: TObject);
     procedure btnUpdateClienteClick(Sender: TObject);
     procedure sbNuevaFacturaClick(Sender: TObject);
-    procedure cxgrdbclmntv1CODIGO_ARTICULO_LINEAPropertiesEditValueChanged(
-      Sender: TObject);
+//    procedure cxgrdbclmntv1CODIGO_ARTICULO_LINEAPropertiesEditValueChanged(
+//      Sender: TObject);
     procedure btnCODIGO_CLIENTEPropertiesEditValueChanged(Sender: TObject);
     procedure tvLineasFacturaKeyDown(Sender: TObject;
                                              var Key: Word; Shift: TShiftState);
@@ -384,6 +396,7 @@ uses
   inLibWin,
   inLibMsg,
   inLibShowMto,
+  inLibFacturas,
   inMtoGenSearch,
   inMtoModalFacRec,
   inMtoModalImpFac,
@@ -439,7 +452,6 @@ end;
 procedure TfrmMtoFacturas.ResetForm;
 begin
   inherited;
-  //pcPantalla.ActivePage := tsFicha;
   pcCab.ActivePage := tsCabecera;
   pcDetail.ActivePage := tsLineasFactura;
 end;
@@ -484,13 +496,14 @@ begin
     cbbTARIFA_ARTICULOS_CLIENTES.Properties.ReadOnly := False;
     cbbCanalIVA.Properties.ReadOnly := False;
     Self.ResetForm;
-    tsFicha.SetFocus;
+    pcPantalla.ActivePage := tsFicha;
+    pcCab.ActivePage := tsCabecera;
     btnCODIGO_EMPRESA_FACTURA.SetFocus;
     sEmpresaDef := dmmFacturas.GetUserEmpresaDef;
-    if sEmpresaDef <> '' then
+    if (sEmpresaDef <> '') then
     begin
       dsTablaG.DataSet.FindField('CODIGO_EMPRESA_FACTURA').AsString :=
-                                                                   sEmpresaDef;
+                                                                    sEmpresaDef;
     end;
   end;
 end;
@@ -515,9 +528,6 @@ end;
 procedure TfrmMtoFacturas.btnIraArticuloClick(Sender: TObject);
 begin
   inherited;
-  //PELICULA DE TERROR CON ACTIONLIST Y FORMS EMBEBED
-  //https://groups.google.com/g/
-  //borland.public.delphi.vcl.components.using/c/4UJuqBTD56o?pli=1
   with tvLineasFactura.DataController.DataSet do
   ShowMto(Self.Owner,
           'Articulos',
@@ -756,33 +766,6 @@ begin
    end;
 end;
 
-procedure TfrmMtoFacturas.CalcularLinea;
-begin
-  with dmmFacturas.unqryLinFac do
-  begin
-    if SameText( dmmFacturas.unqryTablaG.FieldByName(
-            'ESIMP_INCL_TARIFA_CLIENTE_FACTURA').AsString, 'S') then
-    begin
-      FindField('PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA').AsFloat :=
-               (FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat /
-                 (1 + FindField('PORCEN_IVA_FACTURA_LINEA').AsInteger/100));
-      FindField('TOTAL_FACTURA_LINEA').AsFloat :=
-               FindField('CANTIDAD_FACTURA_LINEA').AsFloat *
-               FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat;
-    end
-    else
-    begin
-      FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat :=
-               ( FindField('PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA').AsFloat *
-                    (1 +
-                    FindField('PORCEN_IVA_FACTURA_LINEA').AsInteger/100));
-      FindField('TOTAL_FACTURA_LINEA').AsFloat :=
-               FindField('CANTIDAD_FACTURA_LINEA').AsFloat *
-               FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat;
-    end;
-  end;
-end;
-
 procedure TfrmMtoFacturas.CambiarEstadoRecibo(sEstado: string);
 begin
   with dmmFacturas.unqryRecibos do
@@ -812,8 +795,8 @@ begin
     if ((dsTablaG.DataSet.State = dsEdit) or
         (dsTablaG.DataSet.State = dsInsert)) then
     begin
-    dsTablaG.DataSet.FieldByName('GRUPO_ZONA_IVA_EMPRESA_FACTURA').AsString :=
-                                                           VarToStr(NewValue);
+      dsTablaG.DataSet.FieldByName('GRUPO_ZONA_IVA_EMPRESA_FACTURA').AsString :=
+                                                             VarToStr(NewValue);
       CambiarIVA;
     end;
   end;
@@ -839,11 +822,9 @@ begin
   tvLineasFactura.DataController.DataSource := dmmFacturas.dsLinFac;
   cbbTARIFA_ARTICULOS_CLIENTES.Properties.ListSource := dmmFacturas.dsTarifas;
   tvRecibos.DataController.DataSource := dmmFacturas.dsRecibos;
-  tvIVA.DataController.DataSource := dmmFacturas.dsCabIVA;
+  //tvIVA.DataController.DataSource := dsTablaG;
   (cxgrdbclmntv1TIPOIVA_ARTICULO_FACTURA_LINEA.Properties as
              TcxLookupComboBoxProperties).ListSource := dmmFacturas.dsIvasTipos;
-  tsFichBut := tsLineasFactura;
-  tsFichCab := tsCabecera;
   Self.pkFieldName := 'NRO_FACTURA; SERIE_FACTURA';
 end;
 
@@ -894,25 +875,25 @@ begin
   inherited;
   if chkESIVA_RECARGO_CLIENTE_FACTURA.Checked = True then
   begin
-      dbcPORCEN_REN_FACTURA.Visible := True;
-      dbcTOTAL_REN_FACTURA.Visible := True;
-      dbcPORCEN_RER_FACTURA.Visible := True;
-      dbcTOTAL_RER_FACTURA.Visible := True;
-      dbcPORCEN_RES_FACTURA.Visible := True;
-      dbcTOTAL_RES_FACTURA.Visible := True;
-      dbcPORCEN_REE_FACTURA.Visible := True;
-      dbcTOTAL_REE_FACTURA.Visible := True;
+//    dbcPORCEN_REN_FACTURA.Visible := True;
+//    dbcTOTAL_REN_FACTURA.Visible := True;
+//    dbcPORCEN_RER_FACTURA.Visible := True;
+//    dbcTOTAL_RER_FACTURA.Visible := True;
+//    dbcPORCEN_RES_FACTURA.Visible := True;
+//    dbcTOTAL_RES_FACTURA.Visible := True;
+//    dbcPORCEN_REE_FACTURA.Visible := True;
+//    dbcTOTAL_REE_FACTURA.Visible := True;
   end
   else
   begin
-      dbcPORCEN_REN_FACTURA.Visible := False;
-      dbcTOTAL_REN_FACTURA.Visible := False;
-      dbcPORCEN_RER_FACTURA.Visible := False;
-      dbcTOTAL_RER_FACTURA.Visible := False;
-      dbcPORCEN_RES_FACTURA.Visible := False;
-      dbcTOTAL_RES_FACTURA.Visible := False;
-      dbcPORCEN_REE_FACTURA.Visible := False;
-      dbcTOTAL_REE_FACTURA.Visible := False;
+//    dbcPORCEN_REN_FACTURA.Visible := False;
+//    dbcTOTAL_REN_FACTURA.Visible := False;
+//    dbcPORCEN_RER_FACTURA.Visible := False;
+//    dbcTOTAL_RER_FACTURA.Visible := False;
+//    dbcPORCEN_RES_FACTURA.Visible := False;
+//    dbcTOTAL_RES_FACTURA.Visible := False;
+//    dbcPORCEN_REE_FACTURA.Visible := False;
+//    dbcTOTAL_REE_FACTURA.Visible := False;
   end;
 end;
 
@@ -951,13 +932,13 @@ begin
   inherited;
   if (dsTablaG.State = dsInsert) then
   begin
-    txtNRO_FACTURA.Enabled := True;
-    spnRetencion.Enabled := True;
+    txtNRO_FACTURA.Properties.ReadOnly := True;
+    //spnRetencion.Properties.ReadOnly := True;
   end
   else
   begin
-    txtNRO_FACTURA.Enabled := False;
-    spnRetencion.Enabled := False;
+    txtNRO_FACTURA.Properties.ReadOnly := False;
+    //spnRetencion.Properties.ReadOnly := False;
   end;
   if (dsTablaG.DataSet.State <> dsInsert) then
   begin
@@ -1038,27 +1019,6 @@ begin
 end;
 
 procedure TfrmMtoFacturas.
-                  cxgrdbclmntv1CANTIDAD_FACTURA_LINEAPropertiesEditValueChanged(
-  Sender: TObject);
-var
-  e : TcxCustomEdit;
-begin
-  inherited;
-  with dmmFacturas.unqryLinFac do
-  begin
-    if ((State = dsInsert) or (State = dsEdit)) then
-    begin
-      e := Sender as TcxCustomEdit;
-      FindField('CANTIDAD_FACTURA_LINEA').AsString :=
-                                                     VarToStr(e.EditingValue);
-      FindField('TOTAL_FACTURA_LINEA').AsFloat :=
-             FindField('CANTIDAD_FACTURA_LINEA').AsFloat *
-             FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat;
-    end;
-  end;
-end;
-
-procedure TfrmMtoFacturas.
                 cxgrdbclmntv1CODIGO_ARTICULO_FACTURA_LINEAPropertiesButtonClick(
   Sender: TObject; AButtonIndex: Integer);
 var
@@ -1069,8 +1029,10 @@ begin
   try
     formulario.Name := 'frmMtoArtFacSearch';
     dmmFacturas.unqryArtDataLinFac.ParamByName('TARIFA').AsString :=
-    dmmFacturas.unqryTablaG.FindField(
+      dmmFacturas.unqryTablaG.FindField(
                                     'TARIFA_ARTICULO_CLIENTE_FACTURA').AsString;
+    dmmFacturas.unqryArtDataLinFac.ParamByName('FECHA_FACTURA').AsDateTime :=
+                  dmmFacturas.unqryTablaG.FindField('FECHA_FACTURA').AsDateTime;
     formulario.dsTablaG.DataSet := dmmFacturas.unqryArtDataLinFac;
     formulario.dsTablaG.DataSet.Open;
     formulario.ProcesarPerfiles;
@@ -1108,13 +1070,19 @@ begin
                                                      VarToStr(e.EditingValue);
         unqrySol := TUniQuery.Create(Self);
         unqrySol.Connection := inLibGlobalVar.oConn;
-        unqrySol.SQL.Text := 'SELECT * FROM vi_art_busquedas ' +
-                             ' WHERE CODIGO_TARIFA = :tarifa' +
-                             ' AND CODIGO_ARTICULO = :articulo';
+        unqrySol.SQL.Text := 'SELECT * ' +
+                             '  FROM vi_art_busquedas ' +
+                             ' WHERE CODIGO_TARIFA = :tarifa ' +
+                             '   AND CODIGO_ARTICULO = :articulo ' +
+                             '   AND FECHA_DESDE_TARIFA < :FECHA_FACTURA ' +
+                             '   AND (FECHA_HASTA_TARIFA IS NULL ' +
+                             '        OR FECHA_HASTA_TARIFA > :FECHA_FACTURA)';
         unqrySol.ParamByName('articulo').AsString := VarToStr(e.EditingValue);
         unqrySol.ParamByName('tarifa').AsString :=
           dmmFacturas.unqryTablaG.FindField(
-                                  'TARIFA_ARTICULO_CLIENTE_FACTURA').AsString;
+                                    'TARIFA_ARTICULO_CLIENTE_FACTURA').AsString;
+        unqrySol.ParamByName('FECHA_FACTURA').AsDateTime :=
+                  dmmFacturas.unqryTablaG.FindField('FECHA_FACTURA').AsDateTime;
         unqrySol.Open;
         if unqrySol.RecordCount = 0 then
           Sleep(0) //si no existe artículo y tarifa, no hago nada
@@ -1123,106 +1091,6 @@ begin
         unqrySol.Close;
         FreeAndNil(unqrySol);
       end;
-    end;
-  end;
-end;
-
-procedure TfrmMtoFacturas.
-                   cxgrdbclmntv1CODIGO_ARTICULO_LINEAPropertiesEditValueChanged(
-                                                               Sender: TObject);
-var
-  E : TcxCustomEdit;
-begin
-  inherited;
-  if ((dmmFacturas.unqryLinFac.State = dsInsert) or
-      (dmmFacturas.unqryLinFac.State = dsEdit)) then
-  begin
-     with dmmFacturas.unstrdprcGetDataArticulo do
-     begin
-       e := Sender as TcxCustomEdit;
-       ParamByName('pidcodarticulo').AsString :=  VarToStr(e.EditingValue);
-       ExecProc;
-       dmmFacturas.unqryLinFac.FindField('CODIGO_ARTICULO_LINEA').AsString :=
-                                                     VarToStr(e.EditingValue);
-       dmmFacturas.unqryLinFac.FindField(
-                                     'DESCRIPCION_ARTICULO_LINEA').AsString :=
-                                       ParamByName('pidnomarticulo').AsString;
-       dmmFacturas.unqryLinFac.FindField(
-                                      'PRECIOVENTA_ARTICULO_LINEA').AsFloat :=
-                                        ParamByName('pidprecioventa').AsFloat;
-     end;
-  end;
-end;
-
-procedure TfrmMtoFacturas.
- cxgrdbclmntv1PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEAPropertiesEditValueChanged(
-                                                               Sender: TObject);
-var
-  e: TcxCustomEdit;
-begin
-  inherited;
-  with dmmFacturas.unqryLinFac do
-  begin
-  if ((State = dsInsert) or (State = dsEdit)) then
-    begin
-      e := Sender as TcxCustomEdit;
-      FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsString :=
-                                                    VarToStr(e.EditingValue);
-      FindField('PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA').AsFloat :=
-             ( FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat /
-               (1 + FindField('PORCEN_IVA_FACTURA_LINEA').AsInteger/100)
-             );
-      FindField('TOTAL_FACTURA_LINEA').AsFloat :=
-             FindField('CANTIDAD_FACTURA_LINEA').AsFloat *
-             FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat;
-    end;
-  end;
-end;
-
-procedure TfrmMtoFacturas.
- cxgrdbclmntv1PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEAPropertiesEditValueChanged(
-                                                               Sender: TObject);
-var
-  e: TcxCustomEdit;
-begin
-  inherited;
-  with dmmFacturas.unqryLinFac do
-  begin
-    if ((State = dsInsert) or (State = dsEdit)) then
-    begin
-      e := Sender as TcxCustomEdit;
-      FindField('PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA').AsString :=
-                                                     VarToStr(e.EditingValue);
-      FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat :=
-             ( FindField('PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA').AsFloat *
-                  (1 +
-                  FindField('PORCEN_IVA_FACTURA_LINEA').AsInteger/100));
-      FindField('TOTAL_FACTURA_LINEA').AsFloat :=
-             FindField('CANTIDAD_FACTURA_LINEA').AsFloat *
-             FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat;
-    end;
-  end;
-end;
-
-procedure TfrmMtoFacturas.
-                    cxgrdbclmntv1TIPOIVA_ARTICULO_FACTURA_LINEAPropertiesChange(
-                                                               Sender: TObject);
-var
-  e: TcxCustomEdit;
-  sTipoIVA : string;
-begin
-  inherited;
-  with dmmFacturas.unqryLinFac do
-  begin
-    if ((State = dsInsert) or (State = dsEdit)) then
-    begin
-      e := Sender as TcxCustomEdit;
-      FindField('TIPOIVA_ARTICULO_FACTURA_LINEA').AsString :=
-                                                     VarToStr(e.EditingValue);
-      sTipoIVA := FindField('TIPOIVA_ARTICULO_FACTURA_LINEA').AsString;
-      FindField('PORCEN_IVA_FACTURA_LINEA').AsInteger :=
-                                               dmmFacturas.GetTipoIVA(sTipoIVA);
-      CalcularLinea;
     end;
   end;
 end;
@@ -1262,30 +1130,6 @@ begin
       tvLineasFactura.DataController.Insert;
 end;
 
-procedure TfrmMtoFacturas.tvLineasFacturaPRECIOSALIDA_FACTURA_LINEAPropertiesEditValueChanged(
-  Sender: TObject);
-var
-  e: TcxCustomEdit;
-begin
-  inherited;
-    with dmmFacturas.unqryLinFac do
-  begin
-    if ((State = dsInsert) or (State = dsEdit)) then
-    begin
-      e := Sender as TcxCustomEdit;
-      FieldByName('ESIMP_INCL_TARIFA_FACTURA_LINEA').AsString :=
-                                                       VarToStr(e.EditingValue);
-      if (FieldByName('ESIMP_INCL_TARIFA_FACTURA_LINEA').AsString = 'S') then
-        FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsString :=
-                                                        VarToStr(e.EditingValue)
-      else
-        FindField('PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA').AsString :=
-                                                       VarToStr(e.EditingValue);
-
-    end;
-  end;
-end;
-
 procedure TfrmMtoFacturas.CambiarIVA;
 begin
   if ( ((dsTablaG.DataSet.State = dsEdit) or
@@ -1296,6 +1140,163 @@ begin
         dsTablaG.DataSet.FieldByName('GRUPO_ZONA_IVA_EMPRESA_FACTURA').AsString,
         dmmFacturas.unqryTablaG);
 end;
+
+procedure TfrmMtoFacturas.
+            tvLineasFacturaPRECIOSALIDA_FACTURA_LINEAPropertiesEditValueChanged(
+  Sender: TObject);
+var
+  e: TcxCustomEdit;
+begin
+  inherited;
+    with dmmFacturas.unqryLinFac do
+  begin
+    if ((State = dsInsert) or (State = dsEdit)) then
+    begin
+      e := Sender as TcxCustomEdit;
+//      FieldByName('ESIMP_INCL_TARIFA_FACTURA_LINEA').AsString :=
+//                                                     VarToStr(e.EditingValue);
+//      if (FieldByName('ESIMP_INCL_TARIFA_FACTURA_LINEA').AsString = 'S') then
+//        FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsString :=
+//                                                      VarToStr(e.EditingValue)
+//      else
+//        FindField('PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA').AsString :=
+//                                                     VarToStr(e.EditingValue);
+//
+    end;
+  end;
+end;
+
+procedure TfrmMtoFacturas.
+ cxgrdbclmntv1PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEAPropertiesEditValueChanged(
+                                                               Sender: TObject);
+var
+  e: TcxCustomEdit;
+begin
+  inherited;
+  with dmmFacturas.unqryLinFac do
+  begin
+  if ((State = dsInsert) or (State = dsEdit)) then
+    begin
+      e := Sender as TcxCustomEdit;
+//      FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsString :=
+//                                                    VarToStr(e.EditingValue);
+//      FindField('PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA').AsFloat :=
+//             ( FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat /
+//               (1 + FindField('PORCEN_IVA_FACTURA_LINEA').AsInteger/100)
+//             );
+//      FindField('TOTAL_FACTURA_LINEA').AsFloat :=
+//             FindField('CANTIDAD_FACTURA_LINEA').AsFloat *
+//             FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat;
+    end;
+  end;
+end;
+
+procedure TfrmMtoFacturas.
+ cxgrdbclmntv1PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEAPropertiesEditValueChanged(
+                                                               Sender: TObject);
+var
+  e: TcxCustomEdit;
+begin
+  inherited;
+  with dmmFacturas.unqryLinFac do
+  begin
+    if ((State = dsInsert) or (State = dsEdit)) then
+    begin
+      e := Sender as TcxCustomEdit;
+//      FindField('PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA').AsString :=
+//                                                     VarToStr(e.EditingValue);
+//      FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat :=
+//             ( FindField('PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA').AsFloat *
+//                  (1 +
+//                  FindField('PORCEN_IVA_FACTURA_LINEA').AsInteger/100));
+//      FindField('TOTAL_FACTURA_LINEA').AsFloat :=
+//             FindField('CANTIDAD_FACTURA_LINEA').AsFloat *
+//             FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat;
+    end;
+  end;
+end;
+
+procedure TfrmMtoFacturas.
+                    cxgrdbclmntv1TIPOIVA_ARTICULO_FACTURA_LINEAPropertiesChange(
+                                                               Sender: TObject);
+var
+  e: TcxCustomEdit;
+  sTipoIVA : string;
+begin
+  inherited;
+  with dmmFacturas.unqryLinFac do
+  begin
+    if ((State = dsInsert) or (State = dsEdit)) then
+    begin
+      e := Sender as TcxCustomEdit;
+      var  oLinFac:TLinFac;
+      oLinFac := TLinFac.Create(dmmFacturas.unqryLinFac,
+                                dmmFacturas.unqryTablaG);
+      oLinFac.TipoIVA := VarToStr(e.EditingValue);
+      FreeAndNil(oLinFac);
+
+//      FindField('TIPOIVA_ARTICULO_FACTURA_LINEA').AsString :=
+//                                                     VarToStr(e.EditingValue);
+//      sTipoIVA := FindField('TIPOIVA_ARTICULO_FACTURA_LINEA').AsString;
+//      FindField('PORCEN_IVA_FACTURA_LINEA').AsInteger :=
+//                                               dmmFacturas.GetTipoIVA(sTipoIVA);
+//      CalcularLinea;
+    end;
+  end;
+end;
+
+procedure TfrmMtoFacturas.
+                  cxgrdbclmntv1CANTIDAD_FACTURA_LINEAPropertiesEditValueChanged(
+  Sender: TObject);
+var
+  e : TcxCustomEdit;
+  oLinFac:TLinFac;
+begin
+  inherited;
+  with dmmFacturas.unqryLinFac do
+  begin
+    if ((State = dsInsert) or (State = dsEdit)) then
+    begin
+      e := Sender as TcxCustomEdit;
+      oLinFac := TLinFac.Create(dmmFacturas.unqryLinFac);
+      oLinFac.Cant := StrToCurr(VarToStr(e.EditingValue));
+      FreeAndNil(oLinFac);
+//      FindField('CANTIDAD_FACTURA_LINEA').AsString :=
+//                                                     VarToStr(e.EditingValue);
+//      FindField('TOTAL_FACTURA_LINEA').AsFloat :=
+//             FindField('CANTIDAD_FACTURA_LINEA').AsFloat *
+//             FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat;
+    end;
+  end;
+end;
+
+procedure TfrmMtoFacturas.CalcularLinea;
+begin
+  with dmmFacturas.unqryLinFac do
+//  begin
+//    if SameText( dmmFacturas.unqryTablaG.FieldByName(
+//            'ESIMP_INCL_TARIFA_CLIENTE_FACTURA').AsString, 'S') then
+//    begin
+//      FindField('PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA').AsFloat :=
+//               (FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat /
+//                 (1 + FindField('PORCEN_IVA_FACTURA_LINEA').AsInteger/100));
+//      FindField('TOTAL_FACTURA_LINEA').AsFloat :=
+//               FindField('CANTIDAD_FACTURA_LINEA').AsFloat *
+//               FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat;
+//    end
+//    else
+//    begin
+//      FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat :=
+//               ( FindField('PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA').AsFloat *
+//                    (1 +
+//                    FindField('PORCEN_IVA_FACTURA_LINEA').AsInteger/100));
+//      FindField('TOTAL_FACTURA_LINEA').AsFloat :=
+//               FindField('CANTIDAD_FACTURA_LINEA').AsFloat *
+//               FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat;
+//    end;
+//  end;
+end;
+
 initialization
   ForceReferenceToClass(TfrmMtoFacturas);
 end.

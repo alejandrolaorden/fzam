@@ -80,7 +80,7 @@ begin
   {$ENDIF}
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.Title := 'Login';
+  Application.Title := 'FZam';
   with TfrmLogon.Create(Application) do
   begin
     try

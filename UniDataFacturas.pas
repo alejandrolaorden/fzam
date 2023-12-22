@@ -184,7 +184,8 @@ begin
     with unqrySol do
     begin
       Connection := inLibGlobalVar.oConn;
-      SQL.Text :=  'SELECT * FROM vi_ivas ' +
+      SQL.Text :=  'SELECT *  ' +
+                   '  FROM vi_ivas ' +
                    ' WHERE GRUPO_ZONA_IVA = :grupo ' +
                    '   AND FECHA_DESDE_IVA <= :fecha_ini ' +
                    '   AND (    FECHA_HASTA_IVA >= :fecha_fin ' +
@@ -236,7 +237,8 @@ var
 begin
   unqrySol := TUniQuery.Create(Self);
   unqrySol.Connection := inLibGlobalVar.oConn;
-  unqrySol.SQL.Text := 'SELECT * FROM fza_clientes ' +
+  unqrySol.SQL.Text := 'SELECT * ' +
+                       '  FROM fza_clientes ' +
                        ' WHERE CODIGO_CLIENTE = :cliente';
   unqrySol.ParamByName('cliente').AsString := s;
   unqrySol.Open;
@@ -262,20 +264,6 @@ begin
    ParamByName('pNRO_FACTURA').AsString :=
       unqryTablaG.FieldByName('NRO_FACTURA').AsString;
    ExecProc;
-  end;
-end;
-
-procedure TdmFacturas.CalcularLinea;
-begin
-  with dsLinFac.DataSet do
-  begin
-    if ((State = dsInsert) or
-        (State = dsEdit)) then
-    begin
-      FindField('TOTAL_FACTURA_LINEA').AsCurrency :=
-                                FindField('CANTIDAD_FACTURA_LINEA').AsCurrency *
-                FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsCurrency;
-    end;
   end;
 end;
 
@@ -323,13 +311,13 @@ begin
         ) then
        dsLinFac.DataSet.Edit;
      FindField('CODIGO_ARTICULO_FACTURA_LINEA').AsString :=
-                         DataSet.FindField('CODIGO_ARTICULO').AsString;
+                                  DataSet.FindField('CODIGO_ARTICULO').AsString;
      FindField('TIPO_CANTIDAD_ARTICULO_FACTURA_LINEA').AsString :=
-                         DataSet.FindField('TIPO_CANTIDAD_ARTICULO').AsString;
+                           DataSet.FindField('TIPO_CANTIDAD_ARTICULO').AsString;
      FindField('DESCRIPCION_ARTICULO_FACTURA_LINEA').AsString :=
-                         DataSet.FindField('DESCRIPCION_ARTICULO').AsString;
+                             DataSet.FindField('DESCRIPCION_ARTICULO').AsString;
      FindField('TIPOIVA_ARTICULO_FACTURA_LINEA').AsString :=
-                         DataSet.FindField('TIPOIVA_ARTICULO').AsString;
+                                 DataSet.FindField('TIPOIVA_ARTICULO').AsString;
      sPpTipoIVA :=  DataSet.FindField('TIPOIVA_ARTICULO').AsString;
      iPorcen := 0;
       case IndexStr(sPpTipoIVA, ['N', 'R', 'S', 'E']) of
@@ -341,11 +329,16 @@ begin
      fPorcen := iPorcen / 100;
      FindField('ESIMP_INCL_TARIFA_FACTURA_LINEA').AsString :=
             unqryTablaG.FindField('ESIMP_INCL_TARIFA_CLIENTE_FACTURA').AsString;
-
+     FindField('PRECIOSALIDA_FACTURA_LINEA').AsString :=
+                                DataSet.FindField('PRECIOSALIDA_TARIFA').AsString;
+     FindField('PORCEN_DTO_FACTURA_LINEA').AsString :=
+                                DataSet.FindField('PORCEN_DTO_TARIFA').AsString;
+     FindField('PRECIO_DTO_FACTURA_LINEA').AsString :=
+                                DataSet.FindField('PRECIO_DTO_TARIFA').AsString;
      if  DataSet.FindField('ESIMP_INCL_TARIFA').AsString = 'S' then
      begin
        FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsString :=
-                         DataSet.FindField('PRECIOFINAL_TARIFA').AsString;
+                               DataSet.FindField('PRECIOFINAL_TARIFA').AsString;
        FindField('PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA').AsFloat :=
              (DataSet.FindField('PRECIOFINAL_TARIFA').AsFloat / (1+ (fPorcen)));
      end
@@ -367,41 +360,41 @@ begin
     if ((State <> dsEdit) and (State <> dsInsert)) then
       Edit;
     FindField('CODIGO_CLIENTE_FACTURA').AsString :=
-                   DataSet.FindField('CODIGO_CLIENTE').AsString;
+                                   DataSet.FindField('CODIGO_CLIENTE').AsString;
     FindField('RAZONSOCIAL_CLIENTE_FACTURA').AsString :=
-                   DataSet.FindField('RAZONSOCIAL_CLIENTE').AsString;
+                              DataSet.FindField('RAZONSOCIAL_CLIENTE').AsString;
     FindField('NIF_CLIENTE_FACTURA').AsString :=
-                   DataSet.FindField('NIF_CLIENTE').AsString;
+                                      DataSet.FindField('NIF_CLIENTE').AsString;
     FindField('MOVIL_CLIENTE_FACTURA').AsString :=
-                   DataSet.FindField('MOVIL_CLIENTE').AsString;
+                                    DataSet.FindField('MOVIL_CLIENTE').AsString;
     FindField('EMAIL_CLIENTE_FACTURA').AsString :=
-                   DataSet.FindField('EMAIL_CLIENTE').AsString;
+                                    DataSet.FindField('EMAIL_CLIENTE').AsString;
     FindField('DIRECCION1_CLIENTE_FACTURA').AsString :=
-                   DataSet.FindField('DIRECCION1_CLIENTE').AsString;
+                               DataSet.FindField('DIRECCION1_CLIENTE').AsString;
     FindField('DIRECCION2_CLIENTE_FACTURA').AsString :=
-                   DataSet.FindField('DIRECCION2_CLIENTE').AsString;
+                               DataSet.FindField('DIRECCION2_CLIENTE').AsString;
     FindField('POBLACION_CLIENTE_FACTURA').AsString :=
-                   DataSet.FindField('POBLACION_CLIENTE').AsString;
+                                DataSet.FindField('POBLACION_CLIENTE').AsString;
     FindField('PROVINCIA_CLIENTE_FACTURA').AsString :=
-                   DataSet.FindField('PROVINCIA_CLIENTE').AsString;
+                                DataSet.FindField('PROVINCIA_CLIENTE').AsString;
     FindField('CPOSTAL_CLIENTE_FACTURA').AsString :=
-                   DataSet.FindField('CPOSTAL_CLIENTE').AsString;
+                                  DataSet.FindField('CPOSTAL_CLIENTE').AsString;
     FindField('PAIS_CLIENTE_FACTURA').AsString :=
-                   DataSet.FindField('PAIS_CLIENTE').AsString;
+                                     DataSet.FindField('PAIS_CLIENTE').AsString;
     FindField('ESIVA_RECARGO_CLIENTE_FACTURA').AsString :=
-                   DataSet.FindField('ESIVA_RECARGO_CLIENTE').AsString;
+                            DataSet.FindField('ESIVA_RECARGO_CLIENTE').AsString;
     FindField('ESIVA_EXENTO_CLIENTE_FACTURA').AsString :=
-                   DataSet.FindField('ESIVA_EXENTO_CLIENTE').AsString;
+                             DataSet.FindField('ESIVA_EXENTO_CLIENTE').AsString;
     FindField('ESREGIMENESPECIALAGRICOLA_CLIENTE_FACTURA').AsString :=
                 DataSet.FindField('ESREGIMENESPECIALAGRICOLA_CLIENTE').AsString;
     FindField('ESRETENCIONES_CLIENTE_FACTURA').AsString :=
-                   DataSet.FindField('ESRETENCIONES_CLIENTE').AsString;
+                            DataSet.FindField('ESRETENCIONES_CLIENTE').AsString;
     FindField('ESINTRACOMUNITARIO_CLIENTE_FACTURA').AsString :=
-                   DataSet.FindField('ESINTRACOMUNITARIO_CLIENTE').AsString;
+                       DataSet.FindField('ESINTRACOMUNITARIO_CLIENTE').AsString;
     if ( DataSet.FindField('CODIGO_FORMA_PAGO_CLIENTE').AsString <> '' ) then
     begin
       FindField('FORMA_PAGO_FACTURA').AsString :=
-                   DataSet.FindField('CODIGO_FORMA_PAGO_CLIENTE').AsString;
+                        DataSet.FindField('CODIGO_FORMA_PAGO_CLIENTE').AsString;
     end
     else
       FindField('FORMA_PAGO_FACTURA').AsString := FormapagoDefault;
@@ -583,11 +576,11 @@ begin
   unqryRecibosPrint.Connection := inLibGlobalVar.oConn;
   unqrySeriesEditCombo.Connection := inLibGlobalVar.oConn;
   unqryIvasTipos.Connection := inLibGlobalVar.oConn;
-  unqryCabIVA.Connection := inlibGlobalVar.oConn;
-  unqryCabIVA.MasterSource := (Self.Owner as TfrmMtoFacturas).dsTablaG;
+  //unqryCabIVA.Connection := inlibGlobalVar.oConn;
+  //unqryCabIVA.MasterSource := (Self.Owner as TfrmMtoFacturas).dsTablaG;
   unqryLinfac.MasterSource := (Self.Owner as TfrmMtoFacturas).dsTablaG;
   unqryRecibos.MasterSource := (Self.Owner as TfrmMtoFacturas).dsTablaG;
-  unqryCabIVA.Open;
+//  unqryCabIVA.Open;
   unqryIvasTipos.Open;
   unqryLinFac.Open;
   unqrySeries.Open;
@@ -608,7 +601,7 @@ begin
   unqryPerfiles.Close;
   unqryRecibos.Close;
   unqrySeriesEditCombo.Close;
-  unqryCabIVA.Close;
+  //unqryCabIVA.Close;
 end;
 
 function TdmFacturas.FormaPagoDefault: String;
@@ -671,25 +664,25 @@ begin
 end;
 
 function TdmFacturas.GetTipoIVA(sTipoIVA: string): Integer;
-var
-  iPorcen:Integer;
+//var
+//  iPorcen:Integer;
 begin
-  with dmmFacturas.unqryTablaG do
-  begin
-  case IndexStr(sTipoIVA, ['N', 'R', 'S', 'E']) of
-    0: iPorcen := FindField('PORCEN_IVAN_FACTURA').AsInteger;
-    1: iPorcen := FindField('PORCEN_IVAR_FACTURA').AsInteger;
-    2: iPorcen := FindField('PORCEN_IVAS_FACTURA').AsInteger;
-    3: iPorcen := FindField('PORCEN_IVAE_FACTURA').AsInteger;
-    else
-    begin
-      ShowMessage('Tipo de Iva incorrecto');
-      iPorcen := unqryLinFac.FindField('PORCEN_IVAN_FACTURA').AsInteger;
-      unqryLinFac.FindField('TIPOIVA_ARTICULO_FACTURA_LINEA').AsString := 'N';
-    end;
-  end;
-  end;
-  Result := iPorcen;
+//  with dmmFacturas.unqryTablaG do
+//  begin
+//  case IndexStr(sTipoIVA, ['N', 'R', 'S', 'E']) of
+//    0: iPorcen := FindField('PORCEN_IVAN_FACTURA').AsInteger;
+//    1: iPorcen := FindField('PORCEN_IVAR_FACTURA').AsInteger;
+//    2: iPorcen := FindField('PORCEN_IVAS_FACTURA').AsInteger;
+//    3: iPorcen := FindField('PORCEN_IVAE_FACTURA').AsInteger;
+//    else
+//    begin
+//      ShowMessage('Tipo de Iva incorrecto');
+//      iPorcen := unqryLinFac.FindField('PORCEN_IVAN_FACTURA').AsInteger;
+//      unqryLinFac.FindField('TIPOIVA_ARTICULO_FACTURA_LINEA').AsString := 'N';
+//    end;
+//  end;
+//  end;
+//  Result := iPorcen;
 end;
 
 procedure TdmFacturas.GetCodigoAutoFactura;
@@ -978,6 +971,20 @@ begin
           GetCodigoAutoEmpresa;
         odmConn.ActualizarUserTimeModif(DataSet);
       end;
+  end;
+end;
+
+procedure TdmFacturas.CalcularLinea;
+begin
+  with dsLinFac.DataSet do
+  begin
+    if ((State = dsInsert) or
+        (State = dsEdit)) then
+    begin
+//    FindField('TOTAL_FACTURA_LINEA').AsCurrency :=
+//                              FindField('CANTIDAD_FACTURA_LINEA').AsCurrency *
+//              FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsCurrency;
+    end;
   end;
 end;
 
