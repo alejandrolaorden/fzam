@@ -1153,15 +1153,10 @@ begin
     if ((State = dsInsert) or (State = dsEdit)) then
     begin
       e := Sender as TcxCustomEdit;
-//      FieldByName('ESIMP_INCL_TARIFA_FACTURA_LINEA').AsString :=
-//                                                     VarToStr(e.EditingValue);
-//      if (FieldByName('ESIMP_INCL_TARIFA_FACTURA_LINEA').AsString = 'S') then
-//        FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsString :=
-//                                                      VarToStr(e.EditingValue)
-//      else
-//        FindField('PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA').AsString :=
-//                                                     VarToStr(e.EditingValue);
-//
+      var  oLinFac:TLinFac;
+      oLinFac := TLinFac.Create(dmmFacturas.unqryLinFac);
+      oLinFac.PrecioSal := StrToCurr(VarToStr(e.EditingValue));
+      FreeAndNil(oLinFac);
     end;
   end;
 end;
@@ -1178,15 +1173,10 @@ begin
   if ((State = dsInsert) or (State = dsEdit)) then
     begin
       e := Sender as TcxCustomEdit;
-//      FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsString :=
-//                                                    VarToStr(e.EditingValue);
-//      FindField('PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA').AsFloat :=
-//             ( FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat /
-//               (1 + FindField('PORCEN_IVA_FACTURA_LINEA').AsInteger/100)
-//             );
-//      FindField('TOTAL_FACTURA_LINEA').AsFloat :=
-//             FindField('CANTIDAD_FACTURA_LINEA').AsFloat *
-//             FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat;
+      var  oLinFac:TLinFac;
+      oLinFac := TLinFac.Create(dmmFacturas.unqryLinFac);
+      oLinFac.PreCiva := StrToCurr(VarToStr(e.EditingValue));
+      FreeAndNil(oLinFac);
     end;
   end;
 end;
@@ -1203,15 +1193,10 @@ begin
     if ((State = dsInsert) or (State = dsEdit)) then
     begin
       e := Sender as TcxCustomEdit;
-//      FindField('PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA').AsString :=
-//                                                     VarToStr(e.EditingValue);
-//      FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat :=
-//             ( FindField('PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA').AsFloat *
-//                  (1 +
-//                  FindField('PORCEN_IVA_FACTURA_LINEA').AsInteger/100));
-//      FindField('TOTAL_FACTURA_LINEA').AsFloat :=
-//             FindField('CANTIDAD_FACTURA_LINEA').AsFloat *
-//             FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat;
+      var  oLinFac:TLinFac;
+      oLinFac := TLinFac.Create(dmmFacturas.unqryLinFac);
+      oLinFac.PreSiva := StrToCurr(VarToStr(e.EditingValue));
+      FreeAndNil(oLinFac);
     end;
   end;
 end;
@@ -1221,7 +1206,6 @@ procedure TfrmMtoFacturas.
                                                                Sender: TObject);
 var
   e: TcxCustomEdit;
-  sTipoIVA : string;
 begin
   inherited;
   with dmmFacturas.unqryLinFac do
@@ -1234,13 +1218,6 @@ begin
                                 dmmFacturas.unqryTablaG);
       oLinFac.TipoIVA := VarToStr(e.EditingValue);
       FreeAndNil(oLinFac);
-
-//      FindField('TIPOIVA_ARTICULO_FACTURA_LINEA').AsString :=
-//                                                     VarToStr(e.EditingValue);
-//      sTipoIVA := FindField('TIPOIVA_ARTICULO_FACTURA_LINEA').AsString;
-//      FindField('PORCEN_IVA_FACTURA_LINEA').AsInteger :=
-//                                               dmmFacturas.GetTipoIVA(sTipoIVA);
-//      CalcularLinea;
     end;
   end;
 end;
@@ -1261,40 +1238,13 @@ begin
       oLinFac := TLinFac.Create(dmmFacturas.unqryLinFac);
       oLinFac.Cant := StrToCurr(VarToStr(e.EditingValue));
       FreeAndNil(oLinFac);
-//      FindField('CANTIDAD_FACTURA_LINEA').AsString :=
-//                                                     VarToStr(e.EditingValue);
-//      FindField('TOTAL_FACTURA_LINEA').AsFloat :=
-//             FindField('CANTIDAD_FACTURA_LINEA').AsFloat *
-//             FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat;
     end;
   end;
 end;
 
 procedure TfrmMtoFacturas.CalcularLinea;
 begin
-  with dmmFacturas.unqryLinFac do
-//  begin
-//    if SameText( dmmFacturas.unqryTablaG.FieldByName(
-//            'ESIMP_INCL_TARIFA_CLIENTE_FACTURA').AsString, 'S') then
-//    begin
-//      FindField('PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA').AsFloat :=
-//               (FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat /
-//                 (1 + FindField('PORCEN_IVA_FACTURA_LINEA').AsInteger/100));
-//      FindField('TOTAL_FACTURA_LINEA').AsFloat :=
-//               FindField('CANTIDAD_FACTURA_LINEA').AsFloat *
-//               FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat;
-//    end
-//    else
-//    begin
-//      FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat :=
-//               ( FindField('PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA').AsFloat *
-//                    (1 +
-//                    FindField('PORCEN_IVA_FACTURA_LINEA').AsInteger/100));
-//      FindField('TOTAL_FACTURA_LINEA').AsFloat :=
-//               FindField('CANTIDAD_FACTURA_LINEA').AsFloat *
-//               FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsFloat;
-//    end;
-//  end;
+
 end;
 
 initialization

@@ -2,7 +2,7 @@ unit inLibFacturas;
 
 interface
 
-uses Uni, System.StrUtils;
+uses Uni, System.StrUtils, System.SysUtils;
 
 const
 //linea de factura
@@ -117,15 +117,31 @@ type
  public
    constructor Create(unqryLin:TUniQuery); overload;
    constructor Create(unqryLin, unqryFac:TUniQuery); overload;
+   Destructor  Destroy; override;
    procedure CopyToDataSetLin;
    procedure CopyToDataSetFac;
    procedure CopyToObjectLin;
    procedure CopyToObjectFac;
    procedure SetInit(unqryLin:TUniQuery);
+   procedure CalcularLinea;
   end;
 implementation
 
 { TLinFac }
+
+procedure TLinFac.CalcularLinea;
+begin
+  if (SameText(_sImpcl, 'S')) then
+  begin
+    _dPreSiva := _dPreCiva  / (1 + _dPorIva/100);
+    _dTotSiva := _dPreSiva * _dCant;
+  end
+  else
+  begin
+    _dPreCiva := _dPreSiva * (1 + _dPorIva/100);
+    _dTotCiva := _dPreCiva * _dCant;
+  end;
+end;
 
 procedure TLinFac.CopyToDataSetFac;
 begin
@@ -148,6 +164,8 @@ begin
     FieldByName(fPorIva).AsFloat := _dPorIVa;
     FieldByName(fTotCiva).AsFloat := _dTotCiva;
     FieldByName(fTotSiva).AsFloat := _dTotSiva;
+    FieldByName(fImpcl).AsString := _sImpcl;
+    FieldByName(fTipIVa).AsString := _sTipIva;
   end;
 end;
 
@@ -175,13 +193,15 @@ begin
     _dPorIVa :=    FieldByName(fPorIva).AsFloat;
     _dTotCiva :=   FieldByName(fTotCiva).AsFloat;
     _dTotSiva :=   FieldByName(fTotSiva).AsFloat;
+    _sImpcl :=     FieldByName(fImpcl).AsString;
+    _sTipIVA :=    FieldByName(fTipIva).AsString;
   end;
 end;
 
 constructor TLinFac.Create(unqryLin: TUniQuery);
 begin
   _unqryLin := unqryLin;
-  CopyToObjectLin;
+  Self.CopyToObjectLin;
 end;
 
 
@@ -189,8 +209,14 @@ constructor TLinFac.Create(unqryLin, unqryFac: TUniQuery);
 begin
   _unqryLin := unqryLin;
   _unqryFac := unqryFac;
-  CopyToObjectLin;
-  CopyToObjectFac;
+  Self.CopyToObjectLin;
+  Self.CopyToObjectFac;
+end;
+
+destructor TLinFac.Destroy;
+begin
+  Self.CopyToDataSetLin;
+  inherited;
 end;
 
 function TLinFac.GetCant: Currency;
@@ -253,7 +279,6 @@ begin
   _dCant := Value;
   _dTotSiva := _dCant * _dPreSiva;
   _dTotCiva := _dCant * _dPreCiva;
-  CopyToDataSetLin;
 end;
 
 procedure TLinFac.SetDto(const Value: Currency);
@@ -269,21 +294,38 @@ end;
 procedure TLinFac.SetPorIva(const Value: Currency);
 begin
   _dPorIVa := Value;
+  Self.CalcularLinea;
 end;
 
 procedure TLinFac.SetPrecioSal(const Value: Currency);
+var
+  dPrecioFinal:Currency;
 begin
   _dPrecioSal := Value;
+  if (_dPrecioSal <> 0) then
+  begin
+    dPrecioFinal := _dPrecioSal - _dDto;
+    if SameText(Impcl,'S') then
+    begin
+      Self.PreCiva := dPrecioFinal;
+    end
+    else
+    begin
+      Self.PreSiva := dPrecioFinal;
+    end;
+  end;
 end;
 
 procedure TLinFac.SetPreCiva(const Value: Currency);
 begin
   _dPreCiva := Value;
+  CalcularLinea;
 end;
 
 procedure TLinFac.SetPreSiva(const Value: Currency);
 begin
   _dPreSiva := Value;
+  CalcularLinea;
 end;
 
 procedure TLinFac.SetTipoIva(const Value: String);
@@ -300,8 +342,7 @@ begin
       3: dPorcen := FindField('PORCEN_IVAE_FACTURA').AsCurrency;
     end;
   end;
-  _dPorIVa := dPorcen;
-  CopyToDataSetLin;
+  Self.PorIva := dPorcen;
 end;
 
 procedure TLinFac.SetTotCiva(const Value: Currency);
