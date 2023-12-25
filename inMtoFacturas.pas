@@ -110,7 +110,6 @@ type
     curTOTAL_LIQUIDO_FACTURA: TcxDBCurrencyEdit;
     lblTotalRetencionFactura: TcxLabel;
     lblPorcRetencionFactura: TcxLabel;
-    cxdbmskdt1: TcxDBMaskEdit;
     lbldbRAZONSOCIAL_CLIENTE_FACTURA: TcxDBLabel;
     btnCODIGO_EMPRESA_FACTURA: TcxDBButtonEdit;
     lblCodigoEmpresa: TcxLabel;
@@ -272,7 +271,7 @@ type
     actCliente: TAction;
     lbldbCODIGO_CLIENTE_FACTURA: TcxDBLabel;
     lbldbCODIGO_CLIENTE: TcxDBLabel;
-    cxDBCheckBox1: TcxDBCheckBox;
+    chkImpIncl: TcxDBCheckBox;
     tvLineasFacturaPRECIOSALIDA_FACTURA_LINEA: TcxGridDBColumn;
     tvLineasFacturaPORCEN_DTO_FACTURA_LINEA: TcxGridDBColumn;
     tvLineasFacturaPRECIO_DTO_FACTURA_LINEA: TcxGridDBColumn;
@@ -312,6 +311,7 @@ type
     cxDBSpinEdit7: TcxDBSpinEdit;
     cxDBSpinEdit8: TcxDBSpinEdit;
     cxDBSpinEdit9: TcxDBSpinEdit;
+    tvLineasFacturaTOTAL_FACTURASIVA_LINEA: TcxGridDBColumn;
     procedure sbGrabarClick(Sender: TObject);
     procedure btnUpdateClienteClick(Sender: TObject);
     procedure sbNuevaFacturaClick(Sender: TObject);
@@ -377,6 +377,11 @@ type
       Sender: TObject);
     procedure tvLineasFacturaPRECIOSALIDA_FACTURA_LINEAPropertiesEditValueChanged(
       Sender: TObject);
+    procedure tvLineasFacturaPORCEN_DTO_FACTURA_LINEAPropertiesEditValueChanged(
+      Sender: TObject);
+    procedure tvLineasFacturaPRECIO_DTO_FACTURA_LINEAPropertiesEditValueChanged(
+      Sender: TObject);
+    procedure spnRetencionPropertiesEditValueChanged(Sender: TObject);
 //    procedure FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
   public
     procedure ActualizarComboSeries;
@@ -607,7 +612,7 @@ begin
   try
     formulario.dsTablaG.DataSet := dmmFacturas.unqryCliDataFac;
     formulario.dsTablaG.DataSet.Open;
-    formulario.ProcesarPerfiles;  //debe ir despu�s de abrir el datase
+    formulario.ProcesarPerfiles;  //debe ir después de abrir el dataset
     formulario.ShowModal;
   finally
       inherited;
@@ -1103,6 +1108,7 @@ begin
         (unqryTablaG.State = dsEdit)) then
     begin
       unqryTablaG.Post;
+      //unqryTablaG.Refresh;
     end;
     if ((dsLinFac.Dataset.State = dsInsert) or
         (dsLinFac.Dataset.State = dsEdit)) then
@@ -1141,6 +1147,25 @@ begin
         dmmFacturas.unqryTablaG);
 end;
 
+procedure TfrmMtoFacturas.tvLineasFacturaPORCEN_DTO_FACTURA_LINEAPropertiesEditValueChanged(
+  Sender: TObject);
+var
+  e: TcxCustomEdit;
+begin
+  inherited;
+  with dmmFacturas.unqryLinFac do
+  begin
+    if ((State = dsInsert) or (State = dsEdit)) then
+    begin
+      e := Sender as TcxCustomEdit;
+      var  oLinFac:TLinFac;
+      oLinFac := TLinFac.Create(dmmFacturas.unqryLinFac);
+      oLinFac.PorDto := StrToCurrDef(VarToStr(e.EditingValue), 0);
+      FreeAndNil(oLinFac);
+    end;
+  end;
+end;
+
 procedure TfrmMtoFacturas.
             tvLineasFacturaPRECIOSALIDA_FACTURA_LINEAPropertiesEditValueChanged(
   Sender: TObject);
@@ -1148,14 +1173,33 @@ var
   e: TcxCustomEdit;
 begin
   inherited;
-    with dmmFacturas.unqryLinFac do
+  with dmmFacturas.unqryLinFac do
   begin
     if ((State = dsInsert) or (State = dsEdit)) then
     begin
       e := Sender as TcxCustomEdit;
       var  oLinFac:TLinFac;
       oLinFac := TLinFac.Create(dmmFacturas.unqryLinFac);
-      oLinFac.PrecioSal := StrToCurr(VarToStr(e.EditingValue));
+      oLinFac.PrecioSal := StrToCurrDef(VarToStr(e.EditingValue), 0);
+      FreeAndNil(oLinFac);
+    end;
+  end;
+end;
+
+procedure TfrmMtoFacturas.tvLineasFacturaPRECIO_DTO_FACTURA_LINEAPropertiesEditValueChanged(
+  Sender: TObject);
+var
+  e: TcxCustomEdit;
+begin
+  inherited;
+  with dmmFacturas.unqryLinFac do
+  begin
+  if ((State = dsInsert) or (State = dsEdit)) then
+    begin
+      e := Sender as TcxCustomEdit;
+      var  oLinFac:TLinFac;
+      oLinFac := TLinFac.Create(dmmFacturas.unqryLinFac);
+      oLinFac.Dto := StrToCurrDef(VarToStr(e.EditingValue), 0);
       FreeAndNil(oLinFac);
     end;
   end;
@@ -1175,7 +1219,7 @@ begin
       e := Sender as TcxCustomEdit;
       var  oLinFac:TLinFac;
       oLinFac := TLinFac.Create(dmmFacturas.unqryLinFac);
-      oLinFac.PreCiva := StrToCurr(VarToStr(e.EditingValue));
+      oLinFac.PreCiva := StrToCurrDef(VarToStr(e.EditingValue), 0);
       FreeAndNil(oLinFac);
     end;
   end;
@@ -1195,7 +1239,7 @@ begin
       e := Sender as TcxCustomEdit;
       var  oLinFac:TLinFac;
       oLinFac := TLinFac.Create(dmmFacturas.unqryLinFac);
-      oLinFac.PreSiva := StrToCurr(VarToStr(e.EditingValue));
+      oLinFac.PreSiva := StrToCurrDef(VarToStr(e.EditingValue), 0);
       FreeAndNil(oLinFac);
     end;
   end;
@@ -1236,11 +1280,27 @@ begin
     begin
       e := Sender as TcxCustomEdit;
       oLinFac := TLinFac.Create(dmmFacturas.unqryLinFac);
-      oLinFac.Cant := StrToCurr(VarToStr(e.EditingValue));
+      oLinFac.Cant := StrToCurrDef(VarToStr(e.EditingValue), 1);
       FreeAndNil(oLinFac);
     end;
   end;
 end;
+
+procedure TfrmMtoFacturas.spnRetencionPropertiesEditValueChanged(
+  Sender: TObject);
+var
+  e : TcxCustomEdit;
+begin
+  inherited;
+//  with dsTablaG do
+//  if ((State = dsInsert) or (State = dsEdit)) then
+//  begin
+//    e := Sender as TcxCustomEdit;
+//
+//  end;
+end;
+
+
 
 procedure TfrmMtoFacturas.CalcularLinea;
 begin

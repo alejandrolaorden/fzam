@@ -20,8 +20,8 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
       Properties.ActivePage = tsFicha
       ExplicitWidth = 754
       ExplicitHeight = 634
-      ClientRectBottom = 628
-      ClientRectRight = 748
+      ClientRectBottom = 630
+      ClientRectRight = 750
       inherited tsLista: TcxTabSheet
         ExplicitLeft = 3
         ExplicitTop = 32
@@ -109,14 +109,14 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
         end
       end
       inherited tsFicha: TcxTabSheet
-        ExplicitLeft = 3
-        ExplicitTop = 32
-        ExplicitWidth = 745
-        ExplicitHeight = 596
+        ExplicitLeft = 4
+        ExplicitTop = 30
+        ExplicitWidth = 746
+        ExplicitHeight = 600
         object pnl1: TPanel
           Left = 0
           Top = 0
-          Width = 745
+          Width = 746
           Height = 113
           Align = alTop
           TabOrder = 0
@@ -148,7 +148,7 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
           object Panel1: TPanel
             Left = 1
             Top = 1
-            Width = 743
+            Width = 744
             Height = 111
             Align = alClient
             TabOrder = 0
@@ -196,24 +196,24 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
         end
         object pnl2: TPanel
           Left = 0
-          Top = 117
-          Width = 745
+          Top = 121
+          Width = 746
           Height = 479
           Align = alClient
           TabOrder = 1
           object pcPestana: TcxPageControl
             Left = 1
             Top = 1
-            Width = 743
+            Width = 744
             Height = 477
             Align = alClient
             TabOrder = 0
             Properties.ActivePage = tsMasDatos
             Properties.CustomButtons.Buttons = <>
-            ClientRectBottom = 471
-            ClientRectLeft = 3
-            ClientRectRight = 737
-            ClientRectTop = 32
+            ClientRectBottom = 473
+            ClientRectLeft = 4
+            ClientRectRight = 740
+            ClientRectTop = 30
             object tsMasDatos: TcxTabSheet
               Caption = '&1_M'#225's Datos-'
               ImageIndex = 0
@@ -279,6 +279,10 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
             object tsVentas: TcxTabSheet
               Caption = '&2_Ventas-'
               ImageIndex = 2
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object pnlFactura: TPanel
                 Left = 0
                 Top = 0
@@ -935,13 +939,19 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
             object tsOtros: TcxTabSheet
               Caption = '&3_Otros-'
               ImageIndex = 3
+              ExplicitLeft = 3
+              ExplicitTop = 32
+              ExplicitWidth = 734
+              ExplicitHeight = 439
               object pnl3: TPanel
                 Left = 0
-                Top = 360
-                Width = 734
+                Top = 364
+                Width = 736
                 Height = 79
                 Align = alBottom
                 TabOrder = 0
+                ExplicitTop = 360
+                ExplicitWidth = 734
                 object cxdbtxtdtDIRECCION1_CLIENTE: TcxDBTextEdit
                   Left = 17
                   Top = 37
@@ -1055,26 +1065,28 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
         object cxspltr1: TcxSplitter
           Left = 0
           Top = 113
-          Width = 745
-          Height = 4
+          Width = 746
+          Height = 8
           HotZoneClassName = 'TcxMediaPlayer9Style'
           AlignSplitter = salTop
           Control = pnl1
         end
       end
       inherited tsPerfil: TcxTabSheet
-        ExplicitWidth = 745
-        ExplicitHeight = 596
+        ExplicitLeft = 4
+        ExplicitTop = 30
+        ExplicitWidth = 744
+        ExplicitHeight = 598
         inherited pnlPerfilTop: TPanel
-          Width = 745
-          ExplicitWidth = 745
+          Width = 746
+          ExplicitWidth = 744
           inherited edtPerfilBusq: TcxTextEdit
             ExplicitHeight = 27
           end
         end
         inherited pnlPerfilDetail: TPanel
-          Width = 745
-          Height = 539
+          Width = 746
+          Height = 543
           ExplicitWidth = 745
           ExplicitHeight = 539
           inherited cxgrdPerfil: TcxGrid
@@ -1134,7 +1146,6 @@ inherited frmMtoFormasdePago: TfrmMtoFormasdePago
     end
   end
   inherited dsTablaG: TDataSource
-    DataSet = dmFormasdePago.unqryTablaG
     Left = 612
     Top = 559
   end

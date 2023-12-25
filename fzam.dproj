@@ -5,7 +5,7 @@
         <FrameworkType>VCL</FrameworkType>
         <MainSource>fzam.dpr</MainSource>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Config Condition="'$(Config)'==''">Release</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>4227</TargetedPlatforms>
         <AppType>Application</AppType>
@@ -141,9 +141,6 @@
         <DCC_DebugInfoInTds>true</DCC_DebugInfoInTds>
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
         <DCC_CBuilderOutput>All</DCC_CBuilderOutput>
-        <Icon_MainIcon>payment_tax_invoice_document_calculator_icon_188684.ico</Icon_MainIcon>
-        <UWP_DelphiLogo44>payment_48_48.png</UWP_DelphiLogo44>
-        <UWP_DelphiLogo150>payment_tax_invoice_document_calculator_icon_188684.png</UWP_DelphiLogo150>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
@@ -188,16 +185,146 @@
         </DelphiCompile>
         <DCCReference Include="vcl\Vcl.Consts.pas"/>
         <DCCReference Include="vcl\System.SysConst.pas"/>
-        <DCCReference Include="UniDataArticulos.pas"/>
-        <DCCReference Include="UniDataClientes.pas"/>
+        <DCCReference Include="inLibDevExp.pas"/>
+        <DCCReference Include="inLibDir.pas"/>
+        <DCCReference Include="inLibGlobalVar.pas"/>
+        <DCCReference Include="inLibLog.pas"/>
+        <DCCReference Include="inLibtb.pas"/>
+        <DCCReference Include="inLibUser.pas"/>
+        <DCCReference Include="inLibWin.pas"/>
+        <DCCReference Include="inLibShowMto.pas"/>
+        <DCCReference Include="inLibUnitForm.pas"/>
+        <DCCReference Include="inLibMsg.pas"/>
+        <DCCReference Include="inLibNet.pas"/>
+        <DCCReference Include="inLibScriptDB.pas"/>
+        <DCCReference Include="inLibIBAN.Utils.pas"/>
+        <DCCReference Include="inLibIBAN.Types.pas"/>
+        <DCCReference Include="inLibIBAN.Funcs.pas"/>
+        <DCCReference Include="inLibFacturas.pas"/>
+        <DCCReference Include="inMtoFrmBase.pas">
+            <Form>frmBase</Form>
+        </DCCReference>
+        <DCCReference Include="inMtoLogon.pas">
+            <Form>frmLogon</Form>
+        </DCCReference>
+        <DCCReference Include="inMtoPrincipal2.pas">
+            <Form>frmOpenApp2</Form>
+        </DCCReference>
+        <DCCReference Include="inMtoGen.pas">
+            <Form>frmMtoGen</Form>
+        </DCCReference>
+        <DCCReference Include="inMtoFacturas.pas">
+            <Form>frmMtoFacturas</Form>
+        </DCCReference>
+        <DCCReference Include="inMtoArticulos.pas">
+            <Form>frmMtoArticulos</Form>
+        </DCCReference>
+        <DCCReference Include="inMtoClientes.pas">
+            <Form>frmMtoClientes</Form>
+        </DCCReference>
+        <DCCReference Include="inMtoContadores.pas">
+            <Form>frmMtoContadores</Form>
+        </DCCReference>
+        <DCCReference Include="inMtoEmpresas.pas">
+            <Form>frmMtoEmpresas</Form>
+        </DCCReference>
+        <DCCReference Include="inMtoFamilias.pas">
+            <Form>frmMtoFamilias</Form>
+        </DCCReference>
+        <DCCReference Include="inMtoFormasdePago.pas">
+            <Form>frmMtoFormasdePago</Form>
+        </DCCReference>
+        <DCCReference Include="inMtoGeneradorProcesos.pas">
+            <Form>frmMtoGeneradorProcesos</Form>
+        </DCCReference>
+        <DCCReference Include="inMtoGenSearch.pas">
+            <Form>frmMtoSearch</Form>
+        </DCCReference>
+        <DCCReference Include="inMtoGrupos.pas">
+            <Form>frmMtoGrupos</Form>
+        </DCCReference>
+        <DCCReference Include="inMtoIvas.pas">
+            <Form>frmMtoIvas</Form>
+        </DCCReference>
+        <DCCReference Include="inMtoIvasGrupos.pas">
+            <Form>frmMtoIvasGrupos</Form>
+        </DCCReference>
+        <DCCReference Include="inMtoProveedores.pas">
+            <Form>frmMtoProveedores</Form>
+        </DCCReference>
+        <DCCReference Include="inMtoTarifas.pas">
+            <Form>frmMtoTarifas</Form>
+        </DCCReference>
+        <DCCReference Include="inMtoUsuarios.pas">
+            <Form>frmMtoUsuarios</Form>
+        </DCCReference>
+        <DCCReference Include="inMtoUsuariosPerfiles.pas">
+            <Form>frmMtoUsuariosPerfiles</Form>
+        </DCCReference>
+        <DCCReference Include="inMtoModalArtTar.pas">
+            <Form>frmMtoModalArtTar</Form>
+        </DCCReference>
+        <DCCReference Include="inMtoModalFacRec.pas">
+            <Form>frmGenFacRec</Form>
+        </DCCReference>
+        <DCCReference Include="inMtoModalGenFilter.pas">
+            <Form>frmModalGenFilter</Form>
+        </DCCReference>
+        <DCCReference Include="inMtoModalGenImp.pas">
+            <Form>frmPrint</Form>
+        </DCCReference>
+        <DCCReference Include="inMtoModalGenImpEle.pas">
+            <Form>frmMtoModalGenImpEle</Form>
+        </DCCReference>
+        <DCCReference Include="inMtoModalGenImpSave.pas">
+            <Form>frmModalGenImpSave</Form>
+        </DCCReference>
+        <DCCReference Include="inMtoModalGenPass.pas">
+            <Form>frmModalGenPass</Form>
+        </DCCReference>
+        <DCCReference Include="inMtoModalImpFac.pas">
+            <Form>frmPrintFac</Form>
+        </DCCReference>
+        <DCCReference Include="inMtoModalImpRecFac.pas">
+            <Form>frmPrintRecFac</Form>
+        </DCCReference>
+        <DCCReference Include="inMtoModalCliEti.pas">
+            <Form>frmPrintCliEti</Form>
+        </DCCReference>
+        <DCCReference Include="inMtoSplash.pas">
+            <Form>frmSplash</Form>
+        </DCCReference>
         <DCCReference Include="UniDataConn.pas">
             <Form>dmConn</Form>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="UniDataContadores.pas"/>
-        <DCCReference Include="UniDataEmpresas.pas"/>
-        <DCCReference Include="UniDataFamilias.pas"/>
-        <DCCReference Include="UniDataFormasdePago.pas"/>
+        <DCCReference Include="UniDataGen.pas">
+            <Form>dmBase</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="UniDataArticulos.pas">
+            <Form>dmArticulos</Form>
+            <DesignClass>TdmArticulos</DesignClass>
+        </DCCReference>
+        <DCCReference Include="UniDataClientes.pas">
+            <Form>dmClientes</Form>
+            <DesignClass>TdmClientes</DesignClass>
+        </DCCReference>
+        <DCCReference Include="UniDataContadores.pas">
+            <Form>dmContadores</Form>
+            <DesignClass>dmContadores</DesignClass>
+        </DCCReference>
+        <DCCReference Include="UniDataEmpresas.pas">
+            <Form>dmEmpresas</Form>
+            <DesignClass>TdmEmpresas</DesignClass>
+        </DCCReference>
+        <DCCReference Include="UniDataFamilias.pas">
+            <Form>dmFamilias1. TdmFamilias</Form>
+        </DCCReference>
+        <DCCReference Include="UniDataFormasdePago.pas">
+            <Form>dmFormasdePago</Form>
+            <DesignClass>TdmFormasdePago</DesignClass>
+        </DCCReference>
         <DCCReference Include="UniDataGeneradorProcesos.pas">
             <Form>dmGeneradorProcesos</Form>
             <DesignClass>TDataModule</DesignClass>
@@ -234,107 +361,10 @@
             <Form>dmUsuariosPerfiles</Form>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="inLibDevExp.pas"/>
-        <DCCReference Include="inLibDir.pas"/>
-        <DCCReference Include="inLibGlobalVar.pas"/>
-        <DCCReference Include="inLibLog.pas"/>
-        <DCCReference Include="inLibtb.pas"/>
-        <DCCReference Include="inLibUser.pas"/>
-        <DCCReference Include="inLibWin.pas"/>
-        <DCCReference Include="inLibShowMto.pas"/>
-        <DCCReference Include="inMtoFrmBase.pas">
-            <Form>frmBase</Form>
+        <DCCReference Include="UniDataFacturas.pas">
+            <Form>dmFacturas</Form>
+            <DesignClass>TdmFacturas</DesignClass>
         </DCCReference>
-        <DCCReference Include="inMtoGen.pas">
-            <Form>frmMtoGen</Form>
-        </DCCReference>
-        <DCCReference Include="UniDataGen.pas">
-            <Form>dmBase</Form>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="inMtoFacturas.pas"/>
-        <DCCReference Include="UniDataFacturas.pas"/>
-        <DCCReference Include="inMtoArticulos.pas"/>
-        <DCCReference Include="inMtoClientes.pas"/>
-        <DCCReference Include="inMtoContadores.pas"/>
-        <DCCReference Include="inMtoEmpresas.pas"/>
-        <DCCReference Include="inMtoFamilias.pas"/>
-        <DCCReference Include="inMtoFormasdePago.pas"/>
-        <DCCReference Include="inMtoGeneradorProcesos.pas">
-            <Form>frmMtoGeneradorProcesos</Form>
-        </DCCReference>
-        <DCCReference Include="inMtoGenSearch.pas">
-            <Form>frmMtoSearch</Form>
-        </DCCReference>
-        <DCCReference Include="inMtoGrupos.pas">
-            <Form>frmMtoGrupos</Form>
-        </DCCReference>
-        <DCCReference Include="inMtoIvas.pas">
-            <Form>frmMtoIvas</Form>
-        </DCCReference>
-        <DCCReference Include="inMtoIvasGrupos.pas">
-            <Form>frmMtoIvasGrupos</Form>
-        </DCCReference>
-        <DCCReference Include="inMtoLogon.pas">
-            <Form>frmLogon</Form>
-        </DCCReference>
-        <DCCReference Include="inMtoModalArtTar.pas">
-            <Form>frmMtoModalArtTar</Form>
-        </DCCReference>
-        <DCCReference Include="inMtoModalFacRec.pas">
-            <Form>frmGenFacRec</Form>
-        </DCCReference>
-        <DCCReference Include="inMtoModalGenFilter.pas">
-            <Form>frmModalGenFilter</Form>
-        </DCCReference>
-        <DCCReference Include="inMtoModalGenImp.pas">
-            <Form>frmPrint</Form>
-        </DCCReference>
-        <DCCReference Include="inMtoModalGenImpEle.pas">
-            <Form>frmMtoModalGenImpEle</Form>
-        </DCCReference>
-        <DCCReference Include="inMtoModalGenImpSave.pas">
-            <Form>frmModalGenImpSave</Form>
-        </DCCReference>
-        <DCCReference Include="inMtoModalGenPass.pas">
-            <Form>frmModalGenPass</Form>
-        </DCCReference>
-        <DCCReference Include="inMtoModalImpFac.pas">
-            <Form>frmPrintFac</Form>
-        </DCCReference>
-        <DCCReference Include="inMtoModalImpRecFac.pas">
-            <Form>frmPrintRecFac</Form>
-        </DCCReference>
-        <DCCReference Include="inMtoProveedores.pas">
-            <Form>frmMtoProveedores</Form>
-        </DCCReference>
-        <DCCReference Include="inMtoTarifas.pas">
-            <Form>frmMtoTarifas</Form>
-        </DCCReference>
-        <DCCReference Include="inMtoUsuarios.pas">
-            <Form>frmMtoUsuarios</Form>
-        </DCCReference>
-        <DCCReference Include="inMtoUsuariosPerfiles.pas">
-            <Form>frmMtoUsuariosPerfiles</Form>
-        </DCCReference>
-        <DCCReference Include="inMtoPrincipal2.pas">
-            <Form>frmOpenApp2</Form>
-        </DCCReference>
-        <DCCReference Include="inLibUnitForm.pas"/>
-        <DCCReference Include="inLibMsg.pas"/>
-        <DCCReference Include="inLibNet.pas"/>
-        <DCCReference Include="inLibScriptDB.pas"/>
-        <DCCReference Include="inMtoSplash.pas">
-            <Form>frmSplash</Form>
-        </DCCReference>
-        <DCCReference Include="inLibIBAN.Utils.pas"/>
-        <DCCReference Include="inLibIBAN.Types.pas"/>
-        <DCCReference Include="inLibIBAN.Funcs.pas"/>
-        <DCCReference Include="inMtoModalCliEti.pas">
-            <Form>frmPrintCliEti</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="inLibFacturas.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -361,6 +391,20 @@
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="4">
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_150.png" Configuration="Debug" Class="UWP_DelphiLogo150">
+                    <Platform Name="Win32">
+                        <RemoteDir>Assets\</RemoteDir>
+                        <RemoteName>Logo150x150.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_44.png" Configuration="Debug" Class="UWP_DelphiLogo44">
+                    <Platform Name="Win32">
+                        <RemoteDir>Assets\</RemoteDir>
+                        <RemoteName>Logo44x44.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="$(crossvcl)\Redist\crossvcl.icns"/>
                 <DeployFile LocalName="$(crossvcl)\Redist\libcrossvcl.so"/>
                 <DeployFile LocalName="$(crossvcl)\Redist\libcrossvcl64.dylib"/>

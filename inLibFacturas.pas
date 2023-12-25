@@ -135,11 +135,23 @@ begin
   begin
     _dPreSiva := _dPreCiva  / (1 + _dPorIva/100);
     _dTotSiva := _dPreSiva * _dCant;
+    _dTotCiva := _dPreCiva * _dCant;
+    if (_dPrecioSal <> 0) then
+    begin
+      _dDto := _dPrecioSal  - _dPreCiva;
+      _dPorDto := (_dDto / _dPrecioSal)*100;
+    end;
   end
   else
   begin
     _dPreCiva := _dPreSiva * (1 + _dPorIva/100);
     _dTotCiva := _dPreCiva * _dCant;
+    _dTotSiva := _dPreSiva * _dCant;
+    if (_dPrecioSal <> 0) then
+    begin
+      _dDto := _dPrecioSal  - _dPreSiva;
+      _dPorDto := (_dDto / _dPrecioSal)*100;
+    end;
   end;
 end;
 
@@ -284,11 +296,17 @@ end;
 procedure TLinFac.SetDto(const Value: Currency);
 begin
   _dDto := Value;
+  if (_dPrecioSal <> 0) then
+  begin
+    _dPorDto := (_dDto / _dPrecioSal)*100;
+    Self.PrecioSal := _dPrecioSal;
+  end;
 end;
 
 procedure TLinFac.SetPorDto(const Value: Currency);
 begin
   _dPorDto := Value;
+  Self.Dto := _dPrecioSal*(_dPorDto / 100);
 end;
 
 procedure TLinFac.SetPorIva(const Value: Currency);

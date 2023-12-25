@@ -18,8 +18,8 @@ inherited frmMtoClientes: TfrmMtoClientes
       Properties.ActivePage = tsFicha
       ExplicitWidth = 1001
       ExplicitHeight = 663
-      ClientRectBottom = 657
-      ClientRectRight = 995
+      ClientRectBottom = 659
+      ClientRectRight = 997
       inherited tsLista: TcxTabSheet
         ExplicitLeft = 3
         ExplicitTop = 32
@@ -208,14 +208,14 @@ inherited frmMtoClientes: TfrmMtoClientes
         end
       end
       inherited tsFicha: TcxTabSheet
-        ExplicitLeft = 3
-        ExplicitTop = 32
-        ExplicitWidth = 992
-        ExplicitHeight = 625
+        ExplicitLeft = 4
+        ExplicitTop = 30
+        ExplicitWidth = 993
+        ExplicitHeight = 629
         object pnl1: TPanel
           Left = 0
           Top = 0
-          Width = 992
+          Width = 993
           Height = 179
           Margins.Left = 4
           Margins.Top = 4
@@ -225,7 +225,7 @@ inherited frmMtoClientes: TfrmMtoClientes
           BevelOuter = bvNone
           TabOrder = 0
           DesignSize = (
-            992
+            993
             179)
           object cxgrpbx4: TcxGroupBox
             AlignWithMargins = True
@@ -377,8 +377,8 @@ inherited frmMtoClientes: TfrmMtoClientes
         end
         object pnl2: TPanel
           Left = 0
-          Top = 183
-          Width = 992
+          Top = 187
+          Width = 993
           Height = 442
           Margins.Left = 4
           Margins.Top = 4
@@ -390,7 +390,7 @@ inherited frmMtoClientes: TfrmMtoClientes
           object pcPestanas: TcxPageControl
             Left = 0
             Top = 0
-            Width = 992
+            Width = 993
             Height = 442
             Margins.Left = 4
             Margins.Top = 4
@@ -398,12 +398,12 @@ inherited frmMtoClientes: TfrmMtoClientes
             Margins.Bottom = 4
             Align = alClient
             TabOrder = 0
-            Properties.ActivePage = tsDomicilioFiscal
+            Properties.ActivePage = tsOtros
             Properties.CustomButtons.Buttons = <>
-            ClientRectBottom = 436
-            ClientRectLeft = 3
-            ClientRectRight = 986
-            ClientRectTop = 32
+            ClientRectBottom = 438
+            ClientRectLeft = 4
+            ClientRectRight = 989
+            ClientRectTop = 30
             object tsDomicilioFiscal: TcxTabSheet
               Margins.Left = 4
               Margins.Top = 4
@@ -412,8 +412,8 @@ inherited frmMtoClientes: TfrmMtoClientes
               Caption = '&1_Domicilio fiscal'
               ImageIndex = 0
               DesignSize = (
-                983
-                404)
+                985
+                408)
               object cxgrpbx1: TcxGroupBox
                 AlignWithMargins = True
                 Left = 18
@@ -421,8 +421,8 @@ inherited frmMtoClientes: TfrmMtoClientes
                 TabStop = True
                 Anchors = [akLeft, akTop, akRight, akBottom]
                 TabOrder = 0
-                Height = 253
-                Width = 636
+                Height = 257
+                Width = 638
                 object lblDireccion1: TcxLabel
                   Left = 34
                   Top = 25
@@ -576,7 +576,7 @@ inherited frmMtoClientes: TfrmMtoClientes
                 Caption = 'Tratamiento Fiscal'
                 TabOrder = 1
                 Height = 85
-                Width = 901
+                Width = 903
                 object chkREGIMENAGRICOLA: TcxDBCheckBox
                   Left = 6
                   Top = 24
@@ -654,8 +654,8 @@ inherited frmMtoClientes: TfrmMtoClientes
               Caption = '&2_M'#225's datos'
               ImageIndex = 1
               DesignSize = (
-                983
-                404)
+                985
+                408)
               object cxgrpbx3: TcxGroupBox
                 AlignWithMargins = True
                 Left = 21
@@ -663,8 +663,8 @@ inherited frmMtoClientes: TfrmMtoClientes
                 TabStop = True
                 Anchors = [akLeft, akTop, akRight, akBottom]
                 TabOrder = 0
-                Height = 400
-                Width = 880
+                Height = 404
+                Width = 882
                 object lblContacto: TcxLabel
                   Left = 84
                   Top = 23
@@ -860,16 +860,16 @@ inherited frmMtoClientes: TfrmMtoClientes
               object pnlFacturaCli: TPanel
                 Left = 0
                 Top = 0
-                Width = 983
-                Height = 404
+                Width = 985
+                Height = 408
                 Align = alClient
                 BevelOuter = bvNone
                 TabOrder = 0
                 object cxgrdClientesFacturas: TcxGrid
                   Left = 0
                   Top = 0
-                  Width = 866
-                  Height = 404
+                  Width = 868
+                  Height = 408
                   Margins.Left = 4
                   Margins.Top = 4
                   Margins.Right = 4
@@ -1508,10 +1508,10 @@ inherited frmMtoClientes: TfrmMtoClientes
                   end
                 end
                 object pnlFacturaOpts: TPanel
-                  Left = 866
+                  Left = 868
                   Top = 0
                   Width = 117
-                  Height = 404
+                  Height = 408
                   Align = alRight
                   BevelOuter = bvNone
                   TabOrder = 1
@@ -1558,6 +1558,10 @@ inherited frmMtoClientes: TfrmMtoClientes
               Caption = 'Historia Presupuestos'
               ImageIndex = 4
               TabVisible = False
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object cxgrd3: TcxGrid
                 Left = 0
                 Top = 0
@@ -1767,8 +1771,8 @@ inherited frmMtoClientes: TfrmMtoClientes
               ImageIndex = 4
               object pnlUserInstantBottom: TPanel
                 Left = 0
-                Top = 325
-                Width = 983
+                Top = 329
+                Width = 985
                 Height = 79
                 Align = alBottom
                 BevelOuter = bvNone
@@ -1931,26 +1935,28 @@ inherited frmMtoClientes: TfrmMtoClientes
         object cxspltr1: TcxSplitter
           Left = 0
           Top = 179
-          Width = 992
-          Height = 4
+          Width = 993
+          Height = 8
           HotZoneClassName = 'TcxMediaPlayer9Style'
           AlignSplitter = salTop
           Control = pnl1
         end
       end
       inherited tsPerfil: TcxTabSheet
-        ExplicitWidth = 992
-        ExplicitHeight = 625
+        ExplicitLeft = 4
+        ExplicitTop = 30
+        ExplicitWidth = 991
+        ExplicitHeight = 627
         inherited pnlPerfilTop: TPanel
-          Width = 992
-          ExplicitWidth = 992
+          Width = 993
+          ExplicitWidth = 991
           inherited edtPerfilBusq: TcxTextEdit
             ExplicitHeight = 27
           end
         end
         inherited pnlPerfilDetail: TPanel
-          Width = 992
-          Height = 568
+          Width = 993
+          Height = 572
           ExplicitWidth = 992
           ExplicitHeight = 568
           inherited cxgrdPerfil: TcxGrid

@@ -28,7 +28,7 @@ uses
   Vcl.Menus, dxSkinsForm, cxButtons, dxSkinsDefaultPainters, cxMemo, cxSpinEdit,
   cxCalendar, cxBlobEdit, dxScrollbarAnnotations, dxCore, cxRadioGroup,
   cxSplitter, Vcl.AppEvnts, JvComponentBase, JvEnterTab, System.Actions,
-  Vcl.ActnList;
+  Vcl.ActnList, dxShellDialogs;
 
 type
   TfrmMtoFormasdePago = class(TfrmMtoGen)

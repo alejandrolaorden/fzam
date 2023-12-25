@@ -239,9 +239,9 @@ begin
         if ((GetPerfilValueDef(oPerfilDic, cxGrid.Name + '__oApplyWidth',
                                'False')) = 'True') then
         begin
-          PonerAnchosTitulos(  cxGrid,
-                               Self.Name,
-                               oPerfilDic);
+          PonerAnchosTitulos(cxGrid,
+                             Self.Name,
+                             oPerfilDic);
         end;
       end;
     end;
@@ -310,7 +310,7 @@ var
 begin
   inherited;
   //Grabar Grid
-   bGuardar := False;
+  bGuardar := False;
   formulario := TfrmModalGenImpSave.Create(Application);
   formulario.edtDescripcion.Enabled := False;
   formulario.edtNombreOrigen.Text := Self.Name;
@@ -367,7 +367,7 @@ var
 begin
   inherited;
   //Grabar Grid
-   bGuardar := False;
+  bGuardar := False;
   formulario := TfrmModalGenImpSave.Create(Self);
   formulario.edtNombreOrigen.Text := Self.Name;
   formulario.edtDescripcion.Text := 'Reset Grids';
@@ -434,21 +434,21 @@ end;
 procedure TfrmMtoGen.dsTablaGStateChange(Sender: TObject);
 begin
   inherited;
-  if ( dsTablaG.Dataset <> nil ) then
+  if (dsTablaG.Dataset <> nil) then
   begin
-    if ( dsTablaG.DataSet.State = dsInsert ) then
+    if (dsTablaG.DataSet.State = dsInsert) then
     begin
       lblEditMode.Caption := 'Insertando';
     end;
-    if ( dsTablaG.DataSet.State = dsEdit ) then
+    if (dsTablaG.DataSet.State = dsEdit) then
     begin
       lblEditMode.Caption := 'Editando';
     end;
-    if ( dsTablaG.DataSet.State = dsBrowse ) then
+    if (dsTablaG.DataSet.State = dsBrowse) then
     begin
       lblEditMode.Caption := 'Navegando';
     end;
-      if ( dsTablaG.DataSet.State = dsInactive ) then
+      if (dsTablaG.DataSet.State = dsInactive) then
     begin
       lblEditMode.Caption := 'Inactivo';
       Self.Close;
@@ -557,8 +557,7 @@ procedure TfrmMtoGen.pcPantallaPageChanging(Sender: TObject;
 begin
   inherited;
   if ( (not NewPage.Visible) and
-       (not NewPage.Enabled)
-     ) then
+       (not NewPage.Enabled) ) then
   begin
     if (NewPage.Name = 'tsFicha') then
       AllowChange := False;
@@ -587,7 +586,6 @@ begin
   if rbGrid.Checked = true then
     rbBBDD.Checked := false
   else
-
     rbBBDD.Checked := true;
 end;
 

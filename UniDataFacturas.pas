@@ -58,8 +58,6 @@ type
     unqryIvasTipos: TUniQuery;
     dsIvasTipos: TDataSource;
     dsFactura: TDataSource;
-    unqryCabIVA: TUniQuery;
-    dsCabIVA: TDataSource;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
     procedure zqryLinFacBeforeInsert(DataSet: TDataSet);
@@ -71,6 +69,7 @@ type
     procedure unqryLinFacBeforePost(DataSet: TDataSet);
     procedure unqryTablaGBeforeDelete(DataSet: TDataSet);
     procedure unqryLinFacAfterDelete(DataSet: TDataSet);
+    procedure dsLinFacStateChange(Sender: TObject);
 public
     procedure GetCodigoAutoFactura;
     procedure GetCodigoAutoCliente;
@@ -87,10 +86,10 @@ public
     function TarifaDefault:string;
     function BuscarCliente(s: string):Boolean;
     procedure AsignarIVA(s:string; unqryT:TUniQuery);
-    function GetCodigoGrupoIVAAGricola:Integer;
+    function GetCodigoGrupoIVAAGricola:String;
     function GetUserEmpresaDef:String;
     procedure CalcularFactura;
-    function GetTipoIVA(sTipoIVA:string):Integer;
+    function GetTipoIVA(sTipoIVA:string):Currency;
   end;
 //var
 //  dmFacturas: TdmFacturas;
@@ -98,7 +97,10 @@ public
 implementation
 
 uses
-  inMtoFacturas, inLibGlobalVar, inLibtb;
+  inMtoFacturas,
+  inLibGlobalVar,
+  inLibtb,
+  inLibFacturas;
 
 {$R *.dfm}
 
@@ -265,6 +267,7 @@ begin
       unqryTablaG.FieldByName('NRO_FACTURA').AsString;
    ExecProc;
   end;
+  unqryTablaG.Refresh;
 end;
 
 procedure TdmFacturas.CalcularRetencionesEmpresa;
@@ -576,11 +579,8 @@ begin
   unqryRecibosPrint.Connection := inLibGlobalVar.oConn;
   unqrySeriesEditCombo.Connection := inLibGlobalVar.oConn;
   unqryIvasTipos.Connection := inLibGlobalVar.oConn;
-  //unqryCabIVA.Connection := inlibGlobalVar.oConn;
-  //unqryCabIVA.MasterSource := (Self.Owner as TfrmMtoFacturas).dsTablaG;
   unqryLinfac.MasterSource := (Self.Owner as TfrmMtoFacturas).dsTablaG;
   unqryRecibos.MasterSource := (Self.Owner as TfrmMtoFacturas).dsTablaG;
-//  unqryCabIVA.Open;
   unqryIvasTipos.Open;
   unqryLinFac.Open;
   unqrySeries.Open;
@@ -598,10 +598,40 @@ begin
   unqryTarifas.Close;
   unqrySeries.Close;
   unqryFormaPago.Close;
-  unqryPerfiles.Close;
+  //unqryPerfiles.Close;
   unqryRecibos.Close;
-  unqrySeriesEditCombo.Close;
+  //unqrySeriesEditCombo.Close;
   //unqryCabIVA.Close;
+end;
+
+procedure TdmFacturas.dsLinFacStateChange(Sender: TObject);
+begin
+  inherited;
+  with dsLinFac do
+  begin
+    with (Self.Owner as TfrmMtoFacturas) do
+    begin
+    if ((State = dsEdit) or (State = dsInsert) or (State = dsBrowse)) then
+    begin
+      if SameText(DataSet.FieldByName(fimpcl).AsString, 'S') then
+        cxgrdbclmntv1PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA.Properties.ReadOnly
+                                                                        := True;
+        cxgrdbclmntv1PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA.Properties.ReadOnly
+                                                                       := False;
+        tvLineasFacturaTOTAL_FACTURASIVA_LINEA.Visible := False;
+        cxgrdbclmntv1TOTAL_FACTURA_LINEA.Visible := True;
+    end
+    else
+    begin
+      cxgrdbclmntv1PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA.Properties.ReadOnly
+                                                                        := True;
+      cxgrdbclmntv1PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA.Properties.ReadOnly
+                                                                       := False;
+      tvLineasFacturaTOTAL_FACTURASIVA_LINEA.Visible := True;
+      cxgrdbclmntv1TOTAL_FACTURA_LINEA.Visible := False;
+    end;
+    end;
+  end;
 end;
 
 function TdmFacturas.FormaPagoDefault: String;
@@ -617,10 +647,10 @@ begin
     Result := '';
 end;
 
-function TdmFacturas.GetCodigoGrupoIVAAGricola: Integer;
+function TdmFacturas.GetCodigoGrupoIVAAGricola: String;
 var
   qryIVAAG : TUniQuery;
-  iResul:Integer;
+  sResul:String;
 begin
   qryIVAAG := TUniQuery.Create(Self);
   with qryIVAAG do
@@ -640,7 +670,7 @@ begin
                      unqryTablaG.FieldByName('CODIGO_EMPRESA_FACTURA').AsString;
     Open;
     if (qryIVAAG.RecordCount > 0) then
-      iResul := Fields[0].AsInteger
+      sResul := Fields[0].AsString
     else
     begin
         Close;
@@ -655,34 +685,34 @@ begin
         ParamByName('pFECHA').AsDateTime :=
                             unqryTablaG.FieldByName('FECHA_FACTURA').AsDateTime;
        Open;
-       iResul := Fields[0].AsInteger;
+       sResul := Fields[0].AsString;
     end;
     Close;
     FreeAndNil(qryIVAAG);
   end;
-  Result := iResul;
+  Result := sResul;
 end;
 
-function TdmFacturas.GetTipoIVA(sTipoIVA: string): Integer;
-//var
-//  iPorcen:Integer;
+function TdmFacturas.GetTipoIVA(sTipoIVA: string): Currency;
+var
+  fPorcen:Currency;
 begin
-//  with dmmFacturas.unqryTablaG do
-//  begin
-//  case IndexStr(sTipoIVA, ['N', 'R', 'S', 'E']) of
-//    0: iPorcen := FindField('PORCEN_IVAN_FACTURA').AsInteger;
-//    1: iPorcen := FindField('PORCEN_IVAR_FACTURA').AsInteger;
-//    2: iPorcen := FindField('PORCEN_IVAS_FACTURA').AsInteger;
-//    3: iPorcen := FindField('PORCEN_IVAE_FACTURA').AsInteger;
-//    else
-//    begin
-//      ShowMessage('Tipo de Iva incorrecto');
-//      iPorcen := unqryLinFac.FindField('PORCEN_IVAN_FACTURA').AsInteger;
-//      unqryLinFac.FindField('TIPOIVA_ARTICULO_FACTURA_LINEA').AsString := 'N';
-//    end;
-//  end;
-//  end;
-//  Result := iPorcen;
+  with dmmFacturas.unqryTablaG do
+  begin
+  case IndexStr(sTipoIVA, ['N', 'R', 'S', 'E']) of
+    0: fPorcen := FindField('PORCEN_IVAN_FACTURA').AsCurrency;
+    1: fPorcen := FindField('PORCEN_IVAR_FACTURA').AsCurrency;
+    2: fPorcen := FindField('PORCEN_IVAS_FACTURA').AsCurrency;
+    3: fPorcen := FindField('PORCEN_IVAE_FACTURA').AsCurrency;
+    else
+    begin
+      ShowMessage('Tipo de Iva incorrecto');
+      fPorcen := unqryLinFac.FindField('PORCEN_IVAN_FACTURA').AsCurrency;
+      unqryLinFac.FindField('TIPOIVA_ARTICULO_FACTURA_LINEA').AsString := 'N';
+    end;
+  end;
+  end;
+  Result := fPorcen;
 end;
 
 procedure TdmFacturas.GetCodigoAutoFactura;
@@ -757,16 +787,14 @@ end;
 
 procedure TdmFacturas.unqryFacAfterPost(DataSet: TDataSet);
 begin
+  inherited;
   CalcularFactura;
-  unqryTablaG.Refresh;
-  unqryLinFac.Refresh;
 end;
 
 procedure TdmFacturas.unqryLinFacAfterDelete(DataSet: TDataSet);
 begin
   inherited;
-  CalcularLinea;
-  unqryTablaG.Refresh;
+  CalcularFactura;
 end;
 
 procedure TdmFacturas.unqryLinFacAfterInsert(DataSet: TDataSet);
@@ -774,14 +802,15 @@ begin
   inherited;
   with unqryLinFac do
   begin
-    FieldByName('CANTIDAD_FACTURA_LINEA').AsString := '1';
-    FieldByName('TIPO_CANTIDAD_ARTICULO_FACTURA_LINEA').AsString := 'Uds.';
-    FieldByName('TOTAL_FACTURA_LINEA').AsString := '0';
-    FieldByName('TIPOIVA_ARTICULO_FACTURA_LINEA').AsString := 'N';
-    FindField('PORCEN_IVA_FACTURA_LINEA').AsInteger := GetTipoIVA('N');
-    FieldByName('ESIMP_INCL_TARIFA_FACTURA_LINEA').AsString :=
-         unqryTablaG.FieldByName('ESIMP_INCL_TARIFA_CLIENTE_FACTURA').AsString;
-    FindField('LINEA_FACTURA_LINEA').AsString := '0';
+    FieldByName(fcant).AsString := '1';
+    FieldByName(ftipocant).AsString := 'Uds.';
+    FieldByName(ftotciva).AsString := '0';
+    FieldByName(ftotsiva).AsString := '0';
+    FieldByName(ftipiva).AsString := 'N';
+    FindField(fporiva).AsCurrency := GetTipoIVA('N');
+    FieldByName(fimpcl).AsString :=
+          unqryTablaG.FieldByName('ESIMP_INCL_TARIFA_CLIENTE_FACTURA').AsString;
+    FindField(fnrofaclin).AsString := '0';
    end;
 end;
 
@@ -792,21 +821,10 @@ begin
   inherited;
   with unqryLinFac do
   begin
-    sTipoIVA := FieldByName('TIPOIVA_ARTICULO_FACTURA_LINEA').AsString;
-    if SameText('Normal', sTipoIVA) then
-      FieldByName('TIPOIVA_ARTICULO_FACTURA_LINEA').AsString := 'N'
-    else
-      if SameText('Reducido', sTipoIVA) then
-        FieldByName('TIPOIVA_ARTICULO_FACTURA_LINEA').AsString := 'R';
-    if SameText('SuperReducido', sTipoIVA) then
-      FieldByName('TIPOIVA_ARTICULO_FACTURA_LINEA').AsString := 'S'
-    else
-      if SameText('Exento', sTipoIVA) then
-        FieldByName('TIPOIVA_ARTICULO_FACTURA_LINEA').AsString := 'E';
     if (FieldByName('DESCRIPCION_ARTICULO_FACTURA_LINEA').AsString = '') then
     begin
-      raise EDatabaseError.CreateFmt('Descripción de la linea de factura ' +
-                                                                  ' vacía.',[]);
+      raise EDatabaseError.CreateFmt('Error.Descripción de linea ' +
+                                                        'de factura vacía.',[]);
       Abort;
     end;
     if (FindField('LINEA_FACTURA_LINEA').AsString  = '0') then
@@ -872,7 +890,7 @@ begin
   inherited;
   with unqryTablaG do
   begin
-    FieldByName('NRO_FACTURA').ASSTRING := '0';
+    FieldByName('NRO_FACTURA').AsString := '0';
     FieldByName('CODIGO_CLIENTE_FACTURA').AsString := '0';
     FieldByName('CODIGO_EMPRESA_FACTURA').AsString := '0';
     FieldByName('TARIFA_ARTICULO_CLIENTE_FACTURA').AsString := '0';
@@ -898,13 +916,13 @@ end;
 procedure TdmFacturas.zqryLinFacBeforeInsert(DataSet: TDataSet);
 begin
   if ((unqryTablaG.State = dsInsert) or (unqryTablaG.State = dsEdit)) then
-      unqryTablaG.Post;
+    unqryTablaG.Post;
 end;
 
 procedure TdmFacturas.zqryLinFacAfterPost(DataSet: TDataSet);
 begin
+  inherited;
   CalcularFactura;
-  unqryLinFac.Refresh; //command out of sync // mensaje raro
   unqryTablaG.Refresh; //command out of sync // mensaje extraño
 end;
 
@@ -918,10 +936,10 @@ begin
   frmFac := (Owner as TfrmMtoFacturas);
   with unqryTablaG do
   begin
-    if (ExisteSerieEmpresa(FieldByName('SERIE_FACTURA').AsString,
+    if ((ExisteSerieEmpresa(FieldByName('SERIE_FACTURA').AsString,
                           FieldByName('CODIGO_EMPRESA_FACTURA').AsString,
                           'FC')) and
-       (IsError = False) then
+        (IsError = False)) then
     begin
       ShowMessage('Esta serie es usada por otra empresa.' +
                   ' Debe cambiar la serie ');
@@ -981,9 +999,10 @@ begin
     if ((State = dsInsert) or
         (State = dsEdit)) then
     begin
-//    FindField('TOTAL_FACTURA_LINEA').AsCurrency :=
-//                              FindField('CANTIDAD_FACTURA_LINEA').AsCurrency *
-//              FindField('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsCurrency;
+      var  oLinFac:TLinFac;
+      oLinFac := TLinFac.Create(dmmFacturas.unqryLinFac);
+      oLinFac.PreSiva := dmmFacturas.unqryLinFac.FieldByName(fpresiva).AsFloat;
+      FreeAndNil(oLinFac);
     end;
   end;
 end;

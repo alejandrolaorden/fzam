@@ -8,6 +8,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
   ClientHeight = 844
   ClientWidth = 1231
   Scaled = False
+  ExplicitTop = -171
   ExplicitWidth = 1231
   ExplicitHeight = 844
   TextHeight = 19
@@ -751,9 +752,9 @@ inherited frmMtoFacturas: TfrmMtoFacturas
         ExplicitHeight = 766
         object pnl1: TPanel
           Left = 0
-          Top = 321
+          Top = 341
           Width = 1078
-          Height = 445
+          Height = 425
           Margins.Left = 4
           Margins.Top = 4
           Margins.Right = 4
@@ -766,7 +767,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
             Left = 0
             Top = 0
             Width = 1078
-            Height = 445
+            Height = 425
             Margins.Left = 4
             Margins.Top = 4
             Margins.Right = 4
@@ -775,7 +776,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
             TabOrder = 0
             Properties.ActivePage = tsLineasFactura
             Properties.CustomButtons.Buttons = <>
-            ClientRectBottom = 439
+            ClientRectBottom = 419
             ClientRectLeft = 3
             ClientRectRight = 1072
             ClientRectTop = 32
@@ -786,15 +787,11 @@ inherited frmMtoFacturas: TfrmMtoFacturas
               Margins.Bottom = 4
               Caption = '&1_Lineas de Factura - '
               ImageIndex = 1
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object cxgrdLineasFactura: TcxGrid
                 Left = 0
                 Top = 0
                 Width = 889
-                Height = 407
+                Height = 387
                 Margins.Left = 4
                 Margins.Top = 4
                 Margins.Right = 4
@@ -813,7 +810,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                   DataController.Summary.DefaultGroupSummaryItems = <>
                   DataController.Summary.FooterSummaryItems = <
                     item
-                      Format = 'TOTAL ##,##.00 '#8364
+                      Format = '##,##.00 '#8364
                       Kind = skSum
                       Column = cxgrdbclmntv1TOTAL_FACTURA_LINEA
                     end
@@ -821,6 +818,11 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                       Format = '#,##.00'
                       Kind = skSum
                       Column = cxgrdbclmntv1CANTIDAD_FACTURA_LINEA
+                    end
+                    item
+                      Format = '##,##.00 '#8364
+                      Kind = skSum
+                      Column = tvLineasFacturaTOTAL_FACTURASIVA_LINEA
                     end>
                   DataController.Summary.SummaryGroups = <>
                   FixedDataRows.SeparatorColor = clBlack
@@ -900,19 +902,21 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                     Properties.DisplayFormat = '0.00 %'
                     Properties.EditFormat = '0.00 %'
                     Properties.MaxValue = 100.000000000000000000
+                    Properties.OnEditValueChanged = tvLineasFacturaPORCEN_DTO_FACTURA_LINEAPropertiesEditValueChanged
                   end
                   object tvLineasFacturaPRECIO_DTO_FACTURA_LINEA: TcxGridDBColumn
                     Caption = 'Menos Dto'
                     DataBinding.FieldName = 'PRECIO_DTO_FACTURA_LINEA'
                     PropertiesClassName = 'TcxCurrencyEditProperties'
+                    Properties.OnEditValueChanged = tvLineasFacturaPRECIO_DTO_FACTURA_LINEAPropertiesEditValueChanged
                   end
                   object cxgrdbclmntv1PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA: TcxGridDBColumn
-                    Caption = 'Precio sin IVA'
+                    Caption = 'Precio Ud. sin IVA'
                     DataBinding.FieldName = 'PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA'
                     PropertiesClassName = 'TcxCurrencyEditProperties'
                     Properties.ReadOnly = False
                     Properties.OnEditValueChanged = cxgrdbclmntv1PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEAPropertiesEditValueChanged
-                    Width = 127
+                    Width = 156
                   end
                   object cxgrdbclmntv1IMP_INCL_TARIFA_FACTURA_LINEA: TcxGridDBColumn
                     Caption = 'ImpIncl'
@@ -936,6 +940,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                         FieldName = 'NOMBRE_TIPO_IVA'
                       end>
                     Properties.ListOptions.ShowHeader = False
+                    Properties.ListSource = dmFacturas.dsIvasTipos
                     Properties.ReadOnly = False
                     Properties.OnChange = cxgrdbclmntv1TIPOIVA_ARTICULO_FACTURA_LINEAPropertiesChange
                     Width = 109
@@ -950,19 +955,23 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                     Width = 79
                   end
                   object cxgrdbclmntv1PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA: TcxGridDBColumn
-                    Caption = 'Precio con IVA'
+                    Caption = 'Precio Ud. con IVA'
                     DataBinding.FieldName = 'PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA'
                     PropertiesClassName = 'TcxCurrencyEditProperties'
                     Properties.ReadOnly = False
                     Properties.OnEditValueChanged = cxgrdbclmntv1PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEAPropertiesEditValueChanged
-                    Width = 139
+                    Width = 166
                   end
                   object cxgrdbclmntv1TOTAL_FACTURA_LINEA: TcxGridDBColumn
-                    Caption = 'Total'
+                    Caption = 'Total con IVA'
                     DataBinding.FieldName = 'TOTAL_FACTURA_LINEA'
                     PropertiesClassName = 'TcxCurrencyEditProperties'
                     Properties.ReadOnly = True
                     Width = 172
+                  end
+                  object tvLineasFacturaTOTAL_FACTURASIVA_LINEA: TcxGridDBColumn
+                    Caption = 'Total Sin IVA'
+                    DataBinding.FieldName = 'TOTAL_FACTURASIVA_LINEA'
                   end
                   object dbcLineasFacturaFECHA_ENTREGA_FACTURA_LINEA: TcxGridDBColumn
                     Caption = 'Fecha Entrega'
@@ -1061,7 +1070,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                 Left = 889
                 Top = 0
                 Width = 180
-                Height = 407
+                Height = 387
                 Align = alRight
                 BevelOuter = bvNone
                 TabOrder = 1
@@ -1132,16 +1141,6 @@ inherited frmMtoFacturas: TfrmMtoFacturas
               Margins.Bottom = 4
               Caption = '&2_Totales'
               ImageIndex = 2
-              object cxdbmskdt1: TcxDBMaskEdit
-                Left = 225
-                Top = 134
-                DataBinding.DataField = 'PORCEN_RETENCION_FACTURA'
-                DataBinding.DataSource = dsTablaG
-                Properties.EditMask = '!99;1;_'
-                TabOrder = 4
-                Visible = False
-                Width = 34
-              end
               object lblTotalaPagar: TcxLabel
                 Left = 105
                 Top = 237
@@ -1162,12 +1161,12 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                 DataBinding.DataField = 'TOTAL_LIQUIDO_FACTURA'
                 DataBinding.DataSource = dsTablaG
                 Properties.ReadOnly = True
-                TabOrder = 14
+                TabOrder = 13
                 Width = 133
               end
               object curTOTAL_LIQUIDO_FACTURA: TcxDBCurrencyEdit
                 Left = 230
-                Top = 184
+                Top = 183
                 Margins.Left = 4
                 Margins.Top = 4
                 Margins.Right = 4
@@ -1175,12 +1174,12 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                 DataBinding.DataField = 'TOTAL_RETENCION_FACTURA'
                 DataBinding.DataSource = dsTablaG
                 Properties.ReadOnly = True
-                TabOrder = 7
+                TabOrder = 6
                 Width = 133
               end
               object lblTotalRetencionFactura: TcxLabel
                 Left = 18
-                Top = 188
+                Top = 187
                 Margins.Left = 4
                 Margins.Top = 4
                 Margins.Right = 4
@@ -1190,7 +1189,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
               end
               object lblPorcRetencionFactura: TcxLabel
                 Left = 49
-                Top = 134
+                Top = 138
                 Margins.Left = 4
                 Margins.Top = 4
                 Margins.Right = 4
@@ -1200,7 +1199,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
               end
               object spnRetencion: TcxDBSpinEdit
                 Left = 230
-                Top = 133
+                Top = 134
                 DataBinding.DataField = 'PORCEN_RETENCION_FACTURA'
                 DataBinding.DataSource = dsTablaG
                 Properties.AssignedValues.MinValue = True
@@ -1208,7 +1207,8 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                 Properties.EditFormat = '0.00 %'
                 Properties.MaxValue = 100.000000000000000000
                 Properties.ReadOnly = False
-                TabOrder = 5
+                Properties.OnEditValueChanged = spnRetencionPropertiesEditValueChanged
+                TabOrder = 4
                 Width = 133
               end
               object curTOTAL_RETENCION_FACTURA: TcxDBCurrencyEdit
@@ -1227,7 +1227,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
               end
               object lblTotalBaseImponible: TcxLabel
                 Left = 38
-                Top = 36
+                Top = 39
                 Margins.Left = 4
                 Margins.Top = 4
                 Margins.Right = 4
@@ -1237,7 +1237,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
               end
               object curTOTAL_BASES_FACTURA: TcxDBCurrencyEdit
                 Left = 230
-                Top = 80
+                Top = 84
                 Margins.Left = 4
                 Margins.Top = 4
                 Margins.Right = 4
@@ -1252,7 +1252,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
               end
               object lbl1TotalImpuestos: TcxLabel
                 Left = 79
-                Top = 81
+                Top = 88
                 Margins.Left = 4
                 Margins.Top = 4
                 Margins.Right = 4
@@ -1279,7 +1279,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                 DataBinding.DataSource = dsTablaG
                 Properties.ValueChecked = 'S'
                 Properties.ValueUnchecked = 'N'
-                TabOrder = 6
+                TabOrder = 5
                 Transparent = True
               end
               object lblFormadePago: TcxLabel
@@ -1317,7 +1317,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                     FieldName = 'DESCRIPCION_FORMAPAGO'
                   end>
                 Properties.ListOptions.CaseInsensitive = True
-                TabOrder = 8
+                TabOrder = 7
                 OnKeyUp = cbbSerieFacturaKeyUp
                 Width = 335
               end
@@ -1327,7 +1327,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                 Width = 160
                 Height = 25
                 Caption = 'Generar &Recibo/s'
-                TabOrder = 9
+                TabOrder = 8
                 OnClick = btnGenerarRecibosClick
               end
               object GroupBox1: TGroupBox
@@ -1336,7 +1336,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                 Width = 617
                 Height = 294
                 Caption = 'Desglose Impuestos'
-                TabOrder = 16
+                TabOrder = 15
                 object Shape1: TShape
                   Left = 163
                   Top = 32
@@ -1544,8 +1544,8 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                   DataBinding.DataSource = dsTablaG
                   ParentColor = True
                   Properties.AssignedValues.MinValue = True
-                  Properties.DisplayFormat = '0.0'
-                  Properties.EditFormat = '0.0'
+                  Properties.DisplayFormat = '0 %'
+                  Properties.EditFormat = '0 %'
                   Properties.MaxValue = 100.000000000000000000
                   Properties.ReadOnly = True
                   Properties.SpinButtons.Visible = False
@@ -1560,8 +1560,8 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                   DataBinding.DataSource = dsTablaG
                   ParentColor = True
                   Properties.AssignedValues.MinValue = True
-                  Properties.DisplayFormat = '0.0'
-                  Properties.EditFormat = '0.0'
+                  Properties.DisplayFormat = '0 %'
+                  Properties.EditFormat = '0 %'
                   Properties.MaxValue = 100.000000000000000000
                   Properties.ReadOnly = True
                   Properties.SpinButtons.Visible = False
@@ -1576,8 +1576,8 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                   DataBinding.DataSource = dsTablaG
                   ParentColor = True
                   Properties.AssignedValues.MinValue = True
-                  Properties.DisplayFormat = '0.0'
-                  Properties.EditFormat = '0.0'
+                  Properties.DisplayFormat = '0 %'
+                  Properties.EditFormat = '0 %'
                   Properties.MaxValue = 100.000000000000000000
                   Properties.ReadOnly = True
                   Properties.SpinButtons.Visible = False
@@ -1592,8 +1592,8 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                   DataBinding.DataSource = dsTablaG
                   ParentColor = True
                   Properties.AssignedValues.MinValue = True
-                  Properties.DisplayFormat = '0.0'
-                  Properties.EditFormat = '0.0'
+                  Properties.DisplayFormat = '0 %'
+                  Properties.EditFormat = '0 %'
                   Properties.MaxValue = 100.000000000000000000
                   Properties.ReadOnly = True
                   Properties.SpinButtons.Visible = False
@@ -1670,15 +1670,11 @@ inherited frmMtoFacturas: TfrmMtoFacturas
             object tsRecibos: TcxTabSheet
               Caption = '&3_Recibos'
               ImageIndex = 4
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object pnlRightRecibos: TPanel
                 Left = 916
                 Top = 0
                 Width = 153
-                Height = 407
+                Height = 387
                 Align = alRight
                 BevelOuter = bvNone
                 TabOrder = 1
@@ -1730,7 +1726,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                 Left = 0
                 Top = 0
                 Width = 916
-                Height = 407
+                Height = 387
                 Align = alClient
                 BevelOuter = bvNone
                 TabOrder = 0
@@ -1738,7 +1734,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                   Left = 0
                   Top = 0
                   Width = 916
-                  Height = 407
+                  Height = 387
                   Margins.Left = 4
                   Margins.Top = 4
                   Margins.Right = 4
@@ -1930,10 +1926,6 @@ inherited frmMtoFacturas: TfrmMtoFacturas
               Margins.Bottom = 4
               Caption = '&4_Otros'
               ImageIndex = 4
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object lblComentarios: TcxLabel
                 Left = 32
                 Top = 65
@@ -1961,7 +1953,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
           Left = 0
           Top = 0
           Width = 1078
-          Height = 317
+          Height = 337
           Margins.Left = 4
           Margins.Top = 4
           Margins.Right = 4
@@ -1974,7 +1966,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
             Left = 0
             Top = 0
             Width = 1078
-            Height = 317
+            Height = 337
             Margins.Left = 4
             Margins.Top = 4
             Margins.Right = 4
@@ -1988,16 +1980,16 @@ inherited frmMtoFacturas: TfrmMtoFacturas
               Left = 0
               Top = 0
               Width = 1078
-              Height = 317
+              Height = 337
               Margins.Left = 4
               Margins.Top = 4
               Margins.Right = 4
               Margins.Bottom = 4
               Align = alClient
               TabOrder = 0
-              Properties.ActivePage = tsCabecera
+              Properties.ActivePage = tsDatosCliente
               Properties.CustomButtons.Buttons = <>
-              ClientRectBottom = 311
+              ClientRectBottom = 331
               ClientRectLeft = 3
               ClientRectRight = 1072
               ClientRectTop = 32
@@ -2164,10 +2156,6 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                 Color = clBtnFace
                 ImageIndex = 2
                 ParentColor = False
-                ExplicitLeft = 0
-                ExplicitTop = 0
-                ExplicitWidth = 0
-                ExplicitHeight = 0
                 object grpEmpresa: TcxGroupBox
                   Left = 22
                   Top = 13
@@ -2440,7 +2428,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                 Margins.Top = 4
                 Margins.Right = 4
                 Margins.Bottom = 4
-                Caption = 'Datos C&liente -'
+                Caption = 'Datos Cli&ente -'
                 ImageIndex = 1
                 object grpCliente: TcxGroupBox
                   Left = 22
@@ -2723,10 +2711,10 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                     Height = 21
                     Width = 94
                   end
-                  object cxDBCheckBox1: TcxDBCheckBox
-                    Left = 524
+                  object chkImpIncl: TcxDBCheckBox
+                    Left = 407
                     Top = 242
-                    Caption = 'Tarifa con Imp Incl'
+                    Caption = 'Precios Venta con Impuestos Incluidos'
                     DataBinding.DataField = 'ESIMP_INCL_TARIFA_CLIENTE_FACTURA'
                     DataBinding.DataSource = dsTablaG
                     Properties.DisplayUnchecked = 'True'
@@ -2764,7 +2752,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
         end
         object splSplitterFicha: TcxSplitter
           Left = 0
-          Top = 317
+          Top = 337
           Width = 1078
           Height = 4
           Cursor = crSizeNS
@@ -2776,10 +2764,11 @@ inherited frmMtoFacturas: TfrmMtoFacturas
           HotZone.SizePercent = 50
           AlignSplitter = salTop
           Control = pnl1
-          ExplicitWidth = 4
         end
       end
       inherited tsPerfil: TcxTabSheet
+        ExplicitLeft = 3
+        ExplicitTop = 32
         ExplicitWidth = 1078
         ExplicitHeight = 766
         inherited pnlPerfilTop: TPanel
@@ -2833,6 +2822,10 @@ inherited frmMtoFacturas: TfrmMtoFacturas
       inherited pnlTopGrid: TPanel
         Width = 1087
         ExplicitWidth = 1087
+        inherited sbExportExcel: TSpeedButton
+          ParentFont = True
+          StyleName = 'Windows'
+        end
         inherited edtBusqGlobal: TcxTextEdit
           ExplicitHeight = 27
         end
