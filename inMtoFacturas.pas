@@ -164,27 +164,27 @@ type
     chkESREGIMENESPECIALAGRICOLA_EMPRESA_FACTURA: TcxDBCheckBox;
     chkRETENCIONES_EMPRESA_FACTURA3: TcxDBCheckBox;
     chkEXTRANJERO: TcxDBCheckBox;
-    cxgrdbclmntv1CODIGO_ARTICULO_FACTURA_LINEA: TcxGridDBColumn;
-    cxgrdbclmntv1TIPOIVA_ARTICULO_FACTURA_LINEA: TcxGridDBColumn;
-    cmDESCRIPCION_ARTICULO_FACTURA_LINEA: TcxGridDBColumn;
-    cxgrdbclmntv1CANTIDAD_FACTURA_LINEA: TcxGridDBColumn;
-    cxgrdbclmntv1PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA: TcxGridDBColumn;
-    cxgrdbclmntv1PORCEN_IVA_FACTURA_LINEA: TcxGridDBColumn;
-    cxgrdbclmntv1PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA: TcxGridDBColumn;
-    cxgrdbclmntv1TOTAL_FACTURA_LINEA: TcxGridDBColumn;
+    ctbCODIGO_ARTICULO_FACTURA_LINEA: TcxGridDBColumn;
+    ctbTIPOIVA_ARTICULO_FACTURA_LINEA: TcxGridDBColumn;
+    ctbDESCRIPCION_ARTICULO_FACTURA_LINEA: TcxGridDBColumn;
+    ctbCANTIDAD_FACTURA_LINEA: TcxGridDBColumn;
+    ctbPRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA: TcxGridDBColumn;
+    ctbPORCEN_IVA_FACTURA_LINEA: TcxGridDBColumn;
+    ctbPRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA: TcxGridDBColumn;
+    ctbTOTAL_FACTURA_LINEA: TcxGridDBColumn;
     txtNRO_FACTURA: TcxDBTextEdit;
     cbbTARIFA_ARTICULOS_CLIENTES: TcxDBLookupComboBox;
     lblTarifaArticulosCliente: TcxLabel;
-    cxgrdbclmntv1LINEA_FACTURA_LINEA: TcxGridDBColumn;
+    ctbLINEA_FACTURA_LINEA: TcxGridDBColumn;
     spnRetencion: TcxDBSpinEdit;
     curTOTAL_RETENCION_FACTURA: TcxDBCurrencyEdit;
     lblTotalBaseImponible: TcxLabel;
     curTOTAL_BASES_FACTURA: TcxDBCurrencyEdit;
     lbl1TotalImpuestos: TcxLabel;
     chkRETENCION_EMPRESA_FACTURA: TcxDBCheckBox;
-    cxgrdbclmntv1TIPO_CANTIDAD_ARTICULO_FACTURA_LINEA: TcxGridDBColumn;
+    ctbTIPO_CANTIDAD_ARTICULO_FACTURA_LINEA: TcxGridDBColumn;
     chkIVA_EXENTO_CLIENTE_FACTURA: TcxDBCheckBox;
-    cxgrdbclmntv1IMP_INCL_TARIFA_FACTURA_LINEA: TcxGridDBColumn;
+    ctbIMP_INCL_TARIFA_FACTURA_LINEA: TcxGridDBColumn;
     chkESIRPF_IMP_INCL_ZONA_IVA_FACTURA: TcxDBCheckBox;
     chkESVENTA_ACTIVO_FIJO_FACTURA: TcxDBCheckBox;
     cxGrdDBTabPrinGRUPO_IVA_EMPRESA_FACTURA: TcxGridDBColumn;
@@ -254,9 +254,9 @@ type
     btnGenerarRecibos: TcxButton;
     cbbCanalIVA: TcxDBLookupComboBox;
     lblCanalIVA: TcxLabel;
-    dbcLineasFacturaCODIGO_FAMILIA_FACTURA_LINEA: TcxGridDBColumn;
-    dbcLineasFacturaNOMBRE_FAMILIA_FACTURA_LINEA: TcxGridDBColumn;
-    dbcLineasFacturaFECHA_ENTREGA_FACTURA_LINEA: TcxGridDBColumn;
+    ctbCODIGO_FAMILIA_FACTURA_LINEA: TcxGridDBColumn;
+    ctbNOMBRE_FAMILIA_FACTURA_LINEA: TcxGridDBColumn;
+    ctbFECHA_ENTREGA_FACTURA_LINEA: TcxGridDBColumn;
     btnExportarLineas: TcxButton;
     btnExportarRecibos: TcxButton;
     btnIraArticulo: TcxButton;
@@ -272,9 +272,9 @@ type
     lbldbCODIGO_CLIENTE_FACTURA: TcxDBLabel;
     lbldbCODIGO_CLIENTE: TcxDBLabel;
     chkImpIncl: TcxDBCheckBox;
-    tvLineasFacturaPRECIOSALIDA_FACTURA_LINEA: TcxGridDBColumn;
-    tvLineasFacturaPORCEN_DTO_FACTURA_LINEA: TcxGridDBColumn;
-    tvLineasFacturaPRECIO_DTO_FACTURA_LINEA: TcxGridDBColumn;
+    ctbPRECIOSALIDA_FACTURA_LINEA: TcxGridDBColumn;
+    ctbPORCEN_DTO_FACTURA_LINEA: TcxGridDBColumn;
+    ctbPRECIO_DTO_FACTURA_LINEA: TcxGridDBColumn;
     GroupBox1: TGroupBox;
     lblTotRE: TcxLabel;
     PorRE: TcxLabel;
@@ -311,7 +311,11 @@ type
     cxDBSpinEdit7: TcxDBSpinEdit;
     cxDBSpinEdit8: TcxDBSpinEdit;
     cxDBSpinEdit9: TcxDBSpinEdit;
-    tvLineasFacturaTOTAL_FACTURASIVA_LINEA: TcxGridDBColumn;
+    ctbTOTAL_FACTURASIVA_LINEA: TcxGridDBColumn;
+    ctbESPROVEEDORPRINCIPAL_FACTURA_LINEA: TcxGridDBColumn;
+    ctbCODIGO_PROVEEDOR_FACTURA_LINEA: TcxGridDBColumn;
+    ctbRAZONSOCIAL_PROVEEDOR_FACTURA_LINEA: TcxGridDBColumn;
+    ctbPRECIO_ULT_COMPRA_FACTURA_LINEA: TcxGridDBColumn;
     procedure sbGrabarClick(Sender: TObject);
     procedure btnUpdateClienteClick(Sender: TObject);
     procedure sbNuevaFacturaClick(Sender: TObject);
@@ -382,6 +386,10 @@ type
     procedure tvLineasFacturaPRECIO_DTO_FACTURA_LINEAPropertiesEditValueChanged(
       Sender: TObject);
     procedure spnRetencionPropertiesEditValueChanged(Sender: TObject);
+    procedure ctbCODIGO_FAMILIA_FACTURA_LINEAPropertiesEditValueChanged(
+      Sender: TObject);
+    procedure ctbCODIGO_PROVEEDOR_FACTURA_LINEAPropertiesEditValueChanged(
+      Sender: TObject);
 //    procedure FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
   public
     procedure ActualizarComboSeries;
@@ -828,7 +836,7 @@ begin
   cbbTARIFA_ARTICULOS_CLIENTES.Properties.ListSource := dmmFacturas.dsTarifas;
   tvRecibos.DataController.DataSource := dmmFacturas.dsRecibos;
   //tvIVA.DataController.DataSource := dsTablaG;
-  (cxgrdbclmntv1TIPOIVA_ARTICULO_FACTURA_LINEA.Properties as
+  (ctbTIPOIVA_ARTICULO_FACTURA_LINEA.Properties as
              TcxLookupComboBoxProperties).ListSource := dmmFacturas.dsIvasTipos;
   Self.pkFieldName := 'NRO_FACTURA; SERIE_FACTURA';
 end;
@@ -838,13 +846,21 @@ begin
   inherited;
   if (chkCrearArticulos.Checked = True) then
   begin
-    dbcLineasFacturaCODIGO_FAMILIA_FACTURA_LINEA.Visible := True;
-    dbcLineasFacturaNOMBRE_FAMILIA_FACTURA_LINEA.Visible := True;
+    ctbCODIGO_FAMILIA_FACTURA_LINEA.Visible := True;
+    ctbNOMBRE_FAMILIA_FACTURA_LINEA.Visible := True;
+    ctbESPROVEEDORPRINCIPAL_FACTURA_LINEA.Visible := True;
+    ctbCODIGO_PROVEEDOR_FACTURA_LINEA.Visible := True;
+    ctbRAZONSOCIAL_PROVEEDOR_FACTURA_LINEA.Visible := True;
+    ctbPRECIO_ULT_COMPRA_FACTURA_LINEA.Visible := True;
   end
   else
   begin
-    dbcLineasFacturaCODIGO_FAMILIA_FACTURA_LINEA.Visible := False;
-    dbcLineasFacturaNOMBRE_FAMILIA_FACTURA_LINEA.Visible := False;
+    ctbCODIGO_FAMILIA_FACTURA_LINEA.Visible := False;
+    ctbNOMBRE_FAMILIA_FACTURA_LINEA.Visible := False;
+    ctbESPROVEEDORPRINCIPAL_FACTURA_LINEA.Visible := False;
+    ctbCODIGO_PROVEEDOR_FACTURA_LINEA.Visible := False;
+    ctbRAZONSOCIAL_PROVEEDOR_FACTURA_LINEA.Visible := False;
+    ctbPRECIO_ULT_COMPRA_FACTURA_LINEA.Visible := False;
   end;
 end;
 
@@ -852,7 +868,7 @@ procedure TfrmMtoFacturas.chkDescripcion_ampliadaPropertiesChange(
   Sender: TObject);
 begin
   inherited;
-  with cmDESCRIPCION_ARTICULO_FACTURA_LINEA do
+  with ctbDESCRIPCION_ARTICULO_FACTURA_LINEA do
   begin
     if (chkDescripcion_ampliada.Checked = True) then
     begin
@@ -868,7 +884,7 @@ begin
     end
     else
     begin
-      cmDESCRIPCION_ARTICULO_FACTURA_LINEA.PropertiesClassName :=
+      ctbDESCRIPCION_ARTICULO_FACTURA_LINEA.PropertiesClassName :=
                                                         'TcxTextEditProperties';
     end;
   end;
@@ -927,9 +943,9 @@ procedure TfrmMtoFacturas.chkFechaEntregaPropertiesChange(Sender: TObject);
 begin
   inherited;
   if (chkFechaEntrega.Checked = True) then
-    dbcLineasFacturaFECHA_ENTREGA_FACTURA_LINEA.Visible := True
+    ctbFECHA_ENTREGA_FACTURA_LINEA.Visible := True
   else
-    dbcLineasFacturaFECHA_ENTREGA_FACTURA_LINEA.Visible := False;
+    ctbFECHA_ENTREGA_FACTURA_LINEA.Visible := False;
 end;
 
 procedure TfrmMtoFacturas.dsTablaGStateChange(Sender: TObject);
@@ -1267,6 +1283,22 @@ begin
 end;
 
 procedure TfrmMtoFacturas.
+                      ctbCODIGO_FAMILIA_FACTURA_LINEAPropertiesEditValueChanged(
+  Sender: TObject);
+begin
+  inherited;
+  //rellenar nombrefamilia
+
+end;
+
+procedure TfrmMtoFacturas.ctbCODIGO_PROVEEDOR_FACTURA_LINEAPropertiesEditValueChanged(
+  Sender: TObject);
+begin
+  inherited;
+  //rellenar razon social proveedor y precio de coste
+end;
+
+procedure TfrmMtoFacturas.
                   cxgrdbclmntv1CANTIDAD_FACTURA_LINEAPropertiesEditValueChanged(
   Sender: TObject);
 var
@@ -1288,8 +1320,8 @@ end;
 
 procedure TfrmMtoFacturas.spnRetencionPropertiesEditValueChanged(
   Sender: TObject);
-var
-  e : TcxCustomEdit;
+//var
+//  e : TcxCustomEdit;
 begin
   inherited;
 //  with dsTablaG do

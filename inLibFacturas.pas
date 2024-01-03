@@ -351,6 +351,7 @@ var
   dPorcen:Currency;
 begin
   _sTipIVa := Value;
+  dPorcen := 0;
   with _unqryFac do
   begin
     case IndexStr(_sTipIVA, ['N', 'R', 'S', 'E']) of

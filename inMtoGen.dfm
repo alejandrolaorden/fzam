@@ -44,15 +44,11 @@ inherited frmMtoGen: TfrmMtoGen
       object tsLista: TcxTabSheet
         Caption = '&Lista'
         ImageIndex = 0
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object cxGrdPrincipal: TcxGrid
           Left = 0
           Top = 0
-          Width = 942
-          Height = 480
+          Width = 943
+          Height = 484
           Margins.Left = 4
           Margins.Top = 4
           Margins.Right = 4
@@ -119,18 +115,10 @@ inherited frmMtoGen: TfrmMtoGen
       object tsFicha: TcxTabSheet
         Caption = '&Ficha'
         ImageIndex = 1
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
       end
       object tsPerfil: TcxTabSheet
         Caption = 'Perfil'
         ImageIndex = 2
-        ExplicitLeft = 3
-        ExplicitTop = 32
-        ExplicitWidth = 942
-        ExplicitHeight = 480
         object pnlPerfilTop: TPanel
           Left = 0
           Top = 0
@@ -139,7 +127,6 @@ inherited frmMtoGen: TfrmMtoGen
           Align = alTop
           BevelOuter = bvNone
           TabOrder = 0
-          ExplicitWidth = 942
           object edtPerfilBusq: TcxTextEdit
             Left = 294
             Top = 14
@@ -189,13 +176,11 @@ inherited frmMtoGen: TfrmMtoGen
           BevelOuter = bvNone
           Caption = 'pnlPerfilDetail'
           TabOrder = 1
-          ExplicitWidth = 942
-          ExplicitHeight = 423
           object cxgrdPerfil: TcxGrid
             Left = 0
             Top = 0
-            Width = 942
-            Height = 423
+            Width = 943
+            Height = 427
             Margins.Left = 4
             Margins.Top = 4
             Margins.Right = 4
@@ -688,12 +673,12 @@ inherited frmMtoGen: TfrmMtoGen
     Top = 440
   end
   object JvEnterAsTab1: TJvEnterAsTab
-    Left = 528
-    Top = 264
+    Left = 560
+    Top = 456
   end
   object saveDialog: TdxSaveFileDialog
     Options = [ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]
-    Left = 536
-    Top = 272
+    Left = 424
+    Top = 448
   end
 end

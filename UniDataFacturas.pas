@@ -58,6 +58,7 @@ type
     unqryIvasTipos: TUniQuery;
     dsIvasTipos: TDataSource;
     dsFactura: TDataSource;
+    unstdCrearArticuloLin: TUniStoredProc;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
     procedure zqryLinFacBeforeInsert(DataSet: TDataSet);
@@ -330,10 +331,24 @@ begin
          3: iPorcen := unqryTablaG.FindField('PORCEN_IVAE_FACTURA').AsInteger;
       end;
      fPorcen := iPorcen / 100;
+     FindField('CODIGO_TARIFA_FACTURA_LINEA').AsString :=
+              unqryTablaG.FindField('TARIFA_ARTICULO_CLIENTE_FACTURA').AsString;
      FindField('ESIMP_INCL_TARIFA_FACTURA_LINEA').AsString :=
             unqryTablaG.FindField('ESIMP_INCL_TARIFA_CLIENTE_FACTURA').AsString;
+     FindField('CODIGO_FAMILIA_FACTURA_LINEA').AsString :=
+                          DataSet.FindField('CODIGO_FAMILIA_ARTICULO').AsString;
+     FindField('NOMBRE_FAMILIA_FACTURA_LINEA').AsString :=
+                              DataSet.FindField('DESCRIPCION_FAMILIA').AsString;
+     FindField('ESPROVEEDORPRINCIPAL_FACTURA_LINEA').AsString :=
+                             DataSet.FindField('ESPROVEEDORPRINCIPAL').AsString;
+     FindField('CODIGO_PROVEEDOR_FACTURA_LINEA').AsString :=
+                                 DataSet.FindField('CODIGO_PROVEEDOR').AsString;
+     FindField('RAZONSOCIAL_PROVEEDOR_FACTURA_LINEA').AsString :=
+                           DataSet.FindField('RAZON_SOCIAL_PROVEEDOR').AsString;
+     FindField('PRECIO_ULT_COMPRA_FACTURA_LINEA').AsString :=
+                                DataSet.FindField('PRECIO_ULT_COMPRA').AsString;
      FindField('PRECIOSALIDA_FACTURA_LINEA').AsString :=
-                                DataSet.FindField('PRECIOSALIDA_TARIFA').AsString;
+                              DataSet.FindField('PRECIOSALIDA_TARIFA').AsString;
      FindField('PORCEN_DTO_FACTURA_LINEA').AsString :=
                                 DataSet.FindField('PORCEN_DTO_TARIFA').AsString;
      FindField('PRECIO_DTO_FACTURA_LINEA').AsString :=
@@ -569,6 +584,7 @@ begin
   unqryTarifas.Connection := inLibGlobalVar.oConn;
   unstrdprcCrearCliente.Connection := inLibGlobalVar.oConn;
   unstdCrearEmpresa.Connection := inLibGlobalVar.oConn;
+  unstdCrearArticuloLin.Connection := inLibGlobalVar.oConn;
   unqryFormaPago.Connection := inLibGlobalVar.oConn;
   unstrdprcGetContadorFactura.Connection := inLibGlobalVar.oConn;
   unstrdprcGetContador.Connection := inLibGlobalVar.oConn;
@@ -614,21 +630,19 @@ begin
     if ((State = dsEdit) or (State = dsInsert) or (State = dsBrowse)) then
     begin
       if SameText(DataSet.FieldByName(fimpcl).AsString, 'S') then
-        cxgrdbclmntv1PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA.Properties.ReadOnly
-                                                                        := True;
-        cxgrdbclmntv1PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA.Properties.ReadOnly
-                                                                       := False;
-        tvLineasFacturaTOTAL_FACTURASIVA_LINEA.Visible := False;
-        cxgrdbclmntv1TOTAL_FACTURA_LINEA.Visible := True;
-    end
-    else
-    begin
-      cxgrdbclmntv1PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA.Properties.ReadOnly
-                                                                        := True;
-      cxgrdbclmntv1PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA.Properties.ReadOnly
-                                                                       := False;
-      tvLineasFacturaTOTAL_FACTURASIVA_LINEA.Visible := True;
-      cxgrdbclmntv1TOTAL_FACTURA_LINEA.Visible := False;
+      begin
+        ctbPRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA.Properties.ReadOnly := True;
+        ctbPRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA.Properties.ReadOnly := False;
+        ctbTOTAL_FACTURASIVA_LINEA.Visible := False;
+        ctbTOTAL_FACTURA_LINEA.Visible := True;
+      end
+      else
+      begin
+        ctbPRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA.Properties.ReadOnly := True;
+        ctbPRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA.Properties.ReadOnly := False;
+        ctbTOTAL_FACTURASIVA_LINEA.Visible := True;
+        ctbTOTAL_FACTURA_LINEA.Visible := False;
+      end;
     end;
     end;
   end;
@@ -922,8 +936,13 @@ end;
 procedure TdmFacturas.zqryLinFacAfterPost(DataSet: TDataSet);
 begin
   inherited;
+  if (SameText(unqryTablaG.FieldByName('ESCREARARTICULOS_FACTURA').AsString,
+              'S') then
+  begin
+    //unstdCrearArticuloLin.ExecProc;
+  end;
   CalcularFactura;
-  unqryTablaG.Refresh; //command out of sync // mensaje extraño
+  unqryTablaG.Refresh;
 end;
 
 procedure TdmFacturas.zqryFacBeforePost(DataSet: TDataSet);

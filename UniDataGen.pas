@@ -44,25 +44,29 @@ uses  inLibGlobalVar, inMtoPrincipal2, inMtoGen;
 
 procedure TdmBase.DataModuleCreate(Sender: TObject);
 begin
-  if (GetPerfilValueDef((Owner as TfrmMtoGen).oPerfilDic,
-                        'oGetSQLFromDB',
-                        'False') = 'True') then
-  begin
-    GetFormUserProfile(oPerfilDic, Self.Name);
-    LoadSQLFromProfile(Self, oPerfilDic);
-  end;
+  oPerfilDic := nil;
   unqryTablaG.Connection              := oConn;
   unqryPerfiles.Connection            := oConn;
-  (Self.Owner as TfrmMtoGen).tdmDataModule := Self;
-  (Self.Owner as TfrmMtoGen).dsTablaG.DataSet := unqryTablaG;
-  unqryTablaG.Open;
+  if (Owner is TfrmMtoGen) then
+  begin
+    if (GetPerfilValueDef((Owner as TfrmMtoGen).oPerfilDic,
+                        'oGetSQLFromDB',
+                        'False') = 'True') then
+    begin
+      GetFormUserProfile(oPerfilDic, Self.Name);
+      LoadSQLFromProfile(Self, oPerfilDic);
+    end;
+    (Self.Owner as TfrmMtoGen).tdmDataModule := Self;
+    (Self.Owner as TfrmMtoGen).dsTablaG.DataSet := unqryTablaG;
+    unqryTablaG.Open;
+  end;
 end;
 
 procedure TdmBase.DataModuleDestroy(Sender: TObject);
 begin
   unqryTablaG.Close;
   unqryPerfiles.Close;
-  if oPerfilDic <> nil then
+  if (oPerfilDic <> nil) then
     FreeAndNil(oPerfilDic);
 //  oPerfilDic.Free;
 end;

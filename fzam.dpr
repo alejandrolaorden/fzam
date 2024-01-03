@@ -1,4 +1,4 @@
-program Fzam;
+﻿program Fzam;
 
 uses
   {$IFDEF DEBUG}
@@ -35,8 +35,7 @@ uses
   inMtoEmpresas in 'inMtoEmpresas.pas' {frmMtoEmpresas},
   inMtoFamilias in 'inMtoFamilias.pas' {frmMtoFamilias},
   inMtoFormasdePago in 'inMtoFormasdePago.pas' {frmMtoFormasdePago},
-  inMtoGeneradorProcesos in 'inMtoGeneradorProcesos.pas'
-                                                      {frmMtoGeneradorProcesos},
+  inMtoGeneradorProcesos in 'inMtoGeneradorProcesos.pas' {frmMtoGeneradorProcesos},
   inMtoGenSearch in 'inMtoGenSearch.pas' {frmMtoSearch},
   inMtoGrupos in 'inMtoGrupos.pas' {frmMtoGrupos},
   inMtoIvas in 'inMtoIvas.pas' {frmMtoIvas},
@@ -56,17 +55,15 @@ uses
   inMtoModalImpRecFac in 'inMtoModalImpRecFac.pas' {frmPrintRecFac},
   inMtoModalCliEti in 'inMtoModalCliEti.pas' {frmPrintCliEti},
   inMtoSplash in 'inMtoSplash.pas' {frmSplash},
-    UniDataConn in 'UniDataConn.pas' {dmConn: TDataModule},
+  UniDataConn in 'UniDataConn.pas' {dmConn: TDataModule},
   UniDataGen in 'UniDataGen.pas' {dmBase: TDataModule},
   UniDataArticulos in 'UniDataArticulos.pas' {dmArticulos: TdmArticulos},
   UniDataClientes in 'UniDataClientes.pas' {dmClientes: TdmClientes},
   UniDataContadores in 'UniDataContadores.pas' {dmContadores: dmContadores},
   UniDataEmpresas in 'UniDataEmpresas.pas' {dmEmpresas: TdmEmpresas},
   UniDataFamilias in 'UniDataFamilias.pas' {dmFamilias1. TdmFamilias},
-  UniDataFormasdePago in 'UniDataFormasdePago.pas'
-                                              {dmFormasdePago: TdmFormasdePago},
-  UniDataGeneradorProcesos in 'UniDataGeneradorProcesos.pas'
-                                             {dmGeneradorProcesos: TDataModule},
+  UniDataFormasdePago in 'UniDataFormasdePago.pas' {dmFormasdePago: TdmFormasdePago},
+  UniDataGeneradorProcesos in 'UniDataGeneradorProcesos.pas' {dmGeneradorProcesos: TDataModule},
   UniDataGrupos in 'UniDataGrupos.pas' {dmGrupos: TDataModule},
   UniDataIvas in 'UniDataIvas.pas' {dmIvas: TDataModule},
   UniDataIvasGrupos in 'UniDataIvasGrupos.pas' {dmIvasGrupos: TDataModule},
@@ -74,9 +71,9 @@ uses
   UniDataProveedores in 'UniDataProveedores.pas' {dmProveedores: TDataModule},
   UniDataTarifas in 'UniDataTarifas.pas' {dmTarifas: TDataModule},
   UniDataUsuarios in 'UniDataUsuarios.pas' {dmUsuarios: TDataModule},
-  UniDataUsuariosPerfiles in 'UniDataUsuariosPerfiles.pas'
-                                              {dmUsuariosPerfiles: TDataModule},
-  UniDataFacturas in 'UniDataFacturas.pas'{dmFacturas: TdmFacturas};
+  UniDataUsuariosPerfiles in 'UniDataUsuariosPerfiles.pas' {dmUsuariosPerfiles: TDataModule},
+  UniDataFacturas in 'UniDataFacturas.pas' {dmFacturas: TdmFacturas},
+  UniDataGenFilter in 'UniDataGenFilter.pas' {dmGenFilter: TDataModule};
 
 begin
   {$IFDEF DEBUG}

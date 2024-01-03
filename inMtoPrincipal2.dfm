@@ -1277,6 +1277,14 @@ inherited frmOpenApp2: TfrmOpenApp2
         ShortCut = 16454
         OnClick = mnuFacturasClick
       end
+      object Listados1: TMenuItem
+        Caption = 'Listados'
+        object mnuLisVentas: TMenuItem
+          Caption = '&Ventas'
+          ShortCut = 49238
+          OnClick = mnuLisVentasClick
+        end
+      end
     end
     object Utilidades1: TMenuItem
       Caption = 'Utilidades'

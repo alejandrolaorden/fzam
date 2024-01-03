@@ -72,7 +72,7 @@ implementation
     end;
 
   procedure GetSettingsColumn(cxgrdtvVista: TcxGridDBTableView;
-    sName: String; Sender: TComponent);
+                              sName: String; Sender: TComponent);
     var
       i: Integer;
       oColumn: TcxGridDBColumn;
@@ -83,8 +83,7 @@ implementation
         oColumn := cxgrdtvVista.Columns[i];
         sColumnName := oColumn.DataBinding.FieldName;
         sVistaName := cxgrdtvVista.Name;
-        if (BoolToStr(oColumn.Visible) = '-1')
-        then
+        if (oColumn.Visible) then
           sValue := 'True'
         else
           sValue := 'False';
@@ -106,10 +105,10 @@ implementation
       end;
     end;
 
-  procedure GetSettingsColumnProfile(cxgrdtvVista: TcxGridDBTableView;
-    sName: String;
-    Sender: TComponent;
-    sProfile: String);
+  procedure GetSettingsColumnProfile( cxgrdtvVista: TcxGridDBTableView;
+                                      sName: String;
+                                      Sender: TComponent;
+                                      sProfile: String);
     var
       i: Integer;
       oColumn: TcxGridDBColumn;
@@ -120,7 +119,7 @@ implementation
         oColumn := cxgrdtvVista.Columns[i];
         sColumnName := oColumn.DataBinding.FieldName;
         sVistaName := cxgrdtvVista.Name;
-        if (BoolToStr(oColumn.Visible) = '-1')
+        if (oColumn.Visible)
         then
           sValue := 'True'
         else
@@ -132,8 +131,7 @@ implementation
         (Sender as TfrmOpenApp2).FdmDataPerfiles.GrabarPerfil(sProfile, sName,
           sVistaName + '_' + sColumnName + '_Index',
           sValue);
-        if oColumn.Visible
-        then
+        if (oColumn.Visible) then
         begin
           sValue := IntToStr(oColumn.Width);
           odmPerfiles.GrabarPerfil(sProfile, sName,

@@ -64,6 +64,8 @@ type
     Acercade1: TMenuItem;
     openDialog: TdxOpenFileDialog;
     saveDialog: TdxSaveFileDialog;
+    Listados1: TMenuItem;
+    mnuLisVentas: TMenuItem;
     procedure mnuEmpresasClick(Sender: TObject);
     procedure mnuClientesClick(Sender: TObject);
     procedure mnuProveedoresClick(Sender: TObject);
@@ -91,6 +93,7 @@ type
     function IsShortCut(var Message: TWMKey): Boolean; override;
     procedure undmp1Error(Sender: TObject; E: Exception; SQL: string;
       var Action: TErrorAction);
+    procedure mnuLisVentasClick(Sender: TObject);
   private
     FException: boolean;
 //    procedure AppException(Sender: TObject; E: Exception);
@@ -108,13 +111,14 @@ var
 implementation
 
 uses inLibUser,
-  inLibWin,
-  inLibShowMto,
-  inLibtb,
-  inLibGlobalVar,
-  inLibLog,
-  inLibDir,
-  inMtoSplash;
+     inLibWin,
+     inLibShowMto,
+     inLibtb,
+     inLibGlobalVar,
+     inLibLog,
+     inLibDir,
+     inMtoSplash,
+     inMtoModalGenFilter;
 
 {$R *.dfm}
 
@@ -177,7 +181,6 @@ begin
     begin
       LookAndFeelController1.SkinName := 'Office2007Pink';
       SkinController1.SkinName := 'Office2007Pink';
-
     end;
 end;
 
@@ -408,6 +411,19 @@ begin
   //Continúa a pesar de los errores, por ejemplo si hay filas duplicadas
   //if (EUniError(E).ErrorCode = 1062) then // ER_DUP_ENTRY
   //  Action := eaContinue;
+end;
+
+procedure TfrmOpenApp2.mnuLisVentasClick(Sender: TObject);
+var
+  frmModalGenFilter: TfrmModalGenFilter;
+begin
+  inherited;
+  try
+    frmModalGenFilter := TfrmModalGenFilter.Create(Self);
+    frmModalGenFilter.ShowModal;
+  finally
+    FreeAndNil(frmModalGenFilter);
+  end;
 end;
 
 procedure TfrmOpenApp2.mnuAcercadeClick(Sender: TObject);

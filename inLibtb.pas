@@ -443,7 +443,7 @@ begin
     ConsultaO := sConsulta;
   if ( ConsultaO <> sConsulta ) then
   begin
-    sConsulta := ConsultaO; //reseteo la consulta porque ha habido otras b�squedas
+    sConsulta := ConsultaO; //reseteo la consulta porque ha habido otras b�sq.
     sqlConsulta.SQL.text := ConsultaO;
   end;
   if sBusqueda <> '' then
@@ -485,7 +485,7 @@ procedure esCadINI (clave, cadena, valor : string);
 var
    sIniFile:string;
 begin
-  if ParamStr(2) = '' then
+  if (SameText(ParamStr(2), '')) then
     sIniFile := ExtractFilePath(ParamStr(0)) + FileSinExtension(ExtractFileName(ParamStr(0))) + '.ini'
   else
     sIniFile := ExtractFilePath(ParamStr(0)) + ParamStr(2);
@@ -501,7 +501,7 @@ procedure esCadINIDir (clave, cadena, valor, sDir : string);
 var
    sIniFile:string;
 begin
-  if ParamStr(3) = '' then
+  if SameText(ParamStr(3), '') then
     sIniFile := sDir + FileSinExtension(ExtractFileName(ParamStr(0))) + '.ini'
   else
     sIniFile := sDir + ParamStr(3);

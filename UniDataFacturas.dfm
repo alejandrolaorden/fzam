@@ -1,6 +1,6 @@
 inherited dmFacturas: TdmFacturas
   Height = 638
-  Width = 1332
+  Width = 1445
   inherited unqryTablaG: TUniQuery
     SQLInsert.Strings = (
       'INSERT INTO fza_facturas'
@@ -404,7 +404,6 @@ inherited dmFacturas: TdmFacturas
       'where SERIE_FACTURA = '#39'ANA/2023'#39' '
       'AND NRO_FACTURA = '#39'000003'#39
       'order by NRO_FACTURA Asc')
-    Active = True
     Left = 568
     Top = 552
   end
@@ -476,7 +475,6 @@ inherited dmFacturas: TdmFacturas
     MasterSource = dsFacPrint
     MasterFields = 'SERIE_FACTURA;NRO_FACTURA'
     DetailFields = 'SERIE_FACTURA_LINEA;NRO_FACTURA_LINEA'
-    Active = True
     Left = 648
     Top = 552
     ParamData = <
@@ -1943,5 +1941,38 @@ inherited dmFacturas: TdmFacturas
     DataSet = unqryTablaG
     Left = 368
     Top = 440
+  end
+  object unstdCrearArticuloLin: TUniStoredProc
+    StoredProcName = 'PRC_GET_DATA_ARTICULO'
+    SQL.Strings = (
+      
+        'CALL PRC_GET_DATA_ARTICULO(:pidcodarticulo, @pidnomarticulo, @pi' +
+        'dprecioventa); SELECT @pidnomarticulo AS '#39'@pidnomarticulo'#39', @pid' +
+        'precioventa AS '#39'@pidprecioventa'#39)
+    Connection = dmConn.conUni
+    Left = 1192
+    Top = 360
+    ParamData = <
+      item
+        DataType = ftString
+        Name = 'pidcodarticulo'
+        ParamType = ptInput
+        Size = 200
+        Value = nil
+      end
+      item
+        DataType = ftString
+        Name = 'pidnomarticulo'
+        ParamType = ptOutput
+        Size = 200
+        Value = ''
+      end
+      item
+        DataType = ftFloat
+        Name = 'pidprecioventa'
+        ParamType = ptOutput
+        Value = 0.000000000000000000
+      end>
+    CommandStoredProcName = 'PRC_GET_DATA_ARTICULO'
   end
 end

@@ -1,4 +1,4 @@
-{*******************************************************}
+﻿{*******************************************************}
 {                                                       }
 {       FactuZam                                        }
 {                                                       }
@@ -38,7 +38,7 @@ begin
   then
   begin
     sMensaje := Ord(tlTipo).ToString + ' ' + sClassErrorLog + ' ' +
-      FormatDateTime('"d�a:"dd/mm/yyyy " hora:" hh:mm:ss:zzz " - "',
+      FormatDateTime('"día:"dd/mm/yyyy " hora:" hh:mm:ss:zzz " - "',
       Now) + 'Usuario: ' + sUser + ' Mensaje: ' + sMessage;
     sFileName := ExtractFilePath(GetLogFolder) + 'LOG_' +
       FormatDateTime('mmdd', Now) + '.log';
