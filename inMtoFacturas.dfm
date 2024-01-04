@@ -8,7 +8,6 @@ inherited frmMtoFacturas: TfrmMtoFacturas
   ClientHeight = 844
   ClientWidth = 1231
   Scaled = False
-  ExplicitTop = -171
   ExplicitWidth = 1231
   ExplicitHeight = 844
   TextHeight = 19
@@ -1139,7 +1138,6 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                   Style.TransparentBorder = False
                   TabOrder = 2
                   Transparent = True
-                  Visible = False
                 end
                 object btnExportarLineas: TcxButton
                   Left = 7
@@ -1158,6 +1156,37 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                   Caption = 'I&r a Art'#237'culo'
                   TabOrder = 4
                   OnClick = btnIraArticuloClick
+                end
+                object btnCalculator: TcxButton
+                  Left = 7
+                  Top = 200
+                  Width = 24
+                  Height = 25
+                  OptionsImage.Glyph.SourceDPI = 96
+                  OptionsImage.Glyph.Data = {
+                    89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+                    610000001974455874536F6674776172650041646F626520496D616765526561
+                    647971C9653C0000001F744558745469746C650043616C63756C6174696F6E3B
+                    43616C63756C6174696F6E733BF443BC3C000001FE49444154785E9592CF6B13
+                    5110C7BF9B6C543C08E2C183D7A48A170F8AE0A569AAA7C67AF32F10515210A1
+                    08ED59C49FA752D083770F828762C14BDA18F1EA4D68936AD3BA5643526DD676
+                    DB8664C637B3FBB2293988C3BE7DEFB3F366E63BC33A2F5F7F2A2592C92CFED3
+                    BADD4EF9E6F5F397DD7ADDCF4E17B26030D418B1290E1A11E3FECCC23080842B
+                    C0CC785CAE87011C47D240B80326C6C4C5E312A31F5CD9E5585D6FE1D2991338
+                    9C7270249594BB885E7A396877B1BFDFC5C7CF0DB0494064134419BC8D2D548E
+                    1D02096BD0807E55E479BEFA285640DAFFABC2B9B01EDB38213B993EBE722A4A
+                    4EEA7089C26A73C50AAC5D1B3D8DB985E51E5FCD0DA13E3FD9E393F967205270
+                    120CD21E7FFC6C61DC046E985658A47EDFC2782E836FDE6F2DBE59ABE06C7A17
+                    CDD52530707088B27C3FC0D31725C0F29F004F9EBF074533DAF177F0EECD52E8
+                    EC9F01111900266FD97F8975DDBB1DB123C4B830558C7CCA7AB20A14DF2EC633
+                    C88F0C61BED4CF99033C369206132B248859616DFD17F2A6E7D5B54D006CF6A6
+                    B998C1D75A53ABADD41A18CBA651FDD290C2FD33606DC1DF0EF06876D10AD419
+                    3C9C2D1A94CBC0766B170F6684211CB7200A644D1572B1C3F0F4C428180E4233
+                    7C47187014D92A60B7BABC52BE71D71BD68FEAB64E076CCFF2F47291748E4E3B
+                    F800A023114701A46C72DDFF6D0CA00D60EF2F70DB422AC97AB57F0000000049
+                    454E44AE426082}
+                  TabOrder = 5
+                  OnClick = btnCalculatorClick
                 end
               end
             end
@@ -2982,5 +3011,11 @@ inherited frmMtoFacturas: TfrmMtoFacturas
   inherited saveDialog: TdxSaveFileDialog
     Left = 696
     Top = 256
+  end
+  object JvCalculator1: TJvCalculator
+    Ctl3D = False
+    Title = 'Calculadora'
+    Left = 968
+    Top = 696
   end
 end

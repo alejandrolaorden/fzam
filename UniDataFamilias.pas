@@ -83,7 +83,7 @@ begin
                                                   ParamByName('pcont').AsString;
     end;
   end;
-  if (unqryTablaG.FindField('ORDEN_Familia').AsString = '0') then
+  if (unqryTablaG.FindField('ORDEN_FAMILIA').AsString = '0') then
   begin
     with unstrdprcContador do
     begin
@@ -94,7 +94,7 @@ begin
       ParamByName('pUSUARIO_MODIF').AsString := oUser;
       ParamByName('ptipodoc').AsString :=  'FO';
       ExecProc;
-      unqryTablaG.FindField('ORDEN_Familia').AsString :=
+      unqryTablaG.FindField('ORDEN_FAMILIA').AsString :=
                                                   ParamByName('pcont').AsString;
     end;
   end;

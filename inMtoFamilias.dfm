@@ -230,6 +230,10 @@ inherited frmMtoFamilias: TfrmMtoFamilias
             object tsMasDatos: TcxTabSheet
               Caption = '&1_M'#225's Datos'
               ImageIndex = 0
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object lblDescripcion: TcxLabel
                 Left = 33
                 Top = 19
@@ -249,6 +253,10 @@ inherited frmMtoFamilias: TfrmMtoFamilias
             object tsArticulos: TcxTabSheet
               Caption = '&2_Articulos'
               ImageIndex = 2
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object cxgrdArticulosFamilias: TcxGrid
                 Left = 0
                 Top = 0
@@ -321,11 +329,13 @@ inherited frmMtoFamilias: TfrmMtoFamilias
                   object cxgrdbclmnArticulosCODIGO_PROVEEDOR_PRINCIPAL: TcxGridDBColumn
                     Caption = 'C'#243'digo Proveedor Prin.'
                     DataBinding.FieldName = 'CODIGO_PROVEEDOR_PRINCIPAL'
+                    DataBinding.IsNullValueType = True
                     Width = 206
                   end
                   object cxgrdbclmnArticulosRAZON_SOCIAL_PROVEEDOR_PRINCIPAL: TcxGridDBColumn
                     Caption = 'Raz'#243'n Social Proveedor Principal'
                     DataBinding.FieldName = 'RAZON_SOCIAL_PROVEEDOR_PRINCIPAL'
+                    DataBinding.IsNullValueType = True
                     Width = 277
                   end
                   object cxgrdbclmnArticulosNOMBRE_TARIFA: TcxGridDBColumn
@@ -581,9 +591,12 @@ inherited frmMtoFamilias: TfrmMtoFamilias
           HotZoneClassName = 'TcxMediaPlayer9Style'
           AlignSplitter = salTop
           Control = pnl1
+          ExplicitWidth = 4
         end
       end
       inherited tsPerfil: TcxTabSheet
+        ExplicitLeft = 3
+        ExplicitTop = 32
         ExplicitWidth = 731
         ExplicitHeight = 514
         inherited pnlPerfilTop: TPanel

@@ -29,7 +29,8 @@ uses
   cxDBLabel, dxGDIPlusClasses, dxSkinsForm, cxBlobEdit,
   dxScrollbarAnnotations, dxCore, cxRadioGroup, System.Actions, Vcl.ActnList,
   IDETheme.ActnCtrls, Vcl.ActnMan, Vcl.StdStyleActnCtrls, Vcl.AppEvnts,
-  JvComponentBase, JvEnterTab, UniDataFacturas, dxShellDialogs;
+  JvComponentBase, JvEnterTab, UniDataFacturas, dxShellDialogs, JvBaseDlg,
+  JvCalc;
 
 type
   TfrmMtoFacturas = class(TfrmMtoGen)
@@ -316,6 +317,8 @@ type
     ctbCODIGO_PROVEEDOR_FACTURA_LINEA: TcxGridDBColumn;
     ctbRAZONSOCIAL_PROVEEDOR_FACTURA_LINEA: TcxGridDBColumn;
     ctbPRECIO_ULT_COMPRA_FACTURA_LINEA: TcxGridDBColumn;
+    JvCalculator1: TJvCalculator;
+    btnCalculator: TcxButton;
     procedure sbGrabarClick(Sender: TObject);
     procedure btnUpdateClienteClick(Sender: TObject);
     procedure sbNuevaFacturaClick(Sender: TObject);
@@ -390,6 +393,7 @@ type
       Sender: TObject);
     procedure ctbCODIGO_PROVEEDOR_FACTURA_LINEAPropertiesEditValueChanged(
       Sender: TObject);
+    procedure btnCalculatorClick(Sender: TObject);
 //    procedure FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
   public
     procedure ActualizarComboSeries;
@@ -571,29 +575,34 @@ end;
 
 procedure TfrmMtoFacturas.ActualizarComboSeries;
 begin
-  if (dmmFacturas <> nil)  then
-    if ((dsTablaG.State = dsInsert)) then
-    begin
-      dmmFacturas.CrearTablaSeries(
-                  dsTablaG.DataSet.FindField('CODIGO_EMPRESA_FACTURA').AsString,
-                  dsTablaG.DataSet.FindField('CODIGO_CLIENTE_FACTURA').AsString,
-                  dsTablaG.DataSet.FindField('FECHA_FACTURA').AsDateTime);
-      cbbSerieFactura.Properties.ListFieldNames := 'SERIE_CONTADOR';
-      cbbSerieFactura.Properties.ListSource := dmmFacturas.dsSeriesEditCombo;
-      cbbSerieFactura.Refresh;
-      dmmFacturas.unqrySeriesEditCombo.First;
-      dsTablaG.DataSet.FindField('SERIE_FACTURA').AsString :=
+  if ((dsTablaG.State = dsInsert)) then
+  begin
+    dmmFacturas.CrearTablaSeries(
+                dsTablaG.DataSet.FindField('CODIGO_EMPRESA_FACTURA').AsString,
+                dsTablaG.DataSet.FindField('CODIGO_CLIENTE_FACTURA').AsString,
+                dsTablaG.DataSet.FindField('FECHA_FACTURA').AsDateTime);
+    cbbSerieFactura.Properties.ListFieldNames := 'SERIE_CONTADOR';
+    cbbSerieFactura.Properties.ListSource := dmmFacturas.dsSeriesEditCombo;
+    cbbSerieFactura.Refresh;
+    dmmFacturas.unqrySeriesEditCombo.First;
+    dsTablaG.DataSet.FindField('SERIE_FACTURA').AsString :=
           dmmFacturas.unqrySeriesEditCombo.FindField('SERIE_CONTADOR').AsString;
-    end;
+  end;
 end;
 
 procedure TfrmMtoFacturas.btNExportarLineasClick(Sender: TObject);
 begin
   inherited;
   ExportarExcel(cxGrdLineasFactura, 'Lineas_Factura_' +
-                      dsTablaG.Dataset.FieldByName('SERIE_FACTURA').AsString +
-                      '_' +
-                      dsTablaG.Dataset.FieldByName('NRO_FACTURA').AsString);
+                dsTablaG.Dataset.FieldByName('SERIE_FACTURA').AsString +
+                '_' +
+                dsTablaG.Dataset.FieldByName('NRO_FACTURA').AsString);
+end;
+
+procedure TfrmMtoFacturas.btnCalculatorClick(Sender: TObject);
+begin
+  inherited;
+  jvCalculator1.Execute;
 end;
 
 procedure TfrmMtoFacturas.btnCODIGO_CLIENTEKeyUp(Sender: TObject; var Key: Word;

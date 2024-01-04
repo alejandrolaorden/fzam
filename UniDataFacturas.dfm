@@ -1943,36 +1943,146 @@ inherited dmFacturas: TdmFacturas
     Top = 440
   end
   object unstdCrearArticuloLin: TUniStoredProc
-    StoredProcName = 'PRC_GET_DATA_ARTICULO'
+    StoredProcName = 'PRC_CREAR_ACTUALIZAR_ARTICULO'
     SQL.Strings = (
       
-        'CALL PRC_GET_DATA_ARTICULO(:pidcodarticulo, @pidnomarticulo, @pi' +
-        'dprecioventa); SELECT @pidnomarticulo AS '#39'@pidnomarticulo'#39', @pid' +
-        'precioventa AS '#39'@pidprecioventa'#39)
+        'CALL PRC_CREAR_ACTUALIZAR_ARTICULO(:pCODIGO_ARTICULO, :pDESCRIPC' +
+        'ION_ARTICULO, :pTIPOIVA_ARTICULO, :pTIPO_CANTIDAD_ARTICULO, :pES' +
+        'ACTIVO_FIJO_ARTICULO, :pCODIGO_FAMILIA, :pNOMBRE_FAMILIA, :pCODI' +
+        'GO_PROVEEDOR, :pRAZONSOCIAL_PROVEEDOR, :pESPROVEEDORPRINCIPAL, :' +
+        'pPRECIO_ULT_COMPRA, :pFECHA_FACTURA, :pCODIGO_TARIFA, :pPRECIOSA' +
+        'LIDA_TARIFA, :pPRECIOFINAL_TARIFA, :pPRECIO_DTO_TARIFA, :pPORCEN' +
+        '_DTO_TARIFA, :pUSUARIO, :pINSTANTEMODIF)')
     Connection = dmConn.conUni
     Left = 1192
     Top = 360
     ParamData = <
       item
-        DataType = ftString
-        Name = 'pidcodarticulo'
+        DataType = ftWideString
+        Name = 'pCODIGO_ARTICULO'
+        ParamType = ptInput
+        Size = 20
+        Value = nil
+      end
+      item
+        DataType = ftWideString
+        Name = 'pDESCRIPCION_ARTICULO'
+        ParamType = ptInput
+        Size = 1000
+        Value = nil
+      end
+      item
+        DataType = ftWideString
+        Name = 'pTIPOIVA_ARTICULO'
+        ParamType = ptInput
+        Size = 2
+        Value = nil
+      end
+      item
+        DataType = ftWideString
+        Name = 'pTIPO_CANTIDAD_ARTICULO'
+        ParamType = ptInput
+        Size = 20
+        Value = nil
+      end
+      item
+        DataType = ftWideString
+        Name = 'pESACTIVO_FIJO_ARTICULO'
+        ParamType = ptInput
+        Size = 1
+        Value = nil
+      end
+      item
+        DataType = ftWideString
+        Name = 'pCODIGO_FAMILIA'
+        ParamType = ptInput
+        Size = 20
+        Value = nil
+      end
+      item
+        DataType = ftWideString
+        Name = 'pNOMBRE_FAMILIA'
         ParamType = ptInput
         Size = 200
         Value = nil
       end
       item
-        DataType = ftString
-        Name = 'pidnomarticulo'
-        ParamType = ptOutput
-        Size = 200
-        Value = ''
+        DataType = ftWideString
+        Name = 'pCODIGO_PROVEEDOR'
+        ParamType = ptInput
+        Size = 20
+        Value = nil
+      end
+      item
+        DataType = ftWideString
+        Name = 'pRAZONSOCIAL_PROVEEDOR'
+        ParamType = ptInput
+        Size = 20
+        Value = nil
+      end
+      item
+        DataType = ftWideString
+        Name = 'pESPROVEEDORPRINCIPAL'
+        ParamType = ptInput
+        Size = 1
+        Value = nil
       end
       item
         DataType = ftFloat
-        Name = 'pidprecioventa'
-        ParamType = ptOutput
-        Value = 0.000000000000000000
+        Name = 'pPRECIO_ULT_COMPRA'
+        ParamType = ptInput
+        Value = nil
+      end
+      item
+        DataType = ftDateTime
+        Name = 'pFECHA_FACTURA'
+        ParamType = ptInput
+        Value = nil
+      end
+      item
+        DataType = ftWideString
+        Name = 'pCODIGO_TARIFA'
+        ParamType = ptInput
+        Size = 20
+        Value = nil
+      end
+      item
+        DataType = ftFloat
+        Name = 'pPRECIOSALIDA_TARIFA'
+        ParamType = ptInput
+        Value = nil
+      end
+      item
+        DataType = ftFloat
+        Name = 'pPRECIOFINAL_TARIFA'
+        ParamType = ptInput
+        Value = nil
+      end
+      item
+        DataType = ftFloat
+        Name = 'pPRECIO_DTO_TARIFA'
+        ParamType = ptInput
+        Value = nil
+      end
+      item
+        DataType = ftFloat
+        Name = 'pPORCEN_DTO_TARIFA'
+        ParamType = ptInput
+        Value = nil
+      end
+      item
+        DataType = ftWideString
+        Name = 'pUSUARIO'
+        ParamType = ptInput
+        Size = 100
+        Value = nil
+      end
+      item
+        DataType = ftDateTime
+        Name = 'pINSTANTEMODIF'
+        ParamType = ptInput
+        Value = nil
       end>
-    CommandStoredProcName = 'PRC_GET_DATA_ARTICULO'
+    CommandStoredProcName = 'PRC_CREAR_ACTUALIZAR_ARTICULO'
   end
 end

@@ -361,8 +361,66 @@ DELIMITER ;
 
 
 DELIMITER $$
+DROP PROCEDURE IF EXISTS `PRC_CREAR_ACTUALIZAR_ARTICULO` $$
+CREATE  PROCEDURE `PRC_CREAR_ACTUALIZAR_ARTICULO`(IN `pCODIGO_CLIENTE`                  varchar(10),
+																																						IN pCODIGO_ARTICULO 									varchar(20),
+																																						IN pDESCRIPCION_ARTICULO							varchar(1000),
+																																						IN pTIPOIVA_ARTICULO                  varchar(2),
+																																						IN pTIPO_CANTIDAD_ARTICULO            varchar(20),
+																																						                    
+																																						IN CODIGO_FAMILIA                     varchar(20),
+																																						IN pNOMBRE_FAMILIA                    varchar(200),
+																																						
+																																						IN CODIGO_PROVEEDOR                   varchar(20),
+																																						IN RAZONSOCIAL_PROVEEDOR              varchar(20),
+																																						IN ESPROVEEDORPRINCIPAL               varchar(1),
+																																						IN PRECIO_ULT_COMPRA                  decimal(19,6),
+																																						
+																																						IN CODIGO_TARIFA                      varchar(20),
+																																						IN PRECIOSALIDA_TARIFA								decimal(19,6),
+																																						IN PRECIOFINAL_TARIFA  								decimal(19,6),
+																																						IN PRECIO_DTO_TARIFA		  						decimal(19,6),
+																																						IN PORCEN_DTO_TARIFA			  					decimal(19,6),
+																																						
+																																						IN `pUSUARIO`                         varchar(100),
+																																						IN `pINSTANTEMODIF`                   TIMESTAMP)
+BEGIN
+START TRANSACTION;
+ IF( EXISTS( SELECT *
+               FROM fza_articulos
+              WHERE `CODIGO_ARTICULO` =  pCODIGO_ARTICULO) ) THEN
+ BEGIN
+   UPDATE fza_articulos
+      SET 
+          USUARIOMODIF                      = pUSUARIO             
+    WHERE CODIGO_ARTICULO = pCODIGO_ARTICULO;
+  END;
+  ELSE
+  BEGIN
+    INSERT INTO fza_articulos (CODIGO_ARTICULO                  ,
+                              
+                              USUARIOMODIF                      ,
+                              USUARIOALTA                       ,
+                              INSTANTEALTA                      ,
+                              INSTANTEMODIF
+                      ) VALUES
+                             (pCODIGO_ARTICULO                   ,
+                              
+                              pUSUARIO                          ,
+                              pUSUARIO                          ,
+                              CURRENT_TIMESTAMP                 ,
+                              pINSTANTEMODIF           
+                              );
+  END;
+  END IF;
+  COMMIT;
+END $$
+DELIMITER ;
+
+
+DELIMITER $$
 DROP PROCEDURE IF EXISTS `PRC_CREAR_ACTUALIZAR_CLIENTE` $$
-CREATE  PROCEDURE `PRC_CREAR_ACTUALIZAR_CLIENTE`(IN `pCODIGO_CLIENTE`                       varchar(10),
+CREATE  PROCEDURE `PRC_CREAR_ACTUALIZAR_CLIENTE`(IN `pCODIGO_CLIENTE`                       varchar(20),
                             IN `pRAZONSOCIAL_CLIENTE`             varchar(200),
                             IN `pNIF_CLIENTE`                      varchar(50),
                             IN `pMOVIL_CLIENTE`                    varchar(40),
@@ -378,7 +436,7 @@ CREATE  PROCEDURE `PRC_CREAR_ACTUALIZAR_CLIENTE`(IN `pCODIGO_CLIENTE`           
                             IN `pESIVA_RECARGO_CLIENTE`             varchar(1),
                             IN `pESINTRACOMUNITARIO_CLIENTE`        varchar(1),
                             IN `pESREGIMENESPECIALAGRICOLA_CLIENTE` varchar(1),
-                            IN `pTARIFA_ARTICULO_CLIENTE`          varchar(10),
+                            IN `pTARIFA_ARTICULO_CLIENTE`          varchar(20),
                             IN `pUSUARIO`                         varchar(100),
                             IN `pINSTANTEMODIF`                      TIMESTAMP)
 BEGIN
@@ -1432,7 +1490,7 @@ DELIMITER ;
 DELIMITER $$
 DROP PROCEDURE IF EXISTS `PRC_GET_DATA_ARTICULO` $$
 CREATE  PROCEDURE `PRC_GET_DATA_ARTICULO`(IN `pidcodarticulo` varchar(200), 
-                                         OUT `pidnomarticulo` varchar(200), 
+                                         OUT `pidnomarticulo` varchar(1000), 
                                          OUT `ptipoiva` varchar(2))
 BEGIN
    IF( EXISTS(
@@ -1946,8 +2004,8 @@ CREATE TABLE `fza_articulos_familias` (
   `ORDEN_FAMILIA` int(11) DEFAULT NULL,
   `ESDEFAULT_FAMILIA` varchar(1) DEFAULT NULL,
   `CODIGO_SUBFAMILIA` varchar(10) DEFAULT NULL,
-  `NOMBRE_FAMILIA` varchar(150) DEFAULT NULL,
-  `DESCRIPCION_FAMILIA` varchar(150) DEFAULT NULL,
+  `NOMBRE_FAMILIA` varchar(200) DEFAULT NULL,
+  `DESCRIPCION_FAMILIA` varchar(200) DEFAULT NULL,
   `INSTANTEMODIF` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `INSTANTEALTA` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `USUARIOALTA` varchar(100) NOT NULL,
@@ -2005,10 +2063,10 @@ CREATE TABLE `fza_articulos_tarifas` (
   `CODIGO_UNICO_TARIFA` int(11) NOT NULL AUTO_INCREMENT,
   `CODIGO_TARIFA` varchar(10) DEFAULT NULL,
   `ACTIVO_TARIFA` varchar(1) DEFAULT 'S',
-  `PRECIOSALIDA_TARIFA` decimal(18,6) DEFAULT NULL,
-  `PRECIOFINAL_TARIFA` decimal(18,6) DEFAULT 0.000000,
-  `PRECIO_DTO_TARIFA` decimal(18,6) DEFAULT NULL,
-  `PORCEN_DTO_TARIFA` decimal(18,6) DEFAULT NULL,
+  `PRECIOSALIDA_TARIFA` decimal(19,6) DEFAULT NULL,
+  `PRECIOFINAL_TARIFA` decimal(19,6) DEFAULT 0.000000,
+  `PRECIO_DTO_TARIFA` decimal(19,6) DEFAULT NULL,
+  `PORCEN_DTO_TARIFA` decimal(19,6) DEFAULT NULL,
   `FECHA_DESDE_TARIFA` date DEFAULT NULL,
   `FECHA_HASTA_TARIFA` date DEFAULT NULL,
   `INSTANTEMODIF` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -2533,7 +2591,7 @@ CREATE TABLE `fza_metadatos` (
   `NOMBRE_METADATO` varchar(100) NOT NULL,
   `PARENT_METADATO` varchar(20) NOT NULL,
   PRIMARY KEY (`CODIGO_METADATO`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=149 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=161 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci ROW_FORMAT=DYNAMIC;
 
 INSERT INTO `fza_metadatos`(`CODIGO_METADATO`, `NOMBRE_METADATO`, `PARENT_METADATO`) VALUES
  (1,'Tablas','-1'),
@@ -2591,39 +2649,42 @@ INSERT INTO `fza_metadatos`(`CODIGO_METADATO`, `NOMBRE_METADATO`, `PARENT_METADA
  (82,'vi_fac_lin_busquedas','2'),
  (83,'vi_facturas','2'),
  (84,'vi_facturas_lineas','2'),
- (85,'vi_facturas_print','2'),
- (86,'vi_formapago','2'),
- (87,'vi_ivas','2'),
- (88,'vi_ivas_empresa','2'),
- (89,'vi_ivas_grupos','2'),
- (90,'vi_ivas_zonas','2'),
- (91,'vi_proveedores','2'),
- (92,'vi_proveedores_articulos','2'),
- (93,'vi_recibos','2'),
- (94,'vi_tarifas','2'),
- (95,'vi_usuarios','2'),
- (96,'vi_usuarios_grupos','2'),
- (97,'vi_usuarios_perfiles','2'),
- (98,'vi_variaciones','2'),
+ (85,'vi_facturas_lineas_print','2'),
+ (86,'vi_facturas_print','2'),
+ (87,'vi_formapago','2'),
+ (88,'vi_ivas','2'),
+ (89,'vi_ivas_empresa','2'),
+ (90,'vi_ivas_grupos','2'),
+ (91,'vi_ivas_zonas','2'),
+ (92,'vi_proveedores','2'),
+ (93,'vi_proveedores_articulos','2'),
+ (94,'vi_proveedores_busquedas','2'),
+ (95,'vi_recibos','2'),
+ (96,'vi_tarifas','2'),
+ (97,'vi_usuarios','2'),
+ (98,'vi_usuarios_grupos','2'),
+ (99,'vi_usuarios_perfiles','2'),
+ (100,'vi_variaciones','2'),
  (130,'PRC_CALCULAR_FACTURA_NETOS','3'),
- (131,'PRC_CREAR_ACTUALIZAR_CLIENTE','3'),
- (132,'PRC_CREAR_ACTUALIZAR_EMPRESA','3'),
- (133,'PRC_CREAR_ACTUALIZAR_KEY','3'),
- (134,'PRC_CREAR_FACTURA_ABONO','3'),
- (135,'PRC_CREAR_FACTURA_DUPLICADA','3'),
- (136,'PRC_CREAR_METADATOS','3'),
- (137,'PRC_CREAR_RECIBOS_FACTURA','3'),
- (138,'PRC_FNC_GET_NEXT_LINEA_FACTURA','3'),
- (139,'PRC_FNC_GET_NEXT_LINEA_PRESUPUESTO','3'),
- (140,'PRC_FNC_GET_NEXT_NRO_DOC','3'),
- (141,'PRC_FNC_GET_SERIE_TIPODOC','3'),
- (142,'PRC_GET_DATA_ARTICULO','3'),
- (143,'PRC_GET_DATA_CLIENTE','3'),
- (144,'PRC_GET_IVA_ZONA_FECHA','3'),
- (145,'PRC_GET_NEXT_CONT','3'),
- (146,'PRC_GET_NEXT_CONT_FACT_SERIE','3'),
- (147,'PRC_GET_NUMEROS_A_LETRAS','3'),
- (148,'PRC_GET_NUMERO_MENOR_MIL','3');
+ (131,'PRC_CREAR_ACTUALIZAR_ARTICULO','3'),
+ (132,'PRC_CREAR_ACTUALIZAR_CLIENTE','3'),
+ (133,'PRC_CREAR_ACTUALIZAR_EMPRESA','3'),
+ (134,'PRC_CREAR_ACTUALIZAR_KEY','3'),
+ (135,'PRC_CREAR_FACTURA_ABONO','3'),
+ (136,'PRC_CREAR_FACTURA_DUPLICADA','3'),
+ (137,'PRC_CREAR_METADATOS','3'),
+ (138,'PRC_CREAR_RECIBOS_FACTURA','3'),
+ (139,'PRC_FNC_GET_NEXT_LINEA_FACTURA','3'),
+ (140,'PRC_FNC_GET_NEXT_LINEA_PRESUPUESTO','3'),
+ (141,'PRC_FNC_GET_NEXT_NRO_DOC','3'),
+ (142,'PRC_FNC_GET_SERIE_TIPODOC','3'),
+ (143,'PRC_GET_DATA_ARTICULO','3'),
+ (144,'PRC_GET_DATA_CLIENTE','3'),
+ (145,'PRC_GET_IVA_ZONA_FECHA','3'),
+ (146,'PRC_GET_NEXT_CONT','3'),
+ (147,'PRC_GET_NEXT_CONT_FACT_SERIE','3'),
+ (148,'PRC_GET_NUMEROS_A_LETRAS','3'),
+ (149,'PRC_GET_NUMERO_MENOR_MIL','3');
 
 DROP TABLE IF EXISTS `fza_pedidos`;
 CREATE TABLE `fza_pedidos` (
@@ -2928,7 +2989,7 @@ CREATE TABLE `fza_usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci ROW_FORMAT=DYNAMIC;
 
 INSERT INTO `fza_usuarios`(`USUARIO_USUARIO`, `PASSWORD_USUARIO`, `GRUPO_USUARIO`, `EMPRESADEF_USUARIO`, `ULTIMOLOGIN_USUARIO`, `INSTANTEMODIF`, `INSTANTEALTA`, `USUARIOALTA`, `USUARIOMODIF`) VALUES
- ('Administrador','4F8239A5B05A0E22D3DD4D7853808AF3','Administradores','011','2024-01-03 14:31:43','2024-01-03 14:31:43','2021-05-14 19:54:29','Administrador','Administrador');
+ ('Administrador','4F8239A5B05A0E22D3DD4D7853808AF3','Administradores','011','2024-01-04 12:42:54','2024-01-04 12:42:54','2021-05-14 19:54:29','Administrador','Administrador');
 
 DROP TABLE IF EXISTS `fza_usuarios_grupos`;
 CREATE TABLE `fza_usuarios_grupos` (

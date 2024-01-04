@@ -829,8 +829,8 @@ begin
 end;
 
 procedure TdmFacturas.unqryLinFacBeforePost(DataSet: TDataSet);
-var
-  sTipoIVA:String;
+//var
+//  sTipoIVA:String;
 begin
   inherited;
   with unqryLinFac do
@@ -937,9 +937,54 @@ procedure TdmFacturas.zqryLinFacAfterPost(DataSet: TDataSet);
 begin
   inherited;
   if (SameText(unqryTablaG.FieldByName('ESCREARARTICULOS_FACTURA').AsString,
-              'S') then
+              'S')) then
   begin
-    //unstdCrearArticuloLin.ExecProc;
+    with  unstdCrearArticuloLin do
+    begin
+      ParamByName('pCODIGO_ARTICULO').AsString :=
+              unqryLinFac.FieldByName('CODIGO_ARTICULO_FACTURA_LINEA').AsString;
+      ParamByName('pDESCRIPCION_ARTICULO').AsString :=
+         unqryLinFac.FieldByName('DESCRIPCION_ARTICULO_FACTURA_LINEA').AsString;
+      ParamByName('pTIPOIVA_ARTICULO').AsString :=
+             unqryLinFac.FieldByName('TIPOIVA_ARTICULO_FACTURA_LINEA').AsString;
+      ParamByName('pTIPO_CANTIDAD_ARTICULO').AsString :=
+       unqryLinFac.FieldByName('TIPO_CANTIDAD_ARTICULO_FACTURA_LINEA').AsString;
+      ParamByName('pESACTIVO_FIJO_ARTICULO').AsString :=
+                unqryTablaG.FieldByName('ESVENTA_ACTIVO_FIJO_FACTURA').AsString;
+      ParamByName('pCODIGO_FAMILIA').AsString :=
+               unqryLinFac.FieldByName('CODIGO_FAMILIA_FACTURA_LINEA').AsString;
+      ParamByName('pNOMBRE_FAMILIA').AsString :=
+               unqryLinFac.FieldByName('NOMBRE_FAMILIA_FACTURA_LINEA').AsString;
+      ParamByName('pCODIGO_PROVEEDOR').AsString :=
+             unqryLinFac.FieldByName('CODIGO_PROVEEDOR_FACTURA_LINEA').AsString;
+      ParamByName('pRAZONSOCIAL_PROVEEDOR').AsString :=
+        unqryLinFac.FieldByName('RAZONSOCIAL_PROVEEDOR_FACTURA_LINEA').AsString;
+      ParamByName('pESPROVEEDORPRINCIPAL').AsString :=
+         unqryLinFac.FieldByName('ESPROVEEDORPRINCIPAL_FACTURA_LINEA').AsString;
+      ParamByName('pPRECIO_ULT_COMPRA').AsString :=
+            unqryLinFac.FieldByName('PRECIO_ULT_COMPRA_FACTURA_LINEA').AsString;
+      ParamByName('pFECHA_FACTURA').AsString :=
+                              unqryTablaG.FieldByName('FECHA_FACTURA').AsString;
+      ParamByName('pCODIGO_TARIFA').AsString :=
+                unqryLinFac.FieldByName('CODIGO_TARIFA_FACTURA_LINEA').AsString;
+      ParamByName('pPRECIOSALIDA_TARIFA').AsString :=
+                 unqryLinFac.FieldByName('PRECIOSALIDA_FACTURA_LINEA').AsString;
+      if SameText(unqryLinFac.FieldByName(
+                         'ESIMP_INCL_TARIFA_FACTURA_LINEA').AsString, 'S')  then
+        ParamByName('pPRECIOFINAL_TARIFA').AsString :=
+     unqryLinFac.FieldByName('PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA').AsString
+      else
+        ParamByName('pPRECIOFINAL_TARIFA').AsString :=
+    unqryLinFac.FieldByName('PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA').AsString;
+      ParamByName('pPRECIO_DTO_TARIFA').AsString :=
+                   unqryLinFac.FieldByName('PRECIO_DTO_FACTURA_LINEA').AsString;
+      ParamByName('pPORCEN_DTO_TARIFA').AsString :=
+                   unqryLinFac.FieldByName('PORCEN_DTO_FACTURA_LINEA').AsString;
+      ParamByName('pUSUARIO').AsString := oUser;
+      ParamByName('pUSUARIO').AsString := oUser;
+      ParamByName('pINSTANTEMODIF').AsDateTime := Now;
+      ExecProc;
+    end;
   end;
   CalcularFactura;
   unqryTablaG.Refresh;
