@@ -28,7 +28,8 @@ uses
   cxCalendar, cxBlobEdit, dxScrollbarAnnotations, dxCore, cxRadioGroup,
   cxSplitter, SynEditHighlighter, SynHighlighterSQL, SynEdit,
   dxtree, dxdbtree, UniDataGeneradorProcesos, cxCurrencyEdit, inMtoPrincipal2,
-  SynDBEdit, SynEditTypes, Vcl.AppEvnts, JvComponentBase, JvEnterTab ;
+  SynDBEdit, SynEditTypes, Vcl.AppEvnts, JvComponentBase, JvEnterTab,
+  dxShellDialogs ;
 
 type
   TfrmMtoGeneradorProcesos = class(TfrmMtoGen)
@@ -120,7 +121,7 @@ type
     cxlblInstanteModif: TcxLabel;
     cxdbtxtdtUSUARIOALTA1: TcxDBTextEdit;
     cxlblUsuarioModif: TcxLabel;
-    dbsyndtPROCESO_GENERADORPROCESO: TDBSynEdit;
+    dbsyndtTexto: TDBSynEdit;
     pnlFacturaOpts: TPanel;
     btnExportarExcel: TcxButton;
     btnEditar: TcxButton;
@@ -133,7 +134,7 @@ type
     procedure btnVerDatosClick(Sender: TObject);
     procedure btnEjecutarClick(Sender: TObject);
     procedure btnExportarExcelClick(Sender: TObject);
-    procedure dbsyndtPROCESO_GENERADORPROCESOKeyDown(Sender: TObject;
+    procedure dbsyndtTextoKeyDown(Sender: TObject;
       var Key: Word; Shift: TShiftState);
     procedure syndtEstructuraKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -384,14 +385,34 @@ begin
   inherited;
 end;
 
-procedure TfrmMtoGeneradorProcesos.dbsyndtPROCESO_GENERADORPROCESOKeyDown(
+procedure TfrmMtoGeneradorProcesos.dbsyndtTextoKeyDown(
   Sender: TObject; var Key: Word; Shift: TShiftState);
+var
+  StartLine, EndLine, i: Integer;
+  SelStart, SelEnd: TBufferCoord;
 begin
   inherited;
-  if Key = VK_TAB then
+  if (Key = VK_TAB) and (dbsyndtTexto.SelAvail) then
   begin
-    dbsyndtPROCESO_GENERADORPROCESO.SelText := #9; // Insertar tabulador
-    Key := 0; // Prevenir que el control cambie el foco
+    Key := 0; // Previene el comportamiento predeterminado del tabulador
+    // Obtiene las líneas de inicio y fin de la selección
+    SelStart := dbsyndtTexto.BlockBegin;
+    SelEnd := dbsyndtTexto.BlockEnd;
+    StartLine := SelStart.Line;
+    EndLine := SelEnd.Line;
+    dbsyndtTexto.BeginUpdate;
+    try
+      // Añade un tabulador al inicio de cada línea seleccionada
+      for i := StartLine to EndLine do
+      begin
+        dbsyndtTexto.Lines[i - 1] := #9 + dbsyndtTexto.Lines[i - 1];
+      end;
+      // Ajusta la selección para incluir los tabuladores añadidos
+      dbsyndtTexto.BlockBegin := BufferCoord(SelStart.Char + 1, SelStart.Line);
+      dbsyndtTexto.BlockEnd := BufferCoord(SelEnd.Char + 1, SelEnd.Line);
+    finally
+      dbsyndtTexto.EndUpdate;
+    end;
   end;
 end;
 
