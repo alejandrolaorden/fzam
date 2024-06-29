@@ -6,8 +6,8 @@ inherited frmModalGenFilter: TfrmModalGenFilter
   ClientWidth = 617
   Position = poMainFormCenter
   OnClose = FormClose
-  ExplicitWidth = 633
-  ExplicitHeight = 405
+  ExplicitWidth = 629
+  ExplicitHeight = 404
   TextHeight = 19
   object pnl1: TPanel [0]
     Left = 0
@@ -17,6 +17,8 @@ inherited frmModalGenFilter: TfrmModalGenFilter
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 0
+    ExplicitTop = 324
+    ExplicitWidth = 613
     object btnGuardar: TcxButton
       Left = 462
       Top = 8
@@ -43,10 +45,8 @@ inherited frmModalGenFilter: TfrmModalGenFilter
     Height = 325
     Align = alClient
     TabOrder = 1
-    ExplicitLeft = 192
-    ExplicitTop = 104
-    ExplicitWidth = 250
-    ExplicitHeight = 200
+    ExplicitWidth = 613
+    ExplicitHeight = 324
     object cxGrid1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       ScrollbarAnnotations.CustomAnnotations = <>
@@ -66,44 +66,37 @@ inherited frmModalGenFilter: TfrmModalGenFilter
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 2
-    ExplicitTop = 8
-    ExplicitWidth = 621
-    ExplicitHeight = 326
+    ExplicitWidth = 613
+    ExplicitHeight = 324
     object pcFiltros: TcxPageControl
       Left = 0
       Top = 0
-      Width = 621
-      Height = 326
+      Width = 617
+      Height = 325
       Align = alClient
       TabOrder = 0
-      Properties.ActivePage = tsEmpresas
+      Properties.ActivePage = tsFamilias
       Properties.CustomButtons.Buttons = <>
-      ExplicitLeft = 1
-      ExplicitTop = 1
-      ExplicitWidth = 615
-      ExplicitHeight = 323
-      ClientRectBottom = 320
+      ExplicitWidth = 613
+      ExplicitHeight = 324
+      ClientRectBottom = 319
       ClientRectLeft = 3
-      ClientRectRight = 615
+      ClientRectRight = 611
       ClientRectTop = 32
       object tsEmpresas: TcxTabSheet
         Caption = '&1_Empresas -'
         ImageIndex = 0
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
+        ExplicitWidth = 604
+        ExplicitHeight = 286
         object grdEmp: TcxGrid
           Left = 0
           Top = 0
-          Width = 612
-          Height = 288
+          Width = 608
+          Height = 287
           Align = alClient
           TabOrder = 0
-          ExplicitLeft = 184
-          ExplicitTop = 48
-          ExplicitWidth = 250
-          ExplicitHeight = 200
+          ExplicitWidth = 604
+          ExplicitHeight = 286
           object tvEmp: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             ScrollbarAnnotations.CustomAnnotations = <>
@@ -176,16 +169,12 @@ inherited frmModalGenFilter: TfrmModalGenFilter
       object tsFamilias: TcxTabSheet
         Caption = '&2_Familias -'
         ImageIndex = 1
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object cxDBListBox2: TcxDBListBox
           AlignWithMargins = True
           Left = 3
           Top = 3
-          Width = 606
-          Height = 282
+          Width = 602
+          Height = 281
           Align = alClient
           Columns = 2
           ItemHeight = 19
@@ -193,20 +182,56 @@ inherited frmModalGenFilter: TfrmModalGenFilter
           ReadOnly = True
           TabOrder = 0
         end
+        object cxDBTreeList1: TcxDBTreeList
+          Left = 0
+          Top = 0
+          Width = 608
+          Height = 287
+          Align = alClient
+          Bands = <
+            item
+            end>
+          DataController.ParentField = 'CODIGO_SUBFAMILIA'
+          DataController.KeyField = 'CODIGO_FAMILIA'
+          Navigator.Buttons.CustomButtons = <>
+          OptionsBehavior.CopyCaptionsToClipboard = False
+          OptionsCustomizing.BandCustomizing = False
+          OptionsData.CancelOnExit = False
+          OptionsData.Editing = False
+          OptionsData.Deleting = False
+          OptionsSelection.CellSelect = False
+          OptionsSelection.HideFocusRect = False
+          OptionsSelection.InvertSelect = False
+          OptionsSelection.MultiSelect = True
+          OptionsView.Headers = False
+          OptionsView.Indicator = True
+          RootValue = -1
+          ScrollbarAnnotations.CustomAnnotations = <>
+          TabOrder = 1
+          ExplicitLeft = 216
+          ExplicitTop = -82
+          ExplicitWidth = 250
+          ExplicitHeight = 369
+          object cxDBTreeList1cxDBTreeListColumn1: TcxDBTreeListColumn
+            DataBinding.FieldName = 'NOMBRE_FAMILIA'
+            Width = 210
+            Position.ColIndex = 0
+            Position.RowIndex = 0
+            Position.BandIndex = 0
+            Summary.FooterSummaryItems = <>
+            Summary.GroupFooterSummaryItems = <>
+          end
+        end
       end
       object tsTarifas: TcxTabSheet
         Caption = '&3_Tarifas -'
         ImageIndex = 2
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object cxDBListBox3: TcxDBListBox
           AlignWithMargins = True
           Left = 3
           Top = 3
-          Width = 606
-          Height = 282
+          Width = 602
+          Height = 281
           Align = alClient
           Columns = 2
           ItemHeight = 19
@@ -218,18 +243,10 @@ inherited frmModalGenFilter: TfrmModalGenFilter
       object tsArticulos: TcxTabSheet
         Caption = '&4_Articulos -'
         ImageIndex = 3
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
       end
       object tsVentas: TcxTabSheet
         Caption = '&5_Facturas -'
         ImageIndex = 4
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
       end
     end
   end

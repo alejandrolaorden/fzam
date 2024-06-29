@@ -116,8 +116,11 @@ end;
 
 function GetLogFolder:String;
 begin
+  ForceDirectories(GetSpecialFolderPath(CSIDL_LOCAL_APPDATA)+
+                                                      '\factuzam\log\archive\');
   ForceDirectories(GetSpecialFolderPath(CSIDL_LOCAL_APPDATA)+ '\factuzam\log\');
   Result := GetSpecialFolderPath(CSIDL_LOCAL_APPDATA)+ '\factuzam\log\';
+
 end;
 
 function GetUserDeskFolder:String;

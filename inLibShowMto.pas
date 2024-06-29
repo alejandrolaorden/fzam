@@ -32,6 +32,7 @@ implementation
  uses
       inLibMsg,
       inMtoPrincipal2,
+      inLibLog,
       inLibUnitForm;
 
 procedure ShowMto (Owner:TComponent;
@@ -84,6 +85,7 @@ begin
                          GetTypeData(lType.Handle)^.ClassType).Create(frmOpen2);
           //f:= t.GetMethod('Create').Invoke(t.MetaclassType,[nil]);
           tsNew.Caption := sTitle;
+          inLibLog.LogInfo('Abriendo Pantalla Mto: '+ sTitle);
           prop := lType.GetProperty('Parent');
           prop.SetValue(f.asObject, (tsNew as TObject));
           prop := lType.GetProperty('Align');
@@ -105,7 +107,7 @@ begin
         frmOpen2.pcPrincipal.ActivePageIndex := iAbiertaPes;
     if (iAbiertaPes <> -1) and (sBusq <> '') then
     begin
-      //existe el formulario en la pestaña, entonces si hay búsqueda de dato
+      //existe el formulario en la pestaï¿½a, entonces si hay bï¿½squeda de dato
       tsNew := frmOpen2.pcPrincipal.Pages[iAbiertaPes];
       if (tsNew.Controls[0] is TfrmMtoGen) then
       begin

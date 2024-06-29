@@ -12,7 +12,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, cxGraphics, cxControls, cxLookAndFeels,
+  Dialogs, cxGraphics, cxControls, cxLookAndFeels, Math,
   cxLookAndFeelPainters, cxStyles, dxSkinsCore,
   dxSkinscxPCPainter, cxCustomData, cxFilter, cxData, cxDataStorage,
   cxEdit, cxNavigator, DB, cxDBData, cxContainer,
@@ -30,6 +30,10 @@ uses
   dxtree, dxdbtree, UniDataGeneradorProcesos, cxCurrencyEdit, inMtoPrincipal2,
   SynDBEdit, SynEditTypes, Vcl.AppEvnts, JvComponentBase, JvEnterTab,
   dxShellDialogs ;
+
+const
+  ecSelColumnMode = 2577;
+  ecSelLineMode = 2578;
 
 type
   TfrmMtoGeneradorProcesos = class(TfrmMtoGen)
@@ -143,6 +147,10 @@ type
     procedure btnEditarClick(Sender: TObject);
     procedure btnEditarMetaClick(Sender: TObject);
     procedure btnExportarExcelMetaClick(Sender: TObject);
+    procedure dbsyndtTextoKeyUp(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure dbsyndtTextoMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
   public
     procedure CrearTablaPrincipal; override;
   end;
@@ -150,6 +158,7 @@ type
 var
   frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos;
   dmmGeneradorProcesos : TdmGeneradorProcesos;
+  IsColumnMode: Boolean;
 
 implementation
 
@@ -305,6 +314,9 @@ begin
   tvVista.DataController.DataSource := dmmGeneradorProcesos.dsVista;
   pcPestana.ActivePage := tsSQL;
   pkFieldName := 'CODIGO_GENERADORPROCESO';
+  // Asegúrate de que las opciones predeterminadas estén configuradas correctamente
+  dbsyndtTexto.Options := dbsyndtTexto.Options - [eoAltSetsColumnMode];
+  IsColumnMode := False;
 end;
 
 procedure TfrmMtoGeneradorProcesos.cxdbtxtdtNOMBRE_METADATOPropertiesChange(
@@ -390,8 +402,57 @@ procedure TfrmMtoGeneradorProcesos.dbsyndtTextoKeyDown(
 var
   StartLine, EndLine, i: Integer;
   SelStart, SelEnd: TBufferCoord;
+  NewCaretX, NewCaretY: Integer;
+
 begin
   inherited;
+
+  if Key = VK_TAB then
+  begin
+    dbsyndtTexto.SelText := #9; // Insertar tabulador
+    Key := 0; // Prevenir que el control cambie el foco
+  end;
+
+   if (ssAlt in Shift) then
+  begin
+    if (ssShift in Shift) then
+    begin
+      if not IsColumnMode then
+      begin
+        IsColumnMode := True;
+        dbsyndtTexto.SelectionMode := smColumn;
+      end;
+    end;
+
+    // Manejar movimiento del cursor con Alt
+    if Key in [VK_LEFT, VK_RIGHT, VK_UP, VK_DOWN] then
+    begin
+      Key := 0; // Prevenir comportamiento predeterminado
+      NewCaretX := dbsyndtTexto.CaretX;
+      NewCaretY := dbsyndtTexto.CaretY;
+
+      case Key of
+        VK_LEFT:  NewCaretX := Max(1, NewCaretX - 1);
+        VK_RIGHT: NewCaretX := Min(Length(dbsyndtTexto.Lines[NewCaretY - 1]) + 1, NewCaretX + 1);
+        VK_UP:    NewCaretY := Max(1, NewCaretY - 1);
+        VK_DOWN:  NewCaretY := Min(dbsyndtTexto.Lines.Count, NewCaretY + 1);
+      end;
+
+      dbsyndtTexto.CaretXY := BufferCoord(NewCaretX, NewCaretY);
+    end;
+  end
+  else if (ssShift in Shift) and not (ssAlt in Shift) then
+  begin
+    // Mantenemos el comportamiento normal de Shift
+    IsColumnMode := False;
+    dbsyndtTexto.SelectionMode := smNormal;
+  end
+  else if not (ssShift in Shift) and not (ssAlt in Shift) then
+  begin
+    IsColumnMode := False;
+    dbsyndtTexto.SelectionMode := smNormal;
+  end;
+
   if (Key = VK_TAB) and (dbsyndtTexto.SelAvail) then
   begin
     Key := 0; // Previene el comportamiento predeterminado del tabulador
@@ -413,6 +474,28 @@ begin
     finally
       dbsyndtTexto.EndUpdate;
     end;
+  end;
+end;
+
+procedure TfrmMtoGeneradorProcesos.dbsyndtTextoKeyUp(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+  inherited;
+  if not (ssAlt in Shift) and not (ssShift in Shift) then
+  begin
+    IsColumnMode := False;
+    dbsyndtTexto.SelectionMode := smNormal;
+  end;
+end;
+
+procedure TfrmMtoGeneradorProcesos.dbsyndtTextoMouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+begin
+  inherited;
+  if not (ssShift in Shift) and not (ssAlt in Shift) then
+  begin
+    IsColumnMode := False;
+    dbsyndtTexto.SelectionMode := smNormal;
   end;
 end;
 
@@ -450,4 +533,5 @@ end;
 
 initialization
   ForceReferenceToClass(TfrmMtoGeneradorProcesos);
+
 end.

@@ -4,7 +4,7 @@ object dmConn: TdmConn
   Width = 405
   object conUni: TUniConnection
     ProviderName = 'MySQL'
-    Port = 3310
+    Port = 3306
     Database = 'factuzam'
     SpecificOptions.Strings = (
       'MySQL.UseUnicode=True')

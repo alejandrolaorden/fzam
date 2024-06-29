@@ -20,7 +20,8 @@ uses
   cxListBox, cxDBEdit, UniDataGenFilter, JvComponentBase, JvEnterTab, cxStyles,
   cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, dxDateRanges,
   dxScrollbarAnnotations, Data.DB, cxDBData, cxGridCustomTableView,
-  cxGridTableView, cxGridDBTableView, cxGridLevel, cxGridCustomView, cxGrid;
+  cxGridTableView, cxGridDBTableView, cxGridLevel, cxGridCustomView, cxGrid,
+  cxTL, cxMaskEdit, cxTLdxBarBuiltInMenu, cxInplaceContainer, cxDBTL, cxTLData;
 
 type
   TfrmModalGenFilter = class(TfrmBase)
@@ -59,6 +60,8 @@ type
     tvEmpESRETENCIONES_EMPRESA: TcxGridDBColumn;
     tvEmpESREGIMENESPECIALAGRICOLA_EMPRESA: TcxGridDBColumn;
     tvEmpTEXTO_LEGAL_FACTURA_EMPRESA: TcxGridDBColumn;
+    cxDBTreeList1: TcxDBTreeList;
+    cxDBTreeList1cxDBTreeListColumn1: TcxDBTreeListColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnGuardarClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);

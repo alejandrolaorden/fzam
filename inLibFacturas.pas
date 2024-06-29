@@ -31,6 +31,8 @@ const
   ffechfac:string = 'FECHA_FACTURA';
   fnrofac:string = 'NRO_FACTURA';
   fseriefac:string = 'SERIE_FACTURA';
+  fcodemp:string = 'CODIGO_EMPRESA_FACTURA';
+  fcodcli:string = 'CODIGO_CLIENTE_FACTURA';
   fporivan:string = 'PORCEN_IVAN_FACTURA';
   ftotivan:string = 'TOTAL_IVAN_FACTURA';
   fporren:string = 'PORCEN_REN_FACTURA';

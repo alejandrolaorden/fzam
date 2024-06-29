@@ -81,26 +81,29 @@ type
     procedure UniSQLMonitor1SQL(Sender: TObject; Text: string;
       Flag: TDATraceFlag);
 //    procedure cxButton1Click(Sender: TObject);
+    procedure leerini;
+    procedure GetIniValues;
   private
     procedure CambiarPass(f:TUniConnection);
     function CrearBD(sDatabaseN:string):string;
-    procedure leerini;
+
     procedure escribirini;
     procedure SetIniValues;
-    procedure GetIniValues;
+
     function ExisteUser(sNom: string; f: TUniConnection): Boolean;
     function LoginCorrecto(sNom, sPassLogin: string; f: TUniConnection): Boolean;
     function GetGrupo(sUser: string; conn: TUniConnection;
       var EsGrupoAdmin: string): string;
 //    procedure AppException(Sender: TObject; E: Exception);
   public
+    sSuccess:String;
     function IsInitializeAuto:Boolean;
     function CheckIfExistsDataBase:Boolean;
     function CheckIfDatabaseIsUpdated:Boolean;
   end;
 var
   frmLogon          : TfrmLogon;
-  sPass, sPassEn, sUserPassOK, sSuccess: string;
+  sPass, sPassEn, sUserPassOK: string;
 
 implementation
 
@@ -115,6 +118,10 @@ uses  inLibWin,
 
 procedure TfrmLogon.FormCreate(Sender: TObject);
 begin
+  ucConexion.Pooling := True;
+  ucConexion.PoolingOptions.MinPoolSize := 1;
+  ucConexion.PoolingOptions.MaxPoolSize := 50;
+  ucConexion.PoolingOptions.ConnectionLifeTime := 3 * 60; // 3 minutos
 //  Application.OnException := AppException;
   UniSQLMonitor1.Active := False;
   Self.Width := 338;
@@ -122,6 +129,7 @@ begin
   cxMemo1.Visible := False;
   pnlPPBottom.Visible := False;
   {$IFDEF DEBUG}
+    inliblog.LogInfo('Arrancando en modo Debug');
     pnlPPBottom.Visible := True;
     UniSQLMonitor1.Active := True;
     cxMemo1.Visible := True;
@@ -132,15 +140,16 @@ begin
   Self.Position := poScreenCenter;
   edtUser.Text := '';
   leerini;
-  try
-    GetIniValues;
-  except
-    on E:Exception do
-    if (E is EAccessViolation) or (E is ERangeError) then
-      begin
-        raise EPassWordCorrupt.Create(SErrorDecryptPass);
-      end;
-  end;
+//  try
+//    GetIniValues;
+
+//  except
+//    on E:Exception do
+//    if (E is EAccessViolation) or (E is ERangeError) then
+//      begin
+//        raise EPassWordCorrupt.Create(SErrorDecryptPass);
+//      end;
+//  end;
   sPassEn := leCadINIDir('ConnData',
                          'PasswordEn',
                          '2qJFaDfegP/9y6RDno1FRg==',
@@ -156,8 +165,8 @@ begin
       end;
     end;
   end;
-  if (IsInitializeAuto) then
-    btnAceptarClick(Self);
+  //if (IsInitializeAuto) then
+  //  btnAceptarClick(Self);
 end;
 
 procedure TfrmLogon.btnConfClick(Sender: TObject);
@@ -208,7 +217,7 @@ begin
       saveDialog.InitialDir := GetUserDeskFolder;
       MyText.SaveToFile(saveDialog.FileName);
       MyText.Free;
-      Log(ucConexion, edtUser.Text, 'Guardada copia Encriptada en ' +
+      LogInfo(edtUser.Text + ' Guardó copia Encriptada en ' +
         savedialog.FileName);
       ShowMessage('La copia se guardó exitosamente');
     end;
@@ -599,7 +608,9 @@ begin
     end
     else if not LoginCorrecto(edtUser.text, edtPass.Text, ucConexion) then
     begin
-      ShowMessage(SErrorAuthPass);
+      if (Sender <> nil) then // Si se llamó desde el botón (no auto-login)
+        ShowMessage(SErrorAuthPass);
+      sSuccess := 'N';
     end
     else
     begin
@@ -771,6 +782,7 @@ begin
                                              'q7heHfD7ENowuvRQhW56Og==',
                                              GetUserFolder));
   end;
+  inliblog.LogInfo('Leyendo archivo ini de usuario', edtUser.Text);
 end;
 
 function TfrmLogon.IsInitializeAuto: Boolean;
@@ -786,6 +798,7 @@ begin
   SetIniValues;
   if (ucConexion.Connected = true) then
     ucConexion.Disconnect;
+  ucConexion.Pooling := false;
 end;
 
 end.

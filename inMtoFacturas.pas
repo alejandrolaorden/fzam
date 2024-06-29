@@ -548,7 +548,7 @@ begin
   with tvLineasFactura.DataController.DataSet do
   ShowMto(Self.Owner,
           'Articulos',
-          FieldByName('CODIGO_ARTICULO_FACTURA_LINEA').AsString);
+          FieldByName(fcodart).AsString);
 end;
 
 procedure TfrmMtoFacturas.actArticuloExecute(Sender: TObject);
@@ -578,14 +578,14 @@ begin
   if ((dsTablaG.State = dsInsert)) then
   begin
     dmmFacturas.CrearTablaSeries(
-                dsTablaG.DataSet.FindField('CODIGO_EMPRESA_FACTURA').AsString,
-                dsTablaG.DataSet.FindField('CODIGO_CLIENTE_FACTURA').AsString,
-                dsTablaG.DataSet.FindField('FECHA_FACTURA').AsDateTime);
+                dsTablaG.DataSet.FindField(fcodemp).AsString,
+                dsTablaG.DataSet.FindField(fcodcli).AsString,
+                dsTablaG.DataSet.FindField(ffechfac).AsDateTime);
     cbbSerieFactura.Properties.ListFieldNames := 'SERIE_CONTADOR';
     cbbSerieFactura.Properties.ListSource := dmmFacturas.dsSeriesEditCombo;
     cbbSerieFactura.Refresh;
     dmmFacturas.unqrySeriesEditCombo.First;
-    dsTablaG.DataSet.FindField('SERIE_FACTURA').AsString :=
+    dsTablaG.DataSet.FindField(fseriefac).AsString :=
           dmmFacturas.unqrySeriesEditCombo.FindField('SERIE_CONTADOR').AsString;
   end;
 end;
@@ -594,9 +594,9 @@ procedure TfrmMtoFacturas.btNExportarLineasClick(Sender: TObject);
 begin
   inherited;
   ExportarExcel(cxGrdLineasFactura, 'Lineas_Factura_' +
-                dsTablaG.Dataset.FieldByName('SERIE_FACTURA').AsString +
+                dsTablaG.Dataset.FieldByName(fseriefac).AsString +
                 '_' +
-                dsTablaG.Dataset.FieldByName('NRO_FACTURA').AsString);
+                dsTablaG.Dataset.FieldByName(fnrofac).AsString);
 end;
 
 procedure TfrmMtoFacturas.btnCalculatorClick(Sender: TObject);
@@ -700,9 +700,9 @@ procedure TfrmMtoFacturas.btnExportarRecibosClick(Sender: TObject);
 begin
   inherited;
   ExportarExcel(cxGrdLineasFactura, 'Recibos_Factura_' +
-                      dsTablaG.Dataset.FieldByName('SERIE_FACTURA').AsString +
+                      dsTablaG.Dataset.FieldByName(fseriefac).AsString +
                       '_' +
-                      dsTablaG.Dataset.FieldByName('NRO_FACTURA').AsString);
+                      dsTablaG.Dataset.FieldByName(fnrofac).AsString);
 end;
 
 procedure TfrmMtoFacturas.btnGenerarRecibosClick(Sender: TObject);
@@ -730,9 +730,9 @@ begin
     with dmmFacturas.unstrdprcGetRecibos do
     begin
       ParamByName('pNRO_FACTURA').AsString :=
-           FieldByName('NRO_FACTURA').AsString;
+                           dsTablaG.DataSet.FieldByName(fnrofac).AsString;
       ParamByName('pSERIE_FACTURA').AsString :=
-          FieldByName('SERIE_FACTURA').AsString;
+                         dsTablaG.DataSet.FieldByName(fseriefac).AsString;
       ParamByName('pINSTANTEMODIF').AsDateTime := Now;
       ParamByName('pUSUARIO').AsString := oUser;
       ExecProc;
@@ -749,8 +749,8 @@ begin
   inherited;
   form := TfrmPrintFac.Create(Self);
   try
-    form.edtNroFac.Text := dsTablaG.DataSet.findField('NRO_FACTURA').AsString;
-    form.edtSerie.Text := dsTablaG.DataSet.findField('SERIE_FACTURA').AsString;
+    form.edtNroFac.Text := dsTablaG.DataSet.findField(fnrofac).AsString;
+    form.edtSerie.Text := dsTablaG.DataSet.findField(fseriefac).AsString;
     form.ShowModal;
   finally
     form.Free;
@@ -1164,10 +1164,8 @@ end;
 procedure TfrmMtoFacturas.CambiarIVA;
 begin
   if ( ((dsTablaG.DataSet.State = dsEdit) or
-        (dsTablaG.DataSet.State = dsInsert)
-       )
-     ) then
-       dmmFacturas.AsignarIVA(
+        (dsTablaG.DataSet.State = dsInsert) ) ) then
+    dmmFacturas.AsignarIVA(
         dsTablaG.DataSet.FieldByName('GRUPO_ZONA_IVA_EMPRESA_FACTURA').AsString,
         dmmFacturas.unqryTablaG);
 end;
@@ -1340,8 +1338,6 @@ begin
 //
 //  end;
 end;
-
-
 
 procedure TfrmMtoFacturas.CalcularLinea;
 begin

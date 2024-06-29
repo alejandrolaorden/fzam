@@ -1,4 +1,4 @@
-{*******************************************************}
+ï»¿{*******************************************************}
 {                                                       }
 {       FactuZam                                        }
 {                                                       }
@@ -19,39 +19,39 @@ var
                      'clientes';
   SEmpToTbl:string = 'Empresa: %s pasada correctamente a la tabla de '+
                      'empresas';
-  SErrorDecryptPassBBDD:string = 'Fallo en la lectura y desencriptación' +
+  SErrorDecryptPassBBDD:string = 'Fallo en la lectura y desencriptaciÃ³n' +
                                   ' de password de la Base de Datos.';
-  SErrorDecryptPass:string = 'Fallo en la lectura y desencriptación' +
+  SErrorDecryptPass:string = 'Fallo en la lectura y desencriptaciÃ³n' +
                                   ' de password.';
-  SErrorAuthPass:string = 'La contraseña de usuario no es correcta. ';
+  SErrorAuthPass:string = 'La contraseÃ±a de usuario no es correcta. ';
   SErrorPassMatch:string = 'El password que ha introducido no coincide.';
   SErrorPassMatchBBDD:string = 'El password de la BBDD no coincide.';
   SEnterPassBBDD:string = 'Introduzca el password actual de la BBDD';
-  SScriptSuccess:string = 'El script se ejecutó exitosamente.';
-  SFailLoadScriptBBDD:string = 'No existe script de creación de BD, ' +
-                               'instalación fallida';
-  SCreateSuccBBDD:string = 'La Base de Datos se creó exitosamente';
+  SScriptSuccess:string = 'El script se ejecutÃ³ exitosamente.';
+  SFailLoadScriptBBDD:string = 'No existe script de creaciÃ³n de BD, ' +
+                               'instalaciÃ³n fallida';
+  SCreateSuccBBDD:string = 'La Base de Datos se creÃ³ exitosamente';
   SErrorCreateBBDD:string = 'No existe una base de datos llamada %s, '  +
-                            '¿desea crearla? ';
-  SBBDDUpdateTo:string = 'La Base de Datos se actualizó a ';
-  SNotExistsUpBBDDFile:string = 'No existe script de actualización %s,'+
-                       ' instalación fallida';
+                            'Â¿desea crearla? ';
+  SBBDDUpdateTo:string = 'La Base de Datos se actualizÃ³ a ';
+  SNotExistsUpBBDDFile:string = 'No existe script de actualizaciÃ³n %s,'+
+                       ' instalaciÃ³n fallida';
   SAdviceUpdateBBDD:string = 'Es necesario actualizar la BBDD' +
                             ' con nuevos cambios,' + sLineBreak +
-                            ' ¿desea proceder con el procedimiento' +
-                            ' de actualización?';
+                            ' Â¿desea proceder con el procedimiento' +
+                            ' de actualizaciÃ³n?';
   SPasswordBBDDChanged:string = 'Password de la BBDD cambiado '+
                                 'correctamente.' + sLineBreak +
                                 'Anote el password: "%s" en un lugar'+
                                 ' seguro para evitar problemas.';
-  SWantDefChgBBDD:String= '¿Desea cambiar el password por defecto ' +
+  SWantDefChgBBDD:String= 'Â¿Desea cambiar el password por defecto ' +
                           'de la Base de Datos?';
   SAdvMsg:String = 'Mensaje Advertencia';
-  SNoConnBBDD:String = 'No hay conexión con la bbdd';
-  SConnSuccBBDD:String = 'La conexión se estableció exitosamente.';
+  SNoConnBBDD:String = 'No hay conexiÃ³n con la bbdd';
+  SConnSuccBBDD:String = 'La conexiÃ³n se estableciÃ³ exitosamente.';
   SGetPassBBDD:string = 'Escriba password de la BBDD';
-  SConnFailBBDD:string = 'Conexión fallida. Usuario, password, ' +
-                           'host, puerto o Nombre de la BBDD no es válido.';
+  SConnFailBBDD:string = 'ConexiÃ³n fallida. Usuario, password, ' +
+                           'host, puerto o Nombre de la BBDD no es vÃ¡lido.';
 implementation
 
 

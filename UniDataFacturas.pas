@@ -1,4 +1,4 @@
-{*******************************************************}
+ï»¿{*******************************************************}
 {                                                       }
 {       FactuZam                                        }
 {                                                       }
@@ -824,7 +824,7 @@ begin
     FindField(fporiva).AsCurrency := GetTipoIVA('N');
     FieldByName(fimpcl).AsString :=
           unqryTablaG.FieldByName('ESIMP_INCL_TARIFA_CLIENTE_FACTURA').AsString;
-    FindField(fnrofaclin).AsString := '0';
+    FindField(fnrolin).AsString := '0';
    end;
 end;
 
@@ -837,18 +837,18 @@ begin
   begin
     if (FieldByName('DESCRIPCION_ARTICULO_FACTURA_LINEA').AsString = '') then
     begin
-      raise EDatabaseError.CreateFmt('Error.Descripción de linea ' +
-                                                        'de factura vacía.',[]);
+      raise EDatabaseError.CreateFmt('Error.DescripciÃ³n de linea ' +
+                                                        'de factura vacÃ­a.',[]);
       Abort;
     end;
-    if (FindField('LINEA_FACTURA_LINEA').AsString  = '0') then
+    if (FindField(fnrolin).AsString  = '0') then
     begin
       unstdGetContadorLinea.ParamByName('pnumfac').AsString :=
                                 unqryTablaG.FieldByName('NRO_FACTURA').AsString;
       unstdGetContadorLinea.ParamByName('pserie').AsString :=
                               unqryTablaG.FieldByName('SERIE_FACTURA').AsString;
       unstdGetContadorLinea.ExecProc;
-      FindField('LINEA_FACTURA_LINEA').AsString :=
+      FindField(fnrolin).AsString :=
                            unstdGetContadorLinea.ParamByName('presul').AsString;
     end;
   end;
@@ -937,7 +937,7 @@ procedure TdmFacturas.zqryLinFacAfterPost(DataSet: TDataSet);
 begin
   inherited;
   if (SameText(unqryTablaG.FieldByName('ESCREARARTICULOS_FACTURA').AsString,
-              'S')) then
+               'S')) then
   begin
     with  unstdCrearArticuloLin do
     begin
@@ -1014,7 +1014,7 @@ begin
     if (FieldByName('RAZONSOCIAL_CLIENTE_FACTURA').AsString = '') and
        (IsError = False) then
     begin
-      ShowMessage('Debe escribir la razón social del' +
+      ShowMessage('Debe escribir la razï¿½n social del' +
                                                      ' cliente a facturar ');
       frmFac.pcCab.ActivePage := frmFac.tsDatosCliente;
       frmFac.txtRAZONSOCIAL_CLIENTE_FACTURA.SetFocus;
@@ -1023,7 +1023,7 @@ begin
     if (FieldByName('RAZONSOCIAL_EMPRESA_FACTURA').AsSTring = '') and
        (IsError = False) then
     begin
-      ShowMessage('Debe escribir la razón social de ' +
+      ShowMessage('Debe escribir la razï¿½n social de ' +
                   ' la empresa a facturar ');
       frmFac.pcCab.ActivePage := frmFac.tsEmpresa;
       frmFac.txtRAZONSOCIAL_EMPRESA_FACTURA.SetFocus;

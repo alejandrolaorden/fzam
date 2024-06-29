@@ -773,7 +773,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
             Margins.Bottom = 4
             Align = alClient
             TabOrder = 0
-            Properties.ActivePage = tsLineasFactura
+            Properties.ActivePage = tsTotales
             Properties.CustomButtons.Buttons = <>
             ClientRectBottom = 419
             ClientRectLeft = 3
@@ -840,11 +840,14 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                   object ctbLINEA_FACTURA_LINEA: TcxGridDBColumn
                     Caption = 'Nro Linea'
                     DataBinding.FieldName = 'LINEA_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
+                    PropertiesClassName = 'TcxTextEditProperties'
                     Width = 87
                   end
                   object ctbCODIGO_ARTICULO_FACTURA_LINEA: TcxGridDBColumn
                     Caption = 'C'#243'digo Art'#237'culo'
                     DataBinding.FieldName = 'CODIGO_ARTICULO_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxButtonEditProperties'
                     Properties.Buttons = <
                       item
@@ -858,25 +861,33 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                   object ctbCODIGO_FAMILIA_FACTURA_LINEA: TcxGridDBColumn
                     Caption = 'C'#243'digo Familia'
                     DataBinding.FieldName = 'CODIGO_FAMILIA_FACTURA_LINEA'
-                    PropertiesClassName = 'TcxTextEditProperties'
-                    Properties.OnEditValueChanged = ctbCODIGO_FAMILIA_FACTURA_LINEAPropertiesEditValueChanged
+                    DataBinding.IsNullValueType = True
+                    PropertiesClassName = 'TcxButtonEditProperties'
+                    Properties.Buttons = <
+                      item
+                        Default = True
+                        Kind = bkEllipsis
+                      end>
                     Width = 136
                   end
                   object ctbNOMBRE_FAMILIA_FACTURA_LINEA: TcxGridDBColumn
                     Caption = 'Nombre Familia'
                     DataBinding.FieldName = 'NOMBRE_FAMILIA_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxTextEditProperties'
                     Width = 245
                   end
                   object ctbESPROVEEDORPRINCIPAL_FACTURA_LINEA: TcxGridDBColumn
                     Caption = 'Proveedor Principal'
                     DataBinding.FieldName = 'ESPROVEEDORPRINCIPAL_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxCheckBoxProperties'
                     Width = 172
                   end
                   object ctbCODIGO_PROVEEDOR_FACTURA_LINEA: TcxGridDBColumn
                     Caption = 'C'#243'digo Proveedor'
                     DataBinding.FieldName = 'CODIGO_PROVEEDOR_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxTextEditProperties'
                     Properties.OnEditValueChanged = ctbCODIGO_PROVEEDOR_FACTURA_LINEAPropertiesEditValueChanged
                     Width = 163
@@ -884,17 +895,20 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                   object ctbRAZONSOCIAL_PROVEEDOR_FACTURA_LINEA: TcxGridDBColumn
                     Caption = 'Raz'#243'n Social Proveedor'
                     DataBinding.FieldName = 'RAZONSOCIAL_PROVEEDOR_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxTextEditProperties'
                     Width = 200
                   end
                   object ctbPRECIO_ULT_COMPRA_FACTURA_LINEA: TcxGridDBColumn
                     Caption = 'Precio Coste'
                     DataBinding.FieldName = 'PRECIO_ULT_COMPRA_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxCurrencyEditProperties'
                   end
                   object ctbDESCRIPCION_ARTICULO_FACTURA_LINEA: TcxGridDBColumn
                     Caption = 'Descripci'#243'n'
                     DataBinding.FieldName = 'DESCRIPCION_ARTICULO_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxMemoProperties'
                     Properties.MaxLength = 1000
                     Properties.ScrollBars = ssBoth
@@ -906,6 +920,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                   object ctbCANTIDAD_FACTURA_LINEA: TcxGridDBColumn
                     Caption = 'Cantidad'
                     DataBinding.FieldName = 'CANTIDAD_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxSpinEditProperties'
                     Properties.OnEditValueChanged = cxgrdbclmntv1CANTIDAD_FACTURA_LINEAPropertiesEditValueChanged
                     Width = 81
@@ -913,17 +928,20 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                   object ctbTIPO_CANTIDAD_ARTICULO_FACTURA_LINEA: TcxGridDBColumn
                     Caption = 'Tipo de Cantidad'
                     DataBinding.FieldName = 'TIPO_CANTIDAD_ARTICULO_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     Width = 153
                   end
                   object ctbPRECIOSALIDA_FACTURA_LINEA: TcxGridDBColumn
                     Caption = 'Precio Salida'
                     DataBinding.FieldName = 'PRECIOSALIDA_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxCurrencyEditProperties'
                     Properties.OnEditValueChanged = tvLineasFacturaPRECIOSALIDA_FACTURA_LINEAPropertiesEditValueChanged
                   end
                   object ctbPORCEN_DTO_FACTURA_LINEA: TcxGridDBColumn
                     Caption = '% Dto'
                     DataBinding.FieldName = 'PORCEN_DTO_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxSpinEditProperties'
                     Properties.DisplayFormat = '0.00 %'
                     Properties.EditFormat = '0.00 %'
@@ -933,12 +951,14 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                   object ctbPRECIO_DTO_FACTURA_LINEA: TcxGridDBColumn
                     Caption = 'Menos Dto'
                     DataBinding.FieldName = 'PRECIO_DTO_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxCurrencyEditProperties'
                     Properties.OnEditValueChanged = tvLineasFacturaPRECIO_DTO_FACTURA_LINEAPropertiesEditValueChanged
                   end
                   object ctbPRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA: TcxGridDBColumn
                     Caption = 'Precio Ud. sin IVA'
                     DataBinding.FieldName = 'PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxCurrencyEditProperties'
                     Properties.ReadOnly = False
                     Properties.OnEditValueChanged = cxgrdbclmntv1PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEAPropertiesEditValueChanged
@@ -947,6 +967,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                   object ctbIMP_INCL_TARIFA_FACTURA_LINEA: TcxGridDBColumn
                     Caption = 'ImpIncl'
                     DataBinding.FieldName = 'ESIMP_INCL_TARIFA_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxCheckBoxProperties'
                     Properties.ReadOnly = True
                     Properties.ValueChecked = 'S'
@@ -957,6 +978,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                   object ctbTIPOIVA_ARTICULO_FACTURA_LINEA: TcxGridDBColumn
                     Caption = 'Tipo de IVA'
                     DataBinding.FieldName = 'TIPOIVA_ARTICULO_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxLookupComboBoxProperties'
                     Properties.DropDownListStyle = lsFixedList
                     Properties.KeyFieldNames = 'CODIGO_ABREVIATURA_TIPO_IVA'
@@ -974,6 +996,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                   object ctbPORCEN_IVA_FACTURA_LINEA: TcxGridDBColumn
                     Caption = '% IVA'
                     DataBinding.FieldName = 'PORCEN_IVA_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxSpinEditProperties'
                     Properties.DisplayFormat = '0.00 %'
                     Properties.EditFormat = '0.00 %'
@@ -983,6 +1006,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                   object ctbPRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA: TcxGridDBColumn
                     Caption = 'Precio Ud. con IVA'
                     DataBinding.FieldName = 'PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxCurrencyEditProperties'
                     Properties.ReadOnly = False
                     Properties.OnEditValueChanged = cxgrdbclmntv1PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEAPropertiesEditValueChanged
@@ -991,6 +1015,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                   object ctbTOTAL_FACTURA_LINEA: TcxGridDBColumn
                     Caption = 'Total con IVA'
                     DataBinding.FieldName = 'TOTAL_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxCurrencyEditProperties'
                     Properties.ReadOnly = True
                     Width = 172
@@ -998,10 +1023,12 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                   object ctbTOTAL_FACTURASIVA_LINEA: TcxGridDBColumn
                     Caption = 'Total Sin IVA'
                     DataBinding.FieldName = 'TOTAL_FACTURASIVA_LINEA'
+                    DataBinding.IsNullValueType = True
                   end
                   object ctbFECHA_ENTREGA_FACTURA_LINEA: TcxGridDBColumn
                     Caption = 'Fecha Entrega'
                     DataBinding.FieldName = 'FECHA_ENTREGA_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxDateEditProperties'
                     Properties.DateButtons = [btnClear, btnToday]
                     Properties.DisplayFormat = 'dd/mm/yyyy'

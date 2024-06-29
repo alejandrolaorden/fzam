@@ -133,6 +133,7 @@ implementation
 uses inMtoGenSearch,
      inLibGlobalVar,
      inLibShowMto,
+     inLibLog,
      inMtoModalGenImpSave;
 
 {https://stackoverflow.com/questions/3979298/

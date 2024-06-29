@@ -724,7 +724,6 @@ inherited dmFacturas: TdmFacturas
     MasterSource = dsFactura
     MasterFields = 'SERIE_FACTURA;NRO_FACTURA'
     DetailFields = 'SERIE_FACTURA_LINEA;NRO_FACTURA_LINEA'
-    Active = True
     BeforeInsert = zqryLinFacBeforeInsert
     AfterInsert = unqryLinFacAfterInsert
     BeforeEdit = zqryLinFacBeforeInsert

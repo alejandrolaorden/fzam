@@ -24,6 +24,8 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
       ClientRectBottom = 525
       ClientRectRight = 853
       inherited tsLista: TcxTabSheet
+        ExplicitLeft = 3
+        ExplicitTop = 32
         ExplicitWidth = 850
         ExplicitHeight = 493
         inherited cxGrdPrincipal: TcxGrid
@@ -200,6 +202,7 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
                   DataField = 'PROCESO_GENERADORPROCESO'
                   DataSource = dsTablaG
                   Align = alClient
+                  Ctl3D = True
                   Font.Charset = ANSI_CHARSET
                   Font.Color = clWindowText
                   Font.Height = -19
@@ -207,9 +210,12 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
                   Font.Style = []
                   Font.Quality = fqClearTypeNatural
                   ParentColor = False
+                  ParentCtl3D = False
                   ParentFont = False
                   TabOrder = 0
                   OnKeyDown = dbsyndtTextoKeyDown
+                  OnKeyUp = dbsyndtTextoKeyUp
+                  OnMouseDown = dbsyndtTextoMouseDown
                   Gutter.BorderStyle = gbsRight
                   Gutter.Font.Charset = DEFAULT_CHARSET
                   Gutter.Font.Color = clWindowText
@@ -238,7 +244,7 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
                       Width = 3
                     end>
                   Highlighter = synsqlsyn2
-                  Options = [eoAltSetsColumnMode, eoAutoIndent, eoDragDropEditing, eoEnhanceHomeKey, eoEnhanceEndKey, eoGroupUndo, eoScrollPastEol, eoShowScrollHint, eoSmartTabDelete, eoSmartTabs, eoTabIndent, eoTabsToSpaces]
+                  Options = [eoAutoIndent, eoDragDropEditing, eoEnhanceHomeKey, eoEnhanceEndKey, eoGroupUndo, eoScrollPastEol, eoShowScrollHint, eoSmartTabDelete, eoSmartTabs, eoTabIndent, eoTabsToSpaces]
                   SelectedColor.Alpha = 0.400000005960464500
                   TabWidth = 2
                   WantTabs = True
@@ -913,6 +919,9 @@ inherited frmMtoGeneradorProcesos: TfrmMtoGeneradorProcesos
         inherited pnlPerfilTop: TPanel
           Width = 850
           ExplicitWidth = 850
+          inherited edtPerfilBusq: TcxTextEdit
+            ExplicitHeight = 27
+          end
         end
         inherited pnlPerfilDetail: TPanel
           Width = 850
