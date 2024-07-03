@@ -34,7 +34,12 @@ var
 
 implementation
 
-uses inLibDir, inLibtb, inLibWin, inMtoPrincipal2, inLibGlobalVar;
+uses inLibDir,
+     inLibtb,
+     inLibWin,
+     inLibLog,
+     inMtoPrincipal2,
+     inLibGlobalVar;
 
 {$R *.dfm}
 
@@ -74,6 +79,7 @@ procedure TdmConn.UniSQLMonitor1SQL(Sender: TObject; Text: string;
 begin
   {$IFDEF DEBUG}
     oMemoSQL.Lines.Add(Text);
+    inLibLog.Log.LogSQL(Text);
   {$ENDIF }
 end;
 

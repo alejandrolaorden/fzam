@@ -34,6 +34,6 @@ object dmConn: TdmConn
     TraceFlags = [tfQPrepare, tfQExecute, tfQFetch, tfError, tfStmt, tfConnect, tfTransact, tfBlob, tfService, tfMisc, tfParams, tfObjDestroy, tfPool]
     OnSQL = UniSQLMonitor1SQL
     Left = 296
-    Top = 127
+    Top = 119
   end
 end
