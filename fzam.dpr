@@ -8,6 +8,7 @@ uses
   MidasLib,
   Vcl.Consts in 'vcl\Vcl.Consts.pas',
   System.SysConst in 'vcl\System.SysConst.pas',
+  Sysutils,
   inLibDevExp in 'inLibDevExp.pas',
   inLibDir in 'inLibDir.pas',
   inLibGlobalVar in 'inLibGlobalVar.pas',
@@ -75,24 +76,58 @@ uses
   UniDataFacturas in 'UniDataFacturas.pas' {dmFacturas: TdmFacturas},
   UniDataGenFilter in 'UniDataGenFilter.pas' {dmGenFilter: TDataModule};
 
+var
+  frmLogon: TfrmLogon;
+  AutoLoginSuccessful: Boolean;
 begin
-  {$IFDEF DEBUG}
-    ReportMemoryLeaksOnShutdown := True;
-  {$ENDIF}
-  Application.Initialize;
-  Application.MainFormOnTaskbar := True;
-  Application.Title := 'FZam';
-  with TfrmLogon.Create(Application) do
-  begin
+    {$IFDEF DEBUG}
+      ReportMemoryLeaksOnShutdown := True;
+    {$ENDIF}
+    Application.Initialize;
+    Application.MainFormOnTaskbar := True;
+    Application.Title := 'FZam';
+    frmLogon := TfrmLogon.Create(Application);
     try
-      ShowModal;
-      Caption := Application.Title;
-      if sSuccess <> 'S' then
+      frmLogon.leerini;
+      frmLogon.GetIniValues;
+      AutoLoginSuccessful := False;
+      if (frmLogon.IsInitializeAuto) then
+      begin
+        frmLogon.btnAceptarClick(nil);
+        AutoLoginSuccessful := (frmLogon.sSuccess = 'S');
+      end;
+      if (not AutoLoginSuccessful) then
+      begin
+        frmLogon.ShowModal;
+        frmLogon.Caption := Application.Title;
+      end;
+      if (frmLogon.sSuccess <> 'S') then
         Exit;
     finally
-      Free;
+      frmLogon.Free;
     end;
-  end;
-  Application.CreateForm(TfrmOpenApp2, frmOpenApp2);
-  Application.Run;
+    Application.CreateForm(TfrmOpenApp2, frmOpenApp2);
+    Application.Run;
 end.
+
+//begin
+//  {$IFDEF DEBUG}
+//    ReportMemoryLeaksOnShutdown := True;
+//  {$ENDIF}
+//  Application.Initialize;
+//  Application.MainFormOnTaskbar := True;
+//  Application.Title := 'FZam';
+//  with TfrmLogon.Create(Application) do
+//  begin
+//    try
+//      ShowModal;
+//      Caption := Application.Title;
+//      if sSuccess <> 'S' then
+//        Exit;
+//    finally
+//      Free;
+//    end;
+//  end;
+//  Application.CreateForm(TfrmOpenApp2, frmOpenApp2);
+//  Application.Run;
+//end.

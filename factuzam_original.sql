@@ -362,58 +362,139 @@ DELIMITER ;
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS `PRC_CREAR_ACTUALIZAR_ARTICULO` $$
-CREATE  PROCEDURE `PRC_CREAR_ACTUALIZAR_ARTICULO`(IN `pCODIGO_CLIENTE`                  varchar(10),
-																																						IN pCODIGO_ARTICULO 									varchar(20),
+CREATE  PROCEDURE `PRC_CREAR_ACTUALIZAR_ARTICULO`(IN pCODIGO_ARTICULO 									varchar(20),
 																																						IN pDESCRIPCION_ARTICULO							varchar(1000),
 																																						IN pTIPOIVA_ARTICULO                  varchar(2),
 																																						IN pTIPO_CANTIDAD_ARTICULO            varchar(20),
 																																						                    
-																																						IN CODIGO_FAMILIA                     varchar(20),
+																																						IN pCODIGO_FAMILIA                     varchar(20),
 																																						IN pNOMBRE_FAMILIA                    varchar(200),
 																																						
-																																						IN CODIGO_PROVEEDOR                   varchar(20),
-																																						IN RAZONSOCIAL_PROVEEDOR              varchar(20),
-																																						IN ESPROVEEDORPRINCIPAL               varchar(1),
-																																						IN PRECIO_ULT_COMPRA                  decimal(19,6),
+																																						IN pCODIGO_PROVEEDOR                   varchar(20),
+																																						IN pRAZONSOCIAL_PROVEEDOR              varchar(200),
+																																						IN pESPROVEEDORPRINCIPAL               varchar(1),
+																																						IN pPRECIO_ULT_COMPRA                  decimal(19,6),
 																																						
-																																						IN CODIGO_TARIFA                      varchar(20),
-																																						IN PRECIOSALIDA_TARIFA								decimal(19,6),
-																																						IN PRECIOFINAL_TARIFA  								decimal(19,6),
-																																						IN PRECIO_DTO_TARIFA		  						decimal(19,6),
-																																						IN PORCEN_DTO_TARIFA			  					decimal(19,6),
+																																						IN pCODIGO_TARIFA                      varchar(20),
+																																						IN pPRECIOSALIDA_TARIFA								decimal(19,6),
+																																						IN pPRECIOFINAL_TARIFA  								decimal(19,6),
+																																						IN pPRECIO_DTO_TARIFA		  						decimal(19,6),
+																																						IN pPORCEN_DTO_TARIFA			  					decimal(19,6),
 																																						
 																																						IN `pUSUARIO`                         varchar(100),
 																																						IN `pINSTANTEMODIF`                   TIMESTAMP)
 BEGIN
+DECLARE pCONT BIGINT;
 START TRANSACTION;
- IF( EXISTS( SELECT *
-               FROM fza_articulos
-              WHERE `CODIGO_ARTICULO` =  pCODIGO_ARTICULO) ) THEN
- BEGIN
-   UPDATE fza_articulos
-      SET 
-          USUARIOMODIF                      = pUSUARIO             
-    WHERE CODIGO_ARTICULO = pCODIGO_ARTICULO;
-  END;
-  ELSE
-  BEGIN
-    INSERT INTO fza_articulos (CODIGO_ARTICULO                  ,
-                              
-                              USUARIOMODIF                      ,
-                              USUARIOALTA                       ,
-                              INSTANTEALTA                      ,
-                              INSTANTEMODIF
-                      ) VALUES
-                             (pCODIGO_ARTICULO                   ,
-                              
-                              pUSUARIO                          ,
-                              pUSUARIO                          ,
-                              CURRENT_TIMESTAMP                 ,
-                              pINSTANTEMODIF           
-                              );
-  END;
-  END IF;
+IF (TRIM(pCODIGO_ARTICULO) <> '') THEN
+BEGIN
+	IF( EXISTS( SELECT *
+								 FROM fza_articulos
+								WHERE `CODIGO_ARTICULO` =  pCODIGO_ARTICULO) ) THEN
+	 BEGIN
+		 UPDATE fza_articulos
+				SET 
+						DESCRIPCION_ARTICULO              = pDESCRIPCION_ARTICULO   ,
+						TIPOIVA_ARTICULO                  = pTIPOIVA_ARTICULO       ,
+						TIPO_CANTIDAD_ARTICULO            = pTIPO_CANTIDAD_ARTICULO ,
+						CODIGO_FAMILIA_ARTICULO           = pCODIGO_FAMILIA         ,
+						USUARIOMODIF                      = pUSUARIO                ,
+						INSTANTEMODIF                     = pINSTANTEMODIF			 
+			WHERE CODIGO_ARTICULO = pCODIGO_ARTICULO;
+		END;
+		ELSE
+		BEGIN
+		  CALL PRC_FNC_GET_NEXT_NRO_DOC('AO', pCONT);
+			INSERT INTO fza_articulos (CODIGO_ARTICULO                  ,
+														    ORDEN_ARTICULO                    ,		
+																DESCRIPCION_ARTICULO              ,
+																TIPOIVA_ARTICULO                  ,
+																TIPO_CANTIDAD_ARTICULO            ,
+																CODIGO_FAMILIA_ARTICULO           ,
+																USUARIOMODIF                      ,
+																INSTANTEMODIF                     ,
+																USUARIOALTA                       ,
+																INSTANTEALTA                      
+												) VALUES
+															 (pCODIGO_ARTICULO                  ,														 
+															  pCONT                             ,
+																pDESCRIPCION_ARTICULO             , 
+																pTIPOIVA_ARTICULO                 ,
+																pTIPO_CANTIDAD_ARTICULO           ,
+																pCODIGO_FAMILIA                   ,
+																pUSUARIO                          ,
+																pINSTANTEMODIF			              ,
+																pUSUARIO                          ,
+																CURRENT_TIMESTAMP			 
+																);
+		END;
+		END IF;
+		CALL PRC_CREAR_ACTUALIZAR_FAMILIA(pCODIGO_FAMILIA, pNOMBRE_FAMILIA, pUSUARIO, pINSTANTEMODIF);
+		CALL PRC_CREAR_ACTUALIZAR_PROVEEDOR(pCODIGO_PROVEEDOR, pRAZONSOCIAL_PROVEEDOR, pUSUARIO, pINSTANTEMODIF);
+		CALL PRC_CREAR_ACTUALIZAR_ARTICULO_PROVEEDOR(pCODIGO_ARTICULO, pCODIGO_PROVEEDOR, pESPROVEEDORPRINCIPAL, pPRECIO_ULT_COMPRA, pUSUARIO, pINSTANTEMODIF);
+		CALL PRC_CREAR_ACTUALIZAR_TARIFA(pCODIGO_ARTICULO, pCODIGO_TARIFA, pPRECIOSALIDA_TARIFA, pPRECIOFINAL_TARIFA, pPRECIO_DTO_TARIFA, pPORCEN_DTO_TARIFA, pUSUARIO, pINSTANTEMODIF);
+END;
+END IF;	
   COMMIT;
+END $$
+DELIMITER ;
+
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `PRC_CREAR_ACTUALIZAR_ARTICULO_PROVEEDOR` $$
+CREATE  PROCEDURE `PRC_CREAR_ACTUALIZAR_ARTICULO_PROVEEDOR`( IN pCODIGO_ARTICULO 									varchar(20),
+                                                    IN pCODIGO_PROVEEDOR                  varchar(20),
+																										IN pESPROVEEDORPRINCIPAL               varchar(1),
+																									  IN pPRECIO_ULT_COMPRA                  decimal(19,6),
+																										
+																										IN `pUSUARIO`                         varchar(100),
+																										IN `pINSTANTEMODIF`                   TIMESTAMP)
+BEGIN
+START TRANSACTION;
+IF ((TRIM(pCODIGO_PROVEEDOR) <> '') AND 
+    (TRIM(pCODIGO_ARTICULO) <> '') AND
+    (pPRECIO_ULT_COMPRA <> 0)) THEN
+BEGIN
+	 IF( EXISTS( SELECT *
+								 FROM fza_articulos_proveedores
+								WHERE `CODIGO_PROVEEDOR_ARTICULO_PROVEEDOR` =  pCODIGO_PROVEEDOR
+								  AND CODIGO_ARTICULO_ARTICULO_PROVEEDOR = pCODIGO_ARTICULO )) THEN
+	 BEGIN
+		 UPDATE fza_articulos_proveedores
+				SET 
+						PRECIO_ULT_COMPRA_ARTICULO_PROVEEDOR     = pPRECIO_ULT_COMPRA   ,
+						ESPROVEEDORPRINCIPAL_ARTICULO_PROVEEDOR = pESPROVEEDORPRINCIPAL ,
+						USUARIOMODIF              = pUSUARIO                            ,
+						INSTANTEMODIF             = pINSTANTEMODIF			 
+				WHERE `CODIGO_PROVEEDOR_ARTICULO_PROVEEDOR` =  pCODIGO_PROVEEDOR
+				  AND CODIGO_ARTICULO_ARTICULO_PROVEEDOR = pCODIGO_ARTICULO;
+		END;
+		ELSE
+		BEGIN
+			INSERT INTO fza_articulos_proveedores (  CODIGO_PROVEEDOR_ARTICULO_PROVEEDOR , 
+			                                         CODIGO_ARTICULO_ARTICULO_PROVEEDOR  ,  				
+																							 PRECIO_ULT_COMPRA_ARTICULO_PROVEEDOR,
+																							 ESPROVEEDORPRINCIPAL_ARTICULO_PROVEEDOR,																 
+																				  
+																					USUARIOMODIF                     ,
+																					INSTANTEMODIF                    ,
+																					USUARIOALTA                      ,
+																          INSTANTEALTA                      
+												                 ) VALUES
+																				(pCODIGO_PROVEEDOR                   ,
+																				 pCODIGO_ARTICULO                    ,
+																				 pPRECIO_ULT_COMPRA             ,		
+																				 pESPROVEEDORPRINCIPAL           ,																			
+																				 pUSUARIO                         ,
+																				 pINSTANTEMODIF			             ,
+																				 pUSUARIO                         ,
+																				 CURRENT_TIMESTAMP			 
+																					);
+		END;
+		END IF;
+END;
+END IF;		
+COMMIT;
 END $$
 DELIMITER ;
 
@@ -603,6 +684,60 @@ DELIMITER ;
 
 
 DELIMITER $$
+DROP PROCEDURE IF EXISTS `PRC_CREAR_ACTUALIZAR_FAMILIA` $$
+CREATE  PROCEDURE `PRC_CREAR_ACTUALIZAR_FAMILIA`( IN pCODIGO_FAMILIA                     varchar(20),
+																																						IN pNOMBRE_FAMILIA                    varchar(200),
+																																					
+																																						IN `pUSUARIO`                         varchar(100),
+																																						IN `pINSTANTEMODIF`                   TIMESTAMP)
+BEGIN
+DECLARE pCONT BIGINT;
+START TRANSACTION;
+IF (TRIM(pCODIGO_FAMILIA) <> '') THEN
+BEGIN
+	 IF( EXISTS( SELECT *
+								 FROM fza_articulos_familias
+								WHERE `CODIGO_FAMILIA` =  pCODIGO_FAMILIA) ) THEN
+	 BEGIN
+		 UPDATE fza_articulos_familias
+				SET 
+						NOMBRE_FAMILIA                    = pNOMBRE_FAMILIA   ,
+						DESCRIPCION_FAMILIA               = pNOMBRE_FAMILIA       ,
+						USUARIOMODIF                      = pUSUARIO                ,
+						INSTANTEMODIF                     = pINSTANTEMODIF			 
+			WHERE CODIGO_FAMILIA = pCODIGO_FAMILIA;
+		END;
+		ELSE
+		BEGIN
+			CALL PRC_FNC_GET_NEXT_NRO_DOC('FO', pCONT);
+			INSERT INTO fza_articulos_familias (CODIGO_FAMILIA                   ,
+																					ORDEN_FAMILIA                    ,
+																				  NOMBRE_FAMILIA                   ,
+                                          DESCRIPCION_FAMILIA              ,
+																					USUARIOMODIF                     ,
+																					INSTANTEMODIF                    ,
+																					USUARIOALTA                      ,
+																          INSTANTEALTA                      
+												                 ) VALUES
+																				(pCODIGO_FAMILIA                   ,
+																				 pCONT                             ,
+																				 pNOMBRE_FAMILIA                    ,
+																				 pNOMBRE_FAMILIA                    ,
+																				 pUSUARIO                         ,
+																				 pINSTANTEMODIF			             ,
+																				 pUSUARIO                         ,
+																				 CURRENT_TIMESTAMP			 
+																					);
+		END;
+		END IF;
+END;
+END IF;		
+COMMIT;
+END $$
+DELIMITER ;
+
+
+DELIMITER $$
 DROP PROCEDURE IF EXISTS `PRC_CREAR_ACTUALIZAR_KEY` $$
 CREATE  PROCEDURE `PRC_CREAR_ACTUALIZAR_KEY`(IN `pUSUARIO`       varchar(200),
                                               IN `pKEY`           varchar(100),
@@ -650,6 +785,125 @@ START TRANSACTION;
   END;
   END IF;
   COMMIT;
+END $$
+DELIMITER ;
+
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `PRC_CREAR_ACTUALIZAR_PROVEEDOR` $$
+CREATE  PROCEDURE `PRC_CREAR_ACTUALIZAR_PROVEEDOR`(  IN pCODIGO_PROVEEDOR                  varchar(20),
+																										IN pRAZONSOCIAL_PROVEEDOR             varchar(200),
+																									
+																										IN `pUSUARIO`                         varchar(100),
+																										IN `pINSTANTEMODIF`                   TIMESTAMP)
+BEGIN
+DECLARE pCONT BIGINT;
+START TRANSACTION;
+IF (TRIM(pCODIGO_PROVEEDOR) <> '') THEN
+BEGIN
+	 IF( EXISTS( SELECT *
+								 FROM fza_proveedores
+								WHERE `CODIGO_PROVEEDOR` =  pCODIGO_PROVEEDOR) ) THEN
+	 BEGIN
+		 UPDATE fza_proveedores
+				SET 
+						RAZONSOCIAL_PROVEEDOR     = pRAZONSOCIAL_PROVEEDOR   ,
+						USUARIOMODIF              = pUSUARIO                ,
+						INSTANTEMODIF             = pINSTANTEMODIF			 
+			WHERE CODIGO_PROVEEDOR = pCODIGO_PROVEEDOR;
+		END;
+		ELSE
+		BEGIN
+			CALL PRC_FNC_GET_NEXT_NRO_DOC('PO', pCONT);
+			INSERT INTO fza_proveedores (  CODIGO_PROVEEDOR                      ,
+																					ORDEN_PROVEEDOR                  ,
+																				  RAZONSOCIAL_PROVEEDOR            ,																				
+																					USUARIOMODIF                     ,
+																					INSTANTEMODIF                    ,
+																					USUARIOALTA                      ,
+																          INSTANTEALTA                      
+												                 ) VALUES
+																				(pCODIGO_PROVEEDOR                   ,
+																				 pCONT                             ,
+																				 pRAZONSOCIAL_PROVEEDOR             ,																				 
+																				 pUSUARIO                         ,
+																				 pINSTANTEMODIF			             ,
+																				 pUSUARIO                         ,
+																				 CURRENT_TIMESTAMP			 
+																					);
+		END;
+		END IF;
+END;
+END IF;		
+COMMIT;
+END $$
+DELIMITER ;
+
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `PRC_CREAR_ACTUALIZAR_TARIFA` $$
+CREATE  PROCEDURE `PRC_CREAR_ACTUALIZAR_TARIFA`(  IN pCODIGO_ARTICULO                   varchar(20),
+																										                        IN pCODIGO_TARIFA                     varchar(20),
+																																						IN pPRECIOSALIDA_TARIFA								decimal(19,6),
+																																						IN pPRECIOFINAL_TARIFA  							decimal(19,6),
+																																						IN pPRECIO_DTO_TARIFA		  						decimal(19,6),
+																																						IN pPORCEN_DTO_TARIFA			  					decimal(19,6),
+																										                        IN `pUSUARIO`                         varchar(100),
+																										                        IN `pINSTANTEMODIF`                   TIMESTAMP)
+BEGIN
+START TRANSACTION;
+IF (TRIM(pCODIGO_TARIFA) <> '') THEN
+BEGIN
+	 IF( EXISTS( SELECT *
+								 FROM fza_articulos_tarifas
+								WHERE `CODIGO_ARTICULO_TARIFA` =  pCODIGO_ARTICULO
+								  AND  CODIGO_TARIFA = pCODIGO_TARIFA
+									AND FECHA_HASTA_TARIFA IS NULL) ) THEN
+	 BEGIN
+		 UPDATE fza_articulos_tarifas
+				SET 
+						PRECIOSALIDA_TARIFA	     = pPRECIOSALIDA_TARIFA,
+            PRECIOFINAL_TARIFA       = pPRECIOFINAL_TARIFA,
+            PRECIO_DTO_TARIFA		     = pPRECIO_DTO_TARIFA,
+            PORCEN_DTO_TARIFA		     =  pPORCEN_DTO_TARIFA,
+						USUARIOMODIF              = pUSUARIO          ,
+						INSTANTEMODIF             = pINSTANTEMODIF			 
+			WHERE `CODIGO_ARTICULO_TARIFA` =  pCODIGO_ARTICULO
+				AND  CODIGO_TARIFA = pCODIGO_TARIFA 
+				AND FECHA_HASTA_TARIFA IS NULL;
+		END;
+		ELSE
+		BEGIN
+			-- CALL PRC_FNC_GET_NEXT_NRO_DOC('PO', pCONT);
+			INSERT INTO fza_articulos_tarifas ( CODIGO_ARTICULO_TARIFA,
+			                                    CODIGO_TARIFA,
+			                                    PRECIOSALIDA_TARIFA	,
+																					PRECIOFINAL_TARIFA  ,
+																					PRECIO_DTO_TARIFA		,
+																					PORCEN_DTO_TARIFA		,
+																					FECHA_DESDE_TARIFA  ,
+																					USUARIOMODIF                     ,
+																					INSTANTEMODIF                    ,
+																					USUARIOALTA                      ,
+																          INSTANTEALTA                      
+												                 ) VALUES
+																				(pCODIGO_ARTICULO                   ,
+																				 pCODIGO_TARIFA                     ,
+																				 pPRECIOSALIDA_TARIFA             ,
+																				 pPRECIOFINAL_TARIFA              ,
+																				 pPRECIO_DTO_TARIFA               ,
+																				 pPORCEN_DTO_TARIFA               ,
+																				 CURRENT_TIMESTAMP               ,
+																				 pUSUARIO                         ,
+																				 pINSTANTEMODIF			             ,
+																				 pUSUARIO                         ,
+																				 CURRENT_TIMESTAMP			 
+																					);
+		END;
+		END IF;
+END;
+END IF;		
+COMMIT;
 END $$
 DELIMITER ;
 
@@ -1447,6 +1701,7 @@ CREATE  PROCEDURE `PRC_FNC_GET_NEXT_NRO_DOC`(IN  `ptipodoc` VARCHAR(8),
                                              OUT `presul`   BIGINT)
 BEGIN
 DECLARE `ppresul` BIGINT;
+START TRANSACTION;
 UPDATE `fza_contadores`
    SET `CONTADOR_CONTADOR` = CONTADOR_CONTADOR + 1
  WHERE `SERIE_CONTADOR` = '-'
@@ -1460,7 +1715,7 @@ UPDATE `fza_contadores`
 IF (`ppresul` IS NULL) THEN
    SET `ppresul` = 0;
 END IF;
-
+COMMIT;
 
 END $$
 DELIMITER ;
@@ -2989,7 +3244,7 @@ CREATE TABLE `fza_usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci ROW_FORMAT=DYNAMIC;
 
 INSERT INTO `fza_usuarios`(`USUARIO_USUARIO`, `PASSWORD_USUARIO`, `GRUPO_USUARIO`, `EMPRESADEF_USUARIO`, `ULTIMOLOGIN_USUARIO`, `INSTANTEMODIF`, `INSTANTEALTA`, `USUARIOALTA`, `USUARIOMODIF`) VALUES
- ('Administrador','4F8239A5B05A0E22D3DD4D7853808AF3','Administradores','011','2024-01-04 12:42:54','2024-01-04 12:42:54','2021-05-14 19:54:29','Administrador','Administrador');
+ ('Administrador','4F8239A5B05A0E22D3DD4D7853808AF3','Administradores','011','2024-01-16 11:27:32','2024-01-16 11:27:32','2021-05-14 19:54:29','Administrador','Administrador');
 
 DROP TABLE IF EXISTS `fza_usuarios_grupos`;
 CREATE TABLE `fza_usuarios_grupos` (
