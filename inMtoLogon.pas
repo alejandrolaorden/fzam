@@ -94,7 +94,7 @@ type
     function LoginCorrecto(sNom, sPassLogin: string; f: TUniConnection): Boolean;
     function GetGrupo(sUser: string; conn: TUniConnection;
       var EsGrupoAdmin: string): string;
-//    procedure AppException(Sender: TObject; E: Exception);
+    procedure AppException(Sender: TObject; E: Exception);
   public
     sSuccess:String;
     function IsInitializeAuto:Boolean;
@@ -129,7 +129,7 @@ begin
   cxMemo1.Visible := False;
   pnlPPBottom.Visible := False;
   {$IFDEF DEBUG}
-    inliblog.LogInfo('Arrancando en modo Debug');
+    inliblog.Log.LogInfo('Arrancando en modo Debug');
     pnlPPBottom.Visible := True;
     UniSQLMonitor1.Active := True;
     cxMemo1.Visible := True;
@@ -139,7 +139,7 @@ begin
   sUserPassOK := 'false';
   Self.Position := poScreenCenter;
   edtUser.Text := '';
-  leerini;
+  //leerini;
 //  try
 //    GetIniValues;
 
@@ -217,7 +217,7 @@ begin
       saveDialog.InitialDir := GetUserDeskFolder;
       MyText.SaveToFile(saveDialog.FileName);
       MyText.Free;
-      LogInfo(edtUser.Text + ' Guardó copia Encriptada en ' +
+      Log.LogInfo(edtUser.Text + ' Guardó copia Encriptada en ' +
         savedialog.FileName);
       ShowMessage('La copia se guardó exitosamente');
     end;
@@ -538,10 +538,10 @@ begin
   Result := sResult;
 end;
 
-//procedure TfrmLogon.AppException(Sender: TObject; E: Exception);
-//begin
-//  Log(oConn, edtUser.Text, E.Message, Sender, tlCritical, E.ClassName);
-//end;
+procedure TfrmLogon.AppException(Sender: TObject; E: Exception);
+begin
+  inliblog.Log.LogError('Error general: ' + E.ClassName +': '+ E.Message) ;
+end;
 
 procedure TfrmLogon.btChangePassRootClick(Sender: TObject);
 var
@@ -782,7 +782,7 @@ begin
                                              'q7heHfD7ENowuvRQhW56Og==',
                                              GetUserFolder));
   end;
-  inliblog.LogInfo('Leyendo archivo ini de usuario', edtUser.Text);
+  inliblog.Log.LogInfo('Leyendo archivo ini de usuario');
 end;
 
 function TfrmLogon.IsInitializeAuto: Boolean;

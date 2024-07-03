@@ -130,6 +130,7 @@ begin
   sDis := '';
   oMemoSQL := cxMemo1;
   //ShowMessage('CREANDO CONEXIÓN');
+  inliblog.Log.LogInfo('Creando ventana principal');
   FdmConn := TdmConn.Create(Self);
   FdmConn.conUni.Connect;
   //ShowMessage('CREANDO PERFILES');
@@ -182,6 +183,7 @@ begin
       LookAndFeelController1.SkinName := 'Office2007Pink';
       SkinController1.SkinName := 'Office2007Pink';
     end;
+  inliblog.Log.LogInfo('Ventana principal creada');
 end;
 
 procedure TfrmOpenApp2.mnuTarifasClick(Sender: TObject);
@@ -244,6 +246,8 @@ begin
       MyText.Text := s;
       saveDialog.InitialDir := GetUserDeskFolder;
       MyText.SaveToFile(saveDialog.FileName, TEncoding.UTF8);
+      inliblog.Log.LogInfo('Copia de seguridad creada en ' +
+                           saveDialog.FileName);
       MyText.Free;
       ShowMessage('La copia se guardó exitosamente');
     end;
@@ -254,18 +258,27 @@ procedure TfrmOpenApp2.FormClose(Sender: TObject; var Action: TCloseAction);
 var
   I:Integer;
 begin
-  for I := Pred(pcPrincipal.PageCount) downto 0 do
-    TcxPageControlPropertiesAccess((pcPrincipal).Properties).DoCloseTab(I);
-  //FdmDataPerfiles.unqryPerfiles.Close;
-  if (FdmDataPerfiles <> nil) then
-    FreeAndNil(FdmDataPerfiles);
-  FreeAndNil(oFzaWinf);
-  FreeAndNil(FdmConn);
-  Action := caFree;
-  Application.Terminate;
-  Application.ProcessMessages;
-  ExitProcess(0);
-  //Halt;
+  inherited;
+  try
+    inliblog.Log.LogInfo('Cerrando ventana principal');
+    tmr1.Enabled := False;
+    FreeAndNil(oFzaWinf);
+    for I := Pred(pcPrincipal.PageCount) downto 0 do
+      TcxPageControlPropertiesAccess((pcPrincipal).Properties).DoCloseTab(I);
+    //FdmDataPerfiles.unqryPerfiles.Close;
+    if (FdmDataPerfiles <> nil) then
+      FreeAndNil(FdmDataPerfiles);
+    FreeAndNil(FdmConn);
+
+    //Application.Terminate;
+    //Application.ProcessMessages;
+     // ExitProcess(0);
+
+    //Halt;
+  finally
+    inliblog.Log.LogInfo('Ventana principal Cerrada');
+    Action := caFree;
+  end;
 end;
 
 procedure TfrmOpenApp2.mnArchivoSalirClick(Sender: TObject);

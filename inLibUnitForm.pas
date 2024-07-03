@@ -64,6 +64,7 @@ type
    FOwner:TComponent;
  public
    constructor Create(Owner:TComponent);
+   destructor Destroy; override;
    procedure Charge(nConn:TUniConnection);
    function GetDataModuleName(sUnitName:string):String;
    function GetElement(sCall:string):TfzaForm;
@@ -205,6 +206,13 @@ constructor TfzaWinF.Create(Owner:TComponent);
 begin
   FList := TObjectList<TfzaForm>.Create;
   FOwner := Owner;
+end;
+
+destructor TfzaWinF.Destroy;
+begin
+  //
+  FList.Free;
+  inherited;
 end;
 
 function TfzaWinF.GetDataModuleName(sUnitName: string): String;

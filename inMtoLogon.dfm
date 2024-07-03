@@ -4,8 +4,8 @@ inherited frmLogon: TfrmLogon
   BorderIcons = []
   BorderStyle = bsSingle
   Caption = 'Login FactuZam'
-  ClientHeight = 493
-  ClientWidth = 783
+  ClientHeight = 492
+  ClientWidth = 779
   Font.Charset = ANSI_CHARSET
   KeyPreview = True
   Position = poScreenCenter
@@ -17,14 +17,14 @@ inherited frmLogon: TfrmLogon
   object lblUsuario: TLabel [0]
     Left = 47
     Top = 31
-    Width = 66
+    Width = 65
     Height = 19
     Caption = 'Usuario'
   end
   object lblContrasena: TLabel [1]
     Left = 15
     Top = 113
-    Width = 94
+    Width = 98
     Height = 19
     Caption = 'Contrase'#241'a'
   end
@@ -44,28 +44,28 @@ inherited frmLogon: TfrmLogon
   object lblNomBBDD: TLabel [4]
     Left = 391
     Top = 83
-    Width = 91
+    Width = 90
     Height = 19
     Caption = 'Nom BBDD'
   end
   object lblUserBBDD: TLabel [5]
     Left = 365
     Top = 115
-    Width = 117
+    Width = 116
     Height = 19
     Caption = 'Usuario BBDD'
   end
   object lblPasswordBBDD: TLabel [6]
     Left = 351
     Top = 147
-    Width = 131
+    Width = 130
     Height = 19
     Caption = 'Password BBDD'
   end
   object lblPortHost: TLabel [7]
     Left = 385
     Top = 50
-    Width = 97
+    Width = 99
     Height = 19
     Caption = 'Puerto Host'
   end
@@ -231,13 +231,11 @@ inherited frmLogon: TfrmLogon
   end
   object pnlPPBottom: TPanel [27]
     Left = 0
-    Top = 312
-    Width = 783
+    Top = 311
+    Width = 779
     Height = 181
     Align = alBottom
     TabOrder = 19
-    ExplicitTop = 311
-    ExplicitWidth = 779
     object cxMemo1: TcxMemo
       Left = 1
       Top = 1
@@ -248,9 +246,8 @@ inherited frmLogon: TfrmLogon
       Properties.ScrollBars = ssVertical
       TabOrder = 0
       Visible = False
-      ExplicitWidth = 777
       Height = 179
-      Width = 781
+      Width = 777
     end
   end
   object MySQLUniProvider1: TMySQLUniProvider

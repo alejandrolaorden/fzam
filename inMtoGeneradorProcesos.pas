@@ -403,7 +403,7 @@ var
   StartLine, EndLine, i: Integer;
   SelStart, SelEnd: TBufferCoord;
   NewCaretX, NewCaretY: Integer;
-
+  s:String;
 begin
   inherited;
 
@@ -412,8 +412,7 @@ begin
     dbsyndtTexto.SelText := #9; // Insertar tabulador
     Key := 0; // Prevenir que el control cambie el foco
   end;
-
-   if (ssAlt in Shift) then
+  if (ssAlt in Shift) then
   begin
     if (ssShift in Shift) then
     begin
@@ -423,21 +422,18 @@ begin
         dbsyndtTexto.SelectionMode := smColumn;
       end;
     end;
-
     // Manejar movimiento del cursor con Alt
     if Key in [VK_LEFT, VK_RIGHT, VK_UP, VK_DOWN] then
     begin
       Key := 0; // Prevenir comportamiento predeterminado
       NewCaretX := dbsyndtTexto.CaretX;
       NewCaretY := dbsyndtTexto.CaretY;
-
       case Key of
         VK_LEFT:  NewCaretX := Max(1, NewCaretX - 1);
         VK_RIGHT: NewCaretX := Min(Length(dbsyndtTexto.Lines[NewCaretY - 1]) + 1, NewCaretX + 1);
         VK_UP:    NewCaretY := Max(1, NewCaretY - 1);
         VK_DOWN:  NewCaretY := Min(dbsyndtTexto.Lines.Count, NewCaretY + 1);
       end;
-
       dbsyndtTexto.CaretXY := BufferCoord(NewCaretX, NewCaretY);
     end;
   end
@@ -452,7 +448,6 @@ begin
     IsColumnMode := False;
     dbsyndtTexto.SelectionMode := smNormal;
   end;
-
   if (Key = VK_TAB) and (dbsyndtTexto.SelAvail) then
   begin
     Key := 0; // Previene el comportamiento predeterminado del tabulador
@@ -473,6 +468,43 @@ begin
       dbsyndtTexto.BlockEnd := BufferCoord(SelEnd.Char + 1, SelEnd.Line);
     finally
       dbsyndtTexto.EndUpdate;
+    end;
+  end
+  else
+  begin
+    if (Key = VK_TAB) and (ssShift in Shift) then
+    begin
+      Key := 0; // Prevenir el comportamiento predeterminado
+
+      // Obtener las líneas de inicio y fin de la selección
+      StartLine := dbsyndtTexto.BlockBegin.Line - 1;
+      EndLine := dbsyndtTexto.BlockEnd.Line - 1;
+
+      // Si no hay selección, usar la línea actual
+      if StartLine = EndLine then
+      begin
+        StartLine := dbsyndtTexto.CaretY - 1;
+        EndLine := StartLine;
+      end;
+
+      dbsyndtTexto.BeginUpdate;
+      try
+        for i := StartLine to EndLine do
+        begin
+          s := dbsyndtTexto.Lines[i];
+          if (Length(s) > 0) and (s[1] = #9) then
+            // Eliminar el primer tabulador
+            dbsyndtTexto.Lines[i] := Copy(s, 2, Length(s))
+          else if (Length(s) >= dbsyndtTexto.TabWidth) and
+                  (Copy(s, 1, dbsyndtTexto.TabWidth) =
+                  StringOfChar(' ', dbsyndtTexto.TabWidth)) then
+            // Eliminar los espacios equivalentes a un tabulador
+            dbsyndtTexto.Lines[i] :=
+                                  Copy(s, dbsyndtTexto.TabWidth + 1, Length(s));
+        end;
+      finally
+        dbsyndtTexto.EndUpdate;
+      end;
     end;
   end;
 end;

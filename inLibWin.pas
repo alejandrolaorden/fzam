@@ -15,7 +15,7 @@ uses
    Vcl.Dialogs, ShellAPI, System.Rtti, System.TypInfo, System.Variants,
    System.StrUtils, inLibUser, cxLabel, cxPC, cxDBEdit, cxButtons, Uni,
    cxGroupBox, cxRadioGroup, Vcl.Buttons, inlibGlobalVar,
-  System.Win.Registry,
+   System.Win.Registry, Winapi.Messages,
    system.math,IdGlobal, IdHash, IdHashMessageDigest, System.IOUtils;
 
 //  function IsOpenMDI(sName: String; Owner : TComponent):boolean; overload;
@@ -49,10 +49,66 @@ uses
   function EncuentraPagina(pc: TcxPageControl;
                            sName:string):integer;
   function DarkModeIsEnabled:Boolean;
+  function GetComputerName: string;
+  function GetProgramPath: string;
+  function GetWindowsUserName: string;
+  function GetWindowsVersion: string;
 
 implementation
 
 //  procedure ShowMto<T>(Owner: TComponent; sOdon: String); overload;
+
+function GetComputerName: string;
+var
+  Buffer: array[0..MAX_COMPUTERNAME_LENGTH] of Char;
+  Size: DWORD;
+begin
+  Size := MAX_COMPUTERNAME_LENGTH + 1;
+  if Winapi.Windows.GetComputerName(Buffer, Size) then
+    Result := Buffer
+  else
+    Result := 'Unknown';
+end;
+
+function GetWindowsUserName: string;
+var
+  Buffer: array[0..255] of Char;
+  Size: DWORD;
+begin
+  Size := 256;
+  if Winapi.Windows.GetUserName(Buffer, Size) then
+    Result := Buffer
+  else
+    Result := 'Unknown';
+end;
+
+function GetProgramPath: string;
+begin
+  Result := ExtractFilePath(ParamStr(0));
+end;
+
+function GetWindowsVersion: string;
+var
+  Reg: TRegistry;
+begin
+  Reg := TRegistry.Create(KEY_READ);
+  try
+    Reg.RootKey := HKEY_LOCAL_MACHINE;
+    if Reg.OpenKey('SOFTWARE\Microsoft\Windows NT\CurrentVersion', False) then
+    begin
+      Result := Reg.ReadString('ProductName');
+      if Reg.ValueExists('DisplayVersion') then
+        Result := Result + ' ' + Reg.ReadString('DisplayVersion')
+      else if Reg.ValueExists('ReleaseId') then
+        Result := Result + ' ' + Reg.ReadString('ReleaseId');
+    end
+    else
+      Result := 'Unknown';
+  finally
+    Reg.Free;
+  end;
+end;
+
 
 function DarkModeIsEnabled: boolean;
 {$IFDEF MSWINDOWS}
@@ -320,7 +376,7 @@ begin
     oCon := oControl.Components[i];
     sCompName := oCon.Name;
     if StartsText('lbl', sCompName)  then
-    begin                       //son los únicos label que no se deben renombrar
+    begin                       //son los ï¿½nicos label que no se deben renombrar
       if (oCon is TcxLabel) and
          not SameText((oCon as TcxLabel).Caption, 'lblTablaOrigen') and
          not SameText((oCon as TcxLabel).Caption, 'lblEditMode')

@@ -1,4 +1,4 @@
-{*******************************************************}
+﻿{*******************************************************}
 {                                                       }
 {       FactuZam                                        }
 {                                                       }
@@ -85,7 +85,7 @@ begin
                          GetTypeData(lType.Handle)^.ClassType).Create(frmOpen2);
           //f:= t.GetMethod('Create').Invoke(t.MetaclassType,[nil]);
           tsNew.Caption := sTitle;
-          inLibLog.LogInfo('Abriendo Pantalla Mto: '+ sTitle);
+          inLibLog.Log.LogInfo('Abriendo Pantalla Mto: '+ sTitle);
           prop := lType.GetProperty('Parent');
           prop.SetValue(f.asObject, (tsNew as TObject));
           prop := lType.GetProperty('Align');
