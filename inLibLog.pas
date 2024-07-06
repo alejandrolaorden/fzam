@@ -11,11 +11,13 @@ interface
 
 uses
   System.SysUtils, System.Classes, System.IOUtils, inLibGlobalVar,
-  inLibDir, Windows,
+  inLibDir, Windows, System.SyncObjs, Winapi.Messages,
   System.TypInfo, System.Zip, System.Generics.Collections;
 
 const
   DEFAULT_LOG_RETENTION = 10;
+  MUTEX_NAME = 'Global\FactuZamLogMutex';
+  MUTEX_TIMEOUT = 5000; // 5 segundos de timeout
 
 type
   TLogType = (ltInfo, ltWarning, ltError, ltSQL);
@@ -27,10 +29,15 @@ type
     FLogFlags: TLogFlags;
     FInstanceID: string;
     FLogRetention: Integer;
+    FMutexHandle: THandle;
+    function LogTypeToString(ALogType: TLogType): string;
     procedure WriteToLog(const AMessage: string; ALogType: TLogType);
+    procedure WriteToLogInternal(const AMessage: string);
     procedure WriteInitialInfo;
     function GenerateInstanceID: string;
     procedure RotateLogs;
+    function AcquireMutex: Boolean;
+    procedure ReleaseMutex;
   public
     constructor Create(ALogRetention: Integer = DEFAULT_LOG_RETENTION);
     destructor Destroy; override;
@@ -52,6 +59,28 @@ uses
 
 { TLog }
 
+function TLog.LogTypeToString(ALogType: TLogType): string;
+begin
+  case ALogType of
+    ltInfo: Result := 'INFO';
+    ltWarning: Result := 'WARNING';
+    ltError: Result := 'ERROR';
+    ltSQL: Result := 'SQL';
+  else
+    Result := 'UNKNOWN';
+  end;
+end;
+
+function TLog.AcquireMutex: Boolean;
+begin
+  Result := WaitForSingleObject(FMutexHandle, MUTEX_TIMEOUT) = WAIT_OBJECT_0;
+end;
+
+procedure TLog.ReleaseMutex;
+begin
+  Windows.ReleaseMutex(FMutexHandle);
+end;
+
 constructor TLog.Create(ALogRetention: Integer = DEFAULT_LOG_RETENTION);
 var
   IsNewFile: Boolean;
@@ -59,14 +88,13 @@ begin
   inherited Create;
   FInstanceID := GenerateInstanceID;
   FLogRetention := ALogRetention;
+
   FLogFileName := TPath.Combine(GetLogFolder, 'LOG_fzam_' +
                                 FormatDateTime('dd_mm_yyyy', Now) + '.log');
-  IsNewFile := not FileExists(FLogFileName);
-  AssignFile(FLogFile, FLogFileName);
-  if IsNewFile then
-    Rewrite(FLogFile)
-  else
-    Append(FLogFile);
+  FMutexHandle := CreateMutex(nil, False, PChar(MUTEX_NAME));
+  if FMutexHandle = 0 then
+    raise Exception.Create('Failed to create mutex');
+
   FLogFlags := [ltInfo, ltWarning, ltError]; // SQL logging desactivado por defecto
   if IsNewFile then
     WriteInitialInfo;
@@ -86,39 +114,47 @@ end;
 
 destructor TLog.Destroy;
 begin
-  if (TTextRec(FLogFile).Mode <> fmClosed) then
-  begin
-    WriteToLog('Logging session ended.', ltInfo);
-    CloseFile(FLogFile);
-  end;
+  WriteToLog('Logging session ended.', ltInfo);
+  if FMutexHandle <> 0 then
+    CloseHandle(FMutexHandle);
   inherited;
 end;
 
-procedure TLog.WriteToLog(const AMessage: string; ALogType: TLogType);
+
+procedure TLog.WriteToLogInternal(const AMessage: string);
+var
+  LogFile: TextFile;
 begin
-  if (TTextRec(FLogFile).Mode <> fmClosed) and (ALogType in FLogFlags) then
-  begin
-    WriteLn(FLogFile,
-            Format('%s - [Instance: %s] %s - %s',
-                   [FormatDateTime('yyyy-mm-dd hh:nn:ss.zzz', Now),
-                    FInstanceID,
-                    AMessage,
-                    GetEnumName(TypeInfo(TLogType), Ord(ALogType))]));
-    Flush(FLogFile);
+  if AcquireMutex then
+  try
+    AssignFile(LogFile, FLogFileName);
+    try
+      if FileExists(FLogFileName) then
+        Append(LogFile)
+      else
+        Rewrite(LogFile);
+      WriteLn(LogFile, Format('%s - [Instance: %s] %s',
+                              [FormatDateTime('yyyy-mm-dd hh:nn:ss.zzz', Now),
+                               FInstanceID,
+                               AMessage]));
+    finally
+      CloseFile(LogFile);
+    end;
+  finally
+    ReleaseMutex;
   end;
 end;
 
 procedure TLog.WriteInitialInfo;
 begin
-  WriteLn(FLogFile, '-------- New Log File --------');
-  WriteLn(FLogFile, 'Date: ' + FormatDateTime('yyyy-mm-dd hh:nn:ss', Now));
-  WriteLn(FLogFile, 'Computer Name: ' + GetComputerName);
-  WriteLn(FLogFile, 'Windows User: ' + GetWindowsUserName);
-  WriteLn(FLogFile, 'Windows Version: ' + GetWindowsVersion);
-  WriteLn(FLogFile, 'Program Path: ' + GetProgramPath);
-  WriteLn(FLogFile, 'Log Folder: ' + GetLogFolder);
-  WriteLn(FLogFile, '-------------------------------');
-  Flush(FLogFile);
+  WriteToLogInternal('-------- New Log File --------');
+  WriteToLogInternal('Date: ' + FormatDateTime('yyyy-mm-dd hh:nn:ss', Now));
+  WriteToLogInternal('Computer Name: ' + GetComputerName);
+  WriteToLogInternal('Windows User: ' + GetWindowsUserName);
+  WriteToLogInternal('Windows Version: ' + GetWindowsVersion);
+  WriteToLogInternal('Program Path: ' + GetProgramPath);
+  WriteToLogInternal('Log Folder: ' + GetLogFolder);
+  WriteToLogInternal('-------------------------------');
 end;
 procedure TLog.LogInfo(const AMessage: string);
 begin
@@ -188,6 +224,14 @@ begin
       Zip.Close;
       FreeAndNil(Zip);
     end;
+  end;
+end;
+
+procedure TLog.WriteToLog(const AMessage: string; ALogType: TLogType);
+begin
+  if (ALogType in FLogFlags) then
+  begin
+   WriteToLogInternal(Format('%s - %s', [AMessage, LogTypeToString(ALogType)]));
   end;
 end;
 
