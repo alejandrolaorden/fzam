@@ -24,7 +24,6 @@ type
   TLogFlags = set of TLogType;
   TLog = class
   private
-    FLogFile: TextFile;
     FLogFileName: string;
     FLogFlags: TLogFlags;
     FInstanceID: string;
@@ -38,6 +37,7 @@ type
     procedure RotateLogs;
     function AcquireMutex: Boolean;
     procedure ReleaseMutex;
+    function IsFileAccessible(const FileName: string): Boolean;
   public
     constructor Create(ALogRetention: Integer = DEFAULT_LOG_RETENTION);
     destructor Destroy; override;
@@ -91,6 +91,9 @@ begin
 
   FLogFileName := TPath.Combine(GetLogFolder, 'LOG_fzam_' +
                                 FormatDateTime('dd_mm_yyyy', Now) + '.log');
+  if not IsFileAccessible(FLogFileName) then
+    raise Exception.CreateFmt('No se puede acceder a %s. Faltan permisos.',
+                              [FLogFileName]);
   FMutexHandle := CreateMutex(nil, False, PChar(MUTEX_NAME));
   if FMutexHandle = 0 then
     raise Exception.Create('Failed to create mutex');
@@ -145,15 +148,27 @@ begin
   end;
 end;
 
+function TLog.IsFileAccessible(const FileName: string): Boolean;
+var
+  FileHandle: THandle;
+begin
+  FileHandle := CreateFile(PChar(FileName), GENERIC_READ or GENERIC_WRITE,
+    FILE_SHARE_READ or FILE_SHARE_WRITE, nil, OPEN_ALWAYS, FILE_ATTRIBUTE_NORMAL, 0);
+  Result := FileHandle <> INVALID_HANDLE_VALUE;
+  if Result then
+    CloseHandle(FileHandle);
+end;
+
 procedure TLog.WriteInitialInfo;
 begin
   WriteToLogInternal('-------- New Log File --------');
-  WriteToLogInternal('Date: ' + FormatDateTime('yyyy-mm-dd hh:nn:ss', Now));
+  WriteToLogInternal('Fecha: ' + FormatDateTime('yyyy-mm-dd hh:nn:ss', Now));
   WriteToLogInternal('Computer Name: ' + GetComputerName);
   WriteToLogInternal('Windows User: ' + GetWindowsUserName);
   WriteToLogInternal('Windows Version: ' + GetWindowsVersion);
   WriteToLogInternal('Program Path: ' + GetProgramPath);
   WriteToLogInternal('Log Folder: ' + GetLogFolder);
+  WriteToLogInternal('Versión de fzam: '+ inlibGlobalVar.oVersion);
   WriteToLogInternal('-------------------------------');
 end;
 procedure TLog.LogInfo(const AMessage: string);

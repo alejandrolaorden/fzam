@@ -11,20 +11,20 @@ inherited frmLogon: TfrmLogon
   Position = poScreenCenter
   OnClose = FormClose
   OnKeyDown = FormKeyDown
-  ExplicitWidth = 795
-  ExplicitHeight = 531
+  ExplicitWidth = 791
+  ExplicitHeight = 530
   TextHeight = 19
   object lblUsuario: TLabel [0]
     Left = 47
     Top = 31
-    Width = 65
+    Width = 66
     Height = 19
     Caption = 'Usuario'
   end
   object lblContrasena: TLabel [1]
     Left = 15
     Top = 113
-    Width = 98
+    Width = 94
     Height = 19
     Caption = 'Contrase'#241'a'
   end
@@ -44,28 +44,28 @@ inherited frmLogon: TfrmLogon
   object lblNomBBDD: TLabel [4]
     Left = 391
     Top = 83
-    Width = 90
+    Width = 91
     Height = 19
     Caption = 'Nom BBDD'
   end
   object lblUserBBDD: TLabel [5]
     Left = 365
     Top = 115
-    Width = 116
+    Width = 117
     Height = 19
     Caption = 'Usuario BBDD'
   end
   object lblPasswordBBDD: TLabel [6]
     Left = 351
     Top = 147
-    Width = 130
+    Width = 131
     Height = 19
     Caption = 'Password BBDD'
   end
   object lblPortHost: TLabel [7]
     Left = 385
     Top = 50
-    Width = 99
+    Width = 97
     Height = 19
     Caption = 'Puerto Host'
   end
@@ -236,6 +236,8 @@ inherited frmLogon: TfrmLogon
     Height = 181
     Align = alBottom
     TabOrder = 19
+    ExplicitTop = 310
+    ExplicitWidth = 775
     object cxMemo1: TcxMemo
       Left = 1
       Top = 1
@@ -246,6 +248,7 @@ inherited frmLogon: TfrmLogon
       Properties.ScrollBars = ssVertical
       TabOrder = 0
       Visible = False
+      ExplicitWidth = 773
       Height = 179
       Width = 777
     end

@@ -223,7 +223,10 @@ begin
     end;
   end
   else
+  begin
+    Log.LogError('La copia se canceló');
     ShowMessage('La copia se canceló');
+  end;
   //FreeAndNil(savedialog);
 end;
 
@@ -265,10 +268,15 @@ begin
   if openDialog.Execute then
   begin
     udDump.RestoreFromFile(opendialog.FileName);
+    Log.LogInfo('El script se ejecutó exitosamente');
     ShowMessage('El script se ejecutó exitosamente');
   end
   else
+  begin
+    Log.LogInfo('El script no fue ejecutado');
     ShowMessage('El script no fue ejecutado');
+  end;
+
   //FreeAndNil(opendialog);
   FreeAndNil(unqryTestBD);
   if (ucConexion.Connected = true) then
@@ -284,6 +292,7 @@ begin
                             edtHostName.Text,
                             edtPortBD.Text,
                             edtNomBD.Text);
+  Log.LogInfo(SconnSuccBBDD);
   ShowMessage(SConnSuccBBDD);
   Exit;
 end;
@@ -312,6 +321,7 @@ begin
       sPassEnBD := EncriptAES(sNewPass);
       sPass := sNewPass;
       ShowMessageFmt(SPasswordBBDDChanged, [sPass]);
+      Log.LogInfo(sPasswordBBDDChanged);
       esCadIniDir('ConnData', 'PasswordEn', sPassEnBD, GetUserFolder);
       qryCommand.Free;
     end;
@@ -398,6 +408,7 @@ begin
          begin
            UdDump.Restore;
            ShowMessage(SCreateSuccBBDD);
+           Log.LogInfo(SCreateSuccBBDD);
            btChangePassRootClick(Self);
            Result := True;
          end;
@@ -418,6 +429,7 @@ begin
   if (Not(FileExists(sFile))) then
   begin
     ShowMessage(SFailLoadScriptBBDD);
+    Log.LogError(SFailLoadScriptBBDD);
   end
   else
   begin
@@ -599,11 +611,13 @@ begin
     //Log(ucConexion, edtUser.Text, 'Intento de conexión');
     if not CheckIfDatabaseIsUpdated then
     begin
+      Log.LogError('No puede entrar a una base de datos sin actualizar');
       ShowMessage('No puede entrar a una base de datos sin actualizar');
       Exit;
     end;
     if not ExisteUser(edtUser.Text, ucConexion) then
     begin
+      Log.LogError('El nombre de usuario no existe');
       raise EInvalidUser.Create('El nombre de usuario no existe');
     end
     else if not LoginCorrecto(edtUser.text, edtPass.Text, ucConexion) then
@@ -611,9 +625,11 @@ begin
       if (Sender <> nil) then // Si se llamó desde el botón (no auto-login)
         ShowMessage(SErrorAuthPass);
       sSuccess := 'N';
+      Log.LogError(SErrorAuthPass);
     end
     else
     begin
+      Log.LogInfo('Login Correcto');
       tbUsers.Edit;
       tbUsers.FieldByName('ULTIMOLOGIN_USUARIO').AsDateTime := Now;
       tbUsers.Post;
@@ -741,6 +757,7 @@ begin
   inherited;
   {$IFDEF DEBUG}
     cxMemo1.Lines.Add(Text);
+    Log.LogSQL(Text);
   {$ENDIF}
 end;
 
