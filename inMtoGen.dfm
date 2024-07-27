@@ -8,7 +8,6 @@ inherited frmMtoGen: TfrmMtoGen
   Font.Quality = fqDefault
   KeyPreview = True
   Visible = True
-  OnClose = FormClose
   OnKeyUp = FormKeyUp
   OnShow = FormShow
   ExplicitWidth = 1091
@@ -123,19 +122,15 @@ inherited frmMtoGen: TfrmMtoGen
       object tsPerfil: TcxTabSheet
         Caption = 'Perfil'
         ImageIndex = 2
-        ExplicitLeft = 4
-        ExplicitTop = 30
-        ExplicitWidth = 943
-        ExplicitHeight = 484
         object pnlPerfilTop: TPanel
           Left = 0
           Top = 0
-          Width = 942
+          Width = 943
           Height = 57
           Align = alTop
           BevelOuter = bvNone
           TabOrder = 0
-          ExplicitWidth = 943
+          ExplicitWidth = 942
           object edtPerfilBusq: TcxTextEdit
             Left = 294
             Top = 14
@@ -179,14 +174,12 @@ inherited frmMtoGen: TfrmMtoGen
         object pnlPerfilDetail: TPanel
           Left = 0
           Top = 57
-          Width = 942
-          Height = 423
+          Width = 943
+          Height = 427
           Align = alClient
           BevelOuter = bvNone
           Caption = 'pnlPerfilDetail'
           TabOrder = 1
-          ExplicitWidth = 943
-          ExplicitHeight = 427
           object cxgrdPerfil: TcxGrid
             Left = 0
             Top = 0

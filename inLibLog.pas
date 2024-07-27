@@ -75,7 +75,6 @@ function TLog.AcquireMutex: Boolean;
 begin
   Result := WaitForSingleObject(FMutexHandle, MUTEX_TIMEOUT) = WAIT_OBJECT_0;
 end;
-
 procedure TLog.ReleaseMutex;
 begin
   Windows.ReleaseMutex(FMutexHandle);

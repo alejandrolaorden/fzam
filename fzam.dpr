@@ -2,7 +2,7 @@
 
 uses
   {$IFDEF DEBUG}
-  FastMM4,
+    FastMM4,
   {$ENDIF }
   Forms,
   MidasLib,
@@ -85,7 +85,7 @@ begin
     {$ENDIF}
     Application.Initialize;
     Application.MainFormOnTaskbar := True;
-    Application.Title := 'FZam';
+    Application.Title := 'Fzam';
     frmLogon := TfrmLogon.Create(Application);
     try
       frmLogon.leerini;
@@ -99,7 +99,7 @@ begin
       if (not AutoLoginSuccessful) then
       begin
         frmLogon.ShowModal;
-        frmLogon.Caption := Application.Title;
+        //frmLogon.Caption := Application.Title;
       end;
       if (frmLogon.sSuccess <> 'S') then
         Exit;
@@ -109,25 +109,3 @@ begin
     Application.CreateForm(TfrmOpenApp2, frmOpenApp2);
     Application.Run;
 end.
-
-//begin
-//  {$IFDEF DEBUG}
-//    ReportMemoryLeaksOnShutdown := True;
-//  {$ENDIF}
-//  Application.Initialize;
-//  Application.MainFormOnTaskbar := True;
-//  Application.Title := 'FZam';
-//  with TfrmLogon.Create(Application) do
-//  begin
-//    try
-//      ShowModal;
-//      Caption := Application.Title;
-//      if sSuccess <> 'S' then
-//        Exit;
-//    finally
-//      Free;
-//    end;
-//  end;
-//  Application.CreateForm(TfrmOpenApp2, frmOpenApp2);
-//  Application.Run;
-//end.

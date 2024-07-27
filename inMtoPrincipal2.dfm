@@ -1,7 +1,7 @@
 inherited frmOpenApp2: TfrmOpenApp2
   Caption = 'Fzam'
-  ClientHeight = 550
-  ClientWidth = 1128
+  ClientHeight = 549
+  ClientWidth = 1124
   Menu = jvMnMenuPrin
   Position = poScreenCenter
   WindowState = wsMaximized
@@ -13,8 +13,8 @@ inherited frmOpenApp2: TfrmOpenApp2
   object dxstsbr1: TdxStatusBar [0]
     AlignWithMargins = True
     Left = 3
-    Top = 523
-    Width = 1122
+    Top = 522
+    Width = 1118
     Height = 24
     AutoSize = True
     Panels = <
@@ -52,19 +52,15 @@ inherited frmOpenApp2: TfrmOpenApp2
     Font.Height = -12
     Font.Name = 'Lucida Sans Unicode'
     Font.Style = []
-    ExplicitTop = 522
-    ExplicitWidth = 1118
   end
   object Panel1: TPanel [1]
     Left = 0
     Top = 0
-    Width = 1128
-    Height = 520
+    Width = 1124
+    Height = 519
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitWidth = 1124
-    ExplicitHeight = 519
     object pcPrincipal: TcxPageControl
       Left = 0
       Top = 0
@@ -101,9 +97,8 @@ inherited frmOpenApp2: TfrmOpenApp2
         Properties.ScrollBars = ssVertical
         TabOrder = 0
         Visible = False
-        ExplicitWidth = 1122
         Height = 69
-        Width = 1126
+        Width = 1122
       end
     end
   end

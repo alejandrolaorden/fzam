@@ -78,7 +78,7 @@ type
 
     constructor Build(inPais, inDC: string); overload;
     constructor Build(inIBAN: string); overload;
-    constructor BuildEmpty(inPais: string); overload;
+//    constructor BuildEmpty(inPais: string);
 
     function GetDigitoControl(inCCC: string): string;
     function IsValid(inCCC: String; Errores: TStringList=nil): Boolean;
@@ -251,11 +251,11 @@ begin
   Self.DC   := Copy(inIBAN, 3, 4);
 end;
 
-constructor TrBancoIBANInfo.BuildEmpty(inPais: string);
-begin
-  Self.Pais := inPais;
-  Self.DC   := '00';
-end;
+//constructor TrBancoIBANInfo.BuildEmpty(inPais: string);
+//begin
+//  Self.Pais := inPais;
+//  Self.DC   := '00';
+//end;
 
 function TrBancoIBANInfo.GetStrAValidar(inCCC: string): string;
 begin

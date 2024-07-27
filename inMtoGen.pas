@@ -79,7 +79,7 @@ type
     btnBusq: TcxButton;
     saveDialog: TdxSaveFileDialog;
     procedure FormCreate(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+
     //procedure btnSalirClick(Sender: TObject);
     procedure btnGrabarClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
@@ -100,11 +100,12 @@ type
     procedure sbGrabarGridClick(Sender: TObject);
     procedure btnBusqClick(Sender: TObject);
 //    procedure edtBusqGlobalPropertiesValidate(Sender: TObject;
-//      var DisplayValue: Variant; var ErrorText: TCaption; var Error: Boolean);
+//     var DisplayValue: Variant; var ErrorText: TCaption; var Error: Boolean);
     //procedure FormShortCut(var Msg: TWMKey; var Handled: Boolean);
-//    procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
+//  procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
   private
     procedure CargarPerfilesComunes(sUser:string = 'Todos');
+
   public
     tdmDataModule:TdmBase;
     sDataModuleName:string;
@@ -120,6 +121,8 @@ type
     procedure AbrirPerfiles(bTabVisible:Boolean);
     procedure CargarPerfilesParticulares; virtual;
 //    constructor CreateWithDataModule(AOwner: TComponent; ADataModule: TdmBase);
+  public
+    destructor Destroy; override;
   end;
 var
   frmMtoGen: TfrmMtoGen;
@@ -432,6 +435,17 @@ begin
     pcPantalla.ActivePage := tsFicha;
 end;
 
+destructor TfrmMtoGen.Destroy;
+begin
+  if (oPerfilDic <> nil) then
+    FreeAndNil(oPerfilDic);
+  if (tdmDataModule <> nil) then
+    FreeAndNil(tdmDataModule);
+  inliblog.Log.LogInfo('Ventana de mantenimiento: ' +
+                                                     Self.Caption + ' Cerrada');
+  inherited;
+end;
+
 procedure TfrmMtoGen.dsTablaGStateChange(Sender: TObject);
 begin
   inherited;
@@ -465,22 +479,13 @@ end;
 ////                 sConsultaP);
 //end;
 
-procedure TfrmMtoGen.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-  inherited;
-  sConsultaO := '';
-  sConsultaP := '';
-  if (oPerfilDic <> nil) then
-    FreeAndNil(oPerfilDic);
-  if (tdmDataModule <> nil) then
-    FreeAndNil(tdmDataModule);
-end;
-
 procedure TfrmMtoGen.FormCreate(Sender: TObject);
 var
   sModoBusq:String;
 begin
   inherited;
+  inliblog.Log.LogInfo('Ventana de mantenimiento: ' +
+                                                     Self.Caption + ' Abierta');
   //Application.ProcessMessages;
   tsFichCab := nil;
   tsFichBut := nil;
@@ -666,4 +671,10 @@ end;
 //    if i<>-1 then
 //       TcxPageControlPropertiesAccess((pc).Properties).DoCloseTab(i);
 //end;
+initialization
+
+finalization
+  if oPerfilDic <> nil then
+    Sleep(0);
+
 end.

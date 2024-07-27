@@ -66,7 +66,7 @@ class function TIBANUtils.GetIBAN(inSiglaPais, inCCC: string): string;
 var
   IBAN: TrBancoIBANInfo;
 begin
-  IBAN.BuildEmpty(inSiglaPais);
+  IBAN.Build(inSiglaPais, '00');
   IBAN.DC := IBAN.GetDigitoControl(inCCC);
   Result := IBAN.ToIBAN;
 end;
@@ -78,7 +78,6 @@ var
   sBanco, sCta, sDC, sPref :String;
   iVal, iDC :Integer;
 begin
-  Result := False;
   //Errores := TStringList.Create;
   isValid := False;
   isNumeric := False;

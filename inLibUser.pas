@@ -39,24 +39,26 @@ type
     TDictValue>;
   TProfileDicc = TDictionary<string, TDictValue>;
 function GetPerfilValue(var oPerfilDic: TProfileDicc; sSubKey: string): string;
-function GetPerfilValueText(var oPerfilDic: TProfileDicc;
-  sSubKey: string): WideString;
+function GetPerfilValueText(var oPerfilDic: TProfileDicc; sSubKey: string):
+                                                                     WideString;
 procedure FilterProfileUserGroup(var oPerfilUserDic: TProfileUserDicc;
-  var oPerfilDic: TProfileDicc);
+                                 var oPerfilDic: TProfileDicc);
 procedure GetFormUserProfile(var oPerfilDic: TProfileDicc; sFormName: string);
-function GetPerfilSubKeyValueDef(var oPerfilDic: TProfileDicc;
-  sSubKey: string;
-  sSubSubKey: string;
-  sValueDef: string): string;
-function GetPerfilValueTextDef(var oPerfilDic: TProfileDicc;
-  sSubKey: string;
-  sValueDef: WideString): WideString;
-function GetPerfilValueDef(var oPerfilDic: TProfileDicc;
-  sSubKey: string;
-  sValueDef: string): string;
-procedure GetDictionaryKeySubKey(var oPerfilDic: TProfileDicc;
-  var oPerfilKeySub: TList<TComponent_Prop_Value>;
-  sFieldName, sColumnName, sGridViewName: string);
+function GetPerfilSubKeyValueDef( var oPerfilDic: TProfileDicc;
+                                  sSubKey: string;
+                                  sSubSubKey: string;
+                                  sValueDef: string): string;
+function GetPerfilValueTextDef( var oPerfilDic: TProfileDicc;
+                                sSubKey: string;
+                                sValueDef: WideString): WideString;
+function GetPerfilValueDef( var oPerfilDic: TProfileDicc;
+                            sSubKey: string;
+                            sValueDef: string): string;
+procedure GetDictionaryKeySubKey( var oPerfilDic: TProfileDicc;
+                                var oPerfilKeySub: TList<TComponent_Prop_Value>;
+                                sFieldName,
+                                sColumnName,
+                                sGridViewName: string);
 //  procedure AbrirPerfiles(bTabVisible:Boolean; unqryPerfiles:TUniQuery; Sender:TComponent);
 
 implementation
@@ -80,8 +82,8 @@ begin
   oPerfilDic := TProfileDicc.Create;
   oPerfilUserDicCopy := TProfileUserDicc.Create
     (
-    oPerfilUserDic,
-    TEqualityComparer<TDictUserKey>.Construct
+      oPerfilUserDic,
+      TEqualityComparer<TDictUserKey>.Construct
     (
     function(const Left, Right: TDictUserKey): Boolean
     begin
@@ -139,24 +141,23 @@ var
 begin
   odmPerfiles.Assign_Profile_Dict(sFormName, oPerfilUserDic);
   FilterProfileUserGroup(oPerfilUserDic, oPerfilDic);
-  oPerfilUserDic.Free;
+  FreeAndNil(oPerfilUserDic);
 end;
 
 function GetPerfilValue(var oPerfilDic: TPRofileDicc;
   sSubKey: string): string;
 var
-  oDictValue        : TDictValue;
+  oDictValue: TDictValue;
 begin
-  oPerfilDic.TryGetValue(sSubKey,
-    oDictValue);
-  Result := oDictValue.sValue;
+  oPerfilDic.TryGetValue(sSubKey, oDictValue);
+  Result:= oDictValue.sValue;
 end;
 
 procedure GetDictionaryKeySubKey(var oPerfilDic: TProfileDicc;
-  var oPerfilKeySub: TList<TComponent_Prop_Value>;
-  sFieldName,
-  sColumnName,
-  sGridViewName: string);
+                                var oPerfilKeySub: TList<TComponent_Prop_Value>;
+                                sFieldName,
+                                sColumnName,
+                                sGridViewName: string);
 var
   oDictValue        : TDictValue;
   oDictKey          : string;

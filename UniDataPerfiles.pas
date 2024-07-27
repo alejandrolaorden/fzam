@@ -101,18 +101,20 @@ begin
     First;
     while not Eof do
     begin
-      objFieldsProfile.pUSUARIO_GRUPO_PERFILES	    :=
-                                    FindField('USUARIO_GRUPO_PERFILES').AsString;
-      objFieldsProfile.pKEY_PERFILES                :=
-                                    FindField('KEY_PERFILES').AsString;
-      objFieldsProfile.pSUBKEY_PERFILES             :=
-                                    FindField('SUBKEY_PERFILES').AsString;
-      objFieldsProfile.pVALUE_PERFILES              :=
-                                    FindField('VALUE_PERFILES').AsString;
+      objFieldsProfile.pUSUARIO_GRUPO_PERFILES:=
+                                   FindField('USUARIO_GRUPO_PERFILES').AsString;
+      objFieldsProfile.pKEY_PERFILES:=
+                                             FindField('KEY_PERFILES').AsString;
+      objFieldsProfile.pSUBKEY_PERFILES:=
+                                          FindField('SUBKEY_PERFILES').AsString;
+      objFieldsProfile.pVALUE_PERFILES:=
+                                           FindField('VALUE_PERFILES').AsString;
       objFieldsProfile.pVALUE_TEXT_PERFILES         :=
-                                    FindField('VALUE_TEXT_PERFILES').AsWideString;
-      //objFieldsProfile.pTYPE_BLOB_PERFILES        := FindField('TYPE_BLOB_PERFILES').AsVariant;
-      //objFieldsProfile.pVALUE_BLOB_PERFILES       := FindField('VALUE_BLOB_PERFILES').AsString;
+                                  FindField('VALUE_TEXT_PERFILES').AsWideString;
+      //objFieldsProfile.pTYPE_BLOB_PERFILES
+      //:= FindField('TYPE_BLOB_PERFILES').AsVariant;
+      //objFieldsProfile.pVALUE_BLOB_PERFILES
+      //:= FindField('VALUE_BLOB_PERFILES').AsString;
       AddRecordToDict(objFieldsProfile, oDict);
       Next;
     end;
