@@ -172,7 +172,7 @@ begin
       if (RecordCount > 0) then
         form.ShowModal
       else
-        form.sElegido := 'O';
+        form.sFicha := 'O';
       sElegido := form.sElegido;
       if form.sFicha = 'S' then
       begin
@@ -189,7 +189,7 @@ begin
           memStream.Free;
         end;
       end
-      else if (form.sElegido = 'O') then
+      else if (form.sFicha = 'O') then
       begin
         frxrprt1.AssignAll(frxReportOrigen);
       end;

@@ -229,6 +229,7 @@ end;
 
 destructor TLinFac.Destroy;
 begin
+  Self.CalcularLinea;
   Self.CopyToDataSetLin;
   inherited;
 end;
@@ -314,7 +315,6 @@ end;
 procedure TLinFac.SetPorIva(const Value: Currency);
 begin
   _dPorIVa := Value;
-  Self.CalcularLinea;
 end;
 
 procedure TLinFac.SetPrecioSal(const Value: Currency);
@@ -339,13 +339,11 @@ end;
 procedure TLinFac.SetPreCiva(const Value: Currency);
 begin
   _dPreCiva := Value;
-  CalcularLinea;
 end;
 
 procedure TLinFac.SetPreSiva(const Value: Currency);
 begin
   _dPreSiva := Value;
-  CalcularLinea;
 end;
 
 procedure TLinFac.SetTipoIva(const Value: String);

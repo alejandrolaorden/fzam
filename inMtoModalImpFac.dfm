@@ -3,16 +3,16 @@ inherited frmPrintFac: TfrmPrintFac
   ClientHeight = 276
   ClientWidth = 436
   Position = poMainFormCenter
-  ExplicitWidth = 452
-  ExplicitHeight = 315
+  ExplicitWidth = 448
+  ExplicitHeight = 314
   TextHeight = 19
   inherited pnl1: TPanel
     Left = 282
     Width = 154
     Height = 276
-    ExplicitLeft = 282
+    ExplicitLeft = 278
     ExplicitWidth = 154
-    ExplicitHeight = 276
+    ExplicitHeight = 275
     inherited btnPDF: TcxButton
       Left = 11
       ExplicitLeft = 11
@@ -26,9 +26,9 @@ inherited frmPrintFac: TfrmPrintFac
       ExplicitLeft = 11
     end
     inherited btnSalir: TcxButton
-      Top = 251
+      Top = 250
       Width = 152
-      ExplicitTop = 250
+      ExplicitTop = 249
       ExplicitWidth = 152
     end
     inherited btnEditar: TcxButton
@@ -553,12 +553,12 @@ inherited frmPrintFac: TfrmPrintFac
       'begin'
       '  if <Facturas."TOTAL_RETENCION_FACTURA"> <> 0 then'
       '  begin'
-      '    RetencionTotal.Visible := True;'
+      '    txtRetencionTotal.Visible := True;'
       '    Retencion.Visible:= True;'
       '  end'
       '  else'
       '  begin'
-      '    RetencionTotal.Visible := False;'
+      '    txtRetencionTotal.Visible := False;'
       '    Retencion.Visible := False;'
       '  end;'
       'end;'
@@ -771,7 +771,7 @@ inherited frmPrintFac: TfrmPrintFac
       
         '    mTotalFacturaCtd.Visible := False;                          ' +
         '                    '
-      '    RetencionTotal.Font.Color := clWhite;'
+      '    txtRetencionTotal.Font.Color := clWhite;'
       '    Retencion.Font.Color := clWhite;'
       '    RetencionPorc.Font.Color := clWhite;'
       '    CajaIVA.Visible := False;'
@@ -821,7 +821,7 @@ inherited frmPrintFac: TfrmPrintFac
         '    mTotalFacturaCtd.Visible := True;                           ' +
         '                 '
       '    CajaIVA.Visible := True;'
-      '    RetencionTotal.Font.Color := clBlack;'
+      '    txtRetencionTotal.Font.Color := clBlack;'
       '    Retencion.Font.Color := clBlack;'
       '    RetencionPorc.Font.Color := clBlack;'
       '    FormaPago.Visible := True;'
@@ -2437,7 +2437,7 @@ inherited frmPrintFac: TfrmPrintFac
             'Retenci'#243'n IRPF [Facturas."PORCEN_RETENCION_FACTURA"]%')
           ParentFont = False
         end
-        object RetencionTotal: TfrxMemoView
+        object txtRetencionTotal: TfrxMemoView
           IndexTag = 1
           AllowVectorExport = True
           Left = 641.079174650000000000

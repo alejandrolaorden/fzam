@@ -122,7 +122,7 @@ begin
   ucConexion.PoolingOptions.MinPoolSize := 1;
   ucConexion.PoolingOptions.MaxPoolSize := 50;
   ucConexion.PoolingOptions.ConnectionLifeTime := 3 * 60; // 3 minutos
-//  Application.OnException := AppException;
+  Application.OnException := AppException;
   UniSQLMonitor1.Active := False;
   Self.Width := 338;
   Self.ClientHeight := 253;
@@ -795,9 +795,9 @@ begin
   begin
     chkRememberPassword.Checked := True;
     edtPass.Text := DecriptAES(leCadINIDir('UserInfo',
-                                             'PasswordEn',
-                                             'q7heHfD7ENowuvRQhW56Og==',
-                                             GetUserFolder));
+                                           'PasswordEn',
+                                           'q7heHfD7ENowuvRQhW56Og==',
+                                           GetUserFolder));
   end;
   inliblog.Log.LogInfo('Leyendo archivo ini de usuario');
 end;

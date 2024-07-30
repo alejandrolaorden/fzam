@@ -114,10 +114,6 @@ inherited frmMtoGen: TfrmMtoGen
       object tsFicha: TcxTabSheet
         Caption = '&Ficha'
         ImageIndex = 1
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
       end
       object tsPerfil: TcxTabSheet
         Caption = 'Perfil'
@@ -125,12 +121,11 @@ inherited frmMtoGen: TfrmMtoGen
         object pnlPerfilTop: TPanel
           Left = 0
           Top = 0
-          Width = 943
+          Width = 942
           Height = 57
           Align = alTop
           BevelOuter = bvNone
           TabOrder = 0
-          ExplicitWidth = 942
           object edtPerfilBusq: TcxTextEdit
             Left = 294
             Top = 14
@@ -174,8 +169,8 @@ inherited frmMtoGen: TfrmMtoGen
         object pnlPerfilDetail: TPanel
           Left = 0
           Top = 57
-          Width = 943
-          Height = 427
+          Width = 942
+          Height = 423
           Align = alClient
           BevelOuter = bvNone
           Caption = 'pnlPerfilDetail'
@@ -183,8 +178,8 @@ inherited frmMtoGen: TfrmMtoGen
           object cxgrdPerfil: TcxGrid
             Left = 0
             Top = 0
-            Width = 943
-            Height = 427
+            Width = 942
+            Height = 423
             Margins.Left = 4
             Margins.Top = 4
             Margins.Right = 4

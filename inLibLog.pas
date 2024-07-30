@@ -96,8 +96,9 @@ begin
   FMutexHandle := CreateMutex(nil, False, PChar(MUTEX_NAME));
   if FMutexHandle = 0 then
     raise Exception.Create('Failed to create mutex');
-
-  FLogFlags := [ltInfo, ltWarning, ltError]; // SQL logging desactivado por defecto
+  // SQL logging desactivado por defecto
+  FLogFlags := [ltInfo, ltWarning, ltError];
+  IsNewFile := not FileExists(FLogFileName);
   if IsNewFile then
     WriteInitialInfo;
   WriteToLog('Logging session started.', ltInfo);

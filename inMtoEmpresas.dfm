@@ -27,8 +27,6 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
       ClientRectBottom = 669
       ClientRectRight = 939
       inherited tsLista: TcxTabSheet
-        ExplicitLeft = 3
-        ExplicitTop = 32
         ExplicitWidth = 936
         ExplicitHeight = 637
         inherited cxGrdPrincipal: TcxGrid
@@ -162,10 +160,10 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
       end
       inherited tsFicha: TcxTabSheet
         OnEnter = tsFichaEnter
-        ExplicitLeft = 3
-        ExplicitTop = 32
-        ExplicitWidth = 936
-        ExplicitHeight = 637
+        ExplicitLeft = 4
+        ExplicitTop = 30
+        ExplicitWidth = 937
+        ExplicitHeight = 641
         object pnlFichaDetail: TPanel
           Left = 0
           Top = 182
@@ -174,6 +172,8 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 2
+          ExplicitTop = 186
+          ExplicitWidth = 937
           object pcPestana: TcxPageControl
             Left = 0
             Top = 0
@@ -181,8 +181,9 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
             Height = 455
             Align = alClient
             TabOrder = 0
-            Properties.ActivePage = tsMasDatos
+            Properties.ActivePage = tsHistoriaFacturacion
             Properties.CustomButtons.Buttons = <>
+            ExplicitWidth = 937
             ClientRectBottom = 449
             ClientRectLeft = 3
             ClientRectRight = 930
@@ -190,6 +191,10 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
             object tsMasDatos: TcxTabSheet
               Caption = '&1_M'#225's Datos'
               ImageIndex = 0
+              ExplicitLeft = 4
+              ExplicitTop = 30
+              ExplicitWidth = 929
+              ExplicitHeight = 421
               DesignSize = (
                 927
                 417)
@@ -206,6 +211,8 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
                 PanelStyle.WordWrap = True
                 TabOrder = 0
                 Transparent = True
+                ExplicitWidth = 701
+                ExplicitHeight = 362
                 Height = 358
                 Width = 699
                 object lblMovil: TcxLabel
@@ -1277,6 +1284,10 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
             object tsOtros: TcxTabSheet
               Caption = '&5_Otros'
               ImageIndex = 3
+              ExplicitLeft = 4
+              ExplicitTop = 30
+              ExplicitWidth = 929
+              ExplicitHeight = 421
               object pnlUserInstantBottom: TPanel
                 Left = 0
                 Top = 338
@@ -1448,6 +1459,7 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
           Align = alTop
           BevelOuter = bvNone
           TabOrder = 0
+          ExplicitWidth = 937
           DesignSize = (
             936
             178)
@@ -1459,8 +1471,9 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
             Anchors = [akLeft, akTop, akRight, akBottom]
             TabOrder = 0
             Transparent = True
+            ExplicitWidth = 897
             Height = 166
-            Width = 897
+            Width = 896
             object lblCodigo: TcxLabel
               Left = 24
               Top = 17
@@ -1560,18 +1573,20 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
         end
       end
       inherited tsPerfil: TcxTabSheet
-        ExplicitWidth = 936
-        ExplicitHeight = 637
+        ExplicitLeft = 4
+        ExplicitTop = 30
+        ExplicitWidth = 935
+        ExplicitHeight = 639
         inherited pnlPerfilTop: TPanel
-          Width = 936
-          ExplicitWidth = 936
+          Width = 937
+          ExplicitWidth = 935
           inherited edtPerfilBusq: TcxTextEdit
             ExplicitHeight = 27
           end
         end
         inherited pnlPerfilDetail: TPanel
-          Width = 936
-          Height = 580
+          Width = 937
+          Height = 584
           ExplicitWidth = 936
           ExplicitHeight = 580
           inherited cxgrdPerfil: TcxGrid
@@ -1615,7 +1630,6 @@ inherited frmMtoEmpresas: TfrmMtoEmpresas
         ExplicitWidth = 945
         inherited edtBusqGlobal: TcxTextEdit
           TabOrder = 3
-          ExplicitHeight = 27
         end
         inherited rbBBDD: TcxRadioButton
           TabOrder = 0

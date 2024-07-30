@@ -184,8 +184,8 @@ implementation
               IntToStr(oColumn.Width)));
           // StartsText es una función inline que aporta mucho mejor rendimiento
           IsCurrencyField := (StartsText('EUR', sColumnName) or
-              StartsText('TOTAL', sColumnName) or
-              StartsText('PRECIO', sColumnName));
+                              StartsText('TOTAL', sColumnName) or
+                              StartsText('PRECIO', sColumnName));
           if IsCurrencyField
           then
           begin
@@ -273,11 +273,10 @@ implementation
         sColumnName := oColumn.DataBinding.FieldName;
         sName := cxgrdtvVista.Name;
         sSubKey := sName + '_' + sColumnName;
-        oColumn.Index :=
-          StrToInt(GetPerfilSubKeyValueDef(oPerfilDic,
-            sSubKey,
-            'Index',
-            IntToStr(oColumn.Index)));
+        oColumn.Index := StrToInt(GetPerfilSubKeyValueDef(oPerfilDic,
+                                                          sSubKey,
+                                                          'Index',
+                                                      IntToStr(oColumn.Index)));
       end;
     end;
 

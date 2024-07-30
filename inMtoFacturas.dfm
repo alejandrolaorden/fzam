@@ -773,7 +773,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
             Margins.Bottom = 4
             Align = alClient
             TabOrder = 0
-            Properties.ActivePage = tsTotales
+            Properties.ActivePage = tsLineasFactura
             Properties.CustomButtons.Buttons = <>
             ClientRectBottom = 419
             ClientRectLeft = 3
@@ -1244,6 +1244,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                 DataBinding.DataField = 'TOTAL_LIQUIDO_FACTURA'
                 DataBinding.DataSource = dsTablaG
                 Properties.ReadOnly = True
+                Properties.UseThousandSeparator = True
                 TabOrder = 13
                 Width = 133
               end
@@ -1303,7 +1304,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                 Margins.Bottom = 4
                 DataBinding.DataField = 'TOTAL_BASES_FACTURA'
                 DataBinding.DataSource = dsTablaG
-                Properties.DecimalPlaces = 3
+                Properties.DecimalPlaces = 2
                 Properties.ReadOnly = True
                 TabOrder = 0
                 Width = 133
@@ -1327,7 +1328,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
                 Margins.Bottom = 4
                 DataBinding.DataField = 'TOTAL_IMPUESTOS_FACTURA'
                 DataBinding.DataSource = dsTablaG
-                Properties.DecimalPlaces = 3
+                Properties.DecimalPlaces = 2
                 Properties.DisplayFormat = ',0.00 '#8364';-,0.00 '#8364
                 Properties.ReadOnly = True
                 TabOrder = 1
@@ -2070,7 +2071,7 @@ inherited frmMtoFacturas: TfrmMtoFacturas
               Margins.Bottom = 4
               Align = alClient
               TabOrder = 0
-              Properties.ActivePage = tsDatosCliente
+              Properties.ActivePage = tsCabecera
               Properties.CustomButtons.Buttons = <>
               ClientRectBottom = 331
               ClientRectLeft = 3
@@ -2850,8 +2851,6 @@ inherited frmMtoFacturas: TfrmMtoFacturas
         end
       end
       inherited tsPerfil: TcxTabSheet
-        ExplicitLeft = 3
-        ExplicitTop = 32
         ExplicitWidth = 1078
         ExplicitHeight = 766
         inherited pnlPerfilTop: TPanel

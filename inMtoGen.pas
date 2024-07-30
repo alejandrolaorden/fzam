@@ -334,8 +334,7 @@ begin
     CargarCaptions(Self, Self.Owner, sPermisos);
     if Not(GetPerfilValueDef(oPerfilDic, 'oApplyWidth', 'False') = 'True') then
     begin
-        odmPerfiles.GrabarPerfil(sPermisos, Self.Name, 'oApplyWidth',
-                                                                 'True'  );
+        odmPerfiles.GrabarPerfil(sPermisos, Self.Name, 'oApplyWidth', 'True');
     end;
     for i:= 0 to Self.Componentcount - 1 do
     begin
@@ -345,16 +344,16 @@ begin
         // Hay que resetear aquí los registros que contengan el grid en perfiles
           tdmDataModule.ResetGridsProfile(cxGrid.Name, Self.Name, sPermisos);
           IsSavingGrid := (GetPerfilValueDef(oPerfilDic,
-                                   cxGrid.Name + '__' + 'oApplyWidth',
-                                   'False') = 'True');
+                                             cxGrid.Name + '__' + 'oApplyWidth',
+                                             'False') = 'True');
           if IsSavingGrid then
             sSavingGrid := 'True'
           else
             sSavingGrid := 'False';
-          odmPerfiles.GrabarPerfil( sPermisos,
-                                                                      Self.Name,
-                                              cxGrid.Name + '__' +'oApplyWidth',
-                                                                   sSavingGrid);
+          odmPerfiles.GrabarPerfil(sPermisos,
+                                   Self.Name,
+                                   cxGrid.Name + '__' +'oApplyWidth',
+                                   sSavingGrid);
           GetSettingsColumnProfile(cxGrid, Self.Name, Self.Owner, sPermisos);
         end;
     end;
@@ -435,6 +434,8 @@ begin
     pcPantalla.ActivePage := tsFicha;
 end;
 
+//Desgraciadamente la pestaña al cerrar no llama nunca a Close, hay que poner
+//el cierre de variables en Destroy
 destructor TfrmMtoGen.Destroy;
 begin
   if (oPerfilDic <> nil) then
@@ -466,7 +467,7 @@ begin
       if (dsTablaG.DataSet.State = dsInactive) then
     begin
       lblEditMode.Caption := 'Inactivo';
-      Self.Close;
+      //Self.Close;
     end;
   end;
 end;
