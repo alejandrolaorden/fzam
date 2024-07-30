@@ -99,6 +99,9 @@ type
     procedure sbResetGridClick(Sender: TObject);
     procedure sbGrabarGridClick(Sender: TObject);
     procedure btnBusqClick(Sender: TObject);
+//    procedure pcPantallaChange(Sender: TObject);
+    procedure pcPantallaEnter(Sender: TObject);
+    procedure tsFichaShow(Sender: TObject);
 //    procedure edtBusqGlobalPropertiesValidate(Sender: TObject;
 //     var DisplayValue: Variant; var ErrorText: TCaption; var Error: Boolean);
     //procedure FormShortCut(var Msg: TWMKey; var Handled: Boolean);
@@ -394,6 +397,93 @@ begin
   end;
 end;
 
+procedure TfrmMtoGen.tsFichaShow(Sender: TObject);
+var
+  FocusControl: TWinControl;
+//  ControlList: TStringList;
+
+//  procedure AddControlInfo(AControl: TControl; ALevel: Integer);
+//  var
+//    I: Integer;
+//    Indent: string;
+//  begin
+//    Indent := StringOfChar(' ', ALevel * 2);
+//    if AControl is TWinControl then
+//    begin
+////      ControlList.Add(Format('%s%s (TabOrder: %d, CanFocus: %s)',
+////        [Indent, AControl.Name, TWinControl(AControl).TabOrder,
+////         BoolToStr(TWinControl(AControl).CanFocus, True)]));
+//
+//      for I := 0 to TWinControl(AControl).ControlCount - 1 do
+//        AddControlInfo(TWinControl(AControl).Controls[I], ALevel + 1);
+//    end;
+//    //else
+//    //  ControlList.Add(Format('%s%s (Not a TWinControl)',
+//    //                         [Indent, AControl.Name]));
+//  end;
+
+  function FindNextFocusableControl(AParent: TWinControl): TWinControl;
+  var
+    I: Integer;
+    Control: TControl;
+    MinTabOrder: Integer;
+  begin
+    Result := nil;
+    MinTabOrder := High(Integer);
+
+    for I := 0 to AParent.ControlCount - 1 do
+    begin
+      Control := AParent.Controls[I];
+      if (Control is TWinControl) and
+         not (Control is TPanel) and          // Excluir TPanels
+         not (Control is TcxPageControl) and  // Excluir TcxPageControl
+         not (Control is TcxTabSheet) and     // Excluir TcxTabSheet
+         TWinControl(Control).CanFocus and
+         (TWinControl(Control).TabOrder > AParent.TabOrder) and
+         (TWinControl(Control).TabOrder < MinTabOrder) then
+      begin
+        Result := TWinControl(Control);
+        MinTabOrder := Result.TabOrder;
+      end;
+
+      if (Control is TWinControl) and
+         (TWinControl(Control).ControlCount > 0) then
+      begin
+        Control := FindNextFocusableControl(TWinControl(Control));
+        if Assigned(Control) and
+           (TWinControl(Control).TabOrder > AParent.TabOrder) and
+           (TWinControl(Control).TabOrder < MinTabOrder) then
+        begin
+          Result := TWinControl(Control);
+          MinTabOrder := Result.TabOrder;
+        end;
+      end;
+    end;
+  end;
+
+begin
+  //ControlList := TStringList.Create;
+//  try
+    //AddControlInfo(tsFicha, 0);
+    //ShowMessage('Controles en tsFicha:' + sLineBreak + ControlList.Text);
+
+    FocusControl := FindNextFocusableControl(tsFicha);
+    if Assigned(FocusControl) then
+    begin
+      if FocusControl.CanFocus then
+      begin
+        FocusControl.SetFocus;
+       ShowMessage('Foco establecido en: ' + FocusControl.Name +
+                   ' (TabOrder: ' + IntToStr(FocusControl.TabOrder) + ')');
+      end;
+    end
+//    else
+//    ShowMessage('No se encontró un control focusable después de la pestaña.');
+//  finally
+//    ControlList.Free;
+//  end;
+end;
+
 procedure TfrmMtoGen.CargarPerfilesComunes(sUser:string = 'Todos');
 begin
   with odmPerfiles do
@@ -555,20 +645,25 @@ begin
 //    Self.WindowState := wsMaximized;
 //  if SameText(sUso, 'Busq') then
 //    Self.WindowState := wsNormal;
-  edtBusqGlobal.SetFocus;
+  //edtBusqGlobal.SetFocus;
   ResetForm;
+end;
+
+procedure TfrmMtoGen.pcPantallaEnter(Sender: TObject);
+begin
+  inherited;
+  //
 end;
 
 procedure TfrmMtoGen.pcPantallaPageChanging(Sender: TObject;
   NewPage: TcxTabSheet; var AllowChange: Boolean);
+
 begin
   inherited;
   if ( (not NewPage.Visible) and
-       (not NewPage.Enabled) ) then
-  begin
-    if (NewPage.Name = 'tsFicha') then
+       (not NewPage.Enabled) and
+       (NewPage.Name = 'tsFicha')) then
       AllowChange := False;
-  end;
 end;
 
 procedure TfrmMtoGen.ProcesarPerfiles;

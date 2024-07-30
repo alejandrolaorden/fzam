@@ -1,260 +1,257 @@
-inherited frmLogon: TfrmLogon
-  Left = 372
-  Top = 317
+object frmLogon: TfrmLogon
+  Left = 0
+  Top = 0
   BorderIcons = []
   BorderStyle = bsSingle
   Caption = 'Login FactuZam'
-  ClientHeight = 492
-  ClientWidth = 779
-  Font.Charset = ANSI_CHARSET
+  ClientHeight = 360
+  ClientWidth = 359
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -16
+  Font.Name = 'Segoe UI'
+  Font.Style = []
   KeyPreview = True
   Position = poScreenCenter
   OnClose = FormClose
   OnKeyDown = FormKeyDown
-  ExplicitWidth = 795
-  ExplicitHeight = 531
-  TextHeight = 19
-  object lblUsuario: TLabel [0]
-    Left = 47
-    Top = 31
-    Width = 66
-    Height = 19
-    Caption = 'Usuario'
-  end
-  object lblContrasena: TLabel [1]
-    Left = 15
-    Top = 113
-    Width = 94
-    Height = 19
-    Caption = 'Contrase'#241'a'
-  end
-  object lblHostBBDD: TLabel [2]
-    Left = 392
-    Top = 19
-    Width = 90
-    Height = 19
-    Caption = 'Host BBDD'
-  end
-  object Bevel1: TBevel [3]
-    Left = 333
-    Top = 42
-    Width = 10
-    Height = 153
-  end
-  object lblNomBBDD: TLabel [4]
-    Left = 391
-    Top = 83
-    Width = 91
-    Height = 19
-    Caption = 'Nom BBDD'
-  end
-  object lblUserBBDD: TLabel [5]
-    Left = 365
-    Top = 115
-    Width = 117
-    Height = 19
-    Caption = 'Usuario BBDD'
-  end
-  object lblPasswordBBDD: TLabel [6]
-    Left = 351
-    Top = 147
-    Width = 131
-    Height = 19
-    Caption = 'Password BBDD'
-  end
-  object lblPortHost: TLabel [7]
-    Left = 385
-    Top = 50
-    Width = 97
-    Height = 19
-    Caption = 'Puerto Host'
-  end
-  object btnAceptar: TcxButton [8]
-    Left = 105
-    Top = 178
-    Width = 89
-    Height = 29
-    Caption = '&Aceptar'
-    ParentShowHint = False
-    ShowHint = False
-    TabOrder = 3
-    OnClick = btnAceptarClick
-  end
-  object btnSalir: TcxButton [9]
-    Left = 8
-    Top = 178
-    Width = 91
-    Height = 29
-    Caption = '&Salir'
-    ModalResult = 3
-    TabOrder = 4
-    OnClick = btnSalirClick
-  end
-  object edtUser: TcxTextEdit [10]
-    Left = 119
-    Top = 23
-    TabOrder = 0
-    Width = 181
-  end
-  object edtPass: TcxTextEdit [11]
-    Left = 119
-    Top = 110
-    Properties.EchoMode = eemPassword
-    Properties.PasswordChar = '*'
-    TabOrder = 1
-    Width = 181
-  end
-  object edtGrupo: TcxTextEdit [12]
-    Left = 8
-    Top = 60
-    TabOrder = 2
-    Visible = False
-    Width = 41
-  end
-  object btnConf: TcxButton [13]
-    Left = 200
-    Top = 178
-    Width = 123
-    Height = 29
-    Caption = '&Conf BBDD ->'
-    TabOrder = 5
-    OnClick = btnConfClick
-  end
-  object edtHostName: TcxTextEdit [14]
-    Left = 494
-    Top = 16
-    TabOrder = 6
-    Width = 243
-  end
-  object edtNomBD: TcxTextEdit [15]
-    Left = 494
-    Top = 80
-    TabOrder = 7
-    Width = 150
-  end
-  object edtUserBD: TcxTextEdit [16]
-    Left = 494
-    Top = 112
-    TabOrder = 8
-    Width = 150
-  end
-  object edtPassBD: TcxTextEdit [17]
-    Left = 494
-    Top = 144
-    Properties.EchoMode = eemPassword
-    Properties.PasswordChar = '*'
-    TabOrder = 9
-    OnExit = edtPassBDExit
-    Width = 128
-  end
-  object edtPortBD: TcxTextEdit [18]
-    Left = 494
-    Top = 47
-    Properties.OnChange = edtPortBDPropertiesChange
-    TabOrder = 10
-    Width = 49
-  end
-  object btnTest: TcxButton [19]
-    Left = 349
-    Top = 178
-    Width = 428
-    Height = 30
-    Caption = 'Grabar ini y Probar Conexi'#243'n'
-    TabOrder = 11
-    OnClick = btnTestClick
-  end
-  object btnSubirScript: TcxButton [20]
-    Left = 349
-    Top = 216
-    Width = 117
-    Height = 30
-    Caption = 'Subir script'
-    TabOrder = 12
-    OnClick = btnSubirScriptClick
-  end
-  object btnCopiaSeguridad: TcxButton [21]
-    Left = 472
-    Top = 216
-    Width = 150
-    Height = 30
-    Caption = 'Copia seguridad'
-    TabOrder = 13
-    OnClick = btnCopiaSeguridadClick
-  end
-  object btnRecover: TcxButton [22]
-    Left = 628
-    Top = 216
-    Width = 149
-    Height = 30
-    Caption = 'Recuperar crypt'
-    TabOrder = 14
-    OnClick = btnRecoverClick
-  end
-  object chkRememberPassword: TcxCheckBox [23]
-    Left = 119
-    Top = 141
-    Caption = 'Recordar Password'
-    TabOrder = 15
-  end
-  object chkRememberUser: TcxCheckBox [24]
-    Left = 119
-    Top = 52
-    Caption = 'Recordar Usuario'
-    TabOrder = 16
-  end
-  object btChangePassRoot: TcxButton [25]
-    Left = 628
-    Top = 147
-    Width = 29
-    Height = 24
-    OptionsImage.Glyph.SourceDPI = 96
-    OptionsImage.Glyph.Data = {
-      89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
-      610000001974455874536F6674776172650041646F626520496D616765526561
-      647971C9653C00000027744558745469746C6500526566726573683B52657065
-      61743B426172733B526962626F6E3B52656C6F6164CD4DF6E90000009B494441
-      54785EAD93310AC0200C457B11E9219C0A9EA7B327C899DC1C7B8C8EEEBD44FA
-      87146CD280A5151E42481ED1E8C4CC9FF84F9052BA0820830A0EA14A2C7479F4
-      24584001EC502487006B41E88A37B082595825C66097DD0872571C11D3DD45D0
-      001B81B3B480F49146A7A08BADC0B9301A90BB0202F744BB5C4103510B24764D
-      227B1DEC03632C203C09E8C5433277402F9FF2BF9FE91327781B12D28E1D1785
-      0000000049454E44AE426082}
-    TabOrder = 17
-    OnClick = btChangePassRootClick
-  end
-  object chkAuto: TcxCheckBox [26]
-    Left = 8
-    Top = 283
-    Caption = 'Arranque sin login'
-    Style.TransparentBorder = False
-    TabOrder = 18
-  end
-  object pnlPPBottom: TPanel [27]
+  TextHeight = 21
+  object pnlMain: TdxPanel
     Left = 0
-    Top = 311
-    Width = 779
-    Height = 181
-    Align = alBottom
-    TabOrder = 19
-    ExplicitTop = 310
-    ExplicitWidth = 775
-    object cxMemo1: TcxMemo
-      Left = 1
-      Top = 1
-      TabStop = False
-      Align = alClient
-      ParentColor = True
-      Properties.ReadOnly = True
-      Properties.ScrollBars = ssVertical
+    Top = 0
+    Width = 359
+    Height = 360
+    Align = alClient
+    TabOrder = 0
+    ExplicitHeight = 325
+    object pnlLogin: TdxPanel
+      Left = 14
+      Top = 24
+      Width = 329
+      Height = 156
       TabOrder = 0
-      Visible = False
-      Height = 179
-      Width = 777
+      object lblUsuario: TcxLabel
+        Left = 7
+        Top = 0
+        AutoSize = False
+        Caption = 'Usuario'
+        Height = 21
+        Width = 312
+      end
+      object lblContrasena: TcxLabel
+        Left = 7
+        Top = 55
+        AutoSize = False
+        Caption = 'Contrase'#241'a'
+        Height = 21
+        Width = 335
+      end
+      object edtUser: TcxTextEdit
+        Left = 7
+        Top = 24
+        TabOrder = 0
+        Width = 312
+      end
+      object edtPass: TcxTextEdit
+        Left = 7
+        Top = 79
+        Properties.EchoMode = eemPassword
+        Properties.PasswordChar = '*'
+        TabOrder = 1
+        Width = 312
+      end
+      object chkRememberUser: TcxCheckBox
+        Left = 0
+        Top = 114
+        Caption = 'Recordar Usuario'
+        TabOrder = 2
+      end
+      object chkRememberPassword: TcxCheckBox
+        Left = 156
+        Top = 114
+        Caption = 'Recordar Contrase'#241'a'
+        TabOrder = 3
+      end
+    end
+    object pnlButtons: TdxPanel
+      Left = 14
+      Top = 258
+      Width = 329
+      Height = 58
+      TabOrder = 1
+      object btnAceptar: TcxButton
+        Left = 182
+        Top = 11
+        Width = 142
+        Height = 30
+        Caption = '&Aceptar (F12)'
+        TabOrder = 0
+        OnClick = btnAceptarClick
+      end
+      object btnSalir: TcxButton
+        Left = 3
+        Top = 11
+        Width = 141
+        Height = 30
+        Caption = '&Salir (Esc)'
+        TabOrder = 1
+        OnClick = btnSalirClick
+      end
+    end
+    object chkAuto: TcxCheckBox
+      Left = 15
+      Top = 186
+      Caption = 'Arranque sin login'
+      TabOrder = 2
+    end
+    object btnConf: TcxButton
+      Left = 136
+      Top = 218
+      Width = 207
+      Height = 31
+      Caption = 'Configurar &Base de Datos ->'
+      TabOrder = 3
+      OnClick = btnConfClick
+    end
+  end
+  object pnlBBDD: TdxPanel
+    Left = 360
+    Top = 0
+    Width = 360
+    Height = 360
+    TabOrder = 1
+    Visible = False
+    object lblBBDDConfig: TcxLabel
+      Left = 0
+      Top = 0
+      Align = alTop
+      AutoSize = False
+      Caption = 'Configuraci'#243'n BBDD'
+      Height = 24
+      Width = 358
+    end
+    object lblHostBBDD: TcxLabel
+      Left = 24
+      Top = 30
+      AutoSize = False
+      Caption = 'Host:'
+      Height = 21
+      Width = 312
+    end
+    object lblPortHost: TcxLabel
+      Left = 264
+      Top = 30
+      AutoSize = False
+      Caption = 'Puerto:'
+      Height = 21
+      Width = 72
+    end
+    object lblNomBBDD: TcxLabel
+      Left = 24
+      Top = 85
+      AutoSize = False
+      Caption = 'Nombre BD:'
+      Height = 21
+      Width = 312
+    end
+    object lblUserBBDD: TcxLabel
+      Left = 24
+      Top = 140
+      AutoSize = False
+      Caption = 'Usuario:'
+      Height = 21
+      Width = 312
+    end
+    object lblPasswordBBDD: TcxLabel
+      Left = 24
+      Top = 195
+      AutoSize = False
+      Caption = 'Contrase'#241'a:'
+      Height = 21
+      Width = 312
+    end
+    object edtHostName: TcxTextEdit
+      Left = 24
+      Top = 54
+      TabOrder = 0
+      Width = 234
+    end
+    object edtPortBD: TcxTextEdit
+      Left = 264
+      Top = 54
+      TabOrder = 1
+      Width = 72
+    end
+    object edtNomBD: TcxTextEdit
+      Left = 24
+      Top = 109
+      TabOrder = 2
+      Width = 312
+    end
+    object edtUserBD: TcxTextEdit
+      Left = 24
+      Top = 164
+      TabOrder = 3
+      Width = 312
+    end
+    object edtPassBD: TcxTextEdit
+      Left = 24
+      Top = 219
+      Properties.EchoMode = eemPassword
+      Properties.PasswordChar = '*'
+      TabOrder = 4
+      Width = 278
+    end
+    object btChangePassRoot: TcxButton
+      Left = 306
+      Top = 219
+      Width = 30
+      Height = 30
+      Caption = '...'
+      TabOrder = 5
+      OnClick = btChangePassRootClick
+    end
+    object btnTest: TcxButton
+      Left = 24
+      Top = 258
+      Width = 144
+      Height = 30
+      Caption = 'Probar Conexi'#243'n'
+      TabOrder = 6
+      OnClick = btnTestClick
+    end
+    object btnSubirScript: TcxButton
+      Left = 174
+      Top = 258
+      Width = 162
+      Height = 30
+      Caption = 'Subir script'
+      TabOrder = 7
+      OnClick = btnSubirScriptClick
+    end
+    object btnCopiaSeguridad: TcxButton
+      Left = 24
+      Top = 294
+      Width = 144
+      Height = 30
+      Caption = 'Copia seguridad'
+      TabOrder = 8
+      OnClick = btnCopiaSeguridadClick
+    end
+    object btnRecover: TcxButton
+      Left = 174
+      Top = 294
+      Width = 162
+      Height = 30
+      Caption = 'Restaurar Copia'
+      TabOrder = 9
+      OnClick = btnRecoverClick
     end
   end
   object MySQLUniProvider1: TMySQLUniProvider
-    Left = 752
-    Top = 72
+    Left = 40
+    Top = 312
   end
   object ucConexion: TUniConnection
     ProviderName = 'MySQL'
@@ -265,48 +262,34 @@ inherited frmLogon: TfrmLogon
     Username = 'root'
     Server = '127.0.0.1'
     LoginPrompt = False
-    OnError = ucConexionError
-    Left = 664
-    Top = 72
-    EncryptedPassword = 'CEFFB9FFC9FFA8FFC9FF96FFCEFF95FFCEFF'
+    Left = 72
+    Top = 312
   end
   object udDump: TUniDump
     Connection = ucConexion
-    SpecificOptions.Strings = (
-      'MySQL.BackupStoredProcs=True'
-      'MySQL.BackupTables=True'
-      'MySQL.BackupTriggers=True'
-      'MySQL.BackupViews=True'
-      'MySQL.HexBlob=True')
-    Options.QuoteNames = True
-    Left = 752
-    Top = 128
+    Left = 104
+    Top = 312
   end
   object tbUsers: TUniTable
     TableName = 'fza_usuarios'
     Connection = ucConexion
-    Left = 664
-    Top = 128
+    Left = 136
+    Top = 312
   end
   object UniSQLMonitor1: TUniSQLMonitor
-    Active = False
-    Options = [moDialog, moSQLMonitor, moDBMonitor, moCustom, moHandled]
-    DBMonitorOptions.Host = '0'
-    DBMonitorOptions.Port = 0
-    DBMonitorOptions.ReconnectTimeout = 0
-    DBMonitorOptions.SendTimeout = 0
-    TraceFlags = [tfQPrepare, tfQExecute, tfQFetch, tfError, tfStmt, tfConnect, tfTransact, tfBlob, tfService, tfMisc, tfParams, tfObjDestroy, tfPool]
-    OnSQL = UniSQLMonitor1SQL
-    Left = 696
-    Top = 31
+    Left = 168
+    Top = 312
   end
   object saveDialog: TdxSaveFileDialog
-    Options = [ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]
-    Left = 384
-    Top = 248
+    Left = 200
+    Top = 312
   end
   object openDialog: TdxOpenFileDialog
-    Left = 456
-    Top = 248
+    Left = 232
+    Top = 312
+  end
+  object JvEnterAsTab1: TJvEnterAsTab
+    Left = 274
+    Top = 313
   end
 end

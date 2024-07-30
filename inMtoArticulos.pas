@@ -263,7 +263,6 @@ begin
     else
       ShowMto(Self.Owner,
               'Facturas');
-
 end;
 
 procedure TfrmMtoArticulos.actFacturasExecute(Sender: TObject);
@@ -359,7 +358,7 @@ procedure TfrmMtoArticulos.btnExportarProveedorClick(Sender: TObject);
 begin
   inherited;
   ExportarExcel(cxgrdProveedores, 'Historico_Proveedores_Artículo_' +
-                      dsTablaG.Dataset.FieldByName('CODIGO_ARTICULO').AsString);
+                dsTablaG.Dataset.FieldByName('CODIGO_ARTICULO').AsString);
 end;
 
 procedure TfrmMtoArticulos.btnExportarTarifaClick(Sender: TObject);

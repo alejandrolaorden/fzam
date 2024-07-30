@@ -33,21 +33,22 @@ inherited frmMtoGen: TfrmMtoGen
       Height = 518
       Align = alClient
       TabOrder = 0
-      Properties.ActivePage = tsLista
+      Properties.ActivePage = tsFicha
       Properties.CustomButtons.Buttons = <>
+      OnEnter = pcPantallaEnter
       OnPageChanging = pcPantallaPageChanging
-      ClientRectBottom = 512
-      ClientRectLeft = 3
-      ClientRectRight = 945
-      ClientRectTop = 32
+      ClientRectBottom = 514
+      ClientRectLeft = 4
+      ClientRectRight = 947
+      ClientRectTop = 30
       object tsLista: TcxTabSheet
         Caption = '&Lista'
         ImageIndex = 0
         object cxGrdPrincipal: TcxGrid
           Left = 0
           Top = 0
-          Width = 942
-          Height = 480
+          Width = 943
+          Height = 484
           Margins.Left = 4
           Margins.Top = 4
           Margins.Right = 4
@@ -114,6 +115,7 @@ inherited frmMtoGen: TfrmMtoGen
       object tsFicha: TcxTabSheet
         Caption = '&Ficha'
         ImageIndex = 1
+        OnShow = tsFichaShow
       end
       object tsPerfil: TcxTabSheet
         Caption = 'Perfil'
@@ -121,7 +123,7 @@ inherited frmMtoGen: TfrmMtoGen
         object pnlPerfilTop: TPanel
           Left = 0
           Top = 0
-          Width = 942
+          Width = 943
           Height = 57
           Align = alTop
           BevelOuter = bvNone
@@ -169,8 +171,8 @@ inherited frmMtoGen: TfrmMtoGen
         object pnlPerfilDetail: TPanel
           Left = 0
           Top = 57
-          Width = 942
-          Height = 423
+          Width = 943
+          Height = 427
           Align = alClient
           BevelOuter = bvNone
           Caption = 'pnlPerfilDetail'
@@ -178,8 +180,8 @@ inherited frmMtoGen: TfrmMtoGen
           object cxgrdPerfil: TcxGrid
             Left = 0
             Top = 0
-            Width = 942
-            Height = 423
+            Width = 943
+            Height = 427
             Margins.Left = 4
             Margins.Top = 4
             Margins.Right = 4
@@ -480,7 +482,7 @@ inherited frmMtoGen: TfrmMtoGen
         object nvNavegador: TcxDBNavigator
           Left = 456
           Top = 6
-          Width = 352
+          Width = 350
           Height = 23
           Buttons.CustomButtons = <>
           Buttons.Filter.Visible = False

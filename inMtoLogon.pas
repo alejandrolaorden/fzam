@@ -20,48 +20,49 @@ uses
   Vcl.ExtCtrls, Data.DB, DBAccess, Uni, UniProvider, MySQLUniProvider, DADump,
   UniDump, MemDS, cxGraphics, cxLookAndFeels, Vcl.Menus, cxEdit, cxCheckBox,
   cxTextEdit, dxSkinsCore, inMtoFrmBase, cxClasses, cxLocalization, cxMemo,
-  DASQLMonitor, UniSQLMonitor, System.UITypes, dxShellDialogs, dxSkinBlue;
+  DASQLMonitor, UniSQLMonitor, System.UITypes, dxShellDialogs, dxSkinBlue,
+  dxCore, cxStyles, dxSkinsForm, dxSkinOffice2007Blue, cxGeometry,
+  dxFramedControl, cxLabel, dxPanel, JvComponentBase, JvEnterTab;
 
 type
   EInvalidUser = class(Exception);
   EPassWordCorrupt = class(Exception);
   TfrmLogon = class(TfrmBase)
-    lblUsuario: TLabel;
-    lblContrasena: TLabel;
+    lblUsuario: TcxLabel;
+    lblContrasena: TcxLabel;
     btnAceptar: TcxButton;
     btnSalir: TcxButton;
     edtUser: TcxTextEdit;
     edtPass: TcxTextEdit;
-    edtGrupo: TcxTextEdit;
-    btnConf: TcxButton;
-    edtHostName: TcxTextEdit;
-    lblHostBBDD: TLabel;
-    Bevel1: TBevel;
-    lblNomBBDD: TLabel;
-    edtNomBD: TcxTextEdit;
-    lblUserBBDD: TLabel;
-    edtUserBD: TcxTextEdit;
-    lblPasswordBBDD: TLabel;
-    edtPassBD: TcxTextEdit;
-    edtPortBD: TcxTextEdit;
-    lblPortHost: TLabel;
-    btnTest: TcxButton;
     MySQLUniProvider1: TMySQLUniProvider;
     ucConexion: TUniConnection;
-    btnSubirScript: TcxButton;
-    btnCopiaSeguridad: TcxButton;
     udDump: TUniDump;
-    btnRecover: TcxButton;
     chkRememberPassword: TcxCheckBox;
     chkRememberUser: TcxCheckBox;
     tbUsers: TUniTable;
-    btChangePassRoot: TcxButton;
     chkAuto: TcxCheckBox;
-    pnlPPBottom: TPanel;
-    cxMemo1: TcxMemo;
     UniSQLMonitor1: TUniSQLMonitor;
     saveDialog: TdxSaveFileDialog;
     openDialog: TdxOpenFileDialog;
+    pnlBBDD: TdxPanel;
+    lblBBDDConfig: TcxLabel;
+    lblHostBBDD: TcxLabel;
+    lblPortHost: TcxLabel;
+    lblNomBBDD: TcxLabel;
+    lblUserBBDD: TcxLabel;
+    lblPasswordBBDD: TcxLabel;
+    edtHostName: TcxTextEdit;
+    edtPortBD: TcxTextEdit;
+    edtNomBD: TcxTextEdit;
+    edtUserBD: TcxTextEdit;
+    edtPassBD: TcxTextEdit;
+    btChangePassRoot: TcxButton;
+    btnTest: TcxButton;
+    btnSubirScript: TcxButton;
+    btnCopiaSeguridad: TcxButton;
+    btnRecover: TcxButton;
+    JvEnterAsTab1: TJvEnterAsTab;
+    btnConf: TcxButton;
     procedure FormCreate(Sender: TObject);
     procedure btnSalirClick(Sender: TObject);
     procedure btnAceptarClick(Sender: TObject);
@@ -78,8 +79,6 @@ type
     procedure edtPassBDExit(Sender: TObject);
     procedure btChangePassRootClick(Sender: TObject);
     procedure edtPortBDPropertiesChange(Sender: TObject);
-    procedure UniSQLMonitor1SQL(Sender: TObject; Text: string;
-      Flag: TDATraceFlag);
 //    procedure cxButton1Click(Sender: TObject);
     procedure leerini;
     procedure GetIniValues;
@@ -124,32 +123,26 @@ begin
   ucConexion.PoolingOptions.ConnectionLifeTime := 3 * 60; // 3 minutos
   Application.OnException := AppException;
   UniSQLMonitor1.Active := False;
-  Self.Width := 338;
-  Self.ClientHeight := 253;
-  cxMemo1.Visible := False;
-  pnlPPBottom.Visible := False;
+  Self.Width := 375;
+  Self.ClientHeight := 353;
   {$IFDEF DEBUG}
     inliblog.Log.LogInfo('Arrancando en modo Debug');
-    pnlPPBottom.Visible := True;
-    UniSQLMonitor1.Active := True;
-    cxMemo1.Visible := True;
-    Self.ClientHeight := 493;
-    Self.Width := 783;
   {$ENDIF}
   sUserPassOK := 'false';
   Self.Position := poScreenCenter;
   edtUser.Text := '';
-  //leerini;
-//  try
-//    GetIniValues;
 
-//  except
-//    on E:Exception do
-//    if (E is EAccessViolation) or (E is ERangeError) then
-//      begin
-//        raise EPassWordCorrupt.Create(SErrorDecryptPass);
-//      end;
-//  end;
+  //leerini;
+  //  try
+  //    GetIniValues;
+
+  //  except
+  //    on E:Exception do
+  //    if (E is EAccessViolation) or (E is ERangeError) then
+  //      begin
+  //        raise EPassWordCorrupt.Create(SErrorDecryptPass);
+  //      end;
+  //  end;
   sPassEn := leCadINIDir('ConnData',
                          'PasswordEn',
                          '2qJFaDfegP/9y6RDno1FRg==',
@@ -171,8 +164,16 @@ end;
 
 procedure TfrmLogon.btnConfClick(Sender: TObject);
 begin
-  Self.Width := 799;
-  Self.ClientHeight := 253;
+  if (pnlBBDD.Visible = True) then
+  begin
+    pnlBBDD.Visible := False;
+    ClientWidth := 375;
+  end
+  else
+  begin
+    pnlBBDD.Visible := True;
+    ClientWidth := 800;
+  end;
 end;
 
 procedure TfrmLogon.btnCopiaSeguridadClick(Sender: TObject);
@@ -721,11 +722,16 @@ end;
 procedure TfrmLogon.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-  if (((ORD(key) = VK_F12) or (ord(key) = VK_RETURN)) and
-    (btnAceptar.Enabled = true)) then
-    btnAceptar.Click
-  else if ORD(key) = VK_ESCAPE then
-    btnSalir.click;
+  if Key = VK_F12 then
+  begin
+    btnAceptarClick(nil);
+    Key := 0;
+  end
+  else if Key = VK_ESCAPE then
+  begin
+    btnSalirClick(nil);
+    Key := 0;
+  end;
 end;
 
 procedure TfrmLogon.SetIniValues;
@@ -749,16 +755,6 @@ procedure TfrmLogon.ucConexionError(Sender: TObject; E: EDAError;
   var Fail: Boolean);
 begin
   Fail := False;
-end;
-
-procedure TfrmLogon.UniSQLMonitor1SQL(Sender: TObject; Text: string;
-  Flag: TDATraceFlag);
-begin
-  inherited;
-  {$IFDEF DEBUG}
-    cxMemo1.Lines.Add(Text);
-    Log.LogSQL(Text);
-  {$ENDIF}
 end;
 
 procedure TfrmLogon.GetIniValues;

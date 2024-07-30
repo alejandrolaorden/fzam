@@ -6,7 +6,6 @@ inherited frmMtoArticulos: TfrmMtoArticulos
   ClientWidth = 996
   ExplicitWidth = 996
   ExplicitHeight = 713
-  PixelsPerInch = 96
   TextHeight = 19
   inherited pButtonPage: TPanel
     Width = 856
@@ -18,28 +17,31 @@ inherited frmMtoArticulos: TfrmMtoArticulos
       Width = 856
       Height = 673
       TabOrder = 1
-      Properties.ActivePage = tsFicha
       ExplicitWidth = 856
       ExplicitHeight = 673
-      ClientRectBottom = 667
-      ClientRectRight = 850
+      ClientRectBottom = 669
+      ClientRectRight = 852
       inherited tsLista: TcxTabSheet
-        ExplicitWidth = 847
-        ExplicitHeight = 635
+        ExplicitLeft = 4
+        ExplicitTop = 30
+        ExplicitWidth = 848
+        ExplicitHeight = 639
         inherited cxGrdPrincipal: TcxGrid
-          Width = 847
-          Height = 635
-          ExplicitWidth = 847
-          ExplicitHeight = 635
+          Width = 848
+          Height = 639
+          ExplicitWidth = 848
+          ExplicitHeight = 639
           inherited cxGrdDBTabPrin: TcxGridDBTableView
             object cxgrdbclmnGrdDBTabPrinCODIGO_ARTICULO: TcxGridDBColumn
               Caption = 'C'#243'digo Art'#237'culo'
               DataBinding.FieldName = 'CODIGO_ARTICULO'
+              DataBinding.IsNullValueType = True
               Width = 150
             end
             object cxgrdbclmnGrdDBTabPrinACTIVO_ARTICULO: TcxGridDBColumn
               Caption = 'Activo'
               DataBinding.FieldName = 'ACTIVO_ARTICULO'
+              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxCheckBoxProperties'
               Properties.ValueChecked = 'S'
               Properties.ValueUnchecked = 'N'
@@ -48,22 +50,26 @@ inherited frmMtoArticulos: TfrmMtoArticulos
             object cxgrdbclmnGrdDBTabPrinDESCRIPCION_ARTICULO: TcxGridDBColumn
               Caption = 'Descripci'#243'n'
               DataBinding.FieldName = 'DESCRIPCION_ARTICULO'
+              DataBinding.IsNullValueType = True
               Width = 205
             end
             object cxgrdbclmnGrdDBTabPrinCODIGO_FAMILIA_ARTICULO: TcxGridDBColumn
               Caption = 'C'#243'digo Familia'
               DataBinding.FieldName = 'CODIGO_FAMILIA_ARTICULO'
+              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxTextEditProperties'
               Width = 149
             end
             object cxgrdbclmnGrdDBTabPrinDESCRIPCION_FAMILIA: TcxGridDBColumn
               Caption = 'Descripci'#243'n Familia'
               DataBinding.FieldName = 'DESCRIPCION_FAMILIA'
+              DataBinding.IsNullValueType = True
               Width = 470
             end
             object cxgrdbclmnGrdDBTabPrinTIPOIVA_ARTICULO: TcxGridDBColumn
               Caption = 'Tipo IVA'
               DataBinding.FieldName = 'NOMBRE_TIPO_IVA'
+              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxTextEditProperties'
               Width = 130
             end
@@ -71,26 +77,26 @@ inherited frmMtoArticulos: TfrmMtoArticulos
         end
       end
       inherited tsFicha: TcxTabSheet
-        ExplicitWidth = 847
-        ExplicitHeight = 635
+        ExplicitLeft = 4
+        ExplicitTop = 30
+        ExplicitWidth = 848
+        ExplicitHeight = 639
         object pnlTopFicha: TPanel
           Left = 0
           Top = 0
-          Width = 847
+          Width = 848
           Height = 174
           Align = alTop
           BevelOuter = bvNone
           TabOrder = 0
-          ExplicitWidth = 848
           object pnlBodyFicha: TPanel
             Left = 0
             Top = 0
-            Width = 847
+            Width = 848
             Height = 174
             Align = alClient
             BevelOuter = bvNone
             TabOrder = 0
-            ExplicitWidth = 848
             object txtCODIGO_ARTICULO: TcxDBTextEdit
               Left = 100
               Top = 13
@@ -128,7 +134,7 @@ inherited frmMtoArticulos: TfrmMtoArticulos
               DataBinding.DataSource = dsTablaG
               Properties.ValueChecked = 'S'
               Properties.ValueUnchecked = 'N'
-              TabOrder = 4
+              TabOrder = 2
               Transparent = True
             end
             object cbbFamilia: TcxDBLookupComboBox
@@ -187,7 +193,7 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                   Caption = 'Exento'
                   Value = 'E'
                 end>
-              TabOrder = 7
+              TabOrder = 9
               Height = 122
               Width = 185
             end
@@ -213,25 +219,25 @@ inherited frmMtoArticulos: TfrmMtoArticulos
         end
         object pnlButtonFicha: TPanel
           Left = 0
-          Top = 178
-          Width = 847
+          Top = 182
+          Width = 848
           Height = 457
           Align = alClient
           BevelOuter = bvNone
-          TabOrder = 1
+          TabOrder = 2
           object pcDetail: TcxPageControl
             Left = 0
             Top = 0
-            Width = 847
+            Width = 848
             Height = 457
             Align = alClient
             TabOrder = 0
             Properties.ActivePage = tsTarifas
             Properties.CustomButtons.Buttons = <>
-            ClientRectBottom = 451
-            ClientRectLeft = 3
-            ClientRectRight = 841
-            ClientRectTop = 32
+            ClientRectBottom = 453
+            ClientRectLeft = 4
+            ClientRectRight = 844
+            ClientRectTop = 30
             object tsVariaciones: TcxTabSheet
               Caption = '&0_Variaciones'
               ImageIndex = 4
@@ -239,7 +245,7 @@ inherited frmMtoArticulos: TfrmMtoArticulos
               object pnlUpVariaciones: TPanel
                 Left = 0
                 Top = 0
-                Width = 838
+                Width = 840
                 Height = 73
                 Align = alTop
                 TabOrder = 0
@@ -269,37 +275,37 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                       FieldName = 'NOMBRE_VARIACION'
                     end>
                   Properties.ListOptions.ShowHeader = False
-                  TabOrder = 1
+                  TabOrder = 0
                   Width = 322
                 end
               end
               object pnlBodyVariaciones: TPanel
                 Left = 0
                 Top = 73
-                Width = 838
-                Height = 346
+                Width = 840
+                Height = 350
                 Align = alClient
                 TabOrder = 1
                 object pnlRightVariacion: TPanel
-                  Left = 629
+                  Left = 631
                   Top = 1
                   Width = 208
-                  Height = 344
+                  Height = 348
                   Align = alRight
-                  TabOrder = 0
+                  TabOrder = 1
                 end
                 object pnlBodyVariacion: TPanel
                   Left = 1
                   Top = 1
-                  Width = 628
-                  Height = 344
+                  Width = 630
+                  Height = 348
                   Align = alClient
-                  TabOrder = 1
+                  TabOrder = 0
                   object cxGrid1: TcxGrid
                     Left = 1
                     Top = 1
-                    Width = 626
-                    Height = 342
+                    Width = 628
+                    Height = 346
                     Margins.Left = 4
                     Margins.Top = 4
                     Margins.Right = 4
@@ -356,37 +362,45 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                       OptionsView.Indicator = True
                       object dbcVariacionesCODIGO_VARIACION: TcxGridDBColumn
                         DataBinding.FieldName = 'CODIGO_VARIACION'
+                        DataBinding.IsNullValueType = True
                         Width = 176
                       end
                       object dbcVariacionesCODIGO_ARTICULO: TcxGridDBColumn
                         Caption = 'C'#243'digo Art'#237'culo'
                         DataBinding.FieldName = 'CODIGO_ARTICULO'
+                        DataBinding.IsNullValueType = True
                         Visible = False
                       end
                       object dbcVariacionesNOMBRE_COLUMNA: TcxGridDBColumn
                         Caption = 'Nombre Columna'
                         DataBinding.FieldName = 'NOMBRE_COLUMNA'
+                        DataBinding.IsNullValueType = True
                         Width = 104
                       end
                       object dbcVariacionesCODIGO_UNICO: TcxGridDBColumn
                         Caption = 'C'#243'digo '#218'nico'
                         DataBinding.FieldName = 'CODIGO_UNICO'
+                        DataBinding.IsNullValueType = True
                         Width = 139
                       end
                       object dbcVariacionesVALOR_VARIACION: TcxGridDBColumn
                         Caption = 'Valor'
                         DataBinding.FieldName = 'VALOR_VARIACION'
+                        DataBinding.IsNullValueType = True
                         Width = 162
                       end
                       object dbcVariacionesNOMBRE_VARIACION: TcxGridDBColumn
                         DataBinding.FieldName = 'NOMBRE_VARIACION'
+                        DataBinding.IsNullValueType = True
                         Width = 180
                       end
                       object dbcVariacionesACTIVO_VARIACION: TcxGridDBColumn
                         DataBinding.FieldName = 'ACTIVO_VARIACION'
+                        DataBinding.IsNullValueType = True
                       end
                       object dbcVariacionesORDEN_VARIACION: TcxGridDBColumn
                         DataBinding.FieldName = 'ORDEN_VARIACION'
+                        DataBinding.IsNullValueType = True
                       end
                     end
                     object lv1: TcxGridLevel
@@ -399,15 +413,11 @@ inherited frmMtoArticulos: TfrmMtoArticulos
             object tsTarifas: TcxTabSheet
               Caption = '&1_Tarifas'
               ImageIndex = 1
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object cxgrdTarifas: TcxGrid
                 Left = 0
                 Top = 0
-                Width = 722
-                Height = 419
+                Width = 724
+                Height = 423
                 Margins.Left = 4
                 Margins.Top = 4
                 Margins.Right = 4
@@ -465,6 +475,7 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                   object cxgrdbclmnTarifasCODIGO_TARIFA: TcxGridDBColumn
                     Caption = 'C'#243'digo Tarifa'
                     DataBinding.FieldName = 'CODIGO_TARIFA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxTextEditProperties'
                     Properties.ReadOnly = True
                     Width = 129
@@ -472,6 +483,7 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                   object cxgrdbclmnTarifasNOMBRE_TARIFA: TcxGridDBColumn
                     Caption = 'Nombre Tarifa'
                     DataBinding.FieldName = 'NOMBRE_TARIFA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxTextEditProperties'
                     Properties.ReadOnly = True
                     Width = 145
@@ -479,6 +491,7 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                   object dbcTarifasESIMP_INCL_TARIFA: TcxGridDBColumn
                     Caption = 'Imp. Incl.'
                     DataBinding.FieldName = 'ESIMP_INCL_TARIFA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxCheckBoxProperties'
                     Properties.ValueChecked = 'S'
                     Properties.ValueUnchecked = 'N'
@@ -486,22 +499,26 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                   end
                   object cxgrdbclmnTarifasCODIGO_ARTICULO_TARIFA: TcxGridDBColumn
                     DataBinding.FieldName = 'CODIGO_ARTICULO_TARIFA'
+                    DataBinding.IsNullValueType = True
                     Visible = False
                     VisibleForCustomization = False
                   end
                   object cxgrdbclmnTarifasDESCRIPCION_ARTICULO: TcxGridDBColumn
                     DataBinding.FieldName = 'DESCRIPCION_ARTICULO'
+                    DataBinding.IsNullValueType = True
                     Visible = False
                     VisibleForCustomization = False
                   end
                   object cxgrdbclmnTarifasTIPO_CANTIDAD_ARTICULO: TcxGridDBColumn
                     DataBinding.FieldName = 'TIPO_CANTIDAD_ARTICULO'
+                    DataBinding.IsNullValueType = True
                     Visible = False
                     VisibleForCustomization = False
                   end
                   object dbcTarifasPRECIOSALIDA: TcxGridDBColumn
                     Caption = 'Precio Salida'
                     DataBinding.FieldName = 'PRECIOSALIDA_TARIFA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxCurrencyEditProperties'
                     Properties.OnEditValueChanged = dbcTarifasPRECIOSALIDAPropertiesEditValueChanged
                     Width = 113
@@ -509,6 +526,7 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                   object dbcTarifasPORCEN_DTO_TARIFA: TcxGridDBColumn
                     Caption = '% Descuento'
                     DataBinding.FieldName = 'PORCEN_DTO_TARIFA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxSpinEditProperties'
                     Properties.DisplayFormat = '#.## %'
                     Properties.EditFormat = '#,## %'
@@ -518,6 +536,7 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                   object dbcTarifasPRECIO_DTO_TARIFA: TcxGridDBColumn
                     Caption = 'Cantidad Descuento'
                     DataBinding.FieldName = 'PRECIO_DTO_TARIFA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxCurrencyEditProperties'
                     Properties.OnEditValueChanged = dbcTarifasPRECIO_DTO_TARIFAPropertiesEditValueChanged
                     Width = 174
@@ -525,18 +544,21 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                   object dbcTarifasPRECIOFINAL: TcxGridDBColumn
                     Caption = 'Precio Final'
                     DataBinding.FieldName = 'PRECIOFINAL_TARIFA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxCurrencyEditProperties'
                     Properties.OnEditValueChanged = dbcTarifasPRECIOFINALPropertiesEditValueChanged
                     Width = 129
                   end
                   object cxgrdbclmnTarifasTIPO_IVA_ARTICULO: TcxGridDBColumn
                     DataBinding.FieldName = 'TIPO_IVA_ARTICULO'
+                    DataBinding.IsNullValueType = True
                     Visible = False
                     VisibleForCustomization = False
                   end
                   object cxgrdbclmnTarifasACTIVO_TARIFA: TcxGridDBColumn
                     Caption = 'Tarifa Activa'
                     DataBinding.FieldName = 'ACTIVO_TARIFA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxCheckBoxProperties'
                     Properties.ValueChecked = 'S'
                     Properties.ValueUnchecked = 'N'
@@ -545,16 +567,19 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                   object cxgrdbclmnTarifasFECHA_DESDE_TARIFA: TcxGridDBColumn
                     Caption = 'Fecha Desde'
                     DataBinding.FieldName = 'FECHA_DESDE_TARIFA'
+                    DataBinding.IsNullValueType = True
                     Width = 112
                   end
                   object cxgrdbclmnTarifasFECHA_HASTA_TARIFA: TcxGridDBColumn
                     Caption = 'Fecha Hasta'
                     DataBinding.FieldName = 'FECHA_HASTA_TARIFA'
+                    DataBinding.IsNullValueType = True
                     Width = 107
                   end
                   object dbcTarifasESDEFAULT_TARIFA: TcxGridDBColumn
                     Caption = 'Tarifa x Defecto'
                     DataBinding.FieldName = 'ESDEFAULT_TARIFA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxCheckBoxProperties'
                     Properties.ValueChecked = 'S'
                     Properties.ValueUnchecked = 'N'
@@ -563,12 +588,14 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                   object cxgrdbclmnTarifasCODIGO_PROVEEDOR: TcxGridDBColumn
                     Caption = 'C'#243'digo Proveedor'
                     DataBinding.FieldName = 'CODIGO_PROVEEDOR'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxTextEditProperties'
                     Properties.ReadOnly = True
                     Width = 156
                   end
                   object cxgrdbclmnTarifasRAZONSOCIAL_PROVEEDOR: TcxGridDBColumn
                     DataBinding.FieldName = 'RAZONSOCIAL_PROVEEDOR'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxTextEditProperties'
                     Properties.ReadOnly = True
                     Width = 231
@@ -576,6 +603,7 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                   object cxgrdbclmnTarifasPRECIO_ULT_COMPRA: TcxGridDBColumn
                     Caption = 'Precio '#218'lt Compra'
                     DataBinding.FieldName = 'PRECIO_ULT_COMPRA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxCurrencyEditProperties'
                     Properties.ReadOnly = True
                     Width = 156
@@ -583,6 +611,7 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                   object cxgrdbclmnTarifasFECHA_VALIDEZ: TcxGridDBColumn
                     Caption = 'Fecha Validez'
                     DataBinding.FieldName = 'FECHA_VALIDEZ'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxDateEditProperties'
                     Properties.ReadOnly = True
                     Width = 121
@@ -590,34 +619,41 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                   object cxgrdbclmnTarifasCODIGO_FAMILIA_ARTICULO: TcxGridDBColumn
                     Caption = 'Familia'
                     DataBinding.FieldName = 'CODIGO_FAMILIA_ARTICULO'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxTextEditProperties'
                     Properties.ReadOnly = True
                   end
                   object cxgrdbclmnTarifasDESCRIPCION_FAMILIA: TcxGridDBColumn
                     Caption = 'Descripci'#243'n Familia'
                     DataBinding.FieldName = 'DESCRIPCION_FAMILIA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxTextEditProperties'
                     Properties.ReadOnly = True
                     Width = 301
                   end
                   object cxgrdbclmnTarifasINSTANTEALTA: TcxGridDBColumn
                     DataBinding.FieldName = 'INSTANTEALTA'
+                    DataBinding.IsNullValueType = True
                     Visible = False
                   end
                   object cxgrdbclmnTarifasINSTANTEMODIF: TcxGridDBColumn
                     DataBinding.FieldName = 'INSTANTEMODIF'
+                    DataBinding.IsNullValueType = True
                     Visible = False
                   end
                   object cxgrdbclmnTarifasUSUARIOALTA: TcxGridDBColumn
                     DataBinding.FieldName = 'USUARIOALTA'
+                    DataBinding.IsNullValueType = True
                     Visible = False
                   end
                   object cxgrdbclmnTarifasUSUARIOMODIF: TcxGridDBColumn
                     DataBinding.FieldName = 'USUARIOMODIF'
+                    DataBinding.IsNullValueType = True
                     Visible = False
                   end
                   object dbcTarifasCODIGO_UNICO_TARIFA: TcxGridDBColumn
                     DataBinding.FieldName = 'CODIGO_UNICO_TARIFA'
+                    DataBinding.IsNullValueType = True
                     Visible = False
                   end
                 end
@@ -626,10 +662,10 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                 end
               end
               object pnlFacturaOpts2: TPanel
-                Left = 722
+                Left = 724
                 Top = 0
                 Width = 116
-                Height = 419
+                Height = 423
                 Align = alRight
                 BevelOuter = bvNone
                 TabOrder = 1
@@ -665,15 +701,11 @@ inherited frmMtoArticulos: TfrmMtoArticulos
             object tsProveedores: TcxTabSheet
               Caption = '&2_Proveedores'
               ImageIndex = 2
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object cxgrdProveedores: TcxGrid
                 Left = 0
                 Top = 0
-                Width = 717
-                Height = 419
+                Width = 719
+                Height = 423
                 Margins.Left = 4
                 Margins.Top = 4
                 Margins.Right = 4
@@ -733,6 +765,7 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                   object cxgrdbclmnProveedoresCODIGO_PROVEEDOR: TcxGridDBColumn
                     Caption = 'C'#243'digo Proveedor'
                     DataBinding.FieldName = 'CODIGO_PROVEEDOR'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxButtonEditProperties'
                     Properties.Buttons = <
                       item
@@ -745,6 +778,7 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                   object cxgrdbclmnProveedoresRAZONSOCIAL_PROVEEDOR: TcxGridDBColumn
                     Caption = 'Raz'#243'n Social Proveedor'
                     DataBinding.FieldName = 'RAZONSOCIAL_PROVEEDOR'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxTextEditProperties'
                     Properties.ReadOnly = True
                     Width = 221
@@ -752,6 +786,7 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                   object cxgrdbclmnProveedoresESPROVEEDORPRINCIPAL: TcxGridDBColumn
                     Caption = 'Es Proveedor Principal'
                     DataBinding.FieldName = 'ESPROVEEDORPRINCIPAL'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxCheckBoxProperties'
                     Properties.ValueChecked = 'S'
                     Properties.ValueUnchecked = 'N'
@@ -759,36 +794,43 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                   end
                   object cxgrdbclmnProveedoresCODIGO_ARTICULO: TcxGridDBColumn
                     DataBinding.FieldName = 'CODIGO_ARTICULO'
+                    DataBinding.IsNullValueType = True
                     Visible = False
                     VisibleForCustomization = False
                   end
                   object cxgrdbclmnProveedoresPRECIO_ULT_COMPRA: TcxGridDBColumn
                     Caption = 'Precio '#218'ltima Compra'
                     DataBinding.FieldName = 'PRECIO_ULT_COMPRA'
+                    DataBinding.IsNullValueType = True
                     Width = 194
                   end
                   object cxgrdbclmnProveedoresFECHA_VALIDEZ: TcxGridDBColumn
                     Caption = 'Fecha '#250'ltimo Precio'
                     DataBinding.FieldName = 'FECHA_VALIDEZ'
+                    DataBinding.IsNullValueType = True
                     Width = 174
                   end
                   object cxgrdbclmnProveedoresINSTANTEMODIF: TcxGridDBColumn
                     DataBinding.FieldName = 'INSTANTEMODIF'
+                    DataBinding.IsNullValueType = True
                     Visible = False
                     VisibleForCustomization = False
                   end
                   object cxgrdbclmnProveedoresINSTANTEALTA: TcxGridDBColumn
                     DataBinding.FieldName = 'INSTANTEALTA'
+                    DataBinding.IsNullValueType = True
                     Visible = False
                     VisibleForCustomization = False
                   end
                   object cxgrdbclmnProveedoresUSUARIOALTA: TcxGridDBColumn
                     DataBinding.FieldName = 'USUARIOALTA'
+                    DataBinding.IsNullValueType = True
                     Visible = False
                     VisibleForCustomization = False
                   end
                   object cxgrdbclmnProveedoresUSUARIOMODIF: TcxGridDBColumn
                     DataBinding.FieldName = 'USUARIOMODIF'
+                    DataBinding.IsNullValueType = True
                     Visible = False
                     VisibleForCustomization = False
                   end
@@ -798,10 +840,10 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                 end
               end
               object pnlFacturaOpts1: TPanel
-                Left = 717
+                Left = 719
                 Top = 0
                 Width = 121
-                Height = 419
+                Height = 423
                 Align = alRight
                 TabOrder = 1
                 object btnIraProveedor: TcxButton
@@ -810,7 +852,7 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                   Width = 116
                   Height = 34
                   Caption = '&Ir a Proveedor'
-                  TabOrder = 0
+                  TabOrder = 1
                   OnClick = btnIraProveedorClick
                 end
                 object btnExportarProveedor: TcxButton
@@ -819,7 +861,7 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                   Width = 116
                   Height = 34
                   Caption = '&Exp Excel'
-                  TabOrder = 1
+                  TabOrder = 2
                   OnClick = btnExportarProveedorClick
                 end
                 object btnAddProveedor: TcxButton
@@ -828,7 +870,7 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                   Width = 116
                   Height = 34
                   Caption = '&A'#241'adir'
-                  TabOrder = 2
+                  TabOrder = 0
                   OnClick = btnAddProveedorClick
                 end
               end
@@ -836,15 +878,11 @@ inherited frmMtoArticulos: TfrmMtoArticulos
             object tsLineasFactura: TcxTabSheet
               Caption = '&3_Lineas de Facturas - '
               ImageIndex = 3
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object cxgrdLinFac: TcxGrid
                 Left = 0
                 Top = 0
-                Width = 725
-                Height = 419
+                Width = 727
+                Height = 423
                 Margins.Left = 4
                 Margins.Top = 4
                 Margins.Right = 4
@@ -917,41 +955,49 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                   object cxgrdbclmnLinFacNRO_FACTURA_LINEA: TcxGridDBColumn
                     Caption = 'Nro Factura'
                     DataBinding.FieldName = 'NRO_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     Width = 119
                   end
                   object cxgrdbclmnLinFacSERIE_FACTURA_LINEA: TcxGridDBColumn
                     Caption = 'Serie Factura'
                     DataBinding.FieldName = 'SERIE_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     Width = 141
                   end
                   object cxgrdbclmnLinFacLINEA_FACTURA_LINEA: TcxGridDBColumn
                     Caption = 'Nro Linea'
                     DataBinding.FieldName = 'LINEA_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     Width = 109
                   end
                   object cxgrdbclmnLinFacTIPO_CANTIDAD_ARTICULO_FACTURA_LINEA: TcxGridDBColumn
                     Caption = 'Tipo Cantidad'
                     DataBinding.FieldName = 'TIPO_CANTIDAD_ARTICULO_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     Width = 134
                   end
                   object cxgrdbclmnLinFacCANTIDAD_FACTURA_LINEA: TcxGridDBColumn
                     Caption = 'Cantidad'
                     DataBinding.FieldName = 'CANTIDAD_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     Width = 82
                   end
                   object cxgrdbclmnLinFacDESCRIPCION_ARTICULO_FACTURA_LINEA: TcxGridDBColumn
                     Caption = 'Descripci'#243'n Linea'
                     DataBinding.FieldName = 'DESCRIPCION_ARTICULO_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     Width = 155
                   end
                   object cxgrdbclmnLinFacNOMBRE_TARIFA: TcxGridDBColumn
                     Caption = 'Tarifa Aplicada'
                     DataBinding.FieldName = 'NOMBRE_TARIFA'
+                    DataBinding.IsNullValueType = True
                     Width = 143
                   end
                   object cxgrdbclmnLinFacESIMP_INCL_TARIFA_FACTURA_LINEA: TcxGridDBColumn
                     Caption = 'Precio Imp. Incl.'
                     DataBinding.FieldName = 'ESIMP_INCL_TARIFA_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxCheckBoxProperties'
                     Properties.ValueChecked = 'S'
                     Properties.ValueUnchecked = 'N'
@@ -960,17 +1006,20 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                   object cxgrdbclmnLinFacPRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA: TcxGridDBColumn
                     Caption = 'Precio sin IVA'
                     DataBinding.FieldName = 'PRECIOVENTA_SIVA_ARTICULO_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxCurrencyEditProperties'
                     Width = 131
                   end
                   object cxgrdbclmnLinFacTIPOIVA_ARTICULO_FACTURA_LINEA: TcxGridDBColumn
                     Caption = 'Tipo IVA'
                     DataBinding.FieldName = 'TIPOIVA_ARTICULO_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     Width = 108
                   end
                   object cxgrdbclmnLinFacPORCEN_IVA_FACTURA_LINEA: TcxGridDBColumn
                     Caption = '% IVA'
                     DataBinding.FieldName = 'PORCEN_IVA_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxSpinEditProperties'
                     Properties.DisplayFormat = '0.00 %'
                     Properties.EditFormat = '0.00 %'
@@ -981,33 +1030,39 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                   object cxgrdbclmnLinFacPRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA: TcxGridDBColumn
                     Caption = 'Precio Con IVA'
                     DataBinding.FieldName = 'PRECIOVENTA_CIVA_ARTICULO_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxCurrencyEditProperties'
                     Width = 152
                   end
                   object cxgrdbclmnLinFacCODIGO_ARTICULO_FACTURA_LINEA: TcxGridDBColumn
                     DataBinding.FieldName = 'CODIGO_ARTICULO_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     Visible = False
                     VisibleForCustomization = False
                   end
                   object cxgrdbclmnLinFacCODIGO_FAMILIA_FACTURA_LINEA: TcxGridDBColumn
                     DataBinding.FieldName = 'CODIGO_FAMILIA_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     Visible = False
                     VisibleForCustomization = False
                   end
                   object cxgrdbclmnLinFacNOMBRE_FAMILIA_FACTURA_LINEA: TcxGridDBColumn
                     DataBinding.FieldName = 'NOMBRE_FAMILIA_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     Visible = False
                     VisibleForCustomization = False
                   end
                   object cxgrdbclmnLinFacTOTAL_FACTURA_LINEA: TcxGridDBColumn
                     Caption = 'Total Linea'
                     DataBinding.FieldName = 'TOTAL_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxCurrencyEditProperties'
                     Width = 118
                   end
                   object cxgrdbclmnLinFacFECHA_ENTREGA_FACTURA_LINEA: TcxGridDBColumn
                     Caption = 'Fecha Entrega'
                     DataBinding.FieldName = 'FECHA_ENTREGA_FACTURA_LINEA'
+                    DataBinding.IsNullValueType = True
                     PropertiesClassName = 'TcxDateEditProperties'
                     Width = 136
                   end
@@ -1017,10 +1072,10 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                 end
               end
               object pnlFacturaOpts: TPanel
-                Left = 725
+                Left = 727
                 Top = 0
                 Width = 113
-                Height = 419
+                Height = 423
                 Align = alRight
                 TabOrder = 1
                 object btnIraFactura: TcxButton
@@ -1047,7 +1102,7 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                   Width = 104
                   Height = 34
                   Caption = '&Exp Excel'
-                  TabOrder = 2
+                  TabOrder = 3
                 end
                 object btnIraCliente: TcxButton
                   Left = 7
@@ -1055,7 +1110,7 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                   Width = 104
                   Height = 34
                   Caption = 'Ir a C&liente'
-                  TabOrder = 3
+                  TabOrder = 2
                   OnClick = btnIraClienteClick
                 end
               end
@@ -1065,11 +1120,11 @@ inherited frmMtoArticulos: TfrmMtoArticulos
               ImageIndex = 3
               object pnl3: TPanel
                 Left = 0
-                Top = 340
-                Width = 838
+                Top = 344
+                Width = 840
                 Height = 79
                 Align = alBottom
-                TabOrder = 0
+                TabOrder = 5
                 object cxdbtxtdtDIRECCION1_CLIENTE: TcxDBTextEdit
                   Left = 17
                   Top = 37
@@ -1080,7 +1135,7 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                   DataBinding.DataField = 'USUARIOALTA'
                   DataBinding.DataSource = dsTablaG
                   Properties.ReadOnly = True
-                  TabOrder = 2
+                  TabOrder = 4
                   Width = 136
                 end
                 object lblUsuarioAlta: TcxLabel
@@ -1113,7 +1168,7 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                   DataBinding.DataField = 'INSTANTEALTA'
                   DataBinding.DataSource = dsTablaG
                   Properties.ReadOnly = True
-                  TabOrder = 3
+                  TabOrder = 5
                   Width = 192
                 end
                 object cxdbtxtdtINSTANTEALTA: TcxDBTextEdit
@@ -1149,7 +1204,7 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                   DataBinding.DataField = 'USUARIOALTA'
                   DataBinding.DataSource = dsTablaG
                   Properties.ReadOnly = True
-                  TabOrder = 4
+                  TabOrder = 6
                   Width = 136
                 end
                 object lblUsuarioModif: TcxLabel
@@ -1171,7 +1226,7 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                 DataBinding.DataSource = dsTablaG
                 Properties.ValueChecked = 'S'
                 Properties.ValueUnchecked = 'N'
-                TabOrder = 1
+                TabOrder = 0
                 Transparent = True
               end
               object cxdbtxtdtTIPO_CANTIDAD_ARTICULO: TcxDBTextEdit
@@ -1203,7 +1258,7 @@ inherited frmMtoArticulos: TfrmMtoArticulos
                 Top = 106
                 DataBinding.DataField = 'ORDEN_ARTICULO'
                 DataBinding.DataSource = dsTablaG
-                TabOrder = 5
+                TabOrder = 1
                 Width = 106
               end
             end
@@ -1212,32 +1267,56 @@ inherited frmMtoArticulos: TfrmMtoArticulos
         object splSplitterFicha: TcxSplitter
           Left = 0
           Top = 174
-          Width = 847
-          Height = 4
+          Width = 848
+          Height = 8
           HotZoneClassName = 'TcxMediaPlayer9Style'
           AlignSplitter = salTop
           Control = pnlButtonFicha
         end
       end
       inherited tsPerfil: TcxTabSheet
-        ExplicitLeft = 4
-        ExplicitTop = 30
-        ExplicitWidth = 846
-        ExplicitHeight = 637
+        ExplicitWidth = 848
+        ExplicitHeight = 639
         inherited pnlPerfilTop: TPanel
-          Width = 847
-          ExplicitWidth = 846
+          Width = 848
+          ExplicitWidth = 848
+          inherited edtPerfilBusq: TcxTextEdit
+            ExplicitHeight = 27
+          end
         end
         inherited pnlPerfilDetail: TPanel
-          Width = 847
-          Height = 578
-          ExplicitWidth = 847
-          ExplicitHeight = 578
+          Width = 848
+          Height = 582
+          ExplicitWidth = 848
+          ExplicitHeight = 582
           inherited cxgrdPerfil: TcxGrid
-            Width = 847
-            Height = 578
-            ExplicitWidth = 847
-            ExplicitHeight = 578
+            Width = 848
+            Height = 582
+            ExplicitWidth = 848
+            ExplicitHeight = 582
+            inherited tvPerfil: TcxGridDBTableView
+              inherited tvPerfilUSUARIO_GRUPO_PERFILES: TcxGridDBColumn
+                DataBinding.IsNullValueType = True
+              end
+              inherited tvPerfilKEY_PERFILES: TcxGridDBColumn
+                DataBinding.IsNullValueType = True
+              end
+              inherited tvPerfilSUBKEY_PERFILES: TcxGridDBColumn
+                DataBinding.IsNullValueType = True
+              end
+              inherited tvPerfilVALUE_PERFILES: TcxGridDBColumn
+                DataBinding.IsNullValueType = True
+              end
+              inherited tvPerfilVALUE_TEXT_PERFILES: TcxGridDBColumn
+                DataBinding.IsNullValueType = True
+              end
+              inherited tvPerfilTYPE_BLOB_PERFILES: TcxGridDBColumn
+                DataBinding.IsNullValueType = True
+              end
+              inherited tvPerfilVALUE_BLOB_PERFILES: TcxGridDBColumn
+                DataBinding.IsNullValueType = True
+              end
+            end
           end
         end
       end
@@ -1249,14 +1328,26 @@ inherited frmMtoArticulos: TfrmMtoArticulos
       inherited pnlTopGrid: TPanel
         Width = 856
         ExplicitWidth = 856
+        inherited edtBusqGlobal: TcxTextEdit
+          TabOrder = 1
+          ExplicitHeight = 27
+        end
+        inherited nvNavegador: TcxDBNavigator
+          Width = 338
+          ExplicitWidth = 338
+        end
         inherited rbBBDD: TcxRadioButton
           Top = 3
           Font.Name = 'Calibri'
           Font.Quality = fqClearTypeNatural
+          TabOrder = 0
           ExplicitTop = 3
         end
         inherited rbGrid: TcxRadioButton
           Font.Name = 'Calibri'
+        end
+        inherited btnBusq: TcxButton
+          TabOrder = 4
         end
       end
     end
@@ -1269,7 +1360,16 @@ inherited frmMtoArticulos: TfrmMtoArticulos
     ExplicitHeight = 713
     inherited pButtonGen: TPanel
       Top = 515
+      TabOrder = 2
       ExplicitTop = 515
+    end
+    inherited pButtonBDStat: TPanel
+      inherited pnStateDataSet: TPanel
+        TabOrder = 1
+      end
+      inherited pnlDataSetName: TPanel
+        TabOrder = 0
+      end
     end
     object btnNuevoArticulo: TcxButton
       Left = 1
@@ -1277,7 +1377,7 @@ inherited frmMtoArticulos: TfrmMtoArticulos
       Width = 138
       Height = 25
       Caption = '&Nuevo Art'#237'culo'
-      TabOrder = 2
+      TabOrder = 1
       OnClick = btnNuevoArticuloClick
     end
   end

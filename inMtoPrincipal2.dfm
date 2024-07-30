@@ -7,8 +7,8 @@ inherited frmOpenApp2: TfrmOpenApp2
   WindowState = wsMaximized
   OnClose = FormClose
   OnShow = FormShow
-  ExplicitWidth = 1140
-  ExplicitHeight = 608
+  ExplicitWidth = 1136
+  ExplicitHeight = 607
   TextHeight = 19
   object dxstsbr1: TdxStatusBar [0]
     AlignWithMargins = True
@@ -52,6 +52,8 @@ inherited frmOpenApp2: TfrmOpenApp2
     Font.Height = -12
     Font.Name = 'Lucida Sans Unicode'
     Font.Style = []
+    ExplicitTop = 521
+    ExplicitWidth = 1114
   end
   object Panel1: TPanel [1]
     Left = 0
@@ -61,32 +63,34 @@ inherited frmOpenApp2: TfrmOpenApp2
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1
+    ExplicitWidth = 1120
+    ExplicitHeight = 518
     object pcPrincipal: TcxPageControl
       Left = 0
       Top = 0
-      Width = 1128
-      Height = 449
+      Width = 1124
+      Height = 448
       Align = alClient
       TabOrder = 0
       Properties.CloseButtonMode = cbmActiveAndHoverTabs
       Properties.CustomButtons.Buttons = <>
       Properties.Options = [pcoAlwaysShowGoDialogButton, pcoCloseButton, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize]
-      ExplicitWidth = 1124
-      ExplicitHeight = 448
-      ClientRectBottom = 443
-      ClientRectLeft = 3
-      ClientRectRight = 1122
-      ClientRectTop = 3
+      ExplicitWidth = 1120
+      ExplicitHeight = 447
+      ClientRectBottom = 444
+      ClientRectLeft = 4
+      ClientRectRight = 1120
+      ClientRectTop = 4
     end
     object pnlPPBottom: TPanel
       Left = 0
-      Top = 449
-      Width = 1128
+      Top = 448
+      Width = 1124
       Height = 71
       Align = alBottom
       TabOrder = 1
-      ExplicitTop = 448
-      ExplicitWidth = 1124
+      ExplicitTop = 447
+      ExplicitWidth = 1120
       object cxMemo1: TcxMemo
         Left = 1
         Top = 1
@@ -97,6 +101,7 @@ inherited frmOpenApp2: TfrmOpenApp2
         Properties.ScrollBars = ssVertical
         TabOrder = 0
         Visible = False
+        ExplicitWidth = 1118
         Height = 69
         Width = 1122
       end
@@ -143,8 +148,8 @@ inherited frmOpenApp2: TfrmOpenApp2
     end
   end
   object SkinController1: TdxSkinController
-    NativeStyle = False
-    SkinName = 'Office2007Pink'
+    Kind = lfFlat
+    SkinName = 'SkinOffice2007Blue'
     Left = 304
     Top = 144
   end
@@ -162,8 +167,8 @@ inherited frmOpenApp2: TfrmOpenApp2
     PixelsPerInch = 96
   end
   object LookAndFeelController1: TcxLookAndFeelController
-    NativeStyle = False
-    SkinName = 'Office2007Pink'
+    Kind = lfFlat
+    SkinName = 'SkinOffice2007Blue'
     Left = 72
     Top = 144
   end

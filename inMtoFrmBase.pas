@@ -2,7 +2,7 @@
 {                                                       }
 {       FactuZam                                        }
 {                                                       }
-{       Copyright (C) 2023 fzam.6dvdy@slmail.me    }
+{       Copyright (C) 2023 fzam.6dvdy@slmail.me         }
 {                                                       }
 {*******************************************************}
 
