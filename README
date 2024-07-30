@@ -1,1 +1,28 @@
-Este es un repositorio Git para fzam
+
+FZAM - Gestión de Facturas para España
+FZAM es una potente aplicación de escritorio para Windows diseñada específicamente para la gestión de facturas en España. 
+Simplifica y agiliza el proceso de facturación para empresas y autónomos.
+Características principales
+
+📊 Creación y gestión de facturas. 
+🤑 euro; Adaptado a la normativa fiscal española e-factura (En construcción)
+🔍 Búsqueda avanzada y filtros personalizables
+👪 Perfiles personalizados de informes y pantallas por usuarios y grupos
+🔐 Seguridad y protección de datos. Adaptable a la LOPD
+🔄 Sincronización con sistemas PrestaShop para recogida de pedidos (En construcción)
+📂 Base de Datos MySQL o MaríaDB
+
+Requisitos del sistema
+
+Sistema operativo: Windows 10/11
+Espacio en disco: 500 MB
+Memoria RAM: 4 GB (recomendado 8 GB)
+
+Instalación
+Descarga el instalador desde la carpeta bin
+Ejecuta el archivo .exe descargado
+Sigue las instrucciones del asistente de instalación
+
+Soporte técnico
+¿Tienes problemas o dudas? Nuestro equipo de soporte está aquí para ayudarte:
+📧 Email: fzam.6dvdy@slmail.me
