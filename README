@@ -13,8 +13,13 @@ Características principales
 🔄 Sincronización con sistemas PrestaShop para recogida de pedidos (En construcción)
 📂 Base de Datos MySQL o MaríaDB
 
-Requisitos del sistema
+Tecnologías utilizadas
+Delphi 11.3
+Developer Express
+UniDAC
+FastReports
 
+Requisitos del sistema
 Sistema operativo: Windows 10/11
 Espacio en disco: 500 MB
 Memoria RAM: 4 GB (recomendado 8 GB)
